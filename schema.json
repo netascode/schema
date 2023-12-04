@@ -23032,8 +23032,9 @@
                                     },
                                     "enable_pki": {
                                         "type": "boolean",
+                                        "default": "false",
                                         "title": "Enable PKI",
-                                        "description": "Enable PKI (Boolean)"
+                                        "description": "Enable PKI (Boolean)\n- Default value: false"
                                     }
                                 },
                                 "required": [
@@ -23069,17 +23070,17 @@
                                             "ENABLED",
                                             "DISABLED"
                                         ],
+                                        "default": "ENABLED",
                                         "title": "Status",
-                                        "description": "Status (String)\n- Allowed values: ENABLED, DISABLED"
+                                        "description": "Status (String)\n- Default value: ENABLED\n- Allowed values: ENABLED, DISABLED"
                                     }
                                 },
                                 "required": [
-                                    "name",
-                                    "status"
+                                    "name"
                                 ]
                             },
                             "title": "Licenses",
-                            "description": "Licenses (List - Object)\n\nElements:\n- name (required)\n- status (required)"
+                            "description": "Licenses (List - Object)\n\nElements:\n- name (required)\n- status"
                         }
                     },
                     "required": [],
@@ -23107,11 +23108,6 @@
                                         "title": "Description",
                                         "description": "Description (String)"
                                     },
-                                    "system_defined": {
-                                        "type": "boolean",
-                                        "title": "System Defined",
-                                        "description": "System Defined (Boolean)"
-                                    },
                                     "parent_group": {
                                         "type": "string",
                                         "title": "Parent Group",
@@ -23123,7 +23119,7 @@
                                 ]
                             },
                             "title": "Endpoint Identity Groups",
-                            "description": "Endpoint Identity Groups (List - Object)\n\nElements:\n- name (required)\n- description\n- system_defined\n- parent_group"
+                            "description": "Endpoint Identity Groups (List - Object)\n\nElements:\n- name (required)\n- description\n- parent_group"
                         },
                         "user_identity_groups": {
                             "type": "array",
@@ -23174,8 +23170,9 @@
                                     },
                                     "enabled": {
                                         "type": "boolean",
+                                        "default": "true",
                                         "title": "Enabled",
-                                        "description": "Enabled (Boolean)"
+                                        "description": "Enabled (Boolean)\n- Default value: true"
                                     },
                                     "email": {
                                         "type": "string",
@@ -23209,8 +23206,9 @@
                                     },
                                     "change_password": {
                                         "type": "boolean",
+                                        "default": "true",
                                         "title": "Change Password",
-                                        "description": "Change Password (Boolean)"
+                                        "description": "Change Password (Boolean)\n- Default value: true"
                                     },
                                     "user_identity_groups": {
                                         "type": "array",
@@ -23227,8 +23225,9 @@
                                     },
                                     "password_id_store": {
                                         "type": "string",
+                                        "default": "Internal Users",
                                         "title": "Password ID Store",
-                                        "description": "Password ID Store (String)"
+                                        "description": "Password ID Store (String)\n- Default value: Internal Users"
                                     }
                                 },
                                 "required": [
@@ -23258,8 +23257,9 @@
                                     },
                                     "allowed_as_user_name": {
                                         "type": "boolean",
+                                        "default": "false",
                                         "title": "Allowed AS User Name",
-                                        "description": "Allowed AS User Name (Boolean)"
+                                        "description": "Allowed AS User Name (Boolean)\n- Default value: false"
                                     },
                                     "match_mode": {
                                         "type": "string",
@@ -23268,8 +23268,9 @@
                                             "RESOLVE_IDENTITY_AMBIGUITY",
                                             "BINARY_COMPARISON"
                                         ],
+                                        "default": "NEVER",
                                         "title": "Match Mode",
-                                        "description": "Match Mode (String)\n- Allowed values: NEVER, RESOLVE_IDENTITY_AMBIGUITY, BINARY_COMPARISON"
+                                        "description": "Match Mode (String)\n- Default value: NEVER\n- Allowed values: NEVER, RESOLVE_IDENTITY_AMBIGUITY, BINARY_COMPARISON"
                                     },
                                     "username_from": {
                                         "type": "string",
@@ -23277,8 +23278,9 @@
                                             "CERTIFICATE",
                                             "UPN"
                                         ],
+                                        "default": "CERTIFICATE",
                                         "title": "Username From",
-                                        "description": "Username From (String)\n- Allowed values: CERTIFICATE, UPN"
+                                        "description": "Username From (String)\n- Default value: CERTIFICATE\n- Allowed values: CERTIFICATE, UPN"
                                     },
                                     "certificate_attribute_name": {
                                         "type": "string",
@@ -23291,13 +23293,15 @@
                                             "SUBJECT_ALTERNATIVE_NAME_EMAIL",
                                             "SUBJECT_ALTERNATIVE_NAME_DNS"
                                         ],
+                                        "default": "SUBJECT_COMMON_NAME",
                                         "title": "Certificate Attribute Name",
-                                        "description": "Certificate Attribute Name (String)\n- Allowed values: SUBJECT_COMMON_NAME, SUBJECT_ALTERNATIVE_NAME, SUBJECT_SERIAL_NUMBER, SUBJECT, SUBJECT_ALTERNATIVE_NAME_OTHER_NAME, SUBJECT_ALTERNATIVE_NAME_EMAIL, SUBJECT_ALTERNATIVE_NAME_DNS"
+                                        "description": "Certificate Attribute Name (String)\n- Default value: SUBJECT_COMMON_NAME\n- Allowed values: SUBJECT_COMMON_NAME, SUBJECT_ALTERNATIVE_NAME, SUBJECT_SERIAL_NUMBER, SUBJECT, SUBJECT_ALTERNATIVE_NAME_OTHER_NAME, SUBJECT_ALTERNATIVE_NAME_EMAIL, SUBJECT_ALTERNATIVE_NAME_DNS"
                                     },
                                     "external_identity_store_name": {
                                         "type": "string",
+                                        "default": "[not applicable]",
                                         "title": "External Identity Store Name",
-                                        "description": "External Identity Store Name (String)"
+                                        "description": "External Identity Store Name (String)\n- Default value: [not applicable]"
                                     }
                                 },
                                 "required": [
@@ -23335,8 +23339,9 @@
                                     },
                                     "propagate_to_apic": {
                                         "type": "boolean",
+                                        "default": "false",
                                         "title": "Propagate To APIC",
-                                        "description": "Propagate To APIC (Boolean)"
+                                        "description": "Propagate To APIC (Boolean)\n- Default value: false"
                                     },
                                     "value": {
                                         "type": "integer",
@@ -23378,8 +23383,9 @@
                                             "IPV6",
                                             "IP_AGNOSTIC"
                                         ],
+                                        "default": "IPV4",
                                         "title": "IP Version",
-                                        "description": "IP Version (String)\n- Allowed values: IPV4, IPV6, IP_AGNOSTIC"
+                                        "description": "IP Version (String)\n- Default value: IPV4\n- Allowed values: IPV4, IPV6, IP_AGNOSTIC"
                                     },
                                     "acl_content": {
                                         "type": "string",
@@ -23424,8 +23430,9 @@
                                             "ND",
                                             "NDG"
                                         ],
+                                        "default": "ALL",
                                         "title": "Deploy Type",
-                                        "description": "Deploy Type (String)\n- Allowed values: ALL, ND, NDG"
+                                        "description": "Deploy Type (String)\n- Default value: ALL\n- Allowed values: ALL, ND, NDG"
                                     },
                                     "deploy_to": {
                                         "type": "string",
@@ -23484,8 +23491,9 @@
                                             "ND",
                                             "NDG"
                                         ],
+                                        "default": "ALL",
                                         "title": "Deploy Type",
-                                        "description": "Deploy Type (String)\n- Allowed values: ALL, ND, NDG"
+                                        "description": "Deploy Type (String)\n- Default value: ALL\n- Allowed values: ALL, ND, NDG"
                                     },
                                     "deploy_to": {
                                         "type": "string",
@@ -23523,8 +23531,9 @@
                                             "ENABLED",
                                             "MONITOR"
                                         ],
+                                        "default": "ENABLED",
                                         "title": "Rule Status",
-                                        "description": "Rule Status (String)\n- Allowed values: DISABLED, ENABLED, MONITOR"
+                                        "description": "Rule Status (String)\n- Default value: ENABLED\n- Allowed values: DISABLED, ENABLED, MONITOR"
                                     },
                                     "sgacl_name": {
                                         "type": "string",
@@ -23624,8 +23633,9 @@
                                             },
                                             "agentless_posture": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Agentless Posture",
-                                                "description": "Agentless Posture (Boolean)"
+                                                "description": "Agentless Posture (Boolean)\n- Default value: false"
                                             },
                                             "access_type": {
                                                 "type": "string",
@@ -23633,8 +23643,9 @@
                                                     "ACCESS_ACCEPT",
                                                     "ACCESS_REJECT"
                                                 ],
+                                                "default": "ACCESS_ACCEPT",
                                                 "title": "Access Type",
-                                                "description": "Access Type (String)\n- Allowed values: ACCESS_ACCEPT, ACCESS_REJECT"
+                                                "description": "Access Type (String)\n- Default value: ACCESS_ACCEPT\n- Allowed values: ACCESS_ACCEPT, ACCESS_REJECT"
                                             },
                                             "profile_name": {
                                                 "type": "string",
@@ -23698,33 +23709,39 @@
                                             },
                                             "track_movement": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Track Movement",
-                                                "description": "Track Movement (Boolean)"
+                                                "description": "Track Movement (Boolean)\n- Default value: false"
                                             },
                                             "service_template": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Service Template",
-                                                "description": "Service Template (Boolean)"
+                                                "description": "Service Template (Boolean)\n- Default value: false"
                                             },
                                             "easywired_session_candidate": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Easywired Session Candidate",
-                                                "description": "Easywired Session Candidate (Boolean)"
+                                                "description": "Easywired Session Candidate (Boolean)\n- Default value: false"
                                             },
                                             "voice_domain_permission": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Voice Domain Permission",
-                                                "description": "Voice Domain Permission (Boolean)"
+                                                "description": "Voice Domain Permission (Boolean)\n- Default value: false"
                                             },
                                             "neat": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "NEAT",
-                                                "description": "NEAT (Boolean)"
+                                                "description": "NEAT (Boolean)\n- Default value: false"
                                             },
                                             "web_auth": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Web Auth",
-                                                "description": "Web Auth (Boolean)"
+                                                "description": "Web Auth (Boolean)\n- Default value: false"
                                             },
                                             "mac_sec_policy": {
                                                 "type": "string",
@@ -24060,8 +24077,9 @@
                                             },
                                             "allow_leap": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Allow LEAP",
-                                                "description": "Allow LEAP (Boolean)"
+                                                "description": "Allow LEAP (Boolean)\n- Default value: false"
                                             },
                                             "allow_eap_tls": {
                                                 "type": "boolean",
@@ -24071,28 +24089,33 @@
                                             },
                                             "allow_eap_ttls": {
                                                 "type": "boolean",
+                                                "default": "true",
                                                 "title": "Allow EAP TTLS",
-                                                "description": "Allow EAP TTLS (Boolean)"
+                                                "description": "Allow EAP TTLS (Boolean)\n- Default value: true"
                                             },
                                             "allow_eap_fast": {
                                                 "type": "boolean",
+                                                "default": "true",
                                                 "title": "Allow EAP Fast",
-                                                "description": "Allow EAP Fast (Boolean)"
+                                                "description": "Allow EAP Fast (Boolean)\n- Default value: true"
                                             },
                                             "allow_peap": {
                                                 "type": "boolean",
+                                                "default": "true",
                                                 "title": "Allow PEAP",
-                                                "description": "Allow PEAP (Boolean)"
+                                                "description": "Allow PEAP (Boolean)\n- Default value: true"
                                             },
                                             "allow_teap": {
                                                 "type": "boolean",
+                                                "default": "true",
                                                 "title": "Allow TEAP",
-                                                "description": "Allow TEAP (Boolean)"
+                                                "description": "Allow TEAP (Boolean)\n- Default value: true"
                                             },
                                             "allow_preferred_eap_protocol": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Allow Preferred EAP Protocol",
-                                                "description": "Allow Preferred EAP Protocol (Boolean)"
+                                                "description": "Allow Preferred EAP Protocol (Boolean)\n- Default value: false"
                                             },
                                             "preferred_eap_protocol": {
                                                 "type": "string",
@@ -24110,23 +24133,27 @@
                                             },
                                             "eap_tls_l_bit": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "EAP TLS L Bit",
-                                                "description": "EAP TLS L Bit (Boolean)"
+                                                "description": "EAP TLS L Bit (Boolean)\n- Default value: false"
                                             },
                                             "allow_weak_ciphers_for_eap": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Allow Weak Ciphers For EAP",
-                                                "description": "Allow Weak Ciphers For EAP (Boolean)"
+                                                "description": "Allow Weak Ciphers For EAP (Boolean)\n- Default value: false"
                                             },
                                             "require_message_auth": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Require Message Auth",
-                                                "description": "Require Message Auth (Boolean)"
+                                                "description": "Require Message Auth (Boolean)\n- Default value: false"
                                             },
                                             "five_g": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Five G",
-                                                "description": "Five G (Boolean)"
+                                                "description": "Five G (Boolean)\n- Default value: false"
                                             },
                                             "teap": {
                                                 "type": "object",
@@ -24134,49 +24161,58 @@
                                                 "properties": {
                                                     "allow_teap_eap_ms_chap_v2": {
                                                         "type": "boolean",
+                                                        "default": "true",
                                                         "title": "Allow TEAP EAP MS CHAP V2",
-                                                        "description": "Allow TEAP EAP MS CHAP V2 (Boolean)"
+                                                        "description": "Allow TEAP EAP MS CHAP V2 (Boolean)\n- Default value: true"
                                                     },
                                                     "allow_teap_eap_ms_chap_v2_pwd_change": {
                                                         "type": "boolean",
+                                                        "default": "true",
                                                         "title": "Allow TEAP EAP MS CHAP V2 Pwd Change",
-                                                        "description": "Allow TEAP EAP MS CHAP V2 Pwd Change (Boolean)"
+                                                        "description": "Allow TEAP EAP MS CHAP V2 Pwd Change (Boolean)\n- Default value: true"
                                                     },
                                                     "allow_teap_eap_ms_chap_v2_pwd_change_retries": {
                                                         "type": "integer",
                                                         "maximum": 3,
+                                                        "default": 3,
                                                         "title": "Allow TEAP EAP MS CHAP V2 Pwd Change Retries",
-                                                        "description": "Allow TEAP EAP MS CHAP V2 Pwd Change Retries (Integer)\n- Maximum value: 3"
+                                                        "description": "Allow TEAP EAP MS CHAP V2 Pwd Change Retries (Integer)\n- Default value: 3\n- Maximum value: 3"
                                                     },
                                                     "allow_teap_eap_tls": {
                                                         "type": "boolean",
+                                                        "default": "true",
                                                         "title": "Allow TEAP EAP TLS",
-                                                        "description": "Allow TEAP EAP TLS (Boolean)"
+                                                        "description": "Allow TEAP EAP TLS (Boolean)\n- Default value: true"
                                                     },
                                                     "allow_teap_eap_tls_auth_of_expired_certs": {
                                                         "type": "boolean",
+                                                        "default": "false",
                                                         "title": "Allow TEAP EAP TLS Auth Of Expired Certs",
-                                                        "description": "Allow TEAP EAP TLS Auth Of Expired Certs (Boolean)"
+                                                        "description": "Allow TEAP EAP TLS Auth Of Expired Certs (Boolean)\n- Default value: false"
                                                     },
                                                     "accept_client_cert_during_tunnel_est": {
                                                         "type": "boolean",
+                                                        "default": "true",
                                                         "title": "Accept Client Cert During Tunnel Est",
-                                                        "description": "Accept Client Cert During Tunnel Est (Boolean)"
+                                                        "description": "Accept Client Cert During Tunnel Est (Boolean)\n- Default value: true"
                                                     },
                                                     "enable_eap_chaining": {
                                                         "type": "boolean",
+                                                        "default": "false",
                                                         "title": "Enable EAP Chaining",
-                                                        "description": "Enable EAP Chaining (Boolean)"
+                                                        "description": "Enable EAP Chaining (Boolean)\n- Default value: false"
                                                     },
                                                     "allow_downgrade_msk": {
                                                         "type": "boolean",
+                                                        "default": "true",
                                                         "title": "Allow Downgrade Msk",
-                                                        "description": "Allow Downgrade Msk (Boolean)"
+                                                        "description": "Allow Downgrade Msk (Boolean)\n- Default value: true"
                                                     },
                                                     "request_basic_pwd_auth": {
                                                         "type": "boolean",
+                                                        "default": "false",
                                                         "title": "Request Basic Pwd Auth",
-                                                        "description": "Request Basic Pwd Auth (Boolean)"
+                                                        "description": "Request Basic Pwd Auth (Boolean)\n- Default value: false"
                                                     }
                                                 },
                                                 "required": [],
@@ -24189,44 +24225,52 @@
                                                 "properties": {
                                                     "eap_ttls_pap_ascii": {
                                                         "type": "boolean",
+                                                        "default": "true",
                                                         "title": "EAP TTLS PAP ASCII",
-                                                        "description": "EAP TTLS PAP ASCII (Boolean)"
+                                                        "description": "EAP TTLS PAP ASCII (Boolean)\n- Default value: true"
                                                     },
                                                     "eap_ttls_chap": {
                                                         "type": "boolean",
+                                                        "default": "true",
                                                         "title": "EAP TTLS CHAP",
-                                                        "description": "EAP TTLS CHAP (Boolean)"
+                                                        "description": "EAP TTLS CHAP (Boolean)\n- Default value: true"
                                                     },
                                                     "eap_ttls_ms_chap_v1": {
                                                         "type": "boolean",
+                                                        "default": "true",
                                                         "title": "EAP TTLS MS CHAP V1",
-                                                        "description": "EAP TTLS MS CHAP V1 (Boolean)"
+                                                        "description": "EAP TTLS MS CHAP V1 (Boolean)\n- Default value: true"
                                                     },
                                                     "eap_ttls_ms_chap_v2": {
                                                         "type": "boolean",
+                                                        "default": "true",
                                                         "title": "EAP TTLS MS CHAP V2",
-                                                        "description": "EAP TTLS MS CHAP V2 (Boolean)"
+                                                        "description": "EAP TTLS MS CHAP V2 (Boolean)\n- Default value: true"
                                                     },
                                                     "eap_ttls_eap_md5": {
                                                         "type": "boolean",
+                                                        "default": "true",
                                                         "title": "EAP TTLS EAP MD5",
-                                                        "description": "EAP TTLS EAP MD5 (Boolean)"
+                                                        "description": "EAP TTLS EAP MD5 (Boolean)\n- Default value: true"
                                                     },
                                                     "eap_ttls_eap_ms_chap_v2": {
                                                         "type": "boolean",
+                                                        "default": "true",
                                                         "title": "EAP TTLS EAP MS CHAP V2",
-                                                        "description": "EAP TTLS EAP MS CHAP V2 (Boolean)"
+                                                        "description": "EAP TTLS EAP MS CHAP V2 (Boolean)\n- Default value: true"
                                                     },
                                                     "eap_ttls_eap_ms_chap_v2_pwd_change": {
                                                         "type": "boolean",
+                                                        "default": "true",
                                                         "title": "EAP TTLS EAP MS CHAP V2 Pwd Change",
-                                                        "description": "EAP TTLS EAP MS CHAP V2 Pwd Change (Boolean)"
+                                                        "description": "EAP TTLS EAP MS CHAP V2 Pwd Change (Boolean)\n- Default value: true"
                                                     },
                                                     "eap_ttls_eap_ms_chap_v2_pwd_change_retries": {
                                                         "type": "integer",
                                                         "maximum": 3,
+                                                        "default": 1,
                                                         "title": "EAP TTLS EAP MS CHAP V2 Pwd Change Retries",
-                                                        "description": "EAP TTLS EAP MS CHAP V2 Pwd Change Retries (Integer)\n- Maximum value: 3"
+                                                        "description": "EAP TTLS EAP MS CHAP V2 Pwd Change Retries (Integer)\n- Default value: 1\n- Maximum value: 3"
                                                     }
                                                 },
                                                 "required": [],
@@ -24239,13 +24283,15 @@
                                                 "properties": {
                                                     "allow_eap_tls_auth_of_expired_certs": {
                                                         "type": "boolean",
+                                                        "default": "false",
                                                         "title": "Allow EAP TLS Auth Of Expired Certs",
-                                                        "description": "Allow EAP TLS Auth Of Expired Certs (Boolean)"
+                                                        "description": "Allow EAP TLS Auth Of Expired Certs (Boolean)\n- Default value: false"
                                                     },
                                                     "eap_tls_enable_stateless_session_resume": {
                                                         "type": "boolean",
+                                                        "default": "false",
                                                         "title": "EAP TLS Enable Stateless Session Resume",
-                                                        "description": "EAP TLS Enable Stateless Session Resume (Boolean)"
+                                                        "description": "EAP TLS Enable Stateless Session Resume (Boolean)\n- Default value: false"
                                                     }
                                                 },
                                                 "required": [],
@@ -24258,57 +24304,67 @@
                                                 "properties": {
                                                     "allow_eap_fast_eap_ms_chap_v2": {
                                                         "type": "boolean",
+                                                        "default": "true",
                                                         "title": "Allow EAP Fast EAP MS CHAP V2",
-                                                        "description": "Allow EAP Fast EAP MS CHAP V2 (Boolean)"
+                                                        "description": "Allow EAP Fast EAP MS CHAP V2 (Boolean)\n- Default value: true"
                                                     },
                                                     "allow_eap_fast_eap_ms_chap_v2_pwd_change": {
                                                         "type": "boolean",
+                                                        "default": "true",
                                                         "title": "Allow EAP Fast EAP MS CHAP V2 Pwd Change",
-                                                        "description": "Allow EAP Fast EAP MS CHAP V2 Pwd Change (Boolean)"
+                                                        "description": "Allow EAP Fast EAP MS CHAP V2 Pwd Change (Boolean)\n- Default value: true"
                                                     },
                                                     "allow_eap_fast_eap_ms_chap_v2_pwd_change_retries": {
                                                         "type": "integer",
                                                         "maximum": 3,
+                                                        "default": 1,
                                                         "title": "Allow EAP Fast EAP MS CHAP V2 Pwd Change Retries",
-                                                        "description": "Allow EAP Fast EAP MS CHAP V2 Pwd Change Retries (Integer)\n- Maximum value: 3"
+                                                        "description": "Allow EAP Fast EAP MS CHAP V2 Pwd Change Retries (Integer)\n- Default value: 1\n- Maximum value: 3"
                                                     },
                                                     "allow_eap_fast_eap_gtc": {
                                                         "type": "boolean",
+                                                        "default": "true",
                                                         "title": "Allow EAP Fast EAP GTC",
-                                                        "description": "Allow EAP Fast EAP GTC (Boolean)"
+                                                        "description": "Allow EAP Fast EAP GTC (Boolean)\n- Default value: true"
                                                     },
                                                     "allow_eap_fast_eap_gtc_pwd_change": {
                                                         "type": "boolean",
+                                                        "default": "true",
                                                         "title": "Allow EAP Fast EAP GTC Pwd Change",
-                                                        "description": "Allow EAP Fast EAP GTC Pwd Change (Boolean)"
+                                                        "description": "Allow EAP Fast EAP GTC Pwd Change (Boolean)\n- Default value: true"
                                                     },
                                                     "allow_eap_fast_eap_gtc_pwd_change_retries": {
                                                         "type": "integer",
                                                         "maximum": 3,
+                                                        "default": 1,
                                                         "title": "Allow EAP Fast EAP GTC Pwd Change Retries",
-                                                        "description": "Allow EAP Fast EAP GTC Pwd Change Retries (Integer)\n- Maximum value: 3"
+                                                        "description": "Allow EAP Fast EAP GTC Pwd Change Retries (Integer)\n- Default value: 1\n- Maximum value: 3"
                                                     },
                                                     "allow_eap_fast_eap_tls": {
                                                         "type": "boolean",
+                                                        "default": "true",
                                                         "title": "Allow EAP Fast EAP TLS",
-                                                        "description": "Allow EAP Fast EAP TLS (Boolean)"
+                                                        "description": "Allow EAP Fast EAP TLS (Boolean)\n- Default value: true"
                                                     },
                                                     "allow_eap_fast_eap_tls_auth_of_expired_certs": {
                                                         "type": "boolean",
+                                                        "default": "false",
                                                         "title": "Allow EAP Fast EAP TLS Auth Of Expired Certs",
-                                                        "description": "Allow EAP Fast EAP TLS Auth Of Expired Certs (Boolean)"
+                                                        "description": "Allow EAP Fast EAP TLS Auth Of Expired Certs (Boolean)\n- Default value: false"
                                                     },
                                                     "eap_fast_use_pacs": {
                                                         "type": "boolean",
+                                                        "default": "true",
                                                         "title": "EAP Fast Use PACs",
-                                                        "description": "EAP Fast Use PACs (Boolean)"
+                                                        "description": "EAP Fast Use PACs (Boolean)\n- Default value: true"
                                                     },
                                                     "eap_fast_use_pacs_tunnel_pac_ttl": {
                                                         "type": "integer",
                                                         "minimum": 1,
                                                         "maximum": 10000,
+                                                        "default": 90,
                                                         "title": "EAP Fast Use PACs Tunnel PAC TTL",
-                                                        "description": "EAP Fast Use PACs Tunnel PAC TTL (Integer)\n- Minimum value: 1\n- Maximum value: 10000"
+                                                        "description": "EAP Fast Use PACs Tunnel PAC TTL (Integer)\n- Default value: 90\n- Minimum value: 1\n- Maximum value: 10000"
                                                     },
                                                     "eap_fast_use_pacs_tunnel_pac_ttl_units": {
                                                         "type": "string",
@@ -24318,47 +24374,55 @@
                                                             "DAYS",
                                                             "WEEKS"
                                                         ],
+                                                        "default": "DAYS",
                                                         "title": "EAP Fast Use PACs Tunnel PAC TTL Units",
-                                                        "description": "EAP Fast Use PACs Tunnel PAC TTL Units (String)\n- Allowed values: SECONDSMINUTES, HOURS, DAYS, WEEKS"
+                                                        "description": "EAP Fast Use PACs Tunnel PAC TTL Units (String)\n- Default value: DAYS\n- Allowed values: SECONDSMINUTES, HOURS, DAYS, WEEKS"
                                                     },
                                                     "eap_fast_use_pacs_use_proactive_pac_update_precentage": {
                                                         "type": "integer",
                                                         "minimum": 1,
                                                         "maximum": 100,
+                                                        "default": 10,
                                                         "title": "EAP Fast Use PACs Use Proactive PAC Update Precentage",
-                                                        "description": "EAP Fast Use PACs Use Proactive PAC Update Precentage (Integer)\n- Minimum value: 1\n- Maximum value: 100"
+                                                        "description": "EAP Fast Use PACs Use Proactive PAC Update Precentage (Integer)\n- Default value: 10\n- Minimum value: 1\n- Maximum value: 100"
                                                     },
                                                     "eap_fast_use_pacs_allow_anonym_provisioning": {
                                                         "type": "boolean",
+                                                        "default": "false",
                                                         "title": "EAP Fast Use PACs Allow Anonym Provisioning",
-                                                        "description": "EAP Fast Use PACs Allow Anonym Provisioning (Boolean)"
+                                                        "description": "EAP Fast Use PACs Allow Anonym Provisioning (Boolean)\n- Default value: false"
                                                     },
                                                     "eap_fast_use_pacs_allow_authen_provisioning": {
                                                         "type": "boolean",
+                                                        "default": "false",
                                                         "title": "EAP Fast Use PACs Allow Authen Provisioning",
-                                                        "description": "EAP Fast Use PACs Allow Authen Provisioning (Boolean)"
+                                                        "description": "EAP Fast Use PACs Allow Authen Provisioning (Boolean)\n- Default value: false"
                                                     },
                                                     "eap_fast_use_pacs_accept_client_cert": {
                                                         "type": "boolean",
+                                                        "default": "false",
                                                         "title": "EAP Fast Use PACs Accept Client Cert",
-                                                        "description": "EAP Fast Use PACs Accept Client Cert (Boolean)"
+                                                        "description": "EAP Fast Use PACs Accept Client Cert (Boolean)\n- Default value: false"
                                                     },
                                                     "eap_fast_use_pacs_server_returns": {
                                                         "type": "boolean",
+                                                        "default": "false",
                                                         "title": "EAP Fast Use PACs Server Returns",
-                                                        "description": "EAP Fast Use PACs Server Returns (Boolean)"
+                                                        "description": "EAP Fast Use PACs Server Returns (Boolean)\n- Default value: false"
                                                     },
                                                     "eap_fast_use_pacs_allow_machine_authentication": {
                                                         "type": "boolean",
+                                                        "default": "false",
                                                         "title": "EAP Fast Use PACs Allow Machine Authentication",
-                                                        "description": "EAP Fast Use PACs Allow Machine Authentication (Boolean)"
+                                                        "description": "EAP Fast Use PACs Allow Machine Authentication (Boolean)\n- Default value: false"
                                                     },
                                                     "eap_fast_use_pacs_machine_pac_ttl": {
                                                         "type": "integer",
                                                         "minimum": 1,
                                                         "maximum": 10000,
+                                                        "default": 1,
                                                         "title": "EAP Fast Use PACs Machine PAC TTL",
-                                                        "description": "EAP Fast Use PACs Machine PAC TTL (Integer)\n- Minimum value: 1\n- Maximum value: 10000"
+                                                        "description": "EAP Fast Use PACs Machine PAC TTL (Integer)\n- Default value: 1\n- Minimum value: 1\n- Maximum value: 10000"
                                                     },
                                                     "eap_fast_use_pacs_machine_pac_ttl_units": {
                                                         "type": "string",
@@ -24368,18 +24432,21 @@
                                                             "DAYS",
                                                             "WEEKS"
                                                         ],
+                                                        "default": "WEEKS",
                                                         "title": "EAP Fast Use PACs Machine PAC TTL Units",
-                                                        "description": "EAP Fast Use PACs Machine PAC TTL Units (String)\n- Allowed values: SECONDSMINUTES, HOURS, DAYS, WEEKS"
+                                                        "description": "EAP Fast Use PACs Machine PAC TTL Units (String)\n- Default value: WEEKS\n- Allowed values: SECONDSMINUTES, HOURS, DAYS, WEEKS"
                                                     },
                                                     "eap_fast_use_pacs_stateless_session_resume": {
                                                         "type": "boolean",
+                                                        "default": "false",
                                                         "title": "EAP Fast Use PACs Stateless Session Resume",
-                                                        "description": "EAP Fast Use PACs Stateless Session Resume (Boolean)"
+                                                        "description": "EAP Fast Use PACs Stateless Session Resume (Boolean)\n- Default value: false"
                                                     },
                                                     "eap_fast_enable_eap_chaining": {
                                                         "type": "boolean",
+                                                        "default": "false",
                                                         "title": "EAP Fast Enable EAP Chaining",
-                                                        "description": "EAP Fast Enable EAP Chaining (Boolean)"
+                                                        "description": "EAP Fast Enable EAP Chaining (Boolean)\n- Default value: false"
                                                     }
                                                 },
                                                 "required": [],
@@ -24418,8 +24485,9 @@
                                                     "IPV6",
                                                     "IP_AGNOSTIC"
                                                 ],
+                                                "default": "IPV4",
                                                 "title": "dACL Type",
-                                                "description": "dACL Type (String)\n- Allowed values: IPV4, IPV6, IP_AGNOSTIC"
+                                                "description": "dACL Type (String)\n- Default value: IPV4\n- Allowed values: IPV4, IPV6, IP_AGNOSTIC"
                                             },
                                             "dacl_content": {
                                                 "type": "string",
@@ -24464,18 +24532,18 @@
                                                     "MSG_ATTR",
                                                     "PIP_ATTR"
                                                 ],
+                                                "default": "ENTITY_ATTR",
                                                 "title": "Attribute Type",
-                                                "description": "Attribute Type (String)\n- Allowed values: ENTITY_ATTR, MSG_ATTR, PIP_ATTR"
+                                                "description": "Attribute Type (String)\n- Default value: ENTITY_ATTR\n- Allowed values: ENTITY_ATTR, MSG_ATTR, PIP_ATTR"
                                             }
                                         },
                                         "required": [
                                             "name",
-                                            "version",
-                                            "attribute_type"
+                                            "version"
                                         ]
                                     },
                                     "title": "Dictionaries",
-                                    "description": "Dictionaries (List - Object)\n\nElements:\n- name (required)\n- description\n- version (required)\n- attribute_type (required)"
+                                    "description": "Dictionaries (List - Object)\n\nElements:\n- name (required)\n- description\n- version (required)\n- attribute_type"
                                 },
                                 "time_date_conditions": {
                                     "type": "array",
@@ -24496,8 +24564,9 @@
                                             },
                                             "is_negate": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Is Negate",
-                                                "description": "Is Negate (Boolean)"
+                                                "description": "Is Negate (Boolean)\n- Default value: false"
                                             },
                                             "week_days": {
                                                 "type": "array",
@@ -24600,8 +24669,9 @@
                                     },
                                     "default": {
                                         "type": "boolean",
+                                        "default": "false",
                                         "title": "Default",
-                                        "description": "Default (Boolean)"
+                                        "description": "Default (Boolean)\n- Default value: false"
                                     },
                                     "description": {
                                         "type": "string",
@@ -24615,8 +24685,9 @@
                                             "disabled",
                                             "monitor"
                                         ],
+                                        "default": "enabled",
                                         "title": "State",
-                                        "description": "State (String)\n- Allowed values: enabled, disabled, monitor"
+                                        "description": "State (String)\n- Default value: enabled\n- Allowed values: enabled, disabled, monitor"
                                     },
                                     "condition": {
                                         "type": "object",
@@ -24819,8 +24890,9 @@
                                     },
                                     "is_proxy": {
                                         "type": "boolean",
+                                        "default": "false",
                                         "title": "Is Proxy",
-                                        "description": "Is Proxy (Boolean)"
+                                        "description": "Is Proxy (Boolean)\n- Default value: false"
                                     },
                                     "service_name": {
                                         "type": "string",
@@ -24846,8 +24918,9 @@
                                                 },
                                                 "default": {
                                                     "type": "boolean",
+                                                    "default": "false",
                                                     "title": "Default",
-                                                    "description": "Default (Boolean)"
+                                                    "description": "Default (Boolean)\n- Default value: false"
                                                 },
                                                 "state": {
                                                     "type": "string",
@@ -24856,8 +24929,9 @@
                                                         "disabled",
                                                         "monitor"
                                                     ],
+                                                    "default": "enabled",
                                                     "title": "State",
-                                                    "description": "State (String)\n- Allowed values: enabled, disabled, monitor"
+                                                    "description": "State (String)\n- Default value: enabled\n- Allowed values: enabled, disabled, monitor"
                                                 },
                                                 "condition": {
                                                     "type": "object",
@@ -24877,8 +24951,9 @@
                                                         },
                                                         "is_negate": {
                                                             "type": "boolean",
+                                                            "default": "false",
                                                             "title": "Is Negate",
-                                                            "description": "Is Negate (Boolean)"
+                                                            "description": "Is Negate (Boolean)\n- Default value: false"
                                                         },
                                                         "dictionary_name": {
                                                             "type": "string",
@@ -25074,8 +25149,9 @@
                                                         "CONTINUE",
                                                         "DROP"
                                                     ],
+                                                    "default": "REJECT",
                                                     "title": "If Auth Fail",
-                                                    "description": "If Auth Fail (String)\n- Allowed values: REJECT, CONTINUE, DROP"
+                                                    "description": "If Auth Fail (String)\n- Default value: REJECT\n- Allowed values: REJECT, CONTINUE, DROP"
                                                 },
                                                 "if_user_not_found": {
                                                     "type": "string",
@@ -25084,8 +25160,9 @@
                                                         "CONTINUE",
                                                         "DROP"
                                                     ],
+                                                    "default": "REJECT",
                                                     "title": "If User Not Found",
-                                                    "description": "If User Not Found (String)\n- Allowed values: REJECT, CONTINUE, DROP"
+                                                    "description": "If User Not Found (String)\n- Default value: REJECT\n- Allowed values: REJECT, CONTINUE, DROP"
                                                 },
                                                 "if_process_fail": {
                                                     "type": "string",
@@ -25094,8 +25171,9 @@
                                                         "CONTINUE",
                                                         "DROP"
                                                     ],
+                                                    "default": "DROP",
                                                     "title": "If Process Fail",
-                                                    "description": "If Process Fail (String)\n- Allowed values: REJECT, CONTINUE, DROP"
+                                                    "description": "If Process Fail (String)\n- Default value: DROP\n- Allowed values: REJECT, CONTINUE, DROP"
                                                 }
                                             },
                                             "required": [
@@ -25119,8 +25197,9 @@
                                                 },
                                                 "default": {
                                                     "type": "boolean",
+                                                    "default": "false",
                                                     "title": "Default",
-                                                    "description": "Default (Boolean)"
+                                                    "description": "Default (Boolean)\n- Default value: false"
                                                 },
                                                 "state": {
                                                     "type": "string",
@@ -25128,8 +25207,9 @@
                                                         "enabled",
                                                         "disabled"
                                                     ],
+                                                    "default": "enabled",
                                                     "title": "State",
-                                                    "description": "State (String)\n- Allowed values: enabled, disabled"
+                                                    "description": "State (String)\n- Default value: enabled\n- Allowed values: enabled, disabled"
                                                 },
                                                 "condition": {
                                                     "type": "object",
@@ -25149,8 +25229,9 @@
                                                         },
                                                         "is_negate": {
                                                             "type": "boolean",
+                                                            "default": "false",
                                                             "title": "Is Negate",
-                                                            "description": "Is Negate (Boolean)"
+                                                            "description": "Is Negate (Boolean)\n- Default value: false"
                                                         },
                                                         "dictionary_name": {
                                                             "type": "string",
@@ -25369,8 +25450,9 @@
                                                 },
                                                 "default": {
                                                     "type": "boolean",
+                                                    "default": "false",
                                                     "title": "Default",
-                                                    "description": "Default (Boolean)"
+                                                    "description": "Default (Boolean)\n- Default value: false"
                                                 },
                                                 "state": {
                                                     "type": "string",
@@ -25378,8 +25460,9 @@
                                                         "enabled",
                                                         "disabled"
                                                     ],
+                                                    "default": "enabled",
                                                     "title": "State",
-                                                    "description": "State (String)\n- Allowed values: enabled, disabled"
+                                                    "description": "State (String)\n- Default value: enabled\n- Allowed values: enabled, disabled"
                                                 },
                                                 "condition": {
                                                     "type": "object",
@@ -25399,8 +25482,9 @@
                                                         },
                                                         "is_negate": {
                                                             "type": "boolean",
+                                                            "default": "false",
                                                             "title": "Is Negate",
-                                                            "description": "Is Negate (Boolean)"
+                                                            "description": "Is Negate (Boolean)\n- Default value: false"
                                                         },
                                                         "dictionary_name": {
                                                             "type": "string",
@@ -25627,8 +25711,9 @@
                                     },
                                     "default": {
                                         "type": "boolean",
+                                        "default": "false",
                                         "title": "Default",
-                                        "description": "Default (Boolean)"
+                                        "description": "Default (Boolean)\n- Default value: false"
                                     },
                                     "state": {
                                         "type": "string",
@@ -25636,8 +25721,9 @@
                                             "enabled",
                                             "disabled"
                                         ],
+                                        "default": "enabled",
                                         "title": "State",
-                                        "description": "State (String)\n- Allowed values: enabled, disabled"
+                                        "description": "State (String)\n- Default value: enabled\n- Allowed values: enabled, disabled"
                                     },
                                     "condition": {
                                         "type": "object",
@@ -25657,8 +25743,9 @@
                                             },
                                             "is_negate": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Is Negate",
-                                                "description": "Is Negate (Boolean)"
+                                                "description": "Is Negate (Boolean)\n- Default value: false"
                                             },
                                             "dictionary_name": {
                                                 "type": "string",
@@ -25902,8 +25989,9 @@
                                             },
                                             "is_negate": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Is Negate",
-                                                "description": "Is Negate (Boolean)"
+                                                "description": "Is Negate (Boolean)\n- Default value: false"
                                             },
                                             "dictionary_name": {
                                                 "type": "string",
@@ -26114,18 +26202,21 @@
                                             },
                                             "allow_pap_ascii": {
                                                 "type": "boolean",
+                                                "default": "true",
                                                 "title": "Allow PAP ASCII",
-                                                "description": "Allow PAP ASCII (Boolean)"
+                                                "description": "Allow PAP ASCII (Boolean)\n- Default value: true"
                                             },
                                             "allow_chap": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Allow CHAP",
-                                                "description": "Allow CHAP (Boolean)"
+                                                "description": "Allow CHAP (Boolean)\n- Default value: false"
                                             },
                                             "allow_ms_chap_v1": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Allow MS CHAP V1",
-                                                "description": "Allow MS CHAP V1 (Boolean)"
+                                                "description": "Allow MS CHAP V1 (Boolean)\n- Default value: false"
                                             }
                                         },
                                         "required": [
@@ -26164,8 +26255,9 @@
                                                                 "MANDATORY",
                                                                 "OPTIONAL"
                                                             ],
+                                                            "default": "MANDATORY",
                                                             "title": "Type",
-                                                            "description": "Type (String)\n- Allowed values: MANDATORY, OPTIONAL"
+                                                            "description": "Type (String)\n- Default value: MANDATORY\n- Allowed values: MANDATORY, OPTIONAL"
                                                         },
                                                         "name": {
                                                             "type": "string",
@@ -26179,13 +26271,12 @@
                                                         }
                                                     },
                                                     "required": [
-                                                        "type",
                                                         "name",
                                                         "value"
                                                     ]
                                                 },
                                                 "title": "Session Attributes",
-                                                "description": "Session Attributes (List - Object)\n\nElements:\n- type (required)\n- name (required)\n- value (required)"
+                                                "description": "Session Attributes (List - Object)\n\nElements:\n- type\n- name (required)\n- value (required)"
                                             }
                                         },
                                         "required": [
@@ -26214,8 +26305,9 @@
                                             },
                                             "permit_unmatched": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Permit Unmatched",
-                                                "description": "Permit Unmatched (Boolean)"
+                                                "description": "Permit Unmatched (Boolean)\n- Default value: false"
                                             },
                                             "commands": {
                                                 "type": "array",
@@ -26230,8 +26322,9 @@
                                                                 "DENY",
                                                                 "DENY_ALWAYS"
                                                             ],
+                                                            "default": "PERMIT",
                                                             "title": "Grant",
-                                                            "description": "Grant (String)\n- Allowed values: PERMIT, DENY, DENY_ALWAYS"
+                                                            "description": "Grant (String)\n- Default value: PERMIT\n- Allowed values: PERMIT, DENY, DENY_ALWAYS"
                                                         },
                                                         "command": {
                                                             "type": "string",
@@ -26245,12 +26338,11 @@
                                                         }
                                                     },
                                                     "required": [
-                                                        "grant",
                                                         "command"
                                                     ]
                                                 },
                                                 "title": "Commands",
-                                                "description": "Commands (List - Object)\n\nElements:\n- grant (required)\n- command (required)\n- arguments"
+                                                "description": "Commands (List - Object)\n\nElements:\n- grant\n- command (required)\n- arguments"
                                             }
                                         },
                                         "required": [
@@ -26279,8 +26371,9 @@
                                             },
                                             "is_negate": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Is Negate",
-                                                "description": "Is Negate (Boolean)"
+                                                "description": "Is Negate (Boolean)\n- Default value: false"
                                             },
                                             "week_days": {
                                                 "type": "array",
@@ -26383,8 +26476,9 @@
                                     },
                                     "default": {
                                         "type": "boolean",
+                                        "default": "false",
                                         "title": "Default",
-                                        "description": "Default (Boolean)"
+                                        "description": "Default (Boolean)\n- Default value: false"
                                     },
                                     "description": {
                                         "type": "string",
@@ -26398,8 +26492,9 @@
                                             "disabled",
                                             "monitor"
                                         ],
+                                        "default": "enabled",
                                         "title": "State",
-                                        "description": "State (String)\n- Allowed values: enabled, disabled, monitor"
+                                        "description": "State (String)\n- Default value: enabled\n- Allowed values: enabled, disabled, monitor"
                                     },
                                     "condition": {
                                         "type": "object",
@@ -26419,8 +26514,9 @@
                                             },
                                             "is_negate": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Is Negate",
-                                                "description": "Is Negate (Boolean)"
+                                                "description": "Is Negate (Boolean)\n- Default value: false"
                                             },
                                             "dictionary_name": {
                                                 "type": "string",
@@ -26601,8 +26697,9 @@
                                     },
                                     "is_proxy": {
                                         "type": "boolean",
+                                        "default": "false",
                                         "title": "Is Proxy",
-                                        "description": "Is Proxy (Boolean)"
+                                        "description": "Is Proxy (Boolean)\n- Default value: false"
                                     },
                                     "service_name": {
                                         "type": "string",
@@ -26628,8 +26725,9 @@
                                                 },
                                                 "default": {
                                                     "type": "boolean",
+                                                    "default": "false",
                                                     "title": "Default",
-                                                    "description": "Default (Boolean)"
+                                                    "description": "Default (Boolean)\n- Default value: false"
                                                 },
                                                 "state": {
                                                     "type": "string",
@@ -26638,8 +26736,9 @@
                                                         "disabled",
                                                         "monitor"
                                                     ],
+                                                    "default": "enabled",
                                                     "title": "State",
-                                                    "description": "State (String)\n- Allowed values: enabled, disabled, monitor"
+                                                    "description": "State (String)\n- Default value: enabled\n- Allowed values: enabled, disabled, monitor"
                                                 },
                                                 "condition": {
                                                     "type": "object",
@@ -26659,8 +26758,9 @@
                                                         },
                                                         "is_negate": {
                                                             "type": "boolean",
+                                                            "default": "false",
                                                             "title": "Is Negate",
-                                                            "description": "Is Negate (Boolean)"
+                                                            "description": "Is Negate (Boolean)\n- Default value: false"
                                                         },
                                                         "dictionary_name": {
                                                             "type": "string",
@@ -26856,8 +26956,9 @@
                                                         "CONTINUE",
                                                         "DROP"
                                                     ],
+                                                    "default": "REJECT",
                                                     "title": "If Auth Fail",
-                                                    "description": "If Auth Fail (String)\n- Allowed values: REJECT, CONTINUE, DROP"
+                                                    "description": "If Auth Fail (String)\n- Default value: REJECT\n- Allowed values: REJECT, CONTINUE, DROP"
                                                 },
                                                 "if_user_not_found": {
                                                     "type": "string",
@@ -26866,8 +26967,9 @@
                                                         "CONTINUE",
                                                         "DROP"
                                                     ],
+                                                    "default": "REJECT",
                                                     "title": "If User Not Found",
-                                                    "description": "If User Not Found (String)\n- Allowed values: REJECT, CONTINUE, DROP"
+                                                    "description": "If User Not Found (String)\n- Default value: REJECT\n- Allowed values: REJECT, CONTINUE, DROP"
                                                 },
                                                 "if_process_fail": {
                                                     "type": "string",
@@ -26876,8 +26978,9 @@
                                                         "CONTINUE",
                                                         "DROP"
                                                     ],
+                                                    "default": "DROP",
                                                     "title": "If Process Fail",
-                                                    "description": "If Process Fail (String)\n- Allowed values: REJECT, CONTINUE, DROP"
+                                                    "description": "If Process Fail (String)\n- Default value: DROP\n- Allowed values: REJECT, CONTINUE, DROP"
                                                 }
                                             },
                                             "required": [
@@ -26901,8 +27004,9 @@
                                                 },
                                                 "default": {
                                                     "type": "boolean",
+                                                    "default": "false",
                                                     "title": "Default",
-                                                    "description": "Default (Boolean)"
+                                                    "description": "Default (Boolean)\n- Default value: false"
                                                 },
                                                 "state": {
                                                     "type": "string",
@@ -26911,8 +27015,9 @@
                                                         "disabled",
                                                         "monitor"
                                                     ],
+                                                    "default": "enabled",
                                                     "title": "State",
-                                                    "description": "State (String)\n- Allowed values: enabled, disabled, monitor"
+                                                    "description": "State (String)\n- Default value: enabled\n- Allowed values: enabled, disabled, monitor"
                                                 },
                                                 "condition": {
                                                     "type": "object",
@@ -26932,8 +27037,9 @@
                                                         },
                                                         "is_negate": {
                                                             "type": "boolean",
+                                                            "default": "false",
                                                             "title": "Is Negate",
-                                                            "description": "Is Negate (Boolean)"
+                                                            "description": "Is Negate (Boolean)\n- Default value: false"
                                                         },
                                                         "dictionary_name": {
                                                             "type": "string",
@@ -27152,8 +27258,9 @@
                                                 },
                                                 "default": {
                                                     "type": "boolean",
+                                                    "default": "false",
                                                     "title": "Default",
-                                                    "description": "Default (Boolean)"
+                                                    "description": "Default (Boolean)\n- Default value: false"
                                                 },
                                                 "state": {
                                                     "type": "string",
@@ -27162,8 +27269,9 @@
                                                         "disabled",
                                                         "monitor"
                                                     ],
+                                                    "default": "enabled",
                                                     "title": "State",
-                                                    "description": "State (String)\n- Allowed values: enabled, disabled, monitor"
+                                                    "description": "State (String)\n- Default value: enabled\n- Allowed values: enabled, disabled, monitor"
                                                 },
                                                 "condition": {
                                                     "type": "object",
@@ -27183,8 +27291,9 @@
                                                         },
                                                         "is_negate": {
                                                             "type": "boolean",
+                                                            "default": "false",
                                                             "title": "Is Negate",
-                                                            "description": "Is Negate (Boolean)"
+                                                            "description": "Is Negate (Boolean)\n- Default value: false"
                                                         },
                                                         "dictionary_name": {
                                                             "type": "string",
@@ -27411,8 +27520,9 @@
                                     },
                                     "default": {
                                         "type": "boolean",
+                                        "default": "false",
                                         "title": "Default",
-                                        "description": "Default (Boolean)"
+                                        "description": "Default (Boolean)\n- Default value: false"
                                     },
                                     "state": {
                                         "type": "string",
@@ -27421,8 +27531,9 @@
                                             "disabled",
                                             "monitor"
                                         ],
+                                        "default": "enabled",
                                         "title": "State",
-                                        "description": "State (String)\n- Allowed values: enabled, disabled, monitor"
+                                        "description": "State (String)\n- Default value: enabled\n- Allowed values: enabled, disabled, monitor"
                                     },
                                     "condition": {
                                         "type": "object",
@@ -27442,8 +27553,9 @@
                                             },
                                             "is_negate": {
                                                 "type": "boolean",
+                                                "default": "false",
                                                 "title": "Is Negate",
-                                                "description": "Is Negate (Boolean)"
+                                                "description": "Is Negate (Boolean)\n- Default value: false"
                                             },
                                             "dictionary_name": {
                                                 "type": "string",
