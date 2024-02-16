@@ -2899,6 +2899,89 @@
                                             "title": "Password Strength Check",
                                             "description": "Password Strength Check (Boolean)\n- Default value: false"
                                         },
+                                        "password_strength_profile": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "password_mininum_length": {
+                                                    "type": "integer",
+                                                    "minimum": 8,
+                                                    "maximum": 64,
+                                                    "default": 8,
+                                                    "title": "Password Mininum Length",
+                                                    "description": "Password Mininum Length (Integer)\n- Default value: 8\n- Minimum value: 8\n- Maximum value: 64"
+                                                },
+                                                "password_maximum_length": {
+                                                    "type": "integer",
+                                                    "minimum": 8,
+                                                    "maximum": 64,
+                                                    "default": 64,
+                                                    "title": "Password Maximum Length",
+                                                    "description": "Password Maximum Length (Integer)\n- Default value: 64\n- Minimum value: 8\n- Maximum value: 64"
+                                                },
+                                                "password_strength_test_type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "default",
+                                                        "custom"
+                                                    ],
+                                                    "default": "default",
+                                                    "title": "Password Strength Test Type",
+                                                    "description": "Password Strength Test Type (String)\n- Default value: default\n- Allowed values: default, custom"
+                                                },
+                                                "password_class_flags": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "digits",
+                                                            "lowercase",
+                                                            "specialchars",
+                                                            "uppercase"
+                                                        ]
+                                                    },
+                                                    "title": "Password Class Flags",
+                                                    "description": "Password Class Flags (List - String)"
+                                                }
+                                            },
+                                            "required": [],
+                                            "title": "Password Strength Profile",
+                                            "description": "Password Strength Profile (Object)\n\nElements:\n- password_mininum_length\n- password_maximum_length\n- password_strength_test_type\n- password_class_flags"
+                                        },
+                                        "password_change_during_interval": {
+                                            "type": "boolean",
+                                            "default": "true",
+                                            "title": "Password Change During Interval",
+                                            "description": "Password Change During Interval (Boolean)\n- Default value: true"
+                                        },
+                                        "password_change_count": {
+                                            "type": "integer",
+                                            "maximum": 10,
+                                            "default": 2,
+                                            "title": "Password Change Count",
+                                            "description": "Password Change Count (Integer)\n- Default value: 2\n- Maximum value: 10"
+                                        },
+                                        "password_change_interval": {
+                                            "type": "integer",
+                                            "maximum": 745,
+                                            "default": 48,
+                                            "title": "Password Change Interval",
+                                            "description": "Password Change Interval (Integer)\n- Default value: 48\n- Maximum value: 745"
+                                        },
+                                        "password_no_change_interval": {
+                                            "type": "integer",
+                                            "maximum": 745,
+                                            "default": 24,
+                                            "title": "Password No Change Interval",
+                                            "description": "Password No Change Interval (Integer)\n- Default value: 24\n- Maximum value: 745"
+                                        },
+                                        "password_history_count": {
+                                            "type": "integer",
+                                            "maximum": 15,
+                                            "default": 5,
+                                            "title": "Password History Count",
+                                            "description": "Password History Count (Integer)\n- Default value: 5\n- Maximum value: 15"
+                                        },
                                         "web_token_timeout": {
                                             "type": "integer",
                                             "minimum": 300,
@@ -2922,11 +3005,47 @@
                                             "default": 1200,
                                             "title": "Web Session Idle Timeout",
                                             "description": "Web Session Idle Timeout (Integer)\n- Default value: 1200\n- Minimum value: 600\n- Maximum value: 65525"
+                                        },
+                                        "include_refresh_session_records": {
+                                            "type": "boolean",
+                                            "default": "true",
+                                            "title": "Include Refresh Session Records",
+                                            "description": "Include Refresh Session Records (Boolean)\n- Default value: true"
+                                        },
+                                        "enable_login_block": {
+                                            "type": "boolean",
+                                            "default": "false",
+                                            "title": "Enable Login Block",
+                                            "description": "Enable Login Block (Boolean)\n- Default value: false"
+                                        },
+                                        "login_block_duration": {
+                                            "type": "integer",
+                                            "minimum": 1,
+                                            "maximum": 1440,
+                                            "default": 60,
+                                            "title": "Login Block Duration",
+                                            "description": "Login Block Duration (Integer)\n- Default value: 60\n- Minimum value: 1\n- Maximum value: 1440"
+                                        },
+                                        "login_max_failed_attempts": {
+                                            "type": "integer",
+                                            "minimum": 1,
+                                            "maximum": 15,
+                                            "default": 5,
+                                            "title": "Login Max Failed Attempts",
+                                            "description": "Login Max Failed Attempts (Integer)\n- Default value: 5\n- Minimum value: 1\n- Maximum value: 15"
+                                        },
+                                        "login_max_failed_attempts_window": {
+                                            "type": "integer",
+                                            "minimum": 1,
+                                            "maximum": 720,
+                                            "default": 5,
+                                            "title": "Login Max Failed Attempts Window",
+                                            "description": "Login Max Failed Attempts Window (Integer)\n- Default value: 5\n- Minimum value: 1\n- Maximum value: 720"
                                         }
                                     },
                                     "required": [],
                                     "title": "Management Settings",
-                                    "description": "Management Settings (Object)\n\nElements:\n- password_strength_check\n- web_token_timeout\n- web_token_max_validity\n- web_session_idle_timeout"
+                                    "description": "Management Settings (Object)\n\nElements:\n- password_strength_check\n- password_strength_profile\n- password_change_during_interval\n- password_change_count\n- password_change_interval\n- password_no_change_interval\n- password_history_count\n- web_token_timeout\n- web_token_max_validity\n- web_session_idle_timeout\n- include_refresh_session_records\n- enable_login_block\n- login_block_duration\n- login_max_failed_attempts\n- login_max_failed_attempts_window"
                                 },
                                 "tacacs_providers": {
                                     "type": "array",
@@ -4609,6 +4728,12 @@
                                                 "title": "Show Millisecond",
                                                 "description": "Show Millisecond (Boolean)\n- Default value: false"
                                             },
+                                            "show_timezone": {
+                                                "type": "boolean",
+                                                "default": "false",
+                                                "title": "Show Timezone",
+                                                "description": "Show Timezone (Boolean)\n- Default value: false"
+                                            },
                                             "local_admin_state": {
                                                 "type": "boolean",
                                                 "default": "true",
@@ -4758,7 +4883,7 @@
                                         ]
                                     },
                                     "title": "Syslogs",
-                                    "description": "Syslogs (List - Object)\n\nElements:\n- name (required)\n- description\n- audit\n- events\n- faults\n- session\n- minimum_severity\n- admin_state\n- format\n- show_millisecond\n- local_admin_state\n- local_severity\n- console_admin_state\n- console_severity\n- destinations"
+                                    "description": "Syslogs (List - Object)\n\nElements:\n- name (required)\n- description\n- audit\n- events\n- faults\n- session\n- minimum_severity\n- admin_state\n- format\n- show_millisecond\n- show_timezone\n- local_admin_state\n- local_severity\n- console_admin_state\n- console_severity\n- destinations"
                                 }
                             },
                             "required": [],
@@ -19153,6 +19278,89 @@
                                                     "title": "Threshold Down Action",
                                                     "description": "Threshold Down Action (String)\n- Default value: permit\n- Allowed values: permit, deny, bypass"
                                                 },
+                                                "l1l2_destinations": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "description": {
+                                                                "type": "string",
+                                                                "pattern": "^[a-zA-Z0-9\\\\!#$%()*,-./:;@ _{|}~?&+]{1,128}$",
+                                                                "title": "Description",
+                                                                "description": "Description (String)"
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                "title": "Name",
+                                                                "description": "Name (String)"
+                                                            },
+                                                            "mac": {
+                                                                "type": "string",
+                                                                "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$",
+                                                                "title": "MAC",
+                                                                "description": "MAC (String)\n- MAC address (XX:XX:XX:XX:XX:XX)"
+                                                            },
+                                                            "weight": {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "title": "Weight",
+                                                                "description": "Weight (Integer)\n- Minimum value: 1"
+                                                            },
+                                                            "pod": {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 255,
+                                                                "title": "Pod",
+                                                                "description": "Pod (Integer)\n- Minimum value: 1\n- Maximum value: 255"
+                                                            },
+                                                            "redirect_health_group": {
+                                                                "type": "string",
+                                                                "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                "title": "Redirect Health Group",
+                                                                "description": "Redirect Health Group (String)"
+                                                            },
+                                                            "concrete_interface": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "l4l7_device": {
+                                                                        "type": "string",
+                                                                        "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                        "title": "L4L7 Device",
+                                                                        "description": "L4L7 Device (String)"
+                                                                    },
+                                                                    "concrete_device": {
+                                                                        "type": "string",
+                                                                        "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                        "title": "Concrete Device",
+                                                                        "description": "Concrete Device (String)"
+                                                                    },
+                                                                    "interface": {
+                                                                        "type": "string",
+                                                                        "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                        "title": "Interface",
+                                                                        "description": "Interface (String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "l4l7_device",
+                                                                    "concrete_device",
+                                                                    "interface"
+                                                                ],
+                                                                "title": "Concrete Interface",
+                                                                "description": "Concrete Interface (Object)\n\nElements:\n- l4l7_device (required)\n- concrete_device (required)\n- interface (required)"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "name",
+                                                            "concrete_interface"
+                                                        ]
+                                                    },
+                                                    "title": "L1L2 Destinations",
+                                                    "description": "L1L2 Destinations (List - Object)\n\nElements:\n- description\n- name (required)\n- mac\n- weight\n- pod\n- redirect_health_group\n- concrete_interface (required)"
+                                                },
                                                 "l3_destinations": {
                                                     "type": "array",
                                                     "items": {
@@ -19245,7 +19453,7 @@
                                             ]
                                         },
                                         "title": "Redirect Policies",
-                                        "description": "Redirect Policies (List - Object)\n\nElements:\n- name (required)\n- alias\n- description\n- anycast\n- type\n- hashing\n- threshold\n- max_threshold\n- min_threshold\n- pod_aware\n- resilient_hashing\n- redirect_backup_policy\n- threshold_down_action\n- l3_destinations\n- ip_sla_policy\n- expected_state"
+                                        "description": "Redirect Policies (List - Object)\n\nElements:\n- name (required)\n- alias\n- description\n- anycast\n- type\n- hashing\n- threshold\n- max_threshold\n- min_threshold\n- pod_aware\n- resilient_hashing\n- redirect_backup_policy\n- threshold_down_action\n- l1l2_destinations\n- l3_destinations\n- ip_sla_policy\n- expected_state"
                                     },
                                     "service_epg_policies": {
                                         "type": "array",
@@ -24185,11 +24393,346 @@
                             },
                             "title": "Certificate Authentication Profiles",
                             "description": "Certificate Authentication Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- allowed_as_user_name\n- match_mode\n- username_from\n- certificate_attribute_name\n- external_identity_store_name"
+                        },
+                        "active_directories": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "pattern": "^[\\w\\d_\\-\\.]+$",
+                                        "title": "Name",
+                                        "description": "Name (String)"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "title": "Description",
+                                        "description": "Description (String)"
+                                    },
+                                    "domain": {
+                                        "type": "string",
+                                        "title": "Domain",
+                                        "description": "Domain (String)"
+                                    },
+                                    "ad_scopes_names": {
+                                        "type": "string",
+                                        "default": "Default_Scope",
+                                        "title": "Ad Scopes Names",
+                                        "description": "Ad Scopes Names (String)\n- Default value: Default_Scope"
+                                    },
+                                    "ad_username": {
+                                        "type": "string",
+                                        "title": "Ad Username",
+                                        "description": "Ad Username (String)"
+                                    },
+                                    "ad_password": {
+                                        "type": "string",
+                                        "title": "Ad Password",
+                                        "description": "Ad Password (String)"
+                                    },
+                                    "enable_domain_allowed_list": {
+                                        "type": "boolean",
+                                        "default": "true",
+                                        "title": "Enable Domain Allowed List",
+                                        "description": "Enable Domain Allowed List (Boolean)\n- Default value: true"
+                                    },
+                                    "groups": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "title": "Groups",
+                                        "description": "Groups (List - String)"
+                                    },
+                                    "attributes": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "pattern": "^[\\w\\d_\\-\\.]+$",
+                                                "title": "Name",
+                                                "description": "Name (String)"
+                                            },
+                                            "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "STRING",
+                                                    "IP",
+                                                    "BOOLEAN",
+                                                    "INT",
+                                                    "OCTET_STRING"
+                                                ],
+                                                "title": "Type",
+                                                "description": "Type (String)\n- Allowed values: STRING, IP, BOOLEAN, INT, OCTET_STRING"
+                                            },
+                                            "internal_name": {
+                                                "type": "string",
+                                                "title": "Internal Name",
+                                                "description": "Internal Name (String)"
+                                            },
+                                            "default_value": {
+                                                "type": "string",
+                                                "title": "Default Value",
+                                                "description": "Default Value (String)"
+                                            }
+                                        },
+                                        "required": [
+                                            "name",
+                                            "type",
+                                            "internal_name",
+                                            "default_value"
+                                        ],
+                                        "title": "Attributes",
+                                        "description": "Attributes (Object)\n\nElements:\n- name (required)\n- type (required)\n- internal_name (required)\n- default_value (required)"
+                                    },
+                                    "rewrite_rules": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "row_id": {
+                                                "type": "string",
+                                                "title": "Row ID",
+                                                "description": "Row ID (String)"
+                                            },
+                                            "rewrite_match": {
+                                                "type": "string",
+                                                "title": "Rewrite Match",
+                                                "description": "Rewrite Match (String)"
+                                            },
+                                            "rewrite_result": {
+                                                "type": "string",
+                                                "title": "Rewrite Result",
+                                                "description": "Rewrite Result (String)"
+                                            }
+                                        },
+                                        "required": [
+                                            "row_id",
+                                            "rewrite_match",
+                                            "rewrite_result"
+                                        ],
+                                        "title": "Rewrite Rules",
+                                        "description": "Rewrite Rules (Object)\n\nElements:\n- row_id (required)\n- rewrite_match (required)\n- rewrite_result (required)"
+                                    },
+                                    "enable_rewrites": {
+                                        "type": "boolean",
+                                        "default": "false",
+                                        "title": "Enable Rewrites",
+                                        "description": "Enable Rewrites (Boolean)\n- Default value: false"
+                                    },
+                                    "enable_pass_change": {
+                                        "type": "boolean",
+                                        "default": "true",
+                                        "title": "Enable Pass Change",
+                                        "description": "Enable Pass Change (Boolean)\n- Default value: true"
+                                    },
+                                    "enable_machine_auth": {
+                                        "type": "boolean",
+                                        "default": "true",
+                                        "title": "Enable Machine Auth",
+                                        "description": "Enable Machine Auth (Boolean)\n- Default value: true"
+                                    },
+                                    "enable_machine_access": {
+                                        "type": "boolean",
+                                        "default": "true",
+                                        "title": "Enable Machine Access",
+                                        "description": "Enable Machine Access (Boolean)\n- Default value: true"
+                                    },
+                                    "enable_dialin_permission_check": {
+                                        "type": "boolean",
+                                        "default": "false",
+                                        "title": "Enable Dialin Permission Check",
+                                        "description": "Enable Dialin Permission Check (Boolean)\n- Default value: false"
+                                    },
+                                    "plaintext_auth": {
+                                        "type": "boolean",
+                                        "default": "false",
+                                        "title": "Plaintext Auth",
+                                        "description": "Plaintext Auth (Boolean)\n- Default value: false"
+                                    },
+                                    "aging_time": {
+                                        "type": "integer",
+                                        "minimum": 1,
+                                        "maximum": 8760,
+                                        "default": 5,
+                                        "title": "Aging Time",
+                                        "description": "Aging Time (Integer)\n- Default value: 5\n- Minimum value: 1\n- Maximum value: 8760"
+                                    },
+                                    "enable_callback_for_dialin_client": {
+                                        "type": "boolean",
+                                        "default": "false",
+                                        "title": "Enable Callback For Dialin Client",
+                                        "description": "Enable Callback For Dialin Client (Boolean)\n- Default value: false"
+                                    },
+                                    "identity_not_in_ad_behaviour": {
+                                        "type": "string",
+                                        "enum": [
+                                            "REJECT",
+                                            "SEARCH_JOINED_FOREST",
+                                            "SEARCH_ALL"
+                                        ],
+                                        "title": "Identity Not In Ad Behaviour",
+                                        "description": "Identity Not In Ad Behaviour (String)\n- Allowed values: REJECT, SEARCH_JOINED_FOREST, SEARCH_ALL"
+                                    },
+                                    "unreachable_domains_behaviour": {
+                                        "type": "string",
+                                        "enum": [
+                                            "PROCEED",
+                                            "DROP"
+                                        ],
+                                        "title": "Unreachable Domains Behaviour",
+                                        "description": "Unreachable Domains Behaviour (String)\n- Allowed values: PROCEED, DROP"
+                                    },
+                                    "schema": {
+                                        "type": "string",
+                                        "enum": [
+                                            "PROCEED",
+                                            "DROP"
+                                        ],
+                                        "title": "Schema",
+                                        "description": "Schema (String)\n- Allowed values: PROCEED, DROP"
+                                    },
+                                    "first_name": {
+                                        "type": "string",
+                                        "title": "First Name",
+                                        "description": "First Name (String)"
+                                    },
+                                    "department": {
+                                        "type": "string",
+                                        "title": "Department",
+                                        "description": "Department (String)"
+                                    },
+                                    "last_name": {
+                                        "type": "string",
+                                        "title": "Last Name",
+                                        "description": "Last Name (String)"
+                                    },
+                                    "organizational_unit": {
+                                        "type": "string",
+                                        "title": "Organizational Unit",
+                                        "description": "Organizational Unit (String)"
+                                    },
+                                    "job_title": {
+                                        "type": "string",
+                                        "title": "Job Title",
+                                        "description": "Job Title (String)"
+                                    },
+                                    "locality": {
+                                        "type": "string",
+                                        "title": "Locality",
+                                        "description": "Locality (String)"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "title": "Email",
+                                        "description": "Email (String)"
+                                    },
+                                    "state_or_province": {
+                                        "type": "string",
+                                        "title": "State Or Province",
+                                        "description": "State Or Province (String)"
+                                    },
+                                    "telephone": {
+                                        "type": "string",
+                                        "title": "Telephone",
+                                        "description": "Telephone (String)"
+                                    },
+                                    "country": {
+                                        "type": "string",
+                                        "title": "Country",
+                                        "description": "Country (String)"
+                                    },
+                                    "street_address": {
+                                        "type": "string",
+                                        "title": "Street Address",
+                                        "description": "Street Address (String)"
+                                    },
+                                    "enable_failed_auth_protection": {
+                                        "type": "boolean",
+                                        "default": "false",
+                                        "title": "Enable Failed Auth Protection",
+                                        "description": "Enable Failed Auth Protection (Boolean)\n- Default value: false"
+                                    },
+                                    "failed_auth_threshold": {
+                                        "type": "integer",
+                                        "minimum": 1,
+                                        "default": 5,
+                                        "title": "Failed Auth Threshold",
+                                        "description": "Failed Auth Threshold (Integer)\n- Default value: 5\n- Minimum value: 1"
+                                    },
+                                    "auth_protection_type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "WIRELESS",
+                                            "WIRED",
+                                            "BOTH"
+                                        ],
+                                        "title": "Auth Protection Type",
+                                        "description": "Auth Protection Type (String)\n- Allowed values: WIRELESS, WIRED, BOTH"
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "domain",
+                                    "ad_username",
+                                    "ad_password"
+                                ]
+                            },
+                            "title": "Active Directories",
+                            "description": "Active Directories (List - Object)\n\nElements:\n- name (required)\n- description\n- domain (required)\n- ad_scopes_names\n- ad_username (required)\n- ad_password (required)\n- enable_domain_allowed_list\n- groups\n- attributes\n- rewrite_rules\n- enable_rewrites\n- enable_pass_change\n- enable_machine_auth\n- enable_machine_access\n- enable_dialin_permission_check\n- plaintext_auth\n- aging_time\n- enable_callback_for_dialin_client\n- identity_not_in_ad_behaviour\n- unreachable_domains_behaviour\n- schema\n- first_name\n- department\n- last_name\n- organizational_unit\n- job_title\n- locality\n- email\n- state_or_province\n- telephone\n- country\n- street_address\n- enable_failed_auth_protection\n- failed_auth_threshold\n- auth_protection_type"
+                        },
+                        "identity_source_sequences": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "pattern": "^[\\w\\d_\\-\\.]+$",
+                                        "title": "Name",
+                                        "description": "Name (String)"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "title": "Description",
+                                        "description": "Description (String)"
+                                    },
+                                    "certificate_authentication_profile": {
+                                        "type": "string",
+                                        "title": "Certificate Authentication Profile",
+                                        "description": "Certificate Authentication Profile (String)"
+                                    },
+                                    "break_on_store_fail": {
+                                        "type": "boolean",
+                                        "title": "Break On Store Fail",
+                                        "description": "Break On Store Fail (Boolean)"
+                                    },
+                                    "identity_sources": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "title": "Identity Sources",
+                                        "description": "Identity Sources (List - String)"
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "certificate_authentication_profile",
+                                    "break_on_store_fail",
+                                    "identity_sources"
+                                ]
+                            },
+                            "title": "Identity Source Sequences",
+                            "description": "Identity Source Sequences (List - Object)\n\nElements:\n- name (required)\n- description\n- certificate_authentication_profile (required)\n- break_on_store_fail (required)\n- identity_sources (required)"
                         }
                     },
                     "required": [],
                     "title": "Identity Management",
-                    "description": "Identity Management (Object)\n\nElements:\n- endpoint_identity_groups\n- user_identity_groups\n- internal_users\n- certificate_authentication_profiles"
+                    "description": "Identity Management (Object)\n\nElements:\n- endpoint_identity_groups\n- user_identity_groups\n- internal_users\n- certificate_authentication_profiles\n- active_directories\n- identity_source_sequences"
                 },
                 "trust_sec": {
                     "type": "object",
@@ -24688,6 +25231,11 @@
                                                 "title": "Is Negate",
                                                 "description": "Is Negate (Boolean)\n- Default value: false"
                                             },
+                                            "dictionary_name": {
+                                                "type": "string",
+                                                "title": "Dictionary Name",
+                                                "description": "Dictionary Name (String)"
+                                            },
                                             "attribute_name": {
                                                 "type": "string",
                                                 "title": "Attribute Name",
@@ -24742,6 +25290,11 @@
                                                             "title": "Is Negate",
                                                             "description": "Is Negate (Boolean)"
                                                         },
+                                                        "dictionary_name": {
+                                                            "type": "string",
+                                                            "title": "Dictionary Name",
+                                                            "description": "Dictionary Name (String)"
+                                                        },
                                                         "attribute_name": {
                                                             "type": "string",
                                                             "title": "Attribute Name",
@@ -24789,6 +25342,11 @@
                                                                         "title": "Is Negate",
                                                                         "description": "Is Negate (Boolean)"
                                                                     },
+                                                                    "dictionary_name": {
+                                                                        "type": "string",
+                                                                        "title": "Dictionary Name",
+                                                                        "description": "Dictionary Name (String)"
+                                                                    },
                                                                     "attribute_name": {
                                                                         "type": "string",
                                                                         "title": "Attribute Name",
@@ -24821,7 +25379,7 @@
                                                                 ]
                                                             },
                                                             "title": "Children",
-                                                            "description": "Children (List - Object)\n\nElements:\n- name\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- description"
+                                                            "description": "Children (List - Object)\n\nElements:\n- name\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- description"
                                                         }
                                                     },
                                                     "required": [
@@ -24829,7 +25387,7 @@
                                                     ]
                                                 },
                                                 "title": "Children",
-                                                "description": "Children (List - Object)\n\nElements:\n- name\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- children"
+                                                "description": "Children (List - Object)\n\nElements:\n- name\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- children"
                                             }
                                         },
                                         "required": [
@@ -24837,7 +25395,7 @@
                                         ]
                                     },
                                     "title": "Conditions",
-                                    "description": "Conditions (List - Object)\n\nElements:\n- name\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- description\n- children"
+                                    "description": "Conditions (List - Object)\n\nElements:\n- name\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- description\n- children"
                                 },
                                 "allowed_protocols": {
                                     "type": "array",
@@ -25109,11 +25667,35 @@
                                                         "default": "false",
                                                         "title": "Enable Stateless Session Resume",
                                                         "description": "Enable Stateless Session Resume (Boolean)\n- Default value: false"
+                                                    },
+                                                    "session_ticket_ttl": {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "title": "Session Ticket TTL",
+                                                        "description": "Session Ticket TTL (Integer)\n- Minimum value: 1"
+                                                    },
+                                                    "session_ticket_ttl_unit": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "SECONDSMINUTES",
+                                                            "HOURS",
+                                                            "DAYS",
+                                                            "WEEKS"
+                                                        ],
+                                                        "title": "Session Ticket TTL Unit",
+                                                        "description": "Session Ticket TTL Unit (String)\n- Allowed values: SECONDSMINUTES, HOURS, DAYS, WEEKS"
+                                                    },
+                                                    "session_ticket_percentage": {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 100,
+                                                        "title": "Session Ticket Percentage",
+                                                        "description": "Session Ticket Percentage (Integer)\n- Minimum value: 1\n- Maximum value: 100"
                                                     }
                                                 },
                                                 "required": [],
                                                 "title": "EAP TLS",
-                                                "description": "EAP TLS (Object)\n\nElements:\n- auth_of_expired_certs\n- enable_stateless_session_resume"
+                                                "description": "EAP TLS (Object)\n\nElements:\n- auth_of_expired_certs\n- enable_stateless_session_resume\n- session_ticket_ttl\n- session_ticket_ttl_unit\n- session_ticket_percentage"
                                             },
                                             "eap_fast": {
                                                 "type": "object",
@@ -25549,12 +26131,6 @@
                                         "title": "Name",
                                         "description": "Name (String)"
                                     },
-                                    "default": {
-                                        "type": "boolean",
-                                        "default": "false",
-                                        "title": "Default",
-                                        "description": "Default (Boolean)\n- Default value: false"
-                                    },
                                     "description": {
                                         "type": "string",
                                         "title": "Description",
@@ -25591,6 +26167,11 @@
                                                 "default": "false",
                                                 "title": "Is Negate",
                                                 "description": "Is Negate (Boolean)\n- Default value: false"
+                                            },
+                                            "dictionary_name": {
+                                                "type": "string",
+                                                "title": "Dictionary Name",
+                                                "description": "Dictionary Name (String)"
                                             },
                                             "attribute_name": {
                                                 "type": "string",
@@ -25640,6 +26221,11 @@
                                                             "title": "Is Negate",
                                                             "description": "Is Negate (Boolean)"
                                                         },
+                                                        "dictionary_name": {
+                                                            "type": "string",
+                                                            "title": "Dictionary Name",
+                                                            "description": "Dictionary Name (String)"
+                                                        },
                                                         "attribute_name": {
                                                             "type": "string",
                                                             "title": "Attribute Name",
@@ -25686,6 +26272,11 @@
                                                                         "title": "Is Negate",
                                                                         "description": "Is Negate (Boolean)"
                                                                     },
+                                                                    "dictionary_name": {
+                                                                        "type": "string",
+                                                                        "title": "Dictionary Name",
+                                                                        "description": "Dictionary Name (String)"
+                                                                    },
                                                                     "attribute_name": {
                                                                         "type": "string",
                                                                         "title": "Attribute Name",
@@ -25718,7 +26309,7 @@
                                                                 ]
                                                             },
                                                             "title": "Children",
-                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name"
+                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name"
                                                         }
                                                     },
                                                     "required": [
@@ -25726,14 +26317,14 @@
                                                     ]
                                                 },
                                                 "title": "Children",
-                                                "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                                "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                             }
                                         },
                                         "required": [
                                             "type"
                                         ],
                                         "title": "Condition",
-                                        "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                        "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                     },
                                     "is_proxy": {
                                         "type": "boolean",
@@ -25763,12 +26354,6 @@
                                                     "pattern": "^[\\w\\d_\\-\\.]+$",
                                                     "title": "Name",
                                                     "description": "Name (String)"
-                                                },
-                                                "default": {
-                                                    "type": "boolean",
-                                                    "default": "false",
-                                                    "title": "Default",
-                                                    "description": "Default (Boolean)\n- Default value: false"
                                                 },
                                                 "state": {
                                                     "type": "string",
@@ -25801,6 +26386,11 @@
                                                             "default": "false",
                                                             "title": "Is Negate",
                                                             "description": "Is Negate (Boolean)\n- Default value: false"
+                                                        },
+                                                        "dictionary_name": {
+                                                            "type": "string",
+                                                            "title": "Dictionary Name",
+                                                            "description": "Dictionary Name (String)"
                                                         },
                                                         "attribute_name": {
                                                             "type": "string",
@@ -25850,6 +26440,11 @@
                                                                         "title": "Is Negate",
                                                                         "description": "Is Negate (Boolean)"
                                                                     },
+                                                                    "dictionary_name": {
+                                                                        "type": "string",
+                                                                        "title": "Dictionary Name",
+                                                                        "description": "Dictionary Name (String)"
+                                                                    },
                                                                     "attribute_name": {
                                                                         "type": "string",
                                                                         "title": "Attribute Name",
@@ -25896,6 +26491,11 @@
                                                                                     "title": "Is Negate",
                                                                                     "description": "Is Negate (Boolean)"
                                                                                 },
+                                                                                "dictionary_name": {
+                                                                                    "type": "string",
+                                                                                    "title": "Dictionary Name",
+                                                                                    "description": "Dictionary Name (String)"
+                                                                                },
                                                                                 "attribute_name": {
                                                                                     "type": "string",
                                                                                     "title": "Attribute Name",
@@ -25928,7 +26528,7 @@
                                                                             ]
                                                                         },
                                                                         "title": "Children",
-                                                                        "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name"
+                                                                        "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name"
                                                                     }
                                                                 },
                                                                 "required": [
@@ -25936,14 +26536,14 @@
                                                                 ]
                                                             },
                                                             "title": "Children",
-                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                                         }
                                                     },
                                                     "required": [
                                                         "type"
                                                     ],
                                                     "title": "Condition",
-                                                    "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                                    "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                                 },
                                                 "rank": {
                                                     "type": "integer",
@@ -25995,7 +26595,7 @@
                                             ]
                                         },
                                         "title": "Authentication Rules",
-                                        "description": "Authentication Rules (List - Object)\n\nElements:\n- name (required)\n- default\n- state\n- condition\n- rank\n- identity_source_name\n- if_auth_fail\n- if_user_not_found\n- if_process_fail"
+                                        "description": "Authentication Rules (List - Object)\n\nElements:\n- name (required)\n- state\n- condition\n- rank\n- identity_source_name\n- if_auth_fail\n- if_user_not_found\n- if_process_fail"
                                     },
                                     "authorization_rules": {
                                         "type": "array",
@@ -26008,12 +26608,6 @@
                                                     "pattern": "^[\\w\\d_\\-\\. ]+$",
                                                     "title": "Name",
                                                     "description": "Name (String)"
-                                                },
-                                                "default": {
-                                                    "type": "boolean",
-                                                    "default": "false",
-                                                    "title": "Default",
-                                                    "description": "Default (Boolean)\n- Default value: false"
                                                 },
                                                 "state": {
                                                     "type": "string",
@@ -26045,6 +26639,11 @@
                                                             "default": "false",
                                                             "title": "Is Negate",
                                                             "description": "Is Negate (Boolean)\n- Default value: false"
+                                                        },
+                                                        "dictionary_name": {
+                                                            "type": "string",
+                                                            "title": "Dictionary Name",
+                                                            "description": "Dictionary Name (String)"
                                                         },
                                                         "attribute_name": {
                                                             "type": "string",
@@ -26094,6 +26693,11 @@
                                                                         "title": "Is Negate",
                                                                         "description": "Is Negate (Boolean)"
                                                                     },
+                                                                    "dictionary_name": {
+                                                                        "type": "string",
+                                                                        "title": "Dictionary Name",
+                                                                        "description": "Dictionary Name (String)"
+                                                                    },
                                                                     "attribute_name": {
                                                                         "type": "string",
                                                                         "title": "Attribute Name",
@@ -26140,6 +26744,11 @@
                                                                                     "title": "Is Negate",
                                                                                     "description": "Is Negate (Boolean)"
                                                                                 },
+                                                                                "dictionary_name": {
+                                                                                    "type": "string",
+                                                                                    "title": "Dictionary Name",
+                                                                                    "description": "Dictionary Name (String)"
+                                                                                },
                                                                                 "attribute_name": {
                                                                                     "type": "string",
                                                                                     "title": "Attribute Name",
@@ -26172,7 +26781,7 @@
                                                                             ]
                                                                         },
                                                                         "title": "Children",
-                                                                        "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name"
+                                                                        "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name"
                                                                     }
                                                                 },
                                                                 "required": [
@@ -26180,14 +26789,14 @@
                                                                 ]
                                                             },
                                                             "title": "Children",
-                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                                         }
                                                     },
                                                     "required": [
                                                         "type"
                                                     ],
                                                     "title": "Condition",
-                                                    "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                                    "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                                 },
                                                 "rank": {
                                                     "type": "integer",
@@ -26214,7 +26823,7 @@
                                             ]
                                         },
                                         "title": "Authorization Rules",
-                                        "description": "Authorization Rules (List - Object)\n\nElements:\n- name (required)\n- default\n- state\n- condition\n- rank\n- profiles\n- security_group"
+                                        "description": "Authorization Rules (List - Object)\n\nElements:\n- name (required)\n- state\n- condition\n- rank\n- profiles\n- security_group"
                                     },
                                     "authorization_exception_rules": {
                                         "type": "array",
@@ -26227,12 +26836,6 @@
                                                     "pattern": "^[\\w\\d_\\-\\. ]+$",
                                                     "title": "Name",
                                                     "description": "Name (String)"
-                                                },
-                                                "default": {
-                                                    "type": "boolean",
-                                                    "default": "false",
-                                                    "title": "Default",
-                                                    "description": "Default (Boolean)\n- Default value: false"
                                                 },
                                                 "state": {
                                                     "type": "string",
@@ -26264,6 +26867,11 @@
                                                             "default": "false",
                                                             "title": "Is Negate",
                                                             "description": "Is Negate (Boolean)\n- Default value: false"
+                                                        },
+                                                        "dictionary_name": {
+                                                            "type": "string",
+                                                            "title": "Dictionary Name",
+                                                            "description": "Dictionary Name (String)"
                                                         },
                                                         "attribute_name": {
                                                             "type": "string",
@@ -26313,6 +26921,11 @@
                                                                         "title": "Is Negate",
                                                                         "description": "Is Negate (Boolean)"
                                                                     },
+                                                                    "dictionary_name": {
+                                                                        "type": "string",
+                                                                        "title": "Dictionary Name",
+                                                                        "description": "Dictionary Name (String)"
+                                                                    },
                                                                     "attribute_name": {
                                                                         "type": "string",
                                                                         "title": "Attribute Name",
@@ -26359,6 +26972,11 @@
                                                                                     "title": "Is Negate",
                                                                                     "description": "Is Negate (Boolean)"
                                                                                 },
+                                                                                "dictionary_name": {
+                                                                                    "type": "string",
+                                                                                    "title": "Dictionary Name",
+                                                                                    "description": "Dictionary Name (String)"
+                                                                                },
                                                                                 "attribute_name": {
                                                                                     "type": "string",
                                                                                     "title": "Attribute Name",
@@ -26391,7 +27009,7 @@
                                                                             ]
                                                                         },
                                                                         "title": "Children",
-                                                                        "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name"
+                                                                        "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name"
                                                                     }
                                                                 },
                                                                 "required": [
@@ -26399,14 +27017,14 @@
                                                                 ]
                                                             },
                                                             "title": "Children",
-                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                                         }
                                                     },
                                                     "required": [
                                                         "type"
                                                     ],
                                                     "title": "Condition",
-                                                    "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                                    "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                                 },
                                                 "rank": {
                                                     "type": "integer",
@@ -26433,16 +27051,15 @@
                                             ]
                                         },
                                         "title": "Authorization Exception Rules",
-                                        "description": "Authorization Exception Rules (List - Object)\n\nElements:\n- name (required)\n- default\n- state\n- condition\n- rank\n- profiles\n- security_group"
+                                        "description": "Authorization Exception Rules (List - Object)\n\nElements:\n- name (required)\n- state\n- condition\n- rank\n- profiles\n- security_group"
                                     }
                                 },
                                 "required": [
-                                    "condition",
                                     "service_name"
                                 ]
                             },
                             "title": "Policy Sets",
-                            "description": "Policy Sets (List - Object)\n\nElements:\n- name\n- default\n- description\n- state\n- condition (required)\n- is_proxy\n- service_name (required)\n- rank\n- authentication_rules\n- authorization_rules\n- authorization_exception_rules"
+                            "description": "Policy Sets (List - Object)\n\nElements:\n- name\n- description\n- state\n- condition\n- is_proxy\n- service_name (required)\n- rank\n- authentication_rules\n- authorization_rules\n- authorization_exception_rules"
                         },
                         "authorization_global_exception_rules": {
                             "type": "array",
@@ -26455,12 +27072,6 @@
                                         "pattern": "^[\\w\\d_\\-\\. ]+$",
                                         "title": "Name",
                                         "description": "Name (String)"
-                                    },
-                                    "default": {
-                                        "type": "boolean",
-                                        "default": "false",
-                                        "title": "Default",
-                                        "description": "Default (Boolean)\n- Default value: false"
                                     },
                                     "state": {
                                         "type": "string",
@@ -26492,6 +27103,11 @@
                                                 "default": "false",
                                                 "title": "Is Negate",
                                                 "description": "Is Negate (Boolean)\n- Default value: false"
+                                            },
+                                            "dictionary_name": {
+                                                "type": "string",
+                                                "title": "Dictionary Name",
+                                                "description": "Dictionary Name (String)"
                                             },
                                             "attribute_name": {
                                                 "type": "string",
@@ -26541,6 +27157,11 @@
                                                             "title": "Is Negate",
                                                             "description": "Is Negate (Boolean)"
                                                         },
+                                                        "dictionary_name": {
+                                                            "type": "string",
+                                                            "title": "Dictionary Name",
+                                                            "description": "Dictionary Name (String)"
+                                                        },
                                                         "attribute_name": {
                                                             "type": "string",
                                                             "title": "Attribute Name",
@@ -26587,6 +27208,11 @@
                                                                         "title": "Is Negate",
                                                                         "description": "Is Negate (Boolean)"
                                                                     },
+                                                                    "dictionary_name": {
+                                                                        "type": "string",
+                                                                        "title": "Dictionary Name",
+                                                                        "description": "Dictionary Name (String)"
+                                                                    },
                                                                     "attribute_name": {
                                                                         "type": "string",
                                                                         "title": "Attribute Name",
@@ -26619,7 +27245,7 @@
                                                                 ]
                                                             },
                                                             "title": "Children",
-                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name"
+                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name"
                                                         }
                                                     },
                                                     "required": [
@@ -26627,14 +27253,14 @@
                                                     ]
                                                 },
                                                 "title": "Children",
-                                                "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                                "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                             }
                                         },
                                         "required": [
                                             "type"
                                         ],
                                         "title": "Condition",
-                                        "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                        "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                     },
                                     "rank": {
                                         "type": "integer",
@@ -26661,7 +27287,7 @@
                                 ]
                             },
                             "title": "Authorization Global Exception Rules",
-                            "description": "Authorization Global Exception Rules (List - Object)\n\nElements:\n- name (required)\n- default\n- state\n- condition\n- rank\n- profiles\n- security_group"
+                            "description": "Authorization Global Exception Rules (List - Object)\n\nElements:\n- name (required)\n- state\n- condition\n- rank\n- profiles\n- security_group"
                         }
                     },
                     "required": [],
@@ -26703,6 +27329,11 @@
                                                 "default": "false",
                                                 "title": "Is Negate",
                                                 "description": "Is Negate (Boolean)\n- Default value: false"
+                                            },
+                                            "dictionary_name": {
+                                                "type": "string",
+                                                "title": "Dictionary Name",
+                                                "description": "Dictionary Name (String)"
                                             },
                                             "attribute_name": {
                                                 "type": "string",
@@ -26758,6 +27389,11 @@
                                                             "title": "Is Negate",
                                                             "description": "Is Negate (Boolean)"
                                                         },
+                                                        "dictionary_name": {
+                                                            "type": "string",
+                                                            "title": "Dictionary Name",
+                                                            "description": "Dictionary Name (String)"
+                                                        },
                                                         "attribute_name": {
                                                             "type": "string",
                                                             "title": "Attribute Name",
@@ -26805,6 +27441,11 @@
                                                                         "title": "Is Negate",
                                                                         "description": "Is Negate (Boolean)"
                                                                     },
+                                                                    "dictionary_name": {
+                                                                        "type": "string",
+                                                                        "title": "Dictionary Name",
+                                                                        "description": "Dictionary Name (String)"
+                                                                    },
                                                                     "attribute_name": {
                                                                         "type": "string",
                                                                         "title": "Attribute Name",
@@ -26837,7 +27478,7 @@
                                                                 ]
                                                             },
                                                             "title": "Children",
-                                                            "description": "Children (List - Object)\n\nElements:\n- name\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- description"
+                                                            "description": "Children (List - Object)\n\nElements:\n- name\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- description"
                                                         }
                                                     },
                                                     "required": [
@@ -26845,7 +27486,7 @@
                                                     ]
                                                 },
                                                 "title": "Children",
-                                                "description": "Children (List - Object)\n\nElements:\n- name\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- children"
+                                                "description": "Children (List - Object)\n\nElements:\n- name\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- children"
                                             }
                                         },
                                         "required": [
@@ -26853,7 +27494,7 @@
                                         ]
                                     },
                                     "title": "Conditions",
-                                    "description": "Conditions (List - Object)\n\nElements:\n- name\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- description\n- children"
+                                    "description": "Conditions (List - Object)\n\nElements:\n- name\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- description\n- children"
                                 },
                                 "allowed_protocols": {
                                     "type": "array",
@@ -27140,12 +27781,6 @@
                                         "title": "Name",
                                         "description": "Name (String)"
                                     },
-                                    "default": {
-                                        "type": "boolean",
-                                        "default": "false",
-                                        "title": "Default",
-                                        "description": "Default (Boolean)\n- Default value: false"
-                                    },
                                     "description": {
                                         "type": "string",
                                         "title": "Description",
@@ -27182,6 +27817,11 @@
                                                 "default": "false",
                                                 "title": "Is Negate",
                                                 "description": "Is Negate (Boolean)\n- Default value: false"
+                                            },
+                                            "dictionary_name": {
+                                                "type": "string",
+                                                "title": "Dictionary Name",
+                                                "description": "Dictionary Name (String)"
                                             },
                                             "attribute_name": {
                                                 "type": "string",
@@ -27231,6 +27871,11 @@
                                                             "title": "Is Negate",
                                                             "description": "Is Negate (Boolean)"
                                                         },
+                                                        "dictionary_name": {
+                                                            "type": "string",
+                                                            "title": "Dictionary Name",
+                                                            "description": "Dictionary Name (String)"
+                                                        },
                                                         "attribute_name": {
                                                             "type": "string",
                                                             "title": "Attribute Name",
@@ -27277,6 +27922,11 @@
                                                                         "title": "Is Negate",
                                                                         "description": "Is Negate (Boolean)"
                                                                     },
+                                                                    "dictionary_name": {
+                                                                        "type": "string",
+                                                                        "title": "Dictionary Name",
+                                                                        "description": "Dictionary Name (String)"
+                                                                    },
                                                                     "attribute_name": {
                                                                         "type": "string",
                                                                         "title": "Attribute Name",
@@ -27309,7 +27959,7 @@
                                                                 ]
                                                             },
                                                             "title": "Children",
-                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name"
+                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name"
                                                         }
                                                     },
                                                     "required": [
@@ -27317,14 +27967,14 @@
                                                     ]
                                                 },
                                                 "title": "Children",
-                                                "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                                "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                             }
                                         },
                                         "required": [
                                             "type"
                                         ],
                                         "title": "Condition",
-                                        "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                        "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                     },
                                     "is_proxy": {
                                         "type": "boolean",
@@ -27354,12 +28004,6 @@
                                                     "pattern": "^[\\w\\d_\\-\\.]+$",
                                                     "title": "Name",
                                                     "description": "Name (String)"
-                                                },
-                                                "default": {
-                                                    "type": "boolean",
-                                                    "default": "false",
-                                                    "title": "Default",
-                                                    "description": "Default (Boolean)\n- Default value: false"
                                                 },
                                                 "state": {
                                                     "type": "string",
@@ -27392,6 +28036,11 @@
                                                             "default": "false",
                                                             "title": "Is Negate",
                                                             "description": "Is Negate (Boolean)\n- Default value: false"
+                                                        },
+                                                        "dictionary_name": {
+                                                            "type": "string",
+                                                            "title": "Dictionary Name",
+                                                            "description": "Dictionary Name (String)"
                                                         },
                                                         "attribute_name": {
                                                             "type": "string",
@@ -27441,6 +28090,11 @@
                                                                         "title": "Is Negate",
                                                                         "description": "Is Negate (Boolean)"
                                                                     },
+                                                                    "dictionary_name": {
+                                                                        "type": "string",
+                                                                        "title": "Dictionary Name",
+                                                                        "description": "Dictionary Name (String)"
+                                                                    },
                                                                     "attribute_name": {
                                                                         "type": "string",
                                                                         "title": "Attribute Name",
@@ -27487,6 +28141,11 @@
                                                                                     "title": "Is Negate",
                                                                                     "description": "Is Negate (Boolean)"
                                                                                 },
+                                                                                "dictionary_name": {
+                                                                                    "type": "string",
+                                                                                    "title": "Dictionary Name",
+                                                                                    "description": "Dictionary Name (String)"
+                                                                                },
                                                                                 "attribute_name": {
                                                                                     "type": "string",
                                                                                     "title": "Attribute Name",
@@ -27519,7 +28178,7 @@
                                                                             ]
                                                                         },
                                                                         "title": "Children",
-                                                                        "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name"
+                                                                        "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name"
                                                                     }
                                                                 },
                                                                 "required": [
@@ -27527,14 +28186,14 @@
                                                                 ]
                                                             },
                                                             "title": "Children",
-                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                                         }
                                                     },
                                                     "required": [
                                                         "type"
                                                     ],
                                                     "title": "Condition",
-                                                    "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                                    "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                                 },
                                                 "rank": {
                                                     "type": "integer",
@@ -27586,7 +28245,7 @@
                                             ]
                                         },
                                         "title": "Authentication Rules",
-                                        "description": "Authentication Rules (List - Object)\n\nElements:\n- name (required)\n- default\n- state\n- condition\n- rank\n- identity_source_name\n- if_auth_fail\n- if_user_not_found\n- if_process_fail"
+                                        "description": "Authentication Rules (List - Object)\n\nElements:\n- name (required)\n- state\n- condition\n- rank\n- identity_source_name\n- if_auth_fail\n- if_user_not_found\n- if_process_fail"
                                     },
                                     "authorization_rules": {
                                         "type": "array",
@@ -27599,12 +28258,6 @@
                                                     "pattern": "^[\\w\\d_\\-\\. ]+$",
                                                     "title": "Name",
                                                     "description": "Name (String)"
-                                                },
-                                                "default": {
-                                                    "type": "boolean",
-                                                    "default": "false",
-                                                    "title": "Default",
-                                                    "description": "Default (Boolean)\n- Default value: false"
                                                 },
                                                 "state": {
                                                     "type": "string",
@@ -27637,6 +28290,11 @@
                                                             "default": "false",
                                                             "title": "Is Negate",
                                                             "description": "Is Negate (Boolean)\n- Default value: false"
+                                                        },
+                                                        "dictionary_name": {
+                                                            "type": "string",
+                                                            "title": "Dictionary Name",
+                                                            "description": "Dictionary Name (String)"
                                                         },
                                                         "attribute_name": {
                                                             "type": "string",
@@ -27686,6 +28344,11 @@
                                                                         "title": "Is Negate",
                                                                         "description": "Is Negate (Boolean)"
                                                                     },
+                                                                    "dictionary_name": {
+                                                                        "type": "string",
+                                                                        "title": "Dictionary Name",
+                                                                        "description": "Dictionary Name (String)"
+                                                                    },
                                                                     "attribute_name": {
                                                                         "type": "string",
                                                                         "title": "Attribute Name",
@@ -27732,6 +28395,11 @@
                                                                                     "title": "Is Negate",
                                                                                     "description": "Is Negate (Boolean)"
                                                                                 },
+                                                                                "dictionary_name": {
+                                                                                    "type": "string",
+                                                                                    "title": "Dictionary Name",
+                                                                                    "description": "Dictionary Name (String)"
+                                                                                },
                                                                                 "attribute_name": {
                                                                                     "type": "string",
                                                                                     "title": "Attribute Name",
@@ -27764,7 +28432,7 @@
                                                                             ]
                                                                         },
                                                                         "title": "Children",
-                                                                        "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name"
+                                                                        "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name"
                                                                     }
                                                                 },
                                                                 "required": [
@@ -27772,14 +28440,14 @@
                                                                 ]
                                                             },
                                                             "title": "Children",
-                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                                         }
                                                     },
                                                     "required": [
                                                         "type"
                                                     ],
                                                     "title": "Condition",
-                                                    "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                                    "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                                 },
                                                 "rank": {
                                                     "type": "integer",
@@ -27806,7 +28474,7 @@
                                             ]
                                         },
                                         "title": "Authorization Rules",
-                                        "description": "Authorization Rules (List - Object)\n\nElements:\n- name (required)\n- default\n- state\n- condition\n- rank\n- profile\n- command_sets"
+                                        "description": "Authorization Rules (List - Object)\n\nElements:\n- name (required)\n- state\n- condition\n- rank\n- profile\n- command_sets"
                                     },
                                     "authorization_exception_rules": {
                                         "type": "array",
@@ -27819,12 +28487,6 @@
                                                     "pattern": "^[\\w\\d_\\-\\. ]+$",
                                                     "title": "Name",
                                                     "description": "Name (String)"
-                                                },
-                                                "default": {
-                                                    "type": "boolean",
-                                                    "default": "false",
-                                                    "title": "Default",
-                                                    "description": "Default (Boolean)\n- Default value: false"
                                                 },
                                                 "state": {
                                                     "type": "string",
@@ -27857,6 +28519,11 @@
                                                             "default": "false",
                                                             "title": "Is Negate",
                                                             "description": "Is Negate (Boolean)\n- Default value: false"
+                                                        },
+                                                        "dictionary_name": {
+                                                            "type": "string",
+                                                            "title": "Dictionary Name",
+                                                            "description": "Dictionary Name (String)"
                                                         },
                                                         "attribute_name": {
                                                             "type": "string",
@@ -27906,6 +28573,11 @@
                                                                         "title": "Is Negate",
                                                                         "description": "Is Negate (Boolean)"
                                                                     },
+                                                                    "dictionary_name": {
+                                                                        "type": "string",
+                                                                        "title": "Dictionary Name",
+                                                                        "description": "Dictionary Name (String)"
+                                                                    },
                                                                     "attribute_name": {
                                                                         "type": "string",
                                                                         "title": "Attribute Name",
@@ -27952,6 +28624,11 @@
                                                                                     "title": "Is Negate",
                                                                                     "description": "Is Negate (Boolean)"
                                                                                 },
+                                                                                "dictionary_name": {
+                                                                                    "type": "string",
+                                                                                    "title": "Dictionary Name",
+                                                                                    "description": "Dictionary Name (String)"
+                                                                                },
                                                                                 "attribute_name": {
                                                                                     "type": "string",
                                                                                     "title": "Attribute Name",
@@ -27984,7 +28661,7 @@
                                                                             ]
                                                                         },
                                                                         "title": "Children",
-                                                                        "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name"
+                                                                        "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name"
                                                                     }
                                                                 },
                                                                 "required": [
@@ -27992,14 +28669,14 @@
                                                                 ]
                                                             },
                                                             "title": "Children",
-                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                                         }
                                                     },
                                                     "required": [
                                                         "type"
                                                     ],
                                                     "title": "Condition",
-                                                    "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                                    "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                                 },
                                                 "rank": {
                                                     "type": "integer",
@@ -28026,7 +28703,7 @@
                                             ]
                                         },
                                         "title": "Authorization Exception Rules",
-                                        "description": "Authorization Exception Rules (List - Object)\n\nElements:\n- name (required)\n- default\n- state\n- condition\n- rank\n- profile\n- command_sets"
+                                        "description": "Authorization Exception Rules (List - Object)\n\nElements:\n- name (required)\n- state\n- condition\n- rank\n- profile\n- command_sets"
                                     }
                                 },
                                 "required": [
@@ -28034,7 +28711,7 @@
                                 ]
                             },
                             "title": "Policy Sets",
-                            "description": "Policy Sets (List - Object)\n\nElements:\n- name\n- default\n- description\n- state\n- condition\n- is_proxy\n- service_name (required)\n- rank\n- authentication_rules\n- authorization_rules\n- authorization_exception_rules"
+                            "description": "Policy Sets (List - Object)\n\nElements:\n- name\n- description\n- state\n- condition\n- is_proxy\n- service_name (required)\n- rank\n- authentication_rules\n- authorization_rules\n- authorization_exception_rules"
                         },
                         "authorization_global_exception_rules": {
                             "type": "array",
@@ -28047,12 +28724,6 @@
                                         "pattern": "^[\\w\\d_\\-\\. ]+$",
                                         "title": "Name",
                                         "description": "Name (String)"
-                                    },
-                                    "default": {
-                                        "type": "boolean",
-                                        "default": "false",
-                                        "title": "Default",
-                                        "description": "Default (Boolean)\n- Default value: false"
                                     },
                                     "state": {
                                         "type": "string",
@@ -28085,6 +28756,11 @@
                                                 "default": "false",
                                                 "title": "Is Negate",
                                                 "description": "Is Negate (Boolean)\n- Default value: false"
+                                            },
+                                            "dictionary_name": {
+                                                "type": "string",
+                                                "title": "Dictionary Name",
+                                                "description": "Dictionary Name (String)"
                                             },
                                             "attribute_name": {
                                                 "type": "string",
@@ -28134,6 +28810,11 @@
                                                             "title": "Is Negate",
                                                             "description": "Is Negate (Boolean)"
                                                         },
+                                                        "dictionary_name": {
+                                                            "type": "string",
+                                                            "title": "Dictionary Name",
+                                                            "description": "Dictionary Name (String)"
+                                                        },
                                                         "attribute_name": {
                                                             "type": "string",
                                                             "title": "Attribute Name",
@@ -28180,6 +28861,11 @@
                                                                         "title": "Is Negate",
                                                                         "description": "Is Negate (Boolean)"
                                                                     },
+                                                                    "dictionary_name": {
+                                                                        "type": "string",
+                                                                        "title": "Dictionary Name",
+                                                                        "description": "Dictionary Name (String)"
+                                                                    },
                                                                     "attribute_name": {
                                                                         "type": "string",
                                                                         "title": "Attribute Name",
@@ -28212,7 +28898,7 @@
                                                                 ]
                                                             },
                                                             "title": "Children",
-                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name"
+                                                            "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name"
                                                         }
                                                     },
                                                     "required": [
@@ -28220,14 +28906,14 @@
                                                     ]
                                                 },
                                                 "title": "Children",
-                                                "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                                "description": "Children (List - Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                             }
                                         },
                                         "required": [
                                             "type"
                                         ],
                                         "title": "Condition",
-                                        "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
+                                        "description": "Condition (Object)\n\nElements:\n- type (required)\n- is_negate\n- dictionary_name\n- attribute_name\n- operator\n- attribute_value\n- name\n- children"
                                     },
                                     "rank": {
                                         "type": "integer",
@@ -28254,7 +28940,7 @@
                                 ]
                             },
                             "title": "Authorization Global Exception Rules",
-                            "description": "Authorization Global Exception Rules (List - Object)\n\nElements:\n- name (required)\n- default\n- state\n- condition\n- rank\n- profile\n- command_sets"
+                            "description": "Authorization Global Exception Rules (List - Object)\n\nElements:\n- name (required)\n- state\n- condition\n- rank\n- profile\n- command_sets"
                         }
                     },
                     "required": [],
