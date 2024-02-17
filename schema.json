@@ -48566,16 +48566,9 @@
                                                             "description": "Region Out (Integer)\n- Maximum value: 63"
                                                         }
                                                     },
-                                                    "required": [
-                                                        "site_lists_in",
-                                                        "site_lists_out",
-                                                        "region_lists_in",
-                                                        "region_lists_out",
-                                                        "region_in",
-                                                        "region_out"
-                                                    ],
+                                                    "required": [],
                                                     "title": "Site Region",
-                                                    "description": "Site Region (Object)\n\nElements:\n- site_lists_in (required)\n- site_lists_out (required)\n- region_lists_in (required)\n- region_lists_out (required)\n- region_in (required)\n- region_out (required)"
+                                                    "description": "Site Region (Object)\n\nElements:\n- site_lists_in\n- site_lists_out\n- region_lists_in\n- region_lists_out\n- region_in\n- region_out"
                                                 }
                                             },
                                             "required": [
@@ -48652,13 +48645,10 @@
                                                         }
                                                     },
                                                     "required": [
-                                                        "site_lists",
-                                                        "region_list",
-                                                        "region",
                                                         "vpn_lists"
                                                     ],
                                                     "title": "Site Region VPN",
-                                                    "description": "Site Region VPN (Object)\n\nElements:\n- site_lists (required)\n- region_list (required)\n- region (required)\n- vpn_lists (required)"
+                                                    "description": "Site Region VPN (Object)\n\nElements:\n- site_lists\n- region_list\n- region\n- vpn_lists (required)"
                                                 }
                                             },
                                             "required": [
