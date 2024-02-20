@@ -16911,6 +16911,36 @@
                                                     "default": "false",
                                                     "title": "Multipath",
                                                     "description": "Multipath (Boolean)\n- Default value: false"
+                                                },
+                                                "external_endpoint_group": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "l3out": {
+                                                            "type": "string",
+                                                            "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                            "title": "L3Out",
+                                                            "description": "L3Out (String)"
+                                                        },
+                                                        "tenant": {
+                                                            "type": "string",
+                                                            "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                            "title": "Tenant",
+                                                            "description": "Tenant (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name",
+                                                        "l3out"
+                                                    ],
+                                                    "title": "External Endpoint Group",
+                                                    "description": "External Endpoint Group (Object)\n\nElements:\n- name (required)\n- l3out (required)\n- tenant"
                                                 }
                                             },
                                             "required": [
@@ -16918,7 +16948,7 @@
                                             ]
                                         },
                                         "title": "Set Rules",
-                                        "description": "Set Rules (List - Object)\n\nElements:\n- name (required)\n- description\n- community_mode\n- community\n- tag\n- weight\n- next_hop\n- preference\n- metric\n- metric_type\n- dampening\n- additional_communities\n- set_as_path\n- next_hop_propagation\n- multipath"
+                                        "description": "Set Rules (List - Object)\n\nElements:\n- name (required)\n- description\n- community_mode\n- community\n- tag\n- weight\n- next_hop\n- preference\n- metric\n- metric_type\n- dampening\n- additional_communities\n- set_as_path\n- next_hop_propagation\n- multipath\n- external_endpoint_group"
                                     },
                                     "bfd_interface_policies": {
                                         "type": "array",
