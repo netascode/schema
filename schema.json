@@ -46775,11 +46775,19 @@
                         "required": [
                             "name",
                             "description",
-                            "device_model"
+                            "device_model",
+                            "system_template",
+                            "logging_template",
+                            "bfd_template",
+                            "omp_template",
+                            "security_template",
+                            "vpn_0_template",
+                            "vpn_512_template",
+                            "global_settings_template"
                         ]
                     },
                     "title": "Edge Device Templates",
-                    "description": "Edge Device Templates (List - Object)\n\nElements:\n- name (required)\n- description (required)\n- device_model (required)\n- system_template\n- logging_template\n- ntp_template\n- aaa_template\n- bfd_template\n- omp_template\n- security_template\n- vpn_0_template\n- vpn_512_template\n- vpn_service_templates\n- global_settings_template\n- banner_template\n- snmp_template\n- cli_template\n- localized_policy\n- switchport_templates\n- thousandeyes_template"
+                    "description": "Edge Device Templates (List - Object)\n\nElements:\n- name (required)\n- description (required)\n- device_model (required)\n- system_template (required)\n- logging_template (required)\n- ntp_template\n- aaa_template\n- bfd_template (required)\n- omp_template (required)\n- security_template (required)\n- vpn_0_template (required)\n- vpn_512_template (required)\n- vpn_service_templates\n- global_settings_template (required)\n- banner_template\n- snmp_template\n- cli_template\n- localized_policy\n- switchport_templates\n- thousandeyes_template"
                 },
                 "sites": {
                     "type": "array",
