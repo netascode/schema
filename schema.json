@@ -28982,6 +28982,1555 @@
             "title": "ISE",
             "description": "ISE (Object)\n\nElements:\n- system\n- network_resources\n- identity_management\n- trust_sec\n- network_access\n- device_administration"
         },
+        "fmc": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "domains": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "title": "Name",
+                                "description": "Name (String)"
+                            },
+                            "devices": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "pattern": "^[a-zA-Z0-9_.+ -]{1,64}$",
+                                            "title": "Name",
+                                            "description": "Name (String)"
+                                        },
+                                        "host": {
+                                            "type": "string",
+                                            "title": "Host",
+                                            "description": "Host (String)\n- IPv4 or IPv6 address"
+                                        },
+                                        "registration_key": {
+                                            "type": "string",
+                                            "title": "Registration Key",
+                                            "description": "Registration Key (String)"
+                                        },
+                                        "access_policy": {
+                                            "type": "string",
+                                            "title": "Access Policy",
+                                            "description": "Access Policy (String)"
+                                        },
+                                        "nat_policy": {
+                                            "type": "string",
+                                            "title": "Nat Policy",
+                                            "description": "Nat Policy (String)"
+                                        },
+                                        "licenses": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "BASE",
+                                                    "THREAT",
+                                                    "MALWARE"
+                                                ]
+                                            },
+                                            "title": "Licenses",
+                                            "description": "Licenses (List - String)"
+                                        },
+                                        "nat_id": {
+                                            "type": "string",
+                                            "title": "Nat ID",
+                                            "description": "Nat ID (String)"
+                                        },
+                                        "performance_tier": {
+                                            "type": "string",
+                                            "enum": [
+                                                "FTDv5",
+                                                "FTDv10",
+                                                "FTDv20"
+                                            ],
+                                            "title": "Performance Tier",
+                                            "description": "Performance Tier (String)\n- Allowed values: FTDv5, FTDv10, FTDv20"
+                                        },
+                                        "physical_interfaces": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                        "title": "Name",
+                                                        "description": "Name (String)"
+                                                    },
+                                                    "interface": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "GigabitEthernet0/0",
+                                                            "GigabitEthernet0/1",
+                                                            "GigabitEthernet0/2",
+                                                            "GigabitEthernet0/3",
+                                                            "GigabitEthernet0/4",
+                                                            "GigabitEthernet0/5",
+                                                            "GigabitEthernet0/6",
+                                                            "GigabitEthernet0/7",
+                                                            "TenGigabitEthernet0/0",
+                                                            "TenGigabitEthernet0/1"
+                                                        ],
+                                                        "title": "Interface",
+                                                        "description": "Interface (String)\n- Allowed values: GigabitEthernet0/0, GigabitEthernet0/1, GigabitEthernet0/2, GigabitEthernet0/3, GigabitEthernet0/4, GigabitEthernet0/5, GigabitEthernet0/6, GigabitEthernet0/7, TenGigabitEthernet0/0, TenGigabitEthernet0/1"
+                                                    },
+                                                    "enabled": {
+                                                        "type": "boolean",
+                                                        "default": "true",
+                                                        "title": "Enabled",
+                                                        "description": "Enabled (Boolean)\n- Default value: true"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "maxLength": 255,
+                                                        "title": "Description",
+                                                        "description": "Description (String)\n- Maximum length: 255"
+                                                    },
+                                                    "mode": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "NONE",
+                                                            "PASSIVE",
+                                                            "ERSPAN"
+                                                        ],
+                                                        "default": "NONE",
+                                                        "title": "Mode",
+                                                        "description": "Mode (String)\n- Default value: NONE\n- Allowed values: NONE, PASSIVE, ERSPAN"
+                                                    },
+                                                    "security_zone": {
+                                                        "type": "string",
+                                                        "title": "Security Zone",
+                                                        "description": "Security Zone (String)"
+                                                    },
+                                                    "mtu": {
+                                                        "type": "integer",
+                                                        "title": "MTU",
+                                                        "description": "MTU (Integer)"
+                                                    },
+                                                    "ipv4_static_address": {
+                                                        "type": "string",
+                                                        "title": "Ipv4 Static Address",
+                                                        "description": "Ipv4 Static Address (String)\n- IPv4 or IPv6 address"
+                                                    },
+                                                    "ipv4_static_netmask": {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 31,
+                                                        "title": "Ipv4 Static Netmask",
+                                                        "description": "Ipv4 Static Netmask (Integer)\n- Minimum value: 1\n- Maximum value: 31"
+                                                    },
+                                                    "ipv4_dhcp": {
+                                                        "type": "boolean",
+                                                        "title": "Ipv4 DHCP",
+                                                        "description": "Ipv4 DHCP (Boolean)"
+                                                    },
+                                                    "ipv4_dhcp_route_metric": {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 255,
+                                                        "title": "Ipv4 DHCP Route Metric",
+                                                        "description": "Ipv4 DHCP Route Metric (Integer)\n- Minimum value: 1\n- Maximum value: 255"
+                                                    },
+                                                    "ipv6": {
+                                                        "type": "string",
+                                                        "title": "IPv6",
+                                                        "description": "IPv6 (String)"
+                                                    },
+                                                    "ipv6_address": {
+                                                        "type": "string",
+                                                        "title": "IPv6 Address",
+                                                        "description": "IPv6 Address (String)"
+                                                    },
+                                                    "ipv6_prefix": {
+                                                        "type": "integer",
+                                                        "title": "IPv6 Prefix",
+                                                        "description": "IPv6 Prefix (Integer)"
+                                                    },
+                                                    "ipv6_enforce_eui64": {
+                                                        "type": "boolean",
+                                                        "title": "IPv6 Enforce Eui64",
+                                                        "description": "IPv6 Enforce Eui64 (Boolean)"
+                                                    },
+                                                    "subinterfaces": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                                    "title": "Name",
+                                                                    "description": "Name (String)"
+                                                                },
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "title": "ID",
+                                                                    "description": "ID (Integer)"
+                                                                },
+                                                                "vlan": {
+                                                                    "type": "integer",
+                                                                    "title": "Vlan",
+                                                                    "description": "Vlan (Integer)"
+                                                                },
+                                                                "enable_ipv6": {
+                                                                    "type": "boolean",
+                                                                    "title": "Enable IPv6",
+                                                                    "description": "Enable IPv6 (Boolean)"
+                                                                },
+                                                                "enabled": {
+                                                                    "type": "boolean",
+                                                                    "title": "Enabled",
+                                                                    "description": "Enabled (Boolean)"
+                                                                },
+                                                                "ipv4_dhcp": {
+                                                                    "type": "boolean",
+                                                                    "title": "Ipv4 DHCP",
+                                                                    "description": "Ipv4 DHCP (Boolean)"
+                                                                },
+                                                                "ipv4_dhcp_route_metric": {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 255,
+                                                                    "title": "Ipv4 DHCP Route Metric",
+                                                                    "description": "Ipv4 DHCP Route Metric (Integer)\n- Minimum value: 1\n- Maximum value: 255"
+                                                                },
+                                                                "ipv4_static_address": {
+                                                                    "type": "string",
+                                                                    "title": "Ipv4 Static Address",
+                                                                    "description": "Ipv4 Static Address (String)"
+                                                                },
+                                                                "ipv4_static_netmask": {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 31,
+                                                                    "title": "Ipv4 Static Netmask",
+                                                                    "description": "Ipv4 Static Netmask (Integer)\n- Minimum value: 1\n- Maximum value: 31"
+                                                                },
+                                                                "ipv6": {
+                                                                    "type": "string",
+                                                                    "title": "IPv6",
+                                                                    "description": "IPv6 (String)"
+                                                                },
+                                                                "ipv6_enforce_eui": {
+                                                                    "type": "string",
+                                                                    "title": "IPv6 Enforce Eui",
+                                                                    "description": "IPv6 Enforce Eui (String)"
+                                                                },
+                                                                "ipv6_prefix": {
+                                                                    "type": "string",
+                                                                    "title": "IPv6 Prefix",
+                                                                    "description": "IPv6 Prefix (String)"
+                                                                },
+                                                                "management_only": {
+                                                                    "type": "string",
+                                                                    "title": "Management Only",
+                                                                    "description": "Management Only (String)"
+                                                                },
+                                                                "mode": {
+                                                                    "type": "string",
+                                                                    "title": "Mode",
+                                                                    "description": "Mode (String)"
+                                                                },
+                                                                "mtu": {
+                                                                    "type": "string",
+                                                                    "title": "MTU",
+                                                                    "description": "MTU (String)"
+                                                                },
+                                                                "priority": {
+                                                                    "type": "string",
+                                                                    "title": "Priority",
+                                                                    "description": "Priority (String)"
+                                                                },
+                                                                "security_zone": {
+                                                                    "type": "string",
+                                                                    "title": "Security Zone",
+                                                                    "description": "Security Zone (String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "name",
+                                                                "id",
+                                                                "vlan"
+                                                            ]
+                                                        },
+                                                        "title": "Subinterfaces",
+                                                        "description": "Subinterfaces (List - Object)\n\nElements:\n- name (required)\n- id (required)\n- vlan (required)\n- enable_ipv6\n- enabled\n- ipv4_dhcp\n- ipv4_dhcp_route_metric\n- ipv4_static_address\n- ipv4_static_netmask\n- ipv6\n- ipv6_enforce_eui\n- ipv6_prefix\n- management_only\n- mode\n- mtu\n- priority\n- security_zone"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name",
+                                                    "interface"
+                                                ]
+                                            },
+                                            "title": "Physical Interfaces",
+                                            "description": "Physical Interfaces (List - Object)\n\nElements:\n- name (required)\n- interface (required)\n- enabled\n- description\n- mode\n- security_zone\n- mtu\n- ipv4_static_address\n- ipv4_static_netmask\n- ipv4_dhcp\n- ipv4_dhcp_route_metric\n- ipv6\n- ipv6_address\n- ipv6_prefix\n- ipv6_enforce_eui64\n- subinterfaces"
+                                        },
+                                        "ipv4_static_routes": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                        "title": "Name",
+                                                        "description": "Name (String)"
+                                                    },
+                                                    "gateway": {
+                                                        "type": "string",
+                                                        "title": "Gateway",
+                                                        "description": "Gateway (String)"
+                                                    },
+                                                    "interface": {
+                                                        "type": "string",
+                                                        "title": "Interface",
+                                                        "description": "Interface (String)"
+                                                    },
+                                                    "metric": {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 254,
+                                                        "title": "Metric",
+                                                        "description": "Metric (Integer)\n- Minimum value: 1\n- Maximum value: 254"
+                                                    },
+                                                    "selected_networks": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": "Selected Networks",
+                                                        "description": "Selected Networks (List - String)"
+                                                    },
+                                                    "tunneled": {
+                                                        "type": "boolean",
+                                                        "title": "Tunneled",
+                                                        "description": "Tunneled (Boolean)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "gateway",
+                                                    "interface",
+                                                    "metric",
+                                                    "selected_networks"
+                                                ]
+                                            },
+                                            "title": "Ipv4 Static Routes",
+                                            "description": "Ipv4 Static Routes (List - Object)\n\nElements:\n- name\n- gateway (required)\n- interface (required)\n- metric (required)\n- selected_networks (required)\n- tunneled"
+                                        },
+                                        "deploy": {
+                                            "type": "boolean",
+                                            "title": "Deploy",
+                                            "description": "Deploy (Boolean)"
+                                        },
+                                        "deploy_ignore_warning": {
+                                            "type": "boolean",
+                                            "default": "false",
+                                            "title": "Deploy Ignore Warning",
+                                            "description": "Deploy Ignore Warning (Boolean)\n- Default value: false"
+                                        },
+                                        "deploy_force": {
+                                            "type": "boolean",
+                                            "default": "false",
+                                            "title": "Deploy Force",
+                                            "description": "Deploy Force (Boolean)\n- Default value: false"
+                                        }
+                                    },
+                                    "required": [
+                                        "name"
+                                    ]
+                                },
+                                "title": "Devices",
+                                "description": "Devices (List - Object)\n\nElements:\n- name (required)\n- host\n- registration_key\n- access_policy\n- nat_policy\n- licenses\n- nat_id\n- performance_tier\n- physical_interfaces\n- ipv4_static_routes\n- deploy\n- deploy_ignore_warning\n- deploy_force"
+                            },
+                            "objects": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "hosts": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                },
+                                                "ip": {
+                                                    "type": "string",
+                                                    "title": "IP",
+                                                    "description": "IP (String)\n- IPv4 or IPv6 address"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "maxLength": 255,
+                                                    "default": " ",
+                                                    "title": "Description",
+                                                    "description": "Description (String)\n- Default value:  \n- Maximum length: 255"
+                                                }
+                                            },
+                                            "required": [
+                                                "name",
+                                                "ip"
+                                            ]
+                                        },
+                                        "title": "Hosts",
+                                        "description": "Hosts (List - Object)\n\nElements:\n- name (required)\n- ip (required)\n- description"
+                                    },
+                                    "networks": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                },
+                                                "prefix": {
+                                                    "type": "string",
+                                                    "title": "Prefix",
+                                                    "description": "Prefix (String)\n- IPv4 or IPv6 address"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "maxLength": 255,
+                                                    "default": " ",
+                                                    "title": "Description",
+                                                    "description": "Description (String)\n- Default value:  \n- Maximum length: 255"
+                                                }
+                                            },
+                                            "required": [
+                                                "name",
+                                                "prefix"
+                                            ]
+                                        },
+                                        "title": "Networks",
+                                        "description": "Networks (List - Object)\n\nElements:\n- name (required)\n- prefix (required)\n- description"
+                                    },
+                                    "ranges": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                },
+                                                "ip_range": {
+                                                    "type": "string",
+                                                    "title": "IP Range",
+                                                    "description": "IP Range (String)"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "maxLength": 255,
+                                                    "default": " ",
+                                                    "title": "Description",
+                                                    "description": "Description (String)\n- Default value:  \n- Maximum length: 255"
+                                                }
+                                            },
+                                            "required": [
+                                                "name",
+                                                "ip_range"
+                                            ]
+                                        },
+                                        "title": "Ranges",
+                                        "description": "Ranges (List - Object)\n\nElements:\n- name (required)\n- ip_range (required)\n- description"
+                                    },
+                                    "network_groups": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "maxLength": 30,
+                                                    "default": " ",
+                                                    "title": "Description",
+                                                    "description": "Description (String)\n- Default value:  \n- Maximum length: 30"
+                                                },
+                                                "objects": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "title": "Objects",
+                                                    "description": "Objects (List - String)"
+                                                },
+                                                "literals": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "title": "Literals",
+                                                    "description": "Literals (List - String)"
+                                                }
+                                            },
+                                            "required": [
+                                                "name"
+                                            ]
+                                        },
+                                        "title": "Network Groups",
+                                        "description": "Network Groups (List - Object)\n\nElements:\n- name (required)\n- description\n- objects\n- literals"
+                                    },
+                                    "urls": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                },
+                                                "url": {
+                                                    "type": "string",
+                                                    "title": "Url",
+                                                    "description": "Url (String)"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "maxLength": 255,
+                                                    "title": "Description",
+                                                    "description": "Description (String)\n- Maximum length: 255"
+                                                }
+                                            },
+                                            "required": [
+                                                "name",
+                                                "url"
+                                            ]
+                                        },
+                                        "title": "URLs",
+                                        "description": "URLs (List - Object)\n\nElements:\n- name (required)\n- url (required)\n- description"
+                                    },
+                                    "url_groups": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "maxLength": 255,
+                                                    "title": "Description",
+                                                    "description": "Description (String)\n- Maximum length: 255"
+                                                },
+                                                "objects": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "title": "Objects",
+                                                    "description": "Objects (List - String)"
+                                                },
+                                                "literals": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "title": "Literals",
+                                                    "description": "Literals (List - String)"
+                                                }
+                                            },
+                                            "required": [
+                                                "name"
+                                            ]
+                                        },
+                                        "title": "Url Groups",
+                                        "description": "Url Groups (List - Object)\n\nElements:\n- name (required)\n- description\n- objects\n- literals"
+                                    },
+                                    "ports": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                },
+                                                "port": {
+                                                    "type": "integer",
+                                                    "minimum": 1,
+                                                    "maximum": 65535,
+                                                    "title": "Port",
+                                                    "description": "Port (Integer)\n- Minimum value: 1\n- Maximum value: 65535"
+                                                },
+                                                "protocol": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "TCP",
+                                                        "UDP"
+                                                    ],
+                                                    "title": "Protocol",
+                                                    "description": "Protocol (String)\n- Allowed values: TCP, UDP"
+                                                }
+                                            },
+                                            "required": [
+                                                "name",
+                                                "port",
+                                                "protocol"
+                                            ]
+                                        },
+                                        "title": "Ports",
+                                        "description": "Ports (List - Object)\n\nElements:\n- name (required)\n- port (required)\n- protocol (required)"
+                                    },
+                                    "icmp_v4s": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "maxLength": 30,
+                                                    "title": "Name",
+                                                    "description": "Name (String)\n- Maximum length: 30"
+                                                },
+                                                "icmp_type": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "any"
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "integer",
+                                                            "maximum": 41
+                                                        }
+                                                    ],
+                                                    "title": "Icmp Type",
+                                                    "description": "Icmp Type (String, Integer)"
+                                                },
+                                                "code": {
+                                                    "type": "integer",
+                                                    "maximum": 16,
+                                                    "title": "Code",
+                                                    "description": "Code (Integer)\n- Maximum value: 16"
+                                                }
+                                            },
+                                            "required": [
+                                                "name",
+                                                "icmp_type"
+                                            ]
+                                        },
+                                        "title": "Icmp V4S",
+                                        "description": "Icmp V4S (List - Object)\n\nElements:\n- name (required)\n- icmp_type (required)\n- code"
+                                    },
+                                    "fqdns": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                },
+                                                "fqdn": {
+                                                    "type": "string",
+                                                    "title": "FQDN",
+                                                    "description": "FQDN (String)"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "title": "Description",
+                                                    "description": "Description (String)"
+                                                },
+                                                "dns_resolution": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "IPV4_ONLY",
+                                                        "IPV6_ONLY",
+                                                        "IPV4_AND_IPV6"
+                                                    ],
+                                                    "default": "IPV4_ONLY",
+                                                    "title": "DNS Resolution",
+                                                    "description": "DNS Resolution (String)\n- Default value: IPV4_ONLY\n- Allowed values: IPV4_ONLY, IPV6_ONLY, IPV4_AND_IPV6"
+                                                }
+                                            },
+                                            "required": [
+                                                "name",
+                                                "fqdn"
+                                            ]
+                                        },
+                                        "title": "Fqdns",
+                                        "description": "Fqdns (List - Object)\n\nElements:\n- name (required)\n- fqdn (required)\n- description\n- dns_resolution"
+                                    },
+                                    "dynamic_objects": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "IP"
+                                                    ],
+                                                    "title": "Type",
+                                                    "description": "Type (String)\n- Allowed values: IP"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "maxLength": 255,
+                                                    "title": "Description",
+                                                    "description": "Description (String)\n- Maximum length: 255"
+                                                }
+                                            },
+                                            "required": [
+                                                "name"
+                                            ]
+                                        },
+                                        "title": "Dynamic Objects",
+                                        "description": "Dynamic Objects (List - Object)\n\nElements:\n- name (required)\n- type\n- description"
+                                    },
+                                    "security_zones": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                },
+                                                "interface_type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "ROUTED",
+                                                        "NONE",
+                                                        "INLINE"
+                                                    ],
+                                                    "default": "ROUTED",
+                                                    "title": "Interface Type",
+                                                    "description": "Interface Type (String)\n- Default value: ROUTED\n- Allowed values: ROUTED, NONE, INLINE"
+                                                }
+                                            },
+                                            "required": [
+                                                "name"
+                                            ]
+                                        },
+                                        "title": "Security Zones",
+                                        "description": "Security Zones (List - Object)\n\nElements:\n- name (required)\n- interface_type"
+                                    }
+                                },
+                                "required": [],
+                                "title": "Objects",
+                                "description": "Objects (Object)\n\nElements:\n- hosts\n- networks\n- ranges\n- network_groups\n- urls\n- url_groups\n- ports\n- icmp_v4s\n- fqdns\n- dynamic_objects\n- security_zones"
+                            },
+                            "access_policies": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "pattern": "^[a-zA-Z0-9_ -]{1,64}$",
+                                            "title": "Name",
+                                            "description": "Name (String)"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "maxLength": 255,
+                                            "title": "Description",
+                                            "description": "Description (String)\n- Maximum length: 255"
+                                        },
+                                        "default_action": {
+                                            "type": "string",
+                                            "enum": [
+                                                "BLOCK",
+                                                "TRUST",
+                                                "PERMIT",
+                                                "NETWORK_DISCOVERY",
+                                                "INHERIT_FROM_PARENT"
+                                            ],
+                                            "default": "BLOCK",
+                                            "title": "Default Action",
+                                            "description": "Default Action (String)\n- Default value: BLOCK\n- Allowed values: BLOCK, TRUST, PERMIT, NETWORK_DISCOVERY, INHERIT_FROM_PARENT"
+                                        },
+                                        "base_ips_policy": {
+                                            "type": "string",
+                                            "title": "Base IPs Policy",
+                                            "description": "Base IPs Policy (String)"
+                                        },
+                                        "send_events_to_fmc": {
+                                            "type": "boolean",
+                                            "default": "false",
+                                            "title": "Send Events To Fmc",
+                                            "description": "Send Events To Fmc (Boolean)\n- Default value: false"
+                                        },
+                                        "log_begin": {
+                                            "type": "boolean",
+                                            "default": "false",
+                                            "title": "Log Begin",
+                                            "description": "Log Begin (Boolean)\n- Default value: false"
+                                        },
+                                        "log_end": {
+                                            "type": "boolean",
+                                            "default": "false",
+                                            "title": "Log End",
+                                            "description": "Log End (Boolean)\n- Default value: false"
+                                        },
+                                        "syslog_config_id": {
+                                            "type": "string",
+                                            "title": "Syslog Config ID",
+                                            "description": "Syslog Config ID (String)"
+                                        },
+                                        "access_rules": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "pattern": "^[a-zA-Z0-9_ -]{1,50}$",
+                                                        "title": "Name",
+                                                        "description": "Name (String)"
+                                                    },
+                                                    "action": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "ALLOW",
+                                                            "TRUST",
+                                                            "BLOCK",
+                                                            "MONITOR",
+                                                            "BLOCK_RESET",
+                                                            "BLOCK_INTERACTIVE",
+                                                            "BLOCK_RESET_INTERACTIVE"
+                                                        ],
+                                                        "title": "Action",
+                                                        "description": "Action (String)\n- Allowed values: ALLOW, TRUST, BLOCK, MONITOR, BLOCK_RESET, BLOCK_INTERACTIVE, BLOCK_RESET_INTERACTIVE"
+                                                    },
+                                                    "enabled": {
+                                                        "type": "boolean",
+                                                        "default": "true",
+                                                        "title": "Enabled",
+                                                        "description": "Enabled (Boolean)\n- Default value: true"
+                                                    },
+                                                    "category": {
+                                                        "type": "string",
+                                                        "title": "Category",
+                                                        "description": "Category (String)"
+                                                    },
+                                                    "destination_dynamic_objects": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": "Destination Dynamic Objects",
+                                                        "description": "Destination Dynamic Objects (List - String)"
+                                                    },
+                                                    "destination_networks": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": "Destination Networks",
+                                                        "description": "Destination Networks (List - String)"
+                                                    },
+                                                    "destination_ports": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": "Destination Ports",
+                                                        "description": "Destination Ports (List - String)"
+                                                    },
+                                                    "destination_sgts": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": "Destination SGTs",
+                                                        "description": "Destination SGTs (List - String)"
+                                                    },
+                                                    "destination_zones": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": "Destination Zones",
+                                                        "description": "Destination Zones (List - String)"
+                                                    },
+                                                    "enable_syslog": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "Enable Syslog",
+                                                        "description": "Enable Syslog (Boolean)\n- Default value: false"
+                                                    },
+                                                    "file_policy": {
+                                                        "type": "string",
+                                                        "title": "File Policy",
+                                                        "description": "File Policy (String)"
+                                                    },
+                                                    "ips_policy": {
+                                                        "type": "string",
+                                                        "title": "IPs Policy",
+                                                        "description": "IPs Policy (String)"
+                                                    },
+                                                    "log_connection_begin": {
+                                                        "type": "boolean",
+                                                        "title": "Log Connection Begin",
+                                                        "description": "Log Connection Begin (Boolean)"
+                                                    },
+                                                    "log_connection_end": {
+                                                        "type": "boolean",
+                                                        "title": "Log Connection End",
+                                                        "description": "Log Connection End (Boolean)"
+                                                    },
+                                                    "log_files": {
+                                                        "type": "boolean",
+                                                        "title": "Log Files",
+                                                        "description": "Log Files (Boolean)"
+                                                    },
+                                                    "new_comments": {
+                                                        "type": "string",
+                                                        "title": "New Comments",
+                                                        "description": "New Comments (String)"
+                                                    },
+                                                    "section": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "mandatory",
+                                                            "default"
+                                                        ],
+                                                        "title": "Section",
+                                                        "description": "Section (String)\n- Allowed values: mandatory, default"
+                                                    },
+                                                    "send_events_to_fmc": {
+                                                        "type": "boolean",
+                                                        "title": "Send Events To Fmc",
+                                                        "description": "Send Events To Fmc (Boolean)"
+                                                    },
+                                                    "source_dynamic_objects": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": "Source Dynamic Objects",
+                                                        "description": "Source Dynamic Objects (List - String)"
+                                                    },
+                                                    "source_networks": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": "Source Networks",
+                                                        "description": "Source Networks (List - String)"
+                                                    },
+                                                    "source_ports": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": "Source Ports",
+                                                        "description": "Source Ports (List - String)"
+                                                    },
+                                                    "source_sgts": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": "Source SGTs",
+                                                        "description": "Source SGTs (List - String)"
+                                                    },
+                                                    "source_zones": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": "Source Zones",
+                                                        "description": "Source Zones (List - String)"
+                                                    },
+                                                    "syslog_config": {
+                                                        "type": "string",
+                                                        "title": "Syslog Config",
+                                                        "description": "Syslog Config (String)"
+                                                    },
+                                                    "syslog_severity": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "ALERT",
+                                                            "CRIT",
+                                                            "DEBUG",
+                                                            "EMERG",
+                                                            "ERR",
+                                                            "INFO",
+                                                            "NOTICE",
+                                                            "WARNING"
+                                                        ],
+                                                        "title": "Syslog Severity",
+                                                        "description": "Syslog Severity (String)\n- Allowed values: ALERT, CRIT, DEBUG, EMERG, ERR, INFO, NOTICE, WARNING"
+                                                    },
+                                                    "urls": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": "URLs",
+                                                        "description": "URLs (List - String)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name",
+                                                    "action"
+                                                ]
+                                            },
+                                            "title": "Access Rules",
+                                            "description": "Access Rules (List - Object)\n\nElements:\n- name (required)\n- action (required)\n- enabled\n- category\n- destination_dynamic_objects\n- destination_networks\n- destination_ports\n- destination_sgts\n- destination_zones\n- enable_syslog\n- file_policy\n- ips_policy\n- log_connection_begin\n- log_connection_end\n- log_files\n- new_comments\n- section\n- send_events_to_fmc\n- source_dynamic_objects\n- source_networks\n- source_ports\n- source_sgts\n- source_zones\n- syslog_config\n- syslog_severity\n- urls"
+                                        },
+                                        "categories": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "maxLength": 30
+                                            },
+                                            "title": "Categories",
+                                            "description": "Categories (List - String)"
+                                        }
+                                    },
+                                    "required": [
+                                        "name"
+                                    ]
+                                },
+                                "title": "Access Policies",
+                                "description": "Access Policies (List - Object)\n\nElements:\n- name (required)\n- description\n- default_action\n- base_ips_policy\n- send_events_to_fmc\n- log_begin\n- log_end\n- syslog_config_id\n- access_rules\n- categories"
+                            },
+                            "ftd_nat_policies": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "pattern": "^[a-zA-Z0-9_ -]{1,64}$",
+                                            "title": "Name",
+                                            "description": "Name (String)"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "maxLength": 255,
+                                            "title": "Description",
+                                            "description": "Description (String)\n- Maximum length: 255"
+                                        },
+                                        "ftd_auto_nat_rules": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "pattern": "^[a-zA-Z0-9_ -]{1,64}$",
+                                                        "title": "Name",
+                                                        "description": "Name (String)"
+                                                    },
+                                                    "nat_type": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "STATIC",
+                                                            "DYNAMIC"
+                                                        ],
+                                                        "title": "Nat Type",
+                                                        "description": "Nat Type (String)\n- Allowed values: STATIC, DYNAMIC"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "title": "Description",
+                                                        "description": "Description (String)"
+                                                    },
+                                                    "destination_interface": {
+                                                        "type": "string",
+                                                        "title": "Destination Interface",
+                                                        "description": "Destination Interface (String)"
+                                                    },
+                                                    "fall_through": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "Fall Through",
+                                                        "description": "Fall Through (Boolean)\n- Default value: false"
+                                                    },
+                                                    "ipv6": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "IPv6",
+                                                        "description": "IPv6 (Boolean)\n- Default value: false"
+                                                    },
+                                                    "net_to_net": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "Net To Net",
+                                                        "description": "Net To Net (Boolean)\n- Default value: false"
+                                                    },
+                                                    "no_proxy_arp": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "No Proxy ARP",
+                                                        "description": "No Proxy ARP (Boolean)\n- Default value: false"
+                                                    },
+                                                    "original_network": {
+                                                        "type": "string",
+                                                        "title": "Original Network",
+                                                        "description": "Original Network (String)"
+                                                    },
+                                                    "original_port": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "port": {
+                                                                "type": "integer",
+                                                                "title": "Port",
+                                                                "description": "Port (Integer)"
+                                                            },
+                                                            "protocol": {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "TCP",
+                                                                    "UDP"
+                                                                ],
+                                                                "title": "Protocol",
+                                                                "description": "Protocol (String)\n- Allowed values: TCP, UDP"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "port",
+                                                            "protocol"
+                                                        ],
+                                                        "title": "Original Port",
+                                                        "description": "Original Port (Object)\n\nElements:\n- port (required)\n- protocol (required)"
+                                                    },
+                                                    "pat_options": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "extended_pat_table": {
+                                                                "type": "boolean",
+                                                                "title": "Extended Pat Table",
+                                                                "description": "Extended Pat Table (Boolean)"
+                                                            },
+                                                            "include_reserve_ports": {
+                                                                "type": "boolean",
+                                                                "title": "Include Reserve Ports",
+                                                                "description": "Include Reserve Ports (Boolean)"
+                                                            },
+                                                            "interface_pat": {
+                                                                "type": "boolean",
+                                                                "title": "Interface Pat",
+                                                                "description": "Interface Pat (Boolean)"
+                                                            },
+                                                            "pat_pool_address": {
+                                                                "type": "string",
+                                                                "title": "Pat Pool Address",
+                                                                "description": "Pat Pool Address (String)"
+                                                            },
+                                                            "round_robin": {
+                                                                "type": "boolean",
+                                                                "title": "Round Robin",
+                                                                "description": "Round Robin (Boolean)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Pat Options",
+                                                        "description": "Pat Options (Object)\n\nElements:\n- extended_pat_table\n- include_reserve_ports\n- interface_pat\n- pat_pool_address\n- round_robin"
+                                                    },
+                                                    "perform_route_lookup": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "Perform Route Lookup",
+                                                        "description": "Perform Route Lookup (Boolean)\n- Default value: false"
+                                                    },
+                                                    "source_interface": {
+                                                        "type": "string",
+                                                        "title": "Source Interface",
+                                                        "description": "Source Interface (String)"
+                                                    },
+                                                    "translate_dns": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "Translate DNS",
+                                                        "description": "Translate DNS (Boolean)\n- Default value: false"
+                                                    },
+                                                    "translated_network": {
+                                                        "type": "string",
+                                                        "title": "Translated Network",
+                                                        "description": "Translated Network (String)"
+                                                    },
+                                                    "translated_network_is_destination_interface": {
+                                                        "type": "boolean",
+                                                        "default": "true",
+                                                        "title": "Translated Network Is Destination Interface",
+                                                        "description": "Translated Network Is Destination Interface (Boolean)\n- Default value: true"
+                                                    },
+                                                    "translated_port": {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 65535,
+                                                        "title": "Translated Port",
+                                                        "description": "Translated Port (Integer)\n- Minimum value: 1\n- Maximum value: 65535"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name",
+                                                    "nat_type"
+                                                ]
+                                            },
+                                            "title": "Ftd Auto Nat Rules",
+                                            "description": "Ftd Auto Nat Rules (List - Object)\n\nElements:\n- name (required)\n- nat_type (required)\n- description\n- destination_interface\n- fall_through\n- ipv6\n- net_to_net\n- no_proxy_arp\n- original_network\n- original_port\n- pat_options\n- perform_route_lookup\n- source_interface\n- translate_dns\n- translated_network\n- translated_network_is_destination_interface\n- translated_port"
+                                        },
+                                        "ftd_manual_nat_rules": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "pattern": "^[a-zA-Z0-9_.+ -]{1,64}$",
+                                                        "title": "Name",
+                                                        "description": "Name (String)"
+                                                    },
+                                                    "nat_type": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "STATIC",
+                                                            "DYNAIMC"
+                                                        ],
+                                                        "title": "Nat Type",
+                                                        "description": "Nat Type (String)\n- Allowed values: STATIC, DYNAIMC"
+                                                    },
+                                                    "original_source": {
+                                                        "type": "string",
+                                                        "title": "Original Source",
+                                                        "description": "Original Source (String)"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "title": "Description",
+                                                        "description": "Description (String)"
+                                                    },
+                                                    "destination_interface": {
+                                                        "type": "string",
+                                                        "title": "Destination Interface",
+                                                        "description": "Destination Interface (String)"
+                                                    },
+                                                    "enabled": {
+                                                        "type": "boolean",
+                                                        "default": "true",
+                                                        "title": "Enabled",
+                                                        "description": "Enabled (Boolean)\n- Default value: true"
+                                                    },
+                                                    "fall_through": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "Fall Through",
+                                                        "description": "Fall Through (Boolean)\n- Default value: false"
+                                                    },
+                                                    "interface_in_original_destination": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "Interface In Original Destination",
+                                                        "description": "Interface In Original Destination (Boolean)\n- Default value: false"
+                                                    },
+                                                    "interface_in_translated_source": {
+                                                        "type": "boolean",
+                                                        "default": "true",
+                                                        "title": "Interface In Translated Source",
+                                                        "description": "Interface In Translated Source (Boolean)\n- Default value: true"
+                                                    },
+                                                    "ipv6": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "IPv6",
+                                                        "description": "IPv6 (Boolean)\n- Default value: false"
+                                                    },
+                                                    "net_to_net": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "Net To Net",
+                                                        "description": "Net To Net (Boolean)\n- Default value: false"
+                                                    },
+                                                    "no_proxy_arp": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "No Proxy ARP",
+                                                        "description": "No Proxy ARP (Boolean)\n- Default value: false"
+                                                    },
+                                                    "original_destination": {
+                                                        "type": "string",
+                                                        "title": "Original Destination",
+                                                        "description": "Original Destination (String)"
+                                                    },
+                                                    "original_destination_port": {
+                                                        "type": "string",
+                                                        "title": "Original Destination Port",
+                                                        "description": "Original Destination Port (String)"
+                                                    },
+                                                    "original_source_port": {
+                                                        "type": "string",
+                                                        "title": "Original Source Port",
+                                                        "description": "Original Source Port (String)"
+                                                    },
+                                                    "perform_route_lookup": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "Perform Route Lookup",
+                                                        "description": "Perform Route Lookup (Boolean)\n- Default value: false"
+                                                    },
+                                                    "section": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "after_auto",
+                                                            "before_auto"
+                                                        ],
+                                                        "title": "Section",
+                                                        "description": "Section (String)\n- Allowed values: after_auto, before_auto"
+                                                    },
+                                                    "source_interface": {
+                                                        "type": "string",
+                                                        "title": "Source Interface",
+                                                        "description": "Source Interface (String)"
+                                                    },
+                                                    "target_index": {
+                                                        "type": "string",
+                                                        "title": "Target Index",
+                                                        "description": "Target Index (String)"
+                                                    },
+                                                    "translate_dns": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "Translate DNS",
+                                                        "description": "Translate DNS (Boolean)\n- Default value: false"
+                                                    },
+                                                    "translated_destination": {
+                                                        "type": "string",
+                                                        "title": "Translated Destination",
+                                                        "description": "Translated Destination (String)"
+                                                    },
+                                                    "translated_destination_port": {
+                                                        "type": "string",
+                                                        "title": "Translated Destination Port",
+                                                        "description": "Translated Destination Port (String)"
+                                                    },
+                                                    "translated_source": {
+                                                        "type": "string",
+                                                        "title": "Translated Source",
+                                                        "description": "Translated Source (String)"
+                                                    },
+                                                    "translated_source_port": {
+                                                        "type": "string",
+                                                        "title": "Translated Source Port",
+                                                        "description": "Translated Source Port (String)"
+                                                    },
+                                                    "unidirectional": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "Unidirectional",
+                                                        "description": "Unidirectional (Boolean)\n- Default value: false"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name",
+                                                    "nat_type"
+                                                ]
+                                            },
+                                            "title": "Ftd Manual Nat Rules",
+                                            "description": "Ftd Manual Nat Rules (List - Object)\n\nElements:\n- name (required)\n- nat_type (required)\n- original_source\n- description\n- destination_interface\n- enabled\n- fall_through\n- interface_in_original_destination\n- interface_in_translated_source\n- ipv6\n- net_to_net\n- no_proxy_arp\n- original_destination\n- original_destination_port\n- original_source_port\n- perform_route_lookup\n- section\n- source_interface\n- target_index\n- translate_dns\n- translated_destination\n- translated_destination_port\n- translated_source\n- translated_source_port\n- unidirectional"
+                                        }
+                                    },
+                                    "required": [
+                                        "name"
+                                    ]
+                                },
+                                "title": "Ftd Nat Policies",
+                                "description": "Ftd Nat Policies (List - Object)\n\nElements:\n- name (required)\n- description\n- ftd_auto_nat_rules\n- ftd_manual_nat_rules"
+                            },
+                            "ips_policies": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "pattern": "^[a-zA-Z0-9_.+ -]{1,64}$",
+                                            "title": "Name",
+                                            "description": "Name (String)"
+                                        },
+                                        "inspection_mode": {
+                                            "type": "string",
+                                            "enum": [
+                                                "DETECTION",
+                                                "PREVENTION"
+                                            ],
+                                            "title": "Inspection Mode",
+                                            "description": "Inspection Mode (String)\n- Allowed values: DETECTION, PREVENTION"
+                                        },
+                                        "base_policy": {
+                                            "type": "string",
+                                            "title": "Base Policy",
+                                            "description": "Base Policy (String)"
+                                        }
+                                    },
+                                    "required": [
+                                        "name"
+                                    ]
+                                },
+                                "title": "IPs Policies",
+                                "description": "IPs Policies (List - Object)\n\nElements:\n- name (required)\n- inspection_mode\n- base_policy"
+                            },
+                            "prefilter_policies": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "pattern": "^[a-zA-Z0-9_.+ -]{1,64}$",
+                                            "title": "Name",
+                                            "description": "Name (String)"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "title": "Description",
+                                            "description": "Description (String)"
+                                        },
+                                        "log_begin": {
+                                            "type": "boolean",
+                                            "title": "Log Begin",
+                                            "description": "Log Begin (Boolean)"
+                                        },
+                                        "send_events_to_fmc": {
+                                            "type": "boolean",
+                                            "title": "Send Events To Fmc",
+                                            "description": "Send Events To Fmc (Boolean)"
+                                        },
+                                        "action": {
+                                            "type": "string",
+                                            "enum": [
+                                                "BLOCK_TUNNELS",
+                                                "ANALYZE_TUNNELS"
+                                            ],
+                                            "default": "ANALYZE_TUNNELS",
+                                            "title": "Action",
+                                            "description": "Action (String)\n- Default value: ANALYZE_TUNNELS\n- Allowed values: BLOCK_TUNNELS, ANALYZE_TUNNELS"
+                                        }
+                                    },
+                                    "required": [
+                                        "name"
+                                    ]
+                                },
+                                "title": "Prefilter Policies",
+                                "description": "Prefilter Policies (List - Object)\n\nElements:\n- name (required)\n- description\n- log_begin\n- send_events_to_fmc\n- action"
+                            }
+                        },
+                        "required": [
+                            "name"
+                        ]
+                    },
+                    "title": "Domains",
+                    "description": "Domains (List - Object)\n\nElements:\n- name (required)\n- devices\n- objects\n- access_policies\n- ftd_nat_policies\n- ips_policies\n- prefilter_policies"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "Name",
+                    "description": "Name (String)"
+                },
+                "smart_license": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "registration_type": {
+                            "type": "string",
+                            "enum": [
+                                "REGISTER",
+                                "EVALUATION"
+                            ],
+                            "title": "Registration Type",
+                            "description": "Registration Type (String)\n- Allowed values: REGISTER, EVALUATION"
+                        },
+                        "force": {
+                            "type": "boolean",
+                            "title": "Force",
+                            "description": "Force (Boolean)"
+                        },
+                        "retain": {
+                            "type": "boolean",
+                            "title": "Retain",
+                            "description": "Retain (Boolean)"
+                        },
+                        "token": {
+                            "type": "string",
+                            "title": "Token",
+                            "description": "Token (String)"
+                        }
+                    },
+                    "required": [
+                        "registration_type"
+                    ],
+                    "title": "Smart License",
+                    "description": "Smart License (Object)\n\nElements:\n- registration_type (required)\n- force\n- retain\n- token"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "title": "Fmc",
+            "description": "Fmc (Object)\n\nElements:\n- domains\n- name (required)\n- smart_license"
+        },
         "sdwan": {
             "type": "object",
             "additionalProperties": false,
