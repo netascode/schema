@@ -24230,6 +24230,11 @@
                                         "type": "string",
                                         "title": "Description",
                                         "description": "Description (String)"
+                                    },
+                                    "parent_group": {
+                                        "type": "string",
+                                        "title": "Parent Group",
+                                        "description": "Parent Group (String)"
                                     }
                                 },
                                 "required": [
@@ -24237,7 +24242,7 @@
                                 ]
                             },
                             "title": "Endpoint Identity Groups",
-                            "description": "Endpoint Identity Groups (List - Object)\n\nElements:\n- name (required)\n- description"
+                            "description": "Endpoint Identity Groups (List - Object)\n\nElements:\n- name (required)\n- description\n- parent_group"
                         },
                         "user_identity_groups": {
                             "type": "array",
