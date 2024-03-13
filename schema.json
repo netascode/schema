@@ -5176,14 +5176,14 @@
                                                 "description": "TTL (Integer)\n- Default value: 64\n- Minimum value: 1\n- Maximum value: 255"
                                             },
                                             "version": {
-                                                "type": "string",
+                                                "type": "integer",
                                                 "enum": [
                                                     1,
                                                     2
                                                 ],
                                                 "default": 2,
                                                 "title": "Version",
-                                                "description": "Version (String)\n- Default value: 2\n- Allowed values: 1, 2"
+                                                "description": "Version (Integer)\n- Default value: 2\n- Allowed values: 1, 2"
                                             },
                                             "enforce_version": {
                                                 "type": "boolean",
@@ -7974,14 +7974,14 @@
                                                 "description": "TTL (Integer)\n- Default value: 64\n- Minimum value: 1\n- Maximum value: 255"
                                             },
                                             "version": {
-                                                "type": "string",
+                                                "type": "integer",
                                                 "enum": [
                                                     1,
                                                     2
                                                 ],
                                                 "default": 2,
                                                 "title": "Version",
-                                                "description": "Version (String)\n- Default value: 2\n- Allowed values: 1, 2"
+                                                "description": "Version (Integer)\n- Default value: 2\n- Allowed values: 1, 2"
                                             },
                                             "enforce_version": {
                                                 "type": "boolean",
@@ -30693,13 +30693,13 @@
                                                     "description": "Method (String)\n- Allowed values: commands, exec, network, system"
                                                 },
                                                 "privilege_level": {
-                                                    "type": "string",
+                                                    "type": "integer",
                                                     "enum": [
                                                         1,
                                                         15
                                                     ],
                                                     "title": "Privilege Level",
-                                                    "description": "Privilege Level (String)\n- Allowed values: 1, 15"
+                                                    "description": "Privilege Level (Integer)\n- Allowed values: 1, 15"
                                                 },
                                                 "start_stop": {
                                                     "type": "boolean",
@@ -30777,13 +30777,13 @@
                                                     "description": "Method (String)\n- Allowed values: commands"
                                                 },
                                                 "privilege_level": {
-                                                    "type": "string",
+                                                    "type": "integer",
                                                     "enum": [
                                                         1,
                                                         15
                                                     ],
                                                     "title": "Privilege Level",
-                                                    "description": "Privilege Level (String)\n- Allowed values: 1, 15"
+                                                    "description": "Privilege Level (Integer)\n- Allowed values: 1, 15"
                                                 },
                                                 "authenticated": {
                                                     "type": "boolean",
@@ -31244,13 +31244,13 @@
                                                     "description": "Password (String)"
                                                 },
                                                 "privilege_level": {
-                                                    "type": "string",
+                                                    "type": "integer",
                                                     "enum": [
                                                         1,
                                                         15
                                                     ],
                                                     "title": "Privilege Level",
-                                                    "description": "Privilege Level (String)\n- Allowed values: 1, 15"
+                                                    "description": "Privilege Level (Integer)\n- Allowed values: 1, 15"
                                                 },
                                                 "privilege_level_variable": {
                                                     "type": "string",
@@ -35432,7 +35432,7 @@
                                         "description": "SGT Trusted (Boolean)"
                                     },
                                     "speed": {
-                                        "type": "string",
+                                        "type": "integer",
                                         "enum": [
                                             10,
                                             100,
@@ -35441,7 +35441,7 @@
                                             10000
                                         ],
                                         "title": "Speed",
-                                        "description": "Speed (String)\n- Allowed values: 10, 100, 1000, 2500, 10000"
+                                        "description": "Speed (Integer)\n- Allowed values: 10, 100, 1000, 2500, 10000"
                                     },
                                     "speed_variable": {
                                         "type": "string",
@@ -36751,7 +36751,7 @@
                                                 "description": "Ciphersuite Variable (String)\n- Minimum length: 1\n- Maximum length: 255"
                                             },
                                             "group": {
-                                                "type": "string",
+                                                "type": "integer",
                                                 "enum": [
                                                     2,
                                                     14,
@@ -36763,7 +36763,7 @@
                                                     24
                                                 ],
                                                 "title": "Group",
-                                                "description": "Group (String)\n- Allowed values: 2, 14, 15, 16, 19, 20, 21, 24"
+                                                "description": "Group (Integer)\n- Allowed values: 2, 14, 15, 16, 19, 20, 21, 24"
                                             },
                                             "group_variable": {
                                                 "type": "string",
@@ -39204,7 +39204,7 @@
                                                     "description": "Ike Ciphersuite Variable (String)\n- Minimum length: 1\n- Maximum length: 255"
                                                 },
                                                 "ike_group": {
-                                                    "type": "string",
+                                                    "type": "integer",
                                                     "enum": [
                                                         2,
                                                         14,
@@ -39212,7 +39212,7 @@
                                                         16
                                                     ],
                                                     "title": "Ike Group",
-                                                    "description": "Ike Group (String)\n- Allowed values: 2, 14, 15, 16"
+                                                    "description": "Ike Group (Integer)\n- Allowed values: 2, 14, 15, 16"
                                                 },
                                                 "ike_group_variable": {
                                                     "type": "string",
@@ -40111,7 +40111,7 @@
                                         "description": "Rekey Interval Variable (String)\n- Minimum length: 1\n- Maximum length: 255"
                                     },
                                     "replay_window": {
-                                        "type": "string",
+                                        "type": "integer",
                                         "enum": [
                                             64,
                                             128,
@@ -40123,7 +40123,7 @@
                                             8192
                                         ],
                                         "title": "Replay Window",
-                                        "description": "Replay Window (String)\n- Allowed values: 64, 128, 256, 512, 1024, 2048, 4096, 8192"
+                                        "description": "Replay Window (Integer)\n- Allowed values: 64, 128, 256, 512, 1024, 2048, 4096, 8192"
                                     },
                                     "replay_window_variable": {
                                         "type": "string",
@@ -41961,7 +41961,7 @@
                                                     "description": "Shutdown Variable (String)\n- Minimum length: 1\n- Maximum length: 255"
                                                 },
                                                 "speed": {
-                                                    "type": "string",
+                                                    "type": "integer",
                                                     "enum": [
                                                         10,
                                                         100,
@@ -41970,7 +41970,7 @@
                                                         10000
                                                     ],
                                                     "title": "Speed",
-                                                    "description": "Speed (String)\n- Allowed values: 10, 100, 1000, 2500, 10000"
+                                                    "description": "Speed (Integer)\n- Allowed values: 10, 100, 1000, 2500, 10000"
                                                 },
                                                 "speed_variable": {
                                                     "type": "string",
@@ -42130,7 +42130,7 @@
                                         "description": "Sub Slot (Integer)\n- Maximum value: 31"
                                     },
                                     "module_type": {
-                                        "type": "string",
+                                        "type": "integer",
                                         "enum": [
                                             4,
                                             8,
@@ -42138,7 +42138,7 @@
                                             50
                                         ],
                                         "title": "Module Type",
-                                        "description": "Module Type (String)\n- Allowed values: 4, 8, 22, 50"
+                                        "description": "Module Type (Integer)\n- Allowed values: 4, 8, 22, 50"
                                     }
                                 },
                                 "required": [
@@ -42332,7 +42332,7 @@
                                         "description": "Affinity Group Preferences Variable (String)\n- Minimum length: 1\n- Maximum length: 255"
                                     },
                                     "console_baud_rate": {
-                                        "type": "string",
+                                        "type": "integer",
                                         "enum": [
                                             1200,
                                             2400,
@@ -42345,7 +42345,7 @@
                                         ],
                                         "default": 9600,
                                         "title": "Console Baud Rate",
-                                        "description": "Console Baud Rate (String)\n- Default value: 9600\n- Allowed values: 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200"
+                                        "description": "Console Baud Rate (Integer)\n- Default value: 9600\n- Allowed values: 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200"
                                     },
                                     "console_baud_rate_variable": {
                                         "type": "string",
@@ -46722,13 +46722,13 @@
                                                                     "description": "Destination IP Prefix (String)\n- IPv4 or IPv6 address"
                                                                 },
                                                                 "destination_port": {
-                                                                    "type": "string",
+                                                                    "type": "integer",
                                                                     "enum": [
                                                                         22,
                                                                         161
                                                                     ],
                                                                     "title": "Destination Port",
-                                                                    "description": "Destination Port (String)\n- Allowed values: 22, 161"
+                                                                    "description": "Destination Port (Integer)\n- Allowed values: 22, 161"
                                                                 },
                                                                 "source_data_prefix_list": {
                                                                     "type": "string",
@@ -47121,13 +47121,13 @@
                                                                     "description": "Destination IP Prefix (String)\n- IPv4 or IPv6 address"
                                                                 },
                                                                 "destination_port": {
-                                                                    "type": "string",
+                                                                    "type": "integer",
                                                                     "enum": [
                                                                         22,
                                                                         161
                                                                     ],
                                                                     "title": "Destination Port",
-                                                                    "description": "Destination Port (String)\n- Allowed values: 22, 161"
+                                                                    "description": "Destination Port (Integer)\n- Allowed values: 22, 161"
                                                                 },
                                                                 "source_data_prefix_list": {
                                                                     "type": "string",
