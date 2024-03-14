@@ -41964,8 +41964,9 @@
                                                     "type": "integer",
                                                     "minimum": 20,
                                                     "maximum": 600,
+                                                    "default": 60,
                                                     "title": "Interval",
-                                                    "description": "Interval (Integer)\n- Minimum value: 20\n- Maximum value: 600"
+                                                    "description": "Interval (Integer)\n- Default value: 60\n- Minimum value: 20\n- Maximum value: 600"
                                                 },
                                                 "interval_variable": {
                                                     "type": "string",
@@ -41977,8 +41978,9 @@
                                                     "type": "integer",
                                                     "minimum": 1,
                                                     "maximum": 10,
+                                                    "default": 3,
                                                     "title": "Multiplier",
-                                                    "description": "Multiplier (Integer)\n- Minimum value: 1\n- Maximum value: 10"
+                                                    "description": "Multiplier (Integer)\n- Default value: 3\n- Minimum value: 1\n- Maximum value: 10"
                                                 },
                                                 "multiplier_variable": {
                                                     "type": "string",
@@ -41995,8 +41997,9 @@
                                                     "type": "integer",
                                                     "minimum": 100,
                                                     "maximum": 1000,
+                                                    "default": 300,
                                                     "title": "Threshold",
-                                                    "description": "Threshold (Integer)\n- Minimum value: 100\n- Maximum value: 1000"
+                                                    "description": "Threshold (Integer)\n- Default value: 300\n- Minimum value: 100\n- Maximum value: 1000"
                                                 },
                                                 "threshold_variable": {
                                                     "type": "string",
