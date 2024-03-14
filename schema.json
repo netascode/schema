@@ -42052,8 +42052,9 @@
                                                         "interface",
                                                         "static-route"
                                                     ],
+                                                    "default": "interface",
                                                     "title": "Type",
-                                                    "description": "Type (String)\n- Allowed values: interface, static-route"
+                                                    "description": "Type (String)\n- Default value: interface\n- Allowed values: interface, static-route"
                                                 },
                                                 "type_variable": {
                                                     "type": "string",
