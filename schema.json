@@ -29361,6 +29361,85 @@
                                 "title": "Devices",
                                 "description": "Devices (List - Object)\n\nElements:\n- name (required)\n- host\n- registration_key\n- access_policy\n- nat_policy\n- licenses\n- nat_id\n- performance_tier\n- physical_interfaces\n- ipv4_static_routes\n- deploy\n- deploy_ignore_warning\n- deploy_force"
                             },
+                            "clusters": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "pattern": "^[a-zA-Z0-9_.+ -]{1,64}$",
+                                            "title": "Name",
+                                            "description": "Name (String)"
+                                        },
+                                        "ccl_prefix": {
+                                            "type": "string",
+                                            "default": "10.10.3.0/27",
+                                            "title": "Ccl Prefix",
+                                            "description": "Ccl Prefix (String)\n- Default value: 10.10.3.0/27\n- IPv4 or IPv6 address"
+                                        },
+                                        "vni_prefix": {
+                                            "type": "string",
+                                            "default": "10.10.4.0/27",
+                                            "title": "Vni Prefix",
+                                            "description": "Vni Prefix (String)\n- Default value: 10.10.4.0/27\n- IPv4 or IPv6 address"
+                                        },
+                                        "ccl_interface": {
+                                            "type": "string",
+                                            "title": "Ccl Interface",
+                                            "description": "Ccl Interface (String)"
+                                        },
+                                        "devices": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "pattern": "^[a-zA-Z0-9_.+ -]{1,64}$",
+                                                        "title": "Name",
+                                                        "description": "Name (String)"
+                                                    },
+                                                    "ccl_ip": {
+                                                        "type": "string",
+                                                        "title": "Ccl IP",
+                                                        "description": "Ccl IP (String)\n- IPv4 or IPv6 address"
+                                                    },
+                                                    "control_node": {
+                                                        "type": "boolean",
+                                                        "title": "Control Node",
+                                                        "description": "Control Node (Boolean)"
+                                                    },
+                                                    "priority": {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 255,
+                                                        "title": "Priority",
+                                                        "description": "Priority (Integer)\n- Minimum value: 1\n- Maximum value: 255"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name",
+                                                    "ccl_ip"
+                                                ]
+                                            },
+                                            "title": "Devices",
+                                            "description": "Devices (List - Object)\n\nElements:\n- name (required)\n- ccl_ip (required)\n- control_node\n- priority"
+                                        }
+                                    },
+                                    "required": [
+                                        "name",
+                                        "ccl_prefix",
+                                        "vni_prefix",
+                                        "ccl_interface",
+                                        "devices"
+                                    ]
+                                },
+                                "title": "Clusters",
+                                "description": "Clusters (List - Object)\n\nElements:\n- name (required)\n- ccl_prefix (required)\n- vni_prefix (required)\n- ccl_interface (required)\n- devices (required)"
+                            },
                             "objects": {
                                 "type": "object",
                                 "additionalProperties": false,
@@ -30487,7 +30566,7 @@
                         ]
                     },
                     "title": "Domains",
-                    "description": "Domains (List - Object)\n\nElements:\n- name (required)\n- devices\n- objects\n- access_policies\n- ftd_nat_policies\n- ips_policies\n- prefilter_policies"
+                    "description": "Domains (List - Object)\n\nElements:\n- name (required)\n- devices\n- clusters\n- objects\n- access_policies\n- ftd_nat_policies\n- ips_policies\n- prefilter_policies"
                 },
                 "name": {
                     "type": "string",
