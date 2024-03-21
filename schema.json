@@ -39063,16 +39063,6 @@
                                                     "title": "Shutdown",
                                                     "description": "Shutdown (Boolean)"
                                                 },
-                                                "sig_provider": {
-                                                    "type": "string",
-                                                    "enum": [
-                                                        "umbrella",
-                                                        "zscaler",
-                                                        "other"
-                                                    ],
-                                                    "title": "Sig Provider",
-                                                    "description": "Sig Provider (String)\n- Allowed values: umbrella, zscaler, other"
-                                                },
                                                 "tcp_mss": {
                                                     "type": "integer",
                                                     "minimum": 500,
@@ -39122,6 +39112,17 @@
                                                     "title": "Tunnel Destination Variable",
                                                     "description": "Tunnel Destination Variable (String)"
                                                 },
+                                                "tunnel_public_source_ip": {
+                                                    "type": "string",
+                                                    "title": "Tunnel Public Source IP",
+                                                    "description": "Tunnel Public Source IP (String)\n- IPv4 or IPv6 address"
+                                                },
+                                                "tunnel_public_source_ip_variable": {
+                                                    "type": "string",
+                                                    "pattern": "^[^\"~`$&+,]{1,255}$",
+                                                    "title": "Tunnel Public Source IP Variable",
+                                                    "description": "Tunnel Public Source IP Variable (String)"
+                                                },
                                                 "tunnel_source_interface": {
                                                     "type": "string",
                                                     "title": "Tunnel Source Interface",
@@ -39132,15 +39133,34 @@
                                                     "pattern": "^[^\"~`$&+,]{1,255}$",
                                                     "title": "Tunnel Source Interface Variable",
                                                     "description": "Tunnel Source Interface Variable (String)"
+                                                },
+                                                "tunnel_type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "gre",
+                                                        "ipsec"
+                                                    ],
+                                                    "title": "Tunnel Type",
+                                                    "description": "Tunnel Type (String)\n- Allowed values: gre, ipsec"
                                                 }
                                             },
                                             "required": [
-                                                "sig_provider",
-                                                "tunnel_dc_preference"
+                                                "tunnel_dc_preference",
+                                                "tunnel_type"
                                             ]
                                         },
                                         "title": "Interfaces",
-                                        "description": "Interfaces (List - Object)\n\nElements:\n- description\n- description_variable\n- dpd_interval\n- dpd_interval_variable\n- dpd_retries\n- dpd_retries_variable\n- ike_ciphersuite\n- ike_ciphersuite_variable\n- ike_group\n- ike_group_variable\n- ike_pre_shared_key\n- ike_pre_shared_key_variable\n- ike_pre_shared_key_local_id\n- ike_pre_shared_key_local_id_variable\n- ike_pre_shared_key_remote_id\n- ike_pre_shared_key_remote_id_variable\n- ike_rekey_interval\n- ike_rekey_interval_variable\n- ipsec_ciphersuite\n- ipsec_ciphersuite_variable\n- ipsec_perfect_forward_secrecy\n- ipsec_perfect_forward_secrecy_variable\n- ipsec_rekey_interval\n- ipsec_rekey_interval_variable\n- ipsec_replay_window\n- ipsec_replay_window_variable\n- mtu\n- mtu_variable\n- name\n- name_variable\n- shutdown\n- sig_provider (required)\n- tcp_mss\n- tcp_mss_variable\n- track\n- tracker\n- tracker_variable\n- tunnel_dc_preference (required)\n- tunnel_destination\n- tunnel_destination_variable\n- tunnel_source_interface\n- tunnel_source_interface_variable"
+                                        "description": "Interfaces (List - Object)\n\nElements:\n- description\n- description_variable\n- dpd_interval\n- dpd_interval_variable\n- dpd_retries\n- dpd_retries_variable\n- ike_ciphersuite\n- ike_ciphersuite_variable\n- ike_group\n- ike_group_variable\n- ike_pre_shared_key\n- ike_pre_shared_key_variable\n- ike_pre_shared_key_local_id\n- ike_pre_shared_key_local_id_variable\n- ike_pre_shared_key_remote_id\n- ike_pre_shared_key_remote_id_variable\n- ike_rekey_interval\n- ike_rekey_interval_variable\n- ipsec_ciphersuite\n- ipsec_ciphersuite_variable\n- ipsec_perfect_forward_secrecy\n- ipsec_perfect_forward_secrecy_variable\n- ipsec_rekey_interval\n- ipsec_rekey_interval_variable\n- ipsec_replay_window\n- ipsec_replay_window_variable\n- mtu\n- mtu_variable\n- name\n- name_variable\n- shutdown\n- tcp_mss\n- tcp_mss_variable\n- track\n- tracker\n- tracker_variable\n- tunnel_dc_preference (required)\n- tunnel_destination\n- tunnel_destination_variable\n- tunnel_public_source_ip\n- tunnel_public_source_ip_variable\n- tunnel_source_interface\n- tunnel_source_interface_variable\n- tunnel_type (required)"
+                                    },
+                                    "sig_provider": {
+                                        "type": "string",
+                                        "enum": [
+                                            "umbrella",
+                                            "zscaler",
+                                            "other"
+                                        ],
+                                        "title": "Sig Provider",
+                                        "description": "Sig Provider (String)\n- Allowed values: umbrella, zscaler, other"
                                     },
                                     "tracker_source_ip": {
                                         "type": "string",
@@ -39366,11 +39386,12 @@
                                     "name",
                                     "description",
                                     "high_availability_interface_pairs",
-                                    "interfaces"
+                                    "interfaces",
+                                    "sig_provider"
                                 ]
                             },
                             "title": "Secure Internet Gateway Templates",
-                            "description": "Secure Internet Gateway Templates (List - Object)\n\nElements:\n- name (required)\n- description (required)\n- device_types\n- high_availability_interface_pairs (required)\n- interfaces (required)\n- tracker_source_ip\n- tracker_source_ip_variable\n- trackers\n- umbrella_primary_data_center\n- umbrella_primary_data_center_variable\n- umbrella_secondary_data_center\n- umbrella_secondary_data_center_variable\n- zscaler_aup_block_internet_until_accepted\n- zscaler_aup_enabled\n- zscaler_aup_force_ssl_inspection\n- zscaler_aup_timeout\n- zscaler_authentication_required\n- zscaler_caution_enabled\n- zscaler_ips_control_enabled\n- zscaler_firewall_enabled\n- zscaler_location_name_variable\n- zscaler_primary_data_center\n- zscaler_primary_data_center_variable\n- zscaler_secondary_data_center\n- zscaler_secondary_data_center_variable\n- zscaler_surrogate_display_time_unit\n- zscaler_surrogate_idle_time\n- zscaler_surrogate_ip\n- zscaler_surrogate_ip_enforce_for_known_browsers\n- zscaler_surrogate_refresh_time\n- zscaler_surrogate_refresh_time_unit\n- zscaler_xff_forward"
+                            "description": "Secure Internet Gateway Templates (List - Object)\n\nElements:\n- name (required)\n- description (required)\n- device_types\n- high_availability_interface_pairs (required)\n- interfaces (required)\n- sig_provider (required)\n- tracker_source_ip\n- tracker_source_ip_variable\n- trackers\n- umbrella_primary_data_center\n- umbrella_primary_data_center_variable\n- umbrella_secondary_data_center\n- umbrella_secondary_data_center_variable\n- zscaler_aup_block_internet_until_accepted\n- zscaler_aup_enabled\n- zscaler_aup_force_ssl_inspection\n- zscaler_aup_timeout\n- zscaler_authentication_required\n- zscaler_caution_enabled\n- zscaler_ips_control_enabled\n- zscaler_firewall_enabled\n- zscaler_location_name_variable\n- zscaler_primary_data_center\n- zscaler_primary_data_center_variable\n- zscaler_secondary_data_center\n- zscaler_secondary_data_center_variable\n- zscaler_surrogate_display_time_unit\n- zscaler_surrogate_idle_time\n- zscaler_surrogate_ip\n- zscaler_surrogate_ip_enforce_for_known_browsers\n- zscaler_surrogate_refresh_time\n- zscaler_surrogate_refresh_time_unit\n- zscaler_xff_forward"
                         },
                         "security_templates": {
                             "type": "array",
