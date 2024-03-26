@@ -38881,8 +38881,9 @@
                                                         "aes128-cbc-sha1",
                                                         "aes128-cbc-sha2"
                                                     ],
+                                                    "default": "aes256-cbc-sha1",
                                                     "title": "Ike Ciphersuite",
-                                                    "description": "Ike Ciphersuite (String)\n- Allowed values: aes256-cbc-sha1, aes256-cbc-sha2, aes128-cbc-sha1, aes128-cbc-sha2"
+                                                    "description": "Ike Ciphersuite (String)\n- Default value: aes256-cbc-sha1\n- Allowed values: aes256-cbc-sha1, aes256-cbc-sha2, aes128-cbc-sha1, aes128-cbc-sha2"
                                                 },
                                                 "ike_ciphersuite_variable": {
                                                     "type": "string",
@@ -38898,8 +38899,9 @@
                                                         15,
                                                         16
                                                     ],
+                                                    "default": 14,
                                                     "title": "Ike Group",
-                                                    "description": "Ike Group (Integer)\n- Allowed values: 2, 14, 15, 16"
+                                                    "description": "Ike Group (Integer)\n- Default value: 14\n- Allowed values: 2, 14, 15, 16"
                                                 },
                                                 "ike_group_variable": {
                                                     "type": "string",
@@ -38958,8 +38960,9 @@
                                                     "type": "integer",
                                                     "minimum": 300,
                                                     "maximum": 1209600,
+                                                    "default": 14400,
                                                     "title": "Ike Rekey Interval",
-                                                    "description": "Ike Rekey Interval (Integer)\n- Minimum value: 300\n- Maximum value: 1209600"
+                                                    "description": "Ike Rekey Interval (Integer)\n- Default value: 14400\n- Minimum value: 300\n- Maximum value: 1209600"
                                                 },
                                                 "ike_rekey_interval_variable": {
                                                     "type": "string",
@@ -38980,8 +38983,9 @@
                                                         "null-sha256",
                                                         "null-sha512"
                                                     ],
+                                                    "default": "aes256-gcm",
                                                     "title": "Ipsec Ciphersuite",
-                                                    "description": "Ipsec Ciphersuite (String)\n- Allowed values: aes256-cbc-sha1, aes256-cbc-sha384, aes256-cbc-sha256, aes256-cbc-sha512, aes256-gcm, null-sha1, null-sha384, null-sha256, null-sha512"
+                                                    "description": "Ipsec Ciphersuite (String)\n- Default value: aes256-gcm\n- Allowed values: aes256-cbc-sha1, aes256-cbc-sha384, aes256-cbc-sha256, aes256-cbc-sha512, aes256-gcm, null-sha1, null-sha384, null-sha256, null-sha512"
                                                 },
                                                 "ipsec_ciphersuite_variable": {
                                                     "type": "string",
@@ -38998,8 +39002,9 @@
                                                         "group-16",
                                                         "none"
                                                     ],
+                                                    "default": "none",
                                                     "title": "Ipsec Perfect Forward Secrecy",
-                                                    "description": "Ipsec Perfect Forward Secrecy (String)\n- Allowed values: group-2, group-14, group-15, group-16, none"
+                                                    "description": "Ipsec Perfect Forward Secrecy (String)\n- Default value: none\n- Allowed values: group-2, group-14, group-15, group-16, none"
                                                 },
                                                 "ipsec_perfect_forward_secrecy_variable": {
                                                     "type": "string",
@@ -39011,8 +39016,9 @@
                                                     "type": "integer",
                                                     "minimum": 300,
                                                     "maximum": 1209600,
+                                                    "default": 3600,
                                                     "title": "Ipsec Rekey Interval",
-                                                    "description": "Ipsec Rekey Interval (Integer)\n- Minimum value: 300\n- Maximum value: 1209600"
+                                                    "description": "Ipsec Rekey Interval (Integer)\n- Default value: 3600\n- Minimum value: 300\n- Maximum value: 1209600"
                                                 },
                                                 "ipsec_rekey_interval_variable": {
                                                     "type": "string",
@@ -39024,8 +39030,9 @@
                                                     "type": "integer",
                                                     "minimum": 64,
                                                     "maximum": 4096,
+                                                    "default": 512,
                                                     "title": "Ipsec Replay Window",
-                                                    "description": "Ipsec Replay Window (Integer)\n- Minimum value: 64\n- Maximum value: 4096"
+                                                    "description": "Ipsec Replay Window (Integer)\n- Default value: 512\n- Minimum value: 64\n- Maximum value: 4096"
                                                 },
                                                 "ipsec_replay_window_variable": {
                                                     "type": "string",
@@ -46088,12 +46095,11 @@
                                                     },
                                                     "required": [
                                                         "id",
-                                                        "base_action",
-                                                        "match_criterias"
+                                                        "base_action"
                                                     ]
                                                 },
                                                 "title": "Sequences",
-                                                "description": "Sequences (List - Object)\n\nElements:\n- id (required)\n- name\n- base_action (required)\n- match_criterias (required)\n- actions"
+                                                "description": "Sequences (List - Object)\n\nElements:\n- id (required)\n- name\n- base_action (required)\n- match_criterias\n- actions"
                                             }
                                         },
                                         "required": [
