@@ -27676,6 +27676,7 @@
                                                         },
                                                         "command": {
                                                             "type": "string",
+                                                            "pattern": "^[\\w\\d_]+$",
                                                             "title": "Command",
                                                             "description": "Command (String)"
                                                         },
