@@ -29150,9 +29150,9 @@
                                                         "description": "Ipv4 DHCP Route Metric (Integer)\n- Minimum value: 1\n- Maximum value: 255"
                                                     },
                                                     "ipv6": {
-                                                        "type": "string",
+                                                        "type": "boolean",
                                                         "title": "IPv6",
-                                                        "description": "IPv6 (String)"
+                                                        "description": "IPv6 (Boolean)"
                                                     },
                                                     "ipv6_address": {
                                                         "type": "string",
