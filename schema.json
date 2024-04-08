@@ -29770,9 +29770,9 @@
                                                         "IPV6_ONLY",
                                                         "IPV4_AND_IPV6"
                                                     ],
-                                                    "default": "IPV4_ONLY",
+                                                    "default": "IPV4_AND_IPV6",
                                                     "title": "DNS Resolution",
-                                                    "description": "DNS Resolution (String)\n- Default value: IPV4_ONLY\n- Allowed values: IPV4_ONLY, IPV6_ONLY, IPV4_AND_IPV6"
+                                                    "description": "DNS Resolution (String)\n- Default value: IPV4_AND_IPV6\n- Allowed values: IPV4_ONLY, IPV6_ONLY, IPV4_AND_IPV6"
                                                 }
                                             },
                                             "required": [
