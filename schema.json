@@ -30616,6 +30616,10 @@
             "title": "Fmc",
             "description": "Fmc (Object)\n\nElements:\n- domains\n- name (required)\n- smart_license"
         },
+        "existing": {
+            "title": "Existing",
+            "description": "Existing ()"
+        },
         "sdwan": {
             "type": "object",
             "additionalProperties": false,
