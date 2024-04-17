@@ -29715,7 +29715,9 @@
                                                         {
                                                             "type": "string",
                                                             "enum": [
-                                                                "any"
+                                                                "any",
+                                                                "ANY",
+                                                                "Any"
                                                             ]
                                                         },
                                                         {
