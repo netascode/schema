@@ -29557,10 +29557,10 @@
                                                 },
                                                 "description": {
                                                     "type": "string",
-                                                    "maxLength": 30,
+                                                    "maxLength": 255,
                                                     "default": " ",
                                                     "title": "Description",
-                                                    "description": "Description (String)\n- Default value:  \n- Maximum length: 30"
+                                                    "description": "Description (String)\n- Default value:  \n- Maximum length: 255"
                                                 },
                                                 "objects": {
                                                     "type": "array",
@@ -30612,17 +30612,456 @@
                     "description": "Smart License (Object)\n\nElements:\n- registration_type (required)\n- force\n- retain\n- token"
                 }
             },
-            "required": [],
+            "required": [
+                "name"
+            ],
             "title": "Fmc",
-            "description": "Fmc (Object)\n\nElements:\n- domains\n- name\n- smart_license"
+            "description": "Fmc (Object)\n\nElements:\n- domains\n- name (required)\n- smart_license"
         },
         "existing": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
                 "fmc": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "domains": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "title": "Name",
+                                        "description": "Name (String)"
+                                    },
+                                    "devices": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.+ -]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                },
+                                                "physical_interfaces": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "name": {
+                                                                "type": "string",
+                                                                "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                                "title": "Name",
+                                                                "description": "Name (String)"
+                                                            },
+                                                            "subinterfaces": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "name": {
+                                                                            "type": "string",
+                                                                            "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                                            "title": "Name",
+                                                                            "description": "Name (String)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "name"
+                                                                    ]
+                                                                },
+                                                                "title": "Subinterfaces",
+                                                                "description": "Subinterfaces (List - Object)\n\nElements:\n- name (required)"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "name"
+                                                        ]
+                                                    },
+                                                    "title": "Physical Interfaces",
+                                                    "description": "Physical Interfaces (List - Object)\n\nElements:\n- name (required)\n- subinterfaces"
+                                                },
+                                                "ipv4_static_routes": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "name": {
+                                                                "type": "string",
+                                                                "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                                "title": "Name",
+                                                                "description": "Name (String)"
+                                                            }
+                                                        },
+                                                        "required": []
+                                                    },
+                                                    "title": "Ipv4 Static Routes",
+                                                    "description": "Ipv4 Static Routes (List - Object)\n\nElements:\n- name"
+                                                }
+                                            },
+                                            "required": [
+                                                "name"
+                                            ]
+                                        },
+                                        "title": "Devices",
+                                        "description": "Devices (List - Object)\n\nElements:\n- name (required)\n- physical_interfaces\n- ipv4_static_routes"
+                                    },
+                                    "clusters": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.+ -]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                }
+                                            },
+                                            "required": [
+                                                "name"
+                                            ]
+                                        },
+                                        "title": "Clusters",
+                                        "description": "Clusters (List - Object)\n\nElements:\n- name (required)"
+                                    },
+                                    "objects": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "hosts": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Hosts",
+                                                "description": "Hosts (List - Object)\n\nElements:\n- name (required)"
+                                            },
+                                            "networks": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Networks",
+                                                "description": "Networks (List - Object)\n\nElements:\n- name (required)"
+                                            },
+                                            "ranges": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Ranges",
+                                                "description": "Ranges (List - Object)\n\nElements:\n- name (required)"
+                                            },
+                                            "network_groups": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Network Groups",
+                                                "description": "Network Groups (List - Object)\n\nElements:\n- name (required)"
+                                            },
+                                            "urls": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "URLs",
+                                                "description": "URLs (List - Object)\n\nElements:\n- name (required)"
+                                            },
+                                            "ports": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Ports",
+                                                "description": "Ports (List - Object)\n\nElements:\n- name (required)"
+                                            },
+                                            "port_groups": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Port Groups",
+                                                "description": "Port Groups (List - Object)\n\nElements:\n- name (required)"
+                                            },
+                                            "dynamic_objects": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Dynamic Objects",
+                                                "description": "Dynamic Objects (List - Object)\n\nElements:\n- name (required)"
+                                            },
+                                            "sgts": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "SGTs",
+                                                "description": "SGTs (List - Object)\n\nElements:\n- name (required)"
+                                            },
+                                            "security_zones": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "pattern": "^[a-zA-Z0-9_.+-]{1,64}$",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Security Zones",
+                                                "description": "Security Zones (List - Object)\n\nElements:\n- name (required)"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Objects",
+                                        "description": "Objects (Object)\n\nElements:\n- hosts\n- networks\n- ranges\n- network_groups\n- urls\n- ports\n- port_groups\n- dynamic_objects\n- sgts\n- security_zones"
+                                    },
+                                    "access_policies": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_ -]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                }
+                                            },
+                                            "required": [
+                                                "name"
+                                            ]
+                                        },
+                                        "title": "Access Policies",
+                                        "description": "Access Policies (List - Object)\n\nElements:\n- name (required)"
+                                    },
+                                    "ftd_nat_policies": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_ -]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                }
+                                            },
+                                            "required": [
+                                                "name"
+                                            ]
+                                        },
+                                        "title": "Ftd Nat Policies",
+                                        "description": "Ftd Nat Policies (List - Object)\n\nElements:\n- name (required)"
+                                    },
+                                    "ips_policies": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.+ -]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                }
+                                            },
+                                            "required": [
+                                                "name"
+                                            ]
+                                        },
+                                        "title": "IPs Policies",
+                                        "description": "IPs Policies (List - Object)\n\nElements:\n- name (required)"
+                                    },
+                                    "prefilter_policies": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.+ -]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                }
+                                            },
+                                            "required": [
+                                                "name"
+                                            ]
+                                        },
+                                        "title": "Prefilter Policies",
+                                        "description": "Prefilter Policies (List - Object)\n\nElements:\n- name (required)"
+                                    },
+                                    "file_policies": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.+ -]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                }
+                                            },
+                                            "required": [
+                                                "name"
+                                            ]
+                                        },
+                                        "title": "File Policies",
+                                        "description": "File Policies (List - Object)\n\nElements:\n- name (required)"
+                                    }
+                                },
+                                "required": [
+                                    "name"
+                                ]
+                            },
+                            "title": "Domains",
+                            "description": "Domains (List - Object)\n\nElements:\n- name (required)\n- devices\n- clusters\n- objects\n- access_policies\n- ftd_nat_policies\n- ips_policies\n- prefilter_policies\n- file_policies"
+                        },
+                        "name": {
+                            "type": "string",
+                            "title": "Name",
+                            "description": "Name (String)"
+                        }
+                    },
+                    "required": [
+                        "name"
+                    ],
                     "title": "Fmc",
-                    "description": "Fmc ()"
+                    "description": "Fmc (Object)\n\nElements:\n- domains\n- name (required)"
                 }
             },
             "required": [],
