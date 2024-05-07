@@ -50298,11 +50298,72 @@
                     "required": [],
                     "title": "Centralized Policies",
                     "description": "Centralized Policies (Object)\n\nElements:\n- definitions\n- feature_policies\n- cli_policies\n- activated_policy"
+                },
+                "feature_profiles": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "cli_profiles": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "pattern": "^[^&<>! \"]{1,128}$",
+                                        "title": "Name",
+                                        "description": "Name (String)"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "title": "Description",
+                                        "description": "Description (String)"
+                                    },
+                                    "config": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "pattern": "^[^&<>! \"]{1,128}$",
+                                                "title": "Name",
+                                                "description": "Name (String)"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "title": "Description",
+                                                "description": "Description (String)"
+                                            },
+                                            "cli_configuration": {
+                                                "type": "string",
+                                                "title": "CLI Configuration",
+                                                "description": "CLI Configuration (String)"
+                                            }
+                                        },
+                                        "required": [
+                                            "cli_configuration"
+                                        ],
+                                        "title": "Config",
+                                        "description": "Config (Object)\n\nElements:\n- name\n- description\n- cli_configuration (required)"
+                                    }
+                                },
+                                "required": [
+                                    "name"
+                                ]
+                            },
+                            "title": "CLI Profiles",
+                            "description": "CLI Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- config"
+                        }
+                    },
+                    "required": [],
+                    "title": "Feature Profiles",
+                    "description": "Feature Profiles (Object)\n\nElements:\n- cli_profiles"
                 }
             },
             "required": [],
             "title": "Sdwan",
-            "description": "Sdwan (Object)\n\nElements:\n- edge_feature_templates\n- policy_objects\n- localized_policies\n- edge_device_templates\n- sites\n- multi_region_fabric\n- centralized_policies"
+            "description": "Sdwan (Object)\n\nElements:\n- edge_feature_templates\n- policy_objects\n- localized_policies\n- edge_device_templates\n- sites\n- multi_region_fabric\n- centralized_policies\n- feature_profiles"
         }
     },
     "required": []
