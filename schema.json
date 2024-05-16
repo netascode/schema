@@ -24214,6 +24214,157 @@
                     "type": "object",
                     "additionalProperties": false,
                     "properties": {
+                        "endpoints": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "mac": {
+                                        "type": "string",
+                                        "pattern": "^([0-9A-Fa-f]{2}:){5}([0-9A-Fa-f]{2})$",
+                                        "title": "MAC",
+                                        "description": "MAC (String)"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "title": "Description",
+                                        "description": "Description (String)"
+                                    },
+                                    "identity_store": {
+                                        "type": "string",
+                                        "title": "Identity Store",
+                                        "description": "Identity Store (String)"
+                                    },
+                                    "identity_store_id": {
+                                        "type": "string",
+                                        "title": "IDentity Store ID",
+                                        "description": "IDentity Store ID (String)"
+                                    },
+                                    "endpoint_identity_group": {
+                                        "type": "string",
+                                        "title": "Endpoint Identity Group",
+                                        "description": "Endpoint Identity Group (String)"
+                                    },
+                                    "static_profile_assignment": {
+                                        "type": "boolean",
+                                        "title": "Static Profile Assignment",
+                                        "description": "Static Profile Assignment (Boolean)"
+                                    },
+                                    "static_profile_assignment_defined": {
+                                        "type": "boolean",
+                                        "title": "Static Profile Assignment Defined",
+                                        "description": "Static Profile Assignment Defined (Boolean)"
+                                    },
+                                    "static_group_assignment": {
+                                        "type": "boolean",
+                                        "title": "Static Group Assignment",
+                                        "description": "Static Group Assignment (Boolean)"
+                                    },
+                                    "static_group_assignment_defined": {
+                                        "type": "boolean",
+                                        "title": "Static Group Assignment Defined",
+                                        "description": "Static Group Assignment Defined (Boolean)"
+                                    },
+                                    "portal_user": {
+                                        "type": "string",
+                                        "title": "Portal User",
+                                        "description": "Portal User (String)"
+                                    },
+                                    "profile_id": {
+                                        "type": "string",
+                                        "title": "Profile ID",
+                                        "description": "Profile ID (String)"
+                                    },
+                                    "mdm_attributes": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "compliance_status": {
+                                                "type": "boolean",
+                                                "title": "Compliance Status",
+                                                "description": "Compliance Status (Boolean)"
+                                            },
+                                            "encrypted": {
+                                                "type": "boolean",
+                                                "title": "Encrypted",
+                                                "description": "Encrypted (Boolean)"
+                                            },
+                                            "enrolled": {
+                                                "type": "boolean",
+                                                "title": "Enrolled",
+                                                "description": "Enrolled (Boolean)"
+                                            },
+                                            "imei": {
+                                                "type": "string",
+                                                "title": "Imei",
+                                                "description": "Imei (String)"
+                                            },
+                                            "jail_broken": {
+                                                "type": "boolean",
+                                                "title": "Jail Broken",
+                                                "description": "Jail Broken (Boolean)"
+                                            },
+                                            "manufacturer": {
+                                                "type": "string",
+                                                "title": "Manufacturer",
+                                                "description": "Manufacturer (String)"
+                                            },
+                                            "model": {
+                                                "type": "string",
+                                                "title": "Model",
+                                                "description": "Model (String)"
+                                            },
+                                            "os": {
+                                                "type": "string",
+                                                "title": "Os",
+                                                "description": "Os (String)"
+                                            },
+                                            "phone_number": {
+                                                "type": "string",
+                                                "title": "Phone Number",
+                                                "description": "Phone Number (String)"
+                                            },
+                                            "pin_lock": {
+                                                "type": "boolean",
+                                                "title": "Pin Lock",
+                                                "description": "Pin Lock (Boolean)"
+                                            },
+                                            "reachable": {
+                                                "type": "boolean",
+                                                "title": "Reachable",
+                                                "description": "Reachable (Boolean)"
+                                            },
+                                            "serial": {
+                                                "type": "string",
+                                                "title": "Serial",
+                                                "description": "Serial (String)"
+                                            },
+                                            "server_name": {
+                                                "type": "string",
+                                                "title": "Server Name",
+                                                "description": "Server Name (String)"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Mdm Attributes",
+                                        "description": "Mdm Attributes (Object)\n\nElements:\n- compliance_status\n- encrypted\n- enrolled\n- imei\n- jail_broken\n- manufacturer\n- model\n- os\n- phone_number\n- pin_lock\n- reachable\n- serial\n- server_name"
+                                    },
+                                    "custom_attributes": {
+                                        "type": "object",
+                                        "title": "Custom Attributes",
+                                        "description": "Custom Attributes (Object)\n- Map (key-value pairs)"
+                                    }
+                                },
+                                "required": [
+                                    "mac",
+                                    "static_profile_assignment",
+                                    "static_group_assignment"
+                                ]
+                            },
+                            "title": "Endpoints",
+                            "description": "Endpoints (List - Object)\n\nElements:\n- mac (required)\n- description\n- identity_store\n- identity_store_id\n- endpoint_identity_group\n- static_profile_assignment (required)\n- static_profile_assignment_defined\n- static_group_assignment (required)\n- static_group_assignment_defined\n- portal_user\n- profile_id\n- mdm_attributes\n- custom_attributes"
+                        },
                         "endpoint_identity_groups": {
                             "type": "array",
                             "items": {
@@ -24482,74 +24633,80 @@
                                         "description": "Groups (List - String)"
                                     },
                                     "attributes": {
-                                        "type": "object",
-                                        "additionalProperties": false,
-                                        "properties": {
-                                            "name": {
-                                                "type": "string",
-                                                "pattern": "^[\\w\\d_\\-\\.]+$",
-                                                "title": "Name",
-                                                "description": "Name (String)"
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[\\w\\d_\\-\\.]+$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "STRING",
+                                                        "IP",
+                                                        "BOOLEAN",
+                                                        "INT",
+                                                        "OCTET_STRING"
+                                                    ],
+                                                    "title": "Type",
+                                                    "description": "Type (String)\n- Allowed values: STRING, IP, BOOLEAN, INT, OCTET_STRING"
+                                                },
+                                                "internal_name": {
+                                                    "type": "string",
+                                                    "title": "Internal Name",
+                                                    "description": "Internal Name (String)"
+                                                },
+                                                "default_value": {
+                                                    "type": "string",
+                                                    "title": "Default Value",
+                                                    "description": "Default Value (String)"
+                                                }
                                             },
-                                            "type": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "STRING",
-                                                    "IP",
-                                                    "BOOLEAN",
-                                                    "INT",
-                                                    "OCTET_STRING"
-                                                ],
-                                                "title": "Type",
-                                                "description": "Type (String)\n- Allowed values: STRING, IP, BOOLEAN, INT, OCTET_STRING"
-                                            },
-                                            "internal_name": {
-                                                "type": "string",
-                                                "title": "Internal Name",
-                                                "description": "Internal Name (String)"
-                                            },
-                                            "default_value": {
-                                                "type": "string",
-                                                "title": "Default Value",
-                                                "description": "Default Value (String)"
-                                            }
+                                            "required": [
+                                                "name",
+                                                "type",
+                                                "internal_name",
+                                                "default_value"
+                                            ]
                                         },
-                                        "required": [
-                                            "name",
-                                            "type",
-                                            "internal_name",
-                                            "default_value"
-                                        ],
                                         "title": "Attributes",
-                                        "description": "Attributes (Object)\n\nElements:\n- name (required)\n- type (required)\n- internal_name (required)\n- default_value (required)"
+                                        "description": "Attributes (List - Object)\n\nElements:\n- name (required)\n- type (required)\n- internal_name (required)\n- default_value (required)"
                                     },
                                     "rewrite_rules": {
-                                        "type": "object",
-                                        "additionalProperties": false,
-                                        "properties": {
-                                            "row_id": {
-                                                "type": "string",
-                                                "title": "Row ID",
-                                                "description": "Row ID (String)"
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "row_id": {
+                                                    "type": "string",
+                                                    "title": "Row ID",
+                                                    "description": "Row ID (String)"
+                                                },
+                                                "rewrite_match": {
+                                                    "type": "string",
+                                                    "title": "Rewrite Match",
+                                                    "description": "Rewrite Match (String)"
+                                                },
+                                                "rewrite_result": {
+                                                    "type": "string",
+                                                    "title": "Rewrite Result",
+                                                    "description": "Rewrite Result (String)"
+                                                }
                                             },
-                                            "rewrite_match": {
-                                                "type": "string",
-                                                "title": "Rewrite Match",
-                                                "description": "Rewrite Match (String)"
-                                            },
-                                            "rewrite_result": {
-                                                "type": "string",
-                                                "title": "Rewrite Result",
-                                                "description": "Rewrite Result (String)"
-                                            }
+                                            "required": [
+                                                "row_id",
+                                                "rewrite_match",
+                                                "rewrite_result"
+                                            ]
                                         },
-                                        "required": [
-                                            "row_id",
-                                            "rewrite_match",
-                                            "rewrite_result"
-                                        ],
                                         "title": "Rewrite Rules",
-                                        "description": "Rewrite Rules (Object)\n\nElements:\n- row_id (required)\n- rewrite_match (required)\n- rewrite_result (required)"
+                                        "description": "Rewrite Rules (List - Object)\n\nElements:\n- row_id (required)\n- rewrite_match (required)\n- rewrite_result (required)"
                                     },
                                     "enable_rewrites": {
                                         "type": "boolean",
@@ -24623,11 +24780,11 @@
                                     "schema": {
                                         "type": "string",
                                         "enum": [
-                                            "PROCEED",
-                                            "DROP"
+                                            "ACTIVE_DIRECTORY",
+                                            "CUSTOM"
                                         ],
                                         "title": "Schema",
-                                        "description": "Schema (String)\n- Allowed values: PROCEED, DROP"
+                                        "description": "Schema (String)\n- Allowed values: ACTIVE_DIRECTORY, CUSTOM"
                                     },
                                     "first_name": {
                                         "type": "string",
@@ -24767,7 +24924,7 @@
                     },
                     "required": [],
                     "title": "Identity Management",
-                    "description": "Identity Management (Object)\n\nElements:\n- endpoint_identity_groups\n- user_identity_groups\n- internal_users\n- certificate_authentication_profiles\n- active_directories\n- identity_source_sequences"
+                    "description": "Identity Management (Object)\n\nElements:\n- endpoints\n- endpoint_identity_groups\n- user_identity_groups\n- internal_users\n- certificate_authentication_profiles\n- active_directories\n- identity_source_sequences"
                 },
                 "trust_sec": {
                     "type": "object",
