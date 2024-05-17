@@ -50532,6 +50532,11 @@
                         "type": "object",
                         "additionalProperties": false,
                         "properties": {
+                            "name": {
+                                "type": "string",
+                                "title": "Name",
+                                "description": "Name (String)"
+                            },
                             "networks": {
                                 "type": "array",
                                 "items": {
@@ -50692,10 +50697,12 @@
                                 "description": "Administrators (List - Object)\n\nElements:\n- name (required)\n- email (required)\n- authentication_method\n- organization_access\n- networks\n- tags"
                             }
                         },
-                        "required": []
+                        "required": [
+                            "name"
+                        ]
                     },
                     "title": "Organizations",
-                    "description": "Organizations (List - Object)\n\nElements:\n- networks\n- administrators"
+                    "description": "Organizations (List - Object)\n\nElements:\n- name (required)\n- networks\n- administrators"
                 }
             },
             "required": [],
