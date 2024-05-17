@@ -50521,6 +50521,186 @@
             "required": [],
             "title": "Sdwan",
             "description": "Sdwan (Object)\n\nElements:\n- edge_feature_templates\n- policy_objects\n- localized_policies\n- edge_device_templates\n- sites\n- multi_region_fabric\n- centralized_policies\n- feature_profiles"
+        },
+        "meraki": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "organizations": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "networks": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "title": "Name",
+                                            "description": "Name (String)"
+                                        },
+                                        "notes": {
+                                            "type": "string",
+                                            "title": "Notes",
+                                            "description": "Notes (String)"
+                                        },
+                                        "timezone": {
+                                            "type": "string",
+                                            "title": "Timezone",
+                                            "description": "Timezone (String)"
+                                        },
+                                        "product_types": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "appliance",
+                                                    "switch",
+                                                    "wireless"
+                                                ]
+                                            },
+                                            "title": "Product Types",
+                                            "description": "Product Types (List - String)"
+                                        },
+                                        "tags": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "title": "Tags",
+                                            "description": "Tags (List - String)"
+                                        }
+                                    },
+                                    "required": [
+                                        "name",
+                                        "product_types"
+                                    ]
+                                },
+                                "title": "Networks",
+                                "description": "Networks (List - Object)\n\nElements:\n- name (required)\n- notes\n- timezone\n- product_types (required)\n- tags"
+                            },
+                            "administrators": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "title": "Name",
+                                            "description": "Name (String)"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "title": "Email",
+                                            "description": "Email (String)"
+                                        },
+                                        "authentication_method": {
+                                            "type": "string",
+                                            "enum": [
+                                                "Cisco SecureX Sign-On",
+                                                "Email"
+                                            ],
+                                            "default": "Email",
+                                            "title": "Authentication Method",
+                                            "description": "Authentication Method (String)\n- Default value: Email\n- Allowed values: Cisco SecureX Sign-On, Email"
+                                        },
+                                        "organization_access": {
+                                            "type": "string",
+                                            "enum": [
+                                                "enterprise",
+                                                "full",
+                                                "none",
+                                                "read-only"
+                                            ],
+                                            "default": "full",
+                                            "title": "Organization Access",
+                                            "description": "Organization Access (String)\n- Default value: full\n- Allowed values: enterprise, full, none, read-only"
+                                        },
+                                        "networks": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "title": "Name",
+                                                        "description": "Name (String)"
+                                                    },
+                                                    "access": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "full",
+                                                            "read-only",
+                                                            "guest-ambassador",
+                                                            "monitor-only"
+                                                        ],
+                                                        "default": "full",
+                                                        "title": "Access",
+                                                        "description": "Access (String)\n- Default value: full\n- Allowed values: full, read-only, guest-ambassador, monitor-only"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name"
+                                                ]
+                                            },
+                                            "title": "Networks",
+                                            "description": "Networks (List - Object)\n\nElements:\n- name (required)\n- access"
+                                        },
+                                        "tags": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "title": "Name",
+                                                        "description": "Name (String)"
+                                                    },
+                                                    "access": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "full",
+                                                            "read-only",
+                                                            "guest-ambassador",
+                                                            "monitor-only"
+                                                        ],
+                                                        "title": "Access",
+                                                        "description": "Access (String)\n- Allowed values: full, read-only, guest-ambassador, monitor-only"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name"
+                                                ]
+                                            },
+                                            "title": "Tags",
+                                            "description": "Tags (List - Object)\n\nElements:\n- name (required)\n- access"
+                                        }
+                                    },
+                                    "required": [
+                                        "name",
+                                        "email"
+                                    ]
+                                },
+                                "title": "Administrators",
+                                "description": "Administrators (List - Object)\n\nElements:\n- name (required)\n- email (required)\n- authentication_method\n- organization_access\n- networks\n- tags"
+                            }
+                        },
+                        "required": []
+                    },
+                    "title": "Organizations",
+                    "description": "Organizations (List - Object)\n\nElements:\n- networks\n- administrators"
+                }
+            },
+            "required": [],
+            "title": "Meraki",
+            "description": "Meraki (Object)\n\nElements:\n- organizations"
         }
     },
     "required": []
