@@ -6960,6 +6960,84 @@
                                                 "default": "drop",
                                                 "title": "Action",
                                                 "description": "Action (String)\n- Default value: drop\n- Allowed values: drop, shutdown"
+                                            },
+                                            "rate": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "number",
+                                                        "maximum": 100
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^(100|[1-9]?[0-9])(\\.\\d+)?$"
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "defaultValue"
+                                                        ]
+                                                    }
+                                                ],
+                                                "default": "100.000000",
+                                                "title": "Rate",
+                                                "description": "Rate (Number, String, String)\n- Default value: 100.000000"
+                                            },
+                                            "rate_pps": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 4882812
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "unspecified"
+                                                        ]
+                                                    }
+                                                ],
+                                                "default": "unspecified",
+                                                "title": "Rate PPS",
+                                                "description": "Rate PPS (Integer, String)\n- Default value: unspecified"
+                                            },
+                                            "burst_rate": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "number",
+                                                        "maximum": 100
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^(100|[1-9]?[0-9])(\\.\\d+)?$"
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "defaultValue"
+                                                        ]
+                                                    }
+                                                ],
+                                                "default": "100.000000",
+                                                "title": "Burst Rate",
+                                                "description": "Burst Rate (Number, String, String)\n- Default value: 100.000000"
+                                            },
+                                            "burst_pps": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 4882812
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "unspecified"
+                                                        ]
+                                                    }
+                                                ],
+                                                "default": "unspecified",
+                                                "title": "Burst PPS",
+                                                "description": "Burst PPS (Integer, String)\n- Default value: unspecified"
                                             }
                                         },
                                         "required": [
@@ -6967,7 +7045,7 @@
                                         ]
                                     },
                                     "title": "Storm Control Policies",
-                                    "description": "Storm Control Policies (List - Object)\n\nElements:\n- name (required)\n- description\n- alias\n- broadcast_burst_pps\n- broadcast_burst_rate\n- broadcast_rate\n- broadcast_pps\n- multicast_burst_pps\n- multicast_burst_rate\n- multicast_rate\n- multicast_pps\n- unknown_unicast_burst_pps\n- unknown_unicast_burst_rate\n- unknown_unicast_rate\n- unknown_unicast_pps\n- action"
+                                    "description": "Storm Control Policies (List - Object)\n\nElements:\n- name (required)\n- description\n- alias\n- broadcast_burst_pps\n- broadcast_burst_rate\n- broadcast_rate\n- broadcast_pps\n- multicast_burst_pps\n- multicast_burst_rate\n- multicast_rate\n- multicast_pps\n- unknown_unicast_burst_pps\n- unknown_unicast_burst_rate\n- unknown_unicast_rate\n- unknown_unicast_pps\n- action\n- rate\n- rate_pps\n- burst_rate\n- burst_pps"
                                 }
                             },
                             "required": [],
