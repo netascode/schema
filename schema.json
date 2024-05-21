@@ -14123,6 +14123,12 @@
                                             "type": "object",
                                             "additionalProperties": false,
                                             "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                },
                                                 "description": {
                                                     "type": "string",
                                                     "pattern": "^[a-zA-Z0-9\\\\!#$%()*,-./:;@ _{|}~?&+]{1,128}$",
@@ -14173,11 +14179,14 @@
                                                                 "title": "Order",
                                                                 "description": "Order (Integer)\n- Maximum value: 9"
                                                             },
-                                                            "match_rule": {
-                                                                "type": "string",
-                                                                "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
-                                                                "title": "Match Rule",
-                                                                "description": "Match Rule (String)"
+                                                            "match_rules": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$"
+                                                                },
+                                                                "title": "Match Rules",
+                                                                "description": "Match Rules (List - String)"
                                                             },
                                                             "set_rule": {
                                                                 "type": "string",
@@ -14191,17 +14200,23 @@
                                                         ]
                                                     },
                                                     "title": "Contexts",
-                                                    "description": "Contexts (List - Object)\n\nElements:\n- name (required)\n- description\n- action\n- order\n- match_rule\n- set_rule"
+                                                    "description": "Contexts (List - Object)\n\nElements:\n- name (required)\n- description\n- action\n- order\n- match_rules\n- set_rule"
                                                 }
                                             },
                                             "required": [],
                                             "title": "Import Route Map",
-                                            "description": "Import Route Map (Object)\n\nElements:\n- description\n- type\n- contexts"
+                                            "description": "Import Route Map (Object)\n\nElements:\n- name\n- description\n- type\n- contexts"
                                         },
                                         "export_route_map": {
                                             "type": "object",
                                             "additionalProperties": false,
                                             "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                },
                                                 "description": {
                                                     "type": "string",
                                                     "pattern": "^[a-zA-Z0-9\\\\!#$%()*,-./:;@ _{|}~?&+]{1,128}$",
@@ -14252,11 +14267,14 @@
                                                                 "title": "Order",
                                                                 "description": "Order (Integer)\n- Maximum value: 9"
                                                             },
-                                                            "match_rule": {
-                                                                "type": "string",
-                                                                "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
-                                                                "title": "Match Rule",
-                                                                "description": "Match Rule (String)"
+                                                            "match_rules": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$"
+                                                                },
+                                                                "title": "Match Rules",
+                                                                "description": "Match Rules (List - String)"
                                                             },
                                                             "set_rule": {
                                                                 "type": "string",
@@ -14270,12 +14288,12 @@
                                                         ]
                                                     },
                                                     "title": "Contexts",
-                                                    "description": "Contexts (List - Object)\n\nElements:\n- name (required)\n- description\n- action\n- order\n- match_rule\n- set_rule"
+                                                    "description": "Contexts (List - Object)\n\nElements:\n- name (required)\n- description\n- action\n- order\n- match_rules\n- set_rule"
                                                 }
                                             },
                                             "required": [],
                                             "title": "Export Route Map",
-                                            "description": "Export Route Map (Object)\n\nElements:\n- description\n- type\n- contexts"
+                                            "description": "Export Route Map (Object)\n\nElements:\n- name\n- description\n- type\n- contexts"
                                         },
                                         "interleak_route_map": {
                                             "type": "string",
@@ -14550,12 +14568,6 @@
                                             "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
                                             "title": "VRF",
                                             "description": "VRF (String)"
-                                        },
-                                        "sr_mpls_infra_l3out": {
-                                            "type": "string",
-                                            "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
-                                            "title": "Sr Mpls Infra L3Out",
-                                            "description": "Sr Mpls Infra L3Out (String)"
                                         },
                                         "domain": {
                                             "type": "string",
@@ -15076,17 +15088,48 @@
                                             "title": "External Endpoint Groups",
                                             "description": "External Endpoint Groups (List - Object)\n\nElements:\n- name (required)\n- alias\n- description\n- preferred_group\n- subnets\n- contracts"
                                         },
-                                        "inbound_route_map": {
-                                            "type": "string",
-                                            "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
-                                            "title": "Inbound Route Map",
-                                            "description": "Inbound Route Map (String)"
-                                        },
-                                        "outbound_route_map": {
-                                            "type": "string",
-                                            "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
-                                            "title": "Outbound Route Map",
-                                            "description": "Outbound Route Map (String)"
+                                        "sr_mpls_infra_l3outs": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                        "title": "Name",
+                                                        "description": "Name (String)"
+                                                    },
+                                                    "inbound_route_map": {
+                                                        "type": "string",
+                                                        "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                        "title": "Inbound Route Map",
+                                                        "description": "Inbound Route Map (String)"
+                                                    },
+                                                    "outbound_route_map": {
+                                                        "type": "string",
+                                                        "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                        "title": "Outbound Route Map",
+                                                        "description": "Outbound Route Map (String)"
+                                                    },
+                                                    "external_endpoint_groups": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "pattern": "^[a-zA-Z0-9_.:-]{1,64}$"
+                                                        },
+                                                        "title": "External Endpoint Groups",
+                                                        "description": "External Endpoint Groups (List - String)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name",
+                                                    "outbound_route_map",
+                                                    "external_endpoint_groups"
+                                                ]
+                                            },
+                                            "title": "Sr Mpls Infra L3Outs",
+                                            "description": "Sr Mpls Infra L3Outs (List - Object)\n\nElements:\n- name (required)\n- inbound_route_map\n- outbound_route_map (required)\n- external_endpoint_groups (required)"
                                         }
                                     },
                                     "required": [
@@ -15094,7 +15137,7 @@
                                     ]
                                 },
                                 "title": "Sr Mpls L3Outs",
-                                "description": "Sr Mpls L3Outs (List - Object)\n\nElements:\n- name (required)\n- alias\n- description\n- vrf\n- sr_mpls_infra_l3out\n- domain\n- transport_data_plane\n- node_profiles\n- external_endpoint_groups\n- inbound_route_map\n- outbound_route_map"
+                                "description": "Sr Mpls L3Outs (List - Object)\n\nElements:\n- name (required)\n- alias\n- description\n- vrf\n- domain\n- transport_data_plane\n- node_profiles\n- external_endpoint_groups\n- sr_mpls_infra_l3outs"
                             },
                             "filters": {
                                 "type": "array",
