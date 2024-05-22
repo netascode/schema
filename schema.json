@@ -5880,6 +5880,94 @@
                             "title": "AAEPs",
                             "description": "AAEPs (List - Object)\n\nElements:\n- name (required)\n- infra_vlan\n- physical_domains\n- routed_domains\n- vmware_vmm_domains\n- endpoint_groups\n- expected_state"
                         },
+                        "ptp_profiles": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "pattern": "^[a-zA-Z0-9_.:-]{1,16}$",
+                                        "title": "Name",
+                                        "description": "Name (String)"
+                                    },
+                                    "announce_interval": {
+                                        "type": "integer",
+                                        "minimum": -3,
+                                        "maximum": 4,
+                                        "default": 1,
+                                        "title": "Announce Interval",
+                                        "description": "Announce Interval (Integer)\n- Default value: 1\n- Minimum value: -3\n- Maximum value: 4"
+                                    },
+                                    "announce_timeout": {
+                                        "type": "integer",
+                                        "minimum": 2,
+                                        "maximum": 10,
+                                        "default": 3,
+                                        "title": "Announce Timeout",
+                                        "description": "Announce Timeout (Integer)\n- Default value: 3\n- Minimum value: 2\n- Maximum value: 10"
+                                    },
+                                    "delay_interval": {
+                                        "type": "integer",
+                                        "minimum": -4,
+                                        "maximum": 5,
+                                        "default": -3,
+                                        "title": "Delay Interval",
+                                        "description": "Delay Interval (Integer)\n- Default value: -3\n- Minimum value: -4\n- Maximum value: 5"
+                                    },
+                                    "sync_interval": {
+                                        "type": "integer",
+                                        "minimum": -4,
+                                        "maximum": 1,
+                                        "default": -3,
+                                        "title": "Sync Interval",
+                                        "description": "Sync Interval (Integer)\n- Default value: -3\n- Minimum value: -4\n- Maximum value: 1"
+                                    },
+                                    "priority": {
+                                        "type": "integer",
+                                        "minimum": 1,
+                                        "maximum": 255,
+                                        "default": 128,
+                                        "title": "Priority",
+                                        "description": "Priority (Integer)\n- Default value: 128\n- Minimum value: 1\n- Maximum value: 255"
+                                    },
+                                    "template": {
+                                        "type": "string",
+                                        "enum": [
+                                            "aes67",
+                                            "smpte",
+                                            "telecom"
+                                        ],
+                                        "default": "aes67",
+                                        "title": "Template",
+                                        "description": "Template (String)\n- Default value: aes67\n- Allowed values: aes67, smpte, telecom"
+                                    },
+                                    "forwardable": {
+                                        "type": "boolean",
+                                        "default": "true",
+                                        "title": "Forwardable",
+                                        "description": "Forwardable (Boolean)\n- Default value: true"
+                                    },
+                                    "mismatch_handling": {
+                                        "type": "string",
+                                        "enum": [
+                                            "drop",
+                                            "received",
+                                            "configured"
+                                        ],
+                                        "default": "configured",
+                                        "title": "Mismatch Handling",
+                                        "description": "Mismatch Handling (String)\n- Default value: configured\n- Allowed values: drop, received, configured"
+                                    }
+                                },
+                                "required": [
+                                    "name"
+                                ]
+                            },
+                            "title": "PTP Profiles",
+                            "description": "PTP Profiles (List - Object)\n\nElements:\n- name (required)\n- announce_interval\n- announce_timeout\n- delay_interval\n- sync_interval\n- priority\n- template\n- forwardable\n- mismatch_handling"
+                        },
                         "switch_policies": {
                             "type": "object",
                             "additionalProperties": false,
@@ -8954,7 +9042,7 @@
                     },
                     "required": [],
                     "title": "Access Policies",
-                    "description": "Access Policies (Object)\n\nElements:\n- leaf_switch_profile_name\n- leaf_switch_selector_name\n- leaf_interface_profile_name\n- leaf_interface_selector_name\n- leaf_interface_selector_sub_port_name\n- fex_profile_name\n- fex_interface_selector_name\n- spine_switch_profile_name\n- spine_switch_selector_name\n- spine_interface_profile_name\n- spine_interface_selector_name\n- vpc_group_name\n- infra_vlan\n- vlan_pools\n- physical_domains\n- routed_domains\n- aaeps\n- switch_policies\n- spine_switch_policy_groups\n- leaf_switch_policy_groups\n- leaf_switch_profiles\n- spine_switch_profiles\n- interface_policies\n- leaf_interface_policy_groups\n- spine_interface_policy_groups\n- leaf_interface_profiles\n- fex_interface_profiles\n- spine_interface_profiles\n- mcp\n- qos\n- span\n- vspan"
+                    "description": "Access Policies (Object)\n\nElements:\n- leaf_switch_profile_name\n- leaf_switch_selector_name\n- leaf_interface_profile_name\n- leaf_interface_selector_name\n- leaf_interface_selector_sub_port_name\n- fex_profile_name\n- fex_interface_selector_name\n- spine_switch_profile_name\n- spine_switch_selector_name\n- spine_interface_profile_name\n- spine_interface_selector_name\n- vpc_group_name\n- infra_vlan\n- vlan_pools\n- physical_domains\n- routed_domains\n- aaeps\n- ptp_profiles\n- switch_policies\n- spine_switch_policy_groups\n- leaf_switch_policy_groups\n- leaf_switch_profiles\n- spine_switch_profiles\n- interface_policies\n- leaf_interface_policy_groups\n- spine_interface_policy_groups\n- leaf_interface_profiles\n- fex_interface_profiles\n- spine_interface_profiles\n- mcp\n- qos\n- span\n- vspan"
                 },
                 "pod_policies": {
                     "type": "object",
@@ -10925,6 +11013,40 @@
                                                                     "default": "regular",
                                                                     "title": "Mode",
                                                                     "description": "Mode (String)\n- Default value: regular\n- Allowed values: regular, native, untagged"
+                                                                },
+                                                                "ptp": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "mode": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "multicast",
+                                                                                "multicast-master",
+                                                                                "unicast-master"
+                                                                            ],
+                                                                            "default": "multicast",
+                                                                            "title": "Mode",
+                                                                            "description": "Mode (String)\n- Default value: multicast\n- Allowed values: multicast, multicast-master, unicast-master"
+                                                                        },
+                                                                        "source_ip": {
+                                                                            "type": "string",
+                                                                            "default": "0.0.0.0",
+                                                                            "title": "Source IP",
+                                                                            "description": "Source IP (String)\n- Default value: 0.0.0.0\n- IPv4 or IPv6 address"
+                                                                        },
+                                                                        "profile": {
+                                                                            "type": "string",
+                                                                            "pattern": "^[a-zA-Z0-9_.:-]{1,16}$",
+                                                                            "title": "Profile",
+                                                                            "description": "Profile (String)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "profile"
+                                                                    ],
+                                                                    "title": "PTP",
+                                                                    "description": "PTP (Object)\n\nElements:\n- mode\n- source_ip\n- profile (required)"
                                                                 }
                                                             },
                                                             "required": [
@@ -10932,7 +11054,7 @@
                                                             ]
                                                         },
                                                         "title": "Static Ports",
-                                                        "description": "Static Ports (List - Object)\n\nElements:\n- node_id\n- node2_id\n- fex_id\n- pod_id\n- module\n- port\n- sub_port\n- channel\n- vlan (required)\n- deployment_immediacy\n- mode"
+                                                        "description": "Static Ports (List - Object)\n\nElements:\n- node_id\n- node2_id\n- fex_id\n- pod_id\n- module\n- port\n- sub_port\n- channel\n- vlan (required)\n- deployment_immediacy\n- mode\n- ptp"
                                                     },
                                                     "static_leafs": {
                                                         "type": "array",
