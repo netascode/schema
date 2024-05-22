@@ -860,6 +860,12 @@
                                                             "title": "Name",
                                                             "description": "Name (String)"
                                                         },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "pattern": "^[a-zA-Z0-9\\\\!#$%()*,-./:;@ _{|}~?&+]{1,128}$",
+                                                            "title": "Description",
+                                                            "description": "Description (String)"
+                                                        },
                                                         "privacy_type": {
                                                             "type": "string",
                                                             "enum": [
@@ -906,7 +912,7 @@
                                                     ]
                                                 },
                                                 "title": "Users",
-                                                "description": "Users (List - Object)\n\nElements:\n- name (required)\n- privacy_type\n- privacy_key\n- authorization_type\n- authorization_key (required)"
+                                                "description": "Users (List - Object)\n\nElements:\n- name (required)\n- description\n- privacy_type\n- privacy_key\n- authorization_type\n- authorization_key (required)"
                                             },
                                             "communities": {
                                                 "type": "array",
@@ -953,6 +959,12 @@
                                                             "title": "Name",
                                                             "description": "Name (String)"
                                                         },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "pattern": "^[a-zA-Z0-9\\\\!#$%()*,-./:;@ _{|}~?&+]{1,128}$",
+                                                            "title": "Description",
+                                                            "description": "Description (String)"
+                                                        },
                                                         "mgmt_epg": {
                                                             "type": "string",
                                                             "enum": [
@@ -995,7 +1007,7 @@
                                                     ]
                                                 },
                                                 "title": "Clients",
-                                                "description": "Clients (List - Object)\n\nElements:\n- name (required)\n- mgmt_epg (required)\n- entries"
+                                                "description": "Clients (List - Object)\n\nElements:\n- name (required)\n- description\n- mgmt_epg (required)\n- entries"
                                             }
                                         },
                                         "required": [
@@ -5733,6 +5745,12 @@
                                         "title": "Name",
                                         "description": "Name (String)"
                                     },
+                                    "description": {
+                                        "type": "string",
+                                        "pattern": "^[a-zA-Z0-9\\\\!#$%()*,-./:;@ _{|}~?&+]{1,128}$",
+                                        "title": "Description",
+                                        "description": "Description (String)"
+                                    },
                                     "infra_vlan": {
                                         "type": "boolean",
                                         "default": "false",
@@ -5878,7 +5896,7 @@
                                 ]
                             },
                             "title": "AAEPs",
-                            "description": "AAEPs (List - Object)\n\nElements:\n- name (required)\n- infra_vlan\n- physical_domains\n- routed_domains\n- vmware_vmm_domains\n- endpoint_groups\n- expected_state"
+                            "description": "AAEPs (List - Object)\n\nElements:\n- name (required)\n- description\n- infra_vlan\n- physical_domains\n- routed_domains\n- vmware_vmm_domains\n- endpoint_groups\n- expected_state"
                         },
                         "ptp_profiles": {
                             "type": "array",
@@ -13084,6 +13102,15 @@
                                                                     "title": "Mode",
                                                                     "description": "Mode (String)\n- Default value: regular\n- Allowed values: regular, native, untagged"
                                                                 },
+                                                                "state": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "local",
+                                                                        "vrf"
+                                                                    ],
+                                                                    "title": "State",
+                                                                    "description": "State (String)\n- Allowed values: local, vrf"
+                                                                },
                                                                 "expected_state": {
                                                                     "type": "object",
                                                                     "additionalProperties": false,
@@ -13144,7 +13171,7 @@
                                                             "required": []
                                                         },
                                                         "title": "Interfaces",
-                                                        "description": "Interfaces (List - Object)\n\nElements:\n- description\n- node_id\n- node2_id\n- port\n- module\n- channel\n- ip\n- svi\n- multipod_direct\n- autostate\n- floating_svi\n- vlan\n- mac\n- mtu\n- ip_a\n- ip_b\n- ip_shared\n- bgp_peers\n- paths\n- mode\n- expected_state"
+                                                        "description": "Interfaces (List - Object)\n\nElements:\n- description\n- node_id\n- node2_id\n- port\n- module\n- channel\n- ip\n- svi\n- multipod_direct\n- autostate\n- floating_svi\n- vlan\n- mac\n- mtu\n- ip_a\n- ip_b\n- ip_shared\n- bgp_peers\n- paths\n- mode\n- state\n- expected_state"
                                                     }
                                                 },
                                                 "required": [
@@ -13947,6 +13974,16 @@
                                                                                 "title": "Mode",
                                                                                 "description": "Mode (String)\n- Default value: regular\n- Allowed values: regular, native, untagged"
                                                                             },
+                                                                            "scope": {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "local",
+                                                                                    "vrf"
+                                                                                ],
+                                                                                "default": "local",
+                                                                                "title": "Scope",
+                                                                                "description": "Scope (String)\n- Default value: local\n- Allowed values: local, vrf"
+                                                                            },
                                                                             "expected_state": {
                                                                                 "type": "object",
                                                                                 "additionalProperties": false,
@@ -14007,7 +14044,7 @@
                                                                         "required": []
                                                                     },
                                                                     "title": "Interfaces",
-                                                                    "description": "Interfaces (List - Object)\n\nElements:\n- description\n- node_id\n- node2_id\n- pod_id\n- module\n- port\n- channel\n- ip\n- multipod_direct\n- svi\n- autostate\n- floating_svi\n- vlan\n- mac\n- mtu\n- ip_a\n- ip_b\n- ip_shared\n- bgp_peers\n- paths\n- mode\n- expected_state"
+                                                                    "description": "Interfaces (List - Object)\n\nElements:\n- description\n- node_id\n- node2_id\n- pod_id\n- module\n- port\n- channel\n- ip\n- multipod_direct\n- svi\n- autostate\n- floating_svi\n- vlan\n- mac\n- mtu\n- ip_a\n- ip_b\n- ip_shared\n- bgp_peers\n- paths\n- mode\n- scope\n- expected_state"
                                                                 }
                                                             },
                                                             "required": [
