@@ -8325,8 +8325,9 @@
                                                                         "type": "integer",
                                                                         "minimum": 1,
                                                                         "maximum": 255,
+                                                                        "default": 1,
                                                                         "title": "Pod ID",
-                                                                        "description": "Pod ID (Integer)\n- Minimum value: 1\n- Maximum value: 255"
+                                                                        "description": "Pod ID (Integer)\n- Default value: 1\n- Minimum value: 1\n- Maximum value: 255"
                                                                     },
                                                                     "module": {
                                                                         "type": "integer",
@@ -8368,10 +8369,11 @@
                                                                         "enum": [
                                                                             "access",
                                                                             "vpc",
-                                                                            "pc"
+                                                                            "pc",
+                                                                            "component"
                                                                         ],
                                                                         "title": "Type",
-                                                                        "description": "Type (String)\n- Allowed values: access, vpc, pc"
+                                                                        "description": "Type (String)\n- Allowed values: access, vpc, pc, component"
                                                                     }
                                                                 },
                                                                 "required": []
@@ -9038,11 +9040,96 @@
                             "required": [],
                             "title": "Vspan",
                             "description": "Vspan (Object)\n\nElements:\n- sessions\n- destination_groups"
+                        },
+                        "dhcp_relay_policies": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                        "title": "Name",
+                                        "description": "Name (String)"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "pattern": "^[a-zA-Z0-9\\\\!#$%()*,-./:;@ _{|}~?&+]{1,128}$",
+                                        "title": "Description",
+                                        "description": "Description (String)"
+                                    },
+                                    "providers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "ip": {
+                                                    "type": "string",
+                                                    "title": "IP",
+                                                    "description": "IP (String)\n- IPv4 or IPv6 address"
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "epg",
+                                                        "external_epg"
+                                                    ],
+                                                    "title": "Type",
+                                                    "description": "Type (String)\n- Allowed values: epg, external_epg"
+                                                },
+                                                "tenant": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                    "title": "Tenant",
+                                                    "description": "Tenant (String)"
+                                                },
+                                                "application_profile": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                    "title": "Application Profile",
+                                                    "description": "Application Profile (String)"
+                                                },
+                                                "endpoint_group": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                    "title": "Endpoint Group",
+                                                    "description": "Endpoint Group (String)"
+                                                },
+                                                "l3out": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                    "title": "L3Out",
+                                                    "description": "L3Out (String)"
+                                                },
+                                                "external_endpoint_group": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                    "title": "External Endpoint Group",
+                                                    "description": "External Endpoint Group (String)"
+                                                }
+                                            },
+                                            "required": [
+                                                "ip",
+                                                "type"
+                                            ]
+                                        },
+                                        "title": "Providers",
+                                        "description": "Providers (List - Object)\n\nElements:\n- ip (required)\n- type (required)\n- tenant\n- application_profile\n- endpoint_group\n- l3out\n- external_endpoint_group"
+                                    }
+                                },
+                                "required": [
+                                    "name"
+                                ]
+                            },
+                            "title": "DHCP Relay Policies",
+                            "description": "DHCP Relay Policies (List - Object)\n\nElements:\n- name (required)\n- description\n- providers"
                         }
                     },
                     "required": [],
                     "title": "Access Policies",
-                    "description": "Access Policies (Object)\n\nElements:\n- leaf_switch_profile_name\n- leaf_switch_selector_name\n- leaf_interface_profile_name\n- leaf_interface_selector_name\n- leaf_interface_selector_sub_port_name\n- fex_profile_name\n- fex_interface_selector_name\n- spine_switch_profile_name\n- spine_switch_selector_name\n- spine_interface_profile_name\n- spine_interface_selector_name\n- vpc_group_name\n- infra_vlan\n- vlan_pools\n- physical_domains\n- routed_domains\n- aaeps\n- ptp_profiles\n- switch_policies\n- spine_switch_policy_groups\n- leaf_switch_policy_groups\n- leaf_switch_profiles\n- spine_switch_profiles\n- interface_policies\n- leaf_interface_policy_groups\n- spine_interface_policy_groups\n- leaf_interface_profiles\n- fex_interface_profiles\n- spine_interface_profiles\n- mcp\n- qos\n- span\n- vspan"
+                    "description": "Access Policies (Object)\n\nElements:\n- leaf_switch_profile_name\n- leaf_switch_selector_name\n- leaf_interface_profile_name\n- leaf_interface_selector_name\n- leaf_interface_selector_sub_port_name\n- fex_profile_name\n- fex_interface_selector_name\n- spine_switch_profile_name\n- spine_switch_selector_name\n- spine_interface_profile_name\n- spine_interface_selector_name\n- vpc_group_name\n- infra_vlan\n- vlan_pools\n- physical_domains\n- routed_domains\n- aaeps\n- ptp_profiles\n- switch_policies\n- spine_switch_policy_groups\n- leaf_switch_policy_groups\n- leaf_switch_profiles\n- spine_switch_profiles\n- interface_policies\n- leaf_interface_policy_groups\n- spine_interface_policy_groups\n- leaf_interface_profiles\n- fex_interface_profiles\n- spine_interface_profiles\n- mcp\n- qos\n- span\n- vspan\n- dhcp_relay_policies"
                 },
                 "pod_policies": {
                     "type": "object",
@@ -16607,11 +16694,12 @@
                                                             }
                                                         },
                                                         "required": [
-                                                            "ip"
+                                                            "ip",
+                                                            "type"
                                                         ]
                                                     },
                                                     "title": "Providers",
-                                                    "description": "Providers (List - Object)\n\nElements:\n- ip (required)\n- type\n- tenant\n- application_profile\n- endpoint_group\n- l3out\n- external_endpoint_group"
+                                                    "description": "Providers (List - Object)\n\nElements:\n- ip (required)\n- type (required)\n- tenant\n- application_profile\n- endpoint_group\n- l3out\n- external_endpoint_group"
                                                 }
                                             },
                                             "required": [
