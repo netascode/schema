@@ -12742,6 +12742,12 @@
                                                                     },
                                                                     "title": "Next Hops",
                                                                     "description": "Next Hops (List - Object)\n\nElements:\n- ip (required)\n- preference\n- type"
+                                                                },
+                                                                "track_list": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                    "title": "Track List",
+                                                                    "description": "Track List (String)"
                                                                 }
                                                             },
                                                             "required": [
@@ -12749,7 +12755,7 @@
                                                             ]
                                                         },
                                                         "title": "Static Routes",
-                                                        "description": "Static Routes (List - Object)\n\nElements:\n- description\n- prefix (required)\n- preference\n- bfd\n- next_hops"
+                                                        "description": "Static Routes (List - Object)\n\nElements:\n- description\n- prefix (required)\n- preference\n- bfd\n- next_hops\n- track_list"
                                                     },
                                                     "interfaces": {
                                                         "type": "array",
@@ -13475,6 +13481,12 @@
                                                                                 },
                                                                                 "title": "Next Hops",
                                                                                 "description": "Next Hops (List - Object)\n\nElements:\n- ip (required)\n- preference\n- type"
+                                                                            },
+                                                                            "track_list": {
+                                                                                "type": "string",
+                                                                                "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                                "title": "Track List",
+                                                                                "description": "Track List (String)"
                                                                             }
                                                                         },
                                                                         "required": [
@@ -13482,7 +13494,7 @@
                                                                         ]
                                                                     },
                                                                     "title": "Static Routes",
-                                                                    "description": "Static Routes (List - Object)\n\nElements:\n- description\n- prefix (required)\n- preference\n- bfd\n- next_hops"
+                                                                    "description": "Static Routes (List - Object)\n\nElements:\n- description\n- prefix (required)\n- preference\n- bfd\n- next_hops\n- track_list"
                                                                 }
                                                             },
                                                             "required": [
@@ -19216,11 +19228,137 @@
                                         },
                                         "title": "ND RA Prefix Policies",
                                         "description": "ND RA Prefix Policies (List - Object)\n\nElements:\n- name (required)\n- description\n- valid_lifetime\n- preferred_lifetime\n- auto_configuration\n- on_link\n- router_address\n- expected_state"
+                                    },
+                                    "track_lists": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9\\\\!#$%()*,-./:;@ _{|}~?&+]{1,128}$",
+                                                    "title": "Description",
+                                                    "description": "Description (String)"
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "percentage",
+                                                        "weight"
+                                                    ],
+                                                    "default": "percentage",
+                                                    "title": "Type",
+                                                    "description": "Type (String)\n- Default value: percentage\n- Allowed values: percentage, weight"
+                                                },
+                                                "percentage_up": {
+                                                    "type": "integer",
+                                                    "maximum": 100,
+                                                    "title": "Percentage Up",
+                                                    "description": "Percentage Up (Integer)\n- Maximum value: 100"
+                                                },
+                                                "percentage_down": {
+                                                    "type": "integer",
+                                                    "maximum": 100,
+                                                    "default": 1,
+                                                    "title": "Percentage Down",
+                                                    "description": "Percentage Down (Integer)\n- Default value: 1\n- Maximum value: 100"
+                                                },
+                                                "weight_up": {
+                                                    "type": "integer",
+                                                    "maximum": 255,
+                                                    "title": "Weight Up",
+                                                    "description": "Weight Up (Integer)\n- Maximum value: 255"
+                                                },
+                                                "weight_down": {
+                                                    "type": "integer",
+                                                    "maximum": 255,
+                                                    "default": 1,
+                                                    "title": "Weight Down",
+                                                    "description": "Weight Down (Integer)\n- Default value: 1\n- Maximum value: 255"
+                                                },
+                                                "track_members": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "pattern": "^[a-zA-Z0-9_.:-]{1,64}$"
+                                                    },
+                                                    "title": "Track Members",
+                                                    "description": "Track Members (List - String)"
+                                                }
+                                            },
+                                            "required": [
+                                                "name"
+                                            ]
+                                        },
+                                        "title": "Track Lists",
+                                        "description": "Track Lists (List - Object)\n\nElements:\n- name (required)\n- description\n- type\n- percentage_up\n- percentage_down\n- weight_up\n- weight_down\n- track_members"
+                                    },
+                                    "track_members": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9\\\\!#$%()*,-./:;@ _{|}~?&+]{1,128}$",
+                                                    "title": "Description",
+                                                    "description": "Description (String)"
+                                                },
+                                                "destination_ip": {
+                                                    "type": "string",
+                                                    "title": "Destination IP",
+                                                    "description": "Destination IP (String)\n- IPv4 or IPv6 address"
+                                                },
+                                                "scope_type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "l3out",
+                                                        "bd"
+                                                    ],
+                                                    "title": "Scope Type",
+                                                    "description": "Scope Type (String)\n- Allowed values: l3out, bd"
+                                                },
+                                                "scope": {
+                                                    "type": "string",
+                                                    "title": "Scope",
+                                                    "description": "Scope (String)"
+                                                },
+                                                "ip_sla_policy": {
+                                                    "type": "string",
+                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                    "title": "IP Sla Policy",
+                                                    "description": "IP Sla Policy (String)"
+                                                }
+                                            },
+                                            "required": [
+                                                "name",
+                                                "destination_ip",
+                                                "scope_type",
+                                                "scope",
+                                                "ip_sla_policy"
+                                            ]
+                                        },
+                                        "title": "Track Members",
+                                        "description": "Track Members (List - Object)\n\nElements:\n- name (required)\n- description\n- destination_ip (required)\n- scope_type (required)\n- scope (required)\n- ip_sla_policy (required)"
                                     }
                                 },
                                 "required": [],
                                 "title": "Policies",
-                                "description": "Policies (Object)\n\nElements:\n- ospf_interface_policies\n- eigrp_interface_policies\n- ospf_timer_policies\n- bgp_timer_policies\n- bgp_peer_prefix_policies\n- bgp_best_path_policies\n- bgp_address_family_context_policies\n- dhcp_relay_policies\n- dhcp_option_policies\n- route_tag_policies\n- route_control_route_maps\n- match_rules\n- set_rules\n- bfd_interface_policies\n- multicast_route_maps\n- pim_policies\n- igmp_snooping_policies\n- igmp_interface_policies\n- ip_sla_policies\n- trust_control_policies\n- span\n- qos\n- mpls_custom_qos_policies\n- bfd_multihop_node_policies\n- nd_interface_policies\n- nd_ra_prefix_policies"
+                                "description": "Policies (Object)\n\nElements:\n- ospf_interface_policies\n- eigrp_interface_policies\n- ospf_timer_policies\n- bgp_timer_policies\n- bgp_peer_prefix_policies\n- bgp_best_path_policies\n- bgp_address_family_context_policies\n- dhcp_relay_policies\n- dhcp_option_policies\n- route_tag_policies\n- route_control_route_maps\n- match_rules\n- set_rules\n- bfd_interface_policies\n- multicast_route_maps\n- pim_policies\n- igmp_snooping_policies\n- igmp_interface_policies\n- ip_sla_policies\n- trust_control_policies\n- span\n- qos\n- mpls_custom_qos_policies\n- bfd_multihop_node_policies\n- nd_interface_policies\n- nd_ra_prefix_policies\n- track_lists\n- track_members"
                             },
                             "services": {
                                 "type": "object",
