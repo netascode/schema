@@ -22147,6 +22147,12 @@
                                                                                             "title": "Resolution Immediacy",
                                                                                             "description": "Resolution Immediacy (String)\n- Default value: pre-provision\n- Allowed values: immediate, lazy, pre-provision"
                                                                                         },
+                                                                                        "custom_epg_name": {
+                                                                                            "type": "string",
+                                                                                            "pattern": "^.{1,80}$",
+                                                                                            "title": "Custom EPG Name",
+                                                                                            "description": "Custom EPG Name (String)"
+                                                                                        },
                                                                                         "vlan_mode": {
                                                                                             "type": "string",
                                                                                             "enum": [
@@ -22183,7 +22189,7 @@
                                                                                     ]
                                                                                 },
                                                                                 "title": "Vmware VMM Domains",
-                                                                                "description": "Vmware VMM Domains (List - Object)\n\nElements:\n- name (required)\n- deployment_immediacy\n- resolution_immediacy\n- vlan_mode\n- vlan\n- u_segmentation\n- useg_vlan"
+                                                                                "description": "Vmware VMM Domains (List - Object)\n\nElements:\n- name (required)\n- deployment_immediacy\n- resolution_immediacy\n- custom_epg_name\n- vlan_mode\n- vlan\n- u_segmentation\n- useg_vlan"
                                                                             },
                                                                             "static_ports": {
                                                                                 "type": "array",
@@ -22691,6 +22697,12 @@
                                                         "required": [],
                                                         "title": "Contracts",
                                                         "description": "Contracts (Object)\n\nElements:\n- consumers\n- providers"
+                                                    },
+                                                    "site_aware_policy_enforcement": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "Site Aware Policy Enforcement",
+                                                        "description": "Site Aware Policy Enforcement (Boolean)\n- Default value: false"
                                                     }
                                                 },
                                                 "required": [
@@ -22698,7 +22710,7 @@
                                                 ]
                                             },
                                             "title": "VRFs",
-                                            "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- data_plane_learning\n- preferred_group\n- l3_multicast\n- vzany\n- sites\n- contracts"
+                                            "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- data_plane_learning\n- preferred_group\n- l3_multicast\n- vzany\n- sites\n- contracts\n- site_aware_policy_enforcement"
                                         },
                                         "bridge_domains": {
                                             "type": "array",
