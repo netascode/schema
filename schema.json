@@ -9321,6 +9321,12 @@
                                         "default": "default",
                                         "title": "Scheduler",
                                         "description": "Scheduler (String)\n- Default value: default"
+                                    },
+                                    "target_version": {
+                                        "type": "string",
+                                        "pattern": "n\\d+-\\d+\\.\\d+\\(\\w+\\)",
+                                        "title": "Target Version",
+                                        "description": "Target Version (String)"
                                     }
                                 },
                                 "required": [
@@ -9328,7 +9334,7 @@
                                 ]
                             },
                             "title": "Update Groups",
-                            "description": "Update Groups (List - Object)\n\nElements:\n- name (required)\n- scheduler"
+                            "description": "Update Groups (List - Object)\n\nElements:\n- name (required)\n- scheduler\n- target_version"
                         },
                         "vpc_groups": {
                             "type": "object",
