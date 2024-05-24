@@ -6540,13 +6540,14 @@
                                                     "inherit",
                                                     "cl91-rs-fec",
                                                     "cl74-fc-fec",
+                                                    "auto-fec",
                                                     "ieee-rs-fec",
                                                     "cons16-rs-fec",
                                                     "disable-fec"
                                                 ],
                                                 "default": "inherit",
                                                 "title": "FEC Mode",
-                                                "description": "FEC Mode (String)\n- Default value: inherit\n- Allowed values: inherit, cl91-rs-fec, cl74-fc-fec, ieee-rs-fec, cons16-rs-fec, disable-fec"
+                                                "description": "FEC Mode (String)\n- Default value: inherit\n- Allowed values: inherit, cl91-rs-fec, cl74-fc-fec, auto-fec, ieee-rs-fec, cons16-rs-fec, disable-fec"
                                             },
                                             "physical_media_type": {
                                                 "type": "string",
@@ -10697,6 +10698,11 @@
                                                         "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
                                                         "title": "ND RA Prefix Policy",
                                                         "description": "ND RA Prefix Policy (String)"
+                                                    },
+                                                    "ip_dataplane_learning": {
+                                                        "type": "boolean",
+                                                        "title": "IP Dataplane Learning",
+                                                        "description": "IP Dataplane Learning (Boolean)"
                                                     }
                                                 },
                                                 "required": [
@@ -10704,7 +10710,7 @@
                                                 ]
                                             },
                                             "title": "Subnets",
-                                            "description": "Subnets (List - Object)\n\nElements:\n- description\n- ip (required)\n- primary_ip\n- public\n- private\n- shared\n- virtual\n- igmp_querier\n- nd_ra_prefix\n- no_default_gateway\n- nd_ra_prefix_policy"
+                                            "description": "Subnets (List - Object)\n\nElements:\n- description\n- ip (required)\n- primary_ip\n- public\n- private\n- shared\n- virtual\n- igmp_querier\n- nd_ra_prefix\n- no_default_gateway\n- nd_ra_prefix_policy\n- ip_dataplane_learning"
                                         },
                                         "l3outs": {
                                             "type": "array",
@@ -11478,6 +11484,11 @@
                                                                     "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
                                                                     "title": "ND RA Prefix Policy",
                                                                     "description": "ND RA Prefix Policy (String)"
+                                                                },
+                                                                "ip_dataplane_learning": {
+                                                                    "type": "boolean",
+                                                                    "title": "IP Dataplane Learning",
+                                                                    "description": "IP Dataplane Learning (Boolean)"
                                                                 }
                                                             },
                                                             "required": [
@@ -11485,7 +11496,7 @@
                                                             ]
                                                         },
                                                         "title": "Subnets",
-                                                        "description": "Subnets (List - Object)\n\nElements:\n- description\n- ip (required)\n- public\n- private\n- shared\n- igmp_querier\n- nd_ra_prefix\n- no_default_gateway\n- virtual\n- next_hop_ip\n- anycast_mac\n- nlb_mode\n- nlb_group\n- nlb_mac\n- ip_pools\n- nd_ra_prefix_policy"
+                                                        "description": "Subnets (List - Object)\n\nElements:\n- description\n- ip (required)\n- public\n- private\n- shared\n- igmp_querier\n- nd_ra_prefix\n- no_default_gateway\n- virtual\n- next_hop_ip\n- anycast_mac\n- nlb_mode\n- nlb_group\n- nlb_mac\n- ip_pools\n- nd_ra_prefix_policy\n- ip_dataplane_learning"
                                                     },
                                                     "contracts": {
                                                         "type": "object",
