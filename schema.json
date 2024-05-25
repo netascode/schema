@@ -5726,12 +5726,11 @@
                                     }
                                 },
                                 "required": [
-                                    "name",
-                                    "vlan_pool"
+                                    "name"
                                 ]
                             },
                             "title": "Routed Domains",
-                            "description": "Routed Domains (List - Object)\n\nElements:\n- name (required)\n- vlan_pool (required)\n- expected_state\n- security_domains"
+                            "description": "Routed Domains (List - Object)\n\nElements:\n- name (required)\n- vlan_pool\n- expected_state\n- security_domains"
                         },
                         "aaeps": {
                             "type": "array",
