@@ -6107,168 +6107,159 @@
                                     "title": "vPC Policies",
                                     "description": "vPC Policies (List - Object)\n\nElements:\n- name (required)\n- peer_dead_interval"
                                 },
-                                "bfd_policies": {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "bfd_ipv4_policies": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "additionalProperties": false,
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string",
-                                                        "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
-                                                        "title": "Name",
-                                                        "description": "Name (String)"
-                                                    },
-                                                    "description": {
-                                                        "type": "string",
-                                                        "pattern": "^[a-zA-Z0-9\\\\!#$%()*,-./:;@ _{|}~?&+]{1,128}$",
-                                                        "title": "Description",
-                                                        "description": "Description (String)"
-                                                    },
-                                                    "detection_multiplier": {
-                                                        "type": "integer",
-                                                        "minimum": 1,
-                                                        "maximum": 50,
-                                                        "default": 3,
-                                                        "title": "Detection Multiplier",
-                                                        "description": "Detection Multiplier (Integer)\n- Default value: 3\n- Minimum value: 1\n- Maximum value: 50"
-                                                    },
-                                                    "min_transmit_interval": {
-                                                        "type": "integer",
-                                                        "minimum": 50,
-                                                        "maximum": 999,
-                                                        "default": 50,
-                                                        "title": "Min Transmit Interval",
-                                                        "description": "Min Transmit Interval (Integer)\n- Default value: 50\n- Minimum value: 50\n- Maximum value: 999"
-                                                    },
-                                                    "min_receive_interval": {
-                                                        "type": "integer",
-                                                        "minimum": 50,
-                                                        "maximum": 999,
-                                                        "default": 50,
-                                                        "title": "Min Receive Interval",
-                                                        "description": "Min Receive Interval (Integer)\n- Default value: 50\n- Minimum value: 50\n- Maximum value: 999"
-                                                    },
-                                                    "slow_timer_interval": {
-                                                        "type": "integer",
-                                                        "minimum": 1000,
-                                                        "maximum": 30000,
-                                                        "default": 2000,
-                                                        "title": "Slow Timer Interval",
-                                                        "description": "Slow Timer Interval (Integer)\n- Default value: 2000\n- Minimum value: 1000\n- Maximum value: 30000"
-                                                    },
-                                                    "startup_timer_interval": {
-                                                        "type": "integer",
-                                                        "maximum": 60,
-                                                        "title": "Startup Timer Interval",
-                                                        "description": "Startup Timer Interval (Integer)\n- Maximum value: 60"
-                                                    },
-                                                    "echo_receive_interval": {
-                                                        "type": "integer",
-                                                        "maximum": 999,
-                                                        "default": 50,
-                                                        "title": "Echo Receive Interval",
-                                                        "description": "Echo Receive Interval (Integer)\n- Default value: 50\n- Maximum value: 999"
-                                                    },
-                                                    "echo_frame_source_address": {
-                                                        "type": "string",
-                                                        "default": "0.0.0.0",
-                                                        "title": "Echo Frame Source Address",
-                                                        "description": "Echo Frame Source Address (String)\n- Default value: 0.0.0.0\n- IPv4 or IPv6 address"
-                                                    }
-                                                },
-                                                "required": [
-                                                    "name"
-                                                ]
+                                "bfd_ipv4_policies": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                "title": "Name",
+                                                "description": "Name (String)"
                                             },
-                                            "title": "BFD Ipv4 Policies",
-                                            "description": "BFD Ipv4 Policies (List - Object)\n\nElements:\n- name (required)\n- description\n- detection_multiplier\n- min_transmit_interval\n- min_receive_interval\n- slow_timer_interval\n- startup_timer_interval\n- echo_receive_interval\n- echo_frame_source_address"
+                                            "description": {
+                                                "type": "string",
+                                                "pattern": "^[a-zA-Z0-9\\\\!#$%()*,-./:;@ _{|}~?&+]{1,128}$",
+                                                "title": "Description",
+                                                "description": "Description (String)"
+                                            },
+                                            "detection_multiplier": {
+                                                "type": "integer",
+                                                "minimum": 1,
+                                                "maximum": 50,
+                                                "default": 3,
+                                                "title": "Detection Multiplier",
+                                                "description": "Detection Multiplier (Integer)\n- Default value: 3\n- Minimum value: 1\n- Maximum value: 50"
+                                            },
+                                            "min_transmit_interval": {
+                                                "type": "integer",
+                                                "minimum": 50,
+                                                "maximum": 999,
+                                                "default": 50,
+                                                "title": "Min Transmit Interval",
+                                                "description": "Min Transmit Interval (Integer)\n- Default value: 50\n- Minimum value: 50\n- Maximum value: 999"
+                                            },
+                                            "min_receive_interval": {
+                                                "type": "integer",
+                                                "minimum": 50,
+                                                "maximum": 999,
+                                                "default": 50,
+                                                "title": "Min Receive Interval",
+                                                "description": "Min Receive Interval (Integer)\n- Default value: 50\n- Minimum value: 50\n- Maximum value: 999"
+                                            },
+                                            "slow_timer_interval": {
+                                                "type": "integer",
+                                                "minimum": 1000,
+                                                "maximum": 30000,
+                                                "default": 2000,
+                                                "title": "Slow Timer Interval",
+                                                "description": "Slow Timer Interval (Integer)\n- Default value: 2000\n- Minimum value: 1000\n- Maximum value: 30000"
+                                            },
+                                            "startup_timer_interval": {
+                                                "type": "integer",
+                                                "maximum": 60,
+                                                "title": "Startup Timer Interval",
+                                                "description": "Startup Timer Interval (Integer)\n- Maximum value: 60"
+                                            },
+                                            "echo_receive_interval": {
+                                                "type": "integer",
+                                                "maximum": 999,
+                                                "default": 50,
+                                                "title": "Echo Receive Interval",
+                                                "description": "Echo Receive Interval (Integer)\n- Default value: 50\n- Maximum value: 999"
+                                            },
+                                            "echo_frame_source_address": {
+                                                "type": "string",
+                                                "default": "0.0.0.0",
+                                                "title": "Echo Frame Source Address",
+                                                "description": "Echo Frame Source Address (String)\n- Default value: 0.0.0.0\n- IPv4 or IPv6 address"
+                                            }
                                         },
-                                        "bfd_ipv6_policies": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "additionalProperties": false,
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string",
-                                                        "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
-                                                        "title": "Name",
-                                                        "description": "Name (String)"
-                                                    },
-                                                    "description": {
-                                                        "type": "string",
-                                                        "pattern": "^[a-zA-Z0-9\\\\!#$%()*,-./:;@ _{|}~?&+]{1,128}$",
-                                                        "title": "Description",
-                                                        "description": "Description (String)"
-                                                    },
-                                                    "detection_multiplier": {
-                                                        "type": "integer",
-                                                        "minimum": 1,
-                                                        "maximum": 50,
-                                                        "default": 3,
-                                                        "title": "Detection Multiplier",
-                                                        "description": "Detection Multiplier (Integer)\n- Default value: 3\n- Minimum value: 1\n- Maximum value: 50"
-                                                    },
-                                                    "min_transmit_interval": {
-                                                        "type": "integer",
-                                                        "minimum": 50,
-                                                        "maximum": 999,
-                                                        "default": 50,
-                                                        "title": "Min Transmit Interval",
-                                                        "description": "Min Transmit Interval (Integer)\n- Default value: 50\n- Minimum value: 50\n- Maximum value: 999"
-                                                    },
-                                                    "min_receive_interval": {
-                                                        "type": "integer",
-                                                        "minimum": 50,
-                                                        "maximum": 999,
-                                                        "default": 50,
-                                                        "title": "Min Receive Interval",
-                                                        "description": "Min Receive Interval (Integer)\n- Default value: 50\n- Minimum value: 50\n- Maximum value: 999"
-                                                    },
-                                                    "slow_timer_interval": {
-                                                        "type": "integer",
-                                                        "minimum": 1000,
-                                                        "maximum": 30000,
-                                                        "default": 2000,
-                                                        "title": "Slow Timer Interval",
-                                                        "description": "Slow Timer Interval (Integer)\n- Default value: 2000\n- Minimum value: 1000\n- Maximum value: 30000"
-                                                    },
-                                                    "startup_timer_interval": {
-                                                        "type": "integer",
-                                                        "maximum": 60,
-                                                        "title": "Startup Timer Interval",
-                                                        "description": "Startup Timer Interval (Integer)\n- Maximum value: 60"
-                                                    },
-                                                    "echo_receive_interval": {
-                                                        "type": "integer",
-                                                        "maximum": 999,
-                                                        "default": 50,
-                                                        "title": "Echo Receive Interval",
-                                                        "description": "Echo Receive Interval (Integer)\n- Default value: 50\n- Maximum value: 999"
-                                                    },
-                                                    "echo_frame_source_address": {
-                                                        "type": "string",
-                                                        "default": "0.0.0.0",
-                                                        "title": "Echo Frame Source Address",
-                                                        "description": "Echo Frame Source Address (String)\n- Default value: 0.0.0.0\n- IPv4 or IPv6 address"
-                                                    }
-                                                },
-                                                "required": [
-                                                    "name"
-                                                ]
-                                            },
-                                            "title": "BFD IPv6 Policies",
-                                            "description": "BFD IPv6 Policies (List - Object)\n\nElements:\n- name (required)\n- description\n- detection_multiplier\n- min_transmit_interval\n- min_receive_interval\n- slow_timer_interval\n- startup_timer_interval\n- echo_receive_interval\n- echo_frame_source_address"
-                                        }
+                                        "required": [
+                                            "name"
+                                        ]
                                     },
-                                    "required": [],
-                                    "title": "BFD Policies",
-                                    "description": "BFD Policies (Object)\n\nElements:\n- bfd_ipv4_policies\n- bfd_ipv6_policies"
+                                    "title": "BFD Ipv4 Policies",
+                                    "description": "BFD Ipv4 Policies (List - Object)\n\nElements:\n- name (required)\n- description\n- detection_multiplier\n- min_transmit_interval\n- min_receive_interval\n- slow_timer_interval\n- startup_timer_interval\n- echo_receive_interval\n- echo_frame_source_address"
+                                },
+                                "bfd_ipv6_policies": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                "title": "Name",
+                                                "description": "Name (String)"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "pattern": "^[a-zA-Z0-9\\\\!#$%()*,-./:;@ _{|}~?&+]{1,128}$",
+                                                "title": "Description",
+                                                "description": "Description (String)"
+                                            },
+                                            "detection_multiplier": {
+                                                "type": "integer",
+                                                "minimum": 1,
+                                                "maximum": 50,
+                                                "default": 3,
+                                                "title": "Detection Multiplier",
+                                                "description": "Detection Multiplier (Integer)\n- Default value: 3\n- Minimum value: 1\n- Maximum value: 50"
+                                            },
+                                            "min_transmit_interval": {
+                                                "type": "integer",
+                                                "minimum": 50,
+                                                "maximum": 999,
+                                                "default": 50,
+                                                "title": "Min Transmit Interval",
+                                                "description": "Min Transmit Interval (Integer)\n- Default value: 50\n- Minimum value: 50\n- Maximum value: 999"
+                                            },
+                                            "min_receive_interval": {
+                                                "type": "integer",
+                                                "minimum": 50,
+                                                "maximum": 999,
+                                                "default": 50,
+                                                "title": "Min Receive Interval",
+                                                "description": "Min Receive Interval (Integer)\n- Default value: 50\n- Minimum value: 50\n- Maximum value: 999"
+                                            },
+                                            "slow_timer_interval": {
+                                                "type": "integer",
+                                                "minimum": 1000,
+                                                "maximum": 30000,
+                                                "default": 2000,
+                                                "title": "Slow Timer Interval",
+                                                "description": "Slow Timer Interval (Integer)\n- Default value: 2000\n- Minimum value: 1000\n- Maximum value: 30000"
+                                            },
+                                            "startup_timer_interval": {
+                                                "type": "integer",
+                                                "maximum": 60,
+                                                "title": "Startup Timer Interval",
+                                                "description": "Startup Timer Interval (Integer)\n- Maximum value: 60"
+                                            },
+                                            "echo_receive_interval": {
+                                                "type": "integer",
+                                                "maximum": 999,
+                                                "default": 50,
+                                                "title": "Echo Receive Interval",
+                                                "description": "Echo Receive Interval (Integer)\n- Default value: 50\n- Maximum value: 999"
+                                            },
+                                            "echo_frame_source_address": {
+                                                "type": "string",
+                                                "default": "0.0.0.0",
+                                                "title": "Echo Frame Source Address",
+                                                "description": "Echo Frame Source Address (String)\n- Default value: 0.0.0.0\n- IPv4 or IPv6 address"
+                                            }
+                                        },
+                                        "required": [
+                                            "name"
+                                        ]
+                                    },
+                                    "title": "BFD IPv6 Policies",
+                                    "description": "BFD IPv6 Policies (List - Object)\n\nElements:\n- name (required)\n- description\n- detection_multiplier\n- min_transmit_interval\n- min_receive_interval\n- slow_timer_interval\n- startup_timer_interval\n- echo_receive_interval\n- echo_frame_source_address"
                                 },
                                 "forwarding_scale_policies": {
                                     "type": "array",
@@ -6305,7 +6296,7 @@
                             },
                             "required": [],
                             "title": "Switch Policies",
-                            "description": "Switch Policies (Object)\n\nElements:\n- mst_policies\n- vpc_policies\n- bfd_policies\n- forwarding_scale_policies"
+                            "description": "Switch Policies (Object)\n\nElements:\n- mst_policies\n- vpc_policies\n- bfd_ipv4_policies\n- bfd_ipv6_policies\n- forwarding_scale_policies"
                         },
                         "spine_switch_policy_groups": {
                             "type": "array",
