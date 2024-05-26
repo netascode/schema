@@ -11888,6 +11888,567 @@
                                             "title": "Endpoint Groups",
                                             "description": "Endpoint Groups (List - Object)\n\nElements:\n- name (required)\n- alias\n- description\n- flood_in_encap\n- intra_epg_isolation\n- preferred_group\n- proxy_arp\n- bridge_domain (required)\n- physical_domains\n- vmware_vmm_domains\n- static_ports\n- static_leafs\n- static_endpoints\n- subnets\n- contracts\n- qos_class\n- custom_qos_policy\n- tags\n- trust_control_policy\n- l4l7_virtual_ips\n- l4l7_address_pools\n- expected_state"
                                         },
+                                        "useg_endpoint_groups": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                        "title": "Name",
+                                                        "description": "Name (String)"
+                                                    },
+                                                    "alias": {
+                                                        "type": "string",
+                                                        "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                        "title": "Alias",
+                                                        "description": "Alias (String)"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "pattern": "^[a-zA-Z0-9\\\\!#$%()*,-./:;@ _{|}~?&+]{1,128}$",
+                                                        "title": "Description",
+                                                        "description": "Description (String)"
+                                                    },
+                                                    "flood_in_encap": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "Flood In Encap",
+                                                        "description": "Flood In Encap (Boolean)\n- Default value: false"
+                                                    },
+                                                    "intra_epg_isolation": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "Intra EPG Isolation",
+                                                        "description": "Intra EPG Isolation (Boolean)\n- Default value: false"
+                                                    },
+                                                    "preferred_group": {
+                                                        "type": "boolean",
+                                                        "default": "false",
+                                                        "title": "Preferred Group",
+                                                        "description": "Preferred Group (Boolean)\n- Default value: false"
+                                                    },
+                                                    "bridge_domain": {
+                                                        "type": "string",
+                                                        "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                        "title": "Bridge Domain",
+                                                        "description": "Bridge Domain (String)"
+                                                    },
+                                                    "physical_domains": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "pattern": "^[a-zA-Z0-9_.:-]{1,64}$"
+                                                        },
+                                                        "title": "Physical Domains",
+                                                        "description": "Physical Domains (List - String)"
+                                                    },
+                                                    "vmware_vmm_domains": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                    "title": "Name",
+                                                                    "description": "Name (String)"
+                                                                },
+                                                                "deployment_immediacy": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "immediate",
+                                                                        "lazy"
+                                                                    ],
+                                                                    "default": "immediate",
+                                                                    "title": "Deployment Immediacy",
+                                                                    "description": "Deployment Immediacy (String)\n- Default value: immediate\n- Allowed values: immediate, lazy"
+                                                                },
+                                                                "elag": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,16}$",
+                                                                    "title": "Elag",
+                                                                    "description": "Elag (String)"
+                                                                },
+                                                                "netflow": {
+                                                                    "type": "boolean",
+                                                                    "default": "false",
+                                                                    "title": "Netflow",
+                                                                    "description": "Netflow (Boolean)\n- Default value: false"
+                                                                },
+                                                                "active_uplinks_order": {
+                                                                    "type": "string",
+                                                                    "pattern": "^(\\d+(,\\d+)*)?$",
+                                                                    "title": "Active Uplinks Order",
+                                                                    "description": "Active Uplinks Order (String)"
+                                                                },
+                                                                "standby_uplinks": {
+                                                                    "type": "string",
+                                                                    "pattern": "^(\\d+(,\\d+)*)?$",
+                                                                    "title": "Standby Uplinks",
+                                                                    "description": "Standby Uplinks (String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "name"
+                                                            ]
+                                                        },
+                                                        "title": "Vmware VMM Domains",
+                                                        "description": "Vmware VMM Domains (List - Object)\n\nElements:\n- name (required)\n- deployment_immediacy\n- elag\n- netflow\n- active_uplinks_order\n- standby_uplinks"
+                                                    },
+                                                    "static_leafs": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "node_id": {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 4000,
+                                                                    "title": "Node ID",
+                                                                    "description": "Node ID (Integer)\n- Minimum value: 1\n- Maximum value: 4000"
+                                                                },
+                                                                "pod_id": {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 255,
+                                                                    "title": "Pod ID",
+                                                                    "description": "Pod ID (Integer)\n- Minimum value: 1\n- Maximum value: 255"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "node_id"
+                                                            ]
+                                                        },
+                                                        "title": "Static Leafs",
+                                                        "description": "Static Leafs (List - Object)\n\nElements:\n- node_id (required)\n- pod_id"
+                                                    },
+                                                    "useg_attributes": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "match_type": {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "any",
+                                                                    "all"
+                                                                ],
+                                                                "default": "any",
+                                                                "title": "Match Type",
+                                                                "description": "Match Type (String)\n- Default value: any\n- Allowed values: any, all"
+                                                            },
+                                                            "ip_statements": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "name": {
+                                                                            "type": "string",
+                                                                            "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                            "title": "Name",
+                                                                            "description": "Name (String)"
+                                                                        },
+                                                                        "use_epg_subnet": {
+                                                                            "type": "boolean",
+                                                                            "default": "true",
+                                                                            "title": "Use EPG Subnet",
+                                                                            "description": "Use EPG Subnet (Boolean)\n- Default value: true"
+                                                                        },
+                                                                        "ip": {
+                                                                            "type": "string",
+                                                                            "title": "IP",
+                                                                            "description": "IP (String)\n- IPv4 or IPv6 address"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "name"
+                                                                    ]
+                                                                },
+                                                                "title": "IP Statements",
+                                                                "description": "IP Statements (List - Object)\n\nElements:\n- name (required)\n- use_epg_subnet\n- ip"
+                                                            },
+                                                            "mac_statements": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "name": {
+                                                                            "type": "string",
+                                                                            "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                            "title": "Name",
+                                                                            "description": "Name (String)"
+                                                                        },
+                                                                        "mac": {
+                                                                            "type": "string",
+                                                                            "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$",
+                                                                            "title": "MAC",
+                                                                            "description": "MAC (String)\n- MAC address (XX:XX:XX:XX:XX:XX)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "name",
+                                                                        "mac"
+                                                                    ]
+                                                                },
+                                                                "title": "MAC Statements",
+                                                                "description": "MAC Statements (List - Object)\n\nElements:\n- name (required)\n- mac (required)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "uSeg Attributes",
+                                                        "description": "uSeg Attributes (Object)\n\nElements:\n- match_type\n- ip_statements\n- mac_statements"
+                                                    },
+                                                    "subnets": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "description": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9\\\\!#$%()*,-./:;@ _{|}~?&+]{1,128}$",
+                                                                    "title": "Description",
+                                                                    "description": "Description (String)"
+                                                                },
+                                                                "ip": {
+                                                                    "type": "string",
+                                                                    "title": "IP",
+                                                                    "description": "IP (String)\n- IPv4 or IPv6 address"
+                                                                },
+                                                                "public": {
+                                                                    "type": "boolean",
+                                                                    "default": "false",
+                                                                    "title": "Public",
+                                                                    "description": "Public (Boolean)\n- Default value: false"
+                                                                },
+                                                                "private": {
+                                                                    "type": "boolean",
+                                                                    "default": "true",
+                                                                    "title": "Private",
+                                                                    "description": "Private (Boolean)\n- Default value: true"
+                                                                },
+                                                                "shared": {
+                                                                    "type": "boolean",
+                                                                    "default": "false",
+                                                                    "title": "Shared",
+                                                                    "description": "Shared (Boolean)\n- Default value: false"
+                                                                },
+                                                                "igmp_querier": {
+                                                                    "type": "boolean",
+                                                                    "default": "false",
+                                                                    "title": "IGMP Querier",
+                                                                    "description": "IGMP Querier (Boolean)\n- Default value: false"
+                                                                },
+                                                                "nd_ra_prefix": {
+                                                                    "type": "boolean",
+                                                                    "default": "true",
+                                                                    "title": "ND RA Prefix",
+                                                                    "description": "ND RA Prefix (Boolean)\n- Default value: true"
+                                                                },
+                                                                "no_default_gateway": {
+                                                                    "type": "boolean",
+                                                                    "default": "false",
+                                                                    "title": "No Default Gateway",
+                                                                    "description": "No Default Gateway (Boolean)\n- Default value: false"
+                                                                },
+                                                                "virtual": {
+                                                                    "type": "boolean",
+                                                                    "default": "false",
+                                                                    "title": "Virtual",
+                                                                    "description": "Virtual (Boolean)\n- Default value: false"
+                                                                },
+                                                                "next_hop_ip": {
+                                                                    "type": "string",
+                                                                    "title": "Next Hop IP",
+                                                                    "description": "Next Hop IP (String)\n- IPv4 or IPv6 address"
+                                                                },
+                                                                "anycast_mac": {
+                                                                    "type": "string",
+                                                                    "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$",
+                                                                    "title": "Anycast MAC",
+                                                                    "description": "Anycast MAC (String)\n- MAC address (XX:XX:XX:XX:XX:XX)"
+                                                                },
+                                                                "nlb_mode": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mode-mcast-igmp",
+                                                                        "mode-uc",
+                                                                        "mode-mcast-static"
+                                                                    ],
+                                                                    "title": "Nlb Mode",
+                                                                    "description": "Nlb Mode (String)\n- Allowed values: mode-mcast-igmp, mode-uc, mode-mcast-static"
+                                                                },
+                                                                "nlb_group": {
+                                                                    "type": "string",
+                                                                    "default": "0.0.0.0",
+                                                                    "title": "Nlb Group",
+                                                                    "description": "Nlb Group (String)\n- Default value: 0.0.0.0\n- IPv4 or IPv6 address"
+                                                                },
+                                                                "nlb_mac": {
+                                                                    "type": "string",
+                                                                    "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$",
+                                                                    "default": "00:00:00:00:00:00",
+                                                                    "title": "Nlb MAC",
+                                                                    "description": "Nlb MAC (String)\n- Default value: 00:00:00:00:00:00\n- MAC address (XX:XX:XX:XX:XX:XX)"
+                                                                },
+                                                                "ip_pools": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "name": {
+                                                                                "type": "string",
+                                                                                "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                                "title": "Name",
+                                                                                "description": "Name (String)"
+                                                                            },
+                                                                            "start_ip": {
+                                                                                "type": "string",
+                                                                                "default": "0.0.0.0",
+                                                                                "title": "Start IP",
+                                                                                "description": "Start IP (String)\n- Default value: 0.0.0.0\n- IPv4 or IPv6 address"
+                                                                            },
+                                                                            "end_ip": {
+                                                                                "type": "string",
+                                                                                "default": "0.0.0.0",
+                                                                                "title": "End IP",
+                                                                                "description": "End IP (String)\n- Default value: 0.0.0.0\n- IPv4 or IPv6 address"
+                                                                            },
+                                                                            "dns_search_suffix": {
+                                                                                "type": "string",
+                                                                                "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                                "title": "DNS Search Suffix",
+                                                                                "description": "DNS Search Suffix (String)"
+                                                                            },
+                                                                            "dns_server": {
+                                                                                "type": "string",
+                                                                                "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                                "title": "DNS Server",
+                                                                                "description": "DNS Server (String)"
+                                                                            },
+                                                                            "dns_suffix": {
+                                                                                "type": "string",
+                                                                                "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                                "title": "DNS Suffix",
+                                                                                "description": "DNS Suffix (String)"
+                                                                            },
+                                                                            "wins_server": {
+                                                                                "type": "string",
+                                                                                "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                                "title": "Wins Server",
+                                                                                "description": "Wins Server (String)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "name"
+                                                                        ]
+                                                                    },
+                                                                    "title": "IP Pools",
+                                                                    "description": "IP Pools (List - Object)\n\nElements:\n- name (required)\n- start_ip\n- end_ip\n- dns_search_suffix\n- dns_server\n- dns_suffix\n- wins_server"
+                                                                },
+                                                                "nd_ra_prefix_policy": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                    "title": "ND RA Prefix Policy",
+                                                                    "description": "ND RA Prefix Policy (String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "ip"
+                                                            ]
+                                                        },
+                                                        "title": "Subnets",
+                                                        "description": "Subnets (List - Object)\n\nElements:\n- description\n- ip (required)\n- public\n- private\n- shared\n- igmp_querier\n- nd_ra_prefix\n- no_default_gateway\n- virtual\n- next_hop_ip\n- anycast_mac\n- nlb_mode\n- nlb_group\n- nlb_mac\n- ip_pools\n- nd_ra_prefix_policy"
+                                                    },
+                                                    "contracts": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "consumers": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$"
+                                                                },
+                                                                "title": "Consumers",
+                                                                "description": "Consumers (List - String)"
+                                                            },
+                                                            "providers": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$"
+                                                                },
+                                                                "title": "Providers",
+                                                                "description": "Providers (List - String)"
+                                                            },
+                                                            "imported_consumers": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$"
+                                                                },
+                                                                "title": "Imported Consumers",
+                                                                "description": "Imported Consumers (List - String)"
+                                                            },
+                                                            "intra_epgs": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$"
+                                                                },
+                                                                "title": "Intra Epgs",
+                                                                "description": "Intra Epgs (List - String)"
+                                                            },
+                                                            "masters": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "application_profile": {
+                                                                            "type": "string",
+                                                                            "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                            "title": "Application Profile",
+                                                                            "description": "Application Profile (String)"
+                                                                        },
+                                                                        "endpoint_group": {
+                                                                            "type": "string",
+                                                                            "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                            "title": "Endpoint Group",
+                                                                            "description": "Endpoint Group (String)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "endpoint_group"
+                                                                    ]
+                                                                },
+                                                                "title": "Masters",
+                                                                "description": "Masters (List - Object)\n\nElements:\n- application_profile\n- endpoint_group (required)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Contracts",
+                                                        "description": "Contracts (Object)\n\nElements:\n- consumers\n- providers\n- imported_consumers\n- intra_epgs\n- masters"
+                                                    },
+                                                    "qos_class": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "level1",
+                                                            "level2",
+                                                            "level3",
+                                                            "level4",
+                                                            "level5",
+                                                            "level6",
+                                                            "unspecified"
+                                                        ],
+                                                        "default": "level3",
+                                                        "title": "QoS Class",
+                                                        "description": "QoS Class (String)\n- Default value: level3\n- Allowed values: level1, level2, level3, level4, level5, level6, unspecified"
+                                                    },
+                                                    "custom_qos_policy": {
+                                                        "type": "string",
+                                                        "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                        "title": "Custom QoS Policy",
+                                                        "description": "Custom QoS Policy (String)"
+                                                    },
+                                                    "tags": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "pattern": "^[a-zA-Z0-9_.-]{1,64}$"
+                                                        },
+                                                        "title": "Tags",
+                                                        "description": "Tags (List - String)"
+                                                    },
+                                                    "trust_control_policy": {
+                                                        "type": "string",
+                                                        "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                        "title": "Trust Control Policy",
+                                                        "description": "Trust Control Policy (String)"
+                                                    },
+                                                    "l4l7_address_pools": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                    "title": "Name",
+                                                                    "description": "Name (String)"
+                                                                },
+                                                                "gateway_address": {
+                                                                    "type": "string",
+                                                                    "title": "Gateway Address",
+                                                                    "description": "Gateway Address (String)\n- IPv4 or IPv6 address"
+                                                                },
+                                                                "from": {
+                                                                    "type": "string",
+                                                                    "title": "From",
+                                                                    "description": "From (String)\n- IPv4 or IPv6 address"
+                                                                },
+                                                                "to": {
+                                                                    "type": "string",
+                                                                    "title": "To",
+                                                                    "description": "To (String)\n- IPv4 or IPv6 address"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "name",
+                                                                "gateway_address"
+                                                            ]
+                                                        },
+                                                        "title": "L4L7 Address Pools",
+                                                        "description": "L4L7 Address Pools (List - Object)\n\nElements:\n- name (required)\n- gateway_address (required)\n- from\n- to"
+                                                    },
+                                                    "expected_state": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "minimum_health": {
+                                                                "type": "integer",
+                                                                "maximum": 100,
+                                                                "title": "Minimum Health",
+                                                                "description": "Minimum Health (Integer)\n- Maximum value: 100"
+                                                            },
+                                                            "maximum_critical_faults": {
+                                                                "type": "integer",
+                                                                "title": "Maximum Critical Faults",
+                                                                "description": "Maximum Critical Faults (Integer)"
+                                                            },
+                                                            "maximum_major_faults": {
+                                                                "type": "integer",
+                                                                "title": "Maximum Major Faults",
+                                                                "description": "Maximum Major Faults (Integer)"
+                                                            },
+                                                            "maximum_minor_faults": {
+                                                                "type": "integer",
+                                                                "title": "Maximum Minor Faults",
+                                                                "description": "Maximum Minor Faults (Integer)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Expected State",
+                                                        "description": "Expected State (Object)\n\nElements:\n- minimum_health\n- maximum_critical_faults\n- maximum_major_faults\n- maximum_minor_faults"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name",
+                                                    "bridge_domain"
+                                                ]
+                                            },
+                                            "title": "uSeg Endpoint Groups",
+                                            "description": "uSeg Endpoint Groups (List - Object)\n\nElements:\n- name (required)\n- alias\n- description\n- flood_in_encap\n- intra_epg_isolation\n- preferred_group\n- bridge_domain (required)\n- physical_domains\n- vmware_vmm_domains\n- static_leafs\n- useg_attributes\n- subnets\n- contracts\n- qos_class\n- custom_qos_policy\n- tags\n- trust_control_policy\n- l4l7_address_pools\n- expected_state"
+                                        },
                                         "endpoint_security_groups": {
                                             "type": "array",
                                             "items": {
@@ -12177,7 +12738,7 @@
                                     ]
                                 },
                                 "title": "Application Profiles",
-                                "description": "Application Profiles (List - Object)\n\nElements:\n- name (required)\n- managed\n- alias\n- description\n- endpoint_groups\n- endpoint_security_groups\n- expected_state"
+                                "description": "Application Profiles (List - Object)\n\nElements:\n- name (required)\n- managed\n- alias\n- description\n- endpoint_groups\n- useg_endpoint_groups\n- endpoint_security_groups\n- expected_state"
                             },
                             "inb_endpoint_groups": {
                                 "type": "array",
