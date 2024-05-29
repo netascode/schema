@@ -51814,7 +51814,7 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "organizations": {
+                "regions": {
                     "type": "array",
                     "items": {
                         "type": "object",
@@ -51825,7 +51825,7 @@
                                 "title": "Name",
                                 "description": "Name (String)"
                             },
-                            "networks": {
+                            "organizations": {
                                 "type": "array",
                                 "items": {
                                     "type": "object",
@@ -51835,84 +51835,6 @@
                                             "type": "string",
                                             "title": "Name",
                                             "description": "Name (String)"
-                                        },
-                                        "notes": {
-                                            "type": "string",
-                                            "title": "Notes",
-                                            "description": "Notes (String)"
-                                        },
-                                        "timezone": {
-                                            "type": "string",
-                                            "title": "Timezone",
-                                            "description": "Timezone (String)"
-                                        },
-                                        "product_types": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "appliance",
-                                                    "switch",
-                                                    "wireless"
-                                                ]
-                                            },
-                                            "title": "Product Types",
-                                            "description": "Product Types (List - String)"
-                                        },
-                                        "tags": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "string"
-                                            },
-                                            "title": "Tags",
-                                            "description": "Tags (List - String)"
-                                        }
-                                    },
-                                    "required": [
-                                        "name",
-                                        "product_types"
-                                    ]
-                                },
-                                "title": "Networks",
-                                "description": "Networks (List - Object)\n\nElements:\n- name (required)\n- notes\n- timezone\n- product_types (required)\n- tags"
-                            },
-                            "administrators": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "name": {
-                                            "type": "string",
-                                            "title": "Name",
-                                            "description": "Name (String)"
-                                        },
-                                        "email": {
-                                            "type": "string",
-                                            "title": "Email",
-                                            "description": "Email (String)"
-                                        },
-                                        "authentication_method": {
-                                            "type": "string",
-                                            "enum": [
-                                                "Cisco SecureX Sign-On",
-                                                "Email"
-                                            ],
-                                            "default": "Email",
-                                            "title": "Authentication Method",
-                                            "description": "Authentication Method (String)\n- Default value: Email\n- Allowed values: Cisco SecureX Sign-On, Email"
-                                        },
-                                        "organization_access": {
-                                            "type": "string",
-                                            "enum": [
-                                                "enterprise",
-                                                "full",
-                                                "none",
-                                                "read-only"
-                                            ],
-                                            "default": "full",
-                                            "title": "Organization Access",
-                                            "description": "Organization Access (String)\n- Default value: full\n- Allowed values: enterprise, full, none, read-only"
                                         },
                                         "networks": {
                                             "type": "array",
@@ -51925,27 +51847,251 @@
                                                         "title": "Name",
                                                         "description": "Name (String)"
                                                     },
-                                                    "access": {
+                                                    "description": {
                                                         "type": "string",
-                                                        "enum": [
-                                                            "full",
-                                                            "read-only",
-                                                            "guest-ambassador",
-                                                            "monitor-only"
+                                                        "title": "Description",
+                                                        "description": "Description (String)"
+                                                    },
+                                                    "notes": {
+                                                        "type": "string",
+                                                        "title": "Notes",
+                                                        "description": "Notes (String)"
+                                                    },
+                                                    "timezone": {
+                                                        "type": "string",
+                                                        "title": "Timezone",
+                                                        "description": "Timezone (String)"
+                                                    },
+                                                    "product_types": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "appliance",
+                                                                "switch",
+                                                                "wireless"
+                                                            ]
+                                                        },
+                                                        "title": "Product Types",
+                                                        "description": "Product Types (List - String)"
+                                                    },
+                                                    "tags": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": "Tags",
+                                                        "description": "Tags (List - String)"
+                                                    },
+                                                    "devices": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "title": "Name",
+                                                                    "description": "Name (String)"
+                                                                },
+                                                                "serial": {
+                                                                    "type": "string",
+                                                                    "title": "Serial",
+                                                                    "description": "Serial (String)"
+                                                                },
+                                                                "model": {
+                                                                    "type": "string",
+                                                                    "title": "Model",
+                                                                    "description": "Model (String)"
+                                                                },
+                                                                "tags": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "title": "Tags",
+                                                                    "description": "Tags (List - String)"
+                                                                },
+                                                                "claimed": {
+                                                                    "type": "boolean",
+                                                                    "title": "Claimed",
+                                                                    "description": "Claimed (Boolean)"
+                                                                },
+                                                                "device_templates": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "name": {
+                                                                            "type": "string",
+                                                                            "title": "Name",
+                                                                            "description": "Name (String)"
+                                                                        },
+                                                                        "product_type": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "appliance",
+                                                                                "switch",
+                                                                                "wireless",
+                                                                                "camera",
+                                                                                "sensor"
+                                                                            ],
+                                                                            "title": "Product Type",
+                                                                            "description": "Product Type (String)\n- Allowed values: appliance, switch, wireless, camera, sensor"
+                                                                        },
+                                                                        "tags": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "title": "Tags",
+                                                                            "description": "Tags (List - String)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "name",
+                                                                        "product_type"
+                                                                    ],
+                                                                    "title": "Device Templates",
+                                                                    "description": "Device Templates (Object)\n\nElements:\n- name (required)\n- product_type (required)\n- tags"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "name",
+                                                                "serial",
+                                                                "model",
+                                                                "device_templates"
+                                                            ]
+                                                        },
+                                                        "title": "Devices",
+                                                        "description": "Devices (List - Object)\n\nElements:\n- name (required)\n- serial (required)\n- model (required)\n- tags\n- claimed\n- device_templates (required)"
+                                                    },
+                                                    "switch_stacks": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "title": "Name",
+                                                                    "description": "Name (String)"
+                                                                },
+                                                                "devices": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "name": {
+                                                                                "type": "string",
+                                                                                "title": "Name",
+                                                                                "description": "Name (String)"
+                                                                            },
+                                                                            "serial": {
+                                                                                "type": "string",
+                                                                                "title": "Serial",
+                                                                                "description": "Serial (String)"
+                                                                            },
+                                                                            "model": {
+                                                                                "type": "string",
+                                                                                "title": "Model",
+                                                                                "description": "Model (String)"
+                                                                            },
+                                                                            "tags": {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "title": "Tags",
+                                                                                "description": "Tags (List - String)"
+                                                                            },
+                                                                            "claimed": {
+                                                                                "type": "boolean",
+                                                                                "title": "Claimed",
+                                                                                "description": "Claimed (Boolean)"
+                                                                            },
+                                                                            "device_templates": {
+                                                                                "type": "object",
+                                                                                "additionalProperties": false,
+                                                                                "properties": {
+                                                                                    "name": {
+                                                                                        "type": "string",
+                                                                                        "title": "Name",
+                                                                                        "description": "Name (String)"
+                                                                                    },
+                                                                                    "product_type": {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "appliance",
+                                                                                            "switch",
+                                                                                            "wireless",
+                                                                                            "camera",
+                                                                                            "sensor"
+                                                                                        ],
+                                                                                        "title": "Product Type",
+                                                                                        "description": "Product Type (String)\n- Allowed values: appliance, switch, wireless, camera, sensor"
+                                                                                    },
+                                                                                    "tags": {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "title": "Tags",
+                                                                                        "description": "Tags (List - String)"
+                                                                                    }
+                                                                                },
+                                                                                "required": [
+                                                                                    "name",
+                                                                                    "product_type"
+                                                                                ],
+                                                                                "title": "Device Templates",
+                                                                                "description": "Device Templates (Object)\n\nElements:\n- name (required)\n- product_type (required)\n- tags"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "name",
+                                                                            "serial",
+                                                                            "model",
+                                                                            "device_templates"
+                                                                        ]
+                                                                    },
+                                                                    "title": "Devices",
+                                                                    "description": "Devices (List - Object)\n\nElements:\n- name (required)\n- serial (required)\n- model (required)\n- tags\n- claimed\n- device_templates (required)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "name"
+                                                            ]
+                                                        },
+                                                        "title": "Switch Stacks",
+                                                        "description": "Switch Stacks (List - Object)\n\nElements:\n- name (required)\n- devices"
+                                                    },
+                                                    "network_template": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "name": {
+                                                                "type": "string",
+                                                                "title": "Name",
+                                                                "description": "Name (String)"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "name"
                                                         ],
-                                                        "default": "full",
-                                                        "title": "Access",
-                                                        "description": "Access (String)\n- Default value: full\n- Allowed values: full, read-only, guest-ambassador, monitor-only"
+                                                        "title": "Network Template",
+                                                        "description": "Network Template (Object)\n\nElements:\n- name (required)"
                                                     }
                                                 },
                                                 "required": [
-                                                    "name"
+                                                    "name",
+                                                    "product_types"
                                                 ]
                                             },
                                             "title": "Networks",
-                                            "description": "Networks (List - Object)\n\nElements:\n- name (required)\n- access"
+                                            "description": "Networks (List - Object)\n\nElements:\n- name (required)\n- description\n- notes\n- timezone\n- product_types (required)\n- tags\n- devices\n- switch_stacks\n- network_template"
                                         },
-                                        "tags": {
+                                        "administrators": {
                                             "type": "array",
                                             "items": {
                                                 "type": "object",
@@ -51956,46 +52102,120 @@
                                                         "title": "Name",
                                                         "description": "Name (String)"
                                                     },
-                                                    "access": {
+                                                    "email": {
+                                                        "type": "string",
+                                                        "title": "Email",
+                                                        "description": "Email (String)"
+                                                    },
+                                                    "authentication_method": {
                                                         "type": "string",
                                                         "enum": [
-                                                            "full",
-                                                            "read-only",
-                                                            "guest-ambassador",
-                                                            "monitor-only"
+                                                            "Cisco SecureX Sign-On",
+                                                            "Email"
                                                         ],
-                                                        "title": "Access",
-                                                        "description": "Access (String)\n- Allowed values: full, read-only, guest-ambassador, monitor-only"
+                                                        "title": "Authentication Method",
+                                                        "description": "Authentication Method (String)\n- Allowed values: Cisco SecureX Sign-On, Email"
+                                                    },
+                                                    "organization_access": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "enterprise",
+                                                            "full",
+                                                            "none",
+                                                            "read-only"
+                                                        ],
+                                                        "title": "Organization Access",
+                                                        "description": "Organization Access (String)\n- Allowed values: enterprise, full, none, read-only"
+                                                    },
+                                                    "networks": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "title": "Name",
+                                                                    "description": "Name (String)"
+                                                                },
+                                                                "access": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "full",
+                                                                        "read-only",
+                                                                        "guest-ambassador",
+                                                                        "monitor-only"
+                                                                    ],
+                                                                    "title": "Access",
+                                                                    "description": "Access (String)\n- Allowed values: full, read-only, guest-ambassador, monitor-only"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "name"
+                                                            ]
+                                                        },
+                                                        "title": "Networks",
+                                                        "description": "Networks (List - Object)\n\nElements:\n- name (required)\n- access"
+                                                    },
+                                                    "tags": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "title": "Name",
+                                                                    "description": "Name (String)"
+                                                                },
+                                                                "access": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "full",
+                                                                        "read-only",
+                                                                        "guest-ambassador",
+                                                                        "monitor-only"
+                                                                    ],
+                                                                    "title": "Access",
+                                                                    "description": "Access (String)\n- Allowed values: full, read-only, guest-ambassador, monitor-only"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "name"
+                                                            ]
+                                                        },
+                                                        "title": "Tags",
+                                                        "description": "Tags (List - Object)\n\nElements:\n- name (required)\n- access"
                                                     }
                                                 },
                                                 "required": [
-                                                    "name"
+                                                    "name",
+                                                    "email"
                                                 ]
                                             },
-                                            "title": "Tags",
-                                            "description": "Tags (List - Object)\n\nElements:\n- name (required)\n- access"
+                                            "title": "Administrators",
+                                            "description": "Administrators (List - Object)\n\nElements:\n- name (required)\n- email (required)\n- authentication_method\n- organization_access\n- networks\n- tags"
                                         }
                                     },
                                     "required": [
-                                        "name",
-                                        "email"
+                                        "name"
                                     ]
                                 },
-                                "title": "Administrators",
-                                "description": "Administrators (List - Object)\n\nElements:\n- name (required)\n- email (required)\n- authentication_method\n- organization_access\n- networks\n- tags"
+                                "title": "Organizations",
+                                "description": "Organizations (List - Object)\n\nElements:\n- name (required)\n- networks\n- administrators"
                             }
                         },
                         "required": [
                             "name"
                         ]
                     },
-                    "title": "Organizations",
-                    "description": "Organizations (List - Object)\n\nElements:\n- name (required)\n- networks\n- administrators"
+                    "title": "Regions",
+                    "description": "Regions (List - Object)\n\nElements:\n- name (required)\n- organizations"
                 }
             },
             "required": [],
             "title": "Meraki",
-            "description": "Meraki (Object)\n\nElements:\n- organizations"
+            "description": "Meraki (Object)\n\nElements:\n- regions"
         }
     },
     "required": []
