@@ -51799,11 +51799,1667 @@
                             },
                             "title": "CLI Profiles",
                             "description": "CLI Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- config"
+                        },
+                        "system_profiles": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "pattern": "^[^&<>! \"]{1,128}$",
+                                        "title": "Name",
+                                        "description": "Name (String)"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "title": "Description",
+                                        "description": "Description (String)"
+                                    },
+                                    "aaa": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "pattern": "^[^&<>! \"]{1,128}$",
+                                                "title": "Name",
+                                                "description": "Name (String)"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "title": "Description",
+                                                "description": "Description (String)"
+                                            },
+                                            "accounting_rules": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "groups": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string",
+                                                                "minLength": 1,
+                                                                "maxLength": 32
+                                                            },
+                                                            "title": "Groups",
+                                                            "description": "Groups (List - String)"
+                                                        },
+                                                        "id": {
+                                                            "type": "string",
+                                                            "maxLength": 32,
+                                                            "title": "ID",
+                                                            "description": "ID (String)\n- Maximum length: 32"
+                                                        },
+                                                        "level": {
+                                                            "type": "integer",
+                                                            "enum": [
+                                                                1,
+                                                                15
+                                                            ],
+                                                            "title": "Level",
+                                                            "description": "Level (Integer)\n- Allowed values: 1, 15"
+                                                        },
+                                                        "method": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "commands",
+                                                                "exec",
+                                                                "network",
+                                                                "system"
+                                                            ],
+                                                            "title": "Method",
+                                                            "description": "Method (String)\n- Allowed values: commands, exec, network, system"
+                                                        },
+                                                        "start_stop": {
+                                                            "type": "boolean",
+                                                            "title": "Start Stop",
+                                                            "description": "Start Stop (Boolean)"
+                                                        },
+                                                        "start_stop_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Start Stop Variable",
+                                                            "description": "Start Stop Variable (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "groups",
+                                                        "id",
+                                                        "method"
+                                                    ]
+                                                },
+                                                "title": "Accounting Rules",
+                                                "description": "Accounting Rules (List - Object)\n\nElements:\n- groups (required)\n- id (required)\n- level\n- method (required)\n- start_stop\n- start_stop_variable"
+                                            },
+                                            "auth_order": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string",
+                                                    "minLength": 1,
+                                                    "maxLength": 220
+                                                },
+                                                "title": "Auth Order",
+                                                "description": "Auth Order (List - String)"
+                                            },
+                                            "authorization_config_commands": {
+                                                "type": "boolean",
+                                                "title": "Authorization Config Commands",
+                                                "description": "Authorization Config Commands (Boolean)"
+                                            },
+                                            "authorization_config_commands_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Authorization Config Commands Variable",
+                                                "description": "Authorization Config Commands Variable (String)"
+                                            },
+                                            "authorization_console": {
+                                                "type": "boolean",
+                                                "title": "Authorization Console",
+                                                "description": "Authorization Console (Boolean)"
+                                            },
+                                            "authorization_console_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Authorization Console Variable",
+                                                "description": "Authorization Console Variable (String)"
+                                            },
+                                            "authorization_rules": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "authenticated": {
+                                                            "type": "boolean",
+                                                            "title": "Authenticated",
+                                                            "description": "Authenticated (Boolean)"
+                                                        },
+                                                        "groups": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string",
+                                                                "minLength": 1,
+                                                                "maxLength": 32
+                                                            },
+                                                            "title": "Groups",
+                                                            "description": "Groups (List - String)"
+                                                        },
+                                                        "id": {
+                                                            "type": "string",
+                                                            "maxLength": 32,
+                                                            "title": "ID",
+                                                            "description": "ID (String)\n- Maximum length: 32"
+                                                        },
+                                                        "level": {
+                                                            "type": "integer",
+                                                            "enum": [
+                                                                1,
+                                                                15
+                                                            ],
+                                                            "title": "Level",
+                                                            "description": "Level (Integer)\n- Allowed values: 1, 15"
+                                                        },
+                                                        "method": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "commands"
+                                                            ],
+                                                            "title": "Method",
+                                                            "description": "Method (String)\n- Allowed values: commands"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "groups",
+                                                        "id",
+                                                        "method"
+                                                    ]
+                                                },
+                                                "title": "Authorization Rules",
+                                                "description": "Authorization Rules (List - Object)\n\nElements:\n- authenticated\n- groups (required)\n- id (required)\n- level\n- method (required)"
+                                            },
+                                            "dot1x_accounting": {
+                                                "type": "boolean",
+                                                "title": "Dot1X Accounting",
+                                                "description": "Dot1X Accounting (Boolean)"
+                                            },
+                                            "dot1x_accounting_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Dot1X Accounting Variable",
+                                                "description": "Dot1X Accounting Variable (String)"
+                                            },
+                                            "dot1x_authentication": {
+                                                "type": "boolean",
+                                                "title": "Dot1X Authentication",
+                                                "description": "Dot1X Authentication (Boolean)"
+                                            },
+                                            "dot1x_authentication_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Dot1X Authentication Variable",
+                                                "description": "Dot1X Authentication Variable (String)"
+                                            },
+                                            "radius_groups": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "servers": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "accounting_port": {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 65534,
+                                                                        "title": "Accounting Port",
+                                                                        "description": "Accounting Port (Integer)\n- Minimum value: 1\n- Maximum value: 65534"
+                                                                    },
+                                                                    "accounting_port_variable": {
+                                                                        "type": "string",
+                                                                        "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                                        "title": "Accounting Port Variable",
+                                                                        "description": "Accounting Port Variable (String)"
+                                                                    },
+                                                                    "address": {
+                                                                        "type": "string",
+                                                                        "title": "Address",
+                                                                        "description": "Address (String)\n- IPv4 or IPv6 address"
+                                                                    },
+                                                                    "authentication_port": {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 65534,
+                                                                        "title": "Authentication Port",
+                                                                        "description": "Authentication Port (Integer)\n- Minimum value: 1\n- Maximum value: 65534"
+                                                                    },
+                                                                    "authentication_port_variable": {
+                                                                        "type": "string",
+                                                                        "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                                        "title": "Authentication Port Variable",
+                                                                        "description": "Authentication Port Variable (String)"
+                                                                    },
+                                                                    "key": {
+                                                                        "type": "string",
+                                                                        "minLength": 1,
+                                                                        "title": "Key",
+                                                                        "description": "Key (String)\n- Minimum length: 1"
+                                                                    },
+                                                                    "key_type": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "key",
+                                                                            "pac"
+                                                                        ],
+                                                                        "title": "Key Type",
+                                                                        "description": "Key Type (String)\n- Allowed values: key, pac"
+                                                                    },
+                                                                    "key_type_variable": {
+                                                                        "type": "string",
+                                                                        "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                                        "title": "Key Type Variable",
+                                                                        "description": "Key Type Variable (String)"
+                                                                    },
+                                                                    "retransmit": {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 100,
+                                                                        "title": "Retransmit",
+                                                                        "description": "Retransmit (Integer)\n- Minimum value: 1\n- Maximum value: 100"
+                                                                    },
+                                                                    "retransmit_variable": {
+                                                                        "type": "string",
+                                                                        "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                                        "title": "Retransmit Variable",
+                                                                        "description": "Retransmit Variable (String)"
+                                                                    },
+                                                                    "secret_key": {
+                                                                        "type": "string",
+                                                                        "minLength": 1,
+                                                                        "maxLength": 150,
+                                                                        "title": "Secret Key",
+                                                                        "description": "Secret Key (String)\n- Minimum length: 1\n- Maximum length: 150"
+                                                                    },
+                                                                    "secret_key_variable": {
+                                                                        "type": "string",
+                                                                        "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                                        "title": "Secret Key Variable",
+                                                                        "description": "Secret Key Variable (String)"
+                                                                    },
+                                                                    "timeout": {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 1000,
+                                                                        "title": "Timeout",
+                                                                        "description": "Timeout (Integer)\n- Minimum value: 1\n- Maximum value: 1000"
+                                                                    },
+                                                                    "timeout_variable": {
+                                                                        "type": "string",
+                                                                        "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                                        "title": "Timeout Variable",
+                                                                        "description": "Timeout Variable (String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "address",
+                                                                    "key"
+                                                                ]
+                                                            },
+                                                            "title": "Servers",
+                                                            "description": "Servers (List - Object)\n\nElements:\n- accounting_port\n- accounting_port_variable\n- address (required)\n- authentication_port\n- authentication_port_variable\n- key (required)\n- key_type\n- key_type_variable\n- retransmit\n- retransmit_variable\n- secret_key\n- secret_key_variable\n- timeout\n- timeout_variable"
+                                                        },
+                                                        "source_interface": {
+                                                            "type": "string",
+                                                            "maxLength": 32,
+                                                            "title": "Source Interface",
+                                                            "description": "Source Interface (String)\n- Maximum length: 32"
+                                                        },
+                                                        "source_interface_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Source Interface Variable",
+                                                            "description": "Source Interface Variable (String)"
+                                                        },
+                                                        "vpn": {
+                                                            "type": "integer",
+                                                            "maximum": 65530,
+                                                            "title": "VPN",
+                                                            "description": "VPN (Integer)\n- Maximum value: 65530"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "servers"
+                                                    ]
+                                                },
+                                                "title": "Radius Groups",
+                                                "description": "Radius Groups (List - Object)\n\nElements:\n- servers (required)\n- source_interface\n- source_interface_variable\n- vpn"
+                                            },
+                                            "tacacs_groups": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "servers": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "address": {
+                                                                        "type": "string",
+                                                                        "title": "Address",
+                                                                        "description": "Address (String)\n- IPv4 or IPv6 address"
+                                                                    },
+                                                                    "key": {
+                                                                        "type": "string",
+                                                                        "minLength": 1,
+                                                                        "title": "Key",
+                                                                        "description": "Key (String)\n- Minimum length: 1"
+                                                                    },
+                                                                    "port": {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 65535,
+                                                                        "title": "Port",
+                                                                        "description": "Port (Integer)\n- Minimum value: 1\n- Maximum value: 65535"
+                                                                    },
+                                                                    "port_variable": {
+                                                                        "type": "string",
+                                                                        "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                                        "title": "Port Variable",
+                                                                        "description": "Port Variable (String)"
+                                                                    },
+                                                                    "secret_key": {
+                                                                        "type": "string",
+                                                                        "minLength": 1,
+                                                                        "maxLength": 150,
+                                                                        "title": "Secret Key",
+                                                                        "description": "Secret Key (String)\n- Minimum length: 1\n- Maximum length: 150"
+                                                                    },
+                                                                    "timeout": {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 1000,
+                                                                        "title": "Timeout",
+                                                                        "description": "Timeout (Integer)\n- Minimum value: 1\n- Maximum value: 1000"
+                                                                    },
+                                                                    "timeout_variable": {
+                                                                        "type": "string",
+                                                                        "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                                        "title": "Timeout Variable",
+                                                                        "description": "Timeout Variable (String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "address",
+                                                                    "key",
+                                                                    "secret_key"
+                                                                ]
+                                                            },
+                                                            "title": "Servers",
+                                                            "description": "Servers (List - Object)\n\nElements:\n- address (required)\n- key (required)\n- port\n- port_variable\n- secret_key (required)\n- timeout\n- timeout_variable"
+                                                        },
+                                                        "source_interface": {
+                                                            "type": "string",
+                                                            "maxLength": 32,
+                                                            "title": "Source Interface",
+                                                            "description": "Source Interface (String)\n- Maximum length: 32"
+                                                        },
+                                                        "source_interface_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Source Interface Variable",
+                                                            "description": "Source Interface Variable (String)"
+                                                        },
+                                                        "vpn": {
+                                                            "type": "integer",
+                                                            "maximum": 65530,
+                                                            "title": "VPN",
+                                                            "description": "VPN (Integer)\n- Maximum value: 65530"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "servers"
+                                                    ]
+                                                },
+                                                "title": "Tacacs Groups",
+                                                "description": "Tacacs Groups (List - Object)\n\nElements:\n- servers (required)\n- source_interface\n- source_interface_variable\n- vpn"
+                                            },
+                                            "users": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "minLength": 1,
+                                                            "maxLength": 64,
+                                                            "title": "Name",
+                                                            "description": "Name (String)\n- Minimum length: 1\n- Maximum length: 64"
+                                                        },
+                                                        "name_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Name Variable",
+                                                            "description": "Name Variable (String)"
+                                                        },
+                                                        "password": {
+                                                            "type": "string",
+                                                            "title": "Password",
+                                                            "description": "Password (String)"
+                                                        },
+                                                        "password_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Password Variable",
+                                                            "description": "Password Variable (String)"
+                                                        },
+                                                        "privilege": {
+                                                            "type": "integer",
+                                                            "enum": [
+                                                                1,
+                                                                15
+                                                            ],
+                                                            "title": "Privilege",
+                                                            "description": "Privilege (Integer)\n- Allowed values: 1, 15"
+                                                        },
+                                                        "privilege_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Privilege Variable",
+                                                            "description": "Privilege Variable (String)"
+                                                        },
+                                                        "public_key_chains": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "key_type": {
+                                                                        "type": "string",
+                                                                        "minLength": 1,
+                                                                        "maxLength": 32,
+                                                                        "title": "Key Type",
+                                                                        "description": "Key Type (String)\n- Minimum length: 1\n- Maximum length: 32"
+                                                                    },
+                                                                    "key_type_variable": {
+                                                                        "type": "string",
+                                                                        "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                                        "title": "Key Type Variable",
+                                                                        "description": "Key Type Variable (String)"
+                                                                    },
+                                                                    "key_string": {
+                                                                        "type": "string",
+                                                                        "minLength": 1,
+                                                                        "maxLength": 1024,
+                                                                        "title": "Key String",
+                                                                        "description": "Key String (String)\n- Minimum length: 1\n- Maximum length: 1024"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "key_string"
+                                                                ]
+                                                            },
+                                                            "title": "Public Key Chains",
+                                                            "description": "Public Key Chains (List - Object)\n\nElements:\n- key_type\n- key_type_variable\n- key_string (required)"
+                                                        }
+                                                    },
+                                                    "required": []
+                                                },
+                                                "title": "Users",
+                                                "description": "Users (List - Object)\n\nElements:\n- name\n- name_variable\n- password\n- password_variable\n- privilege\n- privilege_variable\n- public_key_chains"
+                                            }
+                                        },
+                                        "required": [
+                                            "users"
+                                        ],
+                                        "title": "AAA",
+                                        "description": "AAA (Object)\n\nElements:\n- name\n- description\n- accounting_rules\n- auth_order\n- authorization_config_commands\n- authorization_config_commands_variable\n- authorization_console\n- authorization_console_variable\n- authorization_rules\n- dot1x_accounting\n- dot1x_accounting_variable\n- dot1x_authentication\n- dot1x_authentication_variable\n- radius_groups\n- tacacs_groups\n- users (required)"
+                                    },
+                                    "banner": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "pattern": "^[^&<>! \"]{1,128}$",
+                                                "title": "Name",
+                                                "description": "Name (String)"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "title": "Description",
+                                                "description": "Description (String)"
+                                            },
+                                            "login": {
+                                                "type": "string",
+                                                "minLength": 1,
+                                                "maxLength": 2048,
+                                                "title": "Login",
+                                                "description": "Login (String)\n- Minimum length: 1\n- Maximum length: 2048"
+                                            },
+                                            "login_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Login Variable",
+                                                "description": "Login Variable (String)"
+                                            },
+                                            "motd": {
+                                                "type": "string",
+                                                "minLength": 1,
+                                                "maxLength": 2048,
+                                                "title": "Motd",
+                                                "description": "Motd (String)\n- Minimum length: 1\n- Maximum length: 2048"
+                                            },
+                                            "motd_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Motd Variable",
+                                                "description": "Motd Variable (String)"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Banner",
+                                        "description": "Banner (Object)\n\nElements:\n- name\n- description\n- login\n- login_variable\n- motd\n- motd_variable"
+                                    },
+                                    "bfd": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "pattern": "^[^&<>! \"]{1,128}$",
+                                                "title": "Name",
+                                                "description": "Name (String)"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "title": "Description",
+                                                "description": "Description (String)"
+                                            },
+                                            "colors": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "color": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "default",
+                                                                "mpls",
+                                                                "metro-ethernet",
+                                                                "biz-internet",
+                                                                "public-internet",
+                                                                "lte",
+                                                                "3g",
+                                                                "red",
+                                                                "green",
+                                                                "blue",
+                                                                "gold",
+                                                                "silver",
+                                                                "bronze",
+                                                                "custom1",
+                                                                "custom2",
+                                                                "custom3",
+                                                                "private1",
+                                                                "private2",
+                                                                "private3",
+                                                                "private4",
+                                                                "private5",
+                                                                "private6"
+                                                            ],
+                                                            "title": "Color",
+                                                            "description": "Color (String)\n- Allowed values: default, mpls, metro-ethernet, biz-internet, public-internet, lte, 3g, red, green, blue, gold, silver, bronze, custom1, custom2, custom3, private1, private2, private3, private4, private5, private6"
+                                                        },
+                                                        "color_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Color Variable",
+                                                            "description": "Color Variable (String)"
+                                                        },
+                                                        "default_dscp": {
+                                                            "type": "integer",
+                                                            "maximum": 63,
+                                                            "title": "Default DSCP",
+                                                            "description": "Default DSCP (Integer)\n- Maximum value: 63"
+                                                        },
+                                                        "default_dscp_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Default DSCP Variable",
+                                                            "description": "Default DSCP Variable (String)"
+                                                        },
+                                                        "hello_interval": {
+                                                            "type": "integer",
+                                                            "minimum": 100,
+                                                            "maximum": 300000,
+                                                            "title": "Hello Interval",
+                                                            "description": "Hello Interval (Integer)\n- Minimum value: 100\n- Maximum value: 300000"
+                                                        },
+                                                        "hello_interval_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Hello Interval Variable",
+                                                            "description": "Hello Interval Variable (String)"
+                                                        },
+                                                        "multiplier": {
+                                                            "type": "integer",
+                                                            "minimum": 1,
+                                                            "maximum": 60,
+                                                            "title": "Multiplier",
+                                                            "description": "Multiplier (Integer)\n- Minimum value: 1\n- Maximum value: 60"
+                                                        },
+                                                        "multiplier_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Multiplier Variable",
+                                                            "description": "Multiplier Variable (String)"
+                                                        },
+                                                        "path_mtu_discovery": {
+                                                            "type": "boolean",
+                                                            "title": "Path MTU Discovery",
+                                                            "description": "Path MTU Discovery (Boolean)"
+                                                        },
+                                                        "path_mtu_discovery_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Path MTU Discovery Variable",
+                                                            "description": "Path MTU Discovery Variable (String)"
+                                                        }
+                                                    },
+                                                    "required": []
+                                                },
+                                                "title": "Colors",
+                                                "description": "Colors (List - Object)\n\nElements:\n- color\n- color_variable\n- default_dscp\n- default_dscp_variable\n- hello_interval\n- hello_interval_variable\n- multiplier\n- multiplier_variable\n- path_mtu_discovery\n- path_mtu_discovery_variable"
+                                            },
+                                            "default_dscp": {
+                                                "type": "integer",
+                                                "maximum": 63,
+                                                "title": "Default DSCP",
+                                                "description": "Default DSCP (Integer)\n- Maximum value: 63"
+                                            },
+                                            "default_dscp_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Default DSCP Variable",
+                                                "description": "Default DSCP Variable (String)"
+                                            },
+                                            "multiplier": {
+                                                "type": "integer",
+                                                "minimum": 1,
+                                                "maximum": 6,
+                                                "title": "Multiplier",
+                                                "description": "Multiplier (Integer)\n- Minimum value: 1\n- Maximum value: 6"
+                                            },
+                                            "multiplier_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Multiplier Variable",
+                                                "description": "Multiplier Variable (String)"
+                                            },
+                                            "poll_interval": {
+                                                "type": "integer",
+                                                "minimum": 1,
+                                                "maximum": 4294967295,
+                                                "title": "Poll Interval",
+                                                "description": "Poll Interval (Integer)\n- Minimum value: 1\n- Maximum value: 4294967295"
+                                            },
+                                            "poll_interval_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Poll Interval Variable",
+                                                "description": "Poll Interval Variable (String)"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "BFD",
+                                        "description": "BFD (Object)\n\nElements:\n- name\n- description\n- colors\n- default_dscp\n- default_dscp_variable\n- multiplier\n- multiplier_variable\n- poll_interval\n- poll_interval_variable"
+                                    },
+                                    "flexible_port_speed": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "pattern": "^[^&<>! \"]{1,128}$",
+                                                "title": "Name",
+                                                "description": "Name (String)"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "title": "Description",
+                                                "description": "Description (String)"
+                                            },
+                                            "port_type": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "12 ports of 1/10GE + 3 ports 40GE",
+                                                    "8 ports of 1/10GE + 4 ports of 40GE",
+                                                    "2 ports of 100 GE",
+                                                    "12 ports of 1/10GE + 1 port of 100GE",
+                                                    "8 ports of 1/10GE + 1 port of 40GE + 1 port of 100GE",
+                                                    "3 ports of 40GE + 1port of 100GE"
+                                                ],
+                                                "title": "Port Type",
+                                                "description": "Port Type (String)\n- Allowed values: 12 ports of 1/10GE + 3 ports 40GE, 8 ports of 1/10GE + 4 ports of 40GE, 2 ports of 100 GE, 12 ports of 1/10GE + 1 port of 100GE, 8 ports of 1/10GE + 1 port of 40GE + 1 port of 100GE, 3 ports of 40GE + 1port of 100GE"
+                                            },
+                                            "port_type_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Port Type Variable",
+                                                "description": "Port Type Variable (String)"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Flexible Port Speed",
+                                        "description": "Flexible Port Speed (Object)\n\nElements:\n- name\n- description\n- port_type\n- port_type_variable"
+                                    },
+                                    "global": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "pattern": "^[^&<>! \"]{1,128}$",
+                                                "title": "Name",
+                                                "description": "Name (String)"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "title": "Description",
+                                                "description": "Description (String)"
+                                            },
+                                            "arp_proxy": {
+                                                "type": "boolean",
+                                                "title": "ARP Proxy",
+                                                "description": "ARP Proxy (Boolean)"
+                                            },
+                                            "arp_proxy_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "ARP Proxy Variable",
+                                                "description": "ARP Proxy Variable (String)"
+                                            },
+                                            "cdp": {
+                                                "type": "boolean",
+                                                "title": "CDP",
+                                                "description": "CDP (Boolean)"
+                                            },
+                                            "cdp_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "CDP Variable",
+                                                "description": "CDP Variable (String)"
+                                            },
+                                            "console_logging": {
+                                                "type": "boolean",
+                                                "title": "Console Logging",
+                                                "description": "Console Logging (Boolean)"
+                                            },
+                                            "console_logging_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Console Logging Variable",
+                                                "description": "Console Logging Variable (String)"
+                                            },
+                                            "domain_lookup": {
+                                                "type": "boolean",
+                                                "title": "Domain Lookup",
+                                                "description": "Domain Lookup (Boolean)"
+                                            },
+                                            "domain_lookup_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Domain Lookup Variable",
+                                                "description": "Domain Lookup Variable (String)"
+                                            },
+                                            "ftp_passive": {
+                                                "type": "boolean",
+                                                "title": "Ftp Passive",
+                                                "description": "Ftp Passive (Boolean)"
+                                            },
+                                            "ftp_passive_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Ftp Passive Variable",
+                                                "description": "Ftp Passive Variable (String)"
+                                            },
+                                            "http_authentication": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "local",
+                                                    "aaa"
+                                                ],
+                                                "title": "Http Authentication",
+                                                "description": "Http Authentication (String)\n- Allowed values: local, aaa"
+                                            },
+                                            "http_authentication_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Http Authentication Variable",
+                                                "description": "Http Authentication Variable (String)"
+                                            },
+                                            "http_server": {
+                                                "type": "boolean",
+                                                "title": "Http Server",
+                                                "description": "Http Server (Boolean)"
+                                            },
+                                            "http_server_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Http Server Variable",
+                                                "description": "Http Server Variable (String)"
+                                            },
+                                            "https_server": {
+                                                "type": "boolean",
+                                                "title": "Https Server",
+                                                "description": "Https Server (Boolean)"
+                                            },
+                                            "https_server_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Https Server Variable",
+                                                "description": "Https Server Variable (String)"
+                                            },
+                                            "ignore_bootp": {
+                                                "type": "boolean",
+                                                "title": "Ignore Bootp",
+                                                "description": "Ignore Bootp (Boolean)"
+                                            },
+                                            "ignore_bootp_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Ignore Bootp Variable",
+                                                "description": "Ignore Bootp Variable (String)"
+                                            },
+                                            "ip_source_routing": {
+                                                "type": "boolean",
+                                                "title": "IP Source Routing",
+                                                "description": "IP Source Routing (Boolean)"
+                                            },
+                                            "ip_source_routing_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "IP Source Routing Variable",
+                                                "description": "IP Source Routing Variable (String)"
+                                            },
+                                            "lldp": {
+                                                "type": "boolean",
+                                                "title": "LLDP",
+                                                "description": "LLDP (Boolean)"
+                                            },
+                                            "lldp_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "LLDP Variable",
+                                                "description": "LLDP Variable (String)"
+                                            },
+                                            "nat64_udp_timeout": {
+                                                "type": "integer",
+                                                "minimum": 1,
+                                                "maximum": 536870,
+                                                "title": "Nat64 Udp Timeout",
+                                                "description": "Nat64 Udp Timeout (Integer)\n- Minimum value: 1\n- Maximum value: 536870"
+                                            },
+                                            "nat64_udp_timeout_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Nat64 Udp Timeout Variable",
+                                                "description": "Nat64 Udp Timeout Variable (String)"
+                                            },
+                                            "nat64_tcp_timeout": {
+                                                "type": "integer",
+                                                "minimum": 1,
+                                                "maximum": 536870,
+                                                "title": "Nat64 Tcp Timeout",
+                                                "description": "Nat64 Tcp Timeout (Integer)\n- Minimum value: 1\n- Maximum value: 536870"
+                                            },
+                                            "nat64_tcp_timeout_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Nat64 Tcp Timeout Variable",
+                                                "description": "Nat64 Tcp Timeout Variable (String)"
+                                            },
+                                            "rsh_rcp": {
+                                                "type": "boolean",
+                                                "title": "Rsh Rcp",
+                                                "description": "Rsh Rcp (Boolean)"
+                                            },
+                                            "rsh_rcp_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Rsh Rcp Variable",
+                                                "description": "Rsh Rcp Variable (String)"
+                                            },
+                                            "snmp_ifindex_persist": {
+                                                "type": "boolean",
+                                                "title": "SNMP Ifindex Persist",
+                                                "description": "SNMP Ifindex Persist (Boolean)"
+                                            },
+                                            "snmp_ifindex_persist_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "SNMP Ifindex Persist Variable",
+                                                "description": "SNMP Ifindex Persist Variable (String)"
+                                            },
+                                            "source_interface": {
+                                                "type": "string",
+                                                "title": "Source Interface",
+                                                "description": "Source Interface (String)"
+                                            },
+                                            "source_interface_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Source Interface Variable",
+                                                "description": "Source Interface Variable (String)"
+                                            },
+                                            "ssh_version": {
+                                                "type": "integer",
+                                                "minimum": 1,
+                                                "maximum": 2,
+                                                "title": "SSH Version",
+                                                "description": "SSH Version (Integer)\n- Minimum value: 1\n- Maximum value: 2"
+                                            },
+                                            "ssh_version_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "SSH Version Variable",
+                                                "description": "SSH Version Variable (String)"
+                                            },
+                                            "tcp_keepalives_in": {
+                                                "type": "boolean",
+                                                "title": "Tcp Keepalives In",
+                                                "description": "Tcp Keepalives In (Boolean)"
+                                            },
+                                            "tcp_keepalives_in_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Tcp Keepalives In Variable",
+                                                "description": "Tcp Keepalives In Variable (String)"
+                                            },
+                                            "tcp_keepalives_out": {
+                                                "type": "boolean",
+                                                "title": "Tcp Keepalives Out",
+                                                "description": "Tcp Keepalives Out (Boolean)"
+                                            },
+                                            "tcp_keepalives_out_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Tcp Keepalives Out Variable",
+                                                "description": "Tcp Keepalives Out Variable (String)"
+                                            },
+                                            "tcp_small_servers": {
+                                                "type": "boolean",
+                                                "title": "Tcp Small Servers",
+                                                "description": "Tcp Small Servers (Boolean)"
+                                            },
+                                            "tcp_small_servers_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Tcp Small Servers Variable",
+                                                "description": "Tcp Small Servers Variable (String)"
+                                            },
+                                            "telnet_outbound": {
+                                                "type": "boolean",
+                                                "title": "Telnet Outbound",
+                                                "description": "Telnet Outbound (Boolean)"
+                                            },
+                                            "telnet_outbound_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Telnet Outbound Variable",
+                                                "description": "Telnet Outbound Variable (String)"
+                                            },
+                                            "udp_small_servers": {
+                                                "type": "boolean",
+                                                "title": "Udp Small Servers",
+                                                "description": "Udp Small Servers (Boolean)"
+                                            },
+                                            "udp_small_servers_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Udp Small Servers Variable",
+                                                "description": "Udp Small Servers Variable (String)"
+                                            },
+                                            "vty_logging": {
+                                                "type": "boolean",
+                                                "title": "Vty Logging",
+                                                "description": "Vty Logging (Boolean)"
+                                            },
+                                            "vty_logging_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Vty Logging Variable",
+                                                "description": "Vty Logging Variable (String)"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Global",
+                                        "description": "Global (Object)\n\nElements:\n- name\n- description\n- arp_proxy\n- arp_proxy_variable\n- cdp\n- cdp_variable\n- console_logging\n- console_logging_variable\n- domain_lookup\n- domain_lookup_variable\n- ftp_passive\n- ftp_passive_variable\n- http_authentication\n- http_authentication_variable\n- http_server\n- http_server_variable\n- https_server\n- https_server_variable\n- ignore_bootp\n- ignore_bootp_variable\n- ip_source_routing\n- ip_source_routing_variable\n- lldp\n- lldp_variable\n- nat64_udp_timeout\n- nat64_udp_timeout_variable\n- nat64_tcp_timeout\n- nat64_tcp_timeout_variable\n- rsh_rcp\n- rsh_rcp_variable\n- snmp_ifindex_persist\n- snmp_ifindex_persist_variable\n- source_interface\n- source_interface_variable\n- ssh_version\n- ssh_version_variable\n- tcp_keepalives_in\n- tcp_keepalives_in_variable\n- tcp_keepalives_out\n- tcp_keepalives_out_variable\n- tcp_small_servers\n- tcp_small_servers_variable\n- telnet_outbound\n- telnet_outbound_variable\n- udp_small_servers\n- udp_small_servers_variable\n- vty_logging\n- vty_logging_variable"
+                                    },
+                                    "logging": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "pattern": "^[^&<>! \"]{1,128}$",
+                                                "title": "Name",
+                                                "description": "Name (String)"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "title": "Description",
+                                                "description": "Description (String)"
+                                            },
+                                            "disk_file_size": {
+                                                "type": "integer",
+                                                "minimum": 1,
+                                                "maximum": 20,
+                                                "title": "Disk File Size",
+                                                "description": "Disk File Size (Integer)\n- Minimum value: 1\n- Maximum value: 20"
+                                            },
+                                            "disk_file_size_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Disk File Size Variable",
+                                                "description": "Disk File Size Variable (String)"
+                                            },
+                                            "disk_file_rotate": {
+                                                "type": "integer",
+                                                "minimum": 1,
+                                                "maximum": 10,
+                                                "title": "Disk File Rotate",
+                                                "description": "Disk File Rotate (Integer)\n- Minimum value: 1\n- Maximum value: 10"
+                                            },
+                                            "disk_file_rotate_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Disk File Rotate Variable",
+                                                "description": "Disk File Rotate Variable (String)"
+                                            },
+                                            "ipv4_servers": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "hostname_ip": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\-]*[A-Za-z0-9])$"
+                                                                }
+                                                            ],
+                                                            "title": "Hostname IP",
+                                                            "description": "Hostname IP (String, String)"
+                                                        },
+                                                        "hostname_ip_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Hostname IP Variable",
+                                                            "description": "Hostname IP Variable (String)"
+                                                        },
+                                                        "severity": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "informational",
+                                                                "debugging",
+                                                                "notice",
+                                                                "warn",
+                                                                "error",
+                                                                "critical",
+                                                                "alert",
+                                                                "emergency"
+                                                            ],
+                                                            "title": "Severity",
+                                                            "description": "Severity (String)\n- Allowed values: informational, debugging, notice, warn, error, critical, alert, emergency"
+                                                        },
+                                                        "severity_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Severity Variable",
+                                                            "description": "Severity Variable (String)"
+                                                        },
+                                                        "source_interface": {
+                                                            "type": "string",
+                                                            "pattern": "^(GigabitEthernet|Loopback|TenGigabitEthernet|TwoGigabitEthernet|FortyGigabitEthernet|HundredGigE|Vlan)(([1-9]\\d|\\d)/){0,2}(0|[1-9]\\d*)([:|\\.][1-9]\\d*)?",
+                                                            "title": "Source Interface",
+                                                            "description": "Source Interface (String)"
+                                                        },
+                                                        "source_interface_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Source Interface Variable",
+                                                            "description": "Source Interface Variable (String)"
+                                                        },
+                                                        "tls_enable": {
+                                                            "type": "boolean",
+                                                            "title": "TLS Enable",
+                                                            "description": "TLS Enable (Boolean)"
+                                                        },
+                                                        "tls_enable_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "TLS Enable Variable",
+                                                            "description": "TLS Enable Variable (String)"
+                                                        },
+                                                        "tls_properties_custom_profile": {
+                                                            "type": "boolean",
+                                                            "title": "TLS Properties Custom Profile",
+                                                            "description": "TLS Properties Custom Profile (Boolean)"
+                                                        },
+                                                        "tls_properties_custom_profile_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "TLS Properties Custom Profile Variable",
+                                                            "description": "TLS Properties Custom Profile Variable (String)"
+                                                        },
+                                                        "tls_properties_profile": {
+                                                            "type": "string",
+                                                            "minLength": 1,
+                                                            "title": "TLS Properties Profile",
+                                                            "description": "TLS Properties Profile (String)\n- Minimum length: 1"
+                                                        },
+                                                        "tls_properties_profile_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "TLS Properties Profile Variable",
+                                                            "description": "TLS Properties Profile Variable (String)"
+                                                        },
+                                                        "vpn_id": {
+                                                            "type": "integer",
+                                                            "maximum": 65530,
+                                                            "title": "VPN ID",
+                                                            "description": "VPN ID (Integer)\n- Maximum value: 65530"
+                                                        },
+                                                        "vpn_id_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "VPN ID Variable",
+                                                            "description": "VPN ID Variable (String)"
+                                                        }
+                                                    },
+                                                    "required": []
+                                                },
+                                                "title": "Ipv4 Servers",
+                                                "description": "Ipv4 Servers (List - Object)\n\nElements:\n- hostname_ip\n- hostname_ip_variable\n- severity\n- severity_variable\n- source_interface\n- source_interface_variable\n- tls_enable\n- tls_enable_variable\n- tls_properties_custom_profile\n- tls_properties_custom_profile_variable\n- tls_properties_profile\n- tls_properties_profile_variable\n- vpn_id\n- vpn_id_variable"
+                                            },
+                                            "ipv6_servers": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "hostname_ip": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\-]*[A-Za-z0-9])$"
+                                                                }
+                                                            ],
+                                                            "title": "Hostname IP",
+                                                            "description": "Hostname IP (String, String)"
+                                                        },
+                                                        "hostname_ip_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Hostname IP Variable",
+                                                            "description": "Hostname IP Variable (String)"
+                                                        },
+                                                        "severity": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "informational",
+                                                                "debugging",
+                                                                "notice",
+                                                                "warn",
+                                                                "error",
+                                                                "critical",
+                                                                "alert",
+                                                                "emergency"
+                                                            ],
+                                                            "title": "Severity",
+                                                            "description": "Severity (String)\n- Allowed values: informational, debugging, notice, warn, error, critical, alert, emergency"
+                                                        },
+                                                        "severity_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Severity Variable",
+                                                            "description": "Severity Variable (String)"
+                                                        },
+                                                        "source_interface": {
+                                                            "type": "string",
+                                                            "pattern": "^(GigabitEthernet|Loopback|TenGigabitEthernet|TwoGigabitEthernet|FortyGigabitEthernet|HundredGigE|Vlan)(([1-9]\\d|\\d)/){0,2}(0|[1-9]\\d*)([:|\\.][1-9]\\d*)?",
+                                                            "title": "Source Interface",
+                                                            "description": "Source Interface (String)"
+                                                        },
+                                                        "source_interface_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Source Interface Variable",
+                                                            "description": "Source Interface Variable (String)"
+                                                        },
+                                                        "tls_enable": {
+                                                            "type": "boolean",
+                                                            "title": "TLS Enable",
+                                                            "description": "TLS Enable (Boolean)"
+                                                        },
+                                                        "tls_enable_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "TLS Enable Variable",
+                                                            "description": "TLS Enable Variable (String)"
+                                                        },
+                                                        "tls_properties_custom_profile": {
+                                                            "type": "boolean",
+                                                            "title": "TLS Properties Custom Profile",
+                                                            "description": "TLS Properties Custom Profile (Boolean)"
+                                                        },
+                                                        "tls_properties_custom_profile_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "TLS Properties Custom Profile Variable",
+                                                            "description": "TLS Properties Custom Profile Variable (String)"
+                                                        },
+                                                        "tls_properties_profile": {
+                                                            "type": "string",
+                                                            "minLength": 1,
+                                                            "title": "TLS Properties Profile",
+                                                            "description": "TLS Properties Profile (String)\n- Minimum length: 1"
+                                                        },
+                                                        "tls_properties_profile_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "TLS Properties Profile Variable",
+                                                            "description": "TLS Properties Profile Variable (String)"
+                                                        },
+                                                        "vpn_id": {
+                                                            "type": "integer",
+                                                            "maximum": 65530,
+                                                            "title": "VPN ID",
+                                                            "description": "VPN ID (Integer)\n- Maximum value: 65530"
+                                                        },
+                                                        "vpn_id_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "VPN ID Variable",
+                                                            "description": "VPN ID Variable (String)"
+                                                        }
+                                                    },
+                                                    "required": []
+                                                },
+                                                "title": "IPv6 Servers",
+                                                "description": "IPv6 Servers (List - Object)\n\nElements:\n- hostname_ip\n- hostname_ip_variable\n- severity\n- severity_variable\n- source_interface\n- source_interface_variable\n- tls_enable\n- tls_enable_variable\n- tls_properties_custom_profile\n- tls_properties_custom_profile_variable\n- tls_properties_profile\n- tls_properties_profile_variable\n- vpn_id\n- vpn_id_variable"
+                                            },
+                                            "tls_profiles": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "cipher_suites": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "aes-128-cbc-sha",
+                                                                    "aes-256-cbc-sha",
+                                                                    "dhe-aes-cbc-sha2",
+                                                                    "dhe-aes-gcm-sha2",
+                                                                    "ecdhe-ecdsa-aes-gcm-sha2",
+                                                                    "ecdhe-rsa-aes-cbc-sha2",
+                                                                    "ecdhe-rsa-aes-gcm-sha2",
+                                                                    "rsa-aes-cbc-sha2",
+                                                                    "rsa-aes-gcm-sha2"
+                                                                ]
+                                                            },
+                                                            "title": "Cipher Suites",
+                                                            "description": "Cipher Suites (List - String)"
+                                                        },
+                                                        "cipher_suites_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Cipher Suites Variable",
+                                                            "description": "Cipher Suites Variable (String)"
+                                                        },
+                                                        "name": {
+                                                            "type": "string",
+                                                            "minLength": 1,
+                                                            "title": "Name",
+                                                            "description": "Name (String)\n- Minimum length: 1"
+                                                        },
+                                                        "name_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Name Variable",
+                                                            "description": "Name Variable (String)"
+                                                        },
+                                                        "tls_version": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "TLSv1.1",
+                                                                "TLSv1.2"
+                                                            ],
+                                                            "title": "TLS Version",
+                                                            "description": "TLS Version (String)\n- Allowed values: TLSv1.1, TLSv1.2"
+                                                        },
+                                                        "tls_version_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "TLS Version Variable",
+                                                            "description": "TLS Version Variable (String)"
+                                                        }
+                                                    },
+                                                    "required": []
+                                                },
+                                                "title": "TLS Profiles",
+                                                "description": "TLS Profiles (List - Object)\n\nElements:\n- cipher_suites\n- cipher_suites_variable\n- name\n- name_variable\n- tls_version\n- tls_version_variable"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Logging",
+                                        "description": "Logging (Object)\n\nElements:\n- name\n- description\n- disk_file_size\n- disk_file_size_variable\n- disk_file_rotate\n- disk_file_rotate_variable\n- ipv4_servers\n- ipv6_servers\n- tls_profiles"
+                                    },
+                                    "mrf": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "pattern": "^[^&<>! \"]{1,128}$",
+                                                "title": "Name",
+                                                "description": "Name (String)"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "title": "Description",
+                                                "description": "Description (String)"
+                                            },
+                                            "migration_to_mrf": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "enabled",
+                                                    "enabled-from-bgp-core"
+                                                ],
+                                                "title": "Migration To Mrf",
+                                                "description": "Migration To Mrf (String)\n- Allowed values: enabled, enabled-from-bgp-core"
+                                            },
+                                            "migration_bgp_community": {
+                                                "type": "integer",
+                                                "minimum": 1,
+                                                "maximum": 4294967295,
+                                                "title": "Migration BGP Community",
+                                                "description": "Migration BGP Community (Integer)\n- Minimum value: 1\n- Maximum value: 4294967295"
+                                            },
+                                            "region_id": {
+                                                "type": "integer",
+                                                "minimum": 1,
+                                                "maximum": 63,
+                                                "title": "Region ID",
+                                                "description": "Region ID (Integer)\n- Minimum value: 1\n- Maximum value: 63"
+                                            },
+                                            "role": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "edge-router",
+                                                    "border-router"
+                                                ],
+                                                "title": "Role",
+                                                "description": "Role (String)\n- Allowed values: edge-router, border-router"
+                                            },
+                                            "role_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Role Variable",
+                                                "description": "Role Variable (String)"
+                                            },
+                                            "secondary_region_id": {
+                                                "type": "integer",
+                                                "minimum": 1,
+                                                "maximum": 63,
+                                                "title": "Secondary Region ID",
+                                                "description": "Secondary Region ID (Integer)\n- Minimum value: 1\n- Maximum value: 63"
+                                            },
+                                            "secondary_region_id_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Secondary Region ID Variable",
+                                                "description": "Secondary Region ID Variable (String)"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Mrf",
+                                        "description": "Mrf (Object)\n\nElements:\n- name\n- description\n- migration_to_mrf\n- migration_bgp_community\n- region_id\n- role\n- role_variable\n- secondary_region_id\n- secondary_region_id_variable"
+                                    },
+                                    "ntp": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "pattern": "^[^&<>! \"]{1,128}$",
+                                                "title": "Name",
+                                                "description": "Name (String)"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "title": "Description",
+                                                "description": "Description (String)"
+                                            },
+                                            "authentication_keys": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer",
+                                                            "minimum": 1,
+                                                            "maximum": 65535,
+                                                            "title": "ID",
+                                                            "description": "ID (Integer)\n- Minimum value: 1\n- Maximum value: 65535"
+                                                        },
+                                                        "id_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "ID Variable",
+                                                            "description": "ID Variable (String)"
+                                                        },
+                                                        "md5_value": {
+                                                            "type": "string",
+                                                            "minLength": 1,
+                                                            "title": "MD5 Value",
+                                                            "description": "MD5 Value (String)\n- Minimum length: 1"
+                                                        },
+                                                        "md5_value_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "MD5 Value Variable",
+                                                            "description": "MD5 Value Variable (String)"
+                                                        }
+                                                    },
+                                                    "required": []
+                                                },
+                                                "title": "Authentication Keys",
+                                                "description": "Authentication Keys (List - Object)\n\nElements:\n- id\n- id_variable\n- md5_value\n- md5_value_variable"
+                                            },
+                                            "authoritative_ntp_server": {
+                                                "type": "boolean",
+                                                "title": "Authoritative NTP Server",
+                                                "description": "Authoritative NTP Server (Boolean)"
+                                            },
+                                            "authoritative_ntp_server_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Authoritative NTP Server Variable",
+                                                "description": "Authoritative NTP Server Variable (String)"
+                                            },
+                                            "authoritative_ntp_server_source_interface": {
+                                                "type": "string",
+                                                "pattern": "^(GigabitEthernet|Loopback|TenGigabitEthernet|TwoGigabitEthernet|FortyGigabitEthernet|HundredGigE|Vlan)(([1-9]\\d|\\d)/){0,2}(0|[1-9]\\d*)([:|\\.][1-9]\\d*)?",
+                                                "title": "Authoritative NTP Server Source Interface",
+                                                "description": "Authoritative NTP Server Source Interface (String)"
+                                            },
+                                            "authoritative_ntp_server_source_interface_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Authoritative NTP Server Source Interface Variable",
+                                                "description": "Authoritative NTP Server Source Interface Variable (String)"
+                                            },
+                                            "authoritative_ntp_server_stratum": {
+                                                "type": "integer",
+                                                "minimum": 1,
+                                                "maximum": 15,
+                                                "title": "Authoritative NTP Server Stratum",
+                                                "description": "Authoritative NTP Server Stratum (Integer)\n- Minimum value: 1\n- Maximum value: 15"
+                                            },
+                                            "authoritative_ntp_server_stratum_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Authoritative NTP Server Stratum Variable",
+                                                "description": "Authoritative NTP Server Stratum Variable (String)"
+                                            },
+                                            "servers": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "authentication_key": {
+                                                            "type": "integer",
+                                                            "minimum": 1,
+                                                            "maximum": 65535,
+                                                            "title": "Authentication Key",
+                                                            "description": "Authentication Key (Integer)\n- Minimum value: 1\n- Maximum value: 65535"
+                                                        },
+                                                        "authentication_key_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Authentication Key Variable",
+                                                            "description": "Authentication Key Variable (String)"
+                                                        },
+                                                        "hostname_ip": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\-]*[A-Za-z0-9])$"
+                                                                }
+                                                            ],
+                                                            "title": "Hostname IP",
+                                                            "description": "Hostname IP (String, String)"
+                                                        },
+                                                        "hostname_ip_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Hostname IP Variable",
+                                                            "description": "Hostname IP Variable (String)"
+                                                        },
+                                                        "prefer": {
+                                                            "type": "boolean",
+                                                            "title": "Prefer",
+                                                            "description": "Prefer (Boolean)"
+                                                        },
+                                                        "prefer_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Prefer Variable",
+                                                            "description": "Prefer Variable (String)"
+                                                        },
+                                                        "source_interface": {
+                                                            "type": "string",
+                                                            "pattern": "^(GigabitEthernet|Loopback|TenGigabitEthernet|TwoGigabitEthernet|FortyGigabitEthernet|HundredGigE|Vlan)(([1-9]\\d|\\d)/){0,2}(0|[1-9]\\d*)([:|\\.][1-9]\\d*)?",
+                                                            "title": "Source Interface",
+                                                            "description": "Source Interface (String)"
+                                                        },
+                                                        "source_interface_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "Source Interface Variable",
+                                                            "description": "Source Interface Variable (String)"
+                                                        },
+                                                        "ntp_version": {
+                                                            "type": "integer",
+                                                            "maximum": 4,
+                                                            "title": "NTP Version",
+                                                            "description": "NTP Version (Integer)\n- Maximum value: 4"
+                                                        },
+                                                        "ntp_version_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "NTP Version Variable",
+                                                            "description": "NTP Version Variable (String)"
+                                                        },
+                                                        "vpn_id": {
+                                                            "type": "integer",
+                                                            "maximum": 65530,
+                                                            "title": "VPN ID",
+                                                            "description": "VPN ID (Integer)\n- Maximum value: 65530"
+                                                        },
+                                                        "vpn_id_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                            "title": "VPN ID Variable",
+                                                            "description": "VPN ID Variable (String)"
+                                                        }
+                                                    },
+                                                    "required": []
+                                                },
+                                                "title": "Servers",
+                                                "description": "Servers (List - Object)\n\nElements:\n- authentication_key\n- authentication_key_variable\n- hostname_ip\n- hostname_ip_variable\n- prefer\n- prefer_variable\n- source_interface\n- source_interface_variable\n- ntp_version\n- ntp_version_variable\n- vpn_id\n- vpn_id_variable"
+                                            },
+                                            "trusted_keys": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "integer",
+                                                    "minimum": 1,
+                                                    "maximum": 65535
+                                                },
+                                                "title": "Trusted Keys",
+                                                "description": "Trusted Keys (List - Integer)"
+                                            },
+                                            "trusted_keys_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,64}$",
+                                                "title": "Trusted Keys Variable",
+                                                "description": "Trusted Keys Variable (String)"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "NTP",
+                                        "description": "NTP (Object)\n\nElements:\n- name\n- description\n- authentication_keys\n- authoritative_ntp_server\n- authoritative_ntp_server_variable\n- authoritative_ntp_server_source_interface\n- authoritative_ntp_server_source_interface_variable\n- authoritative_ntp_server_stratum\n- authoritative_ntp_server_stratum_variable\n- servers\n- trusted_keys\n- trusted_keys_variable"
+                                    }
+                                },
+                                "required": [
+                                    "name"
+                                ]
+                            },
+                            "title": "System Profiles",
+                            "description": "System Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- aaa\n- banner\n- bfd\n- flexible_port_speed\n- global\n- logging\n- mrf\n- ntp"
                         }
                     },
                     "required": [],
                     "title": "Feature Profiles",
-                    "description": "Feature Profiles (Object)\n\nElements:\n- cli_profiles"
+                    "description": "Feature Profiles (Object)\n\nElements:\n- cli_profiles\n- system_profiles"
                 }
             },
             "required": [],
@@ -51814,7 +53470,7 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "regions": {
+                "domains": {
                     "type": "array",
                     "items": {
                         "type": "object",
@@ -52209,13 +53865,13 @@
                             "name"
                         ]
                     },
-                    "title": "Regions",
-                    "description": "Regions (List - Object)\n\nElements:\n- name (required)\n- organizations"
+                    "title": "Domains",
+                    "description": "Domains (List - Object)\n\nElements:\n- name (required)\n- organizations"
                 }
             },
             "required": [],
             "title": "Meraki",
-            "description": "Meraki (Object)\n\nElements:\n- regions"
+            "description": "Meraki (Object)\n\nElements:\n- domains"
         }
     },
     "required": []
