@@ -157852,6 +157852,13 @@
                                         "title": "Gw IPv6 Address",
                                         "description": "Gw IPv6 Address (String)"
                                     },
+                                    "ipv4_acl_in": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 64,
+                                        "title": "Ipv4 ACL In",
+                                        "description": "Ipv4 ACL In (String)\n- Minimum length: 1\n- Maximum length: 64"
+                                    },
                                     "secondary_ip_addresses": {
                                         "type": "array",
                                         "items": {
@@ -158015,7 +158022,7 @@
                                 ]
                             },
                             "title": "Networks",
-                            "description": "Networks (List - Object)\n\nElements:\n- name (required)\n- is_l2_only\n- vrf_name\n- net_id\n- vlan_id\n- vlan_name\n- int_desc\n- gw_ip_address\n- gw_ipv6_address\n- secondary_ip_addresses\n- mtu_l3intf\n- l3gw_on_border\n- route_tag\n- multicast_group_address\n- arp_suppress\n- route_target_both\n- dhcp_loopback_id\n- dhcp_servers\n- netflow_enable\n- vlan_netflow_monitor\n- trm_enable\n- xconnect\n- network_attach_group\n- switch_attach_overrides"
+                            "description": "Networks (List - Object)\n\nElements:\n- name (required)\n- is_l2_only\n- vrf_name\n- net_id\n- vlan_id\n- vlan_name\n- int_desc\n- gw_ip_address\n- gw_ipv6_address\n- ipv4_acl_in\n- secondary_ip_addresses\n- mtu_l3intf\n- l3gw_on_border\n- route_tag\n- multicast_group_address\n- arp_suppress\n- route_target_both\n- dhcp_loopback_id\n- dhcp_servers\n- netflow_enable\n- vlan_netflow_monitor\n- trm_enable\n- xconnect\n- network_attach_group\n- switch_attach_overrides"
                         },
                         "vrf_attach_groups": {
                             "type": "array",
@@ -163187,6 +163194,13 @@
                                                 "title": "Gw IPv6 Address",
                                                 "description": "Gw IPv6 Address (String)"
                                             },
+                                            "ipv4_acl_in": {
+                                                "type": "string",
+                                                "minLength": 1,
+                                                "maxLength": 64,
+                                                "title": "Ipv4 ACL In",
+                                                "description": "Ipv4 ACL In (String)\n- Minimum length: 1\n- Maximum length: 64"
+                                            },
                                             "secondary_ip_addresses": {
                                                 "type": "array",
                                                 "items": {
@@ -163359,7 +163373,7 @@
                                         ]
                                     },
                                     "title": "Networks",
-                                    "description": "Networks (List - Object)\n\nElements:\n- name (required)\n- is_l2_only\n- vrf_name\n- net_id\n- vlan_id\n- vlan_name\n- int_desc\n- gw_ip_address\n- gw_ipv6_address\n- secondary_ip_addresses\n- mtu_l3intf\n- route_tag\n- arp_suppress\n- route_target_both\n- child_fabrics\n- network_attach_group\n- switch_attach_overrides"
+                                    "description": "Networks (List - Object)\n\nElements:\n- name (required)\n- is_l2_only\n- vrf_name\n- net_id\n- vlan_id\n- vlan_name\n- int_desc\n- gw_ip_address\n- gw_ipv6_address\n- ipv4_acl_in\n- secondary_ip_addresses\n- mtu_l3intf\n- route_tag\n- arp_suppress\n- route_target_both\n- child_fabrics\n- network_attach_group\n- switch_attach_overrides"
                                 },
                                 "vrf_attach_groups": {
                                     "type": "array",
