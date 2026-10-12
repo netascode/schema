@@ -178452,7 +178452,7 @@
                                                     "title": "Bestpath Limit",
                                                     "description": "Bestpath Limit (Integer, String)"
                                                 },
-                                                "bandwidth_reference": {
+                                                "reference_bandwidth": {
                                                     "anyOf": [
                                                         {
                                                             "type": "integer",
@@ -178463,10 +178463,10 @@
                                                             "pattern": "^.*[\\$\\%]\\{.*$"
                                                         }
                                                     ],
-                                                    "title": "Bandwidth Reference",
-                                                    "description": "Bandwidth Reference (Integer, String)"
+                                                    "title": "Reference Bandwidth",
+                                                    "description": "Reference Bandwidth (Integer, String)"
                                                 },
-                                                "bandwidth_reference_unit": {
+                                                "reference_bandwidth_unit": {
                                                     "anyOf": [
                                                         {
                                                             "type": "string",
@@ -178480,8 +178480,8 @@
                                                             "pattern": "^.*[\\$\\%]\\{.*$"
                                                         }
                                                     ],
-                                                    "title": "Bandwidth Reference Unit",
-                                                    "description": "Bandwidth Reference Unit (String, String)"
+                                                    "title": "Reference Bandwidth Unit",
+                                                    "description": "Reference Bandwidth Unit (String, String)"
                                                 },
                                                 "cluster_id": {
                                                     "anyOf": [
@@ -178689,6 +178689,70 @@
                                                     ],
                                                     "title": "Graceful Restart Stalepath Time",
                                                     "description": "Graceful Restart Stalepath Time (Integer, String)"
+                                                },
+                                                "bestpath": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "always_compare_med": {
+                                                            "type": "boolean",
+                                                            "title": "Always Compare Med",
+                                                            "description": "Always Compare Med (Boolean)"
+                                                        },
+                                                        "compare_routerid": {
+                                                            "type": "boolean",
+                                                            "title": "Compare Routerid",
+                                                            "description": "Compare Routerid (Boolean)"
+                                                        },
+                                                        "compare_neighborid": {
+                                                            "type": "boolean",
+                                                            "title": "Compare Neighborid",
+                                                            "description": "Compare Neighborid (Boolean)"
+                                                        },
+                                                        "as_path_ignore": {
+                                                            "type": "boolean",
+                                                            "title": "AS Path Ignore",
+                                                            "description": "AS Path Ignore (Boolean)"
+                                                        },
+                                                        "as_path_multipath_relax": {
+                                                            "type": "boolean",
+                                                            "title": "AS Path Multipath Relax",
+                                                            "description": "AS Path Multipath Relax (Boolean)"
+                                                        },
+                                                        "aigp_ignore": {
+                                                            "type": "boolean",
+                                                            "title": "Aigp Ignore",
+                                                            "description": "Aigp Ignore (Boolean)"
+                                                        },
+                                                        "cost_community_ignore": {
+                                                            "type": "boolean",
+                                                            "title": "Cost Community Ignore",
+                                                            "description": "Cost Community Ignore (Boolean)"
+                                                        },
+                                                        "igp_metric_ignore": {
+                                                            "type": "boolean",
+                                                            "title": "Igp Metric Ignore",
+                                                            "description": "Igp Metric Ignore (Boolean)"
+                                                        },
+                                                        "med_confed": {
+                                                            "type": "boolean",
+                                                            "title": "Med Confed",
+                                                            "description": "Med Confed (Boolean)"
+                                                        },
+                                                        "med_missing_as_worst": {
+                                                            "type": "boolean",
+                                                            "title": "Med Missing AS Worst",
+                                                            "description": "Med Missing AS Worst (Boolean)"
+                                                        },
+                                                        "med_non_deterministic": {
+                                                            "type": "boolean",
+                                                            "title": "Med Non Deterministic",
+                                                            "description": "Med Non Deterministic (Boolean)"
+                                                        }
+                                                    },
+                                                    "required": [],
+                                                    "title": "Bestpath",
+                                                    "description": "Bestpath (Object)\n\nElements:\n- always_compare_med\n- compare_routerid\n- compare_neighborid\n- as_path_ignore\n- as_path_multipath_relax\n- aigp_ignore\n- cost_community_ignore\n- igp_metric_ignore\n- med_confed\n- med_missing_as_worst\n- med_non_deterministic"
                                                 },
                                                 "neighbors": {
                                                     "type": "array",
@@ -180217,6 +180281,70 @@
                                                                 "title": "Graceful Restart Stalepath Time",
                                                                 "description": "Graceful Restart Stalepath Time (Integer, String)"
                                                             },
+                                                            "bestpath": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "always_compare_med": {
+                                                                        "type": "boolean",
+                                                                        "title": "Always Compare Med",
+                                                                        "description": "Always Compare Med (Boolean)"
+                                                                    },
+                                                                    "compare_routerid": {
+                                                                        "type": "boolean",
+                                                                        "title": "Compare Routerid",
+                                                                        "description": "Compare Routerid (Boolean)"
+                                                                    },
+                                                                    "compare_neighborid": {
+                                                                        "type": "boolean",
+                                                                        "title": "Compare Neighborid",
+                                                                        "description": "Compare Neighborid (Boolean)"
+                                                                    },
+                                                                    "as_path_ignore": {
+                                                                        "type": "boolean",
+                                                                        "title": "AS Path Ignore",
+                                                                        "description": "AS Path Ignore (Boolean)"
+                                                                    },
+                                                                    "as_path_multipath_relax": {
+                                                                        "type": "boolean",
+                                                                        "title": "AS Path Multipath Relax",
+                                                                        "description": "AS Path Multipath Relax (Boolean)"
+                                                                    },
+                                                                    "aigp_ignore": {
+                                                                        "type": "boolean",
+                                                                        "title": "Aigp Ignore",
+                                                                        "description": "Aigp Ignore (Boolean)"
+                                                                    },
+                                                                    "cost_community_ignore": {
+                                                                        "type": "boolean",
+                                                                        "title": "Cost Community Ignore",
+                                                                        "description": "Cost Community Ignore (Boolean)"
+                                                                    },
+                                                                    "igp_metric_ignore": {
+                                                                        "type": "boolean",
+                                                                        "title": "Igp Metric Ignore",
+                                                                        "description": "Igp Metric Ignore (Boolean)"
+                                                                    },
+                                                                    "med_confed": {
+                                                                        "type": "boolean",
+                                                                        "title": "Med Confed",
+                                                                        "description": "Med Confed (Boolean)"
+                                                                    },
+                                                                    "med_missing_as_worst": {
+                                                                        "type": "boolean",
+                                                                        "title": "Med Missing AS Worst",
+                                                                        "description": "Med Missing AS Worst (Boolean)"
+                                                                    },
+                                                                    "med_non_deterministic": {
+                                                                        "type": "boolean",
+                                                                        "title": "Med Non Deterministic",
+                                                                        "description": "Med Non Deterministic (Boolean)"
+                                                                    }
+                                                                },
+                                                                "required": [],
+                                                                "title": "Bestpath",
+                                                                "description": "Bestpath (Object)\n\nElements:\n- always_compare_med\n- compare_routerid\n- compare_neighborid\n- as_path_ignore\n- as_path_multipath_relax\n- aigp_ignore\n- cost_community_ignore\n- igp_metric_ignore\n- med_confed\n- med_missing_as_worst\n- med_non_deterministic"
+                                                            },
                                                             "neighbors": {
                                                                 "type": "array",
                                                                 "items": {
@@ -181453,12 +181581,12 @@
                                                         ]
                                                     },
                                                     "title": "VRFs",
-                                                    "description": "VRFs (List - Object)\n\nElements:\n- vrf (required)\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- neighbors\n- address_families"
+                                                    "description": "VRFs (List - Object)\n\nElements:\n- vrf (required)\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- bestpath\n- neighbors\n- address_families"
                                                 }
                                             },
                                             "required": [],
                                             "title": "BGP",
-                                            "description": "BGP (Object)\n\nElements:\n- asn\n- shutdown\n- disable_policy_batching\n- disable_policy_batching_nexthop\n- disable_policy_batching_ipv4_prefix_list\n- disable_policy_batching_ipv6_prefix_list\n- fabric_soo\n- flush_routes\n- isolate\n- isolate_route_map\n- med_dampening_interval\n- nexthop_suppress_default_resolution\n- rd_dual\n- rd_dual_id\n- peer_templates\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- bandwidth_reference\n- bandwidth_reference_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- neighbors\n- address_families\n- vrfs"
+                                            "description": "BGP (Object)\n\nElements:\n- asn\n- shutdown\n- disable_policy_batching\n- disable_policy_batching_nexthop\n- disable_policy_batching_ipv4_prefix_list\n- disable_policy_batching_ipv6_prefix_list\n- fabric_soo\n- flush_routes\n- isolate\n- isolate_route_map\n- med_dampening_interval\n- nexthop_suppress_default_resolution\n- rd_dual\n- rd_dual_id\n- peer_templates\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- bestpath\n- neighbors\n- address_families\n- vrfs"
                                         },
                                         "ip_routes": {
                                             "type": "array",
@@ -224465,7 +224593,7 @@
                                                         "title": "Bestpath Limit",
                                                         "description": "Bestpath Limit (Integer, String)"
                                                     },
-                                                    "bandwidth_reference": {
+                                                    "reference_bandwidth": {
                                                         "anyOf": [
                                                             {
                                                                 "type": "integer",
@@ -224476,10 +224604,10 @@
                                                                 "pattern": "^.*[\\$\\%]\\{.*$"
                                                             }
                                                         ],
-                                                        "title": "Bandwidth Reference",
-                                                        "description": "Bandwidth Reference (Integer, String)"
+                                                        "title": "Reference Bandwidth",
+                                                        "description": "Reference Bandwidth (Integer, String)"
                                                     },
-                                                    "bandwidth_reference_unit": {
+                                                    "reference_bandwidth_unit": {
                                                         "anyOf": [
                                                             {
                                                                 "type": "string",
@@ -224493,8 +224621,8 @@
                                                                 "pattern": "^.*[\\$\\%]\\{.*$"
                                                             }
                                                         ],
-                                                        "title": "Bandwidth Reference Unit",
-                                                        "description": "Bandwidth Reference Unit (String, String)"
+                                                        "title": "Reference Bandwidth Unit",
+                                                        "description": "Reference Bandwidth Unit (String, String)"
                                                     },
                                                     "cluster_id": {
                                                         "anyOf": [
@@ -224702,6 +224830,70 @@
                                                         ],
                                                         "title": "Graceful Restart Stalepath Time",
                                                         "description": "Graceful Restart Stalepath Time (Integer, String)"
+                                                    },
+                                                    "bestpath": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "always_compare_med": {
+                                                                "type": "boolean",
+                                                                "title": "Always Compare Med",
+                                                                "description": "Always Compare Med (Boolean)"
+                                                            },
+                                                            "compare_routerid": {
+                                                                "type": "boolean",
+                                                                "title": "Compare Routerid",
+                                                                "description": "Compare Routerid (Boolean)"
+                                                            },
+                                                            "compare_neighborid": {
+                                                                "type": "boolean",
+                                                                "title": "Compare Neighborid",
+                                                                "description": "Compare Neighborid (Boolean)"
+                                                            },
+                                                            "as_path_ignore": {
+                                                                "type": "boolean",
+                                                                "title": "AS Path Ignore",
+                                                                "description": "AS Path Ignore (Boolean)"
+                                                            },
+                                                            "as_path_multipath_relax": {
+                                                                "type": "boolean",
+                                                                "title": "AS Path Multipath Relax",
+                                                                "description": "AS Path Multipath Relax (Boolean)"
+                                                            },
+                                                            "aigp_ignore": {
+                                                                "type": "boolean",
+                                                                "title": "Aigp Ignore",
+                                                                "description": "Aigp Ignore (Boolean)"
+                                                            },
+                                                            "cost_community_ignore": {
+                                                                "type": "boolean",
+                                                                "title": "Cost Community Ignore",
+                                                                "description": "Cost Community Ignore (Boolean)"
+                                                            },
+                                                            "igp_metric_ignore": {
+                                                                "type": "boolean",
+                                                                "title": "Igp Metric Ignore",
+                                                                "description": "Igp Metric Ignore (Boolean)"
+                                                            },
+                                                            "med_confed": {
+                                                                "type": "boolean",
+                                                                "title": "Med Confed",
+                                                                "description": "Med Confed (Boolean)"
+                                                            },
+                                                            "med_missing_as_worst": {
+                                                                "type": "boolean",
+                                                                "title": "Med Missing AS Worst",
+                                                                "description": "Med Missing AS Worst (Boolean)"
+                                                            },
+                                                            "med_non_deterministic": {
+                                                                "type": "boolean",
+                                                                "title": "Med Non Deterministic",
+                                                                "description": "Med Non Deterministic (Boolean)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Bestpath",
+                                                        "description": "Bestpath (Object)\n\nElements:\n- always_compare_med\n- compare_routerid\n- compare_neighborid\n- as_path_ignore\n- as_path_multipath_relax\n- aigp_ignore\n- cost_community_ignore\n- igp_metric_ignore\n- med_confed\n- med_missing_as_worst\n- med_non_deterministic"
                                                     },
                                                     "neighbors": {
                                                         "type": "array",
@@ -226230,6 +226422,70 @@
                                                                     "title": "Graceful Restart Stalepath Time",
                                                                     "description": "Graceful Restart Stalepath Time (Integer, String)"
                                                                 },
+                                                                "bestpath": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "always_compare_med": {
+                                                                            "type": "boolean",
+                                                                            "title": "Always Compare Med",
+                                                                            "description": "Always Compare Med (Boolean)"
+                                                                        },
+                                                                        "compare_routerid": {
+                                                                            "type": "boolean",
+                                                                            "title": "Compare Routerid",
+                                                                            "description": "Compare Routerid (Boolean)"
+                                                                        },
+                                                                        "compare_neighborid": {
+                                                                            "type": "boolean",
+                                                                            "title": "Compare Neighborid",
+                                                                            "description": "Compare Neighborid (Boolean)"
+                                                                        },
+                                                                        "as_path_ignore": {
+                                                                            "type": "boolean",
+                                                                            "title": "AS Path Ignore",
+                                                                            "description": "AS Path Ignore (Boolean)"
+                                                                        },
+                                                                        "as_path_multipath_relax": {
+                                                                            "type": "boolean",
+                                                                            "title": "AS Path Multipath Relax",
+                                                                            "description": "AS Path Multipath Relax (Boolean)"
+                                                                        },
+                                                                        "aigp_ignore": {
+                                                                            "type": "boolean",
+                                                                            "title": "Aigp Ignore",
+                                                                            "description": "Aigp Ignore (Boolean)"
+                                                                        },
+                                                                        "cost_community_ignore": {
+                                                                            "type": "boolean",
+                                                                            "title": "Cost Community Ignore",
+                                                                            "description": "Cost Community Ignore (Boolean)"
+                                                                        },
+                                                                        "igp_metric_ignore": {
+                                                                            "type": "boolean",
+                                                                            "title": "Igp Metric Ignore",
+                                                                            "description": "Igp Metric Ignore (Boolean)"
+                                                                        },
+                                                                        "med_confed": {
+                                                                            "type": "boolean",
+                                                                            "title": "Med Confed",
+                                                                            "description": "Med Confed (Boolean)"
+                                                                        },
+                                                                        "med_missing_as_worst": {
+                                                                            "type": "boolean",
+                                                                            "title": "Med Missing AS Worst",
+                                                                            "description": "Med Missing AS Worst (Boolean)"
+                                                                        },
+                                                                        "med_non_deterministic": {
+                                                                            "type": "boolean",
+                                                                            "title": "Med Non Deterministic",
+                                                                            "description": "Med Non Deterministic (Boolean)"
+                                                                        }
+                                                                    },
+                                                                    "required": [],
+                                                                    "title": "Bestpath",
+                                                                    "description": "Bestpath (Object)\n\nElements:\n- always_compare_med\n- compare_routerid\n- compare_neighborid\n- as_path_ignore\n- as_path_multipath_relax\n- aigp_ignore\n- cost_community_ignore\n- igp_metric_ignore\n- med_confed\n- med_missing_as_worst\n- med_non_deterministic"
+                                                                },
                                                                 "neighbors": {
                                                                     "type": "array",
                                                                     "items": {
@@ -227466,12 +227722,12 @@
                                                             ]
                                                         },
                                                         "title": "VRFs",
-                                                        "description": "VRFs (List - Object)\n\nElements:\n- vrf (required)\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- neighbors\n- address_families"
+                                                        "description": "VRFs (List - Object)\n\nElements:\n- vrf (required)\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- bestpath\n- neighbors\n- address_families"
                                                     }
                                                 },
                                                 "required": [],
                                                 "title": "BGP",
-                                                "description": "BGP (Object)\n\nElements:\n- asn\n- shutdown\n- disable_policy_batching\n- disable_policy_batching_nexthop\n- disable_policy_batching_ipv4_prefix_list\n- disable_policy_batching_ipv6_prefix_list\n- fabric_soo\n- flush_routes\n- isolate\n- isolate_route_map\n- med_dampening_interval\n- nexthop_suppress_default_resolution\n- rd_dual\n- rd_dual_id\n- peer_templates\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- bandwidth_reference\n- bandwidth_reference_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- neighbors\n- address_families\n- vrfs"
+                                                "description": "BGP (Object)\n\nElements:\n- asn\n- shutdown\n- disable_policy_batching\n- disable_policy_batching_nexthop\n- disable_policy_batching_ipv4_prefix_list\n- disable_policy_batching_ipv6_prefix_list\n- fabric_soo\n- flush_routes\n- isolate\n- isolate_route_map\n- med_dampening_interval\n- nexthop_suppress_default_resolution\n- rd_dual\n- rd_dual_id\n- peer_templates\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- bestpath\n- neighbors\n- address_families\n- vrfs"
                                             },
                                             "ip_routes": {
                                                 "type": "array",
@@ -270502,7 +270758,7 @@
                                                         "title": "Bestpath Limit",
                                                         "description": "Bestpath Limit (Integer, String)"
                                                     },
-                                                    "bandwidth_reference": {
+                                                    "reference_bandwidth": {
                                                         "anyOf": [
                                                             {
                                                                 "type": "integer",
@@ -270513,10 +270769,10 @@
                                                                 "pattern": "^.*[\\$\\%]\\{.*$"
                                                             }
                                                         ],
-                                                        "title": "Bandwidth Reference",
-                                                        "description": "Bandwidth Reference (Integer, String)"
+                                                        "title": "Reference Bandwidth",
+                                                        "description": "Reference Bandwidth (Integer, String)"
                                                     },
-                                                    "bandwidth_reference_unit": {
+                                                    "reference_bandwidth_unit": {
                                                         "anyOf": [
                                                             {
                                                                 "type": "string",
@@ -270530,8 +270786,8 @@
                                                                 "pattern": "^.*[\\$\\%]\\{.*$"
                                                             }
                                                         ],
-                                                        "title": "Bandwidth Reference Unit",
-                                                        "description": "Bandwidth Reference Unit (String, String)"
+                                                        "title": "Reference Bandwidth Unit",
+                                                        "description": "Reference Bandwidth Unit (String, String)"
                                                     },
                                                     "cluster_id": {
                                                         "anyOf": [
@@ -270739,6 +270995,70 @@
                                                         ],
                                                         "title": "Graceful Restart Stalepath Time",
                                                         "description": "Graceful Restart Stalepath Time (Integer, String)"
+                                                    },
+                                                    "bestpath": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "always_compare_med": {
+                                                                "type": "boolean",
+                                                                "title": "Always Compare Med",
+                                                                "description": "Always Compare Med (Boolean)"
+                                                            },
+                                                            "compare_routerid": {
+                                                                "type": "boolean",
+                                                                "title": "Compare Routerid",
+                                                                "description": "Compare Routerid (Boolean)"
+                                                            },
+                                                            "compare_neighborid": {
+                                                                "type": "boolean",
+                                                                "title": "Compare Neighborid",
+                                                                "description": "Compare Neighborid (Boolean)"
+                                                            },
+                                                            "as_path_ignore": {
+                                                                "type": "boolean",
+                                                                "title": "AS Path Ignore",
+                                                                "description": "AS Path Ignore (Boolean)"
+                                                            },
+                                                            "as_path_multipath_relax": {
+                                                                "type": "boolean",
+                                                                "title": "AS Path Multipath Relax",
+                                                                "description": "AS Path Multipath Relax (Boolean)"
+                                                            },
+                                                            "aigp_ignore": {
+                                                                "type": "boolean",
+                                                                "title": "Aigp Ignore",
+                                                                "description": "Aigp Ignore (Boolean)"
+                                                            },
+                                                            "cost_community_ignore": {
+                                                                "type": "boolean",
+                                                                "title": "Cost Community Ignore",
+                                                                "description": "Cost Community Ignore (Boolean)"
+                                                            },
+                                                            "igp_metric_ignore": {
+                                                                "type": "boolean",
+                                                                "title": "Igp Metric Ignore",
+                                                                "description": "Igp Metric Ignore (Boolean)"
+                                                            },
+                                                            "med_confed": {
+                                                                "type": "boolean",
+                                                                "title": "Med Confed",
+                                                                "description": "Med Confed (Boolean)"
+                                                            },
+                                                            "med_missing_as_worst": {
+                                                                "type": "boolean",
+                                                                "title": "Med Missing AS Worst",
+                                                                "description": "Med Missing AS Worst (Boolean)"
+                                                            },
+                                                            "med_non_deterministic": {
+                                                                "type": "boolean",
+                                                                "title": "Med Non Deterministic",
+                                                                "description": "Med Non Deterministic (Boolean)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Bestpath",
+                                                        "description": "Bestpath (Object)\n\nElements:\n- always_compare_med\n- compare_routerid\n- compare_neighborid\n- as_path_ignore\n- as_path_multipath_relax\n- aigp_ignore\n- cost_community_ignore\n- igp_metric_ignore\n- med_confed\n- med_missing_as_worst\n- med_non_deterministic"
                                                     },
                                                     "neighbors": {
                                                         "type": "array",
@@ -272267,6 +272587,70 @@
                                                                     "title": "Graceful Restart Stalepath Time",
                                                                     "description": "Graceful Restart Stalepath Time (Integer, String)"
                                                                 },
+                                                                "bestpath": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "always_compare_med": {
+                                                                            "type": "boolean",
+                                                                            "title": "Always Compare Med",
+                                                                            "description": "Always Compare Med (Boolean)"
+                                                                        },
+                                                                        "compare_routerid": {
+                                                                            "type": "boolean",
+                                                                            "title": "Compare Routerid",
+                                                                            "description": "Compare Routerid (Boolean)"
+                                                                        },
+                                                                        "compare_neighborid": {
+                                                                            "type": "boolean",
+                                                                            "title": "Compare Neighborid",
+                                                                            "description": "Compare Neighborid (Boolean)"
+                                                                        },
+                                                                        "as_path_ignore": {
+                                                                            "type": "boolean",
+                                                                            "title": "AS Path Ignore",
+                                                                            "description": "AS Path Ignore (Boolean)"
+                                                                        },
+                                                                        "as_path_multipath_relax": {
+                                                                            "type": "boolean",
+                                                                            "title": "AS Path Multipath Relax",
+                                                                            "description": "AS Path Multipath Relax (Boolean)"
+                                                                        },
+                                                                        "aigp_ignore": {
+                                                                            "type": "boolean",
+                                                                            "title": "Aigp Ignore",
+                                                                            "description": "Aigp Ignore (Boolean)"
+                                                                        },
+                                                                        "cost_community_ignore": {
+                                                                            "type": "boolean",
+                                                                            "title": "Cost Community Ignore",
+                                                                            "description": "Cost Community Ignore (Boolean)"
+                                                                        },
+                                                                        "igp_metric_ignore": {
+                                                                            "type": "boolean",
+                                                                            "title": "Igp Metric Ignore",
+                                                                            "description": "Igp Metric Ignore (Boolean)"
+                                                                        },
+                                                                        "med_confed": {
+                                                                            "type": "boolean",
+                                                                            "title": "Med Confed",
+                                                                            "description": "Med Confed (Boolean)"
+                                                                        },
+                                                                        "med_missing_as_worst": {
+                                                                            "type": "boolean",
+                                                                            "title": "Med Missing AS Worst",
+                                                                            "description": "Med Missing AS Worst (Boolean)"
+                                                                        },
+                                                                        "med_non_deterministic": {
+                                                                            "type": "boolean",
+                                                                            "title": "Med Non Deterministic",
+                                                                            "description": "Med Non Deterministic (Boolean)"
+                                                                        }
+                                                                    },
+                                                                    "required": [],
+                                                                    "title": "Bestpath",
+                                                                    "description": "Bestpath (Object)\n\nElements:\n- always_compare_med\n- compare_routerid\n- compare_neighborid\n- as_path_ignore\n- as_path_multipath_relax\n- aigp_ignore\n- cost_community_ignore\n- igp_metric_ignore\n- med_confed\n- med_missing_as_worst\n- med_non_deterministic"
+                                                                },
                                                                 "neighbors": {
                                                                     "type": "array",
                                                                     "items": {
@@ -273503,12 +273887,12 @@
                                                             ]
                                                         },
                                                         "title": "VRFs",
-                                                        "description": "VRFs (List - Object)\n\nElements:\n- vrf (required)\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- neighbors\n- address_families"
+                                                        "description": "VRFs (List - Object)\n\nElements:\n- vrf (required)\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- bestpath\n- neighbors\n- address_families"
                                                     }
                                                 },
                                                 "required": [],
                                                 "title": "BGP",
-                                                "description": "BGP (Object)\n\nElements:\n- asn\n- shutdown\n- disable_policy_batching\n- disable_policy_batching_nexthop\n- disable_policy_batching_ipv4_prefix_list\n- disable_policy_batching_ipv6_prefix_list\n- fabric_soo\n- flush_routes\n- isolate\n- isolate_route_map\n- med_dampening_interval\n- nexthop_suppress_default_resolution\n- rd_dual\n- rd_dual_id\n- peer_templates\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- bandwidth_reference\n- bandwidth_reference_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- neighbors\n- address_families\n- vrfs"
+                                                "description": "BGP (Object)\n\nElements:\n- asn\n- shutdown\n- disable_policy_batching\n- disable_policy_batching_nexthop\n- disable_policy_batching_ipv4_prefix_list\n- disable_policy_batching_ipv6_prefix_list\n- fabric_soo\n- flush_routes\n- isolate\n- isolate_route_map\n- med_dampening_interval\n- nexthop_suppress_default_resolution\n- rd_dual\n- rd_dual_id\n- peer_templates\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- bestpath\n- neighbors\n- address_families\n- vrfs"
                                             },
                                             "ip_routes": {
                                                 "type": "array",
@@ -324197,7 +324581,7 @@
                                                         "title": "Bestpath Limit",
                                                         "description": "Bestpath Limit (Integer, String)"
                                                     },
-                                                    "bandwidth_reference": {
+                                                    "reference_bandwidth": {
                                                         "anyOf": [
                                                             {
                                                                 "type": "integer",
@@ -324208,10 +324592,10 @@
                                                                 "pattern": "^.*[\\$\\%]\\{.*$"
                                                             }
                                                         ],
-                                                        "title": "Bandwidth Reference",
-                                                        "description": "Bandwidth Reference (Integer, String)"
+                                                        "title": "Reference Bandwidth",
+                                                        "description": "Reference Bandwidth (Integer, String)"
                                                     },
-                                                    "bandwidth_reference_unit": {
+                                                    "reference_bandwidth_unit": {
                                                         "anyOf": [
                                                             {
                                                                 "type": "string",
@@ -324225,8 +324609,8 @@
                                                                 "pattern": "^.*[\\$\\%]\\{.*$"
                                                             }
                                                         ],
-                                                        "title": "Bandwidth Reference Unit",
-                                                        "description": "Bandwidth Reference Unit (String, String)"
+                                                        "title": "Reference Bandwidth Unit",
+                                                        "description": "Reference Bandwidth Unit (String, String)"
                                                     },
                                                     "cluster_id": {
                                                         "anyOf": [
@@ -324434,6 +324818,70 @@
                                                         ],
                                                         "title": "Graceful Restart Stalepath Time",
                                                         "description": "Graceful Restart Stalepath Time (Integer, String)"
+                                                    },
+                                                    "bestpath": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "always_compare_med": {
+                                                                "type": "boolean",
+                                                                "title": "Always Compare Med",
+                                                                "description": "Always Compare Med (Boolean)"
+                                                            },
+                                                            "compare_routerid": {
+                                                                "type": "boolean",
+                                                                "title": "Compare Routerid",
+                                                                "description": "Compare Routerid (Boolean)"
+                                                            },
+                                                            "compare_neighborid": {
+                                                                "type": "boolean",
+                                                                "title": "Compare Neighborid",
+                                                                "description": "Compare Neighborid (Boolean)"
+                                                            },
+                                                            "as_path_ignore": {
+                                                                "type": "boolean",
+                                                                "title": "AS Path Ignore",
+                                                                "description": "AS Path Ignore (Boolean)"
+                                                            },
+                                                            "as_path_multipath_relax": {
+                                                                "type": "boolean",
+                                                                "title": "AS Path Multipath Relax",
+                                                                "description": "AS Path Multipath Relax (Boolean)"
+                                                            },
+                                                            "aigp_ignore": {
+                                                                "type": "boolean",
+                                                                "title": "Aigp Ignore",
+                                                                "description": "Aigp Ignore (Boolean)"
+                                                            },
+                                                            "cost_community_ignore": {
+                                                                "type": "boolean",
+                                                                "title": "Cost Community Ignore",
+                                                                "description": "Cost Community Ignore (Boolean)"
+                                                            },
+                                                            "igp_metric_ignore": {
+                                                                "type": "boolean",
+                                                                "title": "Igp Metric Ignore",
+                                                                "description": "Igp Metric Ignore (Boolean)"
+                                                            },
+                                                            "med_confed": {
+                                                                "type": "boolean",
+                                                                "title": "Med Confed",
+                                                                "description": "Med Confed (Boolean)"
+                                                            },
+                                                            "med_missing_as_worst": {
+                                                                "type": "boolean",
+                                                                "title": "Med Missing AS Worst",
+                                                                "description": "Med Missing AS Worst (Boolean)"
+                                                            },
+                                                            "med_non_deterministic": {
+                                                                "type": "boolean",
+                                                                "title": "Med Non Deterministic",
+                                                                "description": "Med Non Deterministic (Boolean)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Bestpath",
+                                                        "description": "Bestpath (Object)\n\nElements:\n- always_compare_med\n- compare_routerid\n- compare_neighborid\n- as_path_ignore\n- as_path_multipath_relax\n- aigp_ignore\n- cost_community_ignore\n- igp_metric_ignore\n- med_confed\n- med_missing_as_worst\n- med_non_deterministic"
                                                     },
                                                     "neighbors": {
                                                         "type": "array",
@@ -325962,6 +326410,70 @@
                                                                     "title": "Graceful Restart Stalepath Time",
                                                                     "description": "Graceful Restart Stalepath Time (Integer, String)"
                                                                 },
+                                                                "bestpath": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "always_compare_med": {
+                                                                            "type": "boolean",
+                                                                            "title": "Always Compare Med",
+                                                                            "description": "Always Compare Med (Boolean)"
+                                                                        },
+                                                                        "compare_routerid": {
+                                                                            "type": "boolean",
+                                                                            "title": "Compare Routerid",
+                                                                            "description": "Compare Routerid (Boolean)"
+                                                                        },
+                                                                        "compare_neighborid": {
+                                                                            "type": "boolean",
+                                                                            "title": "Compare Neighborid",
+                                                                            "description": "Compare Neighborid (Boolean)"
+                                                                        },
+                                                                        "as_path_ignore": {
+                                                                            "type": "boolean",
+                                                                            "title": "AS Path Ignore",
+                                                                            "description": "AS Path Ignore (Boolean)"
+                                                                        },
+                                                                        "as_path_multipath_relax": {
+                                                                            "type": "boolean",
+                                                                            "title": "AS Path Multipath Relax",
+                                                                            "description": "AS Path Multipath Relax (Boolean)"
+                                                                        },
+                                                                        "aigp_ignore": {
+                                                                            "type": "boolean",
+                                                                            "title": "Aigp Ignore",
+                                                                            "description": "Aigp Ignore (Boolean)"
+                                                                        },
+                                                                        "cost_community_ignore": {
+                                                                            "type": "boolean",
+                                                                            "title": "Cost Community Ignore",
+                                                                            "description": "Cost Community Ignore (Boolean)"
+                                                                        },
+                                                                        "igp_metric_ignore": {
+                                                                            "type": "boolean",
+                                                                            "title": "Igp Metric Ignore",
+                                                                            "description": "Igp Metric Ignore (Boolean)"
+                                                                        },
+                                                                        "med_confed": {
+                                                                            "type": "boolean",
+                                                                            "title": "Med Confed",
+                                                                            "description": "Med Confed (Boolean)"
+                                                                        },
+                                                                        "med_missing_as_worst": {
+                                                                            "type": "boolean",
+                                                                            "title": "Med Missing AS Worst",
+                                                                            "description": "Med Missing AS Worst (Boolean)"
+                                                                        },
+                                                                        "med_non_deterministic": {
+                                                                            "type": "boolean",
+                                                                            "title": "Med Non Deterministic",
+                                                                            "description": "Med Non Deterministic (Boolean)"
+                                                                        }
+                                                                    },
+                                                                    "required": [],
+                                                                    "title": "Bestpath",
+                                                                    "description": "Bestpath (Object)\n\nElements:\n- always_compare_med\n- compare_routerid\n- compare_neighborid\n- as_path_ignore\n- as_path_multipath_relax\n- aigp_ignore\n- cost_community_ignore\n- igp_metric_ignore\n- med_confed\n- med_missing_as_worst\n- med_non_deterministic"
+                                                                },
                                                                 "neighbors": {
                                                                     "type": "array",
                                                                     "items": {
@@ -327198,12 +327710,12 @@
                                                             ]
                                                         },
                                                         "title": "VRFs",
-                                                        "description": "VRFs (List - Object)\n\nElements:\n- vrf (required)\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- neighbors\n- address_families"
+                                                        "description": "VRFs (List - Object)\n\nElements:\n- vrf (required)\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- bestpath\n- neighbors\n- address_families"
                                                     }
                                                 },
                                                 "required": [],
                                                 "title": "BGP",
-                                                "description": "BGP (Object)\n\nElements:\n- asn\n- shutdown\n- disable_policy_batching\n- disable_policy_batching_nexthop\n- disable_policy_batching_ipv4_prefix_list\n- disable_policy_batching_ipv6_prefix_list\n- fabric_soo\n- flush_routes\n- isolate\n- isolate_route_map\n- med_dampening_interval\n- nexthop_suppress_default_resolution\n- rd_dual\n- rd_dual_id\n- peer_templates\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- bandwidth_reference\n- bandwidth_reference_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- neighbors\n- address_families\n- vrfs"
+                                                "description": "BGP (Object)\n\nElements:\n- asn\n- shutdown\n- disable_policy_batching\n- disable_policy_batching_nexthop\n- disable_policy_batching_ipv4_prefix_list\n- disable_policy_batching_ipv6_prefix_list\n- fabric_soo\n- flush_routes\n- isolate\n- isolate_route_map\n- med_dampening_interval\n- nexthop_suppress_default_resolution\n- rd_dual\n- rd_dual_id\n- peer_templates\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- bestpath\n- neighbors\n- address_families\n- vrfs"
                                             },
                                             "ip_routes": {
                                                 "type": "array",
