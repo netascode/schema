@@ -166418,6 +166418,11 @@
                                                         "title": "Name",
                                                         "description": "Name (String)"
                                                     },
+                                                    "type_layer4_7": {
+                                                        "type": "boolean",
+                                                        "title": "Type Layer4 7",
+                                                        "description": "Type Layer4 7 (Boolean)"
+                                                    },
                                                     "match_connected_endpoints_ipv4": {
                                                         "type": "array",
                                                         "items": {
@@ -166483,6 +166488,201 @@
                                                         },
                                                         "title": "Match Connected Endpoints IPv6",
                                                         "description": "Match Connected Endpoints IPv6 (List - Object)\n\nElements:\n- vrf (required)\n- address (required)"
+                                                    },
+                                                    "match_external_subnets_ipv4": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "vrf": {
+                                                                    "type": "string",
+                                                                    "title": "VRF",
+                                                                    "description": "VRF (String)"
+                                                                },
+                                                                "address": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Address",
+                                                                    "description": "Address (String, String)"
+                                                                },
+                                                                "route_inject": {
+                                                                    "type": "boolean",
+                                                                    "title": "Route Inject",
+                                                                    "description": "Route Inject (Boolean)"
+                                                                },
+                                                                "nexthop_ipv4": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Nexthop Ipv4",
+                                                                    "description": "Nexthop Ipv4 (String, String)"
+                                                                },
+                                                                "encap_type": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "mpls-vpn"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Encap Type",
+                                                                    "description": "Encap Type (String, String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "vrf",
+                                                                "address"
+                                                            ]
+                                                        },
+                                                        "title": "Match External Subnets Ipv4",
+                                                        "description": "Match External Subnets Ipv4 (List - Object)\n\nElements:\n- vrf (required)\n- address (required)\n- route_inject\n- nexthop_ipv4\n- encap_type"
+                                                    },
+                                                    "match_external_subnets_ipv6": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "vrf": {
+                                                                    "type": "string",
+                                                                    "title": "VRF",
+                                                                    "description": "VRF (String)"
+                                                                },
+                                                                "address": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Address",
+                                                                    "description": "Address (String, String)"
+                                                                },
+                                                                "route_inject": {
+                                                                    "type": "boolean",
+                                                                    "title": "Route Inject",
+                                                                    "description": "Route Inject (Boolean)"
+                                                                },
+                                                                "nexthop_ipv4": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Nexthop Ipv4",
+                                                                    "description": "Nexthop Ipv4 (String, String)"
+                                                                },
+                                                                "nexthop_ipv6": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Nexthop IPv6",
+                                                                    "description": "Nexthop IPv6 (String, String)"
+                                                                },
+                                                                "encap_type": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "mpls-vpn"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Encap Type",
+                                                                    "description": "Encap Type (String, String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "vrf",
+                                                                "address"
+                                                            ]
+                                                        },
+                                                        "title": "Match External Subnets IPv6",
+                                                        "description": "Match External Subnets IPv6 (List - Object)\n\nElements:\n- vrf (required)\n- address (required)\n- route_inject\n- nexthop_ipv4\n- nexthop_ipv6\n- encap_type"
+                                                    },
+                                                    "match_interfaces": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "interface_type": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "ethernet",
+                                                                                "loopback",
+                                                                                "mgmt",
+                                                                                "port-channel",
+                                                                                "vlan",
+                                                                                "vni"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Interface Type",
+                                                                    "description": "Interface Type (String, String)"
+                                                                },
+                                                                "interface_id": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "integer"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Interface ID",
+                                                                    "description": "Interface ID (String, Integer)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "interface_type",
+                                                                "interface_id"
+                                                            ]
+                                                        },
+                                                        "title": "Match Interfaces",
+                                                        "description": "Match Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
                                                     },
                                                     "match_vlans": {
                                                         "type": "object",
@@ -166555,6 +166755,114 @@
                                                         "required": [],
                                                         "title": "Match Vlans",
                                                         "description": "Match Vlans (Object)\n\nElements:\n- ids\n- ranges"
+                                                    },
+                                                    "match_vlan_macs": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "vlan": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 4094
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Vlan",
+                                                                    "description": "Vlan (Integer, String)"
+                                                                },
+                                                                "mac": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "MAC",
+                                                                    "description": "MAC (String, String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "vlan",
+                                                                "mac"
+                                                            ]
+                                                        },
+                                                        "title": "Match Vlan Macs",
+                                                        "description": "Match Vlan Macs (List - Object)\n\nElements:\n- vlan (required)\n- mac (required)"
+                                                    },
+                                                    "match_vlan_interfaces": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "vlan": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 4094
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Vlan",
+                                                                    "description": "Vlan (Integer, String)"
+                                                                },
+                                                                "interface_type": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "ethernet",
+                                                                                "loopback",
+                                                                                "mgmt",
+                                                                                "port-channel",
+                                                                                "vlan",
+                                                                                "vni"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Interface Type",
+                                                                    "description": "Interface Type (String, String)"
+                                                                },
+                                                                "interface_id": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "integer"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Interface ID",
+                                                                    "description": "Interface ID (String, Integer)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "vlan",
+                                                                "interface_type",
+                                                                "interface_id"
+                                                            ]
+                                                        },
+                                                        "title": "Match Vlan Interfaces",
+                                                        "description": "Match Vlan Interfaces (List - Object)\n\nElements:\n- vlan (required)\n- interface_type (required)\n- interface_id (required)"
                                                     }
                                                 },
                                                 "required": [
@@ -166562,7 +166870,7 @@
                                                 ]
                                             },
                                             "title": "Security Groups",
-                                            "description": "Security Groups (List - Object)\n\nElements:\n- id (required)\n- name\n- match_connected_endpoints_ipv4\n- match_connected_endpoints_ipv6\n- match_vlans"
+                                            "description": "Security Groups (List - Object)\n\nElements:\n- id (required)\n- name\n- type_layer4_7\n- match_connected_endpoints_ipv4\n- match_connected_endpoints_ipv6\n- match_external_subnets_ipv4\n- match_external_subnets_ipv6\n- match_interfaces\n- match_vlans\n- match_vlan_macs\n- match_vlan_interfaces"
                                         },
                                         "class_maps": {
                                             "type": "array",
@@ -211769,6 +212077,11 @@
                                                             "title": "Name",
                                                             "description": "Name (String)"
                                                         },
+                                                        "type_layer4_7": {
+                                                            "type": "boolean",
+                                                            "title": "Type Layer4 7",
+                                                            "description": "Type Layer4 7 (Boolean)"
+                                                        },
                                                         "match_connected_endpoints_ipv4": {
                                                             "type": "array",
                                                             "items": {
@@ -211834,6 +212147,201 @@
                                                             },
                                                             "title": "Match Connected Endpoints IPv6",
                                                             "description": "Match Connected Endpoints IPv6 (List - Object)\n\nElements:\n- vrf (required)\n- address (required)"
+                                                        },
+                                                        "match_external_subnets_ipv4": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "vrf": {
+                                                                        "type": "string",
+                                                                        "title": "VRF",
+                                                                        "description": "VRF (String)"
+                                                                    },
+                                                                    "address": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Address",
+                                                                        "description": "Address (String, String)"
+                                                                    },
+                                                                    "route_inject": {
+                                                                        "type": "boolean",
+                                                                        "title": "Route Inject",
+                                                                        "description": "Route Inject (Boolean)"
+                                                                    },
+                                                                    "nexthop_ipv4": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Nexthop Ipv4",
+                                                                        "description": "Nexthop Ipv4 (String, String)"
+                                                                    },
+                                                                    "encap_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "mpls-vpn"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Encap Type",
+                                                                        "description": "Encap Type (String, String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "vrf",
+                                                                    "address"
+                                                                ]
+                                                            },
+                                                            "title": "Match External Subnets Ipv4",
+                                                            "description": "Match External Subnets Ipv4 (List - Object)\n\nElements:\n- vrf (required)\n- address (required)\n- route_inject\n- nexthop_ipv4\n- encap_type"
+                                                        },
+                                                        "match_external_subnets_ipv6": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "vrf": {
+                                                                        "type": "string",
+                                                                        "title": "VRF",
+                                                                        "description": "VRF (String)"
+                                                                    },
+                                                                    "address": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Address",
+                                                                        "description": "Address (String, String)"
+                                                                    },
+                                                                    "route_inject": {
+                                                                        "type": "boolean",
+                                                                        "title": "Route Inject",
+                                                                        "description": "Route Inject (Boolean)"
+                                                                    },
+                                                                    "nexthop_ipv4": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Nexthop Ipv4",
+                                                                        "description": "Nexthop Ipv4 (String, String)"
+                                                                    },
+                                                                    "nexthop_ipv6": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Nexthop IPv6",
+                                                                        "description": "Nexthop IPv6 (String, String)"
+                                                                    },
+                                                                    "encap_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "mpls-vpn"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Encap Type",
+                                                                        "description": "Encap Type (String, String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "vrf",
+                                                                    "address"
+                                                                ]
+                                                            },
+                                                            "title": "Match External Subnets IPv6",
+                                                            "description": "Match External Subnets IPv6 (List - Object)\n\nElements:\n- vrf (required)\n- address (required)\n- route_inject\n- nexthop_ipv4\n- nexthop_ipv6\n- encap_type"
+                                                        },
+                                                        "match_interfaces": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "interface_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "ethernet",
+                                                                                    "loopback",
+                                                                                    "mgmt",
+                                                                                    "port-channel",
+                                                                                    "vlan",
+                                                                                    "vni"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface Type",
+                                                                        "description": "Interface Type (String, String)"
+                                                                    },
+                                                                    "interface_id": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "integer"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface ID",
+                                                                        "description": "Interface ID (String, Integer)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "interface_type",
+                                                                    "interface_id"
+                                                                ]
+                                                            },
+                                                            "title": "Match Interfaces",
+                                                            "description": "Match Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
                                                         },
                                                         "match_vlans": {
                                                             "type": "object",
@@ -211906,6 +212414,114 @@
                                                             "required": [],
                                                             "title": "Match Vlans",
                                                             "description": "Match Vlans (Object)\n\nElements:\n- ids\n- ranges"
+                                                        },
+                                                        "match_vlan_macs": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "vlan": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 4094
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Vlan",
+                                                                        "description": "Vlan (Integer, String)"
+                                                                    },
+                                                                    "mac": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "MAC",
+                                                                        "description": "MAC (String, String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "vlan",
+                                                                    "mac"
+                                                                ]
+                                                            },
+                                                            "title": "Match Vlan Macs",
+                                                            "description": "Match Vlan Macs (List - Object)\n\nElements:\n- vlan (required)\n- mac (required)"
+                                                        },
+                                                        "match_vlan_interfaces": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "vlan": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 4094
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Vlan",
+                                                                        "description": "Vlan (Integer, String)"
+                                                                    },
+                                                                    "interface_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "ethernet",
+                                                                                    "loopback",
+                                                                                    "mgmt",
+                                                                                    "port-channel",
+                                                                                    "vlan",
+                                                                                    "vni"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface Type",
+                                                                        "description": "Interface Type (String, String)"
+                                                                    },
+                                                                    "interface_id": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "integer"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface ID",
+                                                                        "description": "Interface ID (String, Integer)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "vlan",
+                                                                    "interface_type",
+                                                                    "interface_id"
+                                                                ]
+                                                            },
+                                                            "title": "Match Vlan Interfaces",
+                                                            "description": "Match Vlan Interfaces (List - Object)\n\nElements:\n- vlan (required)\n- interface_type (required)\n- interface_id (required)"
                                                         }
                                                     },
                                                     "required": [
@@ -211913,7 +212529,7 @@
                                                     ]
                                                 },
                                                 "title": "Security Groups",
-                                                "description": "Security Groups (List - Object)\n\nElements:\n- id (required)\n- name\n- match_connected_endpoints_ipv4\n- match_connected_endpoints_ipv6\n- match_vlans"
+                                                "description": "Security Groups (List - Object)\n\nElements:\n- id (required)\n- name\n- type_layer4_7\n- match_connected_endpoints_ipv4\n- match_connected_endpoints_ipv6\n- match_external_subnets_ipv4\n- match_external_subnets_ipv6\n- match_interfaces\n- match_vlans\n- match_vlan_macs\n- match_vlan_interfaces"
                                             },
                                             "class_maps": {
                                                 "type": "array",
@@ -257144,6 +257760,11 @@
                                                             "title": "Name",
                                                             "description": "Name (String)"
                                                         },
+                                                        "type_layer4_7": {
+                                                            "type": "boolean",
+                                                            "title": "Type Layer4 7",
+                                                            "description": "Type Layer4 7 (Boolean)"
+                                                        },
                                                         "match_connected_endpoints_ipv4": {
                                                             "type": "array",
                                                             "items": {
@@ -257209,6 +257830,201 @@
                                                             },
                                                             "title": "Match Connected Endpoints IPv6",
                                                             "description": "Match Connected Endpoints IPv6 (List - Object)\n\nElements:\n- vrf (required)\n- address (required)"
+                                                        },
+                                                        "match_external_subnets_ipv4": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "vrf": {
+                                                                        "type": "string",
+                                                                        "title": "VRF",
+                                                                        "description": "VRF (String)"
+                                                                    },
+                                                                    "address": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Address",
+                                                                        "description": "Address (String, String)"
+                                                                    },
+                                                                    "route_inject": {
+                                                                        "type": "boolean",
+                                                                        "title": "Route Inject",
+                                                                        "description": "Route Inject (Boolean)"
+                                                                    },
+                                                                    "nexthop_ipv4": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Nexthop Ipv4",
+                                                                        "description": "Nexthop Ipv4 (String, String)"
+                                                                    },
+                                                                    "encap_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "mpls-vpn"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Encap Type",
+                                                                        "description": "Encap Type (String, String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "vrf",
+                                                                    "address"
+                                                                ]
+                                                            },
+                                                            "title": "Match External Subnets Ipv4",
+                                                            "description": "Match External Subnets Ipv4 (List - Object)\n\nElements:\n- vrf (required)\n- address (required)\n- route_inject\n- nexthop_ipv4\n- encap_type"
+                                                        },
+                                                        "match_external_subnets_ipv6": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "vrf": {
+                                                                        "type": "string",
+                                                                        "title": "VRF",
+                                                                        "description": "VRF (String)"
+                                                                    },
+                                                                    "address": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Address",
+                                                                        "description": "Address (String, String)"
+                                                                    },
+                                                                    "route_inject": {
+                                                                        "type": "boolean",
+                                                                        "title": "Route Inject",
+                                                                        "description": "Route Inject (Boolean)"
+                                                                    },
+                                                                    "nexthop_ipv4": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Nexthop Ipv4",
+                                                                        "description": "Nexthop Ipv4 (String, String)"
+                                                                    },
+                                                                    "nexthop_ipv6": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Nexthop IPv6",
+                                                                        "description": "Nexthop IPv6 (String, String)"
+                                                                    },
+                                                                    "encap_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "mpls-vpn"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Encap Type",
+                                                                        "description": "Encap Type (String, String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "vrf",
+                                                                    "address"
+                                                                ]
+                                                            },
+                                                            "title": "Match External Subnets IPv6",
+                                                            "description": "Match External Subnets IPv6 (List - Object)\n\nElements:\n- vrf (required)\n- address (required)\n- route_inject\n- nexthop_ipv4\n- nexthop_ipv6\n- encap_type"
+                                                        },
+                                                        "match_interfaces": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "interface_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "ethernet",
+                                                                                    "loopback",
+                                                                                    "mgmt",
+                                                                                    "port-channel",
+                                                                                    "vlan",
+                                                                                    "vni"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface Type",
+                                                                        "description": "Interface Type (String, String)"
+                                                                    },
+                                                                    "interface_id": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "integer"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface ID",
+                                                                        "description": "Interface ID (String, Integer)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "interface_type",
+                                                                    "interface_id"
+                                                                ]
+                                                            },
+                                                            "title": "Match Interfaces",
+                                                            "description": "Match Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
                                                         },
                                                         "match_vlans": {
                                                             "type": "object",
@@ -257281,6 +258097,114 @@
                                                             "required": [],
                                                             "title": "Match Vlans",
                                                             "description": "Match Vlans (Object)\n\nElements:\n- ids\n- ranges"
+                                                        },
+                                                        "match_vlan_macs": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "vlan": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 4094
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Vlan",
+                                                                        "description": "Vlan (Integer, String)"
+                                                                    },
+                                                                    "mac": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "MAC",
+                                                                        "description": "MAC (String, String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "vlan",
+                                                                    "mac"
+                                                                ]
+                                                            },
+                                                            "title": "Match Vlan Macs",
+                                                            "description": "Match Vlan Macs (List - Object)\n\nElements:\n- vlan (required)\n- mac (required)"
+                                                        },
+                                                        "match_vlan_interfaces": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "vlan": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 4094
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Vlan",
+                                                                        "description": "Vlan (Integer, String)"
+                                                                    },
+                                                                    "interface_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "ethernet",
+                                                                                    "loopback",
+                                                                                    "mgmt",
+                                                                                    "port-channel",
+                                                                                    "vlan",
+                                                                                    "vni"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface Type",
+                                                                        "description": "Interface Type (String, String)"
+                                                                    },
+                                                                    "interface_id": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "integer"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface ID",
+                                                                        "description": "Interface ID (String, Integer)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "vlan",
+                                                                    "interface_type",
+                                                                    "interface_id"
+                                                                ]
+                                                            },
+                                                            "title": "Match Vlan Interfaces",
+                                                            "description": "Match Vlan Interfaces (List - Object)\n\nElements:\n- vlan (required)\n- interface_type (required)\n- interface_id (required)"
                                                         }
                                                     },
                                                     "required": [
@@ -257288,7 +258212,7 @@
                                                     ]
                                                 },
                                                 "title": "Security Groups",
-                                                "description": "Security Groups (List - Object)\n\nElements:\n- id (required)\n- name\n- match_connected_endpoints_ipv4\n- match_connected_endpoints_ipv6\n- match_vlans"
+                                                "description": "Security Groups (List - Object)\n\nElements:\n- id (required)\n- name\n- type_layer4_7\n- match_connected_endpoints_ipv4\n- match_connected_endpoints_ipv6\n- match_external_subnets_ipv4\n- match_external_subnets_ipv6\n- match_interfaces\n- match_vlans\n- match_vlan_macs\n- match_vlan_interfaces"
                                             },
                                             "class_maps": {
                                                 "type": "array",
@@ -310003,6 +310927,11 @@
                                                             "title": "Name",
                                                             "description": "Name (String)"
                                                         },
+                                                        "type_layer4_7": {
+                                                            "type": "boolean",
+                                                            "title": "Type Layer4 7",
+                                                            "description": "Type Layer4 7 (Boolean)"
+                                                        },
                                                         "match_connected_endpoints_ipv4": {
                                                             "type": "array",
                                                             "items": {
@@ -310068,6 +310997,201 @@
                                                             },
                                                             "title": "Match Connected Endpoints IPv6",
                                                             "description": "Match Connected Endpoints IPv6 (List - Object)\n\nElements:\n- vrf (required)\n- address (required)"
+                                                        },
+                                                        "match_external_subnets_ipv4": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "vrf": {
+                                                                        "type": "string",
+                                                                        "title": "VRF",
+                                                                        "description": "VRF (String)"
+                                                                    },
+                                                                    "address": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Address",
+                                                                        "description": "Address (String, String)"
+                                                                    },
+                                                                    "route_inject": {
+                                                                        "type": "boolean",
+                                                                        "title": "Route Inject",
+                                                                        "description": "Route Inject (Boolean)"
+                                                                    },
+                                                                    "nexthop_ipv4": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Nexthop Ipv4",
+                                                                        "description": "Nexthop Ipv4 (String, String)"
+                                                                    },
+                                                                    "encap_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "mpls-vpn"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Encap Type",
+                                                                        "description": "Encap Type (String, String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "vrf",
+                                                                    "address"
+                                                                ]
+                                                            },
+                                                            "title": "Match External Subnets Ipv4",
+                                                            "description": "Match External Subnets Ipv4 (List - Object)\n\nElements:\n- vrf (required)\n- address (required)\n- route_inject\n- nexthop_ipv4\n- encap_type"
+                                                        },
+                                                        "match_external_subnets_ipv6": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "vrf": {
+                                                                        "type": "string",
+                                                                        "title": "VRF",
+                                                                        "description": "VRF (String)"
+                                                                    },
+                                                                    "address": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Address",
+                                                                        "description": "Address (String, String)"
+                                                                    },
+                                                                    "route_inject": {
+                                                                        "type": "boolean",
+                                                                        "title": "Route Inject",
+                                                                        "description": "Route Inject (Boolean)"
+                                                                    },
+                                                                    "nexthop_ipv4": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Nexthop Ipv4",
+                                                                        "description": "Nexthop Ipv4 (String, String)"
+                                                                    },
+                                                                    "nexthop_ipv6": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Nexthop IPv6",
+                                                                        "description": "Nexthop IPv6 (String, String)"
+                                                                    },
+                                                                    "encap_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "mpls-vpn"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Encap Type",
+                                                                        "description": "Encap Type (String, String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "vrf",
+                                                                    "address"
+                                                                ]
+                                                            },
+                                                            "title": "Match External Subnets IPv6",
+                                                            "description": "Match External Subnets IPv6 (List - Object)\n\nElements:\n- vrf (required)\n- address (required)\n- route_inject\n- nexthop_ipv4\n- nexthop_ipv6\n- encap_type"
+                                                        },
+                                                        "match_interfaces": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "interface_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "ethernet",
+                                                                                    "loopback",
+                                                                                    "mgmt",
+                                                                                    "port-channel",
+                                                                                    "vlan",
+                                                                                    "vni"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface Type",
+                                                                        "description": "Interface Type (String, String)"
+                                                                    },
+                                                                    "interface_id": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "integer"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface ID",
+                                                                        "description": "Interface ID (String, Integer)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "interface_type",
+                                                                    "interface_id"
+                                                                ]
+                                                            },
+                                                            "title": "Match Interfaces",
+                                                            "description": "Match Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
                                                         },
                                                         "match_vlans": {
                                                             "type": "object",
@@ -310140,6 +311264,114 @@
                                                             "required": [],
                                                             "title": "Match Vlans",
                                                             "description": "Match Vlans (Object)\n\nElements:\n- ids\n- ranges"
+                                                        },
+                                                        "match_vlan_macs": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "vlan": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 4094
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Vlan",
+                                                                        "description": "Vlan (Integer, String)"
+                                                                    },
+                                                                    "mac": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "MAC",
+                                                                        "description": "MAC (String, String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "vlan",
+                                                                    "mac"
+                                                                ]
+                                                            },
+                                                            "title": "Match Vlan Macs",
+                                                            "description": "Match Vlan Macs (List - Object)\n\nElements:\n- vlan (required)\n- mac (required)"
+                                                        },
+                                                        "match_vlan_interfaces": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "vlan": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 4094
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Vlan",
+                                                                        "description": "Vlan (Integer, String)"
+                                                                    },
+                                                                    "interface_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "ethernet",
+                                                                                    "loopback",
+                                                                                    "mgmt",
+                                                                                    "port-channel",
+                                                                                    "vlan",
+                                                                                    "vni"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface Type",
+                                                                        "description": "Interface Type (String, String)"
+                                                                    },
+                                                                    "interface_id": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "integer"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface ID",
+                                                                        "description": "Interface ID (String, Integer)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "vlan",
+                                                                    "interface_type",
+                                                                    "interface_id"
+                                                                ]
+                                                            },
+                                                            "title": "Match Vlan Interfaces",
+                                                            "description": "Match Vlan Interfaces (List - Object)\n\nElements:\n- vlan (required)\n- interface_type (required)\n- interface_id (required)"
                                                         }
                                                     },
                                                     "required": [
@@ -310147,7 +311379,7 @@
                                                     ]
                                                 },
                                                 "title": "Security Groups",
-                                                "description": "Security Groups (List - Object)\n\nElements:\n- id (required)\n- name\n- match_connected_endpoints_ipv4\n- match_connected_endpoints_ipv6\n- match_vlans"
+                                                "description": "Security Groups (List - Object)\n\nElements:\n- id (required)\n- name\n- type_layer4_7\n- match_connected_endpoints_ipv4\n- match_connected_endpoints_ipv6\n- match_external_subnets_ipv4\n- match_external_subnets_ipv6\n- match_interfaces\n- match_vlans\n- match_vlan_macs\n- match_vlan_interfaces"
                                             },
                                             "class_maps": {
                                                 "type": "array",
