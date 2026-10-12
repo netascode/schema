@@ -173300,10 +173300,10 @@
                                                             "title": "Match IPv6 Address Prefix List",
                                                             "description": "Match IPv6 Address Prefix List (String)"
                                                         },
-                                                        "match_ip_address_access_list": {
+                                                        "match_ip_address": {
                                                             "type": "string",
-                                                            "title": "Match IP Address Access List",
-                                                            "description": "Match IP Address Access List (String)"
+                                                            "title": "Match IP Address",
+                                                            "description": "Match IP Address (String)"
                                                         },
                                                         "match_ip_next_hop_prefix_list": {
                                                             "type": "string",
@@ -173369,6 +173369,109 @@
                                                             "title": "Match Tags",
                                                             "description": "Match Tags (Array, String)"
                                                         },
+                                                        "match_interfaces": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "interface_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "ethernet",
+                                                                                    "loopback",
+                                                                                    "mgmt",
+                                                                                    "port-channel",
+                                                                                    "vlan",
+                                                                                    "vni"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface Type",
+                                                                        "description": "Interface Type (String, String)"
+                                                                    },
+                                                                    "interface_id": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "integer"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface ID",
+                                                                        "description": "Interface ID (String, Integer)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "interface_type",
+                                                                    "interface_id"
+                                                                ]
+                                                            },
+                                                            "title": "Match Interfaces",
+                                                            "description": "Match Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                        },
+                                                        "match_route_types": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "internal",
+                                                                            "external",
+                                                                            "local",
+                                                                            "type-1",
+                                                                            "type-2",
+                                                                            "nssa-external",
+                                                                            "level-1",
+                                                                            "level-2",
+                                                                            "inter-area",
+                                                                            "intra-area",
+                                                                            "redistributed-direct"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Match Route Types",
+                                                            "description": "Match Route Types (Array, String)"
+                                                        },
+                                                        "match_evpn_route_types": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            1,
+                                                                            2,
+                                                                            "2-mac-only",
+                                                                            "2-mac-ip",
+                                                                            3,
+                                                                            4,
+                                                                            5,
+                                                                            6
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Match Evpn Route Types",
+                                                            "description": "Match Evpn Route Types (Array, String)"
+                                                        },
                                                         "set_community": {
                                                             "type": "string",
                                                             "title": "Set Community",
@@ -173383,6 +173486,147 @@
                                                             "type": "boolean",
                                                             "title": "Set Community None",
                                                             "description": "Set Community None (Boolean)"
+                                                        },
+                                                        "set_comm_list": {
+                                                            "type": "string",
+                                                            "title": "Set Comm List",
+                                                            "description": "Set Comm List (String)"
+                                                        },
+                                                        "set_extcommunity_rt": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Set Extcommunity Rt",
+                                                            "description": "Set Extcommunity Rt (Array, String)"
+                                                        },
+                                                        "set_extcommunity_rt_additive": {
+                                                            "type": "boolean",
+                                                            "title": "Set Extcommunity Rt Additive",
+                                                            "description": "Set Extcommunity Rt Additive (Boolean)"
+                                                        },
+                                                        "set_as_path_prepend": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 4294967295
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Set AS Path Prepend",
+                                                            "description": "Set AS Path Prepend (Array, String)"
+                                                        },
+                                                        "set_as_path_prepend_last_as": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 10
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Set AS Path Prepend Last AS",
+                                                            "description": "Set AS Path Prepend Last AS (Integer, String)"
+                                                        },
+                                                        "set_origin": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "egp",
+                                                                        "igp",
+                                                                        "incomplete"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Set Origin",
+                                                            "description": "Set Origin (String, String)"
+                                                        },
+                                                        "set_origin_egp_asn": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 4294967295
+                                                                }
+                                                            ],
+                                                            "title": "Set Origin Egp Asn",
+                                                            "description": "Set Origin Egp Asn (String, Integer)"
+                                                        },
+                                                        "set_tag": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 4294967295
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Set Tag",
+                                                            "description": "Set Tag (Integer, String)"
+                                                        },
+                                                        "set_weight": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 65535
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Set Weight",
+                                                            "description": "Set Weight (Integer, String)"
+                                                        },
+                                                        "set_pctag": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 65535
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Set Pctag",
+                                                            "description": "Set Pctag (Integer, String)"
                                                         },
                                                         "set_local_preference": {
                                                             "anyOf": [
@@ -173564,7 +173808,7 @@
                                                     ]
                                                 },
                                                 "title": "Entries",
-                                                "description": "Entries (List - Object)\n\nElements:\n- order (required)\n- action\n- description\n- drop_on_fail_v4\n- drop_on_fail_v6\n- force_order_v4\n- force_order_v6\n- load_share_v4\n- load_share_v6\n- set_default_next_hop_v4\n- set_default_next_hop_v6\n- set_vrf_v4\n- set_vrf_v6\n- verify_availability_v4\n- verify_availability_v6\n- match_ip_address_prefix_list\n- match_ipv6_address_prefix_list\n- match_ip_address_access_list\n- match_ip_next_hop_prefix_list\n- match_as_path\n- match_as_number_as_path_list\n- match_community\n- match_community_exact_match\n- match_tags\n- set_community\n- set_community_additive\n- set_community_none\n- set_local_preference\n- set_metric\n- set_metric_delay\n- set_metric_load\n- set_metric_mtu\n- set_metric_reliability\n- set_metric_type\n- set_path_selection_advertise\n- set_evpn_gateway_ip\n- set_evpn_gateway_ip_type\n- set_ip_next_hop_peer_address\n- set_ip_next_hop_unchanged\n- set_ip_next_hop_redist_unchanged\n- set_ipv6_next_hop_peer_address\n- set_ipv6_next_hop_unchanged\n- set_ipv6_next_hop_redist_unchanged"
+                                                "description": "Entries (List - Object)\n\nElements:\n- order (required)\n- action\n- description\n- drop_on_fail_v4\n- drop_on_fail_v6\n- force_order_v4\n- force_order_v6\n- load_share_v4\n- load_share_v6\n- set_default_next_hop_v4\n- set_default_next_hop_v6\n- set_vrf_v4\n- set_vrf_v6\n- verify_availability_v4\n- verify_availability_v6\n- match_ip_address_prefix_list\n- match_ipv6_address_prefix_list\n- match_ip_address\n- match_ip_next_hop_prefix_list\n- match_as_path\n- match_as_number_as_path_list\n- match_community\n- match_community_exact_match\n- match_tags\n- match_interfaces\n- match_route_types\n- match_evpn_route_types\n- set_community\n- set_community_additive\n- set_community_none\n- set_comm_list\n- set_extcommunity_rt\n- set_extcommunity_rt_additive\n- set_as_path_prepend\n- set_as_path_prepend_last_as\n- set_origin\n- set_origin_egp_asn\n- set_tag\n- set_weight\n- set_pctag\n- set_local_preference\n- set_metric\n- set_metric_delay\n- set_metric_load\n- set_metric_mtu\n- set_metric_reliability\n- set_metric_type\n- set_path_selection_advertise\n- set_evpn_gateway_ip\n- set_evpn_gateway_ip_type\n- set_ip_next_hop_peer_address\n- set_ip_next_hop_unchanged\n- set_ip_next_hop_redist_unchanged\n- set_ipv6_next_hop_peer_address\n- set_ipv6_next_hop_unchanged\n- set_ipv6_next_hop_redist_unchanged"
                                             }
                                         },
                                         "required": [
@@ -219441,10 +219685,10 @@
                                                                 "title": "Match IPv6 Address Prefix List",
                                                                 "description": "Match IPv6 Address Prefix List (String)"
                                                             },
-                                                            "match_ip_address_access_list": {
+                                                            "match_ip_address": {
                                                                 "type": "string",
-                                                                "title": "Match IP Address Access List",
-                                                                "description": "Match IP Address Access List (String)"
+                                                                "title": "Match IP Address",
+                                                                "description": "Match IP Address (String)"
                                                             },
                                                             "match_ip_next_hop_prefix_list": {
                                                                 "type": "string",
@@ -219510,6 +219754,109 @@
                                                                 "title": "Match Tags",
                                                                 "description": "Match Tags (Array, String)"
                                                             },
+                                                            "match_interfaces": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "interface_type": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "ethernet",
+                                                                                        "loopback",
+                                                                                        "mgmt",
+                                                                                        "port-channel",
+                                                                                        "vlan",
+                                                                                        "vni"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Interface Type",
+                                                                            "description": "Interface Type (String, String)"
+                                                                        },
+                                                                        "interface_id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Interface ID",
+                                                                            "description": "Interface ID (String, Integer)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "interface_type",
+                                                                        "interface_id"
+                                                                    ]
+                                                                },
+                                                                "title": "Match Interfaces",
+                                                                "description": "Match Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                            },
+                                                            "match_route_types": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "internal",
+                                                                                "external",
+                                                                                "local",
+                                                                                "type-1",
+                                                                                "type-2",
+                                                                                "nssa-external",
+                                                                                "level-1",
+                                                                                "level-2",
+                                                                                "inter-area",
+                                                                                "intra-area",
+                                                                                "redistributed-direct"
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Match Route Types",
+                                                                "description": "Match Route Types (Array, String)"
+                                                            },
+                                                            "match_evpn_route_types": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                1,
+                                                                                2,
+                                                                                "2-mac-only",
+                                                                                "2-mac-ip",
+                                                                                3,
+                                                                                4,
+                                                                                5,
+                                                                                6
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Match Evpn Route Types",
+                                                                "description": "Match Evpn Route Types (Array, String)"
+                                                            },
                                                             "set_community": {
                                                                 "type": "string",
                                                                 "title": "Set Community",
@@ -219524,6 +219871,147 @@
                                                                 "type": "boolean",
                                                                 "title": "Set Community None",
                                                                 "description": "Set Community None (Boolean)"
+                                                            },
+                                                            "set_comm_list": {
+                                                                "type": "string",
+                                                                "title": "Set Comm List",
+                                                                "description": "Set Comm List (String)"
+                                                            },
+                                                            "set_extcommunity_rt": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set Extcommunity Rt",
+                                                                "description": "Set Extcommunity Rt (Array, String)"
+                                                            },
+                                                            "set_extcommunity_rt_additive": {
+                                                                "type": "boolean",
+                                                                "title": "Set Extcommunity Rt Additive",
+                                                                "description": "Set Extcommunity Rt Additive (Boolean)"
+                                                            },
+                                                            "set_as_path_prepend": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "integer",
+                                                                                    "minimum": 1,
+                                                                                    "maximum": 4294967295
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set AS Path Prepend",
+                                                                "description": "Set AS Path Prepend (Array, String)"
+                                                            },
+                                                            "set_as_path_prepend_last_as": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 10
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set AS Path Prepend Last AS",
+                                                                "description": "Set AS Path Prepend Last AS (Integer, String)"
+                                                            },
+                                                            "set_origin": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "egp",
+                                                                            "igp",
+                                                                            "incomplete"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set Origin",
+                                                                "description": "Set Origin (String, String)"
+                                                            },
+                                                            "set_origin_egp_asn": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 4294967295
+                                                                    }
+                                                                ],
+                                                                "title": "Set Origin Egp Asn",
+                                                                "description": "Set Origin Egp Asn (String, Integer)"
+                                                            },
+                                                            "set_tag": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 4294967295
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set Tag",
+                                                                "description": "Set Tag (Integer, String)"
+                                                            },
+                                                            "set_weight": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 65535
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set Weight",
+                                                                "description": "Set Weight (Integer, String)"
+                                                            },
+                                                            "set_pctag": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 65535
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set Pctag",
+                                                                "description": "Set Pctag (Integer, String)"
                                                             },
                                                             "set_local_preference": {
                                                                 "anyOf": [
@@ -219705,7 +220193,7 @@
                                                         ]
                                                     },
                                                     "title": "Entries",
-                                                    "description": "Entries (List - Object)\n\nElements:\n- order (required)\n- action\n- description\n- drop_on_fail_v4\n- drop_on_fail_v6\n- force_order_v4\n- force_order_v6\n- load_share_v4\n- load_share_v6\n- set_default_next_hop_v4\n- set_default_next_hop_v6\n- set_vrf_v4\n- set_vrf_v6\n- verify_availability_v4\n- verify_availability_v6\n- match_ip_address_prefix_list\n- match_ipv6_address_prefix_list\n- match_ip_address_access_list\n- match_ip_next_hop_prefix_list\n- match_as_path\n- match_as_number_as_path_list\n- match_community\n- match_community_exact_match\n- match_tags\n- set_community\n- set_community_additive\n- set_community_none\n- set_local_preference\n- set_metric\n- set_metric_delay\n- set_metric_load\n- set_metric_mtu\n- set_metric_reliability\n- set_metric_type\n- set_path_selection_advertise\n- set_evpn_gateway_ip\n- set_evpn_gateway_ip_type\n- set_ip_next_hop_peer_address\n- set_ip_next_hop_unchanged\n- set_ip_next_hop_redist_unchanged\n- set_ipv6_next_hop_peer_address\n- set_ipv6_next_hop_unchanged\n- set_ipv6_next_hop_redist_unchanged"
+                                                    "description": "Entries (List - Object)\n\nElements:\n- order (required)\n- action\n- description\n- drop_on_fail_v4\n- drop_on_fail_v6\n- force_order_v4\n- force_order_v6\n- load_share_v4\n- load_share_v6\n- set_default_next_hop_v4\n- set_default_next_hop_v6\n- set_vrf_v4\n- set_vrf_v6\n- verify_availability_v4\n- verify_availability_v6\n- match_ip_address_prefix_list\n- match_ipv6_address_prefix_list\n- match_ip_address\n- match_ip_next_hop_prefix_list\n- match_as_path\n- match_as_number_as_path_list\n- match_community\n- match_community_exact_match\n- match_tags\n- match_interfaces\n- match_route_types\n- match_evpn_route_types\n- set_community\n- set_community_additive\n- set_community_none\n- set_comm_list\n- set_extcommunity_rt\n- set_extcommunity_rt_additive\n- set_as_path_prepend\n- set_as_path_prepend_last_as\n- set_origin\n- set_origin_egp_asn\n- set_tag\n- set_weight\n- set_pctag\n- set_local_preference\n- set_metric\n- set_metric_delay\n- set_metric_load\n- set_metric_mtu\n- set_metric_reliability\n- set_metric_type\n- set_path_selection_advertise\n- set_evpn_gateway_ip\n- set_evpn_gateway_ip_type\n- set_ip_next_hop_peer_address\n- set_ip_next_hop_unchanged\n- set_ip_next_hop_redist_unchanged\n- set_ipv6_next_hop_peer_address\n- set_ipv6_next_hop_unchanged\n- set_ipv6_next_hop_redist_unchanged"
                                                 }
                                             },
                                             "required": [
@@ -265606,10 +266094,10 @@
                                                                 "title": "Match IPv6 Address Prefix List",
                                                                 "description": "Match IPv6 Address Prefix List (String)"
                                                             },
-                                                            "match_ip_address_access_list": {
+                                                            "match_ip_address": {
                                                                 "type": "string",
-                                                                "title": "Match IP Address Access List",
-                                                                "description": "Match IP Address Access List (String)"
+                                                                "title": "Match IP Address",
+                                                                "description": "Match IP Address (String)"
                                                             },
                                                             "match_ip_next_hop_prefix_list": {
                                                                 "type": "string",
@@ -265675,6 +266163,109 @@
                                                                 "title": "Match Tags",
                                                                 "description": "Match Tags (Array, String)"
                                                             },
+                                                            "match_interfaces": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "interface_type": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "ethernet",
+                                                                                        "loopback",
+                                                                                        "mgmt",
+                                                                                        "port-channel",
+                                                                                        "vlan",
+                                                                                        "vni"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Interface Type",
+                                                                            "description": "Interface Type (String, String)"
+                                                                        },
+                                                                        "interface_id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Interface ID",
+                                                                            "description": "Interface ID (String, Integer)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "interface_type",
+                                                                        "interface_id"
+                                                                    ]
+                                                                },
+                                                                "title": "Match Interfaces",
+                                                                "description": "Match Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                            },
+                                                            "match_route_types": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "internal",
+                                                                                "external",
+                                                                                "local",
+                                                                                "type-1",
+                                                                                "type-2",
+                                                                                "nssa-external",
+                                                                                "level-1",
+                                                                                "level-2",
+                                                                                "inter-area",
+                                                                                "intra-area",
+                                                                                "redistributed-direct"
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Match Route Types",
+                                                                "description": "Match Route Types (Array, String)"
+                                                            },
+                                                            "match_evpn_route_types": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                1,
+                                                                                2,
+                                                                                "2-mac-only",
+                                                                                "2-mac-ip",
+                                                                                3,
+                                                                                4,
+                                                                                5,
+                                                                                6
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Match Evpn Route Types",
+                                                                "description": "Match Evpn Route Types (Array, String)"
+                                                            },
                                                             "set_community": {
                                                                 "type": "string",
                                                                 "title": "Set Community",
@@ -265689,6 +266280,147 @@
                                                                 "type": "boolean",
                                                                 "title": "Set Community None",
                                                                 "description": "Set Community None (Boolean)"
+                                                            },
+                                                            "set_comm_list": {
+                                                                "type": "string",
+                                                                "title": "Set Comm List",
+                                                                "description": "Set Comm List (String)"
+                                                            },
+                                                            "set_extcommunity_rt": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set Extcommunity Rt",
+                                                                "description": "Set Extcommunity Rt (Array, String)"
+                                                            },
+                                                            "set_extcommunity_rt_additive": {
+                                                                "type": "boolean",
+                                                                "title": "Set Extcommunity Rt Additive",
+                                                                "description": "Set Extcommunity Rt Additive (Boolean)"
+                                                            },
+                                                            "set_as_path_prepend": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "integer",
+                                                                                    "minimum": 1,
+                                                                                    "maximum": 4294967295
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set AS Path Prepend",
+                                                                "description": "Set AS Path Prepend (Array, String)"
+                                                            },
+                                                            "set_as_path_prepend_last_as": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 10
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set AS Path Prepend Last AS",
+                                                                "description": "Set AS Path Prepend Last AS (Integer, String)"
+                                                            },
+                                                            "set_origin": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "egp",
+                                                                            "igp",
+                                                                            "incomplete"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set Origin",
+                                                                "description": "Set Origin (String, String)"
+                                                            },
+                                                            "set_origin_egp_asn": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 4294967295
+                                                                    }
+                                                                ],
+                                                                "title": "Set Origin Egp Asn",
+                                                                "description": "Set Origin Egp Asn (String, Integer)"
+                                                            },
+                                                            "set_tag": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 4294967295
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set Tag",
+                                                                "description": "Set Tag (Integer, String)"
+                                                            },
+                                                            "set_weight": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 65535
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set Weight",
+                                                                "description": "Set Weight (Integer, String)"
+                                                            },
+                                                            "set_pctag": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 65535
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set Pctag",
+                                                                "description": "Set Pctag (Integer, String)"
                                                             },
                                                             "set_local_preference": {
                                                                 "anyOf": [
@@ -265870,7 +266602,7 @@
                                                         ]
                                                     },
                                                     "title": "Entries",
-                                                    "description": "Entries (List - Object)\n\nElements:\n- order (required)\n- action\n- description\n- drop_on_fail_v4\n- drop_on_fail_v6\n- force_order_v4\n- force_order_v6\n- load_share_v4\n- load_share_v6\n- set_default_next_hop_v4\n- set_default_next_hop_v6\n- set_vrf_v4\n- set_vrf_v6\n- verify_availability_v4\n- verify_availability_v6\n- match_ip_address_prefix_list\n- match_ipv6_address_prefix_list\n- match_ip_address_access_list\n- match_ip_next_hop_prefix_list\n- match_as_path\n- match_as_number_as_path_list\n- match_community\n- match_community_exact_match\n- match_tags\n- set_community\n- set_community_additive\n- set_community_none\n- set_local_preference\n- set_metric\n- set_metric_delay\n- set_metric_load\n- set_metric_mtu\n- set_metric_reliability\n- set_metric_type\n- set_path_selection_advertise\n- set_evpn_gateway_ip\n- set_evpn_gateway_ip_type\n- set_ip_next_hop_peer_address\n- set_ip_next_hop_unchanged\n- set_ip_next_hop_redist_unchanged\n- set_ipv6_next_hop_peer_address\n- set_ipv6_next_hop_unchanged\n- set_ipv6_next_hop_redist_unchanged"
+                                                    "description": "Entries (List - Object)\n\nElements:\n- order (required)\n- action\n- description\n- drop_on_fail_v4\n- drop_on_fail_v6\n- force_order_v4\n- force_order_v6\n- load_share_v4\n- load_share_v6\n- set_default_next_hop_v4\n- set_default_next_hop_v6\n- set_vrf_v4\n- set_vrf_v6\n- verify_availability_v4\n- verify_availability_v6\n- match_ip_address_prefix_list\n- match_ipv6_address_prefix_list\n- match_ip_address\n- match_ip_next_hop_prefix_list\n- match_as_path\n- match_as_number_as_path_list\n- match_community\n- match_community_exact_match\n- match_tags\n- match_interfaces\n- match_route_types\n- match_evpn_route_types\n- set_community\n- set_community_additive\n- set_community_none\n- set_comm_list\n- set_extcommunity_rt\n- set_extcommunity_rt_additive\n- set_as_path_prepend\n- set_as_path_prepend_last_as\n- set_origin\n- set_origin_egp_asn\n- set_tag\n- set_weight\n- set_pctag\n- set_local_preference\n- set_metric\n- set_metric_delay\n- set_metric_load\n- set_metric_mtu\n- set_metric_reliability\n- set_metric_type\n- set_path_selection_advertise\n- set_evpn_gateway_ip\n- set_evpn_gateway_ip_type\n- set_ip_next_hop_peer_address\n- set_ip_next_hop_unchanged\n- set_ip_next_hop_redist_unchanged\n- set_ipv6_next_hop_peer_address\n- set_ipv6_next_hop_unchanged\n- set_ipv6_next_hop_redist_unchanged"
                                                 }
                                             },
                                             "required": [
@@ -319429,10 +320161,10 @@
                                                                 "title": "Match IPv6 Address Prefix List",
                                                                 "description": "Match IPv6 Address Prefix List (String)"
                                                             },
-                                                            "match_ip_address_access_list": {
+                                                            "match_ip_address": {
                                                                 "type": "string",
-                                                                "title": "Match IP Address Access List",
-                                                                "description": "Match IP Address Access List (String)"
+                                                                "title": "Match IP Address",
+                                                                "description": "Match IP Address (String)"
                                                             },
                                                             "match_ip_next_hop_prefix_list": {
                                                                 "type": "string",
@@ -319498,6 +320230,109 @@
                                                                 "title": "Match Tags",
                                                                 "description": "Match Tags (Array, String)"
                                                             },
+                                                            "match_interfaces": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "interface_type": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "ethernet",
+                                                                                        "loopback",
+                                                                                        "mgmt",
+                                                                                        "port-channel",
+                                                                                        "vlan",
+                                                                                        "vni"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Interface Type",
+                                                                            "description": "Interface Type (String, String)"
+                                                                        },
+                                                                        "interface_id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Interface ID",
+                                                                            "description": "Interface ID (String, Integer)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "interface_type",
+                                                                        "interface_id"
+                                                                    ]
+                                                                },
+                                                                "title": "Match Interfaces",
+                                                                "description": "Match Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                            },
+                                                            "match_route_types": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "internal",
+                                                                                "external",
+                                                                                "local",
+                                                                                "type-1",
+                                                                                "type-2",
+                                                                                "nssa-external",
+                                                                                "level-1",
+                                                                                "level-2",
+                                                                                "inter-area",
+                                                                                "intra-area",
+                                                                                "redistributed-direct"
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Match Route Types",
+                                                                "description": "Match Route Types (Array, String)"
+                                                            },
+                                                            "match_evpn_route_types": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                1,
+                                                                                2,
+                                                                                "2-mac-only",
+                                                                                "2-mac-ip",
+                                                                                3,
+                                                                                4,
+                                                                                5,
+                                                                                6
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Match Evpn Route Types",
+                                                                "description": "Match Evpn Route Types (Array, String)"
+                                                            },
                                                             "set_community": {
                                                                 "type": "string",
                                                                 "title": "Set Community",
@@ -319512,6 +320347,147 @@
                                                                 "type": "boolean",
                                                                 "title": "Set Community None",
                                                                 "description": "Set Community None (Boolean)"
+                                                            },
+                                                            "set_comm_list": {
+                                                                "type": "string",
+                                                                "title": "Set Comm List",
+                                                                "description": "Set Comm List (String)"
+                                                            },
+                                                            "set_extcommunity_rt": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set Extcommunity Rt",
+                                                                "description": "Set Extcommunity Rt (Array, String)"
+                                                            },
+                                                            "set_extcommunity_rt_additive": {
+                                                                "type": "boolean",
+                                                                "title": "Set Extcommunity Rt Additive",
+                                                                "description": "Set Extcommunity Rt Additive (Boolean)"
+                                                            },
+                                                            "set_as_path_prepend": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "integer",
+                                                                                    "minimum": 1,
+                                                                                    "maximum": 4294967295
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set AS Path Prepend",
+                                                                "description": "Set AS Path Prepend (Array, String)"
+                                                            },
+                                                            "set_as_path_prepend_last_as": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 10
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set AS Path Prepend Last AS",
+                                                                "description": "Set AS Path Prepend Last AS (Integer, String)"
+                                                            },
+                                                            "set_origin": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "egp",
+                                                                            "igp",
+                                                                            "incomplete"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set Origin",
+                                                                "description": "Set Origin (String, String)"
+                                                            },
+                                                            "set_origin_egp_asn": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 4294967295
+                                                                    }
+                                                                ],
+                                                                "title": "Set Origin Egp Asn",
+                                                                "description": "Set Origin Egp Asn (String, Integer)"
+                                                            },
+                                                            "set_tag": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 4294967295
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set Tag",
+                                                                "description": "Set Tag (Integer, String)"
+                                                            },
+                                                            "set_weight": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 65535
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set Weight",
+                                                                "description": "Set Weight (Integer, String)"
+                                                            },
+                                                            "set_pctag": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 65535
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Set Pctag",
+                                                                "description": "Set Pctag (Integer, String)"
                                                             },
                                                             "set_local_preference": {
                                                                 "anyOf": [
@@ -319693,7 +320669,7 @@
                                                         ]
                                                     },
                                                     "title": "Entries",
-                                                    "description": "Entries (List - Object)\n\nElements:\n- order (required)\n- action\n- description\n- drop_on_fail_v4\n- drop_on_fail_v6\n- force_order_v4\n- force_order_v6\n- load_share_v4\n- load_share_v6\n- set_default_next_hop_v4\n- set_default_next_hop_v6\n- set_vrf_v4\n- set_vrf_v6\n- verify_availability_v4\n- verify_availability_v6\n- match_ip_address_prefix_list\n- match_ipv6_address_prefix_list\n- match_ip_address_access_list\n- match_ip_next_hop_prefix_list\n- match_as_path\n- match_as_number_as_path_list\n- match_community\n- match_community_exact_match\n- match_tags\n- set_community\n- set_community_additive\n- set_community_none\n- set_local_preference\n- set_metric\n- set_metric_delay\n- set_metric_load\n- set_metric_mtu\n- set_metric_reliability\n- set_metric_type\n- set_path_selection_advertise\n- set_evpn_gateway_ip\n- set_evpn_gateway_ip_type\n- set_ip_next_hop_peer_address\n- set_ip_next_hop_unchanged\n- set_ip_next_hop_redist_unchanged\n- set_ipv6_next_hop_peer_address\n- set_ipv6_next_hop_unchanged\n- set_ipv6_next_hop_redist_unchanged"
+                                                    "description": "Entries (List - Object)\n\nElements:\n- order (required)\n- action\n- description\n- drop_on_fail_v4\n- drop_on_fail_v6\n- force_order_v4\n- force_order_v6\n- load_share_v4\n- load_share_v6\n- set_default_next_hop_v4\n- set_default_next_hop_v6\n- set_vrf_v4\n- set_vrf_v6\n- verify_availability_v4\n- verify_availability_v6\n- match_ip_address_prefix_list\n- match_ipv6_address_prefix_list\n- match_ip_address\n- match_ip_next_hop_prefix_list\n- match_as_path\n- match_as_number_as_path_list\n- match_community\n- match_community_exact_match\n- match_tags\n- match_interfaces\n- match_route_types\n- match_evpn_route_types\n- set_community\n- set_community_additive\n- set_community_none\n- set_comm_list\n- set_extcommunity_rt\n- set_extcommunity_rt_additive\n- set_as_path_prepend\n- set_as_path_prepend_last_as\n- set_origin\n- set_origin_egp_asn\n- set_tag\n- set_weight\n- set_pctag\n- set_local_preference\n- set_metric\n- set_metric_delay\n- set_metric_load\n- set_metric_mtu\n- set_metric_reliability\n- set_metric_type\n- set_path_selection_advertise\n- set_evpn_gateway_ip\n- set_evpn_gateway_ip_type\n- set_ip_next_hop_peer_address\n- set_ip_next_hop_unchanged\n- set_ip_next_hop_redist_unchanged\n- set_ipv6_next_hop_peer_address\n- set_ipv6_next_hop_unchanged\n- set_ipv6_next_hop_redist_unchanged"
                                                 }
                                             },
                                             "required": [
