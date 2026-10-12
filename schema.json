@@ -166528,6 +166528,141 @@
                                                                     "title": "Name",
                                                                     "description": "Name (String)"
                                                                 },
+                                                                "ether_type": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "ipv4",
+                                                                                "ipv6"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Ether Type",
+                                                                    "description": "Ether Type (String, String)"
+                                                                },
+                                                                "protocol": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "icmp",
+                                                                                "igmp",
+                                                                                "tcp",
+                                                                                "egp",
+                                                                                "igp",
+                                                                                "udp",
+                                                                                "icmpv6",
+                                                                                "eigrp",
+                                                                                "ospfigp",
+                                                                                "pim",
+                                                                                "l2tp"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 255
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Protocol",
+                                                                    "description": "Protocol (String, Integer, String)"
+                                                                },
+                                                                "stateful": {
+                                                                    "type": "boolean",
+                                                                    "title": "Stateful",
+                                                                    "description": "Stateful (Boolean)"
+                                                                },
+                                                                "sport": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 65535
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Sport",
+                                                                    "description": "Sport (Integer, String)"
+                                                                },
+                                                                "sport_to": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 65535
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Sport To",
+                                                                    "description": "Sport To (Integer, String)"
+                                                                },
+                                                                "dport": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 65535
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Dport",
+                                                                    "description": "Dport (Integer, String)"
+                                                                },
+                                                                "dport_to": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 65535
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Dport To",
+                                                                    "description": "Dport To (Integer, String)"
+                                                                },
+                                                                "session_rule": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "ack",
+                                                                                    "est",
+                                                                                    "fin",
+                                                                                    "rst",
+                                                                                    "syn"
+                                                                                ]
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Session Rule",
+                                                                    "description": "Session Rule (Array, String)"
+                                                                },
                                                                 "dscp": {
                                                                     "anyOf": [
                                                                         {
@@ -166581,7 +166716,7 @@
                                                             ]
                                                         },
                                                         "title": "Filter Entries",
-                                                        "description": "Filter Entries (List - Object)\n\nElements:\n- name (required)\n- dscp\n- fragments\n- icmpv4_type\n- icmpv6_type"
+                                                        "description": "Filter Entries (List - Object)\n\nElements:\n- name (required)\n- ether_type\n- protocol\n- stateful\n- sport\n- sport_to\n- dport\n- dport_to\n- session_rule\n- dscp\n- fragments\n- icmpv4_type\n- icmpv6_type"
                                                     }
                                                 },
                                                 "required": [
@@ -188954,6 +189089,72 @@
                                                 ],
                                                 "title": "Security Enforce Default",
                                                 "description": "Security Enforce Default (String, String)"
+                                            },
+                                            "security_contracts": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "source": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 65535
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "any"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Source",
+                                                            "description": "Source (Integer, String, String)"
+                                                        },
+                                                        "destination": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 65535
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "any"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Destination",
+                                                            "description": "Destination (Integer, String, String)"
+                                                        },
+                                                        "policy": {
+                                                            "type": "string",
+                                                            "title": "Policy",
+                                                            "description": "Policy (String)"
+                                                        },
+                                                        "unidir": {
+                                                            "type": "boolean",
+                                                            "title": "Unidir",
+                                                            "description": "Unidir (Boolean)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "source",
+                                                        "destination",
+                                                        "policy"
+                                                    ]
+                                                },
+                                                "title": "Security Contracts",
+                                                "description": "Security Contracts (List - Object)\n\nElements:\n- source (required)\n- destination (required)\n- policy (required)\n- unidir"
                                             }
                                         },
                                         "required": [
@@ -188961,7 +189162,7 @@
                                         ]
                                     },
                                     "title": "VRFs",
-                                    "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default"
+                                    "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default\n- security_contracts"
                                 },
                                 "interfaces": {
                                     "type": "object",
@@ -211678,6 +211879,141 @@
                                                                         "title": "Name",
                                                                         "description": "Name (String)"
                                                                     },
+                                                                    "ether_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "ipv4",
+                                                                                    "ipv6"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Ether Type",
+                                                                        "description": "Ether Type (String, String)"
+                                                                    },
+                                                                    "protocol": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "icmp",
+                                                                                    "igmp",
+                                                                                    "tcp",
+                                                                                    "egp",
+                                                                                    "igp",
+                                                                                    "udp",
+                                                                                    "icmpv6",
+                                                                                    "eigrp",
+                                                                                    "ospfigp",
+                                                                                    "pim",
+                                                                                    "l2tp"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 255
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Protocol",
+                                                                        "description": "Protocol (String, Integer, String)"
+                                                                    },
+                                                                    "stateful": {
+                                                                        "type": "boolean",
+                                                                        "title": "Stateful",
+                                                                        "description": "Stateful (Boolean)"
+                                                                    },
+                                                                    "sport": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 65535
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Sport",
+                                                                        "description": "Sport (Integer, String)"
+                                                                    },
+                                                                    "sport_to": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 65535
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Sport To",
+                                                                        "description": "Sport To (Integer, String)"
+                                                                    },
+                                                                    "dport": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 65535
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Dport",
+                                                                        "description": "Dport (Integer, String)"
+                                                                    },
+                                                                    "dport_to": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 65535
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Dport To",
+                                                                        "description": "Dport To (Integer, String)"
+                                                                    },
+                                                                    "session_rule": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "ack",
+                                                                                        "est",
+                                                                                        "fin",
+                                                                                        "rst",
+                                                                                        "syn"
+                                                                                    ]
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Session Rule",
+                                                                        "description": "Session Rule (Array, String)"
+                                                                    },
                                                                     "dscp": {
                                                                         "anyOf": [
                                                                             {
@@ -211731,7 +212067,7 @@
                                                                 ]
                                                             },
                                                             "title": "Filter Entries",
-                                                            "description": "Filter Entries (List - Object)\n\nElements:\n- name (required)\n- dscp\n- fragments\n- icmpv4_type\n- icmpv6_type"
+                                                            "description": "Filter Entries (List - Object)\n\nElements:\n- name (required)\n- ether_type\n- protocol\n- stateful\n- sport\n- sport_to\n- dport\n- dport_to\n- session_rule\n- dscp\n- fragments\n- icmpv4_type\n- icmpv6_type"
                                                         }
                                                     },
                                                     "required": [
@@ -234104,6 +234440,72 @@
                                                     ],
                                                     "title": "Security Enforce Default",
                                                     "description": "Security Enforce Default (String, String)"
+                                                },
+                                                "security_contracts": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "source": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 65535
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "any"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Source",
+                                                                "description": "Source (Integer, String, String)"
+                                                            },
+                                                            "destination": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 65535
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "any"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Destination",
+                                                                "description": "Destination (Integer, String, String)"
+                                                            },
+                                                            "policy": {
+                                                                "type": "string",
+                                                                "title": "Policy",
+                                                                "description": "Policy (String)"
+                                                            },
+                                                            "unidir": {
+                                                                "type": "boolean",
+                                                                "title": "Unidir",
+                                                                "description": "Unidir (Boolean)"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "source",
+                                                            "destination",
+                                                            "policy"
+                                                        ]
+                                                    },
+                                                    "title": "Security Contracts",
+                                                    "description": "Security Contracts (List - Object)\n\nElements:\n- source (required)\n- destination (required)\n- policy (required)\n- unidir"
                                                 }
                                             },
                                             "required": [
@@ -234111,7 +234513,7 @@
                                             ]
                                         },
                                         "title": "VRFs",
-                                        "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default"
+                                        "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default\n- security_contracts"
                                     },
                                     "interfaces": {
                                         "type": "object",
@@ -256852,6 +257254,141 @@
                                                                         "title": "Name",
                                                                         "description": "Name (String)"
                                                                     },
+                                                                    "ether_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "ipv4",
+                                                                                    "ipv6"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Ether Type",
+                                                                        "description": "Ether Type (String, String)"
+                                                                    },
+                                                                    "protocol": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "icmp",
+                                                                                    "igmp",
+                                                                                    "tcp",
+                                                                                    "egp",
+                                                                                    "igp",
+                                                                                    "udp",
+                                                                                    "icmpv6",
+                                                                                    "eigrp",
+                                                                                    "ospfigp",
+                                                                                    "pim",
+                                                                                    "l2tp"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 255
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Protocol",
+                                                                        "description": "Protocol (String, Integer, String)"
+                                                                    },
+                                                                    "stateful": {
+                                                                        "type": "boolean",
+                                                                        "title": "Stateful",
+                                                                        "description": "Stateful (Boolean)"
+                                                                    },
+                                                                    "sport": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 65535
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Sport",
+                                                                        "description": "Sport (Integer, String)"
+                                                                    },
+                                                                    "sport_to": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 65535
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Sport To",
+                                                                        "description": "Sport To (Integer, String)"
+                                                                    },
+                                                                    "dport": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 65535
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Dport",
+                                                                        "description": "Dport (Integer, String)"
+                                                                    },
+                                                                    "dport_to": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 65535
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Dport To",
+                                                                        "description": "Dport To (Integer, String)"
+                                                                    },
+                                                                    "session_rule": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "ack",
+                                                                                        "est",
+                                                                                        "fin",
+                                                                                        "rst",
+                                                                                        "syn"
+                                                                                    ]
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Session Rule",
+                                                                        "description": "Session Rule (Array, String)"
+                                                                    },
                                                                     "dscp": {
                                                                         "anyOf": [
                                                                             {
@@ -256905,7 +257442,7 @@
                                                                 ]
                                                             },
                                                             "title": "Filter Entries",
-                                                            "description": "Filter Entries (List - Object)\n\nElements:\n- name (required)\n- dscp\n- fragments\n- icmpv4_type\n- icmpv6_type"
+                                                            "description": "Filter Entries (List - Object)\n\nElements:\n- name (required)\n- ether_type\n- protocol\n- stateful\n- sport\n- sport_to\n- dport\n- dport_to\n- session_rule\n- dscp\n- fragments\n- icmpv4_type\n- icmpv6_type"
                                                         }
                                                     },
                                                     "required": [
@@ -279278,6 +279815,72 @@
                                                     ],
                                                     "title": "Security Enforce Default",
                                                     "description": "Security Enforce Default (String, String)"
+                                                },
+                                                "security_contracts": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "source": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 65535
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "any"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Source",
+                                                                "description": "Source (Integer, String, String)"
+                                                            },
+                                                            "destination": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 65535
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "any"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Destination",
+                                                                "description": "Destination (Integer, String, String)"
+                                                            },
+                                                            "policy": {
+                                                                "type": "string",
+                                                                "title": "Policy",
+                                                                "description": "Policy (String)"
+                                                            },
+                                                            "unidir": {
+                                                                "type": "boolean",
+                                                                "title": "Unidir",
+                                                                "description": "Unidir (Boolean)"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "source",
+                                                            "destination",
+                                                            "policy"
+                                                        ]
+                                                    },
+                                                    "title": "Security Contracts",
+                                                    "description": "Security Contracts (List - Object)\n\nElements:\n- source (required)\n- destination (required)\n- policy (required)\n- unidir"
                                                 }
                                             },
                                             "required": [
@@ -279285,7 +279888,7 @@
                                             ]
                                         },
                                         "title": "VRFs",
-                                        "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default"
+                                        "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default\n- security_contracts"
                                     },
                                     "interfaces": {
                                         "type": "object",
@@ -309510,6 +310113,141 @@
                                                                         "title": "Name",
                                                                         "description": "Name (String)"
                                                                     },
+                                                                    "ether_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "ipv4",
+                                                                                    "ipv6"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Ether Type",
+                                                                        "description": "Ether Type (String, String)"
+                                                                    },
+                                                                    "protocol": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "icmp",
+                                                                                    "igmp",
+                                                                                    "tcp",
+                                                                                    "egp",
+                                                                                    "igp",
+                                                                                    "udp",
+                                                                                    "icmpv6",
+                                                                                    "eigrp",
+                                                                                    "ospfigp",
+                                                                                    "pim",
+                                                                                    "l2tp"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 255
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Protocol",
+                                                                        "description": "Protocol (String, Integer, String)"
+                                                                    },
+                                                                    "stateful": {
+                                                                        "type": "boolean",
+                                                                        "title": "Stateful",
+                                                                        "description": "Stateful (Boolean)"
+                                                                    },
+                                                                    "sport": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 65535
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Sport",
+                                                                        "description": "Sport (Integer, String)"
+                                                                    },
+                                                                    "sport_to": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 65535
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Sport To",
+                                                                        "description": "Sport To (Integer, String)"
+                                                                    },
+                                                                    "dport": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 65535
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Dport",
+                                                                        "description": "Dport (Integer, String)"
+                                                                    },
+                                                                    "dport_to": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 65535
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Dport To",
+                                                                        "description": "Dport To (Integer, String)"
+                                                                    },
+                                                                    "session_rule": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "ack",
+                                                                                        "est",
+                                                                                        "fin",
+                                                                                        "rst",
+                                                                                        "syn"
+                                                                                    ]
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Session Rule",
+                                                                        "description": "Session Rule (Array, String)"
+                                                                    },
                                                                     "dscp": {
                                                                         "anyOf": [
                                                                             {
@@ -309563,7 +310301,7 @@
                                                                 ]
                                                             },
                                                             "title": "Filter Entries",
-                                                            "description": "Filter Entries (List - Object)\n\nElements:\n- name (required)\n- dscp\n- fragments\n- icmpv4_type\n- icmpv6_type"
+                                                            "description": "Filter Entries (List - Object)\n\nElements:\n- name (required)\n- ether_type\n- protocol\n- stateful\n- sport\n- sport_to\n- dport\n- dport_to\n- session_rule\n- dscp\n- fragments\n- icmpv4_type\n- icmpv6_type"
                                                         }
                                                     },
                                                     "required": [
@@ -331936,6 +332674,72 @@
                                                     ],
                                                     "title": "Security Enforce Default",
                                                     "description": "Security Enforce Default (String, String)"
+                                                },
+                                                "security_contracts": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "source": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 65535
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "any"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Source",
+                                                                "description": "Source (Integer, String, String)"
+                                                            },
+                                                            "destination": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 65535
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "any"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Destination",
+                                                                "description": "Destination (Integer, String, String)"
+                                                            },
+                                                            "policy": {
+                                                                "type": "string",
+                                                                "title": "Policy",
+                                                                "description": "Policy (String)"
+                                                            },
+                                                            "unidir": {
+                                                                "type": "boolean",
+                                                                "title": "Unidir",
+                                                                "description": "Unidir (Boolean)"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "source",
+                                                            "destination",
+                                                            "policy"
+                                                        ]
+                                                    },
+                                                    "title": "Security Contracts",
+                                                    "description": "Security Contracts (List - Object)\n\nElements:\n- source (required)\n- destination (required)\n- policy (required)\n- unidir"
                                                 }
                                             },
                                             "required": [
@@ -331943,7 +332747,7 @@
                                             ]
                                         },
                                         "title": "VRFs",
-                                        "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default"
+                                        "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default\n- security_contracts"
                                     },
                                     "interfaces": {
                                         "type": "object",
