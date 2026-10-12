@@ -16778,6 +16778,69 @@
                                 "title": "EXT MGMT Instances",
                                 "description": "EXT MGMT Instances (List - Object)\n\nElements:\n- name (required)\n- subnets\n- oob_contracts\n- expected_state"
                             },
+                            "ip_address_pools": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                            "title": "Name",
+                                            "description": "Name (String)"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "pattern": "^[a-zA-Z0-9\\\\!#$%()*,-./:;@ _{|}~?&+]{1,128}$",
+                                            "title": "Description",
+                                            "description": "Description (String)"
+                                        },
+                                        "gateway_address": {
+                                            "type": "string",
+                                            "title": "Gateway Address",
+                                            "description": "Gateway Address (String)\n- IPv4 or IPv6 address"
+                                        },
+                                        "skip_gateway_validation": {
+                                            "type": "boolean",
+                                            "default": "false",
+                                            "title": "Skip Gateway Validation",
+                                            "description": "Skip Gateway Validation (Boolean)\n- Default value: false"
+                                        },
+                                        "address_ranges": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "from": {
+                                                        "type": "string",
+                                                        "title": "From",
+                                                        "description": "From (String)\n- IPv4 or IPv6 address"
+                                                    },
+                                                    "to": {
+                                                        "type": "string",
+                                                        "title": "To",
+                                                        "description": "To (String)\n- IPv4 or IPv6 address"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "from",
+                                                    "to"
+                                                ]
+                                            },
+                                            "title": "Address Ranges",
+                                            "description": "Address Ranges (List - Object)\n\nElements:\n- from (required)\n- to (required)"
+                                        }
+                                    },
+                                    "required": [
+                                        "name",
+                                        "gateway_address"
+                                    ]
+                                },
+                                "title": "IP Address Pools",
+                                "description": "IP Address Pools (List - Object)\n\nElements:\n- name (required)\n- description\n- gateway_address (required)\n- skip_gateway_validation\n- address_ranges"
+                            },
                             "l3outs": {
                                 "type": "array",
                                 "items": {
@@ -29170,7 +29233,7 @@
                         ]
                     },
                     "title": "Tenants",
-                    "description": "Tenants (List - Object)\n\nElements:\n- name (required)\n- managed\n- ndo_managed\n- alias\n- description\n- monitoring_policy\n- vrfs\n- bridge_domains\n- application_profiles\n- inb_endpoint_groups\n- oob_endpoint_groups\n- ext_mgmt_instances\n- l3outs\n- sr_mpls_l3outs\n- vxlan_l3outs\n- filters\n- contracts\n- oob_contracts\n- imported_contracts\n- policies\n- services\n- security_domains\n- expected_state"
+                    "description": "Tenants (List - Object)\n\nElements:\n- name (required)\n- managed\n- ndo_managed\n- alias\n- description\n- monitoring_policy\n- vrfs\n- bridge_domains\n- application_profiles\n- inb_endpoint_groups\n- oob_endpoint_groups\n- ext_mgmt_instances\n- ip_address_pools\n- l3outs\n- sr_mpls_l3outs\n- vxlan_l3outs\n- filters\n- contracts\n- oob_contracts\n- imported_contracts\n- policies\n- services\n- security_domains\n- expected_state"
                 },
                 "auto_generate_switch_pod_profiles": {
                     "type": "boolean",
