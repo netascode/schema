@@ -185766,11 +185766,55 @@
                                             ],
                                             "title": "Sampling Rate",
                                             "description": "Sampling Rate (Integer, String)"
+                                        },
+                                        "data_source_interfaces": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "interface_type": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "ethernet",
+                                                                    "port-channel"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Interface Type",
+                                                        "description": "Interface Type (String, String)"
+                                                    },
+                                                    "interface_id": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "integer"
+                                                            }
+                                                        ],
+                                                        "title": "Interface ID",
+                                                        "description": "Interface ID (String, Integer)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "interface_type",
+                                                    "interface_id"
+                                                ]
+                                            },
+                                            "title": "Data Source Interfaces",
+                                            "description": "Data Source Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
                                         }
                                     },
                                     "required": [],
                                     "title": "Sflow",
-                                    "description": "Sflow (Object)\n\nElements:\n- agent_ip\n- collector_port\n- collectors\n- counter_poll_interval\n- extended_bgp\n- extended_switch\n- max_datagram_size\n- max_sampled_size\n- sampling_rate"
+                                    "description": "Sflow (Object)\n\nElements:\n- agent_ip\n- collector_port\n- collectors\n- counter_poll_interval\n- extended_bgp\n- extended_switch\n- max_datagram_size\n- max_sampled_size\n- sampling_rate\n- data_source_interfaces"
                                 },
                                 "snmp": {
                                     "type": "object",
@@ -191645,6 +191689,96 @@
                                                     "title": "Load Balance Mpls Label Only",
                                                     "description": "Load Balance Mpls Label Only (Boolean)"
                                                 },
+                                                "load_balance_direction": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "src-dst",
+                                                                "src",
+                                                                "dst"
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Load Balance Direction",
+                                                    "description": "Load Balance Direction (String, String)"
+                                                },
+                                                "load_balance_fields": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "ip",
+                                                                "ip-gre",
+                                                                "ip-l4port",
+                                                                "ip-l4port-vlan",
+                                                                "ip-vlan",
+                                                                "l4port",
+                                                                "mac",
+                                                                "inner-header",
+                                                                "gtpu"
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Load Balance Fields",
+                                                    "description": "Load Balance Fields (String, String)"
+                                                },
+                                                "load_balance_encapsulation": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "gre",
+                                                                "gtp",
+                                                                "mpls-label-ip",
+                                                                "mpls-label-only"
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Load Balance Encapsulation",
+                                                    "description": "Load Balance Encapsulation (String, String)"
+                                                },
+                                                "load_balance_rotate": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "maximum": 63
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Load Balance Rotate",
+                                                    "description": "Load Balance Rotate (Integer, String)"
+                                                },
+                                                "load_balance_concatenation": {
+                                                    "type": "boolean",
+                                                    "title": "Load Balance Concatenation",
+                                                    "description": "Load Balance Concatenation (Boolean)"
+                                                },
+                                                "load_balance_fex_all": {
+                                                    "type": "boolean",
+                                                    "title": "Load Balance FEX All",
+                                                    "description": "Load Balance FEX All (Boolean)"
+                                                },
+                                                "load_balance_symmetric": {
+                                                    "type": "boolean",
+                                                    "title": "Load Balance Symmetric",
+                                                    "description": "Load Balance Symmetric (Boolean)"
+                                                },
                                                 "scale_fanout": {
                                                     "type": "boolean",
                                                     "title": "Scale Fanout",
@@ -191653,7 +191787,7 @@
                                             },
                                             "required": [],
                                             "title": "Port Channel",
-                                            "description": "Port Channel (Object)\n\nElements:\n- fast_convergence\n- load_balance\n- load_balance2_resilient\n- load_balance_mpls_label_ip\n- load_balance_mpls_label_only\n- scale_fanout"
+                                            "description": "Port Channel (Object)\n\nElements:\n- fast_convergence\n- load_balance\n- load_balance2_resilient\n- load_balance_mpls_label_ip\n- load_balance_mpls_label_only\n- load_balance_direction\n- load_balance_fields\n- load_balance_encapsulation\n- load_balance_rotate\n- load_balance_concatenation\n- load_balance_fex_all\n- load_balance_symmetric\n- scale_fanout"
                                         },
                                         "switch_mode": {
                                             "anyOf": [
@@ -199680,6 +199814,51 @@
                                                         "title": "Link Transmit Reset",
                                                         "description": "Link Transmit Reset (Boolean)"
                                                     },
+                                                    "load_interval_counter_1": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 5,
+                                                                "maximum": 300
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Interval Counter 1",
+                                                        "description": "Load Interval Counter 1 (Integer, String)"
+                                                    },
+                                                    "load_interval_counter_2": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 5,
+                                                                "maximum": 300
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Interval Counter 2",
+                                                        "description": "Load Interval Counter 2 (Integer, String)"
+                                                    },
+                                                    "load_interval_counter_3": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 5,
+                                                                "maximum": 300
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Interval Counter 3",
+                                                        "description": "Load Interval Counter 3 (Integer, String)"
+                                                    },
                                                     "mac_address": {
                                                         "anyOf": [
                                                             {
@@ -206941,7 +207120,7 @@
                                                 ]
                                             },
                                             "title": "Ethernets",
-                                            "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                            "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                         },
                                         "port_channels": {
                                             "type": "array",
@@ -207183,6 +207362,51 @@
                                                         ],
                                                         "title": "Link Debounce Time",
                                                         "description": "Link Debounce Time (Integer, String)"
+                                                    },
+                                                    "load_interval_counter_1": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 5,
+                                                                "maximum": 300
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Interval Counter 1",
+                                                        "description": "Load Interval Counter 1 (Integer, String)"
+                                                    },
+                                                    "load_interval_counter_2": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 5,
+                                                                "maximum": 300
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Interval Counter 2",
+                                                        "description": "Load Interval Counter 2 (Integer, String)"
+                                                    },
+                                                    "load_interval_counter_3": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 5,
+                                                                "maximum": 300
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Interval Counter 3",
+                                                        "description": "Load Interval Counter 3 (Integer, String)"
                                                     },
                                                     "logging_event_port_link_status": {
                                                         "type": "boolean",
@@ -214265,7 +214489,7 @@
                                                 ]
                                             },
                                             "title": "Port Channels",
-                                            "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                            "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                         },
                                         "management": {
                                             "type": "array",
@@ -236709,11 +236933,55 @@
                                                 ],
                                                 "title": "Sampling Rate",
                                                 "description": "Sampling Rate (Integer, String)"
+                                            },
+                                            "data_source_interfaces": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "interface_type": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "ethernet",
+                                                                        "port-channel"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Interface Type",
+                                                            "description": "Interface Type (String, String)"
+                                                        },
+                                                        "interface_id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "integer"
+                                                                }
+                                                            ],
+                                                            "title": "Interface ID",
+                                                            "description": "Interface ID (String, Integer)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "interface_type",
+                                                        "interface_id"
+                                                    ]
+                                                },
+                                                "title": "Data Source Interfaces",
+                                                "description": "Data Source Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
                                             }
                                         },
                                         "required": [],
                                         "title": "Sflow",
-                                        "description": "Sflow (Object)\n\nElements:\n- agent_ip\n- collector_port\n- collectors\n- counter_poll_interval\n- extended_bgp\n- extended_switch\n- max_datagram_size\n- max_sampled_size\n- sampling_rate"
+                                        "description": "Sflow (Object)\n\nElements:\n- agent_ip\n- collector_port\n- collectors\n- counter_poll_interval\n- extended_bgp\n- extended_switch\n- max_datagram_size\n- max_sampled_size\n- sampling_rate\n- data_source_interfaces"
                                     },
                                     "snmp": {
                                         "type": "object",
@@ -242588,6 +242856,96 @@
                                                         "title": "Load Balance Mpls Label Only",
                                                         "description": "Load Balance Mpls Label Only (Boolean)"
                                                     },
+                                                    "load_balance_direction": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "src-dst",
+                                                                    "src",
+                                                                    "dst"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Balance Direction",
+                                                        "description": "Load Balance Direction (String, String)"
+                                                    },
+                                                    "load_balance_fields": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "ip",
+                                                                    "ip-gre",
+                                                                    "ip-l4port",
+                                                                    "ip-l4port-vlan",
+                                                                    "ip-vlan",
+                                                                    "l4port",
+                                                                    "mac",
+                                                                    "inner-header",
+                                                                    "gtpu"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Balance Fields",
+                                                        "description": "Load Balance Fields (String, String)"
+                                                    },
+                                                    "load_balance_encapsulation": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "gre",
+                                                                    "gtp",
+                                                                    "mpls-label-ip",
+                                                                    "mpls-label-only"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Balance Encapsulation",
+                                                        "description": "Load Balance Encapsulation (String, String)"
+                                                    },
+                                                    "load_balance_rotate": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 63
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Balance Rotate",
+                                                        "description": "Load Balance Rotate (Integer, String)"
+                                                    },
+                                                    "load_balance_concatenation": {
+                                                        "type": "boolean",
+                                                        "title": "Load Balance Concatenation",
+                                                        "description": "Load Balance Concatenation (Boolean)"
+                                                    },
+                                                    "load_balance_fex_all": {
+                                                        "type": "boolean",
+                                                        "title": "Load Balance FEX All",
+                                                        "description": "Load Balance FEX All (Boolean)"
+                                                    },
+                                                    "load_balance_symmetric": {
+                                                        "type": "boolean",
+                                                        "title": "Load Balance Symmetric",
+                                                        "description": "Load Balance Symmetric (Boolean)"
+                                                    },
                                                     "scale_fanout": {
                                                         "type": "boolean",
                                                         "title": "Scale Fanout",
@@ -242596,7 +242954,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Port Channel",
-                                                "description": "Port Channel (Object)\n\nElements:\n- fast_convergence\n- load_balance\n- load_balance2_resilient\n- load_balance_mpls_label_ip\n- load_balance_mpls_label_only\n- scale_fanout"
+                                                "description": "Port Channel (Object)\n\nElements:\n- fast_convergence\n- load_balance\n- load_balance2_resilient\n- load_balance_mpls_label_ip\n- load_balance_mpls_label_only\n- load_balance_direction\n- load_balance_fields\n- load_balance_encapsulation\n- load_balance_rotate\n- load_balance_concatenation\n- load_balance_fex_all\n- load_balance_symmetric\n- scale_fanout"
                                             },
                                             "switch_mode": {
                                                 "anyOf": [
@@ -250623,6 +250981,51 @@
                                                             "title": "Link Transmit Reset",
                                                             "description": "Link Transmit Reset (Boolean)"
                                                         },
+                                                        "load_interval_counter_1": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 5,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Interval Counter 1",
+                                                            "description": "Load Interval Counter 1 (Integer, String)"
+                                                        },
+                                                        "load_interval_counter_2": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 5,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Interval Counter 2",
+                                                            "description": "Load Interval Counter 2 (Integer, String)"
+                                                        },
+                                                        "load_interval_counter_3": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 5,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Interval Counter 3",
+                                                            "description": "Load Interval Counter 3 (Integer, String)"
+                                                        },
                                                         "mac_address": {
                                                             "anyOf": [
                                                                 {
@@ -257884,7 +258287,7 @@
                                                     ]
                                                 },
                                                 "title": "Ethernets",
-                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "port_channels": {
                                                 "type": "array",
@@ -258126,6 +258529,51 @@
                                                             ],
                                                             "title": "Link Debounce Time",
                                                             "description": "Link Debounce Time (Integer, String)"
+                                                        },
+                                                        "load_interval_counter_1": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 5,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Interval Counter 1",
+                                                            "description": "Load Interval Counter 1 (Integer, String)"
+                                                        },
+                                                        "load_interval_counter_2": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 5,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Interval Counter 2",
+                                                            "description": "Load Interval Counter 2 (Integer, String)"
+                                                        },
+                                                        "load_interval_counter_3": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 5,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Interval Counter 3",
+                                                            "description": "Load Interval Counter 3 (Integer, String)"
                                                         },
                                                         "logging_event_port_link_status": {
                                                             "type": "boolean",
@@ -265208,7 +265656,7 @@
                                                     ]
                                                 },
                                                 "title": "Port Channels",
-                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "management": {
                                                 "type": "array",
@@ -287676,11 +288124,55 @@
                                                 ],
                                                 "title": "Sampling Rate",
                                                 "description": "Sampling Rate (Integer, String)"
+                                            },
+                                            "data_source_interfaces": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "interface_type": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "ethernet",
+                                                                        "port-channel"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Interface Type",
+                                                            "description": "Interface Type (String, String)"
+                                                        },
+                                                        "interface_id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "integer"
+                                                                }
+                                                            ],
+                                                            "title": "Interface ID",
+                                                            "description": "Interface ID (String, Integer)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "interface_type",
+                                                        "interface_id"
+                                                    ]
+                                                },
+                                                "title": "Data Source Interfaces",
+                                                "description": "Data Source Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
                                             }
                                         },
                                         "required": [],
                                         "title": "Sflow",
-                                        "description": "Sflow (Object)\n\nElements:\n- agent_ip\n- collector_port\n- collectors\n- counter_poll_interval\n- extended_bgp\n- extended_switch\n- max_datagram_size\n- max_sampled_size\n- sampling_rate"
+                                        "description": "Sflow (Object)\n\nElements:\n- agent_ip\n- collector_port\n- collectors\n- counter_poll_interval\n- extended_bgp\n- extended_switch\n- max_datagram_size\n- max_sampled_size\n- sampling_rate\n- data_source_interfaces"
                                     },
                                     "snmp": {
                                         "type": "object",
@@ -293555,6 +294047,96 @@
                                                         "title": "Load Balance Mpls Label Only",
                                                         "description": "Load Balance Mpls Label Only (Boolean)"
                                                     },
+                                                    "load_balance_direction": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "src-dst",
+                                                                    "src",
+                                                                    "dst"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Balance Direction",
+                                                        "description": "Load Balance Direction (String, String)"
+                                                    },
+                                                    "load_balance_fields": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "ip",
+                                                                    "ip-gre",
+                                                                    "ip-l4port",
+                                                                    "ip-l4port-vlan",
+                                                                    "ip-vlan",
+                                                                    "l4port",
+                                                                    "mac",
+                                                                    "inner-header",
+                                                                    "gtpu"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Balance Fields",
+                                                        "description": "Load Balance Fields (String, String)"
+                                                    },
+                                                    "load_balance_encapsulation": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "gre",
+                                                                    "gtp",
+                                                                    "mpls-label-ip",
+                                                                    "mpls-label-only"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Balance Encapsulation",
+                                                        "description": "Load Balance Encapsulation (String, String)"
+                                                    },
+                                                    "load_balance_rotate": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 63
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Balance Rotate",
+                                                        "description": "Load Balance Rotate (Integer, String)"
+                                                    },
+                                                    "load_balance_concatenation": {
+                                                        "type": "boolean",
+                                                        "title": "Load Balance Concatenation",
+                                                        "description": "Load Balance Concatenation (Boolean)"
+                                                    },
+                                                    "load_balance_fex_all": {
+                                                        "type": "boolean",
+                                                        "title": "Load Balance FEX All",
+                                                        "description": "Load Balance FEX All (Boolean)"
+                                                    },
+                                                    "load_balance_symmetric": {
+                                                        "type": "boolean",
+                                                        "title": "Load Balance Symmetric",
+                                                        "description": "Load Balance Symmetric (Boolean)"
+                                                    },
                                                     "scale_fanout": {
                                                         "type": "boolean",
                                                         "title": "Scale Fanout",
@@ -293563,7 +294145,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Port Channel",
-                                                "description": "Port Channel (Object)\n\nElements:\n- fast_convergence\n- load_balance\n- load_balance2_resilient\n- load_balance_mpls_label_ip\n- load_balance_mpls_label_only\n- scale_fanout"
+                                                "description": "Port Channel (Object)\n\nElements:\n- fast_convergence\n- load_balance\n- load_balance2_resilient\n- load_balance_mpls_label_ip\n- load_balance_mpls_label_only\n- load_balance_direction\n- load_balance_fields\n- load_balance_encapsulation\n- load_balance_rotate\n- load_balance_concatenation\n- load_balance_fex_all\n- load_balance_symmetric\n- scale_fanout"
                                             },
                                             "switch_mode": {
                                                 "anyOf": [
@@ -301590,6 +302172,51 @@
                                                             "title": "Link Transmit Reset",
                                                             "description": "Link Transmit Reset (Boolean)"
                                                         },
+                                                        "load_interval_counter_1": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 5,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Interval Counter 1",
+                                                            "description": "Load Interval Counter 1 (Integer, String)"
+                                                        },
+                                                        "load_interval_counter_2": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 5,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Interval Counter 2",
+                                                            "description": "Load Interval Counter 2 (Integer, String)"
+                                                        },
+                                                        "load_interval_counter_3": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 5,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Interval Counter 3",
+                                                            "description": "Load Interval Counter 3 (Integer, String)"
+                                                        },
                                                         "mac_address": {
                                                             "anyOf": [
                                                                 {
@@ -308851,7 +309478,7 @@
                                                     ]
                                                 },
                                                 "title": "Ethernets",
-                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "port_channels": {
                                                 "type": "array",
@@ -309093,6 +309720,51 @@
                                                             ],
                                                             "title": "Link Debounce Time",
                                                             "description": "Link Debounce Time (Integer, String)"
+                                                        },
+                                                        "load_interval_counter_1": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 5,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Interval Counter 1",
+                                                            "description": "Load Interval Counter 1 (Integer, String)"
+                                                        },
+                                                        "load_interval_counter_2": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 5,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Interval Counter 2",
+                                                            "description": "Load Interval Counter 2 (Integer, String)"
+                                                        },
+                                                        "load_interval_counter_3": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 5,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Interval Counter 3",
+                                                            "description": "Load Interval Counter 3 (Integer, String)"
                                                         },
                                                         "logging_event_port_link_status": {
                                                             "type": "boolean",
@@ -316175,7 +316847,7 @@
                                                     ]
                                                 },
                                                 "title": "Port Channels",
-                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "management": {
                                                 "type": "array",
@@ -316956,7 +317628,7 @@
                                         "anyOf": [
                                             {
                                                 "type": "integer",
-                                                "minimum": 60,
+                                                "minimum": 5,
                                                 "maximum": 600
                                             },
                                             {
@@ -316971,7 +317643,7 @@
                                         "anyOf": [
                                             {
                                                 "type": "integer",
-                                                "minimum": 60,
+                                                "minimum": 5,
                                                 "maximum": 600
                                             },
                                             {
@@ -316986,7 +317658,7 @@
                                         "anyOf": [
                                             {
                                                 "type": "integer",
-                                                "minimum": 60,
+                                                "minimum": 5,
                                                 "maximum": 600
                                             },
                                             {
@@ -346470,11 +347142,55 @@
                                                 ],
                                                 "title": "Sampling Rate",
                                                 "description": "Sampling Rate (Integer, String)"
+                                            },
+                                            "data_source_interfaces": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "interface_type": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "ethernet",
+                                                                        "port-channel"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Interface Type",
+                                                            "description": "Interface Type (String, String)"
+                                                        },
+                                                        "interface_id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "integer"
+                                                                }
+                                                            ],
+                                                            "title": "Interface ID",
+                                                            "description": "Interface ID (String, Integer)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "interface_type",
+                                                        "interface_id"
+                                                    ]
+                                                },
+                                                "title": "Data Source Interfaces",
+                                                "description": "Data Source Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
                                             }
                                         },
                                         "required": [],
                                         "title": "Sflow",
-                                        "description": "Sflow (Object)\n\nElements:\n- agent_ip\n- collector_port\n- collectors\n- counter_poll_interval\n- extended_bgp\n- extended_switch\n- max_datagram_size\n- max_sampled_size\n- sampling_rate"
+                                        "description": "Sflow (Object)\n\nElements:\n- agent_ip\n- collector_port\n- collectors\n- counter_poll_interval\n- extended_bgp\n- extended_switch\n- max_datagram_size\n- max_sampled_size\n- sampling_rate\n- data_source_interfaces"
                                     },
                                     "snmp": {
                                         "type": "object",
@@ -352349,6 +353065,96 @@
                                                         "title": "Load Balance Mpls Label Only",
                                                         "description": "Load Balance Mpls Label Only (Boolean)"
                                                     },
+                                                    "load_balance_direction": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "src-dst",
+                                                                    "src",
+                                                                    "dst"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Balance Direction",
+                                                        "description": "Load Balance Direction (String, String)"
+                                                    },
+                                                    "load_balance_fields": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "ip",
+                                                                    "ip-gre",
+                                                                    "ip-l4port",
+                                                                    "ip-l4port-vlan",
+                                                                    "ip-vlan",
+                                                                    "l4port",
+                                                                    "mac",
+                                                                    "inner-header",
+                                                                    "gtpu"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Balance Fields",
+                                                        "description": "Load Balance Fields (String, String)"
+                                                    },
+                                                    "load_balance_encapsulation": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "gre",
+                                                                    "gtp",
+                                                                    "mpls-label-ip",
+                                                                    "mpls-label-only"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Balance Encapsulation",
+                                                        "description": "Load Balance Encapsulation (String, String)"
+                                                    },
+                                                    "load_balance_rotate": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 63
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Balance Rotate",
+                                                        "description": "Load Balance Rotate (Integer, String)"
+                                                    },
+                                                    "load_balance_concatenation": {
+                                                        "type": "boolean",
+                                                        "title": "Load Balance Concatenation",
+                                                        "description": "Load Balance Concatenation (Boolean)"
+                                                    },
+                                                    "load_balance_fex_all": {
+                                                        "type": "boolean",
+                                                        "title": "Load Balance FEX All",
+                                                        "description": "Load Balance FEX All (Boolean)"
+                                                    },
+                                                    "load_balance_symmetric": {
+                                                        "type": "boolean",
+                                                        "title": "Load Balance Symmetric",
+                                                        "description": "Load Balance Symmetric (Boolean)"
+                                                    },
                                                     "scale_fanout": {
                                                         "type": "boolean",
                                                         "title": "Scale Fanout",
@@ -352357,7 +353163,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Port Channel",
-                                                "description": "Port Channel (Object)\n\nElements:\n- fast_convergence\n- load_balance\n- load_balance2_resilient\n- load_balance_mpls_label_ip\n- load_balance_mpls_label_only\n- scale_fanout"
+                                                "description": "Port Channel (Object)\n\nElements:\n- fast_convergence\n- load_balance\n- load_balance2_resilient\n- load_balance_mpls_label_ip\n- load_balance_mpls_label_only\n- load_balance_direction\n- load_balance_fields\n- load_balance_encapsulation\n- load_balance_rotate\n- load_balance_concatenation\n- load_balance_fex_all\n- load_balance_symmetric\n- scale_fanout"
                                             },
                                             "switch_mode": {
                                                 "anyOf": [
@@ -360384,6 +361190,51 @@
                                                             "title": "Link Transmit Reset",
                                                             "description": "Link Transmit Reset (Boolean)"
                                                         },
+                                                        "load_interval_counter_1": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 5,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Interval Counter 1",
+                                                            "description": "Load Interval Counter 1 (Integer, String)"
+                                                        },
+                                                        "load_interval_counter_2": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 5,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Interval Counter 2",
+                                                            "description": "Load Interval Counter 2 (Integer, String)"
+                                                        },
+                                                        "load_interval_counter_3": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 5,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Interval Counter 3",
+                                                            "description": "Load Interval Counter 3 (Integer, String)"
+                                                        },
                                                         "mac_address": {
                                                             "anyOf": [
                                                                 {
@@ -367645,7 +368496,7 @@
                                                     ]
                                                 },
                                                 "title": "Ethernets",
-                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "port_channels": {
                                                 "type": "array",
@@ -367887,6 +368738,51 @@
                                                             ],
                                                             "title": "Link Debounce Time",
                                                             "description": "Link Debounce Time (Integer, String)"
+                                                        },
+                                                        "load_interval_counter_1": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 5,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Interval Counter 1",
+                                                            "description": "Load Interval Counter 1 (Integer, String)"
+                                                        },
+                                                        "load_interval_counter_2": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 5,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Interval Counter 2",
+                                                            "description": "Load Interval Counter 2 (Integer, String)"
+                                                        },
+                                                        "load_interval_counter_3": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 5,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Interval Counter 3",
+                                                            "description": "Load Interval Counter 3 (Integer, String)"
                                                         },
                                                         "logging_event_port_link_status": {
                                                             "type": "boolean",
@@ -374969,7 +375865,7 @@
                                                     ]
                                                 },
                                                 "title": "Port Channels",
-                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "management": {
                                                 "type": "array",
