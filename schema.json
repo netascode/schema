@@ -374778,6 +374778,11 @@
                                                     "title": "Fabric Enabled Wireless",
                                                     "description": "Fabric Enabled Wireless (Boolean)"
                                                 },
+                                                "wireless_flooding_enabled": {
+                                                    "type": "boolean",
+                                                    "title": "Wireless Flooding Enabled",
+                                                    "description": "Wireless Flooding Enabled (Boolean)"
+                                                },
                                                 "associated_l3_virtual_network_name": {
                                                     "type": "string",
                                                     "title": "Associated L3 Virtual Network Name",
@@ -374789,7 +374794,7 @@
                                             ]
                                         },
                                         "title": "L2 Virtual Networks",
-                                        "description": "L2 Virtual Networks (List - Object)\n\nElements:\n- name (required)\n- vlan_name\n- vlan_id\n- traffic_type\n- fabric_enabled_wireless\n- associated_l3_virtual_network_name"
+                                        "description": "L2 Virtual Networks (List - Object)\n\nElements:\n- name (required)\n- vlan_name\n- vlan_id\n- traffic_type\n- fabric_enabled_wireless\n- wireless_flooding_enabled\n- associated_l3_virtual_network_name"
                                     },
                                     "anycast_gateways": {
                                         "type": "array",
@@ -374883,6 +374888,11 @@
                                                     "title": "Layer2 Flooding",
                                                     "description": "Layer2 Flooding (Boolean)\n- Default value: false"
                                                 },
+                                                "wireless_flooding_enabled": {
+                                                    "type": "boolean",
+                                                    "title": "Wireless Flooding Enabled",
+                                                    "description": "Wireless Flooding Enabled (Boolean)"
+                                                },
                                                 "traffic_type": {
                                                     "type": "string",
                                                     "enum": [
@@ -374923,7 +374933,7 @@
                                             ]
                                         },
                                         "title": "Anycast Gateways",
-                                        "description": "Anycast Gateways (List - Object)\n\nElements:\n- ip_pool_name (required)\n- additional_ip_pools\n- pool_type\n- auto_generate_vlan_name\n- vlan_name\n- vlan_id\n- security_group_name\n- ip_directed_broadcast\n- intra_subnet_routing_enabled\n- multiple_ip_to_mac_addresses\n- supplicant_based_extended_node_onboarding\n- group_based_policy_enforcement_enabled\n- layer2_flooding\n- traffic_type\n- critical_pool\n- wireless_pool\n- tcp_mss_adjustment\n- l3_virtual_network"
+                                        "description": "Anycast Gateways (List - Object)\n\nElements:\n- ip_pool_name (required)\n- additional_ip_pools\n- pool_type\n- auto_generate_vlan_name\n- vlan_name\n- vlan_id\n- security_group_name\n- ip_directed_broadcast\n- intra_subnet_routing_enabled\n- multiple_ip_to_mac_addresses\n- supplicant_based_extended_node_onboarding\n- group_based_policy_enforcement_enabled\n- layer2_flooding\n- wireless_flooding_enabled\n- traffic_type\n- critical_pool\n- wireless_pool\n- tcp_mss_adjustment\n- l3_virtual_network"
                                     },
                                     "wireless_ssids": {
                                         "type": "array",
