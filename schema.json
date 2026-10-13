@@ -266348,6 +266348,15 @@
                                             "title": "Name",
                                             "description": "Name (String)"
                                         },
+                                        "stage": {
+                                            "type": "string",
+                                            "enum": [
+                                                "pre",
+                                                "post"
+                                            ],
+                                            "title": "Stage",
+                                            "description": "Stage (String)\n- Allowed values: pre, post"
+                                        },
                                         "order": {
                                             "type": "integer",
                                             "maximum": 9,
@@ -266366,7 +266375,7 @@
                                     ]
                                 },
                                 "title": "CLI Templates",
-                                "description": "CLI Templates (List - Object)\n\nElements:\n- name (required)\n- order\n- content (required)"
+                                "description": "CLI Templates (List - Object)\n\nElements:\n- name (required)\n- stage\n- order\n- content (required)"
                             }
                         },
                         "required": [
@@ -325408,6 +325417,16 @@
                                 "title": "File",
                                 "description": "File (String)"
                             },
+                            "stage": {
+                                "type": "string",
+                                "enum": [
+                                    "pre",
+                                    "post"
+                                ],
+                                "default": "post",
+                                "title": "Stage",
+                                "description": "Stage (String)\n- Default value: post\n- Allowed values: pre, post"
+                            },
                             "order": {
                                 "type": "integer",
                                 "maximum": 9,
@@ -376545,7 +376564,7 @@
                         ]
                     },
                     "title": "Templates",
-                    "description": "Templates (List - Object)\n\nElements:\n- name (required)\n- type (required)\n- file\n- order\n- content\n- configuration"
+                    "description": "Templates (List - Object)\n\nElements:\n- name (required)\n- type (required)\n- file\n- stage\n- order\n- content\n- configuration"
                 }
             },
             "required": [],
