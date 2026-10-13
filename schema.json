@@ -185366,6 +185366,39 @@
                                             "title": "Source Interface ID",
                                             "description": "Source Interface ID (String, Integer)"
                                         },
+                                        "source_interface_informs_type": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "ethernet",
+                                                        "loopback",
+                                                        "mgmt",
+                                                        "port-channel",
+                                                        "vlan",
+                                                        "vni"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "Source Interface Informs Type",
+                                            "description": "Source Interface Informs Type (String, String)"
+                                        },
+                                        "source_interface_informs_id": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "string"
+                                                },
+                                                {
+                                                    "type": "integer"
+                                                }
+                                            ],
+                                            "title": "Source Interface Informs ID",
+                                            "description": "Source Interface Informs ID (String, Integer)"
+                                        },
                                         "enable_traps": {
                                             "type": "boolean",
                                             "title": "Enable Traps",
@@ -185760,6 +185793,92 @@
                                             "title": "Traps",
                                             "description": "Traps (Object)\n\nElements:\n- aaa_server_state_change\n- bfd_session_down\n- bfd_session_up\n- bridge_newroot\n- bridge_topology_change\n- callhome_event_notify\n- callhome_smtp_send_fail\n- cfs_state_change_notif\n- cfs_merge_failure\n- config_ccm_cli_running_config_changed\n- entity_mib_change\n- entity_cefc_mib_enable_status_notification\n- entity_fan_status_change\n- entity_module_inserted\n- entity_module_removed\n- entity_module_status_change\n- entity_power_out_change\n- entity_power_status_change\n- entity_sensor\n- entity_unrecognised_module\n- fcdomain_domain_id_not_assigned\n- fcdomain_fabric_change\n- fcdomain_new_principal_switch\n- feature_control_feature_op_status_change\n- feature_control_cisco_feat_op_status_change\n- generic_cold_start\n- generic_warm_start\n- hsrp_state_change\n- license_notify_license_expiry\n- license_notify_license_expiry_warning\n- license_notify_licensefile_missing\n- license_notify_no_license_for_feature\n- link_cie_link_down\n- link_cie_link_up\n- link_cisco_xcvr_mon_status_chg\n- link_cmn_mac_move_notification\n- link_delayed_link_state_change\n- link_extended_link_down\n- link_extended_link_up\n- link_link_down\n- link_link_up\n- link_cerr_disable_interface_event_rev1\n- lldp_rem_tables_change\n- mmode_cse_maint_mode_change_notify\n- mmode_cse_normal_mode_change_notify\n- mpls_ldp\n- mpls_ldp_session_down\n- mpls_ldp_session_up\n- mpls_vpn\n- mpls_vpn_vrf_max_thresh_cleared\n- mpls_vpn_vrf_max_thresh_exceeded\n- mpls_vpn_vrf_mid_thresh_exceeded\n- mpls_vpn_vrf_down\n- mpls_vpn_vrf_up\n- msdp_backward_transition\n- pim_neighbor_loss\n- port_security_access_secure_mac_violation\n- port_security_trunk_secure_mac_violation\n- rf_redundancy_framework\n- rmon_rising_alarm\n- rmon_falling_alarm\n- rmon_hc_rising_alarm\n- rmon_hc_falling_alarm\n- snmp_authentication\n- storm_control_cpsc_event_rev1\n- stpx_inconsistency\n- stpx_loop_inconsistency\n- stpx_root_inconsistency\n- syslog_message_generated\n- sysmgr_cse_fail_sw_core_notify_extended\n- system_clock_change_notification\n- upgrade_job_status_notify\n- upgrade_op_notify_on_completion\n- vtp_notifs\n- vtp_vlan_create\n- vtp_vlan_delete"
                                         },
+                                        "contexts": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "title": "Name",
+                                                        "description": "Name (String)"
+                                                    },
+                                                    "instance": {
+                                                        "type": "string",
+                                                        "title": "Instance",
+                                                        "description": "Instance (String)"
+                                                    },
+                                                    "vrf": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "VRF",
+                                                        "description": "VRF (String, String)"
+                                                    },
+                                                    "topology": {
+                                                        "type": "string",
+                                                        "title": "Topology",
+                                                        "description": "Topology (String)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name"
+                                                ]
+                                            },
+                                            "title": "Contexts",
+                                            "description": "Contexts (List - Object)\n\nElements:\n- name (required)\n- instance\n- vrf\n- topology"
+                                        },
+                                        "communities": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "title": "Name",
+                                                        "description": "Name (String)"
+                                                    },
+                                                    "group": {
+                                                        "type": "string",
+                                                        "title": "Group",
+                                                        "description": "Group (String)"
+                                                    },
+                                                    "context": {
+                                                        "type": "string",
+                                                        "title": "Context",
+                                                        "description": "Context (String)"
+                                                    },
+                                                    "use_acl": {
+                                                        "type": "string",
+                                                        "title": "Use ACL",
+                                                        "description": "Use ACL (String)"
+                                                    },
+                                                    "use_ipv4acl": {
+                                                        "type": "string",
+                                                        "title": "Use Ipv4Acl",
+                                                        "description": "Use Ipv4Acl (String)"
+                                                    },
+                                                    "use_ipv6acl": {
+                                                        "type": "string",
+                                                        "title": "Use Ipv6Acl",
+                                                        "description": "Use Ipv6Acl (String)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name"
+                                                ]
+                                            },
+                                            "title": "Communities",
+                                            "description": "Communities (List - Object)\n\nElements:\n- name (required)\n- group\n- context\n- use_acl\n- use_ipv4acl\n- use_ipv6acl"
+                                        },
                                         "users": {
                                             "type": "array",
                                             "items": {
@@ -185969,6 +186088,52 @@
                                                         ],
                                                         "title": "VRF",
                                                         "description": "VRF (String, String)"
+                                                    },
+                                                    "filter_vrf": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Filter VRF",
+                                                        "description": "Filter VRF (String, String)"
+                                                    },
+                                                    "source_interface_type": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "ethernet",
+                                                                    "loopback",
+                                                                    "mgmt",
+                                                                    "port-channel",
+                                                                    "vlan",
+                                                                    "vni"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Source Interface Type",
+                                                        "description": "Source Interface Type (String, String)"
+                                                    },
+                                                    "source_interface_id": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "integer"
+                                                            }
+                                                        ],
+                                                        "title": "Source Interface ID",
+                                                        "description": "Source Interface ID (String, Integer)"
                                                     }
                                                 },
                                                 "required": [
@@ -185976,7 +186141,7 @@
                                                 ]
                                             },
                                             "title": "Hosts",
-                                            "description": "Hosts (List - Object)\n\nElements:\n- host (required)\n- udp_port\n- version\n- notification_type\n- community\n- security_level\n- vrf"
+                                            "description": "Hosts (List - Object)\n\nElements:\n- host (required)\n- udp_port\n- version\n- notification_type\n- community\n- security_level\n- vrf\n- filter_vrf\n- source_interface_type\n- source_interface_id"
                                         },
                                         "rmon_events": {
                                             "type": "array",
@@ -186030,7 +186195,7 @@
                                     },
                                     "required": [],
                                     "title": "SNMP",
-                                    "description": "SNMP (Object)\n\nElements:\n- contact\n- location\n- engine_id\n- global_enforce_priv\n- logging_level\n- packetsize\n- tcp_session_auth\n- disable_snmp_aaa_sync\n- source_interface_type\n- source_interface_id\n- enable_traps\n- traps\n- users\n- hosts\n- rmon_events"
+                                    "description": "SNMP (Object)\n\nElements:\n- contact\n- location\n- engine_id\n- global_enforce_priv\n- logging_level\n- packetsize\n- tcp_session_auth\n- disable_snmp_aaa_sync\n- source_interface_type\n- source_interface_id\n- source_interface_informs_type\n- source_interface_informs_id\n- enable_traps\n- traps\n- contexts\n- communities\n- users\n- hosts\n- rmon_events"
                                 },
                                 "monitor_sessions": {
                                     "type": "array",
@@ -235028,6 +235193,39 @@
                                                 "title": "Source Interface ID",
                                                 "description": "Source Interface ID (String, Integer)"
                                             },
+                                            "source_interface_informs_type": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "ethernet",
+                                                            "loopback",
+                                                            "mgmt",
+                                                            "port-channel",
+                                                            "vlan",
+                                                            "vni"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Source Interface Informs Type",
+                                                "description": "Source Interface Informs Type (String, String)"
+                                            },
+                                            "source_interface_informs_id": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "type": "integer"
+                                                    }
+                                                ],
+                                                "title": "Source Interface Informs ID",
+                                                "description": "Source Interface Informs ID (String, Integer)"
+                                            },
                                             "enable_traps": {
                                                 "type": "boolean",
                                                 "title": "Enable Traps",
@@ -235422,6 +235620,92 @@
                                                 "title": "Traps",
                                                 "description": "Traps (Object)\n\nElements:\n- aaa_server_state_change\n- bfd_session_down\n- bfd_session_up\n- bridge_newroot\n- bridge_topology_change\n- callhome_event_notify\n- callhome_smtp_send_fail\n- cfs_state_change_notif\n- cfs_merge_failure\n- config_ccm_cli_running_config_changed\n- entity_mib_change\n- entity_cefc_mib_enable_status_notification\n- entity_fan_status_change\n- entity_module_inserted\n- entity_module_removed\n- entity_module_status_change\n- entity_power_out_change\n- entity_power_status_change\n- entity_sensor\n- entity_unrecognised_module\n- fcdomain_domain_id_not_assigned\n- fcdomain_fabric_change\n- fcdomain_new_principal_switch\n- feature_control_feature_op_status_change\n- feature_control_cisco_feat_op_status_change\n- generic_cold_start\n- generic_warm_start\n- hsrp_state_change\n- license_notify_license_expiry\n- license_notify_license_expiry_warning\n- license_notify_licensefile_missing\n- license_notify_no_license_for_feature\n- link_cie_link_down\n- link_cie_link_up\n- link_cisco_xcvr_mon_status_chg\n- link_cmn_mac_move_notification\n- link_delayed_link_state_change\n- link_extended_link_down\n- link_extended_link_up\n- link_link_down\n- link_link_up\n- link_cerr_disable_interface_event_rev1\n- lldp_rem_tables_change\n- mmode_cse_maint_mode_change_notify\n- mmode_cse_normal_mode_change_notify\n- mpls_ldp\n- mpls_ldp_session_down\n- mpls_ldp_session_up\n- mpls_vpn\n- mpls_vpn_vrf_max_thresh_cleared\n- mpls_vpn_vrf_max_thresh_exceeded\n- mpls_vpn_vrf_mid_thresh_exceeded\n- mpls_vpn_vrf_down\n- mpls_vpn_vrf_up\n- msdp_backward_transition\n- pim_neighbor_loss\n- port_security_access_secure_mac_violation\n- port_security_trunk_secure_mac_violation\n- rf_redundancy_framework\n- rmon_rising_alarm\n- rmon_falling_alarm\n- rmon_hc_rising_alarm\n- rmon_hc_falling_alarm\n- snmp_authentication\n- storm_control_cpsc_event_rev1\n- stpx_inconsistency\n- stpx_loop_inconsistency\n- stpx_root_inconsistency\n- syslog_message_generated\n- sysmgr_cse_fail_sw_core_notify_extended\n- system_clock_change_notification\n- upgrade_job_status_notify\n- upgrade_op_notify_on_completion\n- vtp_notifs\n- vtp_vlan_create\n- vtp_vlan_delete"
                                             },
+                                            "contexts": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "instance": {
+                                                            "type": "string",
+                                                            "title": "Instance",
+                                                            "description": "Instance (String)"
+                                                        },
+                                                        "vrf": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "VRF",
+                                                            "description": "VRF (String, String)"
+                                                        },
+                                                        "topology": {
+                                                            "type": "string",
+                                                            "title": "Topology",
+                                                            "description": "Topology (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Contexts",
+                                                "description": "Contexts (List - Object)\n\nElements:\n- name (required)\n- instance\n- vrf\n- topology"
+                                            },
+                                            "communities": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "group": {
+                                                            "type": "string",
+                                                            "title": "Group",
+                                                            "description": "Group (String)"
+                                                        },
+                                                        "context": {
+                                                            "type": "string",
+                                                            "title": "Context",
+                                                            "description": "Context (String)"
+                                                        },
+                                                        "use_acl": {
+                                                            "type": "string",
+                                                            "title": "Use ACL",
+                                                            "description": "Use ACL (String)"
+                                                        },
+                                                        "use_ipv4acl": {
+                                                            "type": "string",
+                                                            "title": "Use Ipv4Acl",
+                                                            "description": "Use Ipv4Acl (String)"
+                                                        },
+                                                        "use_ipv6acl": {
+                                                            "type": "string",
+                                                            "title": "Use Ipv6Acl",
+                                                            "description": "Use Ipv6Acl (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Communities",
+                                                "description": "Communities (List - Object)\n\nElements:\n- name (required)\n- group\n- context\n- use_acl\n- use_ipv4acl\n- use_ipv6acl"
+                                            },
                                             "users": {
                                                 "type": "array",
                                                 "items": {
@@ -235631,6 +235915,52 @@
                                                             ],
                                                             "title": "VRF",
                                                             "description": "VRF (String, String)"
+                                                        },
+                                                        "filter_vrf": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Filter VRF",
+                                                            "description": "Filter VRF (String, String)"
+                                                        },
+                                                        "source_interface_type": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "ethernet",
+                                                                        "loopback",
+                                                                        "mgmt",
+                                                                        "port-channel",
+                                                                        "vlan",
+                                                                        "vni"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Source Interface Type",
+                                                            "description": "Source Interface Type (String, String)"
+                                                        },
+                                                        "source_interface_id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "integer"
+                                                                }
+                                                            ],
+                                                            "title": "Source Interface ID",
+                                                            "description": "Source Interface ID (String, Integer)"
                                                         }
                                                     },
                                                     "required": [
@@ -235638,7 +235968,7 @@
                                                     ]
                                                 },
                                                 "title": "Hosts",
-                                                "description": "Hosts (List - Object)\n\nElements:\n- host (required)\n- udp_port\n- version\n- notification_type\n- community\n- security_level\n- vrf"
+                                                "description": "Hosts (List - Object)\n\nElements:\n- host (required)\n- udp_port\n- version\n- notification_type\n- community\n- security_level\n- vrf\n- filter_vrf\n- source_interface_type\n- source_interface_id"
                                             },
                                             "rmon_events": {
                                                 "type": "array",
@@ -235692,7 +236022,7 @@
                                         },
                                         "required": [],
                                         "title": "SNMP",
-                                        "description": "SNMP (Object)\n\nElements:\n- contact\n- location\n- engine_id\n- global_enforce_priv\n- logging_level\n- packetsize\n- tcp_session_auth\n- disable_snmp_aaa_sync\n- source_interface_type\n- source_interface_id\n- enable_traps\n- traps\n- users\n- hosts\n- rmon_events"
+                                        "description": "SNMP (Object)\n\nElements:\n- contact\n- location\n- engine_id\n- global_enforce_priv\n- logging_level\n- packetsize\n- tcp_session_auth\n- disable_snmp_aaa_sync\n- source_interface_type\n- source_interface_id\n- source_interface_informs_type\n- source_interface_informs_id\n- enable_traps\n- traps\n- contexts\n- communities\n- users\n- hosts\n- rmon_events"
                                     },
                                     "monitor_sessions": {
                                         "type": "array",
@@ -284714,6 +285044,39 @@
                                                 "title": "Source Interface ID",
                                                 "description": "Source Interface ID (String, Integer)"
                                             },
+                                            "source_interface_informs_type": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "ethernet",
+                                                            "loopback",
+                                                            "mgmt",
+                                                            "port-channel",
+                                                            "vlan",
+                                                            "vni"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Source Interface Informs Type",
+                                                "description": "Source Interface Informs Type (String, String)"
+                                            },
+                                            "source_interface_informs_id": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "type": "integer"
+                                                    }
+                                                ],
+                                                "title": "Source Interface Informs ID",
+                                                "description": "Source Interface Informs ID (String, Integer)"
+                                            },
                                             "enable_traps": {
                                                 "type": "boolean",
                                                 "title": "Enable Traps",
@@ -285108,6 +285471,92 @@
                                                 "title": "Traps",
                                                 "description": "Traps (Object)\n\nElements:\n- aaa_server_state_change\n- bfd_session_down\n- bfd_session_up\n- bridge_newroot\n- bridge_topology_change\n- callhome_event_notify\n- callhome_smtp_send_fail\n- cfs_state_change_notif\n- cfs_merge_failure\n- config_ccm_cli_running_config_changed\n- entity_mib_change\n- entity_cefc_mib_enable_status_notification\n- entity_fan_status_change\n- entity_module_inserted\n- entity_module_removed\n- entity_module_status_change\n- entity_power_out_change\n- entity_power_status_change\n- entity_sensor\n- entity_unrecognised_module\n- fcdomain_domain_id_not_assigned\n- fcdomain_fabric_change\n- fcdomain_new_principal_switch\n- feature_control_feature_op_status_change\n- feature_control_cisco_feat_op_status_change\n- generic_cold_start\n- generic_warm_start\n- hsrp_state_change\n- license_notify_license_expiry\n- license_notify_license_expiry_warning\n- license_notify_licensefile_missing\n- license_notify_no_license_for_feature\n- link_cie_link_down\n- link_cie_link_up\n- link_cisco_xcvr_mon_status_chg\n- link_cmn_mac_move_notification\n- link_delayed_link_state_change\n- link_extended_link_down\n- link_extended_link_up\n- link_link_down\n- link_link_up\n- link_cerr_disable_interface_event_rev1\n- lldp_rem_tables_change\n- mmode_cse_maint_mode_change_notify\n- mmode_cse_normal_mode_change_notify\n- mpls_ldp\n- mpls_ldp_session_down\n- mpls_ldp_session_up\n- mpls_vpn\n- mpls_vpn_vrf_max_thresh_cleared\n- mpls_vpn_vrf_max_thresh_exceeded\n- mpls_vpn_vrf_mid_thresh_exceeded\n- mpls_vpn_vrf_down\n- mpls_vpn_vrf_up\n- msdp_backward_transition\n- pim_neighbor_loss\n- port_security_access_secure_mac_violation\n- port_security_trunk_secure_mac_violation\n- rf_redundancy_framework\n- rmon_rising_alarm\n- rmon_falling_alarm\n- rmon_hc_rising_alarm\n- rmon_hc_falling_alarm\n- snmp_authentication\n- storm_control_cpsc_event_rev1\n- stpx_inconsistency\n- stpx_loop_inconsistency\n- stpx_root_inconsistency\n- syslog_message_generated\n- sysmgr_cse_fail_sw_core_notify_extended\n- system_clock_change_notification\n- upgrade_job_status_notify\n- upgrade_op_notify_on_completion\n- vtp_notifs\n- vtp_vlan_create\n- vtp_vlan_delete"
                                             },
+                                            "contexts": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "instance": {
+                                                            "type": "string",
+                                                            "title": "Instance",
+                                                            "description": "Instance (String)"
+                                                        },
+                                                        "vrf": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "VRF",
+                                                            "description": "VRF (String, String)"
+                                                        },
+                                                        "topology": {
+                                                            "type": "string",
+                                                            "title": "Topology",
+                                                            "description": "Topology (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Contexts",
+                                                "description": "Contexts (List - Object)\n\nElements:\n- name (required)\n- instance\n- vrf\n- topology"
+                                            },
+                                            "communities": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "group": {
+                                                            "type": "string",
+                                                            "title": "Group",
+                                                            "description": "Group (String)"
+                                                        },
+                                                        "context": {
+                                                            "type": "string",
+                                                            "title": "Context",
+                                                            "description": "Context (String)"
+                                                        },
+                                                        "use_acl": {
+                                                            "type": "string",
+                                                            "title": "Use ACL",
+                                                            "description": "Use ACL (String)"
+                                                        },
+                                                        "use_ipv4acl": {
+                                                            "type": "string",
+                                                            "title": "Use Ipv4Acl",
+                                                            "description": "Use Ipv4Acl (String)"
+                                                        },
+                                                        "use_ipv6acl": {
+                                                            "type": "string",
+                                                            "title": "Use Ipv6Acl",
+                                                            "description": "Use Ipv6Acl (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Communities",
+                                                "description": "Communities (List - Object)\n\nElements:\n- name (required)\n- group\n- context\n- use_acl\n- use_ipv4acl\n- use_ipv6acl"
+                                            },
                                             "users": {
                                                 "type": "array",
                                                 "items": {
@@ -285317,6 +285766,52 @@
                                                             ],
                                                             "title": "VRF",
                                                             "description": "VRF (String, String)"
+                                                        },
+                                                        "filter_vrf": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Filter VRF",
+                                                            "description": "Filter VRF (String, String)"
+                                                        },
+                                                        "source_interface_type": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "ethernet",
+                                                                        "loopback",
+                                                                        "mgmt",
+                                                                        "port-channel",
+                                                                        "vlan",
+                                                                        "vni"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Source Interface Type",
+                                                            "description": "Source Interface Type (String, String)"
+                                                        },
+                                                        "source_interface_id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "integer"
+                                                                }
+                                                            ],
+                                                            "title": "Source Interface ID",
+                                                            "description": "Source Interface ID (String, Integer)"
                                                         }
                                                     },
                                                     "required": [
@@ -285324,7 +285819,7 @@
                                                     ]
                                                 },
                                                 "title": "Hosts",
-                                                "description": "Hosts (List - Object)\n\nElements:\n- host (required)\n- udp_port\n- version\n- notification_type\n- community\n- security_level\n- vrf"
+                                                "description": "Hosts (List - Object)\n\nElements:\n- host (required)\n- udp_port\n- version\n- notification_type\n- community\n- security_level\n- vrf\n- filter_vrf\n- source_interface_type\n- source_interface_id"
                                             },
                                             "rmon_events": {
                                                 "type": "array",
@@ -285378,7 +285873,7 @@
                                         },
                                         "required": [],
                                         "title": "SNMP",
-                                        "description": "SNMP (Object)\n\nElements:\n- contact\n- location\n- engine_id\n- global_enforce_priv\n- logging_level\n- packetsize\n- tcp_session_auth\n- disable_snmp_aaa_sync\n- source_interface_type\n- source_interface_id\n- enable_traps\n- traps\n- users\n- hosts\n- rmon_events"
+                                        "description": "SNMP (Object)\n\nElements:\n- contact\n- location\n- engine_id\n- global_enforce_priv\n- logging_level\n- packetsize\n- tcp_session_auth\n- disable_snmp_aaa_sync\n- source_interface_type\n- source_interface_id\n- source_interface_informs_type\n- source_interface_informs_id\n- enable_traps\n- traps\n- contexts\n- communities\n- users\n- hosts\n- rmon_events"
                                     },
                                     "monitor_sessions": {
                                         "type": "array",
@@ -342095,6 +342590,39 @@
                                                 "title": "Source Interface ID",
                                                 "description": "Source Interface ID (String, Integer)"
                                             },
+                                            "source_interface_informs_type": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "ethernet",
+                                                            "loopback",
+                                                            "mgmt",
+                                                            "port-channel",
+                                                            "vlan",
+                                                            "vni"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Source Interface Informs Type",
+                                                "description": "Source Interface Informs Type (String, String)"
+                                            },
+                                            "source_interface_informs_id": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "type": "integer"
+                                                    }
+                                                ],
+                                                "title": "Source Interface Informs ID",
+                                                "description": "Source Interface Informs ID (String, Integer)"
+                                            },
                                             "enable_traps": {
                                                 "type": "boolean",
                                                 "title": "Enable Traps",
@@ -342489,6 +343017,92 @@
                                                 "title": "Traps",
                                                 "description": "Traps (Object)\n\nElements:\n- aaa_server_state_change\n- bfd_session_down\n- bfd_session_up\n- bridge_newroot\n- bridge_topology_change\n- callhome_event_notify\n- callhome_smtp_send_fail\n- cfs_state_change_notif\n- cfs_merge_failure\n- config_ccm_cli_running_config_changed\n- entity_mib_change\n- entity_cefc_mib_enable_status_notification\n- entity_fan_status_change\n- entity_module_inserted\n- entity_module_removed\n- entity_module_status_change\n- entity_power_out_change\n- entity_power_status_change\n- entity_sensor\n- entity_unrecognised_module\n- fcdomain_domain_id_not_assigned\n- fcdomain_fabric_change\n- fcdomain_new_principal_switch\n- feature_control_feature_op_status_change\n- feature_control_cisco_feat_op_status_change\n- generic_cold_start\n- generic_warm_start\n- hsrp_state_change\n- license_notify_license_expiry\n- license_notify_license_expiry_warning\n- license_notify_licensefile_missing\n- license_notify_no_license_for_feature\n- link_cie_link_down\n- link_cie_link_up\n- link_cisco_xcvr_mon_status_chg\n- link_cmn_mac_move_notification\n- link_delayed_link_state_change\n- link_extended_link_down\n- link_extended_link_up\n- link_link_down\n- link_link_up\n- link_cerr_disable_interface_event_rev1\n- lldp_rem_tables_change\n- mmode_cse_maint_mode_change_notify\n- mmode_cse_normal_mode_change_notify\n- mpls_ldp\n- mpls_ldp_session_down\n- mpls_ldp_session_up\n- mpls_vpn\n- mpls_vpn_vrf_max_thresh_cleared\n- mpls_vpn_vrf_max_thresh_exceeded\n- mpls_vpn_vrf_mid_thresh_exceeded\n- mpls_vpn_vrf_down\n- mpls_vpn_vrf_up\n- msdp_backward_transition\n- pim_neighbor_loss\n- port_security_access_secure_mac_violation\n- port_security_trunk_secure_mac_violation\n- rf_redundancy_framework\n- rmon_rising_alarm\n- rmon_falling_alarm\n- rmon_hc_rising_alarm\n- rmon_hc_falling_alarm\n- snmp_authentication\n- storm_control_cpsc_event_rev1\n- stpx_inconsistency\n- stpx_loop_inconsistency\n- stpx_root_inconsistency\n- syslog_message_generated\n- sysmgr_cse_fail_sw_core_notify_extended\n- system_clock_change_notification\n- upgrade_job_status_notify\n- upgrade_op_notify_on_completion\n- vtp_notifs\n- vtp_vlan_create\n- vtp_vlan_delete"
                                             },
+                                            "contexts": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "instance": {
+                                                            "type": "string",
+                                                            "title": "Instance",
+                                                            "description": "Instance (String)"
+                                                        },
+                                                        "vrf": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "VRF",
+                                                            "description": "VRF (String, String)"
+                                                        },
+                                                        "topology": {
+                                                            "type": "string",
+                                                            "title": "Topology",
+                                                            "description": "Topology (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Contexts",
+                                                "description": "Contexts (List - Object)\n\nElements:\n- name (required)\n- instance\n- vrf\n- topology"
+                                            },
+                                            "communities": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "group": {
+                                                            "type": "string",
+                                                            "title": "Group",
+                                                            "description": "Group (String)"
+                                                        },
+                                                        "context": {
+                                                            "type": "string",
+                                                            "title": "Context",
+                                                            "description": "Context (String)"
+                                                        },
+                                                        "use_acl": {
+                                                            "type": "string",
+                                                            "title": "Use ACL",
+                                                            "description": "Use ACL (String)"
+                                                        },
+                                                        "use_ipv4acl": {
+                                                            "type": "string",
+                                                            "title": "Use Ipv4Acl",
+                                                            "description": "Use Ipv4Acl (String)"
+                                                        },
+                                                        "use_ipv6acl": {
+                                                            "type": "string",
+                                                            "title": "Use Ipv6Acl",
+                                                            "description": "Use Ipv6Acl (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Communities",
+                                                "description": "Communities (List - Object)\n\nElements:\n- name (required)\n- group\n- context\n- use_acl\n- use_ipv4acl\n- use_ipv6acl"
+                                            },
                                             "users": {
                                                 "type": "array",
                                                 "items": {
@@ -342698,6 +343312,52 @@
                                                             ],
                                                             "title": "VRF",
                                                             "description": "VRF (String, String)"
+                                                        },
+                                                        "filter_vrf": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Filter VRF",
+                                                            "description": "Filter VRF (String, String)"
+                                                        },
+                                                        "source_interface_type": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "ethernet",
+                                                                        "loopback",
+                                                                        "mgmt",
+                                                                        "port-channel",
+                                                                        "vlan",
+                                                                        "vni"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Source Interface Type",
+                                                            "description": "Source Interface Type (String, String)"
+                                                        },
+                                                        "source_interface_id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "integer"
+                                                                }
+                                                            ],
+                                                            "title": "Source Interface ID",
+                                                            "description": "Source Interface ID (String, Integer)"
                                                         }
                                                     },
                                                     "required": [
@@ -342705,7 +343365,7 @@
                                                     ]
                                                 },
                                                 "title": "Hosts",
-                                                "description": "Hosts (List - Object)\n\nElements:\n- host (required)\n- udp_port\n- version\n- notification_type\n- community\n- security_level\n- vrf"
+                                                "description": "Hosts (List - Object)\n\nElements:\n- host (required)\n- udp_port\n- version\n- notification_type\n- community\n- security_level\n- vrf\n- filter_vrf\n- source_interface_type\n- source_interface_id"
                                             },
                                             "rmon_events": {
                                                 "type": "array",
@@ -342759,7 +343419,7 @@
                                         },
                                         "required": [],
                                         "title": "SNMP",
-                                        "description": "SNMP (Object)\n\nElements:\n- contact\n- location\n- engine_id\n- global_enforce_priv\n- logging_level\n- packetsize\n- tcp_session_auth\n- disable_snmp_aaa_sync\n- source_interface_type\n- source_interface_id\n- enable_traps\n- traps\n- users\n- hosts\n- rmon_events"
+                                        "description": "SNMP (Object)\n\nElements:\n- contact\n- location\n- engine_id\n- global_enforce_priv\n- logging_level\n- packetsize\n- tcp_session_auth\n- disable_snmp_aaa_sync\n- source_interface_type\n- source_interface_id\n- source_interface_informs_type\n- source_interface_informs_id\n- enable_traps\n- traps\n- contexts\n- communities\n- users\n- hosts\n- rmon_events"
                                     },
                                     "monitor_sessions": {
                                         "type": "array",
