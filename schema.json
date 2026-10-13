@@ -170117,6 +170117,66 @@
                                     "title": "Key Chains",
                                     "description": "Key Chains (List - Object)\n\nElements:\n- name (required)\n- macsec\n- keys"
                                 },
+                                "lacp": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "system_priority": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "integer",
+                                                    "minimum": 1,
+                                                    "maximum": 65535
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "System Priority",
+                                            "description": "System Priority (Integer, String)"
+                                        },
+                                        "system_mac": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "System MAC",
+                                            "description": "System MAC (String, String)"
+                                        },
+                                        "system_mac_role": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "primary",
+                                                        "secondary"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "System MAC Role",
+                                            "description": "System MAC Role (String, String)"
+                                        },
+                                        "port_number_front_panel": {
+                                            "type": "boolean",
+                                            "title": "Port Number Front Panel",
+                                            "description": "Port Number Front Panel (Boolean)"
+                                        }
+                                    },
+                                    "required": [],
+                                    "title": "Lacp",
+                                    "description": "Lacp (Object)\n\nElements:\n- system_priority\n- system_mac\n- system_mac_role\n- port_number_front_panel"
+                                },
                                 "lldp": {
                                     "type": "object",
                                     "additionalProperties": false,
@@ -199651,6 +199711,38 @@
                                                         "title": "Channel Group Force",
                                                         "description": "Channel Group Force (Boolean)"
                                                     },
+                                                    "lacp_port_priority": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 65535
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Lacp Port Priority",
+                                                        "description": "Lacp Port Priority (Integer, String)"
+                                                    },
+                                                    "lacp_rate": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "normal",
+                                                                    "fast"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Lacp Rate",
+                                                        "description": "Lacp Rate (String, String)"
+                                                    },
                                                     "ospf": {
                                                         "type": "object",
                                                         "additionalProperties": false,
@@ -205258,7 +205350,7 @@
                                                 ]
                                             },
                                             "title": "Ethernets",
-                                            "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                            "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                         },
                                         "port_channels": {
                                             "type": "array",
@@ -213050,7 +213142,7 @@
                             },
                             "required": [],
                             "title": "Configuration",
-                            "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- key_chains\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- interfaces"
+                            "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- interfaces"
                         },
                         "templates": {
                             "type": "array",
@@ -219173,6 +219265,66 @@
                                         },
                                         "title": "Key Chains",
                                         "description": "Key Chains (List - Object)\n\nElements:\n- name (required)\n- macsec\n- keys"
+                                    },
+                                    "lacp": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "system_priority": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 65535
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "System Priority",
+                                                "description": "System Priority (Integer, String)"
+                                            },
+                                            "system_mac": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "System MAC",
+                                                "description": "System MAC (String, String)"
+                                            },
+                                            "system_mac_role": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "primary",
+                                                            "secondary"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "System MAC Role",
+                                                "description": "System MAC Role (String, String)"
+                                            },
+                                            "port_number_front_panel": {
+                                                "type": "boolean",
+                                                "title": "Port Number Front Panel",
+                                                "description": "Port Number Front Panel (Boolean)"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Lacp",
+                                        "description": "Lacp (Object)\n\nElements:\n- system_priority\n- system_mac\n- system_mac_role\n- port_number_front_panel"
                                     },
                                     "lldp": {
                                         "type": "object",
@@ -248708,6 +248860,38 @@
                                                             "title": "Channel Group Force",
                                                             "description": "Channel Group Force (Boolean)"
                                                         },
+                                                        "lacp_port_priority": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 65535
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Lacp Port Priority",
+                                                            "description": "Lacp Port Priority (Integer, String)"
+                                                        },
+                                                        "lacp_rate": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "normal",
+                                                                        "fast"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Lacp Rate",
+                                                            "description": "Lacp Rate (String, String)"
+                                                        },
                                                         "ospf": {
                                                             "type": "object",
                                                             "additionalProperties": false,
@@ -254315,7 +254499,7 @@
                                                     ]
                                                 },
                                                 "title": "Ethernets",
-                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "port_channels": {
                                                 "type": "array",
@@ -262107,7 +262291,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- key_chains\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- interfaces"
+                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- interfaces"
                             },
                             "templates": {
                                 "type": "array",
@@ -268255,6 +268439,66 @@
                                         "title": "Key Chains",
                                         "description": "Key Chains (List - Object)\n\nElements:\n- name (required)\n- macsec\n- keys"
                                     },
+                                    "lacp": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "system_priority": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 65535
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "System Priority",
+                                                "description": "System Priority (Integer, String)"
+                                            },
+                                            "system_mac": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "System MAC",
+                                                "description": "System MAC (String, String)"
+                                            },
+                                            "system_mac_role": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "primary",
+                                                            "secondary"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "System MAC Role",
+                                                "description": "System MAC Role (String, String)"
+                                            },
+                                            "port_number_front_panel": {
+                                                "type": "boolean",
+                                                "title": "Port Number Front Panel",
+                                                "description": "Port Number Front Panel (Boolean)"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Lacp",
+                                        "description": "Lacp (Object)\n\nElements:\n- system_priority\n- system_mac\n- system_mac_role\n- port_number_front_panel"
+                                    },
                                     "lldp": {
                                         "type": "object",
                                         "additionalProperties": false,
@@ -297789,6 +298033,38 @@
                                                             "title": "Channel Group Force",
                                                             "description": "Channel Group Force (Boolean)"
                                                         },
+                                                        "lacp_port_priority": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 65535
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Lacp Port Priority",
+                                                            "description": "Lacp Port Priority (Integer, String)"
+                                                        },
+                                                        "lacp_rate": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "normal",
+                                                                        "fast"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Lacp Rate",
+                                                            "description": "Lacp Rate (String, String)"
+                                                        },
                                                         "ospf": {
                                                             "type": "object",
                                                             "additionalProperties": false,
@@ -303396,7 +303672,7 @@
                                                     ]
                                                 },
                                                 "title": "Ethernets",
-                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "port_channels": {
                                                 "type": "array",
@@ -311188,7 +311464,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- key_chains\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- interfaces"
+                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- interfaces"
                             },
                             "templates": {
                                 "type": "array",
@@ -312713,6 +312989,38 @@
                                         "type": "boolean",
                                         "title": "Channel Group Force",
                                         "description": "Channel Group Force (Boolean)"
+                                    },
+                                    "lacp_port_priority": {
+                                        "anyOf": [
+                                            {
+                                                "type": "integer",
+                                                "minimum": 1,
+                                                "maximum": 65535
+                                            },
+                                            {
+                                                "type": "string",
+                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                            }
+                                        ],
+                                        "title": "Lacp Port Priority",
+                                        "description": "Lacp Port Priority (Integer, String)"
+                                    },
+                                    "lacp_rate": {
+                                        "anyOf": [
+                                            {
+                                                "type": "string",
+                                                "enum": [
+                                                    "normal",
+                                                    "fast"
+                                                ]
+                                            },
+                                            {
+                                                "type": "string",
+                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                            }
+                                        ],
+                                        "title": "Lacp Rate",
+                                        "description": "Lacp Rate (String, String)"
                                     },
                                     "lacp_min_links": {
                                         "anyOf": [
@@ -318873,7 +319181,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- shutdown\n- shutdown_lan\n- autostate\n- description\n- vrf\n- carrier_delay\n- delay\n- bandwidth\n- management\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- medium\n- mtu\n- mtu_inherit\n- fabric_forwarding_mode\n- fabric_forwarding_mode_anycast_gateway_proxy\n- fabric_forwarding_description\n- negotiate_auto\n- beacon\n- buffer_boost\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- switchport\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mac_ipv6_extract\n- encapsulation\n- mdix\n- media_type\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_id\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- private_vlan_mapping\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                "description": "Configuration (Object)\n\nElements:\n- shutdown\n- shutdown_lan\n- autostate\n- description\n- vrf\n- carrier_delay\n- delay\n- bandwidth\n- management\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- medium\n- mtu\n- mtu_inherit\n- fabric_forwarding_mode\n- fabric_forwarding_mode_anycast_gateway_proxy\n- fabric_forwarding_description\n- negotiate_auto\n- beacon\n- buffer_boost\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- switchport\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mac_ipv6_extract\n- encapsulation\n- mdix\n- media_type\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_id\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- private_vlan_mapping\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                             }
                         },
                         "required": [
@@ -324993,6 +325301,66 @@
                                         },
                                         "title": "Key Chains",
                                         "description": "Key Chains (List - Object)\n\nElements:\n- name (required)\n- macsec\n- keys"
+                                    },
+                                    "lacp": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "system_priority": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 65535
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "System Priority",
+                                                "description": "System Priority (Integer, String)"
+                                            },
+                                            "system_mac": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "System MAC",
+                                                "description": "System MAC (String, String)"
+                                            },
+                                            "system_mac_role": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "primary",
+                                                            "secondary"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "System MAC Role",
+                                                "description": "System MAC Role (String, String)"
+                                            },
+                                            "port_number_front_panel": {
+                                                "type": "boolean",
+                                                "title": "Port Number Front Panel",
+                                                "description": "Port Number Front Panel (Boolean)"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Lacp",
+                                        "description": "Lacp (Object)\n\nElements:\n- system_priority\n- system_mac\n- system_mac_role\n- port_number_front_panel"
                                     },
                                     "lldp": {
                                         "type": "object",
@@ -354528,6 +354896,38 @@
                                                             "title": "Channel Group Force",
                                                             "description": "Channel Group Force (Boolean)"
                                                         },
+                                                        "lacp_port_priority": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 65535
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Lacp Port Priority",
+                                                            "description": "Lacp Port Priority (Integer, String)"
+                                                        },
+                                                        "lacp_rate": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "normal",
+                                                                        "fast"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Lacp Rate",
+                                                            "description": "Lacp Rate (String, String)"
+                                                        },
                                                         "ospf": {
                                                             "type": "object",
                                                             "additionalProperties": false,
@@ -360135,7 +360535,7 @@
                                                     ]
                                                 },
                                                 "title": "Ethernets",
-                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "port_channels": {
                                                 "type": "array",
@@ -367927,7 +368327,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- key_chains\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- interfaces"
+                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- interfaces"
                             }
                         },
                         "required": [
