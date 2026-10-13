@@ -189031,6 +189031,113 @@
                                             "title": "Ethernet",
                                             "description": "Ethernet (Object)\n\nElements:\n- default_switchport_shutdown\n- service_unsupported_transceiver\n- default_switchport\n- logging_event_port\n- default_interface_shutdown\n- link_failure_laser_on\n- storm_control_multicast\n- dot1q_tag_native\n- admin_link_down_syslog_level\n- admin_link_up_syslog_level\n- interface_syslog_info"
                                         },
+                                        "errdisable": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "detect_cause": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "link_flap": {
+                                                            "type": "boolean",
+                                                            "title": "Link Flap",
+                                                            "description": "Link Flap (Boolean)"
+                                                        },
+                                                        "loopback": {
+                                                            "type": "boolean",
+                                                            "title": "Loopback",
+                                                            "description": "Loopback (Boolean)"
+                                                        }
+                                                    },
+                                                    "required": [],
+                                                    "title": "Detect Cause",
+                                                    "description": "Detect Cause (Object)\n\nElements:\n- link_flap\n- loopback"
+                                                },
+                                                "recovery_cause": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "bpduguard": {
+                                                            "type": "boolean",
+                                                            "title": "Bpduguard",
+                                                            "description": "Bpduguard (Boolean)"
+                                                        },
+                                                        "dcbx_no_ack": {
+                                                            "type": "boolean",
+                                                            "title": "Dcbx No Ack",
+                                                            "description": "Dcbx No Ack (Boolean)"
+                                                        },
+                                                        "failed_port_state": {
+                                                            "type": "boolean",
+                                                            "title": "Failed Port State",
+                                                            "description": "Failed Port State (Boolean)"
+                                                        },
+                                                        "link_flap": {
+                                                            "type": "boolean",
+                                                            "title": "Link Flap",
+                                                            "description": "Link Flap (Boolean)"
+                                                        },
+                                                        "loopback": {
+                                                            "type": "boolean",
+                                                            "title": "Loopback",
+                                                            "description": "Loopback (Boolean)"
+                                                        },
+                                                        "pause_rate_limit": {
+                                                            "type": "boolean",
+                                                            "title": "Pause Rate Limit",
+                                                            "description": "Pause Rate Limit (Boolean)"
+                                                        },
+                                                        "psecure_violation": {
+                                                            "type": "boolean",
+                                                            "title": "Psecure Violation",
+                                                            "description": "Psecure Violation (Boolean)"
+                                                        },
+                                                        "security_violation": {
+                                                            "type": "boolean",
+                                                            "title": "Security Violation",
+                                                            "description": "Security Violation (Boolean)"
+                                                        },
+                                                        "storm_control": {
+                                                            "type": "boolean",
+                                                            "title": "Storm Control",
+                                                            "description": "Storm Control (Boolean)"
+                                                        },
+                                                        "udld": {
+                                                            "type": "boolean",
+                                                            "title": "Udld",
+                                                            "description": "Udld (Boolean)"
+                                                        },
+                                                        "vpc_peerlink": {
+                                                            "type": "boolean",
+                                                            "title": "vPC Peerlink",
+                                                            "description": "vPC Peerlink (Boolean)"
+                                                        }
+                                                    },
+                                                    "required": [],
+                                                    "title": "Recovery Cause",
+                                                    "description": "Recovery Cause (Object)\n\nElements:\n- bpduguard\n- dcbx_no_ack\n- failed_port_state\n- link_flap\n- loopback\n- pause_rate_limit\n- psecure_violation\n- security_violation\n- storm_control\n- udld\n- vpc_peerlink"
+                                                },
+                                                "recovery_interval": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 30,
+                                                            "maximum": 65535
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Recovery Interval",
+                                                    "description": "Recovery Interval (Integer, String)"
+                                                }
+                                            },
+                                            "required": [],
+                                            "title": "Errdisable",
+                                            "description": "Errdisable (Object)\n\nElements:\n- detect_cause\n- recovery_cause\n- recovery_interval"
+                                        },
                                         "erspan_origin_ip_address": {
                                             "anyOf": [
                                                 {
@@ -190860,7 +190967,7 @@
                                     },
                                     "required": [],
                                     "title": "System",
-                                    "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                    "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                 },
                                 "telemetry": {
                                     "type": "object",
@@ -238180,6 +238287,113 @@
                                                 "title": "Ethernet",
                                                 "description": "Ethernet (Object)\n\nElements:\n- default_switchport_shutdown\n- service_unsupported_transceiver\n- default_switchport\n- logging_event_port\n- default_interface_shutdown\n- link_failure_laser_on\n- storm_control_multicast\n- dot1q_tag_native\n- admin_link_down_syslog_level\n- admin_link_up_syslog_level\n- interface_syslog_info"
                                             },
+                                            "errdisable": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "detect_cause": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "link_flap": {
+                                                                "type": "boolean",
+                                                                "title": "Link Flap",
+                                                                "description": "Link Flap (Boolean)"
+                                                            },
+                                                            "loopback": {
+                                                                "type": "boolean",
+                                                                "title": "Loopback",
+                                                                "description": "Loopback (Boolean)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Detect Cause",
+                                                        "description": "Detect Cause (Object)\n\nElements:\n- link_flap\n- loopback"
+                                                    },
+                                                    "recovery_cause": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "bpduguard": {
+                                                                "type": "boolean",
+                                                                "title": "Bpduguard",
+                                                                "description": "Bpduguard (Boolean)"
+                                                            },
+                                                            "dcbx_no_ack": {
+                                                                "type": "boolean",
+                                                                "title": "Dcbx No Ack",
+                                                                "description": "Dcbx No Ack (Boolean)"
+                                                            },
+                                                            "failed_port_state": {
+                                                                "type": "boolean",
+                                                                "title": "Failed Port State",
+                                                                "description": "Failed Port State (Boolean)"
+                                                            },
+                                                            "link_flap": {
+                                                                "type": "boolean",
+                                                                "title": "Link Flap",
+                                                                "description": "Link Flap (Boolean)"
+                                                            },
+                                                            "loopback": {
+                                                                "type": "boolean",
+                                                                "title": "Loopback",
+                                                                "description": "Loopback (Boolean)"
+                                                            },
+                                                            "pause_rate_limit": {
+                                                                "type": "boolean",
+                                                                "title": "Pause Rate Limit",
+                                                                "description": "Pause Rate Limit (Boolean)"
+                                                            },
+                                                            "psecure_violation": {
+                                                                "type": "boolean",
+                                                                "title": "Psecure Violation",
+                                                                "description": "Psecure Violation (Boolean)"
+                                                            },
+                                                            "security_violation": {
+                                                                "type": "boolean",
+                                                                "title": "Security Violation",
+                                                                "description": "Security Violation (Boolean)"
+                                                            },
+                                                            "storm_control": {
+                                                                "type": "boolean",
+                                                                "title": "Storm Control",
+                                                                "description": "Storm Control (Boolean)"
+                                                            },
+                                                            "udld": {
+                                                                "type": "boolean",
+                                                                "title": "Udld",
+                                                                "description": "Udld (Boolean)"
+                                                            },
+                                                            "vpc_peerlink": {
+                                                                "type": "boolean",
+                                                                "title": "vPC Peerlink",
+                                                                "description": "vPC Peerlink (Boolean)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Recovery Cause",
+                                                        "description": "Recovery Cause (Object)\n\nElements:\n- bpduguard\n- dcbx_no_ack\n- failed_port_state\n- link_flap\n- loopback\n- pause_rate_limit\n- psecure_violation\n- security_violation\n- storm_control\n- udld\n- vpc_peerlink"
+                                                    },
+                                                    "recovery_interval": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 30,
+                                                                "maximum": 65535
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Recovery Interval",
+                                                        "description": "Recovery Interval (Integer, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Errdisable",
+                                                "description": "Errdisable (Object)\n\nElements:\n- detect_cause\n- recovery_cause\n- recovery_interval"
+                                            },
                                             "erspan_origin_ip_address": {
                                                 "anyOf": [
                                                     {
@@ -240009,7 +240223,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -287353,6 +287567,113 @@
                                                 "title": "Ethernet",
                                                 "description": "Ethernet (Object)\n\nElements:\n- default_switchport_shutdown\n- service_unsupported_transceiver\n- default_switchport\n- logging_event_port\n- default_interface_shutdown\n- link_failure_laser_on\n- storm_control_multicast\n- dot1q_tag_native\n- admin_link_down_syslog_level\n- admin_link_up_syslog_level\n- interface_syslog_info"
                                             },
+                                            "errdisable": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "detect_cause": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "link_flap": {
+                                                                "type": "boolean",
+                                                                "title": "Link Flap",
+                                                                "description": "Link Flap (Boolean)"
+                                                            },
+                                                            "loopback": {
+                                                                "type": "boolean",
+                                                                "title": "Loopback",
+                                                                "description": "Loopback (Boolean)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Detect Cause",
+                                                        "description": "Detect Cause (Object)\n\nElements:\n- link_flap\n- loopback"
+                                                    },
+                                                    "recovery_cause": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "bpduguard": {
+                                                                "type": "boolean",
+                                                                "title": "Bpduguard",
+                                                                "description": "Bpduguard (Boolean)"
+                                                            },
+                                                            "dcbx_no_ack": {
+                                                                "type": "boolean",
+                                                                "title": "Dcbx No Ack",
+                                                                "description": "Dcbx No Ack (Boolean)"
+                                                            },
+                                                            "failed_port_state": {
+                                                                "type": "boolean",
+                                                                "title": "Failed Port State",
+                                                                "description": "Failed Port State (Boolean)"
+                                                            },
+                                                            "link_flap": {
+                                                                "type": "boolean",
+                                                                "title": "Link Flap",
+                                                                "description": "Link Flap (Boolean)"
+                                                            },
+                                                            "loopback": {
+                                                                "type": "boolean",
+                                                                "title": "Loopback",
+                                                                "description": "Loopback (Boolean)"
+                                                            },
+                                                            "pause_rate_limit": {
+                                                                "type": "boolean",
+                                                                "title": "Pause Rate Limit",
+                                                                "description": "Pause Rate Limit (Boolean)"
+                                                            },
+                                                            "psecure_violation": {
+                                                                "type": "boolean",
+                                                                "title": "Psecure Violation",
+                                                                "description": "Psecure Violation (Boolean)"
+                                                            },
+                                                            "security_violation": {
+                                                                "type": "boolean",
+                                                                "title": "Security Violation",
+                                                                "description": "Security Violation (Boolean)"
+                                                            },
+                                                            "storm_control": {
+                                                                "type": "boolean",
+                                                                "title": "Storm Control",
+                                                                "description": "Storm Control (Boolean)"
+                                                            },
+                                                            "udld": {
+                                                                "type": "boolean",
+                                                                "title": "Udld",
+                                                                "description": "Udld (Boolean)"
+                                                            },
+                                                            "vpc_peerlink": {
+                                                                "type": "boolean",
+                                                                "title": "vPC Peerlink",
+                                                                "description": "vPC Peerlink (Boolean)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Recovery Cause",
+                                                        "description": "Recovery Cause (Object)\n\nElements:\n- bpduguard\n- dcbx_no_ack\n- failed_port_state\n- link_flap\n- loopback\n- pause_rate_limit\n- psecure_violation\n- security_violation\n- storm_control\n- udld\n- vpc_peerlink"
+                                                    },
+                                                    "recovery_interval": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 30,
+                                                                "maximum": 65535
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Recovery Interval",
+                                                        "description": "Recovery Interval (Integer, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Errdisable",
+                                                "description": "Errdisable (Object)\n\nElements:\n- detect_cause\n- recovery_cause\n- recovery_interval"
+                                            },
                                             "erspan_origin_ip_address": {
                                                 "anyOf": [
                                                     {
@@ -289182,7 +289503,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -344216,6 +344537,113 @@
                                                 "title": "Ethernet",
                                                 "description": "Ethernet (Object)\n\nElements:\n- default_switchport_shutdown\n- service_unsupported_transceiver\n- default_switchport\n- logging_event_port\n- default_interface_shutdown\n- link_failure_laser_on\n- storm_control_multicast\n- dot1q_tag_native\n- admin_link_down_syslog_level\n- admin_link_up_syslog_level\n- interface_syslog_info"
                                             },
+                                            "errdisable": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "detect_cause": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "link_flap": {
+                                                                "type": "boolean",
+                                                                "title": "Link Flap",
+                                                                "description": "Link Flap (Boolean)"
+                                                            },
+                                                            "loopback": {
+                                                                "type": "boolean",
+                                                                "title": "Loopback",
+                                                                "description": "Loopback (Boolean)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Detect Cause",
+                                                        "description": "Detect Cause (Object)\n\nElements:\n- link_flap\n- loopback"
+                                                    },
+                                                    "recovery_cause": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "bpduguard": {
+                                                                "type": "boolean",
+                                                                "title": "Bpduguard",
+                                                                "description": "Bpduguard (Boolean)"
+                                                            },
+                                                            "dcbx_no_ack": {
+                                                                "type": "boolean",
+                                                                "title": "Dcbx No Ack",
+                                                                "description": "Dcbx No Ack (Boolean)"
+                                                            },
+                                                            "failed_port_state": {
+                                                                "type": "boolean",
+                                                                "title": "Failed Port State",
+                                                                "description": "Failed Port State (Boolean)"
+                                                            },
+                                                            "link_flap": {
+                                                                "type": "boolean",
+                                                                "title": "Link Flap",
+                                                                "description": "Link Flap (Boolean)"
+                                                            },
+                                                            "loopback": {
+                                                                "type": "boolean",
+                                                                "title": "Loopback",
+                                                                "description": "Loopback (Boolean)"
+                                                            },
+                                                            "pause_rate_limit": {
+                                                                "type": "boolean",
+                                                                "title": "Pause Rate Limit",
+                                                                "description": "Pause Rate Limit (Boolean)"
+                                                            },
+                                                            "psecure_violation": {
+                                                                "type": "boolean",
+                                                                "title": "Psecure Violation",
+                                                                "description": "Psecure Violation (Boolean)"
+                                                            },
+                                                            "security_violation": {
+                                                                "type": "boolean",
+                                                                "title": "Security Violation",
+                                                                "description": "Security Violation (Boolean)"
+                                                            },
+                                                            "storm_control": {
+                                                                "type": "boolean",
+                                                                "title": "Storm Control",
+                                                                "description": "Storm Control (Boolean)"
+                                                            },
+                                                            "udld": {
+                                                                "type": "boolean",
+                                                                "title": "Udld",
+                                                                "description": "Udld (Boolean)"
+                                                            },
+                                                            "vpc_peerlink": {
+                                                                "type": "boolean",
+                                                                "title": "vPC Peerlink",
+                                                                "description": "vPC Peerlink (Boolean)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Recovery Cause",
+                                                        "description": "Recovery Cause (Object)\n\nElements:\n- bpduguard\n- dcbx_no_ack\n- failed_port_state\n- link_flap\n- loopback\n- pause_rate_limit\n- psecure_violation\n- security_violation\n- storm_control\n- udld\n- vpc_peerlink"
+                                                    },
+                                                    "recovery_interval": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 30,
+                                                                "maximum": 65535
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Recovery Interval",
+                                                        "description": "Recovery Interval (Integer, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Errdisable",
+                                                "description": "Errdisable (Object)\n\nElements:\n- detect_cause\n- recovery_cause\n- recovery_interval"
+                                            },
                                             "erspan_origin_ip_address": {
                                                 "anyOf": [
                                                     {
@@ -346045,7 +346473,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
