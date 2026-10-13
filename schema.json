@@ -166379,11 +166379,232 @@
                                             "type": "string",
                                             "title": "Domain Name",
                                             "description": "Domain Name (String)"
+                                        },
+                                        "domain_lists": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "Domain Lists",
+                                            "description": "Domain Lists (Array, String)"
+                                        },
+                                        "name_servers": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "ip": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "IP",
+                                                        "description": "IP (String, String)"
+                                                    },
+                                                    "source_interface_type": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "ethernet",
+                                                                    "loopback",
+                                                                    "mgmt",
+                                                                    "port-channel",
+                                                                    "vlan",
+                                                                    "vni"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Source Interface Type",
+                                                        "description": "Source Interface Type (String, String)"
+                                                    },
+                                                    "source_interface_id": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "integer"
+                                                            }
+                                                        ],
+                                                        "title": "Source Interface ID",
+                                                        "description": "Source Interface ID (String, Integer)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "ip"
+                                                ]
+                                            },
+                                            "title": "Name Servers",
+                                            "description": "Name Servers (List - Object)\n\nElements:\n- ip (required)\n- source_interface_type\n- source_interface_id"
+                                        },
+                                        "hosts": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "title": "Name",
+                                                        "description": "Name (String)"
+                                                    },
+                                                    "ip_address": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "IP Address",
+                                                        "description": "IP Address (String, String)"
+                                                    },
+                                                    "ipv6_address": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "IPv6 Address",
+                                                        "description": "IPv6 Address (String, String)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name"
+                                                ]
+                                            },
+                                            "title": "Hosts",
+                                            "description": "Hosts (List - Object)\n\nElements:\n- name (required)\n- ip_address\n- ipv6_address"
+                                        },
+                                        "vrfs": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "vrf": {
+                                                        "type": "string",
+                                                        "title": "VRF",
+                                                        "description": "VRF (String)"
+                                                    },
+                                                    "domain_name": {
+                                                        "type": "string",
+                                                        "title": "Domain Name",
+                                                        "description": "Domain Name (String)"
+                                                    },
+                                                    "domain_lists": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Domain Lists",
+                                                        "description": "Domain Lists (Array, String)"
+                                                    },
+                                                    "name_servers": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "ip": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "IP",
+                                                                    "description": "IP (String, String)"
+                                                                },
+                                                                "source_interface_type": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "ethernet",
+                                                                                "loopback",
+                                                                                "mgmt",
+                                                                                "port-channel",
+                                                                                "vlan",
+                                                                                "vni"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Source Interface Type",
+                                                                    "description": "Source Interface Type (String, String)"
+                                                                },
+                                                                "source_interface_id": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "integer"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Source Interface ID",
+                                                                    "description": "Source Interface ID (String, Integer)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "ip"
+                                                            ]
+                                                        },
+                                                        "title": "Name Servers",
+                                                        "description": "Name Servers (List - Object)\n\nElements:\n- ip (required)\n- source_interface_type\n- source_interface_id"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "vrf"
+                                                ]
+                                            },
+                                            "title": "VRFs",
+                                            "description": "VRFs (List - Object)\n\nElements:\n- vrf (required)\n- domain_name\n- domain_lists\n- name_servers"
                                         }
                                     },
                                     "required": [],
                                     "title": "DNS",
-                                    "description": "DNS (Object)\n\nElements:\n- domain_lookup\n- domain_name"
+                                    "description": "DNS (Object)\n\nElements:\n- domain_lookup\n- domain_name\n- domain_lists\n- name_servers\n- hosts\n- vrfs"
                                 },
                                 "security_group": {
                                     "type": "object",
@@ -215820,11 +216041,232 @@
                                                 "type": "string",
                                                 "title": "Domain Name",
                                                 "description": "Domain Name (String)"
+                                            },
+                                            "domain_lists": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Domain Lists",
+                                                "description": "Domain Lists (Array, String)"
+                                            },
+                                            "name_servers": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "ip": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "IP",
+                                                            "description": "IP (String, String)"
+                                                        },
+                                                        "source_interface_type": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "ethernet",
+                                                                        "loopback",
+                                                                        "mgmt",
+                                                                        "port-channel",
+                                                                        "vlan",
+                                                                        "vni"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Source Interface Type",
+                                                            "description": "Source Interface Type (String, String)"
+                                                        },
+                                                        "source_interface_id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "integer"
+                                                                }
+                                                            ],
+                                                            "title": "Source Interface ID",
+                                                            "description": "Source Interface ID (String, Integer)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "ip"
+                                                    ]
+                                                },
+                                                "title": "Name Servers",
+                                                "description": "Name Servers (List - Object)\n\nElements:\n- ip (required)\n- source_interface_type\n- source_interface_id"
+                                            },
+                                            "hosts": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "ip_address": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "IP Address",
+                                                            "description": "IP Address (String, String)"
+                                                        },
+                                                        "ipv6_address": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "IPv6 Address",
+                                                            "description": "IPv6 Address (String, String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Hosts",
+                                                "description": "Hosts (List - Object)\n\nElements:\n- name (required)\n- ip_address\n- ipv6_address"
+                                            },
+                                            "vrfs": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "vrf": {
+                                                            "type": "string",
+                                                            "title": "VRF",
+                                                            "description": "VRF (String)"
+                                                        },
+                                                        "domain_name": {
+                                                            "type": "string",
+                                                            "title": "Domain Name",
+                                                            "description": "Domain Name (String)"
+                                                        },
+                                                        "domain_lists": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Domain Lists",
+                                                            "description": "Domain Lists (Array, String)"
+                                                        },
+                                                        "name_servers": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "ip": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "IP",
+                                                                        "description": "IP (String, String)"
+                                                                    },
+                                                                    "source_interface_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "ethernet",
+                                                                                    "loopback",
+                                                                                    "mgmt",
+                                                                                    "port-channel",
+                                                                                    "vlan",
+                                                                                    "vni"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Source Interface Type",
+                                                                        "description": "Source Interface Type (String, String)"
+                                                                    },
+                                                                    "source_interface_id": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "integer"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Source Interface ID",
+                                                                        "description": "Source Interface ID (String, Integer)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "ip"
+                                                                ]
+                                                            },
+                                                            "title": "Name Servers",
+                                                            "description": "Name Servers (List - Object)\n\nElements:\n- ip (required)\n- source_interface_type\n- source_interface_id"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "vrf"
+                                                    ]
+                                                },
+                                                "title": "VRFs",
+                                                "description": "VRFs (List - Object)\n\nElements:\n- vrf (required)\n- domain_name\n- domain_lists\n- name_servers"
                                             }
                                         },
                                         "required": [],
                                         "title": "DNS",
-                                        "description": "DNS (Object)\n\nElements:\n- domain_lookup\n- domain_name"
+                                        "description": "DNS (Object)\n\nElements:\n- domain_lookup\n- domain_name\n- domain_lists\n- name_servers\n- hosts\n- vrfs"
                                     },
                                     "security_group": {
                                         "type": "object",
@@ -265285,11 +265727,232 @@
                                                 "type": "string",
                                                 "title": "Domain Name",
                                                 "description": "Domain Name (String)"
+                                            },
+                                            "domain_lists": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Domain Lists",
+                                                "description": "Domain Lists (Array, String)"
+                                            },
+                                            "name_servers": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "ip": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "IP",
+                                                            "description": "IP (String, String)"
+                                                        },
+                                                        "source_interface_type": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "ethernet",
+                                                                        "loopback",
+                                                                        "mgmt",
+                                                                        "port-channel",
+                                                                        "vlan",
+                                                                        "vni"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Source Interface Type",
+                                                            "description": "Source Interface Type (String, String)"
+                                                        },
+                                                        "source_interface_id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "integer"
+                                                                }
+                                                            ],
+                                                            "title": "Source Interface ID",
+                                                            "description": "Source Interface ID (String, Integer)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "ip"
+                                                    ]
+                                                },
+                                                "title": "Name Servers",
+                                                "description": "Name Servers (List - Object)\n\nElements:\n- ip (required)\n- source_interface_type\n- source_interface_id"
+                                            },
+                                            "hosts": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "ip_address": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "IP Address",
+                                                            "description": "IP Address (String, String)"
+                                                        },
+                                                        "ipv6_address": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "IPv6 Address",
+                                                            "description": "IPv6 Address (String, String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Hosts",
+                                                "description": "Hosts (List - Object)\n\nElements:\n- name (required)\n- ip_address\n- ipv6_address"
+                                            },
+                                            "vrfs": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "vrf": {
+                                                            "type": "string",
+                                                            "title": "VRF",
+                                                            "description": "VRF (String)"
+                                                        },
+                                                        "domain_name": {
+                                                            "type": "string",
+                                                            "title": "Domain Name",
+                                                            "description": "Domain Name (String)"
+                                                        },
+                                                        "domain_lists": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Domain Lists",
+                                                            "description": "Domain Lists (Array, String)"
+                                                        },
+                                                        "name_servers": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "ip": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "IP",
+                                                                        "description": "IP (String, String)"
+                                                                    },
+                                                                    "source_interface_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "ethernet",
+                                                                                    "loopback",
+                                                                                    "mgmt",
+                                                                                    "port-channel",
+                                                                                    "vlan",
+                                                                                    "vni"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Source Interface Type",
+                                                                        "description": "Source Interface Type (String, String)"
+                                                                    },
+                                                                    "source_interface_id": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "integer"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Source Interface ID",
+                                                                        "description": "Source Interface ID (String, Integer)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "ip"
+                                                                ]
+                                                            },
+                                                            "title": "Name Servers",
+                                                            "description": "Name Servers (List - Object)\n\nElements:\n- ip (required)\n- source_interface_type\n- source_interface_id"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "vrf"
+                                                    ]
+                                                },
+                                                "title": "VRFs",
+                                                "description": "VRFs (List - Object)\n\nElements:\n- vrf (required)\n- domain_name\n- domain_lists\n- name_servers"
                                             }
                                         },
                                         "required": [],
                                         "title": "DNS",
-                                        "description": "DNS (Object)\n\nElements:\n- domain_lookup\n- domain_name"
+                                        "description": "DNS (Object)\n\nElements:\n- domain_lookup\n- domain_name\n- domain_lists\n- name_servers\n- hosts\n- vrfs"
                                     },
                                     "security_group": {
                                         "type": "object",
@@ -322445,11 +323108,232 @@
                                                 "type": "string",
                                                 "title": "Domain Name",
                                                 "description": "Domain Name (String)"
+                                            },
+                                            "domain_lists": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Domain Lists",
+                                                "description": "Domain Lists (Array, String)"
+                                            },
+                                            "name_servers": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "ip": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "IP",
+                                                            "description": "IP (String, String)"
+                                                        },
+                                                        "source_interface_type": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "ethernet",
+                                                                        "loopback",
+                                                                        "mgmt",
+                                                                        "port-channel",
+                                                                        "vlan",
+                                                                        "vni"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Source Interface Type",
+                                                            "description": "Source Interface Type (String, String)"
+                                                        },
+                                                        "source_interface_id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "integer"
+                                                                }
+                                                            ],
+                                                            "title": "Source Interface ID",
+                                                            "description": "Source Interface ID (String, Integer)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "ip"
+                                                    ]
+                                                },
+                                                "title": "Name Servers",
+                                                "description": "Name Servers (List - Object)\n\nElements:\n- ip (required)\n- source_interface_type\n- source_interface_id"
+                                            },
+                                            "hosts": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "ip_address": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "IP Address",
+                                                            "description": "IP Address (String, String)"
+                                                        },
+                                                        "ipv6_address": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "IPv6 Address",
+                                                            "description": "IPv6 Address (String, String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Hosts",
+                                                "description": "Hosts (List - Object)\n\nElements:\n- name (required)\n- ip_address\n- ipv6_address"
+                                            },
+                                            "vrfs": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "vrf": {
+                                                            "type": "string",
+                                                            "title": "VRF",
+                                                            "description": "VRF (String)"
+                                                        },
+                                                        "domain_name": {
+                                                            "type": "string",
+                                                            "title": "Domain Name",
+                                                            "description": "Domain Name (String)"
+                                                        },
+                                                        "domain_lists": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Domain Lists",
+                                                            "description": "Domain Lists (Array, String)"
+                                                        },
+                                                        "name_servers": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "ip": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "IP",
+                                                                        "description": "IP (String, String)"
+                                                                    },
+                                                                    "source_interface_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "ethernet",
+                                                                                    "loopback",
+                                                                                    "mgmt",
+                                                                                    "port-channel",
+                                                                                    "vlan",
+                                                                                    "vni"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Source Interface Type",
+                                                                        "description": "Source Interface Type (String, String)"
+                                                                    },
+                                                                    "source_interface_id": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "integer"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Source Interface ID",
+                                                                        "description": "Source Interface ID (String, Integer)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "ip"
+                                                                ]
+                                                            },
+                                                            "title": "Name Servers",
+                                                            "description": "Name Servers (List - Object)\n\nElements:\n- ip (required)\n- source_interface_type\n- source_interface_id"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "vrf"
+                                                    ]
+                                                },
+                                                "title": "VRFs",
+                                                "description": "VRFs (List - Object)\n\nElements:\n- vrf (required)\n- domain_name\n- domain_lists\n- name_servers"
                                             }
                                         },
                                         "required": [],
                                         "title": "DNS",
-                                        "description": "DNS (Object)\n\nElements:\n- domain_lookup\n- domain_name"
+                                        "description": "DNS (Object)\n\nElements:\n- domain_lookup\n- domain_name\n- domain_lists\n- name_servers\n- hosts\n- vrfs"
                                     },
                                     "security_group": {
                                         "type": "object",
