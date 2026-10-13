@@ -188102,6 +188102,149 @@
                                             "title": "IP Source Route",
                                             "description": "IP Source Route (Boolean)"
                                         },
+                                        "ip_load_sharing": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "address": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "source",
+                                                                "destination-port",
+                                                                "source-destination",
+                                                                "source-destination-gre",
+                                                                "source-destination-gre-outer",
+                                                                "source-destination-gtpu",
+                                                                "source-destination-ipv6-flowlabel",
+                                                                "source-destination-ttl",
+                                                                "source-destination-udf",
+                                                                "source-destination-port",
+                                                                "source-destination-port-symmetric",
+                                                                "source-destination-port-inner-all",
+                                                                "source-destination-port-inner-all-infra-mode",
+                                                                "source-destination-port-inner-greheader",
+                                                                "source-destination-port-inner-greheader-symmetric",
+                                                                "source-destination-port-rocev2-opcode",
+                                                                "source-destination-port-rocev2-queuepair",
+                                                                "source-destination-port-rocev2-psn",
+                                                                "source-destination-port-rocev2-opcode-queuepair",
+                                                                "source-destination-port-rocev2-opcode-psn",
+                                                                "source-destination-port-rocev2-queuepair-psn",
+                                                                "source-destination-port-rocev2-opcode-queuepair-psn"
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Address",
+                                                    "description": "Address (String, String)"
+                                                },
+                                                "udf_offset": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "maximum": 127
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Udf Offset",
+                                                    "description": "Udf Offset (Integer, String)"
+                                                },
+                                                "udf_length": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "maximum": 32
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Udf Length",
+                                                    "description": "Udf Length (Integer, String)"
+                                                },
+                                                "exclude_l3_proto": {
+                                                    "type": "boolean",
+                                                    "title": "Exclude L3 Proto",
+                                                    "description": "Exclude L3 Proto (Boolean)"
+                                                },
+                                                "rotate": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 1,
+                                                            "maximum": 63
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Rotate",
+                                                    "description": "Rotate (Integer, String)"
+                                                },
+                                                "concatenation": {
+                                                    "type": "boolean",
+                                                    "title": "Concatenation",
+                                                    "description": "Concatenation (Boolean)"
+                                                },
+                                                "universal_id": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "maximum": 4294967295
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Universal ID",
+                                                    "description": "Universal ID (Integer, String)"
+                                                },
+                                                "hardware_lb_keyshift": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 1,
+                                                            "maximum": 10
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Hardware Lb Keyshift",
+                                                    "description": "Hardware Lb Keyshift (Integer, String)"
+                                                },
+                                                "hardware_lb_2nd_hier_keyshift": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 1,
+                                                            "maximum": 10
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Hardware Lb 2Nd Hier Keyshift",
+                                                    "description": "Hardware Lb 2Nd Hier Keyshift (Integer, String)"
+                                                }
+                                            },
+                                            "required": [],
+                                            "title": "IP Load Sharing",
+                                            "description": "IP Load Sharing (Object)\n\nElements:\n- address\n- udf_offset\n- udf_length\n- exclude_l3_proto\n- rotate\n- concatenation\n- universal_id\n- hardware_lb_keyshift\n- hardware_lb_2nd_hier_keyshift"
+                                        },
                                         "hardware_access_list_tcam_region": {
                                             "type": "object",
                                             "additionalProperties": false,
@@ -192039,7 +192182,7 @@
                                     },
                                     "required": [],
                                     "title": "System",
-                                    "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                    "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                 },
                                 "telemetry": {
                                     "type": "object",
@@ -238902,6 +239045,149 @@
                                                 "title": "IP Source Route",
                                                 "description": "IP Source Route (Boolean)"
                                             },
+                                            "ip_load_sharing": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "address": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "source",
+                                                                    "destination-port",
+                                                                    "source-destination",
+                                                                    "source-destination-gre",
+                                                                    "source-destination-gre-outer",
+                                                                    "source-destination-gtpu",
+                                                                    "source-destination-ipv6-flowlabel",
+                                                                    "source-destination-ttl",
+                                                                    "source-destination-udf",
+                                                                    "source-destination-port",
+                                                                    "source-destination-port-symmetric",
+                                                                    "source-destination-port-inner-all",
+                                                                    "source-destination-port-inner-all-infra-mode",
+                                                                    "source-destination-port-inner-greheader",
+                                                                    "source-destination-port-inner-greheader-symmetric",
+                                                                    "source-destination-port-rocev2-opcode",
+                                                                    "source-destination-port-rocev2-queuepair",
+                                                                    "source-destination-port-rocev2-psn",
+                                                                    "source-destination-port-rocev2-opcode-queuepair",
+                                                                    "source-destination-port-rocev2-opcode-psn",
+                                                                    "source-destination-port-rocev2-queuepair-psn",
+                                                                    "source-destination-port-rocev2-opcode-queuepair-psn"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Address",
+                                                        "description": "Address (String, String)"
+                                                    },
+                                                    "udf_offset": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 127
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Udf Offset",
+                                                        "description": "Udf Offset (Integer, String)"
+                                                    },
+                                                    "udf_length": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 32
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Udf Length",
+                                                        "description": "Udf Length (Integer, String)"
+                                                    },
+                                                    "exclude_l3_proto": {
+                                                        "type": "boolean",
+                                                        "title": "Exclude L3 Proto",
+                                                        "description": "Exclude L3 Proto (Boolean)"
+                                                    },
+                                                    "rotate": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 63
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Rotate",
+                                                        "description": "Rotate (Integer, String)"
+                                                    },
+                                                    "concatenation": {
+                                                        "type": "boolean",
+                                                        "title": "Concatenation",
+                                                        "description": "Concatenation (Boolean)"
+                                                    },
+                                                    "universal_id": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 4294967295
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Universal ID",
+                                                        "description": "Universal ID (Integer, String)"
+                                                    },
+                                                    "hardware_lb_keyshift": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 10
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Hardware Lb Keyshift",
+                                                        "description": "Hardware Lb Keyshift (Integer, String)"
+                                                    },
+                                                    "hardware_lb_2nd_hier_keyshift": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 10
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Hardware Lb 2Nd Hier Keyshift",
+                                                        "description": "Hardware Lb 2Nd Hier Keyshift (Integer, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "IP Load Sharing",
+                                                "description": "IP Load Sharing (Object)\n\nElements:\n- address\n- udf_offset\n- udf_length\n- exclude_l3_proto\n- rotate\n- concatenation\n- universal_id\n- hardware_lb_keyshift\n- hardware_lb_2nd_hier_keyshift"
+                                            },
                                             "hardware_access_list_tcam_region": {
                                                 "type": "object",
                                                 "additionalProperties": false,
@@ -242839,7 +243125,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -289726,6 +290012,149 @@
                                                 "title": "IP Source Route",
                                                 "description": "IP Source Route (Boolean)"
                                             },
+                                            "ip_load_sharing": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "address": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "source",
+                                                                    "destination-port",
+                                                                    "source-destination",
+                                                                    "source-destination-gre",
+                                                                    "source-destination-gre-outer",
+                                                                    "source-destination-gtpu",
+                                                                    "source-destination-ipv6-flowlabel",
+                                                                    "source-destination-ttl",
+                                                                    "source-destination-udf",
+                                                                    "source-destination-port",
+                                                                    "source-destination-port-symmetric",
+                                                                    "source-destination-port-inner-all",
+                                                                    "source-destination-port-inner-all-infra-mode",
+                                                                    "source-destination-port-inner-greheader",
+                                                                    "source-destination-port-inner-greheader-symmetric",
+                                                                    "source-destination-port-rocev2-opcode",
+                                                                    "source-destination-port-rocev2-queuepair",
+                                                                    "source-destination-port-rocev2-psn",
+                                                                    "source-destination-port-rocev2-opcode-queuepair",
+                                                                    "source-destination-port-rocev2-opcode-psn",
+                                                                    "source-destination-port-rocev2-queuepair-psn",
+                                                                    "source-destination-port-rocev2-opcode-queuepair-psn"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Address",
+                                                        "description": "Address (String, String)"
+                                                    },
+                                                    "udf_offset": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 127
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Udf Offset",
+                                                        "description": "Udf Offset (Integer, String)"
+                                                    },
+                                                    "udf_length": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 32
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Udf Length",
+                                                        "description": "Udf Length (Integer, String)"
+                                                    },
+                                                    "exclude_l3_proto": {
+                                                        "type": "boolean",
+                                                        "title": "Exclude L3 Proto",
+                                                        "description": "Exclude L3 Proto (Boolean)"
+                                                    },
+                                                    "rotate": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 63
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Rotate",
+                                                        "description": "Rotate (Integer, String)"
+                                                    },
+                                                    "concatenation": {
+                                                        "type": "boolean",
+                                                        "title": "Concatenation",
+                                                        "description": "Concatenation (Boolean)"
+                                                    },
+                                                    "universal_id": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 4294967295
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Universal ID",
+                                                        "description": "Universal ID (Integer, String)"
+                                                    },
+                                                    "hardware_lb_keyshift": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 10
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Hardware Lb Keyshift",
+                                                        "description": "Hardware Lb Keyshift (Integer, String)"
+                                                    },
+                                                    "hardware_lb_2nd_hier_keyshift": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 10
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Hardware Lb 2Nd Hier Keyshift",
+                                                        "description": "Hardware Lb 2Nd Hier Keyshift (Integer, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "IP Load Sharing",
+                                                "description": "IP Load Sharing (Object)\n\nElements:\n- address\n- udf_offset\n- udf_length\n- exclude_l3_proto\n- rotate\n- concatenation\n- universal_id\n- hardware_lb_keyshift\n- hardware_lb_2nd_hier_keyshift"
+                                            },
                                             "hardware_access_list_tcam_region": {
                                                 "type": "object",
                                                 "additionalProperties": false,
@@ -293663,7 +294092,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -348377,6 +348806,149 @@
                                                 "title": "IP Source Route",
                                                 "description": "IP Source Route (Boolean)"
                                             },
+                                            "ip_load_sharing": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "address": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "source",
+                                                                    "destination-port",
+                                                                    "source-destination",
+                                                                    "source-destination-gre",
+                                                                    "source-destination-gre-outer",
+                                                                    "source-destination-gtpu",
+                                                                    "source-destination-ipv6-flowlabel",
+                                                                    "source-destination-ttl",
+                                                                    "source-destination-udf",
+                                                                    "source-destination-port",
+                                                                    "source-destination-port-symmetric",
+                                                                    "source-destination-port-inner-all",
+                                                                    "source-destination-port-inner-all-infra-mode",
+                                                                    "source-destination-port-inner-greheader",
+                                                                    "source-destination-port-inner-greheader-symmetric",
+                                                                    "source-destination-port-rocev2-opcode",
+                                                                    "source-destination-port-rocev2-queuepair",
+                                                                    "source-destination-port-rocev2-psn",
+                                                                    "source-destination-port-rocev2-opcode-queuepair",
+                                                                    "source-destination-port-rocev2-opcode-psn",
+                                                                    "source-destination-port-rocev2-queuepair-psn",
+                                                                    "source-destination-port-rocev2-opcode-queuepair-psn"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Address",
+                                                        "description": "Address (String, String)"
+                                                    },
+                                                    "udf_offset": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 127
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Udf Offset",
+                                                        "description": "Udf Offset (Integer, String)"
+                                                    },
+                                                    "udf_length": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 32
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Udf Length",
+                                                        "description": "Udf Length (Integer, String)"
+                                                    },
+                                                    "exclude_l3_proto": {
+                                                        "type": "boolean",
+                                                        "title": "Exclude L3 Proto",
+                                                        "description": "Exclude L3 Proto (Boolean)"
+                                                    },
+                                                    "rotate": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 63
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Rotate",
+                                                        "description": "Rotate (Integer, String)"
+                                                    },
+                                                    "concatenation": {
+                                                        "type": "boolean",
+                                                        "title": "Concatenation",
+                                                        "description": "Concatenation (Boolean)"
+                                                    },
+                                                    "universal_id": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 4294967295
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Universal ID",
+                                                        "description": "Universal ID (Integer, String)"
+                                                    },
+                                                    "hardware_lb_keyshift": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 10
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Hardware Lb Keyshift",
+                                                        "description": "Hardware Lb Keyshift (Integer, String)"
+                                                    },
+                                                    "hardware_lb_2nd_hier_keyshift": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 10
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Hardware Lb 2Nd Hier Keyshift",
+                                                        "description": "Hardware Lb 2Nd Hier Keyshift (Integer, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "IP Load Sharing",
+                                                "description": "IP Load Sharing (Object)\n\nElements:\n- address\n- udf_offset\n- udf_length\n- exclude_l3_proto\n- rotate\n- concatenation\n- universal_id\n- hardware_lb_keyshift\n- hardware_lb_2nd_hier_keyshift"
+                                            },
                                             "hardware_access_list_tcam_region": {
                                                 "type": "object",
                                                 "additionalProperties": false,
@@ -352314,7 +352886,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
