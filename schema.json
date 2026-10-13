@@ -189138,6 +189138,181 @@
                                             "title": "Errdisable",
                                             "description": "Errdisable (Object)\n\nElements:\n- detect_cause\n- recovery_cause\n- recovery_interval"
                                         },
+                                        "mac_address_table": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "aging_time": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "maximum": 4294967295
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Aging Time",
+                                                    "description": "Aging Time (Integer, String)"
+                                                },
+                                                "limit_system": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 100,
+                                                            "maximum": 384000
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Limit System",
+                                                    "description": "Limit System (Integer, String)"
+                                                },
+                                                "limit_user_defined": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 16,
+                                                            "maximum": 1256
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Limit User Defined",
+                                                    "description": "Limit User Defined (Integer, String)"
+                                                },
+                                                "notification_mac_move": {
+                                                    "type": "boolean",
+                                                    "title": "Notification MAC Move",
+                                                    "description": "Notification MAC Move (Boolean)"
+                                                },
+                                                "notification_threshold_limit": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 1,
+                                                            "maximum": 100
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Notification Threshold Limit",
+                                                    "description": "Notification Threshold Limit (Integer, String)"
+                                                },
+                                                "notification_threshold_interval": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 10,
+                                                            "maximum": 10000
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Notification Threshold Interval",
+                                                    "description": "Notification Threshold Interval (Integer, String)"
+                                                },
+                                                "static_clear": {
+                                                    "type": "boolean",
+                                                    "title": "Static Clear",
+                                                    "description": "Static Clear (Boolean)"
+                                                },
+                                                "statics": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "mac": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "MAC",
+                                                                "description": "MAC (String, String)"
+                                                            },
+                                                            "vlan": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 4094
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Vlan",
+                                                                "description": "Vlan (Integer, String)"
+                                                            },
+                                                            "interface_type": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "ethernet",
+                                                                            "loopback",
+                                                                            "mgmt",
+                                                                            "port-channel",
+                                                                            "vlan",
+                                                                            "vni"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Interface Type",
+                                                                "description": "Interface Type (String, String)"
+                                                            },
+                                                            "interface_id": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "type": "integer"
+                                                                    }
+                                                                ],
+                                                                "title": "Interface ID",
+                                                                "description": "Interface ID (String, Integer)"
+                                                            },
+                                                            "drop": {
+                                                                "type": "boolean",
+                                                                "title": "Drop",
+                                                                "description": "Drop (Boolean)"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "mac",
+                                                            "vlan"
+                                                        ]
+                                                    },
+                                                    "title": "Statics",
+                                                    "description": "Statics (List - Object)\n\nElements:\n- mac (required)\n- vlan (required)\n- interface_type\n- interface_id\n- drop"
+                                                }
+                                            },
+                                            "required": [],
+                                            "title": "MAC Address Table",
+                                            "description": "MAC Address Table (Object)\n\nElements:\n- aging_time\n- limit_system\n- limit_user_defined\n- notification_mac_move\n- notification_threshold_limit\n- notification_threshold_interval\n- static_clear\n- statics"
+                                        },
                                         "erspan_origin_ip_address": {
                                             "anyOf": [
                                                 {
@@ -190967,7 +191142,7 @@
                                     },
                                     "required": [],
                                     "title": "System",
-                                    "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                    "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                 },
                                 "telemetry": {
                                     "type": "object",
@@ -202183,6 +202358,11 @@
                                                         "title": "Macsec Fallback Keychain",
                                                         "description": "Macsec Fallback Keychain (String)"
                                                     },
+                                                    "vpc_orphan_port_suspend": {
+                                                        "type": "boolean",
+                                                        "title": "vPC Orphan Port Suspend",
+                                                        "description": "vPC Orphan Port Suspend (Boolean)"
+                                                    },
                                                     "service_policy_type_qos_input": {
                                                         "type": "string",
                                                         "title": "Service Policy Type QoS Input",
@@ -205457,7 +205637,7 @@
                                                 ]
                                             },
                                             "title": "Ethernets",
-                                            "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                            "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                         },
                                         "port_channels": {
                                             "type": "array",
@@ -209620,6 +209800,11 @@
                                                         "title": "vPC ID",
                                                         "description": "vPC ID (Integer, String)"
                                                     },
+                                                    "vpc_orphan_port_suspend": {
+                                                        "type": "boolean",
+                                                        "title": "vPC Orphan Port Suspend",
+                                                        "description": "vPC Orphan Port Suspend (Boolean)"
+                                                    },
                                                     "service_policy_type_qos_input": {
                                                         "type": "string",
                                                         "title": "Service Policy Type QoS Input",
@@ -212644,7 +212829,7 @@
                                                 ]
                                             },
                                             "title": "Port Channels",
-                                            "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                            "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                         },
                                         "management": {
                                             "type": "array",
@@ -238394,6 +238579,181 @@
                                                 "title": "Errdisable",
                                                 "description": "Errdisable (Object)\n\nElements:\n- detect_cause\n- recovery_cause\n- recovery_interval"
                                             },
+                                            "mac_address_table": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "aging_time": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 4294967295
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Aging Time",
+                                                        "description": "Aging Time (Integer, String)"
+                                                    },
+                                                    "limit_system": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 100,
+                                                                "maximum": 384000
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Limit System",
+                                                        "description": "Limit System (Integer, String)"
+                                                    },
+                                                    "limit_user_defined": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 16,
+                                                                "maximum": 1256
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Limit User Defined",
+                                                        "description": "Limit User Defined (Integer, String)"
+                                                    },
+                                                    "notification_mac_move": {
+                                                        "type": "boolean",
+                                                        "title": "Notification MAC Move",
+                                                        "description": "Notification MAC Move (Boolean)"
+                                                    },
+                                                    "notification_threshold_limit": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 100
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Notification Threshold Limit",
+                                                        "description": "Notification Threshold Limit (Integer, String)"
+                                                    },
+                                                    "notification_threshold_interval": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 10,
+                                                                "maximum": 10000
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Notification Threshold Interval",
+                                                        "description": "Notification Threshold Interval (Integer, String)"
+                                                    },
+                                                    "static_clear": {
+                                                        "type": "boolean",
+                                                        "title": "Static Clear",
+                                                        "description": "Static Clear (Boolean)"
+                                                    },
+                                                    "statics": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "mac": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "MAC",
+                                                                    "description": "MAC (String, String)"
+                                                                },
+                                                                "vlan": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 4094
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Vlan",
+                                                                    "description": "Vlan (Integer, String)"
+                                                                },
+                                                                "interface_type": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "ethernet",
+                                                                                "loopback",
+                                                                                "mgmt",
+                                                                                "port-channel",
+                                                                                "vlan",
+                                                                                "vni"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Interface Type",
+                                                                    "description": "Interface Type (String, String)"
+                                                                },
+                                                                "interface_id": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "integer"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Interface ID",
+                                                                    "description": "Interface ID (String, Integer)"
+                                                                },
+                                                                "drop": {
+                                                                    "type": "boolean",
+                                                                    "title": "Drop",
+                                                                    "description": "Drop (Boolean)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "mac",
+                                                                "vlan"
+                                                            ]
+                                                        },
+                                                        "title": "Statics",
+                                                        "description": "Statics (List - Object)\n\nElements:\n- mac (required)\n- vlan (required)\n- interface_type\n- interface_id\n- drop"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "MAC Address Table",
+                                                "description": "MAC Address Table (Object)\n\nElements:\n- aging_time\n- limit_system\n- limit_user_defined\n- notification_mac_move\n- notification_threshold_limit\n- notification_threshold_interval\n- static_clear\n- statics"
+                                            },
                                             "erspan_origin_ip_address": {
                                                 "anyOf": [
                                                     {
@@ -240223,7 +240583,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -251439,6 +251799,11 @@
                                                             "title": "Macsec Fallback Keychain",
                                                             "description": "Macsec Fallback Keychain (String)"
                                                         },
+                                                        "vpc_orphan_port_suspend": {
+                                                            "type": "boolean",
+                                                            "title": "vPC Orphan Port Suspend",
+                                                            "description": "vPC Orphan Port Suspend (Boolean)"
+                                                        },
                                                         "service_policy_type_qos_input": {
                                                             "type": "string",
                                                             "title": "Service Policy Type QoS Input",
@@ -254713,7 +255078,7 @@
                                                     ]
                                                 },
                                                 "title": "Ethernets",
-                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "port_channels": {
                                                 "type": "array",
@@ -258876,6 +259241,11 @@
                                                             "title": "vPC ID",
                                                             "description": "vPC ID (Integer, String)"
                                                         },
+                                                        "vpc_orphan_port_suspend": {
+                                                            "type": "boolean",
+                                                            "title": "vPC Orphan Port Suspend",
+                                                            "description": "vPC Orphan Port Suspend (Boolean)"
+                                                        },
                                                         "service_policy_type_qos_input": {
                                                             "type": "string",
                                                             "title": "Service Policy Type QoS Input",
@@ -261900,7 +262270,7 @@
                                                     ]
                                                 },
                                                 "title": "Port Channels",
-                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "management": {
                                                 "type": "array",
@@ -287674,6 +288044,181 @@
                                                 "title": "Errdisable",
                                                 "description": "Errdisable (Object)\n\nElements:\n- detect_cause\n- recovery_cause\n- recovery_interval"
                                             },
+                                            "mac_address_table": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "aging_time": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 4294967295
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Aging Time",
+                                                        "description": "Aging Time (Integer, String)"
+                                                    },
+                                                    "limit_system": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 100,
+                                                                "maximum": 384000
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Limit System",
+                                                        "description": "Limit System (Integer, String)"
+                                                    },
+                                                    "limit_user_defined": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 16,
+                                                                "maximum": 1256
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Limit User Defined",
+                                                        "description": "Limit User Defined (Integer, String)"
+                                                    },
+                                                    "notification_mac_move": {
+                                                        "type": "boolean",
+                                                        "title": "Notification MAC Move",
+                                                        "description": "Notification MAC Move (Boolean)"
+                                                    },
+                                                    "notification_threshold_limit": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 100
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Notification Threshold Limit",
+                                                        "description": "Notification Threshold Limit (Integer, String)"
+                                                    },
+                                                    "notification_threshold_interval": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 10,
+                                                                "maximum": 10000
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Notification Threshold Interval",
+                                                        "description": "Notification Threshold Interval (Integer, String)"
+                                                    },
+                                                    "static_clear": {
+                                                        "type": "boolean",
+                                                        "title": "Static Clear",
+                                                        "description": "Static Clear (Boolean)"
+                                                    },
+                                                    "statics": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "mac": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "MAC",
+                                                                    "description": "MAC (String, String)"
+                                                                },
+                                                                "vlan": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 4094
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Vlan",
+                                                                    "description": "Vlan (Integer, String)"
+                                                                },
+                                                                "interface_type": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "ethernet",
+                                                                                "loopback",
+                                                                                "mgmt",
+                                                                                "port-channel",
+                                                                                "vlan",
+                                                                                "vni"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Interface Type",
+                                                                    "description": "Interface Type (String, String)"
+                                                                },
+                                                                "interface_id": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "integer"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Interface ID",
+                                                                    "description": "Interface ID (String, Integer)"
+                                                                },
+                                                                "drop": {
+                                                                    "type": "boolean",
+                                                                    "title": "Drop",
+                                                                    "description": "Drop (Boolean)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "mac",
+                                                                "vlan"
+                                                            ]
+                                                        },
+                                                        "title": "Statics",
+                                                        "description": "Statics (List - Object)\n\nElements:\n- mac (required)\n- vlan (required)\n- interface_type\n- interface_id\n- drop"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "MAC Address Table",
+                                                "description": "MAC Address Table (Object)\n\nElements:\n- aging_time\n- limit_system\n- limit_user_defined\n- notification_mac_move\n- notification_threshold_limit\n- notification_threshold_interval\n- static_clear\n- statics"
+                                            },
                                             "erspan_origin_ip_address": {
                                                 "anyOf": [
                                                     {
@@ -289503,7 +290048,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -300719,6 +301264,11 @@
                                                             "title": "Macsec Fallback Keychain",
                                                             "description": "Macsec Fallback Keychain (String)"
                                                         },
+                                                        "vpc_orphan_port_suspend": {
+                                                            "type": "boolean",
+                                                            "title": "vPC Orphan Port Suspend",
+                                                            "description": "vPC Orphan Port Suspend (Boolean)"
+                                                        },
                                                         "service_policy_type_qos_input": {
                                                             "type": "string",
                                                             "title": "Service Policy Type QoS Input",
@@ -303993,7 +304543,7 @@
                                                     ]
                                                 },
                                                 "title": "Ethernets",
-                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "port_channels": {
                                                 "type": "array",
@@ -308156,6 +308706,11 @@
                                                             "title": "vPC ID",
                                                             "description": "vPC ID (Integer, String)"
                                                         },
+                                                        "vpc_orphan_port_suspend": {
+                                                            "type": "boolean",
+                                                            "title": "vPC Orphan Port Suspend",
+                                                            "description": "vPC Orphan Port Suspend (Boolean)"
+                                                        },
                                                         "service_policy_type_qos_input": {
                                                             "type": "string",
                                                             "title": "Service Policy Type QoS Input",
@@ -311180,7 +311735,7 @@
                                                     ]
                                                 },
                                                 "title": "Port Channels",
-                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "management": {
                                                 "type": "array",
@@ -316159,6 +316714,11 @@
                                         "title": "vPC ID",
                                         "description": "vPC ID (Integer, String)"
                                     },
+                                    "vpc_orphan_port_suspend": {
+                                        "type": "boolean",
+                                        "title": "vPC Orphan Port Suspend",
+                                        "description": "vPC Orphan Port Suspend (Boolean)"
+                                    },
                                     "service_policy_type_qos_input": {
                                         "type": "string",
                                         "title": "Service Policy Type QoS Input",
@@ -319502,7 +320062,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- shutdown\n- shutdown_lan\n- autostate\n- description\n- vrf\n- carrier_delay\n- delay\n- bandwidth\n- management\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- medium\n- mtu\n- mtu_inherit\n- fabric_forwarding_mode\n- fabric_forwarding_mode_anycast_gateway_proxy\n- fabric_forwarding_description\n- negotiate_auto\n- beacon\n- buffer_boost\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- switchport\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mac_ipv6_extract\n- encapsulation\n- mdix\n- media_type\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_id\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- private_vlan_mapping\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                "description": "Configuration (Object)\n\nElements:\n- shutdown\n- shutdown_lan\n- autostate\n- description\n- vrf\n- carrier_delay\n- delay\n- bandwidth\n- management\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- medium\n- mtu\n- mtu_inherit\n- fabric_forwarding_mode\n- fabric_forwarding_mode_anycast_gateway_proxy\n- fabric_forwarding_description\n- negotiate_auto\n- beacon\n- buffer_boost\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- switchport\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mac_ipv6_extract\n- encapsulation\n- mdix\n- media_type\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- private_vlan_mapping\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                             }
                         },
                         "required": [
@@ -344644,6 +345204,181 @@
                                                 "title": "Errdisable",
                                                 "description": "Errdisable (Object)\n\nElements:\n- detect_cause\n- recovery_cause\n- recovery_interval"
                                             },
+                                            "mac_address_table": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "aging_time": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 4294967295
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Aging Time",
+                                                        "description": "Aging Time (Integer, String)"
+                                                    },
+                                                    "limit_system": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 100,
+                                                                "maximum": 384000
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Limit System",
+                                                        "description": "Limit System (Integer, String)"
+                                                    },
+                                                    "limit_user_defined": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 16,
+                                                                "maximum": 1256
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Limit User Defined",
+                                                        "description": "Limit User Defined (Integer, String)"
+                                                    },
+                                                    "notification_mac_move": {
+                                                        "type": "boolean",
+                                                        "title": "Notification MAC Move",
+                                                        "description": "Notification MAC Move (Boolean)"
+                                                    },
+                                                    "notification_threshold_limit": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 100
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Notification Threshold Limit",
+                                                        "description": "Notification Threshold Limit (Integer, String)"
+                                                    },
+                                                    "notification_threshold_interval": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 10,
+                                                                "maximum": 10000
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Notification Threshold Interval",
+                                                        "description": "Notification Threshold Interval (Integer, String)"
+                                                    },
+                                                    "static_clear": {
+                                                        "type": "boolean",
+                                                        "title": "Static Clear",
+                                                        "description": "Static Clear (Boolean)"
+                                                    },
+                                                    "statics": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "mac": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "MAC",
+                                                                    "description": "MAC (String, String)"
+                                                                },
+                                                                "vlan": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 4094
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Vlan",
+                                                                    "description": "Vlan (Integer, String)"
+                                                                },
+                                                                "interface_type": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "ethernet",
+                                                                                "loopback",
+                                                                                "mgmt",
+                                                                                "port-channel",
+                                                                                "vlan",
+                                                                                "vni"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Interface Type",
+                                                                    "description": "Interface Type (String, String)"
+                                                                },
+                                                                "interface_id": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "integer"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Interface ID",
+                                                                    "description": "Interface ID (String, Integer)"
+                                                                },
+                                                                "drop": {
+                                                                    "type": "boolean",
+                                                                    "title": "Drop",
+                                                                    "description": "Drop (Boolean)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "mac",
+                                                                "vlan"
+                                                            ]
+                                                        },
+                                                        "title": "Statics",
+                                                        "description": "Statics (List - Object)\n\nElements:\n- mac (required)\n- vlan (required)\n- interface_type\n- interface_id\n- drop"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "MAC Address Table",
+                                                "description": "MAC Address Table (Object)\n\nElements:\n- aging_time\n- limit_system\n- limit_user_defined\n- notification_mac_move\n- notification_threshold_limit\n- notification_threshold_interval\n- static_clear\n- statics"
+                                            },
                                             "erspan_origin_ip_address": {
                                                 "anyOf": [
                                                     {
@@ -346473,7 +347208,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -357689,6 +358424,11 @@
                                                             "title": "Macsec Fallback Keychain",
                                                             "description": "Macsec Fallback Keychain (String)"
                                                         },
+                                                        "vpc_orphan_port_suspend": {
+                                                            "type": "boolean",
+                                                            "title": "vPC Orphan Port Suspend",
+                                                            "description": "vPC Orphan Port Suspend (Boolean)"
+                                                        },
                                                         "service_policy_type_qos_input": {
                                                             "type": "string",
                                                             "title": "Service Policy Type QoS Input",
@@ -360963,7 +361703,7 @@
                                                     ]
                                                 },
                                                 "title": "Ethernets",
-                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "port_channels": {
                                                 "type": "array",
@@ -365126,6 +365866,11 @@
                                                             "title": "vPC ID",
                                                             "description": "vPC ID (Integer, String)"
                                                         },
+                                                        "vpc_orphan_port_suspend": {
+                                                            "type": "boolean",
+                                                            "title": "vPC Orphan Port Suspend",
+                                                            "description": "vPC Orphan Port Suspend (Boolean)"
+                                                        },
                                                         "service_policy_type_qos_input": {
                                                             "type": "string",
                                                             "title": "Service Policy Type QoS Input",
@@ -368150,7 +368895,7 @@
                                                     ]
                                                 },
                                                 "title": "Port Channels",
-                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "management": {
                                                 "type": "array",
