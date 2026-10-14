@@ -380527,6 +380527,47 @@
                                         "title": "Access Point",
                                         "description": "Access Point (Object)\n\nElements:\n- configuration\n- manage_hostname"
                                     },
+                                    "wireless_management": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "ip_address": {
+                                                "type": "string",
+                                                "title": "IP Address",
+                                                "description": "IP Address (String)\n- IPv4 or IPv6 address"
+                                            },
+                                            "subnet_mask": {
+                                                "type": "string",
+                                                "title": "Subnet Mask",
+                                                "description": "Subnet Mask (String)\n- IPv4 or IPv6 address"
+                                            },
+                                            "gateway": {
+                                                "type": "string",
+                                                "title": "Gateway",
+                                                "description": "Gateway (String)\n- IPv4 or IPv6 address"
+                                            },
+                                            "vlan_id": {
+                                                "type": "integer",
+                                                "minimum": 1,
+                                                "maximum": 4094,
+                                                "title": "Vlan ID",
+                                                "description": "Vlan ID (Integer)\n- Minimum value: 1\n- Maximum value: 4094"
+                                            },
+                                            "interface_name": {
+                                                "type": "string",
+                                                "title": "Interface Name",
+                                                "description": "Interface Name (String)"
+                                            }
+                                        },
+                                        "required": [
+                                            "ip_address",
+                                            "subnet_mask",
+                                            "gateway",
+                                            "interface_name"
+                                        ],
+                                        "title": "Wireless Management",
+                                        "description": "Wireless Management (Object)\n\nElements:\n- ip_address (required)\n- subnet_mask (required)\n- gateway (required)\n- vlan_id\n- interface_name (required)"
+                                    },
                                     "rma": {
                                         "type": "object",
                                         "additionalProperties": false,
@@ -380561,7 +380602,7 @@
                                 ]
                             },
                             "title": "Devices",
-                            "description": "Devices (List - Object)\n\nElements:\n- name (required)\n- fqdn_name\n- type\n- rf_profile\n- device_ip\n- pid\n- serial_number\n- state (required)\n- device_role (required)\n- site (required)\n- fabric_site\n- fabric_zone\n- fabric_roles\n- enable_wireless\n- clean_up_config\n- enable_rolling_ap_upgrade\n- image_name\n- image_id\n- image_skip\n- stack\n- ap_reboot_percentage\n- onboarding_template\n- dayn_templates\n- primary_managed_ap_locations\n- secondary_managed_ap_locations\n- anchor_managed_ap_locations\n- port_assignments\n- port_channels\n- tags\n- access_point\n- rma"
+                            "description": "Devices (List - Object)\n\nElements:\n- name (required)\n- fqdn_name\n- type\n- rf_profile\n- device_ip\n- pid\n- serial_number\n- state (required)\n- device_role (required)\n- site (required)\n- fabric_site\n- fabric_zone\n- fabric_roles\n- enable_wireless\n- clean_up_config\n- enable_rolling_ap_upgrade\n- image_name\n- image_id\n- image_skip\n- stack\n- ap_reboot_percentage\n- onboarding_template\n- dayn_templates\n- primary_managed_ap_locations\n- secondary_managed_ap_locations\n- anchor_managed_ap_locations\n- port_assignments\n- port_channels\n- tags\n- access_point\n- wireless_management\n- rma"
                         },
                         "discovery": {
                             "type": "array",
