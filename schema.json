@@ -191606,6 +191606,80 @@
                                                     "title": "Tcam Syslog Threshold",
                                                     "description": "Tcam Syslog Threshold (Integer, String)"
                                                 },
+                                                "tcam_resource_templates": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "name": {
+                                                                "type": "string",
+                                                                "title": "Name",
+                                                                "description": "Name (String)"
+                                                            },
+                                                            "ref_template": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "l3",
+                                                                            "l2-l3",
+                                                                            "nfe",
+                                                                            "nfe2"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Ref Template",
+                                                                "description": "Ref Template (String, String)"
+                                                            },
+                                                            "regions": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "name": {
+                                                                            "type": "string",
+                                                                            "title": "Name",
+                                                                            "description": "Name (String)"
+                                                                        },
+                                                                        "qualify_udfs": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Qualify Udfs",
+                                                                            "description": "Qualify Udfs (Array, String)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "name"
+                                                                    ]
+                                                                },
+                                                                "title": "Regions",
+                                                                "description": "Regions (List - Object)\n\nElements:\n- name (required)\n- qualify_udfs"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "name",
+                                                            "ref_template"
+                                                        ]
+                                                    },
+                                                    "title": "Tcam Resource Templates",
+                                                    "description": "Tcam Resource Templates (List - Object)\n\nElements:\n- name (required)\n- ref_template (required)\n- regions"
+                                                },
                                                 "unicast_max_limit": {
                                                     "anyOf": [
                                                         {
@@ -191667,7 +191741,142 @@
                                             },
                                             "required": [],
                                             "title": "Hardware Profile",
-                                            "description": "Hardware Profile (Object)\n\nElements:\n- access_list_match_inner_header\n- acl_tap_aggregation\n- disable_parse_error\n- flow_redirect_forward_pdu\n- front_portmode\n- forwarding_mode\n- global_tx_span\n- high_multicast_priority\n- hardware_lou_resource_threshold\n- ingress_bd_ifacl_label_optimization\n- ingress_racl_size\n- ingress_replication_round_robin\n- ip_statistics\n- ipv6_alpm_carve_value\n- ipv6_lpm_max_entries\n- lpm_max_limit\n- multicast_dcs_check\n- multicast_flex_stats\n- multicast_lpm_max_entries\n- multicast_max_limit\n- multicast_nlb\n- multicast_racl_bridge\n- multicast_rpf_check_optimization\n- multicast_service_reflect_port\n- multicast_syslog_threshold\n- mld_snooping\n- mpls_adjacency_stats_mode\n- mpls_ecmp\n- mrouting_disable_l2_update\n- mrouting_disable_second_route_update\n- mrouting_performance_mode\n- pbr_skip_self_ip\n- pic_core\n- portmode_tuple\n- pstat\n- qos_min_buffer\n- service_template_name\n- svi_and_si_flex_stats_enable\n- svi_flex_stats\n- tcam_syslog_threshold\n- unicast_max_limit\n- unicast_syslog_threshold\n- unicast_trace\n- unknown_unicast_flood\n- urpf\n- wrr_unicast_bandwidth"
+                                            "description": "Hardware Profile (Object)\n\nElements:\n- access_list_match_inner_header\n- acl_tap_aggregation\n- disable_parse_error\n- flow_redirect_forward_pdu\n- front_portmode\n- forwarding_mode\n- global_tx_span\n- high_multicast_priority\n- hardware_lou_resource_threshold\n- ingress_bd_ifacl_label_optimization\n- ingress_racl_size\n- ingress_replication_round_robin\n- ip_statistics\n- ipv6_alpm_carve_value\n- ipv6_lpm_max_entries\n- lpm_max_limit\n- multicast_dcs_check\n- multicast_flex_stats\n- multicast_lpm_max_entries\n- multicast_max_limit\n- multicast_nlb\n- multicast_racl_bridge\n- multicast_rpf_check_optimization\n- multicast_service_reflect_port\n- multicast_syslog_threshold\n- mld_snooping\n- mpls_adjacency_stats_mode\n- mpls_ecmp\n- mrouting_disable_l2_update\n- mrouting_disable_second_route_update\n- mrouting_performance_mode\n- pbr_skip_self_ip\n- pic_core\n- portmode_tuple\n- pstat\n- qos_min_buffer\n- service_template_name\n- svi_and_si_flex_stats_enable\n- svi_flex_stats\n- tcam_syslog_threshold\n- tcam_resource_templates\n- unicast_max_limit\n- unicast_syslog_threshold\n- unicast_trace\n- unknown_unicast_flood\n- urpf\n- wrr_unicast_bandwidth"
+                                        },
+                                        "udfs": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "title": "Name",
+                                                        "description": "Name (String)"
+                                                    },
+                                                    "offset_base": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "packet-start",
+                                                                    "header-outer-l3",
+                                                                    "header-outer-l4",
+                                                                    "header-inner-l3",
+                                                                    "header-inner-l4"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Offset Base",
+                                                        "description": "Offset Base (String, String)"
+                                                    },
+                                                    "offset": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 127
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Offset",
+                                                        "description": "Offset (Integer, String)"
+                                                    },
+                                                    "length": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 2
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Length",
+                                                        "description": "Length (Integer, String)"
+                                                    },
+                                                    "netflow_rtp": {
+                                                        "type": "boolean",
+                                                        "title": "Netflow Rtp",
+                                                        "description": "Netflow Rtp (Boolean)"
+                                                    },
+                                                    "mpls": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "stack1",
+                                                                    "stack2"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Mpls",
+                                                        "description": "Mpls (String, String)"
+                                                    },
+                                                    "qualify_ifacl": {
+                                                        "type": "boolean",
+                                                        "title": "Qualify Ifacl",
+                                                        "description": "Qualify Ifacl (Boolean)"
+                                                    },
+                                                    "qualify_ipv6_racl": {
+                                                        "type": "boolean",
+                                                        "title": "Qualify IPv6 Racl",
+                                                        "description": "Qualify IPv6 Racl (Boolean)"
+                                                    },
+                                                    "qualify_racl": {
+                                                        "type": "boolean",
+                                                        "title": "Qualify Racl",
+                                                        "description": "Qualify Racl (Boolean)"
+                                                    },
+                                                    "qualify_racl_all": {
+                                                        "type": "boolean",
+                                                        "title": "Qualify Racl All",
+                                                        "description": "Qualify Racl All (Boolean)"
+                                                    },
+                                                    "qualify_span": {
+                                                        "type": "boolean",
+                                                        "title": "Qualify Span",
+                                                        "description": "Qualify Span (Boolean)"
+                                                    },
+                                                    "qualify_span_all": {
+                                                        "type": "boolean",
+                                                        "title": "Qualify Span All",
+                                                        "description": "Qualify Span All (Boolean)"
+                                                    },
+                                                    "qualify_spanv6": {
+                                                        "type": "boolean",
+                                                        "title": "Qualify Spanv6",
+                                                        "description": "Qualify Spanv6 (Boolean)"
+                                                    },
+                                                    "qualify_spanv6_l2": {
+                                                        "type": "boolean",
+                                                        "title": "Qualify Spanv6 L2",
+                                                        "description": "Qualify Spanv6 L2 (Boolean)"
+                                                    },
+                                                    "qualify_vacl": {
+                                                        "type": "boolean",
+                                                        "title": "Qualify Vacl",
+                                                        "description": "Qualify Vacl (Boolean)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name"
+                                                ]
+                                            },
+                                            "title": "Udfs",
+                                            "description": "Udfs (List - Object)\n\nElements:\n- name (required)\n- offset_base\n- offset\n- length\n- netflow_rtp\n- mpls\n- qualify_ifacl\n- qualify_ipv6_racl\n- qualify_racl\n- qualify_racl_all\n- qualify_span\n- qualify_span_all\n- qualify_spanv6\n- qualify_spanv6_l2\n- qualify_vacl"
                                         },
                                         "port_channel": {
                                             "type": "object",
@@ -191830,6 +192039,78 @@
                                             ],
                                             "title": "Switch Mode",
                                             "description": "Switch Mode (String, String)"
+                                        },
+                                        "dot1q_tunnel_transit_vlans": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "ids": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 4094
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Ids",
+                                                    "description": "Ids (Array, String)"
+                                                },
+                                                "ranges": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "from": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 4094
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "From",
+                                                                "description": "From (Integer, String)"
+                                                            },
+                                                            "to": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 4094
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "To",
+                                                                "description": "To (Integer, String)"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "from",
+                                                            "to"
+                                                        ]
+                                                    },
+                                                    "title": "Ranges",
+                                                    "description": "Ranges (List - Object)\n\nElements:\n- from (required)\n- to (required)"
+                                                }
+                                            },
+                                            "required": [],
+                                            "title": "Dot1Q Tunnel Transit Vlans",
+                                            "description": "Dot1Q Tunnel Transit Vlans (Object)\n\nElements:\n- ids\n- ranges"
                                         },
                                         "fabric_mode": {
                                             "anyOf": [
@@ -192340,7 +192621,7 @@
                                     },
                                     "required": [],
                                     "title": "System",
-                                    "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                    "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                 },
                                 "telemetry": {
                                     "type": "object",
@@ -242947,6 +243228,80 @@
                                                         "title": "Tcam Syslog Threshold",
                                                         "description": "Tcam Syslog Threshold (Integer, String)"
                                                     },
+                                                    "tcam_resource_templates": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "title": "Name",
+                                                                    "description": "Name (String)"
+                                                                },
+                                                                "ref_template": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "l3",
+                                                                                "l2-l3",
+                                                                                "nfe",
+                                                                                "nfe2"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Ref Template",
+                                                                    "description": "Ref Template (String, String)"
+                                                                },
+                                                                "regions": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "name": {
+                                                                                "type": "string",
+                                                                                "title": "Name",
+                                                                                "description": "Name (String)"
+                                                                            },
+                                                                            "qualify_udfs": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        }
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Qualify Udfs",
+                                                                                "description": "Qualify Udfs (Array, String)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "name"
+                                                                        ]
+                                                                    },
+                                                                    "title": "Regions",
+                                                                    "description": "Regions (List - Object)\n\nElements:\n- name (required)\n- qualify_udfs"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "name",
+                                                                "ref_template"
+                                                            ]
+                                                        },
+                                                        "title": "Tcam Resource Templates",
+                                                        "description": "Tcam Resource Templates (List - Object)\n\nElements:\n- name (required)\n- ref_template (required)\n- regions"
+                                                    },
                                                     "unicast_max_limit": {
                                                         "anyOf": [
                                                             {
@@ -243008,7 +243363,142 @@
                                                 },
                                                 "required": [],
                                                 "title": "Hardware Profile",
-                                                "description": "Hardware Profile (Object)\n\nElements:\n- access_list_match_inner_header\n- acl_tap_aggregation\n- disable_parse_error\n- flow_redirect_forward_pdu\n- front_portmode\n- forwarding_mode\n- global_tx_span\n- high_multicast_priority\n- hardware_lou_resource_threshold\n- ingress_bd_ifacl_label_optimization\n- ingress_racl_size\n- ingress_replication_round_robin\n- ip_statistics\n- ipv6_alpm_carve_value\n- ipv6_lpm_max_entries\n- lpm_max_limit\n- multicast_dcs_check\n- multicast_flex_stats\n- multicast_lpm_max_entries\n- multicast_max_limit\n- multicast_nlb\n- multicast_racl_bridge\n- multicast_rpf_check_optimization\n- multicast_service_reflect_port\n- multicast_syslog_threshold\n- mld_snooping\n- mpls_adjacency_stats_mode\n- mpls_ecmp\n- mrouting_disable_l2_update\n- mrouting_disable_second_route_update\n- mrouting_performance_mode\n- pbr_skip_self_ip\n- pic_core\n- portmode_tuple\n- pstat\n- qos_min_buffer\n- service_template_name\n- svi_and_si_flex_stats_enable\n- svi_flex_stats\n- tcam_syslog_threshold\n- unicast_max_limit\n- unicast_syslog_threshold\n- unicast_trace\n- unknown_unicast_flood\n- urpf\n- wrr_unicast_bandwidth"
+                                                "description": "Hardware Profile (Object)\n\nElements:\n- access_list_match_inner_header\n- acl_tap_aggregation\n- disable_parse_error\n- flow_redirect_forward_pdu\n- front_portmode\n- forwarding_mode\n- global_tx_span\n- high_multicast_priority\n- hardware_lou_resource_threshold\n- ingress_bd_ifacl_label_optimization\n- ingress_racl_size\n- ingress_replication_round_robin\n- ip_statistics\n- ipv6_alpm_carve_value\n- ipv6_lpm_max_entries\n- lpm_max_limit\n- multicast_dcs_check\n- multicast_flex_stats\n- multicast_lpm_max_entries\n- multicast_max_limit\n- multicast_nlb\n- multicast_racl_bridge\n- multicast_rpf_check_optimization\n- multicast_service_reflect_port\n- multicast_syslog_threshold\n- mld_snooping\n- mpls_adjacency_stats_mode\n- mpls_ecmp\n- mrouting_disable_l2_update\n- mrouting_disable_second_route_update\n- mrouting_performance_mode\n- pbr_skip_self_ip\n- pic_core\n- portmode_tuple\n- pstat\n- qos_min_buffer\n- service_template_name\n- svi_and_si_flex_stats_enable\n- svi_flex_stats\n- tcam_syslog_threshold\n- tcam_resource_templates\n- unicast_max_limit\n- unicast_syslog_threshold\n- unicast_trace\n- unknown_unicast_flood\n- urpf\n- wrr_unicast_bandwidth"
+                                            },
+                                            "udfs": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "offset_base": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "packet-start",
+                                                                        "header-outer-l3",
+                                                                        "header-outer-l4",
+                                                                        "header-inner-l3",
+                                                                        "header-inner-l4"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Offset Base",
+                                                            "description": "Offset Base (String, String)"
+                                                        },
+                                                        "offset": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 127
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Offset",
+                                                            "description": "Offset (Integer, String)"
+                                                        },
+                                                        "length": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 2
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Length",
+                                                            "description": "Length (Integer, String)"
+                                                        },
+                                                        "netflow_rtp": {
+                                                            "type": "boolean",
+                                                            "title": "Netflow Rtp",
+                                                            "description": "Netflow Rtp (Boolean)"
+                                                        },
+                                                        "mpls": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "stack1",
+                                                                        "stack2"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Mpls",
+                                                            "description": "Mpls (String, String)"
+                                                        },
+                                                        "qualify_ifacl": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Ifacl",
+                                                            "description": "Qualify Ifacl (Boolean)"
+                                                        },
+                                                        "qualify_ipv6_racl": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify IPv6 Racl",
+                                                            "description": "Qualify IPv6 Racl (Boolean)"
+                                                        },
+                                                        "qualify_racl": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Racl",
+                                                            "description": "Qualify Racl (Boolean)"
+                                                        },
+                                                        "qualify_racl_all": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Racl All",
+                                                            "description": "Qualify Racl All (Boolean)"
+                                                        },
+                                                        "qualify_span": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Span",
+                                                            "description": "Qualify Span (Boolean)"
+                                                        },
+                                                        "qualify_span_all": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Span All",
+                                                            "description": "Qualify Span All (Boolean)"
+                                                        },
+                                                        "qualify_spanv6": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Spanv6",
+                                                            "description": "Qualify Spanv6 (Boolean)"
+                                                        },
+                                                        "qualify_spanv6_l2": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Spanv6 L2",
+                                                            "description": "Qualify Spanv6 L2 (Boolean)"
+                                                        },
+                                                        "qualify_vacl": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Vacl",
+                                                            "description": "Qualify Vacl (Boolean)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Udfs",
+                                                "description": "Udfs (List - Object)\n\nElements:\n- name (required)\n- offset_base\n- offset\n- length\n- netflow_rtp\n- mpls\n- qualify_ifacl\n- qualify_ipv6_racl\n- qualify_racl\n- qualify_racl_all\n- qualify_span\n- qualify_span_all\n- qualify_spanv6\n- qualify_spanv6_l2\n- qualify_vacl"
                                             },
                                             "port_channel": {
                                                 "type": "object",
@@ -243171,6 +243661,78 @@
                                                 ],
                                                 "title": "Switch Mode",
                                                 "description": "Switch Mode (String, String)"
+                                            },
+                                            "dot1q_tunnel_transit_vlans": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "ids": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 4094
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Ids",
+                                                        "description": "Ids (Array, String)"
+                                                    },
+                                                    "ranges": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "from": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 4094
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "From",
+                                                                    "description": "From (Integer, String)"
+                                                                },
+                                                                "to": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 4094
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "To",
+                                                                    "description": "To (Integer, String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "from",
+                                                                "to"
+                                                            ]
+                                                        },
+                                                        "title": "Ranges",
+                                                        "description": "Ranges (List - Object)\n\nElements:\n- from (required)\n- to (required)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Dot1Q Tunnel Transit Vlans",
+                                                "description": "Dot1Q Tunnel Transit Vlans (Object)\n\nElements:\n- ids\n- ranges"
                                             },
                                             "fabric_mode": {
                                                 "anyOf": [
@@ -243681,7 +244243,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -294321,6 +294883,80 @@
                                                         "title": "Tcam Syslog Threshold",
                                                         "description": "Tcam Syslog Threshold (Integer, String)"
                                                     },
+                                                    "tcam_resource_templates": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "title": "Name",
+                                                                    "description": "Name (String)"
+                                                                },
+                                                                "ref_template": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "l3",
+                                                                                "l2-l3",
+                                                                                "nfe",
+                                                                                "nfe2"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Ref Template",
+                                                                    "description": "Ref Template (String, String)"
+                                                                },
+                                                                "regions": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "name": {
+                                                                                "type": "string",
+                                                                                "title": "Name",
+                                                                                "description": "Name (String)"
+                                                                            },
+                                                                            "qualify_udfs": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        }
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Qualify Udfs",
+                                                                                "description": "Qualify Udfs (Array, String)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "name"
+                                                                        ]
+                                                                    },
+                                                                    "title": "Regions",
+                                                                    "description": "Regions (List - Object)\n\nElements:\n- name (required)\n- qualify_udfs"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "name",
+                                                                "ref_template"
+                                                            ]
+                                                        },
+                                                        "title": "Tcam Resource Templates",
+                                                        "description": "Tcam Resource Templates (List - Object)\n\nElements:\n- name (required)\n- ref_template (required)\n- regions"
+                                                    },
                                                     "unicast_max_limit": {
                                                         "anyOf": [
                                                             {
@@ -294382,7 +295018,142 @@
                                                 },
                                                 "required": [],
                                                 "title": "Hardware Profile",
-                                                "description": "Hardware Profile (Object)\n\nElements:\n- access_list_match_inner_header\n- acl_tap_aggregation\n- disable_parse_error\n- flow_redirect_forward_pdu\n- front_portmode\n- forwarding_mode\n- global_tx_span\n- high_multicast_priority\n- hardware_lou_resource_threshold\n- ingress_bd_ifacl_label_optimization\n- ingress_racl_size\n- ingress_replication_round_robin\n- ip_statistics\n- ipv6_alpm_carve_value\n- ipv6_lpm_max_entries\n- lpm_max_limit\n- multicast_dcs_check\n- multicast_flex_stats\n- multicast_lpm_max_entries\n- multicast_max_limit\n- multicast_nlb\n- multicast_racl_bridge\n- multicast_rpf_check_optimization\n- multicast_service_reflect_port\n- multicast_syslog_threshold\n- mld_snooping\n- mpls_adjacency_stats_mode\n- mpls_ecmp\n- mrouting_disable_l2_update\n- mrouting_disable_second_route_update\n- mrouting_performance_mode\n- pbr_skip_self_ip\n- pic_core\n- portmode_tuple\n- pstat\n- qos_min_buffer\n- service_template_name\n- svi_and_si_flex_stats_enable\n- svi_flex_stats\n- tcam_syslog_threshold\n- unicast_max_limit\n- unicast_syslog_threshold\n- unicast_trace\n- unknown_unicast_flood\n- urpf\n- wrr_unicast_bandwidth"
+                                                "description": "Hardware Profile (Object)\n\nElements:\n- access_list_match_inner_header\n- acl_tap_aggregation\n- disable_parse_error\n- flow_redirect_forward_pdu\n- front_portmode\n- forwarding_mode\n- global_tx_span\n- high_multicast_priority\n- hardware_lou_resource_threshold\n- ingress_bd_ifacl_label_optimization\n- ingress_racl_size\n- ingress_replication_round_robin\n- ip_statistics\n- ipv6_alpm_carve_value\n- ipv6_lpm_max_entries\n- lpm_max_limit\n- multicast_dcs_check\n- multicast_flex_stats\n- multicast_lpm_max_entries\n- multicast_max_limit\n- multicast_nlb\n- multicast_racl_bridge\n- multicast_rpf_check_optimization\n- multicast_service_reflect_port\n- multicast_syslog_threshold\n- mld_snooping\n- mpls_adjacency_stats_mode\n- mpls_ecmp\n- mrouting_disable_l2_update\n- mrouting_disable_second_route_update\n- mrouting_performance_mode\n- pbr_skip_self_ip\n- pic_core\n- portmode_tuple\n- pstat\n- qos_min_buffer\n- service_template_name\n- svi_and_si_flex_stats_enable\n- svi_flex_stats\n- tcam_syslog_threshold\n- tcam_resource_templates\n- unicast_max_limit\n- unicast_syslog_threshold\n- unicast_trace\n- unknown_unicast_flood\n- urpf\n- wrr_unicast_bandwidth"
+                                            },
+                                            "udfs": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "offset_base": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "packet-start",
+                                                                        "header-outer-l3",
+                                                                        "header-outer-l4",
+                                                                        "header-inner-l3",
+                                                                        "header-inner-l4"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Offset Base",
+                                                            "description": "Offset Base (String, String)"
+                                                        },
+                                                        "offset": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 127
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Offset",
+                                                            "description": "Offset (Integer, String)"
+                                                        },
+                                                        "length": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 2
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Length",
+                                                            "description": "Length (Integer, String)"
+                                                        },
+                                                        "netflow_rtp": {
+                                                            "type": "boolean",
+                                                            "title": "Netflow Rtp",
+                                                            "description": "Netflow Rtp (Boolean)"
+                                                        },
+                                                        "mpls": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "stack1",
+                                                                        "stack2"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Mpls",
+                                                            "description": "Mpls (String, String)"
+                                                        },
+                                                        "qualify_ifacl": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Ifacl",
+                                                            "description": "Qualify Ifacl (Boolean)"
+                                                        },
+                                                        "qualify_ipv6_racl": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify IPv6 Racl",
+                                                            "description": "Qualify IPv6 Racl (Boolean)"
+                                                        },
+                                                        "qualify_racl": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Racl",
+                                                            "description": "Qualify Racl (Boolean)"
+                                                        },
+                                                        "qualify_racl_all": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Racl All",
+                                                            "description": "Qualify Racl All (Boolean)"
+                                                        },
+                                                        "qualify_span": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Span",
+                                                            "description": "Qualify Span (Boolean)"
+                                                        },
+                                                        "qualify_span_all": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Span All",
+                                                            "description": "Qualify Span All (Boolean)"
+                                                        },
+                                                        "qualify_spanv6": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Spanv6",
+                                                            "description": "Qualify Spanv6 (Boolean)"
+                                                        },
+                                                        "qualify_spanv6_l2": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Spanv6 L2",
+                                                            "description": "Qualify Spanv6 L2 (Boolean)"
+                                                        },
+                                                        "qualify_vacl": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Vacl",
+                                                            "description": "Qualify Vacl (Boolean)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Udfs",
+                                                "description": "Udfs (List - Object)\n\nElements:\n- name (required)\n- offset_base\n- offset\n- length\n- netflow_rtp\n- mpls\n- qualify_ifacl\n- qualify_ipv6_racl\n- qualify_racl\n- qualify_racl_all\n- qualify_span\n- qualify_span_all\n- qualify_spanv6\n- qualify_spanv6_l2\n- qualify_vacl"
                                             },
                                             "port_channel": {
                                                 "type": "object",
@@ -294545,6 +295316,78 @@
                                                 ],
                                                 "title": "Switch Mode",
                                                 "description": "Switch Mode (String, String)"
+                                            },
+                                            "dot1q_tunnel_transit_vlans": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "ids": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 4094
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Ids",
+                                                        "description": "Ids (Array, String)"
+                                                    },
+                                                    "ranges": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "from": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 4094
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "From",
+                                                                    "description": "From (Integer, String)"
+                                                                },
+                                                                "to": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 4094
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "To",
+                                                                    "description": "To (Integer, String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "from",
+                                                                "to"
+                                                            ]
+                                                        },
+                                                        "title": "Ranges",
+                                                        "description": "Ranges (List - Object)\n\nElements:\n- from (required)\n- to (required)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Dot1Q Tunnel Transit Vlans",
+                                                "description": "Dot1Q Tunnel Transit Vlans (Object)\n\nElements:\n- ids\n- ranges"
                                             },
                                             "fabric_mode": {
                                                 "anyOf": [
@@ -295055,7 +295898,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -353610,6 +354453,80 @@
                                                         "title": "Tcam Syslog Threshold",
                                                         "description": "Tcam Syslog Threshold (Integer, String)"
                                                     },
+                                                    "tcam_resource_templates": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "title": "Name",
+                                                                    "description": "Name (String)"
+                                                                },
+                                                                "ref_template": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "l3",
+                                                                                "l2-l3",
+                                                                                "nfe",
+                                                                                "nfe2"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Ref Template",
+                                                                    "description": "Ref Template (String, String)"
+                                                                },
+                                                                "regions": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "name": {
+                                                                                "type": "string",
+                                                                                "title": "Name",
+                                                                                "description": "Name (String)"
+                                                                            },
+                                                                            "qualify_udfs": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        }
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Qualify Udfs",
+                                                                                "description": "Qualify Udfs (Array, String)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "name"
+                                                                        ]
+                                                                    },
+                                                                    "title": "Regions",
+                                                                    "description": "Regions (List - Object)\n\nElements:\n- name (required)\n- qualify_udfs"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "name",
+                                                                "ref_template"
+                                                            ]
+                                                        },
+                                                        "title": "Tcam Resource Templates",
+                                                        "description": "Tcam Resource Templates (List - Object)\n\nElements:\n- name (required)\n- ref_template (required)\n- regions"
+                                                    },
                                                     "unicast_max_limit": {
                                                         "anyOf": [
                                                             {
@@ -353671,7 +354588,142 @@
                                                 },
                                                 "required": [],
                                                 "title": "Hardware Profile",
-                                                "description": "Hardware Profile (Object)\n\nElements:\n- access_list_match_inner_header\n- acl_tap_aggregation\n- disable_parse_error\n- flow_redirect_forward_pdu\n- front_portmode\n- forwarding_mode\n- global_tx_span\n- high_multicast_priority\n- hardware_lou_resource_threshold\n- ingress_bd_ifacl_label_optimization\n- ingress_racl_size\n- ingress_replication_round_robin\n- ip_statistics\n- ipv6_alpm_carve_value\n- ipv6_lpm_max_entries\n- lpm_max_limit\n- multicast_dcs_check\n- multicast_flex_stats\n- multicast_lpm_max_entries\n- multicast_max_limit\n- multicast_nlb\n- multicast_racl_bridge\n- multicast_rpf_check_optimization\n- multicast_service_reflect_port\n- multicast_syslog_threshold\n- mld_snooping\n- mpls_adjacency_stats_mode\n- mpls_ecmp\n- mrouting_disable_l2_update\n- mrouting_disable_second_route_update\n- mrouting_performance_mode\n- pbr_skip_self_ip\n- pic_core\n- portmode_tuple\n- pstat\n- qos_min_buffer\n- service_template_name\n- svi_and_si_flex_stats_enable\n- svi_flex_stats\n- tcam_syslog_threshold\n- unicast_max_limit\n- unicast_syslog_threshold\n- unicast_trace\n- unknown_unicast_flood\n- urpf\n- wrr_unicast_bandwidth"
+                                                "description": "Hardware Profile (Object)\n\nElements:\n- access_list_match_inner_header\n- acl_tap_aggregation\n- disable_parse_error\n- flow_redirect_forward_pdu\n- front_portmode\n- forwarding_mode\n- global_tx_span\n- high_multicast_priority\n- hardware_lou_resource_threshold\n- ingress_bd_ifacl_label_optimization\n- ingress_racl_size\n- ingress_replication_round_robin\n- ip_statistics\n- ipv6_alpm_carve_value\n- ipv6_lpm_max_entries\n- lpm_max_limit\n- multicast_dcs_check\n- multicast_flex_stats\n- multicast_lpm_max_entries\n- multicast_max_limit\n- multicast_nlb\n- multicast_racl_bridge\n- multicast_rpf_check_optimization\n- multicast_service_reflect_port\n- multicast_syslog_threshold\n- mld_snooping\n- mpls_adjacency_stats_mode\n- mpls_ecmp\n- mrouting_disable_l2_update\n- mrouting_disable_second_route_update\n- mrouting_performance_mode\n- pbr_skip_self_ip\n- pic_core\n- portmode_tuple\n- pstat\n- qos_min_buffer\n- service_template_name\n- svi_and_si_flex_stats_enable\n- svi_flex_stats\n- tcam_syslog_threshold\n- tcam_resource_templates\n- unicast_max_limit\n- unicast_syslog_threshold\n- unicast_trace\n- unknown_unicast_flood\n- urpf\n- wrr_unicast_bandwidth"
+                                            },
+                                            "udfs": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "offset_base": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "packet-start",
+                                                                        "header-outer-l3",
+                                                                        "header-outer-l4",
+                                                                        "header-inner-l3",
+                                                                        "header-inner-l4"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Offset Base",
+                                                            "description": "Offset Base (String, String)"
+                                                        },
+                                                        "offset": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 127
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Offset",
+                                                            "description": "Offset (Integer, String)"
+                                                        },
+                                                        "length": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 2
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Length",
+                                                            "description": "Length (Integer, String)"
+                                                        },
+                                                        "netflow_rtp": {
+                                                            "type": "boolean",
+                                                            "title": "Netflow Rtp",
+                                                            "description": "Netflow Rtp (Boolean)"
+                                                        },
+                                                        "mpls": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "stack1",
+                                                                        "stack2"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Mpls",
+                                                            "description": "Mpls (String, String)"
+                                                        },
+                                                        "qualify_ifacl": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Ifacl",
+                                                            "description": "Qualify Ifacl (Boolean)"
+                                                        },
+                                                        "qualify_ipv6_racl": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify IPv6 Racl",
+                                                            "description": "Qualify IPv6 Racl (Boolean)"
+                                                        },
+                                                        "qualify_racl": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Racl",
+                                                            "description": "Qualify Racl (Boolean)"
+                                                        },
+                                                        "qualify_racl_all": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Racl All",
+                                                            "description": "Qualify Racl All (Boolean)"
+                                                        },
+                                                        "qualify_span": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Span",
+                                                            "description": "Qualify Span (Boolean)"
+                                                        },
+                                                        "qualify_span_all": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Span All",
+                                                            "description": "Qualify Span All (Boolean)"
+                                                        },
+                                                        "qualify_spanv6": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Spanv6",
+                                                            "description": "Qualify Spanv6 (Boolean)"
+                                                        },
+                                                        "qualify_spanv6_l2": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Spanv6 L2",
+                                                            "description": "Qualify Spanv6 L2 (Boolean)"
+                                                        },
+                                                        "qualify_vacl": {
+                                                            "type": "boolean",
+                                                            "title": "Qualify Vacl",
+                                                            "description": "Qualify Vacl (Boolean)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Udfs",
+                                                "description": "Udfs (List - Object)\n\nElements:\n- name (required)\n- offset_base\n- offset\n- length\n- netflow_rtp\n- mpls\n- qualify_ifacl\n- qualify_ipv6_racl\n- qualify_racl\n- qualify_racl_all\n- qualify_span\n- qualify_span_all\n- qualify_spanv6\n- qualify_spanv6_l2\n- qualify_vacl"
                                             },
                                             "port_channel": {
                                                 "type": "object",
@@ -353834,6 +354886,78 @@
                                                 ],
                                                 "title": "Switch Mode",
                                                 "description": "Switch Mode (String, String)"
+                                            },
+                                            "dot1q_tunnel_transit_vlans": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "ids": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 4094
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Ids",
+                                                        "description": "Ids (Array, String)"
+                                                    },
+                                                    "ranges": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "from": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 4094
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "From",
+                                                                    "description": "From (Integer, String)"
+                                                                },
+                                                                "to": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 4094
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "To",
+                                                                    "description": "To (Integer, String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "from",
+                                                                "to"
+                                                            ]
+                                                        },
+                                                        "title": "Ranges",
+                                                        "description": "Ranges (List - Object)\n\nElements:\n- from (required)\n- to (required)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Dot1Q Tunnel Transit Vlans",
+                                                "description": "Dot1Q Tunnel Transit Vlans (Object)\n\nElements:\n- ids\n- ranges"
                                             },
                                             "fabric_mode": {
                                                 "anyOf": [
@@ -354344,7 +355468,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- port_channel\n- switch_mode\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -380478,15 +381602,15 @@
                                                         },
                                                         "source_ports": {
                                                             "type": "string",
-                                                            "default": "0-65535",
+                                                            "default": "1-65535",
                                                             "title": "Source Ports",
-                                                            "description": "Source Ports (String)\n- Default value: 0-65535"
+                                                            "description": "Source Ports (String)\n- Default value: 1-65535"
                                                         },
                                                         "destination_ports": {
                                                             "type": "string",
-                                                            "default": "0-65535",
+                                                            "default": "1-65535",
                                                             "title": "Destination Ports",
-                                                            "description": "Destination Ports (String)\n- Default value: 0-65535"
+                                                            "description": "Destination Ports (String)\n- Default value: 1-65535"
                                                         }
                                                     },
                                                     "required": [
