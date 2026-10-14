@@ -168345,11 +168345,16 @@
                                             "type": "boolean",
                                             "title": "vPC",
                                             "description": "vPC (Boolean)"
+                                        },
+                                        "vtp": {
+                                            "type": "boolean",
+                                            "title": "Vtp",
+                                            "description": "Vtp (Boolean)"
                                         }
                                     },
                                     "required": [],
                                     "title": "Feature",
-                                    "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- eigrp\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- ospf\n- ospfv3\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- ptp\n- private_vlan\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- udld\n- vn_segment_vlan_based\n- vpc"
+                                    "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- eigrp\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- ospf\n- ospfv3\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- ptp\n- private_vlan\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- udld\n- vn_segment_vlan_based\n- vpc\n- vtp"
                                 },
                                 "feature_set": {
                                     "type": "object",
@@ -194119,6 +194124,64 @@
                                     "title": "VRFs",
                                     "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default\n- security_contracts"
                                 },
+                                "vtp": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "domain": {
+                                            "type": "string",
+                                            "title": "Domain",
+                                            "description": "Domain (String)"
+                                        },
+                                        "mode": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "client",
+                                                        "server",
+                                                        "transparent",
+                                                        "off"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "Mode",
+                                            "description": "Mode (String, String)"
+                                        },
+                                        "version": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "integer",
+                                                    "minimum": 1,
+                                                    "maximum": 2
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "Version",
+                                            "description": "Version (Integer, String)"
+                                        },
+                                        "password": {
+                                            "type": "string",
+                                            "title": "Password",
+                                            "description": "Password (String)"
+                                        },
+                                        "file": {
+                                            "type": "string",
+                                            "title": "File",
+                                            "description": "File (String)"
+                                        }
+                                    },
+                                    "required": [],
+                                    "title": "Vtp",
+                                    "description": "Vtp (Object)\n\nElements:\n- domain\n- mode\n- version\n- password\n- file"
+                                },
                                 "interfaces": {
                                     "type": "object",
                                     "additionalProperties": false,
@@ -207032,6 +207095,11 @@
                                                         "title": "Udld Aggressive",
                                                         "description": "Udld Aggressive (Boolean)"
                                                     },
+                                                    "vtp": {
+                                                        "type": "boolean",
+                                                        "title": "Vtp",
+                                                        "description": "Vtp (Boolean)"
+                                                    },
                                                     "evpn_multisite_dci_tracking": {
                                                         "type": "boolean",
                                                         "title": "Evpn Multisite Dci Tracking",
@@ -207120,7 +207188,7 @@
                                                 ]
                                             },
                                             "title": "Ethernets",
-                                            "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                            "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                         },
                                         "port_channels": {
                                             "type": "array",
@@ -214401,6 +214469,11 @@
                                                         "title": "LLDP Dcbx Version",
                                                         "description": "LLDP Dcbx Version (String, String)"
                                                     },
+                                                    "vtp": {
+                                                        "type": "boolean",
+                                                        "title": "Vtp",
+                                                        "description": "Vtp (Boolean)"
+                                                    },
                                                     "evpn_multisite_dci_tracking": {
                                                         "type": "boolean",
                                                         "title": "Evpn Multisite Dci Tracking",
@@ -214489,7 +214562,7 @@
                                                 ]
                                             },
                                             "title": "Port Channels",
-                                            "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                            "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                         },
                                         "management": {
                                             "type": "array",
@@ -215160,7 +215233,7 @@
                             },
                             "required": [],
                             "title": "Configuration",
-                            "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- interfaces"
+                            "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- vtp\n- interfaces"
                         },
                         "templates": {
                             "type": "array",
@@ -219512,11 +219585,16 @@
                                                 "type": "boolean",
                                                 "title": "vPC",
                                                 "description": "vPC (Boolean)"
+                                            },
+                                            "vtp": {
+                                                "type": "boolean",
+                                                "title": "Vtp",
+                                                "description": "Vtp (Boolean)"
                                             }
                                         },
                                         "required": [],
                                         "title": "Feature",
-                                        "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- eigrp\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- ospf\n- ospfv3\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- ptp\n- private_vlan\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- udld\n- vn_segment_vlan_based\n- vpc"
+                                        "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- eigrp\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- ospf\n- ospfv3\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- ptp\n- private_vlan\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- udld\n- vn_segment_vlan_based\n- vpc\n- vtp"
                                     },
                                     "feature_set": {
                                         "type": "object",
@@ -245286,6 +245364,64 @@
                                         "title": "VRFs",
                                         "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default\n- security_contracts"
                                     },
+                                    "vtp": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "domain": {
+                                                "type": "string",
+                                                "title": "Domain",
+                                                "description": "Domain (String)"
+                                            },
+                                            "mode": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "client",
+                                                            "server",
+                                                            "transparent",
+                                                            "off"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Mode",
+                                                "description": "Mode (String, String)"
+                                            },
+                                            "version": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 2
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Version",
+                                                "description": "Version (Integer, String)"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "title": "Password",
+                                                "description": "Password (String)"
+                                            },
+                                            "file": {
+                                                "type": "string",
+                                                "title": "File",
+                                                "description": "File (String)"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Vtp",
+                                        "description": "Vtp (Object)\n\nElements:\n- domain\n- mode\n- version\n- password\n- file"
+                                    },
                                     "interfaces": {
                                         "type": "object",
                                         "additionalProperties": false,
@@ -258199,6 +258335,11 @@
                                                             "title": "Udld Aggressive",
                                                             "description": "Udld Aggressive (Boolean)"
                                                         },
+                                                        "vtp": {
+                                                            "type": "boolean",
+                                                            "title": "Vtp",
+                                                            "description": "Vtp (Boolean)"
+                                                        },
                                                         "evpn_multisite_dci_tracking": {
                                                             "type": "boolean",
                                                             "title": "Evpn Multisite Dci Tracking",
@@ -258287,7 +258428,7 @@
                                                     ]
                                                 },
                                                 "title": "Ethernets",
-                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "port_channels": {
                                                 "type": "array",
@@ -265568,6 +265709,11 @@
                                                             "title": "LLDP Dcbx Version",
                                                             "description": "LLDP Dcbx Version (String, String)"
                                                         },
+                                                        "vtp": {
+                                                            "type": "boolean",
+                                                            "title": "Vtp",
+                                                            "description": "Vtp (Boolean)"
+                                                        },
                                                         "evpn_multisite_dci_tracking": {
                                                             "type": "boolean",
                                                             "title": "Evpn Multisite Dci Tracking",
@@ -265656,7 +265802,7 @@
                                                     ]
                                                 },
                                                 "title": "Port Channels",
-                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "management": {
                                                 "type": "array",
@@ -266327,7 +266473,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- interfaces"
+                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- vtp\n- interfaces"
                             },
                             "templates": {
                                 "type": "array",
@@ -270712,11 +270858,16 @@
                                                 "type": "boolean",
                                                 "title": "vPC",
                                                 "description": "vPC (Boolean)"
+                                            },
+                                            "vtp": {
+                                                "type": "boolean",
+                                                "title": "Vtp",
+                                                "description": "Vtp (Boolean)"
                                             }
                                         },
                                         "required": [],
                                         "title": "Feature",
-                                        "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- eigrp\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- ospf\n- ospfv3\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- ptp\n- private_vlan\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- udld\n- vn_segment_vlan_based\n- vpc"
+                                        "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- eigrp\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- ospf\n- ospfv3\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- ptp\n- private_vlan\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- udld\n- vn_segment_vlan_based\n- vpc\n- vtp"
                                     },
                                     "feature_set": {
                                         "type": "object",
@@ -296486,6 +296637,64 @@
                                         "title": "VRFs",
                                         "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default\n- security_contracts"
                                     },
+                                    "vtp": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "domain": {
+                                                "type": "string",
+                                                "title": "Domain",
+                                                "description": "Domain (String)"
+                                            },
+                                            "mode": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "client",
+                                                            "server",
+                                                            "transparent",
+                                                            "off"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Mode",
+                                                "description": "Mode (String, String)"
+                                            },
+                                            "version": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 2
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Version",
+                                                "description": "Version (Integer, String)"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "title": "Password",
+                                                "description": "Password (String)"
+                                            },
+                                            "file": {
+                                                "type": "string",
+                                                "title": "File",
+                                                "description": "File (String)"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Vtp",
+                                        "description": "Vtp (Object)\n\nElements:\n- domain\n- mode\n- version\n- password\n- file"
+                                    },
                                     "interfaces": {
                                         "type": "object",
                                         "additionalProperties": false,
@@ -309399,6 +309608,11 @@
                                                             "title": "Udld Aggressive",
                                                             "description": "Udld Aggressive (Boolean)"
                                                         },
+                                                        "vtp": {
+                                                            "type": "boolean",
+                                                            "title": "Vtp",
+                                                            "description": "Vtp (Boolean)"
+                                                        },
                                                         "evpn_multisite_dci_tracking": {
                                                             "type": "boolean",
                                                             "title": "Evpn Multisite Dci Tracking",
@@ -309487,7 +309701,7 @@
                                                     ]
                                                 },
                                                 "title": "Ethernets",
-                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "port_channels": {
                                                 "type": "array",
@@ -316768,6 +316982,11 @@
                                                             "title": "LLDP Dcbx Version",
                                                             "description": "LLDP Dcbx Version (String, String)"
                                                         },
+                                                        "vtp": {
+                                                            "type": "boolean",
+                                                            "title": "Vtp",
+                                                            "description": "Vtp (Boolean)"
+                                                        },
                                                         "evpn_multisite_dci_tracking": {
                                                             "type": "boolean",
                                                             "title": "Evpn Multisite Dci Tracking",
@@ -316856,7 +317075,7 @@
                                                     ]
                                                 },
                                                 "title": "Port Channels",
-                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "management": {
                                                 "type": "array",
@@ -317527,7 +317746,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- interfaces"
+                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- vtp\n- interfaces"
                             },
                             "templates": {
                                 "type": "array",
@@ -325224,6 +325443,11 @@
                                         "title": "Udld Aggressive",
                                         "description": "Udld Aggressive (Boolean)"
                                     },
+                                    "vtp": {
+                                        "type": "boolean",
+                                        "title": "Vtp",
+                                        "description": "Vtp (Boolean)"
+                                    },
                                     "evpn_multisite_dci_tracking": {
                                         "type": "boolean",
                                         "title": "Evpn Multisite Dci Tracking",
@@ -325381,7 +325605,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- shutdown\n- shutdown_lan\n- autostate\n- description\n- vrf\n- carrier_delay\n- delay\n- bandwidth\n- management\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- medium\n- mtu\n- mtu_inherit\n- fabric_forwarding_mode\n- fabric_forwarding_mode_anycast_gateway_proxy\n- fabric_forwarding_description\n- negotiate_auto\n- beacon\n- buffer_boost\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- switchport\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mac_ipv6_extract\n- encapsulation\n- mdix\n- media_type\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- private_vlan_mapping\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                "description": "Configuration (Object)\n\nElements:\n- shutdown\n- shutdown_lan\n- autostate\n- description\n- vrf\n- carrier_delay\n- delay\n- bandwidth\n- management\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- medium\n- mtu\n- mtu_inherit\n- fabric_forwarding_mode\n- fabric_forwarding_mode_anycast_gateway_proxy\n- fabric_forwarding_description\n- negotiate_auto\n- beacon\n- buffer_boost\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- switchport\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mac_ipv6_extract\n- encapsulation\n- mdix\n- media_type\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- private_vlan_mapping\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                             }
                         },
                         "required": [
@@ -329740,11 +329964,16 @@
                                                 "type": "boolean",
                                                 "title": "vPC",
                                                 "description": "vPC (Boolean)"
+                                            },
+                                            "vtp": {
+                                                "type": "boolean",
+                                                "title": "Vtp",
+                                                "description": "Vtp (Boolean)"
                                             }
                                         },
                                         "required": [],
                                         "title": "Feature",
-                                        "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- eigrp\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- ospf\n- ospfv3\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- ptp\n- private_vlan\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- udld\n- vn_segment_vlan_based\n- vpc"
+                                        "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- eigrp\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- ospf\n- ospfv3\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- ptp\n- private_vlan\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- udld\n- vn_segment_vlan_based\n- vpc\n- vtp"
                                     },
                                     "feature_set": {
                                         "type": "object",
@@ -355514,6 +355743,64 @@
                                         "title": "VRFs",
                                         "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default\n- security_contracts"
                                     },
+                                    "vtp": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "domain": {
+                                                "type": "string",
+                                                "title": "Domain",
+                                                "description": "Domain (String)"
+                                            },
+                                            "mode": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "client",
+                                                            "server",
+                                                            "transparent",
+                                                            "off"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Mode",
+                                                "description": "Mode (String, String)"
+                                            },
+                                            "version": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 2
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Version",
+                                                "description": "Version (Integer, String)"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "title": "Password",
+                                                "description": "Password (String)"
+                                            },
+                                            "file": {
+                                                "type": "string",
+                                                "title": "File",
+                                                "description": "File (String)"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Vtp",
+                                        "description": "Vtp (Object)\n\nElements:\n- domain\n- mode\n- version\n- password\n- file"
+                                    },
                                     "interfaces": {
                                         "type": "object",
                                         "additionalProperties": false,
@@ -368427,6 +368714,11 @@
                                                             "title": "Udld Aggressive",
                                                             "description": "Udld Aggressive (Boolean)"
                                                         },
+                                                        "vtp": {
+                                                            "type": "boolean",
+                                                            "title": "Vtp",
+                                                            "description": "Vtp (Boolean)"
+                                                        },
                                                         "evpn_multisite_dci_tracking": {
                                                             "type": "boolean",
                                                             "title": "Evpn Multisite Dci Tracking",
@@ -368515,7 +368807,7 @@
                                                     ]
                                                 },
                                                 "title": "Ethernets",
-                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "port_channels": {
                                                 "type": "array",
@@ -375796,6 +376088,11 @@
                                                             "title": "LLDP Dcbx Version",
                                                             "description": "LLDP Dcbx Version (String, String)"
                                                         },
+                                                        "vtp": {
+                                                            "type": "boolean",
+                                                            "title": "Vtp",
+                                                            "description": "Vtp (Boolean)"
+                                                        },
                                                         "evpn_multisite_dci_tracking": {
                                                             "type": "boolean",
                                                             "title": "Evpn Multisite Dci Tracking",
@@ -375884,7 +376181,7 @@
                                                     ]
                                                 },
                                                 "title": "Port Channels",
-                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "management": {
                                                 "type": "array",
@@ -376555,7 +376852,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- interfaces"
+                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- vtp\n- interfaces"
                             }
                         },
                         "required": [
