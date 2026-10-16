@@ -402887,10 +402887,13 @@
                                                                     "items": {
                                                                         "type": "string"
                                                                     }
+                                                                },
+                                                                {
+                                                                    "type": "integer"
                                                                 }
                                                             ],
                                                             "title": "Value",
-                                                            "description": "Value (String, Array)"
+                                                            "description": "Value (String, Array, Integer)"
                                                         }
                                                     },
                                                     "required": [
@@ -402944,10 +402947,13 @@
                                                                                 "items": {
                                                                                     "type": "string"
                                                                                 }
+                                                                            },
+                                                                            {
+                                                                                "type": "integer"
                                                                             }
                                                                         ],
                                                                         "title": "Value",
-                                                                        "description": "Value (String, Array)"
+                                                                        "description": "Value (String, Array, Integer)"
                                                                     }
                                                                 },
                                                                 "required": [
@@ -403018,10 +403024,13 @@
                                                                                 "items": {
                                                                                     "type": "string"
                                                                                 }
+                                                                            },
+                                                                            {
+                                                                                "type": "integer"
                                                                             }
                                                                         ],
                                                                         "title": "Value",
-                                                                        "description": "Value (String, Array)"
+                                                                        "description": "Value (String, Array, Integer)"
                                                                     },
                                                                     "template_name": {
                                                                         "type": "string",
