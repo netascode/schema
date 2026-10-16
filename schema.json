@@ -204893,6 +204893,16 @@
                                                     "title": "Virtual Rmac",
                                                     "description": "Virtual Rmac (String)"
                                                 },
+                                                "service_policy_type_qos_input": {
+                                                    "type": "string",
+                                                    "title": "Service Policy Type QoS Input",
+                                                    "description": "Service Policy Type QoS Input (String)"
+                                                },
+                                                "service_policy_type_qos_input_statistics": {
+                                                    "type": "boolean",
+                                                    "title": "Service Policy Type QoS Input Statistics",
+                                                    "description": "Service Policy Type QoS Input Statistics (Boolean)"
+                                                },
                                                 "vnis": {
                                                     "type": "array",
                                                     "items": {
@@ -205002,7 +205012,7 @@
                                             },
                                             "required": [],
                                             "title": "Nve",
-                                            "description": "Nve (Object)\n\nElements:\n- shutdown\n- advertise_virtual_rmac\n- anycast_source_interface_type\n- anycast_source_interface_id\n- description\n- fabric_ready_time\n- source_interface_hold_down_time\n- host_reachability_protocol\n- global_ingress_replication_protocol_bgp\n- global_mcast_group_l2\n- global_mcast_group_l3\n- multicast_routing_source_interface_type\n- multicast_routing_source_interface_id\n- multisite_border_gateway_interface_type\n- multisite_border_gateway_interface_id\n- multisite_virtual_rmac\n- source_interface_type\n- source_interface_id\n- global_suppress_arp\n- suppress_mac_route\n- suppress_nd\n- virtual_rmac\n- vnis"
+                                            "description": "Nve (Object)\n\nElements:\n- shutdown\n- advertise_virtual_rmac\n- anycast_source_interface_type\n- anycast_source_interface_id\n- description\n- fabric_ready_time\n- source_interface_hold_down_time\n- host_reachability_protocol\n- global_ingress_replication_protocol_bgp\n- global_mcast_group_l2\n- global_mcast_group_l3\n- multicast_routing_source_interface_type\n- multicast_routing_source_interface_id\n- multisite_border_gateway_interface_type\n- multisite_border_gateway_interface_id\n- multisite_virtual_rmac\n- source_interface_type\n- source_interface_id\n- global_suppress_arp\n- suppress_mac_route\n- suppress_nd\n- virtual_rmac\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- vnis"
                                         },
                                         "ethernets": {
                                             "type": "array",
@@ -209397,6 +209407,16 @@
                                                         "title": "Service Policy Type QoS Input Statistics",
                                                         "description": "Service Policy Type QoS Input Statistics (Boolean)"
                                                     },
+                                                    "service_policy_type_queuing_output": {
+                                                        "type": "string",
+                                                        "title": "Service Policy Type Queuing Output",
+                                                        "description": "Service Policy Type Queuing Output (String)"
+                                                    },
+                                                    "service_policy_type_queuing_output_statistics": {
+                                                        "type": "boolean",
+                                                        "title": "Service Policy Type Queuing Output Statistics",
+                                                        "description": "Service Policy Type Queuing Output Statistics (Boolean)"
+                                                    },
                                                     "nd": {
                                                         "type": "object",
                                                         "additionalProperties": false,
@@ -212929,7 +212949,7 @@
                                                 ]
                                             },
                                             "title": "Ethernets",
-                                            "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
+                                            "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
                                         },
                                         "port_channels": {
                                             "type": "array",
@@ -217333,6 +217353,16 @@
                                                         "title": "Service Policy Type QoS Input Statistics",
                                                         "description": "Service Policy Type QoS Input Statistics (Boolean)"
                                                     },
+                                                    "service_policy_type_queuing_output": {
+                                                        "type": "string",
+                                                        "title": "Service Policy Type Queuing Output",
+                                                        "description": "Service Policy Type Queuing Output (String)"
+                                                    },
+                                                    "service_policy_type_queuing_output_statistics": {
+                                                        "type": "boolean",
+                                                        "title": "Service Policy Type Queuing Output Statistics",
+                                                        "description": "Service Policy Type Queuing Output Statistics (Boolean)"
+                                                    },
                                                     "subinterfaces": {
                                                         "type": "array",
                                                         "items": {
@@ -220533,7 +220563,7 @@
                                                 ]
                                             },
                                             "title": "Port Channels",
-                                            "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                            "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                         },
                                         "management": {
                                             "type": "array",
@@ -262099,6 +262129,16 @@
                                                         "title": "Virtual Rmac",
                                                         "description": "Virtual Rmac (String)"
                                                     },
+                                                    "service_policy_type_qos_input": {
+                                                        "type": "string",
+                                                        "title": "Service Policy Type QoS Input",
+                                                        "description": "Service Policy Type QoS Input (String)"
+                                                    },
+                                                    "service_policy_type_qos_input_statistics": {
+                                                        "type": "boolean",
+                                                        "title": "Service Policy Type QoS Input Statistics",
+                                                        "description": "Service Policy Type QoS Input Statistics (Boolean)"
+                                                    },
                                                     "vnis": {
                                                         "type": "array",
                                                         "items": {
@@ -262208,7 +262248,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Nve",
-                                                "description": "Nve (Object)\n\nElements:\n- shutdown\n- advertise_virtual_rmac\n- anycast_source_interface_type\n- anycast_source_interface_id\n- description\n- fabric_ready_time\n- source_interface_hold_down_time\n- host_reachability_protocol\n- global_ingress_replication_protocol_bgp\n- global_mcast_group_l2\n- global_mcast_group_l3\n- multicast_routing_source_interface_type\n- multicast_routing_source_interface_id\n- multisite_border_gateway_interface_type\n- multisite_border_gateway_interface_id\n- multisite_virtual_rmac\n- source_interface_type\n- source_interface_id\n- global_suppress_arp\n- suppress_mac_route\n- suppress_nd\n- virtual_rmac\n- vnis"
+                                                "description": "Nve (Object)\n\nElements:\n- shutdown\n- advertise_virtual_rmac\n- anycast_source_interface_type\n- anycast_source_interface_id\n- description\n- fabric_ready_time\n- source_interface_hold_down_time\n- host_reachability_protocol\n- global_ingress_replication_protocol_bgp\n- global_mcast_group_l2\n- global_mcast_group_l3\n- multicast_routing_source_interface_type\n- multicast_routing_source_interface_id\n- multisite_border_gateway_interface_type\n- multisite_border_gateway_interface_id\n- multisite_virtual_rmac\n- source_interface_type\n- source_interface_id\n- global_suppress_arp\n- suppress_mac_route\n- suppress_nd\n- virtual_rmac\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- vnis"
                                             },
                                             "ethernets": {
                                                 "type": "array",
@@ -266603,6 +266643,16 @@
                                                             "title": "Service Policy Type QoS Input Statistics",
                                                             "description": "Service Policy Type QoS Input Statistics (Boolean)"
                                                         },
+                                                        "service_policy_type_queuing_output": {
+                                                            "type": "string",
+                                                            "title": "Service Policy Type Queuing Output",
+                                                            "description": "Service Policy Type Queuing Output (String)"
+                                                        },
+                                                        "service_policy_type_queuing_output_statistics": {
+                                                            "type": "boolean",
+                                                            "title": "Service Policy Type Queuing Output Statistics",
+                                                            "description": "Service Policy Type Queuing Output Statistics (Boolean)"
+                                                        },
                                                         "nd": {
                                                             "type": "object",
                                                             "additionalProperties": false,
@@ -270135,7 +270185,7 @@
                                                     ]
                                                 },
                                                 "title": "Ethernets",
-                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
+                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
                                             },
                                             "port_channels": {
                                                 "type": "array",
@@ -274539,6 +274589,16 @@
                                                             "title": "Service Policy Type QoS Input Statistics",
                                                             "description": "Service Policy Type QoS Input Statistics (Boolean)"
                                                         },
+                                                        "service_policy_type_queuing_output": {
+                                                            "type": "string",
+                                                            "title": "Service Policy Type Queuing Output",
+                                                            "description": "Service Policy Type Queuing Output (String)"
+                                                        },
+                                                        "service_policy_type_queuing_output_statistics": {
+                                                            "type": "boolean",
+                                                            "title": "Service Policy Type Queuing Output Statistics",
+                                                            "description": "Service Policy Type Queuing Output Statistics (Boolean)"
+                                                        },
                                                         "subinterfaces": {
                                                             "type": "array",
                                                             "items": {
@@ -277739,7 +277799,7 @@
                                                     ]
                                                 },
                                                 "title": "Port Channels",
-                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "management": {
                                                 "type": "array",
@@ -319338,6 +319398,16 @@
                                                         "title": "Virtual Rmac",
                                                         "description": "Virtual Rmac (String)"
                                                     },
+                                                    "service_policy_type_qos_input": {
+                                                        "type": "string",
+                                                        "title": "Service Policy Type QoS Input",
+                                                        "description": "Service Policy Type QoS Input (String)"
+                                                    },
+                                                    "service_policy_type_qos_input_statistics": {
+                                                        "type": "boolean",
+                                                        "title": "Service Policy Type QoS Input Statistics",
+                                                        "description": "Service Policy Type QoS Input Statistics (Boolean)"
+                                                    },
                                                     "vnis": {
                                                         "type": "array",
                                                         "items": {
@@ -319447,7 +319517,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Nve",
-                                                "description": "Nve (Object)\n\nElements:\n- shutdown\n- advertise_virtual_rmac\n- anycast_source_interface_type\n- anycast_source_interface_id\n- description\n- fabric_ready_time\n- source_interface_hold_down_time\n- host_reachability_protocol\n- global_ingress_replication_protocol_bgp\n- global_mcast_group_l2\n- global_mcast_group_l3\n- multicast_routing_source_interface_type\n- multicast_routing_source_interface_id\n- multisite_border_gateway_interface_type\n- multisite_border_gateway_interface_id\n- multisite_virtual_rmac\n- source_interface_type\n- source_interface_id\n- global_suppress_arp\n- suppress_mac_route\n- suppress_nd\n- virtual_rmac\n- vnis"
+                                                "description": "Nve (Object)\n\nElements:\n- shutdown\n- advertise_virtual_rmac\n- anycast_source_interface_type\n- anycast_source_interface_id\n- description\n- fabric_ready_time\n- source_interface_hold_down_time\n- host_reachability_protocol\n- global_ingress_replication_protocol_bgp\n- global_mcast_group_l2\n- global_mcast_group_l3\n- multicast_routing_source_interface_type\n- multicast_routing_source_interface_id\n- multisite_border_gateway_interface_type\n- multisite_border_gateway_interface_id\n- multisite_virtual_rmac\n- source_interface_type\n- source_interface_id\n- global_suppress_arp\n- suppress_mac_route\n- suppress_nd\n- virtual_rmac\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- vnis"
                                             },
                                             "ethernets": {
                                                 "type": "array",
@@ -323842,6 +323912,16 @@
                                                             "title": "Service Policy Type QoS Input Statistics",
                                                             "description": "Service Policy Type QoS Input Statistics (Boolean)"
                                                         },
+                                                        "service_policy_type_queuing_output": {
+                                                            "type": "string",
+                                                            "title": "Service Policy Type Queuing Output",
+                                                            "description": "Service Policy Type Queuing Output (String)"
+                                                        },
+                                                        "service_policy_type_queuing_output_statistics": {
+                                                            "type": "boolean",
+                                                            "title": "Service Policy Type Queuing Output Statistics",
+                                                            "description": "Service Policy Type Queuing Output Statistics (Boolean)"
+                                                        },
                                                         "nd": {
                                                             "type": "object",
                                                             "additionalProperties": false,
@@ -327374,7 +327454,7 @@
                                                     ]
                                                 },
                                                 "title": "Ethernets",
-                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
+                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
                                             },
                                             "port_channels": {
                                                 "type": "array",
@@ -331778,6 +331858,16 @@
                                                             "title": "Service Policy Type QoS Input Statistics",
                                                             "description": "Service Policy Type QoS Input Statistics (Boolean)"
                                                         },
+                                                        "service_policy_type_queuing_output": {
+                                                            "type": "string",
+                                                            "title": "Service Policy Type Queuing Output",
+                                                            "description": "Service Policy Type Queuing Output (String)"
+                                                        },
+                                                        "service_policy_type_queuing_output_statistics": {
+                                                            "type": "boolean",
+                                                            "title": "Service Policy Type Queuing Output Statistics",
+                                                            "description": "Service Policy Type Queuing Output Statistics (Boolean)"
+                                                        },
                                                         "subinterfaces": {
                                                             "type": "array",
                                                             "items": {
@@ -334978,7 +335068,7 @@
                                                     ]
                                                 },
                                                 "title": "Port Channels",
-                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "management": {
                                                 "type": "array",
@@ -340229,6 +340319,16 @@
                                         "title": "Service Policy Type QoS Input Statistics",
                                         "description": "Service Policy Type QoS Input Statistics (Boolean)"
                                     },
+                                    "service_policy_type_queuing_output": {
+                                        "type": "string",
+                                        "title": "Service Policy Type Queuing Output",
+                                        "description": "Service Policy Type Queuing Output (String)"
+                                    },
+                                    "service_policy_type_queuing_output_statistics": {
+                                        "type": "boolean",
+                                        "title": "Service Policy Type Queuing Output Statistics",
+                                        "description": "Service Policy Type Queuing Output Statistics (Boolean)"
+                                    },
                                     "nd": {
                                         "type": "object",
                                         "additionalProperties": false,
@@ -343830,7 +343930,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- shutdown\n- shutdown_lan\n- autostate\n- description\n- vrf\n- carrier_delay\n- delay\n- bandwidth\n- management\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- medium\n- mtu\n- mtu_inherit\n- fabric_forwarding_mode\n- fabric_forwarding_mode_anycast_gateway_proxy\n- fabric_forwarding_description\n- negotiate_auto\n- beacon\n- buffer_boost\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- switchport\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mac_ipv6_extract\n- encapsulation\n- mdix\n- media_type\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- private_vlan_mapping\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
+                                "description": "Configuration (Object)\n\nElements:\n- shutdown\n- shutdown_lan\n- autostate\n- description\n- vrf\n- carrier_delay\n- delay\n- bandwidth\n- management\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- medium\n- mtu\n- mtu_inherit\n- fabric_forwarding_mode\n- fabric_forwarding_mode_anycast_gateway_proxy\n- fabric_forwarding_description\n- negotiate_auto\n- beacon\n- buffer_boost\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- switchport\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mac_ipv6_extract\n- encapsulation\n- mdix\n- media_type\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- private_vlan_mapping\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
                             }
                         },
                         "required": [
@@ -384722,6 +384822,16 @@
                                                         "title": "Virtual Rmac",
                                                         "description": "Virtual Rmac (String)"
                                                     },
+                                                    "service_policy_type_qos_input": {
+                                                        "type": "string",
+                                                        "title": "Service Policy Type QoS Input",
+                                                        "description": "Service Policy Type QoS Input (String)"
+                                                    },
+                                                    "service_policy_type_qos_input_statistics": {
+                                                        "type": "boolean",
+                                                        "title": "Service Policy Type QoS Input Statistics",
+                                                        "description": "Service Policy Type QoS Input Statistics (Boolean)"
+                                                    },
                                                     "vnis": {
                                                         "type": "array",
                                                         "items": {
@@ -384831,7 +384941,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Nve",
-                                                "description": "Nve (Object)\n\nElements:\n- shutdown\n- advertise_virtual_rmac\n- anycast_source_interface_type\n- anycast_source_interface_id\n- description\n- fabric_ready_time\n- source_interface_hold_down_time\n- host_reachability_protocol\n- global_ingress_replication_protocol_bgp\n- global_mcast_group_l2\n- global_mcast_group_l3\n- multicast_routing_source_interface_type\n- multicast_routing_source_interface_id\n- multisite_border_gateway_interface_type\n- multisite_border_gateway_interface_id\n- multisite_virtual_rmac\n- source_interface_type\n- source_interface_id\n- global_suppress_arp\n- suppress_mac_route\n- suppress_nd\n- virtual_rmac\n- vnis"
+                                                "description": "Nve (Object)\n\nElements:\n- shutdown\n- advertise_virtual_rmac\n- anycast_source_interface_type\n- anycast_source_interface_id\n- description\n- fabric_ready_time\n- source_interface_hold_down_time\n- host_reachability_protocol\n- global_ingress_replication_protocol_bgp\n- global_mcast_group_l2\n- global_mcast_group_l3\n- multicast_routing_source_interface_type\n- multicast_routing_source_interface_id\n- multisite_border_gateway_interface_type\n- multisite_border_gateway_interface_id\n- multisite_virtual_rmac\n- source_interface_type\n- source_interface_id\n- global_suppress_arp\n- suppress_mac_route\n- suppress_nd\n- virtual_rmac\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- vnis"
                                             },
                                             "ethernets": {
                                                 "type": "array",
@@ -389226,6 +389336,16 @@
                                                             "title": "Service Policy Type QoS Input Statistics",
                                                             "description": "Service Policy Type QoS Input Statistics (Boolean)"
                                                         },
+                                                        "service_policy_type_queuing_output": {
+                                                            "type": "string",
+                                                            "title": "Service Policy Type Queuing Output",
+                                                            "description": "Service Policy Type Queuing Output (String)"
+                                                        },
+                                                        "service_policy_type_queuing_output_statistics": {
+                                                            "type": "boolean",
+                                                            "title": "Service Policy Type Queuing Output Statistics",
+                                                            "description": "Service Policy Type Queuing Output Statistics (Boolean)"
+                                                        },
                                                         "nd": {
                                                             "type": "object",
                                                             "additionalProperties": false,
@@ -392758,7 +392878,7 @@
                                                     ]
                                                 },
                                                 "title": "Ethernets",
-                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
+                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
                                             },
                                             "port_channels": {
                                                 "type": "array",
@@ -397162,6 +397282,16 @@
                                                             "title": "Service Policy Type QoS Input Statistics",
                                                             "description": "Service Policy Type QoS Input Statistics (Boolean)"
                                                         },
+                                                        "service_policy_type_queuing_output": {
+                                                            "type": "string",
+                                                            "title": "Service Policy Type Queuing Output",
+                                                            "description": "Service Policy Type Queuing Output (String)"
+                                                        },
+                                                        "service_policy_type_queuing_output_statistics": {
+                                                            "type": "boolean",
+                                                            "title": "Service Policy Type Queuing Output Statistics",
+                                                            "description": "Service Policy Type Queuing Output Statistics (Boolean)"
+                                                        },
                                                         "subinterfaces": {
                                                             "type": "array",
                                                             "items": {
@@ -400362,7 +400492,7 @@
                                                     ]
                                                 },
                                                 "title": "Port Channels",
-                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "management": {
                                                 "type": "array",
