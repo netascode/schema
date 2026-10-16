@@ -178990,11 +178990,21 @@
                                             "required": [],
                                             "title": "Priority Flow Control",
                                             "description": "Priority Flow Control (Object)\n\nElements:\n- watch_dog_interval\n- watch_dog_interval_value\n- watch_dog_shutdown_multiplier\n- watch_dog_internal_interface_multiplier\n- watch_dog_forced\n- auto_restore_multiplier\n- fixed_restore_multiplier"
+                                        },
+                                        "statistics": {
+                                            "type": "boolean",
+                                            "title": "Statistics",
+                                            "description": "Statistics (Boolean)"
+                                        },
+                                        "qos_policies_statistics": {
+                                            "type": "boolean",
+                                            "title": "QoS Policies Statistics",
+                                            "description": "QoS Policies Statistics (Boolean)"
                                         }
                                     },
                                     "required": [],
                                     "title": "QoS",
-                                    "description": "QoS (Object)\n\nElements:\n- class_maps\n- policy_maps\n- queuing_policy_maps\n- system_service_policy_queuing_output\n- system_service_policy_queuing_output_statistics\n- network_class_maps\n- network_policy_maps\n- system_service_policy_network\n- system_service_policy_network_statistics\n- priority_flow_control"
+                                    "description": "QoS (Object)\n\nElements:\n- class_maps\n- policy_maps\n- queuing_policy_maps\n- system_service_policy_queuing_output\n- system_service_policy_queuing_output_statistics\n- network_class_maps\n- network_policy_maps\n- system_service_policy_network\n- system_service_policy_network_statistics\n- priority_flow_control\n- statistics\n- qos_policies_statistics"
                                 },
                                 "route_maps": {
                                     "type": "array",
@@ -197045,6 +197055,11 @@
                                                     "title": "Span Pg Size",
                                                     "description": "Span Pg Size (Integer, String)"
                                                 },
+                                                "dynamic_buffer_sharing": {
+                                                    "type": "boolean",
+                                                    "title": "Dynamic Buffer Sharing",
+                                                    "description": "Dynamic Buffer Sharing (Boolean)"
+                                                },
                                                 "dynamic_packet_prioritization_age_period": {
                                                     "anyOf": [
                                                         {
@@ -197479,7 +197494,7 @@
                                             },
                                             "required": [],
                                             "title": "Hardware QoS",
-                                            "description": "Hardware QoS (Object)\n\nElements:\n- buffer_peak_monitor_counter0_classes\n- buffer_input_peak\n- burst_detect_max_records\n- burst_detect_rise_threshold\n- burst_detect_rise_threshold_unit\n- burst_detect_fall_threshold\n- burst_detect_fall_threshold_unit\n- classify_ns_only\n- cpu_pg_size\n- lcpu_pg_size\n- span_pg_size\n- dynamic_packet_prioritization_age_period\n- dynamic_packet_prioritization_max_num_pkts\n- eoq_stats_class_qos_group\n- etrap_age_period\n- etrap_bandwidth_threshold\n- etrap_byte_count\n- include_ipg\n- ing_pg_hdrm_reserve_percent\n- ing_pg_no_min\n- ing_pg_no_min_pgmin\n- ing_pg_share\n- mac_ipg\n- nodrop_pause_dynamic_q_limit\n- nodrop_pause_resume_offset\n- nodrop_pg_thresholds_pg_size\n- nodrop_pg_thresholds_red_threshold\n- nodrop_pg_thresholds_yellow_threshold\n- nodrop_pg_thresholds_green_threshold\n- nodrop_pg_thresholds_fx_pg_size\n- nodrop_queue_thresholds_queue_yellow\n- nodrop_queue_thresholds_queue_green\n- nodrop_queue_thresholds_fx_queue_green\n- ns_buffer_profile\n- afd_profile\n- ns_mcq3_alias_qos_group\n- oq_drops_type\n- pfc_mc_drop\n- pfc_static\n- pool_nodrop_size\n- pool_drop_size\n- pool_headroom_size\n- q_noise_percent"
+                                            "description": "Hardware QoS (Object)\n\nElements:\n- buffer_peak_monitor_counter0_classes\n- buffer_input_peak\n- burst_detect_max_records\n- burst_detect_rise_threshold\n- burst_detect_rise_threshold_unit\n- burst_detect_fall_threshold\n- burst_detect_fall_threshold_unit\n- classify_ns_only\n- cpu_pg_size\n- lcpu_pg_size\n- span_pg_size\n- dynamic_buffer_sharing\n- dynamic_packet_prioritization_age_period\n- dynamic_packet_prioritization_max_num_pkts\n- eoq_stats_class_qos_group\n- etrap_age_period\n- etrap_bandwidth_threshold\n- etrap_byte_count\n- include_ipg\n- ing_pg_hdrm_reserve_percent\n- ing_pg_no_min\n- ing_pg_no_min_pgmin\n- ing_pg_share\n- mac_ipg\n- nodrop_pause_dynamic_q_limit\n- nodrop_pause_resume_offset\n- nodrop_pg_thresholds_pg_size\n- nodrop_pg_thresholds_red_threshold\n- nodrop_pg_thresholds_yellow_threshold\n- nodrop_pg_thresholds_green_threshold\n- nodrop_pg_thresholds_fx_pg_size\n- nodrop_queue_thresholds_queue_yellow\n- nodrop_queue_thresholds_queue_green\n- nodrop_queue_thresholds_fx_queue_green\n- ns_buffer_profile\n- afd_profile\n- ns_mcq3_alias_qos_group\n- oq_drops_type\n- pfc_mc_drop\n- pfc_static\n- pool_nodrop_size\n- pool_drop_size\n- pool_headroom_size\n- q_noise_percent"
                                         },
                                         "udfs": {
                                             "type": "array",
@@ -197866,6 +197881,11 @@
                                             ],
                                             "title": "Fabric Mode",
                                             "description": "Fabric Mode (String, String)"
+                                        },
+                                        "default_reset_dei": {
+                                            "type": "boolean",
+                                            "title": "Default Reset Dei",
+                                            "description": "Default Reset Dei (Boolean)"
                                         },
                                         "routing": {
                                             "anyOf": [
@@ -198359,7 +198379,7 @@
                                     },
                                     "required": [],
                                     "title": "System",
-                                    "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                    "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                 },
                                 "telemetry": {
                                     "type": "object",
@@ -236960,11 +236980,21 @@
                                                 "required": [],
                                                 "title": "Priority Flow Control",
                                                 "description": "Priority Flow Control (Object)\n\nElements:\n- watch_dog_interval\n- watch_dog_interval_value\n- watch_dog_shutdown_multiplier\n- watch_dog_internal_interface_multiplier\n- watch_dog_forced\n- auto_restore_multiplier\n- fixed_restore_multiplier"
+                                            },
+                                            "statistics": {
+                                                "type": "boolean",
+                                                "title": "Statistics",
+                                                "description": "Statistics (Boolean)"
+                                            },
+                                            "qos_policies_statistics": {
+                                                "type": "boolean",
+                                                "title": "QoS Policies Statistics",
+                                                "description": "QoS Policies Statistics (Boolean)"
                                             }
                                         },
                                         "required": [],
                                         "title": "QoS",
-                                        "description": "QoS (Object)\n\nElements:\n- class_maps\n- policy_maps\n- queuing_policy_maps\n- system_service_policy_queuing_output\n- system_service_policy_queuing_output_statistics\n- network_class_maps\n- network_policy_maps\n- system_service_policy_network\n- system_service_policy_network_statistics\n- priority_flow_control"
+                                        "description": "QoS (Object)\n\nElements:\n- class_maps\n- policy_maps\n- queuing_policy_maps\n- system_service_policy_queuing_output\n- system_service_policy_queuing_output_statistics\n- network_class_maps\n- network_policy_maps\n- system_service_policy_network\n- system_service_policy_network_statistics\n- priority_flow_control\n- statistics\n- qos_policies_statistics"
                                     },
                                     "route_maps": {
                                         "type": "array",
@@ -255015,6 +255045,11 @@
                                                         "title": "Span Pg Size",
                                                         "description": "Span Pg Size (Integer, String)"
                                                     },
+                                                    "dynamic_buffer_sharing": {
+                                                        "type": "boolean",
+                                                        "title": "Dynamic Buffer Sharing",
+                                                        "description": "Dynamic Buffer Sharing (Boolean)"
+                                                    },
                                                     "dynamic_packet_prioritization_age_period": {
                                                         "anyOf": [
                                                             {
@@ -255449,7 +255484,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Hardware QoS",
-                                                "description": "Hardware QoS (Object)\n\nElements:\n- buffer_peak_monitor_counter0_classes\n- buffer_input_peak\n- burst_detect_max_records\n- burst_detect_rise_threshold\n- burst_detect_rise_threshold_unit\n- burst_detect_fall_threshold\n- burst_detect_fall_threshold_unit\n- classify_ns_only\n- cpu_pg_size\n- lcpu_pg_size\n- span_pg_size\n- dynamic_packet_prioritization_age_period\n- dynamic_packet_prioritization_max_num_pkts\n- eoq_stats_class_qos_group\n- etrap_age_period\n- etrap_bandwidth_threshold\n- etrap_byte_count\n- include_ipg\n- ing_pg_hdrm_reserve_percent\n- ing_pg_no_min\n- ing_pg_no_min_pgmin\n- ing_pg_share\n- mac_ipg\n- nodrop_pause_dynamic_q_limit\n- nodrop_pause_resume_offset\n- nodrop_pg_thresholds_pg_size\n- nodrop_pg_thresholds_red_threshold\n- nodrop_pg_thresholds_yellow_threshold\n- nodrop_pg_thresholds_green_threshold\n- nodrop_pg_thresholds_fx_pg_size\n- nodrop_queue_thresholds_queue_yellow\n- nodrop_queue_thresholds_queue_green\n- nodrop_queue_thresholds_fx_queue_green\n- ns_buffer_profile\n- afd_profile\n- ns_mcq3_alias_qos_group\n- oq_drops_type\n- pfc_mc_drop\n- pfc_static\n- pool_nodrop_size\n- pool_drop_size\n- pool_headroom_size\n- q_noise_percent"
+                                                "description": "Hardware QoS (Object)\n\nElements:\n- buffer_peak_monitor_counter0_classes\n- buffer_input_peak\n- burst_detect_max_records\n- burst_detect_rise_threshold\n- burst_detect_rise_threshold_unit\n- burst_detect_fall_threshold\n- burst_detect_fall_threshold_unit\n- classify_ns_only\n- cpu_pg_size\n- lcpu_pg_size\n- span_pg_size\n- dynamic_buffer_sharing\n- dynamic_packet_prioritization_age_period\n- dynamic_packet_prioritization_max_num_pkts\n- eoq_stats_class_qos_group\n- etrap_age_period\n- etrap_bandwidth_threshold\n- etrap_byte_count\n- include_ipg\n- ing_pg_hdrm_reserve_percent\n- ing_pg_no_min\n- ing_pg_no_min_pgmin\n- ing_pg_share\n- mac_ipg\n- nodrop_pause_dynamic_q_limit\n- nodrop_pause_resume_offset\n- nodrop_pg_thresholds_pg_size\n- nodrop_pg_thresholds_red_threshold\n- nodrop_pg_thresholds_yellow_threshold\n- nodrop_pg_thresholds_green_threshold\n- nodrop_pg_thresholds_fx_pg_size\n- nodrop_queue_thresholds_queue_yellow\n- nodrop_queue_thresholds_queue_green\n- nodrop_queue_thresholds_fx_queue_green\n- ns_buffer_profile\n- afd_profile\n- ns_mcq3_alias_qos_group\n- oq_drops_type\n- pfc_mc_drop\n- pfc_static\n- pool_nodrop_size\n- pool_drop_size\n- pool_headroom_size\n- q_noise_percent"
                                             },
                                             "udfs": {
                                                 "type": "array",
@@ -255836,6 +255871,11 @@
                                                 ],
                                                 "title": "Fabric Mode",
                                                 "description": "Fabric Mode (String, String)"
+                                            },
+                                            "default_reset_dei": {
+                                                "type": "boolean",
+                                                "title": "Default Reset Dei",
+                                                "description": "Default Reset Dei (Boolean)"
                                             },
                                             "routing": {
                                                 "anyOf": [
@@ -256329,7 +256369,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -294963,11 +295003,21 @@
                                                 "required": [],
                                                 "title": "Priority Flow Control",
                                                 "description": "Priority Flow Control (Object)\n\nElements:\n- watch_dog_interval\n- watch_dog_interval_value\n- watch_dog_shutdown_multiplier\n- watch_dog_internal_interface_multiplier\n- watch_dog_forced\n- auto_restore_multiplier\n- fixed_restore_multiplier"
+                                            },
+                                            "statistics": {
+                                                "type": "boolean",
+                                                "title": "Statistics",
+                                                "description": "Statistics (Boolean)"
+                                            },
+                                            "qos_policies_statistics": {
+                                                "type": "boolean",
+                                                "title": "QoS Policies Statistics",
+                                                "description": "QoS Policies Statistics (Boolean)"
                                             }
                                         },
                                         "required": [],
                                         "title": "QoS",
-                                        "description": "QoS (Object)\n\nElements:\n- class_maps\n- policy_maps\n- queuing_policy_maps\n- system_service_policy_queuing_output\n- system_service_policy_queuing_output_statistics\n- network_class_maps\n- network_policy_maps\n- system_service_policy_network\n- system_service_policy_network_statistics\n- priority_flow_control"
+                                        "description": "QoS (Object)\n\nElements:\n- class_maps\n- policy_maps\n- queuing_policy_maps\n- system_service_policy_queuing_output\n- system_service_policy_queuing_output_statistics\n- network_class_maps\n- network_policy_maps\n- system_service_policy_network\n- system_service_policy_network_statistics\n- priority_flow_control\n- statistics\n- qos_policies_statistics"
                                     },
                                     "route_maps": {
                                         "type": "array",
@@ -313018,6 +313068,11 @@
                                                         "title": "Span Pg Size",
                                                         "description": "Span Pg Size (Integer, String)"
                                                     },
+                                                    "dynamic_buffer_sharing": {
+                                                        "type": "boolean",
+                                                        "title": "Dynamic Buffer Sharing",
+                                                        "description": "Dynamic Buffer Sharing (Boolean)"
+                                                    },
                                                     "dynamic_packet_prioritization_age_period": {
                                                         "anyOf": [
                                                             {
@@ -313452,7 +313507,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Hardware QoS",
-                                                "description": "Hardware QoS (Object)\n\nElements:\n- buffer_peak_monitor_counter0_classes\n- buffer_input_peak\n- burst_detect_max_records\n- burst_detect_rise_threshold\n- burst_detect_rise_threshold_unit\n- burst_detect_fall_threshold\n- burst_detect_fall_threshold_unit\n- classify_ns_only\n- cpu_pg_size\n- lcpu_pg_size\n- span_pg_size\n- dynamic_packet_prioritization_age_period\n- dynamic_packet_prioritization_max_num_pkts\n- eoq_stats_class_qos_group\n- etrap_age_period\n- etrap_bandwidth_threshold\n- etrap_byte_count\n- include_ipg\n- ing_pg_hdrm_reserve_percent\n- ing_pg_no_min\n- ing_pg_no_min_pgmin\n- ing_pg_share\n- mac_ipg\n- nodrop_pause_dynamic_q_limit\n- nodrop_pause_resume_offset\n- nodrop_pg_thresholds_pg_size\n- nodrop_pg_thresholds_red_threshold\n- nodrop_pg_thresholds_yellow_threshold\n- nodrop_pg_thresholds_green_threshold\n- nodrop_pg_thresholds_fx_pg_size\n- nodrop_queue_thresholds_queue_yellow\n- nodrop_queue_thresholds_queue_green\n- nodrop_queue_thresholds_fx_queue_green\n- ns_buffer_profile\n- afd_profile\n- ns_mcq3_alias_qos_group\n- oq_drops_type\n- pfc_mc_drop\n- pfc_static\n- pool_nodrop_size\n- pool_drop_size\n- pool_headroom_size\n- q_noise_percent"
+                                                "description": "Hardware QoS (Object)\n\nElements:\n- buffer_peak_monitor_counter0_classes\n- buffer_input_peak\n- burst_detect_max_records\n- burst_detect_rise_threshold\n- burst_detect_rise_threshold_unit\n- burst_detect_fall_threshold\n- burst_detect_fall_threshold_unit\n- classify_ns_only\n- cpu_pg_size\n- lcpu_pg_size\n- span_pg_size\n- dynamic_buffer_sharing\n- dynamic_packet_prioritization_age_period\n- dynamic_packet_prioritization_max_num_pkts\n- eoq_stats_class_qos_group\n- etrap_age_period\n- etrap_bandwidth_threshold\n- etrap_byte_count\n- include_ipg\n- ing_pg_hdrm_reserve_percent\n- ing_pg_no_min\n- ing_pg_no_min_pgmin\n- ing_pg_share\n- mac_ipg\n- nodrop_pause_dynamic_q_limit\n- nodrop_pause_resume_offset\n- nodrop_pg_thresholds_pg_size\n- nodrop_pg_thresholds_red_threshold\n- nodrop_pg_thresholds_yellow_threshold\n- nodrop_pg_thresholds_green_threshold\n- nodrop_pg_thresholds_fx_pg_size\n- nodrop_queue_thresholds_queue_yellow\n- nodrop_queue_thresholds_queue_green\n- nodrop_queue_thresholds_fx_queue_green\n- ns_buffer_profile\n- afd_profile\n- ns_mcq3_alias_qos_group\n- oq_drops_type\n- pfc_mc_drop\n- pfc_static\n- pool_nodrop_size\n- pool_drop_size\n- pool_headroom_size\n- q_noise_percent"
                                             },
                                             "udfs": {
                                                 "type": "array",
@@ -313839,6 +313894,11 @@
                                                 ],
                                                 "title": "Fabric Mode",
                                                 "description": "Fabric Mode (String, String)"
+                                            },
+                                            "default_reset_dei": {
+                                                "type": "boolean",
+                                                "title": "Default Reset Dei",
+                                                "description": "Default Reset Dei (Boolean)"
                                             },
                                             "routing": {
                                                 "anyOf": [
@@ -314332,7 +314392,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -361121,11 +361181,21 @@
                                                 "required": [],
                                                 "title": "Priority Flow Control",
                                                 "description": "Priority Flow Control (Object)\n\nElements:\n- watch_dog_interval\n- watch_dog_interval_value\n- watch_dog_shutdown_multiplier\n- watch_dog_internal_interface_multiplier\n- watch_dog_forced\n- auto_restore_multiplier\n- fixed_restore_multiplier"
+                                            },
+                                            "statistics": {
+                                                "type": "boolean",
+                                                "title": "Statistics",
+                                                "description": "Statistics (Boolean)"
+                                            },
+                                            "qos_policies_statistics": {
+                                                "type": "boolean",
+                                                "title": "QoS Policies Statistics",
+                                                "description": "QoS Policies Statistics (Boolean)"
                                             }
                                         },
                                         "required": [],
                                         "title": "QoS",
-                                        "description": "QoS (Object)\n\nElements:\n- class_maps\n- policy_maps\n- queuing_policy_maps\n- system_service_policy_queuing_output\n- system_service_policy_queuing_output_statistics\n- network_class_maps\n- network_policy_maps\n- system_service_policy_network\n- system_service_policy_network_statistics\n- priority_flow_control"
+                                        "description": "QoS (Object)\n\nElements:\n- class_maps\n- policy_maps\n- queuing_policy_maps\n- system_service_policy_queuing_output\n- system_service_policy_queuing_output_statistics\n- network_class_maps\n- network_policy_maps\n- system_service_policy_network\n- system_service_policy_network_statistics\n- priority_flow_control\n- statistics\n- qos_policies_statistics"
                                     },
                                     "route_maps": {
                                         "type": "array",
@@ -379176,6 +379246,11 @@
                                                         "title": "Span Pg Size",
                                                         "description": "Span Pg Size (Integer, String)"
                                                     },
+                                                    "dynamic_buffer_sharing": {
+                                                        "type": "boolean",
+                                                        "title": "Dynamic Buffer Sharing",
+                                                        "description": "Dynamic Buffer Sharing (Boolean)"
+                                                    },
                                                     "dynamic_packet_prioritization_age_period": {
                                                         "anyOf": [
                                                             {
@@ -379610,7 +379685,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Hardware QoS",
-                                                "description": "Hardware QoS (Object)\n\nElements:\n- buffer_peak_monitor_counter0_classes\n- buffer_input_peak\n- burst_detect_max_records\n- burst_detect_rise_threshold\n- burst_detect_rise_threshold_unit\n- burst_detect_fall_threshold\n- burst_detect_fall_threshold_unit\n- classify_ns_only\n- cpu_pg_size\n- lcpu_pg_size\n- span_pg_size\n- dynamic_packet_prioritization_age_period\n- dynamic_packet_prioritization_max_num_pkts\n- eoq_stats_class_qos_group\n- etrap_age_period\n- etrap_bandwidth_threshold\n- etrap_byte_count\n- include_ipg\n- ing_pg_hdrm_reserve_percent\n- ing_pg_no_min\n- ing_pg_no_min_pgmin\n- ing_pg_share\n- mac_ipg\n- nodrop_pause_dynamic_q_limit\n- nodrop_pause_resume_offset\n- nodrop_pg_thresholds_pg_size\n- nodrop_pg_thresholds_red_threshold\n- nodrop_pg_thresholds_yellow_threshold\n- nodrop_pg_thresholds_green_threshold\n- nodrop_pg_thresholds_fx_pg_size\n- nodrop_queue_thresholds_queue_yellow\n- nodrop_queue_thresholds_queue_green\n- nodrop_queue_thresholds_fx_queue_green\n- ns_buffer_profile\n- afd_profile\n- ns_mcq3_alias_qos_group\n- oq_drops_type\n- pfc_mc_drop\n- pfc_static\n- pool_nodrop_size\n- pool_drop_size\n- pool_headroom_size\n- q_noise_percent"
+                                                "description": "Hardware QoS (Object)\n\nElements:\n- buffer_peak_monitor_counter0_classes\n- buffer_input_peak\n- burst_detect_max_records\n- burst_detect_rise_threshold\n- burst_detect_rise_threshold_unit\n- burst_detect_fall_threshold\n- burst_detect_fall_threshold_unit\n- classify_ns_only\n- cpu_pg_size\n- lcpu_pg_size\n- span_pg_size\n- dynamic_buffer_sharing\n- dynamic_packet_prioritization_age_period\n- dynamic_packet_prioritization_max_num_pkts\n- eoq_stats_class_qos_group\n- etrap_age_period\n- etrap_bandwidth_threshold\n- etrap_byte_count\n- include_ipg\n- ing_pg_hdrm_reserve_percent\n- ing_pg_no_min\n- ing_pg_no_min_pgmin\n- ing_pg_share\n- mac_ipg\n- nodrop_pause_dynamic_q_limit\n- nodrop_pause_resume_offset\n- nodrop_pg_thresholds_pg_size\n- nodrop_pg_thresholds_red_threshold\n- nodrop_pg_thresholds_yellow_threshold\n- nodrop_pg_thresholds_green_threshold\n- nodrop_pg_thresholds_fx_pg_size\n- nodrop_queue_thresholds_queue_yellow\n- nodrop_queue_thresholds_queue_green\n- nodrop_queue_thresholds_fx_queue_green\n- ns_buffer_profile\n- afd_profile\n- ns_mcq3_alias_qos_group\n- oq_drops_type\n- pfc_mc_drop\n- pfc_static\n- pool_nodrop_size\n- pool_drop_size\n- pool_headroom_size\n- q_noise_percent"
                                             },
                                             "udfs": {
                                                 "type": "array",
@@ -379997,6 +380072,11 @@
                                                 ],
                                                 "title": "Fabric Mode",
                                                 "description": "Fabric Mode (String, String)"
+                                            },
+                                            "default_reset_dei": {
+                                                "type": "boolean",
+                                                "title": "Default Reset Dei",
+                                                "description": "Default Reset Dei (Boolean)"
                                             },
                                             "routing": {
                                                 "anyOf": [
@@ -380490,7 +380570,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
