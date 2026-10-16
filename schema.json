@@ -177826,6 +177826,23 @@
                                                                     "title": "Set Precedence Tunnel",
                                                                     "description": "Set Precedence Tunnel (Boolean)"
                                                                 },
+                                                                "set_dlb_mode": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "flowlet",
+                                                                                "per-packet"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Set Dlb Mode",
+                                                                    "description": "Set Dlb Mode (String, String)"
+                                                                },
                                                                 "police": {
                                                                     "type": "object",
                                                                     "additionalProperties": false,
@@ -178241,7 +178258,7 @@
                                                             ]
                                                         },
                                                         "title": "Classes",
-                                                        "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- set_qos_group\n- set_dscp\n- set_cos\n- set_precedence\n- set_precedence_tunnel\n- police"
+                                                        "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- set_qos_group\n- set_dscp\n- set_cos\n- set_precedence\n- set_precedence_tunnel\n- set_dlb_mode\n- police"
                                                     }
                                                 },
                                                 "required": [
@@ -196444,6 +196461,344 @@
                                                     "title": "Disable Parse Error",
                                                     "description": "Disable Parse Error (Boolean)"
                                                 },
+                                                "dlb": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "enabled": {
+                                                            "type": "boolean",
+                                                            "title": "Enabled",
+                                                            "description": "Enabled (Boolean)"
+                                                        },
+                                                        "dlb_interfaces": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "interface_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "ethernet"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface Type",
+                                                                        "description": "Interface Type (String, String)"
+                                                                    },
+                                                                    "interface_id": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "integer"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface ID",
+                                                                        "description": "Interface ID (String, Integer)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "interface_type",
+                                                                    "interface_id"
+                                                                ]
+                                                            },
+                                                            "title": "Dlb Interfaces",
+                                                            "description": "Dlb Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                        },
+                                                        "dlb_interface_all": {
+                                                            "type": "boolean",
+                                                            "title": "Dlb Interface All",
+                                                            "description": "Dlb Interface All (Boolean)"
+                                                        },
+                                                        "mode": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "flowlet",
+                                                                        "per-packet",
+                                                                        "policy-driven-flowlet",
+                                                                        "policy-driven-per-packet",
+                                                                        "policy-driven-mixed-default-flowlet",
+                                                                        "policy-driven-mixed-default-per-packet",
+                                                                        "policy-driven-mixed-default-ecmp"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Mode",
+                                                            "description": "Mode (String, String)"
+                                                        },
+                                                        "flowlet_aging": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 2000000
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Flowlet Aging",
+                                                            "description": "Flowlet Aging (Integer, String)"
+                                                        },
+                                                        "dre_thresholds_level_1": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 100
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Dre Thresholds Level 1",
+                                                            "description": "Dre Thresholds Level 1 (Integer, String)"
+                                                        },
+                                                        "dre_thresholds_level_2": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 100
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Dre Thresholds Level 2",
+                                                            "description": "Dre Thresholds Level 2 (Integer, String)"
+                                                        },
+                                                        "dre_thresholds_level_3": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 100
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Dre Thresholds Level 3",
+                                                            "description": "Dre Thresholds Level 3 (Integer, String)"
+                                                        },
+                                                        "dre_thresholds_level_4": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 100
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Dre Thresholds Level 4",
+                                                            "description": "Dre Thresholds Level 4 (Integer, String)"
+                                                        },
+                                                        "dre_thresholds_level_5": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 100
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Dre Thresholds Level 5",
+                                                            "description": "Dre Thresholds Level 5 (Integer, String)"
+                                                        },
+                                                        "dre_thresholds_level_6": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 100
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Dre Thresholds Level 6",
+                                                            "description": "Dre Thresholds Level 6 (Integer, String)"
+                                                        },
+                                                        "dre_thresholds_level_7": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 100
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Dre Thresholds Level 7",
+                                                            "description": "Dre Thresholds Level 7 (Integer, String)"
+                                                        },
+                                                        "mac_address": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "MAC Address",
+                                                            "description": "MAC Address (String, String)"
+                                                        },
+                                                        "decay_factor": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 15
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Decay Factor",
+                                                            "description": "Decay Factor (Integer, String)"
+                                                        },
+                                                        "sampling_interval": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "enum": [
+                                                                        512,
+                                                                        1000,
+                                                                        2000,
+                                                                        4000,
+                                                                        8000,
+                                                                        16000,
+                                                                        32000,
+                                                                        64000,
+                                                                        128000,
+                                                                        256000,
+                                                                        512000,
+                                                                        1024000,
+                                                                        2048000,
+                                                                        4096000,
+                                                                        8192000,
+                                                                        16384000
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Sampling Interval",
+                                                            "description": "Sampling Interval (Integer, String)"
+                                                        },
+                                                        "load_awareness": {
+                                                            "type": "boolean",
+                                                            "title": "Load Awareness",
+                                                            "description": "Load Awareness (Boolean)"
+                                                        },
+                                                        "static_pinning": {
+                                                            "type": "boolean",
+                                                            "title": "Static Pinning",
+                                                            "description": "Static Pinning (Boolean)"
+                                                        },
+                                                        "static_pinnings": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "source_interface_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "ethernet"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Source Interface Type",
+                                                                        "description": "Source Interface Type (String, String)"
+                                                                    },
+                                                                    "source_interface_id": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "integer"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Source Interface ID",
+                                                                        "description": "Source Interface ID (String, Integer)"
+                                                                    },
+                                                                    "destination_interface_type": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "ethernet"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Destination Interface Type",
+                                                                        "description": "Destination Interface Type (String, String)"
+                                                                    },
+                                                                    "destination_interface_id": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "integer"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Destination Interface ID",
+                                                                        "description": "Destination Interface ID (String, Integer)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "source_interface_type",
+                                                                    "source_interface_id",
+                                                                    "destination_interface_type",
+                                                                    "destination_interface_id"
+                                                                ]
+                                                            },
+                                                            "title": "Static Pinnings",
+                                                            "description": "Static Pinnings (List - Object)\n\nElements:\n- source_interface_type (required)\n- source_interface_id (required)\n- destination_interface_type (required)\n- destination_interface_id (required)"
+                                                        }
+                                                    },
+                                                    "required": [],
+                                                    "title": "Dlb",
+                                                    "description": "Dlb (Object)\n\nElements:\n- enabled\n- dlb_interfaces\n- dlb_interface_all\n- mode\n- flowlet_aging\n- dre_thresholds_level_1\n- dre_thresholds_level_2\n- dre_thresholds_level_3\n- dre_thresholds_level_4\n- dre_thresholds_level_5\n- dre_thresholds_level_6\n- dre_thresholds_level_7\n- mac_address\n- decay_factor\n- sampling_interval\n- load_awareness\n- static_pinning\n- static_pinnings"
+                                                },
                                                 "flow_redirect_forward_pdu": {
                                                     "type": "boolean",
                                                     "title": "Flow Redirect Forward Pdu",
@@ -196885,7 +197240,7 @@
                                             },
                                             "required": [],
                                             "title": "Hardware Profile",
-                                            "description": "Hardware Profile (Object)\n\nElements:\n- access_list_match_inner_header\n- acl_tap_aggregation\n- disable_parse_error\n- flow_redirect_forward_pdu\n- front_portmode\n- forwarding_mode\n- global_tx_span\n- high_multicast_priority\n- hardware_lou_resource_threshold\n- ingress_bd_ifacl_label_optimization\n- ingress_racl_size\n- ingress_replication_round_robin\n- ip_statistics\n- ipv6_alpm_carve_value\n- ipv6_lpm_max_entries\n- lpm_max_limit\n- multicast_dcs_check\n- multicast_flex_stats\n- multicast_lpm_max_entries\n- multicast_max_limit\n- multicast_nlb\n- multicast_racl_bridge\n- multicast_rpf_check_optimization\n- multicast_service_reflect_port\n- multicast_syslog_threshold\n- mld_snooping\n- mpls_adjacency_stats_mode\n- mpls_ecmp\n- mrouting_disable_l2_update\n- mrouting_disable_second_route_update\n- mrouting_performance_mode\n- pbr_skip_self_ip\n- pic_core\n- portmode_tuple\n- pstat\n- qos_min_buffer\n- service_template_name\n- svi_and_si_flex_stats_enable\n- svi_flex_stats\n- tcam_syslog_threshold\n- tcam_resource_templates\n- unicast_max_limit\n- unicast_syslog_threshold\n- unicast_trace\n- unknown_unicast_flood\n- urpf\n- wrr_unicast_bandwidth"
+                                            "description": "Hardware Profile (Object)\n\nElements:\n- access_list_match_inner_header\n- acl_tap_aggregation\n- disable_parse_error\n- dlb\n- flow_redirect_forward_pdu\n- front_portmode\n- forwarding_mode\n- global_tx_span\n- high_multicast_priority\n- hardware_lou_resource_threshold\n- ingress_bd_ifacl_label_optimization\n- ingress_racl_size\n- ingress_replication_round_robin\n- ip_statistics\n- ipv6_alpm_carve_value\n- ipv6_lpm_max_entries\n- lpm_max_limit\n- multicast_dcs_check\n- multicast_flex_stats\n- multicast_lpm_max_entries\n- multicast_max_limit\n- multicast_nlb\n- multicast_racl_bridge\n- multicast_rpf_check_optimization\n- multicast_service_reflect_port\n- multicast_syslog_threshold\n- mld_snooping\n- mpls_adjacency_stats_mode\n- mpls_ecmp\n- mrouting_disable_l2_update\n- mrouting_disable_second_route_update\n- mrouting_performance_mode\n- pbr_skip_self_ip\n- pic_core\n- portmode_tuple\n- pstat\n- qos_min_buffer\n- service_template_name\n- svi_and_si_flex_stats_enable\n- svi_flex_stats\n- tcam_syslog_threshold\n- tcam_resource_templates\n- unicast_max_limit\n- unicast_syslog_threshold\n- unicast_trace\n- unknown_unicast_flood\n- urpf\n- wrr_unicast_bandwidth"
                                         },
                                         "hardware_qos": {
                                             "type": "object",
@@ -235816,6 +236171,23 @@
                                                                         "title": "Set Precedence Tunnel",
                                                                         "description": "Set Precedence Tunnel (Boolean)"
                                                                     },
+                                                                    "set_dlb_mode": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "flowlet",
+                                                                                    "per-packet"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Set Dlb Mode",
+                                                                        "description": "Set Dlb Mode (String, String)"
+                                                                    },
                                                                     "police": {
                                                                         "type": "object",
                                                                         "additionalProperties": false,
@@ -236231,7 +236603,7 @@
                                                                 ]
                                                             },
                                                             "title": "Classes",
-                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- set_qos_group\n- set_dscp\n- set_cos\n- set_precedence\n- set_precedence_tunnel\n- police"
+                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- set_qos_group\n- set_dscp\n- set_cos\n- set_precedence\n- set_precedence_tunnel\n- set_dlb_mode\n- police"
                                                         }
                                                     },
                                                     "required": [
@@ -254434,6 +254806,344 @@
                                                         "title": "Disable Parse Error",
                                                         "description": "Disable Parse Error (Boolean)"
                                                     },
+                                                    "dlb": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "enabled": {
+                                                                "type": "boolean",
+                                                                "title": "Enabled",
+                                                                "description": "Enabled (Boolean)"
+                                                            },
+                                                            "dlb_interfaces": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "interface_type": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "ethernet"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Interface Type",
+                                                                            "description": "Interface Type (String, String)"
+                                                                        },
+                                                                        "interface_id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Interface ID",
+                                                                            "description": "Interface ID (String, Integer)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "interface_type",
+                                                                        "interface_id"
+                                                                    ]
+                                                                },
+                                                                "title": "Dlb Interfaces",
+                                                                "description": "Dlb Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                            },
+                                                            "dlb_interface_all": {
+                                                                "type": "boolean",
+                                                                "title": "Dlb Interface All",
+                                                                "description": "Dlb Interface All (Boolean)"
+                                                            },
+                                                            "mode": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "flowlet",
+                                                                            "per-packet",
+                                                                            "policy-driven-flowlet",
+                                                                            "policy-driven-per-packet",
+                                                                            "policy-driven-mixed-default-flowlet",
+                                                                            "policy-driven-mixed-default-per-packet",
+                                                                            "policy-driven-mixed-default-ecmp"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Mode",
+                                                                "description": "Mode (String, String)"
+                                                            },
+                                                            "flowlet_aging": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 2000000
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Flowlet Aging",
+                                                                "description": "Flowlet Aging (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_1": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 1",
+                                                                "description": "Dre Thresholds Level 1 (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_2": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 2",
+                                                                "description": "Dre Thresholds Level 2 (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_3": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 3",
+                                                                "description": "Dre Thresholds Level 3 (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_4": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 4",
+                                                                "description": "Dre Thresholds Level 4 (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_5": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 5",
+                                                                "description": "Dre Thresholds Level 5 (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_6": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 6",
+                                                                "description": "Dre Thresholds Level 6 (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_7": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 7",
+                                                                "description": "Dre Thresholds Level 7 (Integer, String)"
+                                                            },
+                                                            "mac_address": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "MAC Address",
+                                                                "description": "MAC Address (String, String)"
+                                                            },
+                                                            "decay_factor": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 15
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Decay Factor",
+                                                                "description": "Decay Factor (Integer, String)"
+                                                            },
+                                                            "sampling_interval": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "enum": [
+                                                                            512,
+                                                                            1000,
+                                                                            2000,
+                                                                            4000,
+                                                                            8000,
+                                                                            16000,
+                                                                            32000,
+                                                                            64000,
+                                                                            128000,
+                                                                            256000,
+                                                                            512000,
+                                                                            1024000,
+                                                                            2048000,
+                                                                            4096000,
+                                                                            8192000,
+                                                                            16384000
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Sampling Interval",
+                                                                "description": "Sampling Interval (Integer, String)"
+                                                            },
+                                                            "load_awareness": {
+                                                                "type": "boolean",
+                                                                "title": "Load Awareness",
+                                                                "description": "Load Awareness (Boolean)"
+                                                            },
+                                                            "static_pinning": {
+                                                                "type": "boolean",
+                                                                "title": "Static Pinning",
+                                                                "description": "Static Pinning (Boolean)"
+                                                            },
+                                                            "static_pinnings": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "source_interface_type": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "ethernet"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Source Interface Type",
+                                                                            "description": "Source Interface Type (String, String)"
+                                                                        },
+                                                                        "source_interface_id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Source Interface ID",
+                                                                            "description": "Source Interface ID (String, Integer)"
+                                                                        },
+                                                                        "destination_interface_type": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "ethernet"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Destination Interface Type",
+                                                                            "description": "Destination Interface Type (String, String)"
+                                                                        },
+                                                                        "destination_interface_id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Destination Interface ID",
+                                                                            "description": "Destination Interface ID (String, Integer)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "source_interface_type",
+                                                                        "source_interface_id",
+                                                                        "destination_interface_type",
+                                                                        "destination_interface_id"
+                                                                    ]
+                                                                },
+                                                                "title": "Static Pinnings",
+                                                                "description": "Static Pinnings (List - Object)\n\nElements:\n- source_interface_type (required)\n- source_interface_id (required)\n- destination_interface_type (required)\n- destination_interface_id (required)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Dlb",
+                                                        "description": "Dlb (Object)\n\nElements:\n- enabled\n- dlb_interfaces\n- dlb_interface_all\n- mode\n- flowlet_aging\n- dre_thresholds_level_1\n- dre_thresholds_level_2\n- dre_thresholds_level_3\n- dre_thresholds_level_4\n- dre_thresholds_level_5\n- dre_thresholds_level_6\n- dre_thresholds_level_7\n- mac_address\n- decay_factor\n- sampling_interval\n- load_awareness\n- static_pinning\n- static_pinnings"
+                                                    },
                                                     "flow_redirect_forward_pdu": {
                                                         "type": "boolean",
                                                         "title": "Flow Redirect Forward Pdu",
@@ -254875,7 +255585,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Hardware Profile",
-                                                "description": "Hardware Profile (Object)\n\nElements:\n- access_list_match_inner_header\n- acl_tap_aggregation\n- disable_parse_error\n- flow_redirect_forward_pdu\n- front_portmode\n- forwarding_mode\n- global_tx_span\n- high_multicast_priority\n- hardware_lou_resource_threshold\n- ingress_bd_ifacl_label_optimization\n- ingress_racl_size\n- ingress_replication_round_robin\n- ip_statistics\n- ipv6_alpm_carve_value\n- ipv6_lpm_max_entries\n- lpm_max_limit\n- multicast_dcs_check\n- multicast_flex_stats\n- multicast_lpm_max_entries\n- multicast_max_limit\n- multicast_nlb\n- multicast_racl_bridge\n- multicast_rpf_check_optimization\n- multicast_service_reflect_port\n- multicast_syslog_threshold\n- mld_snooping\n- mpls_adjacency_stats_mode\n- mpls_ecmp\n- mrouting_disable_l2_update\n- mrouting_disable_second_route_update\n- mrouting_performance_mode\n- pbr_skip_self_ip\n- pic_core\n- portmode_tuple\n- pstat\n- qos_min_buffer\n- service_template_name\n- svi_and_si_flex_stats_enable\n- svi_flex_stats\n- tcam_syslog_threshold\n- tcam_resource_templates\n- unicast_max_limit\n- unicast_syslog_threshold\n- unicast_trace\n- unknown_unicast_flood\n- urpf\n- wrr_unicast_bandwidth"
+                                                "description": "Hardware Profile (Object)\n\nElements:\n- access_list_match_inner_header\n- acl_tap_aggregation\n- disable_parse_error\n- dlb\n- flow_redirect_forward_pdu\n- front_portmode\n- forwarding_mode\n- global_tx_span\n- high_multicast_priority\n- hardware_lou_resource_threshold\n- ingress_bd_ifacl_label_optimization\n- ingress_racl_size\n- ingress_replication_round_robin\n- ip_statistics\n- ipv6_alpm_carve_value\n- ipv6_lpm_max_entries\n- lpm_max_limit\n- multicast_dcs_check\n- multicast_flex_stats\n- multicast_lpm_max_entries\n- multicast_max_limit\n- multicast_nlb\n- multicast_racl_bridge\n- multicast_rpf_check_optimization\n- multicast_service_reflect_port\n- multicast_syslog_threshold\n- mld_snooping\n- mpls_adjacency_stats_mode\n- mpls_ecmp\n- mrouting_disable_l2_update\n- mrouting_disable_second_route_update\n- mrouting_performance_mode\n- pbr_skip_self_ip\n- pic_core\n- portmode_tuple\n- pstat\n- qos_min_buffer\n- service_template_name\n- svi_and_si_flex_stats_enable\n- svi_flex_stats\n- tcam_syslog_threshold\n- tcam_resource_templates\n- unicast_max_limit\n- unicast_syslog_threshold\n- unicast_trace\n- unknown_unicast_flood\n- urpf\n- wrr_unicast_bandwidth"
                                             },
                                             "hardware_qos": {
                                                 "type": "object",
@@ -293839,6 +294549,23 @@
                                                                         "title": "Set Precedence Tunnel",
                                                                         "description": "Set Precedence Tunnel (Boolean)"
                                                                     },
+                                                                    "set_dlb_mode": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "flowlet",
+                                                                                    "per-packet"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Set Dlb Mode",
+                                                                        "description": "Set Dlb Mode (String, String)"
+                                                                    },
                                                                     "police": {
                                                                         "type": "object",
                                                                         "additionalProperties": false,
@@ -294254,7 +294981,7 @@
                                                                 ]
                                                             },
                                                             "title": "Classes",
-                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- set_qos_group\n- set_dscp\n- set_cos\n- set_precedence\n- set_precedence_tunnel\n- police"
+                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- set_qos_group\n- set_dscp\n- set_cos\n- set_precedence\n- set_precedence_tunnel\n- set_dlb_mode\n- police"
                                                         }
                                                     },
                                                     "required": [
@@ -312457,6 +313184,344 @@
                                                         "title": "Disable Parse Error",
                                                         "description": "Disable Parse Error (Boolean)"
                                                     },
+                                                    "dlb": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "enabled": {
+                                                                "type": "boolean",
+                                                                "title": "Enabled",
+                                                                "description": "Enabled (Boolean)"
+                                                            },
+                                                            "dlb_interfaces": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "interface_type": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "ethernet"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Interface Type",
+                                                                            "description": "Interface Type (String, String)"
+                                                                        },
+                                                                        "interface_id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Interface ID",
+                                                                            "description": "Interface ID (String, Integer)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "interface_type",
+                                                                        "interface_id"
+                                                                    ]
+                                                                },
+                                                                "title": "Dlb Interfaces",
+                                                                "description": "Dlb Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                            },
+                                                            "dlb_interface_all": {
+                                                                "type": "boolean",
+                                                                "title": "Dlb Interface All",
+                                                                "description": "Dlb Interface All (Boolean)"
+                                                            },
+                                                            "mode": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "flowlet",
+                                                                            "per-packet",
+                                                                            "policy-driven-flowlet",
+                                                                            "policy-driven-per-packet",
+                                                                            "policy-driven-mixed-default-flowlet",
+                                                                            "policy-driven-mixed-default-per-packet",
+                                                                            "policy-driven-mixed-default-ecmp"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Mode",
+                                                                "description": "Mode (String, String)"
+                                                            },
+                                                            "flowlet_aging": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 2000000
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Flowlet Aging",
+                                                                "description": "Flowlet Aging (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_1": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 1",
+                                                                "description": "Dre Thresholds Level 1 (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_2": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 2",
+                                                                "description": "Dre Thresholds Level 2 (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_3": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 3",
+                                                                "description": "Dre Thresholds Level 3 (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_4": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 4",
+                                                                "description": "Dre Thresholds Level 4 (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_5": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 5",
+                                                                "description": "Dre Thresholds Level 5 (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_6": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 6",
+                                                                "description": "Dre Thresholds Level 6 (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_7": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 7",
+                                                                "description": "Dre Thresholds Level 7 (Integer, String)"
+                                                            },
+                                                            "mac_address": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "MAC Address",
+                                                                "description": "MAC Address (String, String)"
+                                                            },
+                                                            "decay_factor": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 15
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Decay Factor",
+                                                                "description": "Decay Factor (Integer, String)"
+                                                            },
+                                                            "sampling_interval": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "enum": [
+                                                                            512,
+                                                                            1000,
+                                                                            2000,
+                                                                            4000,
+                                                                            8000,
+                                                                            16000,
+                                                                            32000,
+                                                                            64000,
+                                                                            128000,
+                                                                            256000,
+                                                                            512000,
+                                                                            1024000,
+                                                                            2048000,
+                                                                            4096000,
+                                                                            8192000,
+                                                                            16384000
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Sampling Interval",
+                                                                "description": "Sampling Interval (Integer, String)"
+                                                            },
+                                                            "load_awareness": {
+                                                                "type": "boolean",
+                                                                "title": "Load Awareness",
+                                                                "description": "Load Awareness (Boolean)"
+                                                            },
+                                                            "static_pinning": {
+                                                                "type": "boolean",
+                                                                "title": "Static Pinning",
+                                                                "description": "Static Pinning (Boolean)"
+                                                            },
+                                                            "static_pinnings": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "source_interface_type": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "ethernet"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Source Interface Type",
+                                                                            "description": "Source Interface Type (String, String)"
+                                                                        },
+                                                                        "source_interface_id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Source Interface ID",
+                                                                            "description": "Source Interface ID (String, Integer)"
+                                                                        },
+                                                                        "destination_interface_type": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "ethernet"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Destination Interface Type",
+                                                                            "description": "Destination Interface Type (String, String)"
+                                                                        },
+                                                                        "destination_interface_id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Destination Interface ID",
+                                                                            "description": "Destination Interface ID (String, Integer)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "source_interface_type",
+                                                                        "source_interface_id",
+                                                                        "destination_interface_type",
+                                                                        "destination_interface_id"
+                                                                    ]
+                                                                },
+                                                                "title": "Static Pinnings",
+                                                                "description": "Static Pinnings (List - Object)\n\nElements:\n- source_interface_type (required)\n- source_interface_id (required)\n- destination_interface_type (required)\n- destination_interface_id (required)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Dlb",
+                                                        "description": "Dlb (Object)\n\nElements:\n- enabled\n- dlb_interfaces\n- dlb_interface_all\n- mode\n- flowlet_aging\n- dre_thresholds_level_1\n- dre_thresholds_level_2\n- dre_thresholds_level_3\n- dre_thresholds_level_4\n- dre_thresholds_level_5\n- dre_thresholds_level_6\n- dre_thresholds_level_7\n- mac_address\n- decay_factor\n- sampling_interval\n- load_awareness\n- static_pinning\n- static_pinnings"
+                                                    },
                                                     "flow_redirect_forward_pdu": {
                                                         "type": "boolean",
                                                         "title": "Flow Redirect Forward Pdu",
@@ -312898,7 +313963,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Hardware Profile",
-                                                "description": "Hardware Profile (Object)\n\nElements:\n- access_list_match_inner_header\n- acl_tap_aggregation\n- disable_parse_error\n- flow_redirect_forward_pdu\n- front_portmode\n- forwarding_mode\n- global_tx_span\n- high_multicast_priority\n- hardware_lou_resource_threshold\n- ingress_bd_ifacl_label_optimization\n- ingress_racl_size\n- ingress_replication_round_robin\n- ip_statistics\n- ipv6_alpm_carve_value\n- ipv6_lpm_max_entries\n- lpm_max_limit\n- multicast_dcs_check\n- multicast_flex_stats\n- multicast_lpm_max_entries\n- multicast_max_limit\n- multicast_nlb\n- multicast_racl_bridge\n- multicast_rpf_check_optimization\n- multicast_service_reflect_port\n- multicast_syslog_threshold\n- mld_snooping\n- mpls_adjacency_stats_mode\n- mpls_ecmp\n- mrouting_disable_l2_update\n- mrouting_disable_second_route_update\n- mrouting_performance_mode\n- pbr_skip_self_ip\n- pic_core\n- portmode_tuple\n- pstat\n- qos_min_buffer\n- service_template_name\n- svi_and_si_flex_stats_enable\n- svi_flex_stats\n- tcam_syslog_threshold\n- tcam_resource_templates\n- unicast_max_limit\n- unicast_syslog_threshold\n- unicast_trace\n- unknown_unicast_flood\n- urpf\n- wrr_unicast_bandwidth"
+                                                "description": "Hardware Profile (Object)\n\nElements:\n- access_list_match_inner_header\n- acl_tap_aggregation\n- disable_parse_error\n- dlb\n- flow_redirect_forward_pdu\n- front_portmode\n- forwarding_mode\n- global_tx_span\n- high_multicast_priority\n- hardware_lou_resource_threshold\n- ingress_bd_ifacl_label_optimization\n- ingress_racl_size\n- ingress_replication_round_robin\n- ip_statistics\n- ipv6_alpm_carve_value\n- ipv6_lpm_max_entries\n- lpm_max_limit\n- multicast_dcs_check\n- multicast_flex_stats\n- multicast_lpm_max_entries\n- multicast_max_limit\n- multicast_nlb\n- multicast_racl_bridge\n- multicast_rpf_check_optimization\n- multicast_service_reflect_port\n- multicast_syslog_threshold\n- mld_snooping\n- mpls_adjacency_stats_mode\n- mpls_ecmp\n- mrouting_disable_l2_update\n- mrouting_disable_second_route_update\n- mrouting_performance_mode\n- pbr_skip_self_ip\n- pic_core\n- portmode_tuple\n- pstat\n- qos_min_buffer\n- service_template_name\n- svi_and_si_flex_stats_enable\n- svi_flex_stats\n- tcam_syslog_threshold\n- tcam_resource_templates\n- unicast_max_limit\n- unicast_syslog_threshold\n- unicast_trace\n- unknown_unicast_flood\n- urpf\n- wrr_unicast_bandwidth"
                                             },
                                             "hardware_qos": {
                                                 "type": "object",
@@ -360017,6 +361082,23 @@
                                                                         "title": "Set Precedence Tunnel",
                                                                         "description": "Set Precedence Tunnel (Boolean)"
                                                                     },
+                                                                    "set_dlb_mode": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "flowlet",
+                                                                                    "per-packet"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Set Dlb Mode",
+                                                                        "description": "Set Dlb Mode (String, String)"
+                                                                    },
                                                                     "police": {
                                                                         "type": "object",
                                                                         "additionalProperties": false,
@@ -360432,7 +361514,7 @@
                                                                 ]
                                                             },
                                                             "title": "Classes",
-                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- set_qos_group\n- set_dscp\n- set_cos\n- set_precedence\n- set_precedence_tunnel\n- police"
+                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- set_qos_group\n- set_dscp\n- set_cos\n- set_precedence\n- set_precedence_tunnel\n- set_dlb_mode\n- police"
                                                         }
                                                     },
                                                     "required": [
@@ -378635,6 +379717,344 @@
                                                         "title": "Disable Parse Error",
                                                         "description": "Disable Parse Error (Boolean)"
                                                     },
+                                                    "dlb": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "enabled": {
+                                                                "type": "boolean",
+                                                                "title": "Enabled",
+                                                                "description": "Enabled (Boolean)"
+                                                            },
+                                                            "dlb_interfaces": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "interface_type": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "ethernet"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Interface Type",
+                                                                            "description": "Interface Type (String, String)"
+                                                                        },
+                                                                        "interface_id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Interface ID",
+                                                                            "description": "Interface ID (String, Integer)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "interface_type",
+                                                                        "interface_id"
+                                                                    ]
+                                                                },
+                                                                "title": "Dlb Interfaces",
+                                                                "description": "Dlb Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                            },
+                                                            "dlb_interface_all": {
+                                                                "type": "boolean",
+                                                                "title": "Dlb Interface All",
+                                                                "description": "Dlb Interface All (Boolean)"
+                                                            },
+                                                            "mode": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "flowlet",
+                                                                            "per-packet",
+                                                                            "policy-driven-flowlet",
+                                                                            "policy-driven-per-packet",
+                                                                            "policy-driven-mixed-default-flowlet",
+                                                                            "policy-driven-mixed-default-per-packet",
+                                                                            "policy-driven-mixed-default-ecmp"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Mode",
+                                                                "description": "Mode (String, String)"
+                                                            },
+                                                            "flowlet_aging": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 2000000
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Flowlet Aging",
+                                                                "description": "Flowlet Aging (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_1": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 1",
+                                                                "description": "Dre Thresholds Level 1 (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_2": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 2",
+                                                                "description": "Dre Thresholds Level 2 (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_3": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 3",
+                                                                "description": "Dre Thresholds Level 3 (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_4": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 4",
+                                                                "description": "Dre Thresholds Level 4 (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_5": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 5",
+                                                                "description": "Dre Thresholds Level 5 (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_6": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 6",
+                                                                "description": "Dre Thresholds Level 6 (Integer, String)"
+                                                            },
+                                                            "dre_thresholds_level_7": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 100
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Dre Thresholds Level 7",
+                                                                "description": "Dre Thresholds Level 7 (Integer, String)"
+                                                            },
+                                                            "mac_address": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "MAC Address",
+                                                                "description": "MAC Address (String, String)"
+                                                            },
+                                                            "decay_factor": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 15
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Decay Factor",
+                                                                "description": "Decay Factor (Integer, String)"
+                                                            },
+                                                            "sampling_interval": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "enum": [
+                                                                            512,
+                                                                            1000,
+                                                                            2000,
+                                                                            4000,
+                                                                            8000,
+                                                                            16000,
+                                                                            32000,
+                                                                            64000,
+                                                                            128000,
+                                                                            256000,
+                                                                            512000,
+                                                                            1024000,
+                                                                            2048000,
+                                                                            4096000,
+                                                                            8192000,
+                                                                            16384000
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Sampling Interval",
+                                                                "description": "Sampling Interval (Integer, String)"
+                                                            },
+                                                            "load_awareness": {
+                                                                "type": "boolean",
+                                                                "title": "Load Awareness",
+                                                                "description": "Load Awareness (Boolean)"
+                                                            },
+                                                            "static_pinning": {
+                                                                "type": "boolean",
+                                                                "title": "Static Pinning",
+                                                                "description": "Static Pinning (Boolean)"
+                                                            },
+                                                            "static_pinnings": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "source_interface_type": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "ethernet"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Source Interface Type",
+                                                                            "description": "Source Interface Type (String, String)"
+                                                                        },
+                                                                        "source_interface_id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Source Interface ID",
+                                                                            "description": "Source Interface ID (String, Integer)"
+                                                                        },
+                                                                        "destination_interface_type": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "ethernet"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Destination Interface Type",
+                                                                            "description": "Destination Interface Type (String, String)"
+                                                                        },
+                                                                        "destination_interface_id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Destination Interface ID",
+                                                                            "description": "Destination Interface ID (String, Integer)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "source_interface_type",
+                                                                        "source_interface_id",
+                                                                        "destination_interface_type",
+                                                                        "destination_interface_id"
+                                                                    ]
+                                                                },
+                                                                "title": "Static Pinnings",
+                                                                "description": "Static Pinnings (List - Object)\n\nElements:\n- source_interface_type (required)\n- source_interface_id (required)\n- destination_interface_type (required)\n- destination_interface_id (required)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Dlb",
+                                                        "description": "Dlb (Object)\n\nElements:\n- enabled\n- dlb_interfaces\n- dlb_interface_all\n- mode\n- flowlet_aging\n- dre_thresholds_level_1\n- dre_thresholds_level_2\n- dre_thresholds_level_3\n- dre_thresholds_level_4\n- dre_thresholds_level_5\n- dre_thresholds_level_6\n- dre_thresholds_level_7\n- mac_address\n- decay_factor\n- sampling_interval\n- load_awareness\n- static_pinning\n- static_pinnings"
+                                                    },
                                                     "flow_redirect_forward_pdu": {
                                                         "type": "boolean",
                                                         "title": "Flow Redirect Forward Pdu",
@@ -379076,7 +380496,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Hardware Profile",
-                                                "description": "Hardware Profile (Object)\n\nElements:\n- access_list_match_inner_header\n- acl_tap_aggregation\n- disable_parse_error\n- flow_redirect_forward_pdu\n- front_portmode\n- forwarding_mode\n- global_tx_span\n- high_multicast_priority\n- hardware_lou_resource_threshold\n- ingress_bd_ifacl_label_optimization\n- ingress_racl_size\n- ingress_replication_round_robin\n- ip_statistics\n- ipv6_alpm_carve_value\n- ipv6_lpm_max_entries\n- lpm_max_limit\n- multicast_dcs_check\n- multicast_flex_stats\n- multicast_lpm_max_entries\n- multicast_max_limit\n- multicast_nlb\n- multicast_racl_bridge\n- multicast_rpf_check_optimization\n- multicast_service_reflect_port\n- multicast_syslog_threshold\n- mld_snooping\n- mpls_adjacency_stats_mode\n- mpls_ecmp\n- mrouting_disable_l2_update\n- mrouting_disable_second_route_update\n- mrouting_performance_mode\n- pbr_skip_self_ip\n- pic_core\n- portmode_tuple\n- pstat\n- qos_min_buffer\n- service_template_name\n- svi_and_si_flex_stats_enable\n- svi_flex_stats\n- tcam_syslog_threshold\n- tcam_resource_templates\n- unicast_max_limit\n- unicast_syslog_threshold\n- unicast_trace\n- unknown_unicast_flood\n- urpf\n- wrr_unicast_bandwidth"
+                                                "description": "Hardware Profile (Object)\n\nElements:\n- access_list_match_inner_header\n- acl_tap_aggregation\n- disable_parse_error\n- dlb\n- flow_redirect_forward_pdu\n- front_portmode\n- forwarding_mode\n- global_tx_span\n- high_multicast_priority\n- hardware_lou_resource_threshold\n- ingress_bd_ifacl_label_optimization\n- ingress_racl_size\n- ingress_replication_round_robin\n- ip_statistics\n- ipv6_alpm_carve_value\n- ipv6_lpm_max_entries\n- lpm_max_limit\n- multicast_dcs_check\n- multicast_flex_stats\n- multicast_lpm_max_entries\n- multicast_max_limit\n- multicast_nlb\n- multicast_racl_bridge\n- multicast_rpf_check_optimization\n- multicast_service_reflect_port\n- multicast_syslog_threshold\n- mld_snooping\n- mpls_adjacency_stats_mode\n- mpls_ecmp\n- mrouting_disable_l2_update\n- mrouting_disable_second_route_update\n- mrouting_performance_mode\n- pbr_skip_self_ip\n- pic_core\n- portmode_tuple\n- pstat\n- qos_min_buffer\n- service_template_name\n- svi_and_si_flex_stats_enable\n- svi_flex_stats\n- tcam_syslog_threshold\n- tcam_resource_templates\n- unicast_max_limit\n- unicast_syslog_threshold\n- unicast_trace\n- unknown_unicast_flood\n- urpf\n- wrr_unicast_bandwidth"
                                             },
                                             "hardware_qos": {
                                                 "type": "object",
