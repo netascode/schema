@@ -178306,6 +178306,20 @@
                                                                     "title": "Priority Level",
                                                                     "description": "Priority Level (Integer, String)"
                                                                 },
+                                                                "bandwidth_percent": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 100
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Bandwidth Percent",
+                                                                    "description": "Bandwidth Percent (Integer, String)"
+                                                                },
                                                                 "bandwidth_remaining_percent": {
                                                                     "anyOf": [
                                                                         {
@@ -178319,6 +178333,122 @@
                                                                     ],
                                                                     "title": "Bandwidth Remaining Percent",
                                                                     "description": "Bandwidth Remaining Percent (Integer, String)"
+                                                                },
+                                                                "shape_min": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 400000000000
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Shape Min",
+                                                                    "description": "Shape Min (Integer, String)"
+                                                                },
+                                                                "shape_min_unit": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "bps",
+                                                                                "kbps",
+                                                                                "mbps",
+                                                                                "gbps",
+                                                                                "pps",
+                                                                                "percent"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Shape Min Unit",
+                                                                    "description": "Shape Min Unit (String, String)"
+                                                                },
+                                                                "shape_max": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 400000000000
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Shape Max",
+                                                                    "description": "Shape Max (Integer, String)"
+                                                                },
+                                                                "shape_max_unit": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "bps",
+                                                                                "kbps",
+                                                                                "mbps",
+                                                                                "gbps",
+                                                                                "pps",
+                                                                                "percent"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Shape Max Unit",
+                                                                    "description": "Shape Max Unit (String, String)"
+                                                                },
+                                                                "queue_limit": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 12582913
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Queue Limit",
+                                                                    "description": "Queue Limit (Integer, String)"
+                                                                },
+                                                                "queue_limit_unit": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "bytes",
+                                                                                "kbytes",
+                                                                                "mbytes"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Queue Limit Unit",
+                                                                    "description": "Queue Limit Unit (String, String)"
+                                                                },
+                                                                "queue_limit_dynamic": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 10
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Queue Limit Dynamic",
+                                                                    "description": "Queue Limit Dynamic (Integer, String)"
                                                                 },
                                                                 "random_detect": {
                                                                     "type": "object",
@@ -178503,7 +178633,7 @@
                                                             ]
                                                         },
                                                         "title": "Classes",
-                                                        "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- priority_level\n- bandwidth_remaining_percent\n- random_detect\n- afd"
+                                                        "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- priority_level\n- bandwidth_percent\n- bandwidth_remaining_percent\n- shape_min\n- shape_min_unit\n- shape_max\n- shape_max_unit\n- queue_limit\n- queue_limit_unit\n- queue_limit_dynamic\n- random_detect\n- afd"
                                                     }
                                                 },
                                                 "required": [
@@ -235542,6 +235672,20 @@
                                                                         "title": "Priority Level",
                                                                         "description": "Priority Level (Integer, String)"
                                                                     },
+                                                                    "bandwidth_percent": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 100
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Bandwidth Percent",
+                                                                        "description": "Bandwidth Percent (Integer, String)"
+                                                                    },
                                                                     "bandwidth_remaining_percent": {
                                                                         "anyOf": [
                                                                             {
@@ -235555,6 +235699,122 @@
                                                                         ],
                                                                         "title": "Bandwidth Remaining Percent",
                                                                         "description": "Bandwidth Remaining Percent (Integer, String)"
+                                                                    },
+                                                                    "shape_min": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 400000000000
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Shape Min",
+                                                                        "description": "Shape Min (Integer, String)"
+                                                                    },
+                                                                    "shape_min_unit": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "bps",
+                                                                                    "kbps",
+                                                                                    "mbps",
+                                                                                    "gbps",
+                                                                                    "pps",
+                                                                                    "percent"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Shape Min Unit",
+                                                                        "description": "Shape Min Unit (String, String)"
+                                                                    },
+                                                                    "shape_max": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 400000000000
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Shape Max",
+                                                                        "description": "Shape Max (Integer, String)"
+                                                                    },
+                                                                    "shape_max_unit": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "bps",
+                                                                                    "kbps",
+                                                                                    "mbps",
+                                                                                    "gbps",
+                                                                                    "pps",
+                                                                                    "percent"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Shape Max Unit",
+                                                                        "description": "Shape Max Unit (String, String)"
+                                                                    },
+                                                                    "queue_limit": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 12582913
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Queue Limit",
+                                                                        "description": "Queue Limit (Integer, String)"
+                                                                    },
+                                                                    "queue_limit_unit": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "bytes",
+                                                                                    "kbytes",
+                                                                                    "mbytes"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Queue Limit Unit",
+                                                                        "description": "Queue Limit Unit (String, String)"
+                                                                    },
+                                                                    "queue_limit_dynamic": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 10
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Queue Limit Dynamic",
+                                                                        "description": "Queue Limit Dynamic (Integer, String)"
                                                                     },
                                                                     "random_detect": {
                                                                         "type": "object",
@@ -235739,7 +235999,7 @@
                                                                 ]
                                                             },
                                                             "title": "Classes",
-                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- priority_level\n- bandwidth_remaining_percent\n- random_detect\n- afd"
+                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- priority_level\n- bandwidth_percent\n- bandwidth_remaining_percent\n- shape_min\n- shape_min_unit\n- shape_max\n- shape_max_unit\n- queue_limit\n- queue_limit_unit\n- queue_limit_dynamic\n- random_detect\n- afd"
                                                         }
                                                     },
                                                     "required": [
@@ -292811,6 +293071,20 @@
                                                                         "title": "Priority Level",
                                                                         "description": "Priority Level (Integer, String)"
                                                                     },
+                                                                    "bandwidth_percent": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 100
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Bandwidth Percent",
+                                                                        "description": "Bandwidth Percent (Integer, String)"
+                                                                    },
                                                                     "bandwidth_remaining_percent": {
                                                                         "anyOf": [
                                                                             {
@@ -292824,6 +293098,122 @@
                                                                         ],
                                                                         "title": "Bandwidth Remaining Percent",
                                                                         "description": "Bandwidth Remaining Percent (Integer, String)"
+                                                                    },
+                                                                    "shape_min": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 400000000000
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Shape Min",
+                                                                        "description": "Shape Min (Integer, String)"
+                                                                    },
+                                                                    "shape_min_unit": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "bps",
+                                                                                    "kbps",
+                                                                                    "mbps",
+                                                                                    "gbps",
+                                                                                    "pps",
+                                                                                    "percent"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Shape Min Unit",
+                                                                        "description": "Shape Min Unit (String, String)"
+                                                                    },
+                                                                    "shape_max": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 400000000000
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Shape Max",
+                                                                        "description": "Shape Max (Integer, String)"
+                                                                    },
+                                                                    "shape_max_unit": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "bps",
+                                                                                    "kbps",
+                                                                                    "mbps",
+                                                                                    "gbps",
+                                                                                    "pps",
+                                                                                    "percent"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Shape Max Unit",
+                                                                        "description": "Shape Max Unit (String, String)"
+                                                                    },
+                                                                    "queue_limit": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 12582913
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Queue Limit",
+                                                                        "description": "Queue Limit (Integer, String)"
+                                                                    },
+                                                                    "queue_limit_unit": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "bytes",
+                                                                                    "kbytes",
+                                                                                    "mbytes"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Queue Limit Unit",
+                                                                        "description": "Queue Limit Unit (String, String)"
+                                                                    },
+                                                                    "queue_limit_dynamic": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 10
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Queue Limit Dynamic",
+                                                                        "description": "Queue Limit Dynamic (Integer, String)"
                                                                     },
                                                                     "random_detect": {
                                                                         "type": "object",
@@ -293008,7 +293398,7 @@
                                                                 ]
                                                             },
                                                             "title": "Classes",
-                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- priority_level\n- bandwidth_remaining_percent\n- random_detect\n- afd"
+                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- priority_level\n- bandwidth_percent\n- bandwidth_remaining_percent\n- shape_min\n- shape_min_unit\n- shape_max\n- shape_max_unit\n- queue_limit\n- queue_limit_unit\n- queue_limit_dynamic\n- random_detect\n- afd"
                                                         }
                                                     },
                                                     "required": [
@@ -358235,6 +358625,20 @@
                                                                         "title": "Priority Level",
                                                                         "description": "Priority Level (Integer, String)"
                                                                     },
+                                                                    "bandwidth_percent": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 100
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Bandwidth Percent",
+                                                                        "description": "Bandwidth Percent (Integer, String)"
+                                                                    },
                                                                     "bandwidth_remaining_percent": {
                                                                         "anyOf": [
                                                                             {
@@ -358248,6 +358652,122 @@
                                                                         ],
                                                                         "title": "Bandwidth Remaining Percent",
                                                                         "description": "Bandwidth Remaining Percent (Integer, String)"
+                                                                    },
+                                                                    "shape_min": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 400000000000
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Shape Min",
+                                                                        "description": "Shape Min (Integer, String)"
+                                                                    },
+                                                                    "shape_min_unit": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "bps",
+                                                                                    "kbps",
+                                                                                    "mbps",
+                                                                                    "gbps",
+                                                                                    "pps",
+                                                                                    "percent"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Shape Min Unit",
+                                                                        "description": "Shape Min Unit (String, String)"
+                                                                    },
+                                                                    "shape_max": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 400000000000
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Shape Max",
+                                                                        "description": "Shape Max (Integer, String)"
+                                                                    },
+                                                                    "shape_max_unit": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "bps",
+                                                                                    "kbps",
+                                                                                    "mbps",
+                                                                                    "gbps",
+                                                                                    "pps",
+                                                                                    "percent"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Shape Max Unit",
+                                                                        "description": "Shape Max Unit (String, String)"
+                                                                    },
+                                                                    "queue_limit": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 12582913
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Queue Limit",
+                                                                        "description": "Queue Limit (Integer, String)"
+                                                                    },
+                                                                    "queue_limit_unit": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "bytes",
+                                                                                    "kbytes",
+                                                                                    "mbytes"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Queue Limit Unit",
+                                                                        "description": "Queue Limit Unit (String, String)"
+                                                                    },
+                                                                    "queue_limit_dynamic": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 10
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Queue Limit Dynamic",
+                                                                        "description": "Queue Limit Dynamic (Integer, String)"
                                                                     },
                                                                     "random_detect": {
                                                                         "type": "object",
@@ -358432,7 +358952,7 @@
                                                                 ]
                                                             },
                                                             "title": "Classes",
-                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- priority_level\n- bandwidth_remaining_percent\n- random_detect\n- afd"
+                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- priority_level\n- bandwidth_percent\n- bandwidth_remaining_percent\n- shape_min\n- shape_min_unit\n- shape_max\n- shape_max_unit\n- queue_limit\n- queue_limit_unit\n- queue_limit_dynamic\n- random_detect\n- afd"
                                                         }
                                                     },
                                                     "required": [
