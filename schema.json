@@ -178143,6 +178143,183 @@
                                                                     ],
                                                                     "title": "Bandwidth Remaining Percent",
                                                                     "description": "Bandwidth Remaining Percent (Integer, String)"
+                                                                },
+                                                                "random_detect": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "minimum_threshold": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "integer",
+                                                                                    "maximum": 52428800
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Minimum Threshold",
+                                                                            "description": "Minimum Threshold (Integer, String)"
+                                                                        },
+                                                                        "minimum_threshold_unit": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "packets",
+                                                                                        "bytes",
+                                                                                        "kbytes",
+                                                                                        "mbytes"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Minimum Threshold Unit",
+                                                                            "description": "Minimum Threshold Unit (String, String)"
+                                                                        },
+                                                                        "maximum_threshold": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "integer",
+                                                                                    "maximum": 52428800
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Maximum Threshold",
+                                                                            "description": "Maximum Threshold (Integer, String)"
+                                                                        },
+                                                                        "maximum_threshold_unit": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "packets",
+                                                                                        "bytes",
+                                                                                        "kbytes",
+                                                                                        "mbytes"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Maximum Threshold Unit",
+                                                                            "description": "Maximum Threshold Unit (String, String)"
+                                                                        },
+                                                                        "drop_probability": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "integer",
+                                                                                    "maximum": 100
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Drop Probability",
+                                                                            "description": "Drop Probability (Integer, String)"
+                                                                        },
+                                                                        "weight": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "integer",
+                                                                                    "maximum": 15
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Weight",
+                                                                            "description": "Weight (Integer, String)"
+                                                                        },
+                                                                        "cap_average": {
+                                                                            "type": "boolean",
+                                                                            "title": "Cap Average",
+                                                                            "description": "Cap Average (Boolean)"
+                                                                        },
+                                                                        "threshold": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "burst-optimized",
+                                                                                        "mesh-optimized"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Threshold",
+                                                                            "description": "Threshold (String, String)"
+                                                                        },
+                                                                        "ecn": {
+                                                                            "type": "boolean",
+                                                                            "title": "Ecn",
+                                                                            "description": "Ecn (Boolean)"
+                                                                        }
+                                                                    },
+                                                                    "required": [],
+                                                                    "title": "Random Detect",
+                                                                    "description": "Random Detect (Object)\n\nElements:\n- minimum_threshold\n- minimum_threshold_unit\n- maximum_threshold\n- maximum_threshold_unit\n- drop_probability\n- weight\n- cap_average\n- threshold\n- ecn"
+                                                                },
+                                                                "afd": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "queue_desired": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "integer",
+                                                                                    "minimum": 1,
+                                                                                    "maximum": 52428800
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Queue Desired",
+                                                                            "description": "Queue Desired (Integer, String)"
+                                                                        },
+                                                                        "queue_desired_unit": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "bytes",
+                                                                                        "kbytes",
+                                                                                        "mbytes"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Queue Desired Unit",
+                                                                            "description": "Queue Desired Unit (String, String)"
+                                                                        },
+                                                                        "ecn": {
+                                                                            "type": "boolean",
+                                                                            "title": "Ecn",
+                                                                            "description": "Ecn (Boolean)"
+                                                                        }
+                                                                    },
+                                                                    "required": [],
+                                                                    "title": "Afd",
+                                                                    "description": "Afd (Object)\n\nElements:\n- queue_desired\n- queue_desired_unit\n- ecn"
                                                                 }
                                                             },
                                                             "required": [
@@ -178150,7 +178327,7 @@
                                                             ]
                                                         },
                                                         "title": "Classes",
-                                                        "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- priority_level\n- bandwidth_remaining_percent"
+                                                        "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- priority_level\n- bandwidth_remaining_percent\n- random_detect\n- afd"
                                                     }
                                                 },
                                                 "required": [
@@ -178416,11 +178593,102 @@
                                             "type": "boolean",
                                             "title": "System Service Policy Network Statistics",
                                             "description": "System Service Policy Network Statistics (Boolean)"
+                                        },
+                                        "priority_flow_control": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "watch_dog_interval": {
+                                                    "type": "boolean",
+                                                    "title": "Watch Dog Interval",
+                                                    "description": "Watch Dog Interval (Boolean)"
+                                                },
+                                                "watch_dog_interval_value": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 25,
+                                                            "maximum": 1000
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Watch Dog Interval Value",
+                                                    "description": "Watch Dog Interval Value (Integer, String)"
+                                                },
+                                                "watch_dog_shutdown_multiplier": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 1,
+                                                            "maximum": 40
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Watch Dog Shutdown Multiplier",
+                                                    "description": "Watch Dog Shutdown Multiplier (Integer, String)"
+                                                },
+                                                "watch_dog_internal_interface_multiplier": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "maximum": 10
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Watch Dog Internal Interface Multiplier",
+                                                    "description": "Watch Dog Internal Interface Multiplier (Integer, String)"
+                                                },
+                                                "watch_dog_forced": {
+                                                    "type": "boolean",
+                                                    "title": "Watch Dog Forced",
+                                                    "description": "Watch Dog Forced (Boolean)"
+                                                },
+                                                "auto_restore_multiplier": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "maximum": 100
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Auto Restore Multiplier",
+                                                    "description": "Auto Restore Multiplier (Integer, String)"
+                                                },
+                                                "fixed_restore_multiplier": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "maximum": 400
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Fixed Restore Multiplier",
+                                                    "description": "Fixed Restore Multiplier (Integer, String)"
+                                                }
+                                            },
+                                            "required": [],
+                                            "title": "Priority Flow Control",
+                                            "description": "Priority Flow Control (Object)\n\nElements:\n- watch_dog_interval\n- watch_dog_interval_value\n- watch_dog_shutdown_multiplier\n- watch_dog_internal_interface_multiplier\n- watch_dog_forced\n- auto_restore_multiplier\n- fixed_restore_multiplier"
                                         }
                                     },
                                     "required": [],
                                     "title": "QoS",
-                                    "description": "QoS (Object)\n\nElements:\n- class_maps\n- policy_maps\n- queuing_policy_maps\n- system_service_policy_queuing_output\n- system_service_policy_queuing_output_statistics\n- network_class_maps\n- network_policy_maps\n- system_service_policy_network\n- system_service_policy_network_statistics"
+                                    "description": "QoS (Object)\n\nElements:\n- class_maps\n- policy_maps\n- queuing_policy_maps\n- system_service_policy_queuing_output\n- system_service_policy_queuing_output_statistics\n- network_class_maps\n- network_policy_maps\n- system_service_policy_network\n- system_service_policy_network_statistics\n- priority_flow_control"
                                 },
                                 "route_maps": {
                                     "type": "array",
@@ -234914,6 +235182,183 @@
                                                                         ],
                                                                         "title": "Bandwidth Remaining Percent",
                                                                         "description": "Bandwidth Remaining Percent (Integer, String)"
+                                                                    },
+                                                                    "random_detect": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "minimum_threshold": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 52428800
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Minimum Threshold",
+                                                                                "description": "Minimum Threshold (Integer, String)"
+                                                                            },
+                                                                            "minimum_threshold_unit": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "packets",
+                                                                                            "bytes",
+                                                                                            "kbytes",
+                                                                                            "mbytes"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Minimum Threshold Unit",
+                                                                                "description": "Minimum Threshold Unit (String, String)"
+                                                                            },
+                                                                            "maximum_threshold": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 52428800
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Maximum Threshold",
+                                                                                "description": "Maximum Threshold (Integer, String)"
+                                                                            },
+                                                                            "maximum_threshold_unit": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "packets",
+                                                                                            "bytes",
+                                                                                            "kbytes",
+                                                                                            "mbytes"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Maximum Threshold Unit",
+                                                                                "description": "Maximum Threshold Unit (String, String)"
+                                                                            },
+                                                                            "drop_probability": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 100
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Drop Probability",
+                                                                                "description": "Drop Probability (Integer, String)"
+                                                                            },
+                                                                            "weight": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 15
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Weight",
+                                                                                "description": "Weight (Integer, String)"
+                                                                            },
+                                                                            "cap_average": {
+                                                                                "type": "boolean",
+                                                                                "title": "Cap Average",
+                                                                                "description": "Cap Average (Boolean)"
+                                                                            },
+                                                                            "threshold": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "burst-optimized",
+                                                                                            "mesh-optimized"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Threshold",
+                                                                                "description": "Threshold (String, String)"
+                                                                            },
+                                                                            "ecn": {
+                                                                                "type": "boolean",
+                                                                                "title": "Ecn",
+                                                                                "description": "Ecn (Boolean)"
+                                                                            }
+                                                                        },
+                                                                        "required": [],
+                                                                        "title": "Random Detect",
+                                                                        "description": "Random Detect (Object)\n\nElements:\n- minimum_threshold\n- minimum_threshold_unit\n- maximum_threshold\n- maximum_threshold_unit\n- drop_probability\n- weight\n- cap_average\n- threshold\n- ecn"
+                                                                    },
+                                                                    "afd": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "queue_desired": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "minimum": 1,
+                                                                                        "maximum": 52428800
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Queue Desired",
+                                                                                "description": "Queue Desired (Integer, String)"
+                                                                            },
+                                                                            "queue_desired_unit": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "bytes",
+                                                                                            "kbytes",
+                                                                                            "mbytes"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Queue Desired Unit",
+                                                                                "description": "Queue Desired Unit (String, String)"
+                                                                            },
+                                                                            "ecn": {
+                                                                                "type": "boolean",
+                                                                                "title": "Ecn",
+                                                                                "description": "Ecn (Boolean)"
+                                                                            }
+                                                                        },
+                                                                        "required": [],
+                                                                        "title": "Afd",
+                                                                        "description": "Afd (Object)\n\nElements:\n- queue_desired\n- queue_desired_unit\n- ecn"
                                                                     }
                                                                 },
                                                                 "required": [
@@ -234921,7 +235366,7 @@
                                                                 ]
                                                             },
                                                             "title": "Classes",
-                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- priority_level\n- bandwidth_remaining_percent"
+                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- priority_level\n- bandwidth_remaining_percent\n- random_detect\n- afd"
                                                         }
                                                     },
                                                     "required": [
@@ -235187,11 +235632,102 @@
                                                 "type": "boolean",
                                                 "title": "System Service Policy Network Statistics",
                                                 "description": "System Service Policy Network Statistics (Boolean)"
+                                            },
+                                            "priority_flow_control": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "watch_dog_interval": {
+                                                        "type": "boolean",
+                                                        "title": "Watch Dog Interval",
+                                                        "description": "Watch Dog Interval (Boolean)"
+                                                    },
+                                                    "watch_dog_interval_value": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 25,
+                                                                "maximum": 1000
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Watch Dog Interval Value",
+                                                        "description": "Watch Dog Interval Value (Integer, String)"
+                                                    },
+                                                    "watch_dog_shutdown_multiplier": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 40
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Watch Dog Shutdown Multiplier",
+                                                        "description": "Watch Dog Shutdown Multiplier (Integer, String)"
+                                                    },
+                                                    "watch_dog_internal_interface_multiplier": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 10
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Watch Dog Internal Interface Multiplier",
+                                                        "description": "Watch Dog Internal Interface Multiplier (Integer, String)"
+                                                    },
+                                                    "watch_dog_forced": {
+                                                        "type": "boolean",
+                                                        "title": "Watch Dog Forced",
+                                                        "description": "Watch Dog Forced (Boolean)"
+                                                    },
+                                                    "auto_restore_multiplier": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 100
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Auto Restore Multiplier",
+                                                        "description": "Auto Restore Multiplier (Integer, String)"
+                                                    },
+                                                    "fixed_restore_multiplier": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 400
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Fixed Restore Multiplier",
+                                                        "description": "Fixed Restore Multiplier (Integer, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Priority Flow Control",
+                                                "description": "Priority Flow Control (Object)\n\nElements:\n- watch_dog_interval\n- watch_dog_interval_value\n- watch_dog_shutdown_multiplier\n- watch_dog_internal_interface_multiplier\n- watch_dog_forced\n- auto_restore_multiplier\n- fixed_restore_multiplier"
                                             }
                                         },
                                         "required": [],
                                         "title": "QoS",
-                                        "description": "QoS (Object)\n\nElements:\n- class_maps\n- policy_maps\n- queuing_policy_maps\n- system_service_policy_queuing_output\n- system_service_policy_queuing_output_statistics\n- network_class_maps\n- network_policy_maps\n- system_service_policy_network\n- system_service_policy_network_statistics"
+                                        "description": "QoS (Object)\n\nElements:\n- class_maps\n- policy_maps\n- queuing_policy_maps\n- system_service_policy_queuing_output\n- system_service_policy_queuing_output_statistics\n- network_class_maps\n- network_policy_maps\n- system_service_policy_network\n- system_service_policy_network_statistics\n- priority_flow_control"
                                     },
                                     "route_maps": {
                                         "type": "array",
@@ -291718,6 +292254,183 @@
                                                                         ],
                                                                         "title": "Bandwidth Remaining Percent",
                                                                         "description": "Bandwidth Remaining Percent (Integer, String)"
+                                                                    },
+                                                                    "random_detect": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "minimum_threshold": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 52428800
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Minimum Threshold",
+                                                                                "description": "Minimum Threshold (Integer, String)"
+                                                                            },
+                                                                            "minimum_threshold_unit": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "packets",
+                                                                                            "bytes",
+                                                                                            "kbytes",
+                                                                                            "mbytes"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Minimum Threshold Unit",
+                                                                                "description": "Minimum Threshold Unit (String, String)"
+                                                                            },
+                                                                            "maximum_threshold": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 52428800
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Maximum Threshold",
+                                                                                "description": "Maximum Threshold (Integer, String)"
+                                                                            },
+                                                                            "maximum_threshold_unit": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "packets",
+                                                                                            "bytes",
+                                                                                            "kbytes",
+                                                                                            "mbytes"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Maximum Threshold Unit",
+                                                                                "description": "Maximum Threshold Unit (String, String)"
+                                                                            },
+                                                                            "drop_probability": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 100
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Drop Probability",
+                                                                                "description": "Drop Probability (Integer, String)"
+                                                                            },
+                                                                            "weight": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 15
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Weight",
+                                                                                "description": "Weight (Integer, String)"
+                                                                            },
+                                                                            "cap_average": {
+                                                                                "type": "boolean",
+                                                                                "title": "Cap Average",
+                                                                                "description": "Cap Average (Boolean)"
+                                                                            },
+                                                                            "threshold": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "burst-optimized",
+                                                                                            "mesh-optimized"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Threshold",
+                                                                                "description": "Threshold (String, String)"
+                                                                            },
+                                                                            "ecn": {
+                                                                                "type": "boolean",
+                                                                                "title": "Ecn",
+                                                                                "description": "Ecn (Boolean)"
+                                                                            }
+                                                                        },
+                                                                        "required": [],
+                                                                        "title": "Random Detect",
+                                                                        "description": "Random Detect (Object)\n\nElements:\n- minimum_threshold\n- minimum_threshold_unit\n- maximum_threshold\n- maximum_threshold_unit\n- drop_probability\n- weight\n- cap_average\n- threshold\n- ecn"
+                                                                    },
+                                                                    "afd": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "queue_desired": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "minimum": 1,
+                                                                                        "maximum": 52428800
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Queue Desired",
+                                                                                "description": "Queue Desired (Integer, String)"
+                                                                            },
+                                                                            "queue_desired_unit": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "bytes",
+                                                                                            "kbytes",
+                                                                                            "mbytes"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Queue Desired Unit",
+                                                                                "description": "Queue Desired Unit (String, String)"
+                                                                            },
+                                                                            "ecn": {
+                                                                                "type": "boolean",
+                                                                                "title": "Ecn",
+                                                                                "description": "Ecn (Boolean)"
+                                                                            }
+                                                                        },
+                                                                        "required": [],
+                                                                        "title": "Afd",
+                                                                        "description": "Afd (Object)\n\nElements:\n- queue_desired\n- queue_desired_unit\n- ecn"
                                                                     }
                                                                 },
                                                                 "required": [
@@ -291725,7 +292438,7 @@
                                                                 ]
                                                             },
                                                             "title": "Classes",
-                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- priority_level\n- bandwidth_remaining_percent"
+                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- priority_level\n- bandwidth_remaining_percent\n- random_detect\n- afd"
                                                         }
                                                     },
                                                     "required": [
@@ -291991,11 +292704,102 @@
                                                 "type": "boolean",
                                                 "title": "System Service Policy Network Statistics",
                                                 "description": "System Service Policy Network Statistics (Boolean)"
+                                            },
+                                            "priority_flow_control": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "watch_dog_interval": {
+                                                        "type": "boolean",
+                                                        "title": "Watch Dog Interval",
+                                                        "description": "Watch Dog Interval (Boolean)"
+                                                    },
+                                                    "watch_dog_interval_value": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 25,
+                                                                "maximum": 1000
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Watch Dog Interval Value",
+                                                        "description": "Watch Dog Interval Value (Integer, String)"
+                                                    },
+                                                    "watch_dog_shutdown_multiplier": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 40
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Watch Dog Shutdown Multiplier",
+                                                        "description": "Watch Dog Shutdown Multiplier (Integer, String)"
+                                                    },
+                                                    "watch_dog_internal_interface_multiplier": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 10
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Watch Dog Internal Interface Multiplier",
+                                                        "description": "Watch Dog Internal Interface Multiplier (Integer, String)"
+                                                    },
+                                                    "watch_dog_forced": {
+                                                        "type": "boolean",
+                                                        "title": "Watch Dog Forced",
+                                                        "description": "Watch Dog Forced (Boolean)"
+                                                    },
+                                                    "auto_restore_multiplier": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 100
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Auto Restore Multiplier",
+                                                        "description": "Auto Restore Multiplier (Integer, String)"
+                                                    },
+                                                    "fixed_restore_multiplier": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 400
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Fixed Restore Multiplier",
+                                                        "description": "Fixed Restore Multiplier (Integer, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Priority Flow Control",
+                                                "description": "Priority Flow Control (Object)\n\nElements:\n- watch_dog_interval\n- watch_dog_interval_value\n- watch_dog_shutdown_multiplier\n- watch_dog_internal_interface_multiplier\n- watch_dog_forced\n- auto_restore_multiplier\n- fixed_restore_multiplier"
                                             }
                                         },
                                         "required": [],
                                         "title": "QoS",
-                                        "description": "QoS (Object)\n\nElements:\n- class_maps\n- policy_maps\n- queuing_policy_maps\n- system_service_policy_queuing_output\n- system_service_policy_queuing_output_statistics\n- network_class_maps\n- network_policy_maps\n- system_service_policy_network\n- system_service_policy_network_statistics"
+                                        "description": "QoS (Object)\n\nElements:\n- class_maps\n- policy_maps\n- queuing_policy_maps\n- system_service_policy_queuing_output\n- system_service_policy_queuing_output_statistics\n- network_class_maps\n- network_policy_maps\n- system_service_policy_network\n- system_service_policy_network_statistics\n- priority_flow_control"
                                     },
                                     "route_maps": {
                                         "type": "array",
@@ -356667,6 +357471,183 @@
                                                                         ],
                                                                         "title": "Bandwidth Remaining Percent",
                                                                         "description": "Bandwidth Remaining Percent (Integer, String)"
+                                                                    },
+                                                                    "random_detect": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "minimum_threshold": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 52428800
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Minimum Threshold",
+                                                                                "description": "Minimum Threshold (Integer, String)"
+                                                                            },
+                                                                            "minimum_threshold_unit": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "packets",
+                                                                                            "bytes",
+                                                                                            "kbytes",
+                                                                                            "mbytes"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Minimum Threshold Unit",
+                                                                                "description": "Minimum Threshold Unit (String, String)"
+                                                                            },
+                                                                            "maximum_threshold": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 52428800
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Maximum Threshold",
+                                                                                "description": "Maximum Threshold (Integer, String)"
+                                                                            },
+                                                                            "maximum_threshold_unit": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "packets",
+                                                                                            "bytes",
+                                                                                            "kbytes",
+                                                                                            "mbytes"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Maximum Threshold Unit",
+                                                                                "description": "Maximum Threshold Unit (String, String)"
+                                                                            },
+                                                                            "drop_probability": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 100
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Drop Probability",
+                                                                                "description": "Drop Probability (Integer, String)"
+                                                                            },
+                                                                            "weight": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 15
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Weight",
+                                                                                "description": "Weight (Integer, String)"
+                                                                            },
+                                                                            "cap_average": {
+                                                                                "type": "boolean",
+                                                                                "title": "Cap Average",
+                                                                                "description": "Cap Average (Boolean)"
+                                                                            },
+                                                                            "threshold": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "burst-optimized",
+                                                                                            "mesh-optimized"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Threshold",
+                                                                                "description": "Threshold (String, String)"
+                                                                            },
+                                                                            "ecn": {
+                                                                                "type": "boolean",
+                                                                                "title": "Ecn",
+                                                                                "description": "Ecn (Boolean)"
+                                                                            }
+                                                                        },
+                                                                        "required": [],
+                                                                        "title": "Random Detect",
+                                                                        "description": "Random Detect (Object)\n\nElements:\n- minimum_threshold\n- minimum_threshold_unit\n- maximum_threshold\n- maximum_threshold_unit\n- drop_probability\n- weight\n- cap_average\n- threshold\n- ecn"
+                                                                    },
+                                                                    "afd": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "queue_desired": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "minimum": 1,
+                                                                                        "maximum": 52428800
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Queue Desired",
+                                                                                "description": "Queue Desired (Integer, String)"
+                                                                            },
+                                                                            "queue_desired_unit": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "bytes",
+                                                                                            "kbytes",
+                                                                                            "mbytes"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Queue Desired Unit",
+                                                                                "description": "Queue Desired Unit (String, String)"
+                                                                            },
+                                                                            "ecn": {
+                                                                                "type": "boolean",
+                                                                                "title": "Ecn",
+                                                                                "description": "Ecn (Boolean)"
+                                                                            }
+                                                                        },
+                                                                        "required": [],
+                                                                        "title": "Afd",
+                                                                        "description": "Afd (Object)\n\nElements:\n- queue_desired\n- queue_desired_unit\n- ecn"
                                                                     }
                                                                 },
                                                                 "required": [
@@ -356674,7 +357655,7 @@
                                                                 ]
                                                             },
                                                             "title": "Classes",
-                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- priority_level\n- bandwidth_remaining_percent"
+                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- priority_level\n- bandwidth_remaining_percent\n- random_detect\n- afd"
                                                         }
                                                     },
                                                     "required": [
@@ -356940,11 +357921,102 @@
                                                 "type": "boolean",
                                                 "title": "System Service Policy Network Statistics",
                                                 "description": "System Service Policy Network Statistics (Boolean)"
+                                            },
+                                            "priority_flow_control": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "watch_dog_interval": {
+                                                        "type": "boolean",
+                                                        "title": "Watch Dog Interval",
+                                                        "description": "Watch Dog Interval (Boolean)"
+                                                    },
+                                                    "watch_dog_interval_value": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 25,
+                                                                "maximum": 1000
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Watch Dog Interval Value",
+                                                        "description": "Watch Dog Interval Value (Integer, String)"
+                                                    },
+                                                    "watch_dog_shutdown_multiplier": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 40
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Watch Dog Shutdown Multiplier",
+                                                        "description": "Watch Dog Shutdown Multiplier (Integer, String)"
+                                                    },
+                                                    "watch_dog_internal_interface_multiplier": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 10
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Watch Dog Internal Interface Multiplier",
+                                                        "description": "Watch Dog Internal Interface Multiplier (Integer, String)"
+                                                    },
+                                                    "watch_dog_forced": {
+                                                        "type": "boolean",
+                                                        "title": "Watch Dog Forced",
+                                                        "description": "Watch Dog Forced (Boolean)"
+                                                    },
+                                                    "auto_restore_multiplier": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 100
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Auto Restore Multiplier",
+                                                        "description": "Auto Restore Multiplier (Integer, String)"
+                                                    },
+                                                    "fixed_restore_multiplier": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 400
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Fixed Restore Multiplier",
+                                                        "description": "Fixed Restore Multiplier (Integer, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Priority Flow Control",
+                                                "description": "Priority Flow Control (Object)\n\nElements:\n- watch_dog_interval\n- watch_dog_interval_value\n- watch_dog_shutdown_multiplier\n- watch_dog_internal_interface_multiplier\n- watch_dog_forced\n- auto_restore_multiplier\n- fixed_restore_multiplier"
                                             }
                                         },
                                         "required": [],
                                         "title": "QoS",
-                                        "description": "QoS (Object)\n\nElements:\n- class_maps\n- policy_maps\n- queuing_policy_maps\n- system_service_policy_queuing_output\n- system_service_policy_queuing_output_statistics\n- network_class_maps\n- network_policy_maps\n- system_service_policy_network\n- system_service_policy_network_statistics"
+                                        "description": "QoS (Object)\n\nElements:\n- class_maps\n- policy_maps\n- queuing_policy_maps\n- system_service_policy_queuing_output\n- system_service_policy_queuing_output_statistics\n- network_class_maps\n- network_policy_maps\n- system_service_policy_network\n- system_service_policy_network_statistics\n- priority_flow_control"
                                     },
                                     "route_maps": {
                                         "type": "array",
