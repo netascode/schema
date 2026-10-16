@@ -159555,16 +159555,25 @@
                                                                     "evpn_route_types": {
                                                                         "type": "array",
                                                                         "items": {
-                                                                            "type": "string",
-                                                                            "enum": [
-                                                                                1,
-                                                                                2,
-                                                                                "2-mac-ip",
-                                                                                "2-mac-only",
-                                                                                3,
-                                                                                4,
-                                                                                5,
-                                                                                6
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "integer",
+                                                                                    "enum": [
+                                                                                        1,
+                                                                                        2,
+                                                                                        3,
+                                                                                        4,
+                                                                                        5,
+                                                                                        6
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "2-mac-ip",
+                                                                                        "2-mac-only"
+                                                                                    ]
+                                                                                }
                                                                             ]
                                                                         },
                                                                         "title": "Evpn Route Types",
@@ -177587,6 +177596,117 @@
                                                         ],
                                                         "title": "Match DSCP Values",
                                                         "description": "Match DSCP Values (Array, String)"
+                                                    },
+                                                    "match_not_dscp_values": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "integer",
+                                                                    "maximum": 63
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Match Not DSCP Values",
+                                                        "description": "Match Not DSCP Values (Array, String)"
+                                                    },
+                                                    "match_cos_values": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "integer",
+                                                                    "maximum": 7
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Match CoS Values",
+                                                        "description": "Match CoS Values (Array, String)"
+                                                    },
+                                                    "match_not_cos_values": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "integer",
+                                                                    "maximum": 7
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Match Not CoS Values",
+                                                        "description": "Match Not CoS Values (Array, String)"
+                                                    },
+                                                    "match_precedence_values": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "routine",
+                                                                        "priority",
+                                                                        "immediate",
+                                                                        "flash",
+                                                                        "flash-override",
+                                                                        "critical",
+                                                                        "internet",
+                                                                        "network"
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Match Precedence Values",
+                                                        "description": "Match Precedence Values (Array, String)"
+                                                    },
+                                                    "match_not_precedence_values": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "routine",
+                                                                        "priority",
+                                                                        "immediate",
+                                                                        "flash",
+                                                                        "flash-override",
+                                                                        "critical",
+                                                                        "internet",
+                                                                        "network"
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Match Not Precedence Values",
+                                                        "description": "Match Not Precedence Values (Array, String)"
+                                                    },
+                                                    "match_access_group_names": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": "Match Access Group Names",
+                                                        "description": "Match Access Group Names (List - String)"
                                                     }
                                                 },
                                                 "required": [
@@ -177594,7 +177714,7 @@
                                                 ]
                                             },
                                             "title": "Class Maps",
-                                            "description": "Class Maps (List - Object)\n\nElements:\n- name (required)\n- match_type\n- match_dscp_values"
+                                            "description": "Class Maps (List - Object)\n\nElements:\n- name (required)\n- match_type\n- match_dscp_values\n- match_not_dscp_values\n- match_cos_values\n- match_not_cos_values\n- match_precedence_values\n- match_not_precedence_values\n- match_access_group_names"
                                         },
                                         "policy_maps": {
                                             "type": "array",
@@ -177649,6 +177769,62 @@
                                                                     ],
                                                                     "title": "Set QoS Group",
                                                                     "description": "Set QoS Group (Integer, String)"
+                                                                },
+                                                                "set_dscp": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 63
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Set DSCP",
+                                                                    "description": "Set DSCP (Integer, String)"
+                                                                },
+                                                                "set_cos": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 7
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Set CoS",
+                                                                    "description": "Set CoS (Integer, String)"
+                                                                },
+                                                                "set_precedence": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "routine",
+                                                                                "priority",
+                                                                                "immediate",
+                                                                                "flash",
+                                                                                "flash-override",
+                                                                                "critical",
+                                                                                "internet",
+                                                                                "network"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Set Precedence",
+                                                                    "description": "Set Precedence (String, String)"
+                                                                },
+                                                                "set_precedence_tunnel": {
+                                                                    "type": "boolean",
+                                                                    "title": "Set Precedence Tunnel",
+                                                                    "description": "Set Precedence Tunnel (Boolean)"
                                                                 },
                                                                 "police": {
                                                                     "type": "object",
@@ -178065,7 +178241,7 @@
                                                             ]
                                                         },
                                                         "title": "Classes",
-                                                        "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- set_qos_group\n- police"
+                                                        "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- set_qos_group\n- set_dscp\n- set_cos\n- set_precedence\n- set_precedence_tunnel\n- police"
                                                     }
                                                 },
                                                 "required": [
@@ -234626,6 +234802,117 @@
                                                             ],
                                                             "title": "Match DSCP Values",
                                                             "description": "Match DSCP Values (Array, String)"
+                                                        },
+                                                        "match_not_dscp_values": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "integer",
+                                                                        "maximum": 63
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Match Not DSCP Values",
+                                                            "description": "Match Not DSCP Values (Array, String)"
+                                                        },
+                                                        "match_cos_values": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "integer",
+                                                                        "maximum": 7
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Match CoS Values",
+                                                            "description": "Match CoS Values (Array, String)"
+                                                        },
+                                                        "match_not_cos_values": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "integer",
+                                                                        "maximum": 7
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Match Not CoS Values",
+                                                            "description": "Match Not CoS Values (Array, String)"
+                                                        },
+                                                        "match_precedence_values": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "routine",
+                                                                            "priority",
+                                                                            "immediate",
+                                                                            "flash",
+                                                                            "flash-override",
+                                                                            "critical",
+                                                                            "internet",
+                                                                            "network"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Match Precedence Values",
+                                                            "description": "Match Precedence Values (Array, String)"
+                                                        },
+                                                        "match_not_precedence_values": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "routine",
+                                                                            "priority",
+                                                                            "immediate",
+                                                                            "flash",
+                                                                            "flash-override",
+                                                                            "critical",
+                                                                            "internet",
+                                                                            "network"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Match Not Precedence Values",
+                                                            "description": "Match Not Precedence Values (Array, String)"
+                                                        },
+                                                        "match_access_group_names": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            },
+                                                            "title": "Match Access Group Names",
+                                                            "description": "Match Access Group Names (List - String)"
                                                         }
                                                     },
                                                     "required": [
@@ -234633,7 +234920,7 @@
                                                     ]
                                                 },
                                                 "title": "Class Maps",
-                                                "description": "Class Maps (List - Object)\n\nElements:\n- name (required)\n- match_type\n- match_dscp_values"
+                                                "description": "Class Maps (List - Object)\n\nElements:\n- name (required)\n- match_type\n- match_dscp_values\n- match_not_dscp_values\n- match_cos_values\n- match_not_cos_values\n- match_precedence_values\n- match_not_precedence_values\n- match_access_group_names"
                                             },
                                             "policy_maps": {
                                                 "type": "array",
@@ -234688,6 +234975,62 @@
                                                                         ],
                                                                         "title": "Set QoS Group",
                                                                         "description": "Set QoS Group (Integer, String)"
+                                                                    },
+                                                                    "set_dscp": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 63
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Set DSCP",
+                                                                        "description": "Set DSCP (Integer, String)"
+                                                                    },
+                                                                    "set_cos": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 7
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Set CoS",
+                                                                        "description": "Set CoS (Integer, String)"
+                                                                    },
+                                                                    "set_precedence": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "routine",
+                                                                                    "priority",
+                                                                                    "immediate",
+                                                                                    "flash",
+                                                                                    "flash-override",
+                                                                                    "critical",
+                                                                                    "internet",
+                                                                                    "network"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Set Precedence",
+                                                                        "description": "Set Precedence (String, String)"
+                                                                    },
+                                                                    "set_precedence_tunnel": {
+                                                                        "type": "boolean",
+                                                                        "title": "Set Precedence Tunnel",
+                                                                        "description": "Set Precedence Tunnel (Boolean)"
                                                                     },
                                                                     "police": {
                                                                         "type": "object",
@@ -235104,7 +235447,7 @@
                                                                 ]
                                                             },
                                                             "title": "Classes",
-                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- set_qos_group\n- police"
+                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- set_qos_group\n- set_dscp\n- set_cos\n- set_precedence\n- set_precedence_tunnel\n- police"
                                                         }
                                                     },
                                                     "required": [
@@ -291698,6 +292041,117 @@
                                                             ],
                                                             "title": "Match DSCP Values",
                                                             "description": "Match DSCP Values (Array, String)"
+                                                        },
+                                                        "match_not_dscp_values": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "integer",
+                                                                        "maximum": 63
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Match Not DSCP Values",
+                                                            "description": "Match Not DSCP Values (Array, String)"
+                                                        },
+                                                        "match_cos_values": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "integer",
+                                                                        "maximum": 7
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Match CoS Values",
+                                                            "description": "Match CoS Values (Array, String)"
+                                                        },
+                                                        "match_not_cos_values": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "integer",
+                                                                        "maximum": 7
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Match Not CoS Values",
+                                                            "description": "Match Not CoS Values (Array, String)"
+                                                        },
+                                                        "match_precedence_values": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "routine",
+                                                                            "priority",
+                                                                            "immediate",
+                                                                            "flash",
+                                                                            "flash-override",
+                                                                            "critical",
+                                                                            "internet",
+                                                                            "network"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Match Precedence Values",
+                                                            "description": "Match Precedence Values (Array, String)"
+                                                        },
+                                                        "match_not_precedence_values": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "routine",
+                                                                            "priority",
+                                                                            "immediate",
+                                                                            "flash",
+                                                                            "flash-override",
+                                                                            "critical",
+                                                                            "internet",
+                                                                            "network"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Match Not Precedence Values",
+                                                            "description": "Match Not Precedence Values (Array, String)"
+                                                        },
+                                                        "match_access_group_names": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            },
+                                                            "title": "Match Access Group Names",
+                                                            "description": "Match Access Group Names (List - String)"
                                                         }
                                                     },
                                                     "required": [
@@ -291705,7 +292159,7 @@
                                                     ]
                                                 },
                                                 "title": "Class Maps",
-                                                "description": "Class Maps (List - Object)\n\nElements:\n- name (required)\n- match_type\n- match_dscp_values"
+                                                "description": "Class Maps (List - Object)\n\nElements:\n- name (required)\n- match_type\n- match_dscp_values\n- match_not_dscp_values\n- match_cos_values\n- match_not_cos_values\n- match_precedence_values\n- match_not_precedence_values\n- match_access_group_names"
                                             },
                                             "policy_maps": {
                                                 "type": "array",
@@ -291760,6 +292214,62 @@
                                                                         ],
                                                                         "title": "Set QoS Group",
                                                                         "description": "Set QoS Group (Integer, String)"
+                                                                    },
+                                                                    "set_dscp": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 63
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Set DSCP",
+                                                                        "description": "Set DSCP (Integer, String)"
+                                                                    },
+                                                                    "set_cos": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 7
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Set CoS",
+                                                                        "description": "Set CoS (Integer, String)"
+                                                                    },
+                                                                    "set_precedence": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "routine",
+                                                                                    "priority",
+                                                                                    "immediate",
+                                                                                    "flash",
+                                                                                    "flash-override",
+                                                                                    "critical",
+                                                                                    "internet",
+                                                                                    "network"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Set Precedence",
+                                                                        "description": "Set Precedence (String, String)"
+                                                                    },
+                                                                    "set_precedence_tunnel": {
+                                                                        "type": "boolean",
+                                                                        "title": "Set Precedence Tunnel",
+                                                                        "description": "Set Precedence Tunnel (Boolean)"
                                                                     },
                                                                     "police": {
                                                                         "type": "object",
@@ -292176,7 +292686,7 @@
                                                                 ]
                                                             },
                                                             "title": "Classes",
-                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- set_qos_group\n- police"
+                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- set_qos_group\n- set_dscp\n- set_cos\n- set_precedence\n- set_precedence_tunnel\n- police"
                                                         }
                                                     },
                                                     "required": [
@@ -356915,6 +357425,117 @@
                                                             ],
                                                             "title": "Match DSCP Values",
                                                             "description": "Match DSCP Values (Array, String)"
+                                                        },
+                                                        "match_not_dscp_values": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "integer",
+                                                                        "maximum": 63
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Match Not DSCP Values",
+                                                            "description": "Match Not DSCP Values (Array, String)"
+                                                        },
+                                                        "match_cos_values": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "integer",
+                                                                        "maximum": 7
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Match CoS Values",
+                                                            "description": "Match CoS Values (Array, String)"
+                                                        },
+                                                        "match_not_cos_values": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "integer",
+                                                                        "maximum": 7
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Match Not CoS Values",
+                                                            "description": "Match Not CoS Values (Array, String)"
+                                                        },
+                                                        "match_precedence_values": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "routine",
+                                                                            "priority",
+                                                                            "immediate",
+                                                                            "flash",
+                                                                            "flash-override",
+                                                                            "critical",
+                                                                            "internet",
+                                                                            "network"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Match Precedence Values",
+                                                            "description": "Match Precedence Values (Array, String)"
+                                                        },
+                                                        "match_not_precedence_values": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "routine",
+                                                                            "priority",
+                                                                            "immediate",
+                                                                            "flash",
+                                                                            "flash-override",
+                                                                            "critical",
+                                                                            "internet",
+                                                                            "network"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Match Not Precedence Values",
+                                                            "description": "Match Not Precedence Values (Array, String)"
+                                                        },
+                                                        "match_access_group_names": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            },
+                                                            "title": "Match Access Group Names",
+                                                            "description": "Match Access Group Names (List - String)"
                                                         }
                                                     },
                                                     "required": [
@@ -356922,7 +357543,7 @@
                                                     ]
                                                 },
                                                 "title": "Class Maps",
-                                                "description": "Class Maps (List - Object)\n\nElements:\n- name (required)\n- match_type\n- match_dscp_values"
+                                                "description": "Class Maps (List - Object)\n\nElements:\n- name (required)\n- match_type\n- match_dscp_values\n- match_not_dscp_values\n- match_cos_values\n- match_not_cos_values\n- match_precedence_values\n- match_not_precedence_values\n- match_access_group_names"
                                             },
                                             "policy_maps": {
                                                 "type": "array",
@@ -356977,6 +357598,62 @@
                                                                         ],
                                                                         "title": "Set QoS Group",
                                                                         "description": "Set QoS Group (Integer, String)"
+                                                                    },
+                                                                    "set_dscp": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 63
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Set DSCP",
+                                                                        "description": "Set DSCP (Integer, String)"
+                                                                    },
+                                                                    "set_cos": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 7
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Set CoS",
+                                                                        "description": "Set CoS (Integer, String)"
+                                                                    },
+                                                                    "set_precedence": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "routine",
+                                                                                    "priority",
+                                                                                    "immediate",
+                                                                                    "flash",
+                                                                                    "flash-override",
+                                                                                    "critical",
+                                                                                    "internet",
+                                                                                    "network"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Set Precedence",
+                                                                        "description": "Set Precedence (String, String)"
+                                                                    },
+                                                                    "set_precedence_tunnel": {
+                                                                        "type": "boolean",
+                                                                        "title": "Set Precedence Tunnel",
+                                                                        "description": "Set Precedence Tunnel (Boolean)"
                                                                     },
                                                                     "police": {
                                                                         "type": "object",
@@ -357393,7 +358070,7 @@
                                                                 ]
                                                             },
                                                             "title": "Classes",
-                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- set_qos_group\n- police"
+                                                            "description": "Classes (List - Object)\n\nElements:\n- name (required)\n- set_qos_group\n- set_dscp\n- set_cos\n- set_precedence\n- set_precedence_tunnel\n- police"
                                                         }
                                                     },
                                                     "required": [
