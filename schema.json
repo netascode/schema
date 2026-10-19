@@ -200108,11 +200108,6 @@
                                                         "title": "Private Vlan Association",
                                                         "description": "Private Vlan Association (Object)\n\nElements:\n- ids\n- ranges"
                                                     },
-                                                    "mac_learn": {
-                                                        "type": "boolean",
-                                                        "title": "MAC Learn",
-                                                        "description": "MAC Learn (Boolean)"
-                                                    },
                                                     "isolate": {
                                                         "type": "boolean",
                                                         "title": "Isolate",
@@ -200124,12 +200119,444 @@
                                                 ]
                                             },
                                             "title": "Vlans",
-                                            "description": "Vlans (List - Object)\n\nElements:\n- id (required)\n- vn_segment\n- name\n- state_active\n- bridge_mode\n- untagged\n- policy_enforce_vlan\n- cross_connect\n- long_name\n- mac_packet_classify\n- mode\n- vrf\n- private_vlan_type\n- private_vlan_association\n- mac_learn\n- isolate"
+                                            "description": "Vlans (List - Object)\n\nElements:\n- id (required)\n- vn_segment\n- name\n- state_active\n- bridge_mode\n- untagged\n- policy_enforce_vlan\n- cross_connect\n- long_name\n- mac_packet_classify\n- mode\n- vrf\n- private_vlan_type\n- private_vlan_association\n- isolate"
+                                        },
+                                        "configurations": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "id": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 4094
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "ID",
+                                                        "description": "ID (Integer, String)"
+                                                    },
+                                                    "mac_learn": {
+                                                        "type": "boolean",
+                                                        "title": "MAC Learn",
+                                                        "description": "MAC Learn (Boolean)"
+                                                    },
+                                                    "layer_2_multicast_lookup_mac": {
+                                                        "type": "boolean",
+                                                        "title": "Layer 2 Multicast Lookup MAC",
+                                                        "description": "Layer 2 Multicast Lookup MAC (Boolean)"
+                                                    },
+                                                    "igmp_snooping": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "enable": {
+                                                                "type": "boolean",
+                                                                "title": "Enable",
+                                                                "description": "Enable (Boolean)"
+                                                            },
+                                                            "access_group": {
+                                                                "type": "string",
+                                                                "title": "Access Group",
+                                                                "description": "Access Group (String)"
+                                                            },
+                                                            "explicit_tracking": {
+                                                                "type": "boolean",
+                                                                "title": "Explicit Tracking",
+                                                                "description": "Explicit Tracking (Boolean)"
+                                                            },
+                                                            "fast_leave": {
+                                                                "type": "boolean",
+                                                                "title": "Fast Leave",
+                                                                "description": "Fast Leave (Boolean)"
+                                                            },
+                                                            "group_timeout": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 65535
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Group Timeout",
+                                                                "description": "Group Timeout (Integer, String)"
+                                                            },
+                                                            "last_member_query_interval": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 25
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Last Member Query Interval",
+                                                                "description": "Last Member Query Interval (Integer, String)"
+                                                            },
+                                                            "link_local_groups_suppression": {
+                                                                "type": "boolean",
+                                                                "title": "Link Local Groups Suppression",
+                                                                "description": "Link Local Groups Suppression (Boolean)"
+                                                            },
+                                                            "proxy_general_queries_mrt": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 25
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Proxy General Queries Mrt",
+                                                                "description": "Proxy General Queries Mrt (Integer, String)"
+                                                            },
+                                                            "proxy_leave_use_group_address": {
+                                                                "type": "boolean",
+                                                                "title": "Proxy Leave Use Group Address",
+                                                                "description": "Proxy Leave Use Group Address (Boolean)"
+                                                            },
+                                                            "querier": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Querier",
+                                                                "description": "Querier (String, String)"
+                                                            },
+                                                            "querier_timeout": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 65535
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Querier Timeout",
+                                                                "description": "Querier Timeout (Integer, String)"
+                                                            },
+                                                            "query_flood": {
+                                                                "type": "boolean",
+                                                                "title": "Query Flood",
+                                                                "description": "Query Flood (Boolean)"
+                                                            },
+                                                            "query_interval": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 18000
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Query Interval",
+                                                                "description": "Query Interval (Integer, String)"
+                                                            },
+                                                            "query_max_response_time": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 25
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Query Max Response Time",
+                                                                "description": "Query Max Response Time (Integer, String)"
+                                                            },
+                                                            "report_flood_all": {
+                                                                "type": "boolean",
+                                                                "title": "Report Flood All",
+                                                                "description": "Report Flood All (Boolean)"
+                                                            },
+                                                            "report_flood_interfaces": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "interface_type": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "ethernet",
+                                                                                        "port-channel"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Interface Type",
+                                                                            "description": "Interface Type (String, String)"
+                                                                        },
+                                                                        "interface_id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Interface ID",
+                                                                            "description": "Interface ID (String, Integer)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "interface_type",
+                                                                        "interface_id"
+                                                                    ]
+                                                                },
+                                                                "title": "Report Flood Interfaces",
+                                                                "description": "Report Flood Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                            },
+                                                            "report_suppression": {
+                                                                "type": "boolean",
+                                                                "title": "Report Suppression",
+                                                                "description": "Report Suppression (Boolean)"
+                                                            },
+                                                            "robustness_variable": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 7
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Robustness Variable",
+                                                                "description": "Robustness Variable (Integer, String)"
+                                                            },
+                                                            "startup_query_count": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 10
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Startup Query Count",
+                                                                "description": "Startup Query Count (Integer, String)"
+                                                            },
+                                                            "startup_query_interval": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 18000
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Startup Query Interval",
+                                                                "description": "Startup Query Interval (Integer, String)"
+                                                            },
+                                                            "v3_report_suppression": {
+                                                                "type": "boolean",
+                                                                "title": "V3 Report Suppression",
+                                                                "description": "V3 Report Suppression (Boolean)"
+                                                            },
+                                                            "version": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "enum": [
+                                                                            2,
+                                                                            3
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Version",
+                                                                "description": "Version (Integer, String)"
+                                                            },
+                                                            "mrouter_interfaces": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "interface_type": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "ethernet",
+                                                                                        "port-channel"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Interface Type",
+                                                                            "description": "Interface Type (String, String)"
+                                                                        },
+                                                                        "interface_id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Interface ID",
+                                                                            "description": "Interface ID (String, Integer)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "interface_type",
+                                                                        "interface_id"
+                                                                    ]
+                                                                },
+                                                                "title": "Mrouter Interfaces",
+                                                                "description": "Mrouter Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                            },
+                                                            "static_groups": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "group": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Group",
+                                                                            "description": "Group (String, String)"
+                                                                        },
+                                                                        "source": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Source",
+                                                                            "description": "Source (String, String)"
+                                                                        },
+                                                                        "interfaces": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "object",
+                                                                                "additionalProperties": false,
+                                                                                "properties": {
+                                                                                    "interface_type": {
+                                                                                        "anyOf": [
+                                                                                            {
+                                                                                                "type": "string",
+                                                                                                "enum": [
+                                                                                                    "ethernet",
+                                                                                                    "port-channel"
+                                                                                                ]
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "string",
+                                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                            }
+                                                                                        ],
+                                                                                        "title": "Interface Type",
+                                                                                        "description": "Interface Type (String, String)"
+                                                                                    },
+                                                                                    "interface_id": {
+                                                                                        "anyOf": [
+                                                                                            {
+                                                                                                "type": "string"
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "integer"
+                                                                                            }
+                                                                                        ],
+                                                                                        "title": "Interface ID",
+                                                                                        "description": "Interface ID (String, Integer)"
+                                                                                    }
+                                                                                },
+                                                                                "required": [
+                                                                                    "interface_type",
+                                                                                    "interface_id"
+                                                                                ]
+                                                                            },
+                                                                            "title": "Interfaces",
+                                                                            "description": "Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "group",
+                                                                        "interfaces"
+                                                                    ]
+                                                                },
+                                                                "title": "Static Groups",
+                                                                "description": "Static Groups (List - Object)\n\nElements:\n- group (required)\n- source\n- interfaces (required)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "IGMP Snooping",
+                                                        "description": "IGMP Snooping (Object)\n\nElements:\n- enable\n- access_group\n- explicit_tracking\n- fast_leave\n- group_timeout\n- last_member_query_interval\n- link_local_groups_suppression\n- proxy_general_queries_mrt\n- proxy_leave_use_group_address\n- querier\n- querier_timeout\n- query_flood\n- query_interval\n- query_max_response_time\n- report_flood_all\n- report_flood_interfaces\n- report_suppression\n- robustness_variable\n- startup_query_count\n- startup_query_interval\n- v3_report_suppression\n- version\n- mrouter_interfaces\n- static_groups"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "id"
+                                                ]
+                                            },
+                                            "title": "Configurations",
+                                            "description": "Configurations (List - Object)\n\nElements:\n- id (required)\n- mac_learn\n- layer_2_multicast_lookup_mac\n- igmp_snooping"
                                         }
                                     },
                                     "required": [],
                                     "title": "Vlan",
-                                    "description": "Vlan (Object)\n\nElements:\n- vlans"
+                                    "description": "Vlan (Object)\n\nElements:\n- vlans\n- configurations"
                                 },
                                 "vpc": {
                                     "type": "object",
@@ -261290,11 +261717,6 @@
                                                             "title": "Private Vlan Association",
                                                             "description": "Private Vlan Association (Object)\n\nElements:\n- ids\n- ranges"
                                                         },
-                                                        "mac_learn": {
-                                                            "type": "boolean",
-                                                            "title": "MAC Learn",
-                                                            "description": "MAC Learn (Boolean)"
-                                                        },
                                                         "isolate": {
                                                             "type": "boolean",
                                                             "title": "Isolate",
@@ -261306,12 +261728,444 @@
                                                     ]
                                                 },
                                                 "title": "Vlans",
-                                                "description": "Vlans (List - Object)\n\nElements:\n- id (required)\n- vn_segment\n- name\n- state_active\n- bridge_mode\n- untagged\n- policy_enforce_vlan\n- cross_connect\n- long_name\n- mac_packet_classify\n- mode\n- vrf\n- private_vlan_type\n- private_vlan_association\n- mac_learn\n- isolate"
+                                                "description": "Vlans (List - Object)\n\nElements:\n- id (required)\n- vn_segment\n- name\n- state_active\n- bridge_mode\n- untagged\n- policy_enforce_vlan\n- cross_connect\n- long_name\n- mac_packet_classify\n- mode\n- vrf\n- private_vlan_type\n- private_vlan_association\n- isolate"
+                                            },
+                                            "configurations": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 4094
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "ID",
+                                                            "description": "ID (Integer, String)"
+                                                        },
+                                                        "mac_learn": {
+                                                            "type": "boolean",
+                                                            "title": "MAC Learn",
+                                                            "description": "MAC Learn (Boolean)"
+                                                        },
+                                                        "layer_2_multicast_lookup_mac": {
+                                                            "type": "boolean",
+                                                            "title": "Layer 2 Multicast Lookup MAC",
+                                                            "description": "Layer 2 Multicast Lookup MAC (Boolean)"
+                                                        },
+                                                        "igmp_snooping": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "enable": {
+                                                                    "type": "boolean",
+                                                                    "title": "Enable",
+                                                                    "description": "Enable (Boolean)"
+                                                                },
+                                                                "access_group": {
+                                                                    "type": "string",
+                                                                    "title": "Access Group",
+                                                                    "description": "Access Group (String)"
+                                                                },
+                                                                "explicit_tracking": {
+                                                                    "type": "boolean",
+                                                                    "title": "Explicit Tracking",
+                                                                    "description": "Explicit Tracking (Boolean)"
+                                                                },
+                                                                "fast_leave": {
+                                                                    "type": "boolean",
+                                                                    "title": "Fast Leave",
+                                                                    "description": "Fast Leave (Boolean)"
+                                                                },
+                                                                "group_timeout": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 65535
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Group Timeout",
+                                                                    "description": "Group Timeout (Integer, String)"
+                                                                },
+                                                                "last_member_query_interval": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 25
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Last Member Query Interval",
+                                                                    "description": "Last Member Query Interval (Integer, String)"
+                                                                },
+                                                                "link_local_groups_suppression": {
+                                                                    "type": "boolean",
+                                                                    "title": "Link Local Groups Suppression",
+                                                                    "description": "Link Local Groups Suppression (Boolean)"
+                                                                },
+                                                                "proxy_general_queries_mrt": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 25
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Proxy General Queries Mrt",
+                                                                    "description": "Proxy General Queries Mrt (Integer, String)"
+                                                                },
+                                                                "proxy_leave_use_group_address": {
+                                                                    "type": "boolean",
+                                                                    "title": "Proxy Leave Use Group Address",
+                                                                    "description": "Proxy Leave Use Group Address (Boolean)"
+                                                                },
+                                                                "querier": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Querier",
+                                                                    "description": "Querier (String, String)"
+                                                                },
+                                                                "querier_timeout": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 65535
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Querier Timeout",
+                                                                    "description": "Querier Timeout (Integer, String)"
+                                                                },
+                                                                "query_flood": {
+                                                                    "type": "boolean",
+                                                                    "title": "Query Flood",
+                                                                    "description": "Query Flood (Boolean)"
+                                                                },
+                                                                "query_interval": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 18000
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Query Interval",
+                                                                    "description": "Query Interval (Integer, String)"
+                                                                },
+                                                                "query_max_response_time": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 25
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Query Max Response Time",
+                                                                    "description": "Query Max Response Time (Integer, String)"
+                                                                },
+                                                                "report_flood_all": {
+                                                                    "type": "boolean",
+                                                                    "title": "Report Flood All",
+                                                                    "description": "Report Flood All (Boolean)"
+                                                                },
+                                                                "report_flood_interfaces": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "interface_type": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "ethernet",
+                                                                                            "port-channel"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Interface Type",
+                                                                                "description": "Interface Type (String, String)"
+                                                                            },
+                                                                            "interface_id": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Interface ID",
+                                                                                "description": "Interface ID (String, Integer)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "interface_type",
+                                                                            "interface_id"
+                                                                        ]
+                                                                    },
+                                                                    "title": "Report Flood Interfaces",
+                                                                    "description": "Report Flood Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                                },
+                                                                "report_suppression": {
+                                                                    "type": "boolean",
+                                                                    "title": "Report Suppression",
+                                                                    "description": "Report Suppression (Boolean)"
+                                                                },
+                                                                "robustness_variable": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 7
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Robustness Variable",
+                                                                    "description": "Robustness Variable (Integer, String)"
+                                                                },
+                                                                "startup_query_count": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 10
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Startup Query Count",
+                                                                    "description": "Startup Query Count (Integer, String)"
+                                                                },
+                                                                "startup_query_interval": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 18000
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Startup Query Interval",
+                                                                    "description": "Startup Query Interval (Integer, String)"
+                                                                },
+                                                                "v3_report_suppression": {
+                                                                    "type": "boolean",
+                                                                    "title": "V3 Report Suppression",
+                                                                    "description": "V3 Report Suppression (Boolean)"
+                                                                },
+                                                                "version": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "enum": [
+                                                                                2,
+                                                                                3
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Version",
+                                                                    "description": "Version (Integer, String)"
+                                                                },
+                                                                "mrouter_interfaces": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "interface_type": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "ethernet",
+                                                                                            "port-channel"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Interface Type",
+                                                                                "description": "Interface Type (String, String)"
+                                                                            },
+                                                                            "interface_id": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Interface ID",
+                                                                                "description": "Interface ID (String, Integer)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "interface_type",
+                                                                            "interface_id"
+                                                                        ]
+                                                                    },
+                                                                    "title": "Mrouter Interfaces",
+                                                                    "description": "Mrouter Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                                },
+                                                                "static_groups": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "group": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Group",
+                                                                                "description": "Group (String, String)"
+                                                                            },
+                                                                            "source": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Source",
+                                                                                "description": "Source (String, String)"
+                                                                            },
+                                                                            "interfaces": {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                    "type": "object",
+                                                                                    "additionalProperties": false,
+                                                                                    "properties": {
+                                                                                        "interface_type": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "string",
+                                                                                                    "enum": [
+                                                                                                        "ethernet",
+                                                                                                        "port-channel"
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "type": "string",
+                                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                                }
+                                                                                            ],
+                                                                                            "title": "Interface Type",
+                                                                                            "description": "Interface Type (String, String)"
+                                                                                        },
+                                                                                        "interface_id": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                {
+                                                                                                    "type": "integer"
+                                                                                                }
+                                                                                            ],
+                                                                                            "title": "Interface ID",
+                                                                                            "description": "Interface ID (String, Integer)"
+                                                                                        }
+                                                                                    },
+                                                                                    "required": [
+                                                                                        "interface_type",
+                                                                                        "interface_id"
+                                                                                    ]
+                                                                                },
+                                                                                "title": "Interfaces",
+                                                                                "description": "Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "group",
+                                                                            "interfaces"
+                                                                        ]
+                                                                    },
+                                                                    "title": "Static Groups",
+                                                                    "description": "Static Groups (List - Object)\n\nElements:\n- group (required)\n- source\n- interfaces (required)"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "IGMP Snooping",
+                                                            "description": "IGMP Snooping (Object)\n\nElements:\n- enable\n- access_group\n- explicit_tracking\n- fast_leave\n- group_timeout\n- last_member_query_interval\n- link_local_groups_suppression\n- proxy_general_queries_mrt\n- proxy_leave_use_group_address\n- querier\n- querier_timeout\n- query_flood\n- query_interval\n- query_max_response_time\n- report_flood_all\n- report_flood_interfaces\n- report_suppression\n- robustness_variable\n- startup_query_count\n- startup_query_interval\n- v3_report_suppression\n- version\n- mrouter_interfaces\n- static_groups"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "id"
+                                                    ]
+                                                },
+                                                "title": "Configurations",
+                                                "description": "Configurations (List - Object)\n\nElements:\n- id (required)\n- mac_learn\n- layer_2_multicast_lookup_mac\n- igmp_snooping"
                                             }
                                         },
                                         "required": [],
                                         "title": "Vlan",
-                                        "description": "Vlan (Object)\n\nElements:\n- vlans"
+                                        "description": "Vlan (Object)\n\nElements:\n- vlans\n- configurations"
                                     },
                                     "vpc": {
                                         "type": "object",
@@ -322505,11 +323359,6 @@
                                                             "title": "Private Vlan Association",
                                                             "description": "Private Vlan Association (Object)\n\nElements:\n- ids\n- ranges"
                                                         },
-                                                        "mac_learn": {
-                                                            "type": "boolean",
-                                                            "title": "MAC Learn",
-                                                            "description": "MAC Learn (Boolean)"
-                                                        },
                                                         "isolate": {
                                                             "type": "boolean",
                                                             "title": "Isolate",
@@ -322521,12 +323370,444 @@
                                                     ]
                                                 },
                                                 "title": "Vlans",
-                                                "description": "Vlans (List - Object)\n\nElements:\n- id (required)\n- vn_segment\n- name\n- state_active\n- bridge_mode\n- untagged\n- policy_enforce_vlan\n- cross_connect\n- long_name\n- mac_packet_classify\n- mode\n- vrf\n- private_vlan_type\n- private_vlan_association\n- mac_learn\n- isolate"
+                                                "description": "Vlans (List - Object)\n\nElements:\n- id (required)\n- vn_segment\n- name\n- state_active\n- bridge_mode\n- untagged\n- policy_enforce_vlan\n- cross_connect\n- long_name\n- mac_packet_classify\n- mode\n- vrf\n- private_vlan_type\n- private_vlan_association\n- isolate"
+                                            },
+                                            "configurations": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 4094
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "ID",
+                                                            "description": "ID (Integer, String)"
+                                                        },
+                                                        "mac_learn": {
+                                                            "type": "boolean",
+                                                            "title": "MAC Learn",
+                                                            "description": "MAC Learn (Boolean)"
+                                                        },
+                                                        "layer_2_multicast_lookup_mac": {
+                                                            "type": "boolean",
+                                                            "title": "Layer 2 Multicast Lookup MAC",
+                                                            "description": "Layer 2 Multicast Lookup MAC (Boolean)"
+                                                        },
+                                                        "igmp_snooping": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "enable": {
+                                                                    "type": "boolean",
+                                                                    "title": "Enable",
+                                                                    "description": "Enable (Boolean)"
+                                                                },
+                                                                "access_group": {
+                                                                    "type": "string",
+                                                                    "title": "Access Group",
+                                                                    "description": "Access Group (String)"
+                                                                },
+                                                                "explicit_tracking": {
+                                                                    "type": "boolean",
+                                                                    "title": "Explicit Tracking",
+                                                                    "description": "Explicit Tracking (Boolean)"
+                                                                },
+                                                                "fast_leave": {
+                                                                    "type": "boolean",
+                                                                    "title": "Fast Leave",
+                                                                    "description": "Fast Leave (Boolean)"
+                                                                },
+                                                                "group_timeout": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 65535
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Group Timeout",
+                                                                    "description": "Group Timeout (Integer, String)"
+                                                                },
+                                                                "last_member_query_interval": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 25
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Last Member Query Interval",
+                                                                    "description": "Last Member Query Interval (Integer, String)"
+                                                                },
+                                                                "link_local_groups_suppression": {
+                                                                    "type": "boolean",
+                                                                    "title": "Link Local Groups Suppression",
+                                                                    "description": "Link Local Groups Suppression (Boolean)"
+                                                                },
+                                                                "proxy_general_queries_mrt": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 25
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Proxy General Queries Mrt",
+                                                                    "description": "Proxy General Queries Mrt (Integer, String)"
+                                                                },
+                                                                "proxy_leave_use_group_address": {
+                                                                    "type": "boolean",
+                                                                    "title": "Proxy Leave Use Group Address",
+                                                                    "description": "Proxy Leave Use Group Address (Boolean)"
+                                                                },
+                                                                "querier": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Querier",
+                                                                    "description": "Querier (String, String)"
+                                                                },
+                                                                "querier_timeout": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 65535
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Querier Timeout",
+                                                                    "description": "Querier Timeout (Integer, String)"
+                                                                },
+                                                                "query_flood": {
+                                                                    "type": "boolean",
+                                                                    "title": "Query Flood",
+                                                                    "description": "Query Flood (Boolean)"
+                                                                },
+                                                                "query_interval": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 18000
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Query Interval",
+                                                                    "description": "Query Interval (Integer, String)"
+                                                                },
+                                                                "query_max_response_time": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 25
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Query Max Response Time",
+                                                                    "description": "Query Max Response Time (Integer, String)"
+                                                                },
+                                                                "report_flood_all": {
+                                                                    "type": "boolean",
+                                                                    "title": "Report Flood All",
+                                                                    "description": "Report Flood All (Boolean)"
+                                                                },
+                                                                "report_flood_interfaces": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "interface_type": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "ethernet",
+                                                                                            "port-channel"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Interface Type",
+                                                                                "description": "Interface Type (String, String)"
+                                                                            },
+                                                                            "interface_id": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Interface ID",
+                                                                                "description": "Interface ID (String, Integer)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "interface_type",
+                                                                            "interface_id"
+                                                                        ]
+                                                                    },
+                                                                    "title": "Report Flood Interfaces",
+                                                                    "description": "Report Flood Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                                },
+                                                                "report_suppression": {
+                                                                    "type": "boolean",
+                                                                    "title": "Report Suppression",
+                                                                    "description": "Report Suppression (Boolean)"
+                                                                },
+                                                                "robustness_variable": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 7
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Robustness Variable",
+                                                                    "description": "Robustness Variable (Integer, String)"
+                                                                },
+                                                                "startup_query_count": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 10
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Startup Query Count",
+                                                                    "description": "Startup Query Count (Integer, String)"
+                                                                },
+                                                                "startup_query_interval": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 18000
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Startup Query Interval",
+                                                                    "description": "Startup Query Interval (Integer, String)"
+                                                                },
+                                                                "v3_report_suppression": {
+                                                                    "type": "boolean",
+                                                                    "title": "V3 Report Suppression",
+                                                                    "description": "V3 Report Suppression (Boolean)"
+                                                                },
+                                                                "version": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "enum": [
+                                                                                2,
+                                                                                3
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Version",
+                                                                    "description": "Version (Integer, String)"
+                                                                },
+                                                                "mrouter_interfaces": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "interface_type": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "ethernet",
+                                                                                            "port-channel"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Interface Type",
+                                                                                "description": "Interface Type (String, String)"
+                                                                            },
+                                                                            "interface_id": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Interface ID",
+                                                                                "description": "Interface ID (String, Integer)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "interface_type",
+                                                                            "interface_id"
+                                                                        ]
+                                                                    },
+                                                                    "title": "Mrouter Interfaces",
+                                                                    "description": "Mrouter Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                                },
+                                                                "static_groups": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "group": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Group",
+                                                                                "description": "Group (String, String)"
+                                                                            },
+                                                                            "source": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Source",
+                                                                                "description": "Source (String, String)"
+                                                                            },
+                                                                            "interfaces": {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                    "type": "object",
+                                                                                    "additionalProperties": false,
+                                                                                    "properties": {
+                                                                                        "interface_type": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "string",
+                                                                                                    "enum": [
+                                                                                                        "ethernet",
+                                                                                                        "port-channel"
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "type": "string",
+                                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                                }
+                                                                                            ],
+                                                                                            "title": "Interface Type",
+                                                                                            "description": "Interface Type (String, String)"
+                                                                                        },
+                                                                                        "interface_id": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                {
+                                                                                                    "type": "integer"
+                                                                                                }
+                                                                                            ],
+                                                                                            "title": "Interface ID",
+                                                                                            "description": "Interface ID (String, Integer)"
+                                                                                        }
+                                                                                    },
+                                                                                    "required": [
+                                                                                        "interface_type",
+                                                                                        "interface_id"
+                                                                                    ]
+                                                                                },
+                                                                                "title": "Interfaces",
+                                                                                "description": "Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "group",
+                                                                            "interfaces"
+                                                                        ]
+                                                                    },
+                                                                    "title": "Static Groups",
+                                                                    "description": "Static Groups (List - Object)\n\nElements:\n- group (required)\n- source\n- interfaces (required)"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "IGMP Snooping",
+                                                            "description": "IGMP Snooping (Object)\n\nElements:\n- enable\n- access_group\n- explicit_tracking\n- fast_leave\n- group_timeout\n- last_member_query_interval\n- link_local_groups_suppression\n- proxy_general_queries_mrt\n- proxy_leave_use_group_address\n- querier\n- querier_timeout\n- query_flood\n- query_interval\n- query_max_response_time\n- report_flood_all\n- report_flood_interfaces\n- report_suppression\n- robustness_variable\n- startup_query_count\n- startup_query_interval\n- v3_report_suppression\n- version\n- mrouter_interfaces\n- static_groups"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "id"
+                                                    ]
+                                                },
+                                                "title": "Configurations",
+                                                "description": "Configurations (List - Object)\n\nElements:\n- id (required)\n- mac_learn\n- layer_2_multicast_lookup_mac\n- igmp_snooping"
                                             }
                                         },
                                         "required": [],
                                         "title": "Vlan",
-                                        "description": "Vlan (Object)\n\nElements:\n- vlans"
+                                        "description": "Vlan (Object)\n\nElements:\n- vlans\n- configurations"
                                     },
                                     "vpc": {
                                         "type": "object",
@@ -392670,11 +393951,6 @@
                                                             "title": "Private Vlan Association",
                                                             "description": "Private Vlan Association (Object)\n\nElements:\n- ids\n- ranges"
                                                         },
-                                                        "mac_learn": {
-                                                            "type": "boolean",
-                                                            "title": "MAC Learn",
-                                                            "description": "MAC Learn (Boolean)"
-                                                        },
                                                         "isolate": {
                                                             "type": "boolean",
                                                             "title": "Isolate",
@@ -392686,12 +393962,444 @@
                                                     ]
                                                 },
                                                 "title": "Vlans",
-                                                "description": "Vlans (List - Object)\n\nElements:\n- id (required)\n- vn_segment\n- name\n- state_active\n- bridge_mode\n- untagged\n- policy_enforce_vlan\n- cross_connect\n- long_name\n- mac_packet_classify\n- mode\n- vrf\n- private_vlan_type\n- private_vlan_association\n- mac_learn\n- isolate"
+                                                "description": "Vlans (List - Object)\n\nElements:\n- id (required)\n- vn_segment\n- name\n- state_active\n- bridge_mode\n- untagged\n- policy_enforce_vlan\n- cross_connect\n- long_name\n- mac_packet_classify\n- mode\n- vrf\n- private_vlan_type\n- private_vlan_association\n- isolate"
+                                            },
+                                            "configurations": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 4094
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "ID",
+                                                            "description": "ID (Integer, String)"
+                                                        },
+                                                        "mac_learn": {
+                                                            "type": "boolean",
+                                                            "title": "MAC Learn",
+                                                            "description": "MAC Learn (Boolean)"
+                                                        },
+                                                        "layer_2_multicast_lookup_mac": {
+                                                            "type": "boolean",
+                                                            "title": "Layer 2 Multicast Lookup MAC",
+                                                            "description": "Layer 2 Multicast Lookup MAC (Boolean)"
+                                                        },
+                                                        "igmp_snooping": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "enable": {
+                                                                    "type": "boolean",
+                                                                    "title": "Enable",
+                                                                    "description": "Enable (Boolean)"
+                                                                },
+                                                                "access_group": {
+                                                                    "type": "string",
+                                                                    "title": "Access Group",
+                                                                    "description": "Access Group (String)"
+                                                                },
+                                                                "explicit_tracking": {
+                                                                    "type": "boolean",
+                                                                    "title": "Explicit Tracking",
+                                                                    "description": "Explicit Tracking (Boolean)"
+                                                                },
+                                                                "fast_leave": {
+                                                                    "type": "boolean",
+                                                                    "title": "Fast Leave",
+                                                                    "description": "Fast Leave (Boolean)"
+                                                                },
+                                                                "group_timeout": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 65535
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Group Timeout",
+                                                                    "description": "Group Timeout (Integer, String)"
+                                                                },
+                                                                "last_member_query_interval": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 25
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Last Member Query Interval",
+                                                                    "description": "Last Member Query Interval (Integer, String)"
+                                                                },
+                                                                "link_local_groups_suppression": {
+                                                                    "type": "boolean",
+                                                                    "title": "Link Local Groups Suppression",
+                                                                    "description": "Link Local Groups Suppression (Boolean)"
+                                                                },
+                                                                "proxy_general_queries_mrt": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 25
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Proxy General Queries Mrt",
+                                                                    "description": "Proxy General Queries Mrt (Integer, String)"
+                                                                },
+                                                                "proxy_leave_use_group_address": {
+                                                                    "type": "boolean",
+                                                                    "title": "Proxy Leave Use Group Address",
+                                                                    "description": "Proxy Leave Use Group Address (Boolean)"
+                                                                },
+                                                                "querier": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Querier",
+                                                                    "description": "Querier (String, String)"
+                                                                },
+                                                                "querier_timeout": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 65535
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Querier Timeout",
+                                                                    "description": "Querier Timeout (Integer, String)"
+                                                                },
+                                                                "query_flood": {
+                                                                    "type": "boolean",
+                                                                    "title": "Query Flood",
+                                                                    "description": "Query Flood (Boolean)"
+                                                                },
+                                                                "query_interval": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 18000
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Query Interval",
+                                                                    "description": "Query Interval (Integer, String)"
+                                                                },
+                                                                "query_max_response_time": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 25
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Query Max Response Time",
+                                                                    "description": "Query Max Response Time (Integer, String)"
+                                                                },
+                                                                "report_flood_all": {
+                                                                    "type": "boolean",
+                                                                    "title": "Report Flood All",
+                                                                    "description": "Report Flood All (Boolean)"
+                                                                },
+                                                                "report_flood_interfaces": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "interface_type": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "ethernet",
+                                                                                            "port-channel"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Interface Type",
+                                                                                "description": "Interface Type (String, String)"
+                                                                            },
+                                                                            "interface_id": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Interface ID",
+                                                                                "description": "Interface ID (String, Integer)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "interface_type",
+                                                                            "interface_id"
+                                                                        ]
+                                                                    },
+                                                                    "title": "Report Flood Interfaces",
+                                                                    "description": "Report Flood Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                                },
+                                                                "report_suppression": {
+                                                                    "type": "boolean",
+                                                                    "title": "Report Suppression",
+                                                                    "description": "Report Suppression (Boolean)"
+                                                                },
+                                                                "robustness_variable": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 7
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Robustness Variable",
+                                                                    "description": "Robustness Variable (Integer, String)"
+                                                                },
+                                                                "startup_query_count": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 10
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Startup Query Count",
+                                                                    "description": "Startup Query Count (Integer, String)"
+                                                                },
+                                                                "startup_query_interval": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 18000
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Startup Query Interval",
+                                                                    "description": "Startup Query Interval (Integer, String)"
+                                                                },
+                                                                "v3_report_suppression": {
+                                                                    "type": "boolean",
+                                                                    "title": "V3 Report Suppression",
+                                                                    "description": "V3 Report Suppression (Boolean)"
+                                                                },
+                                                                "version": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "enum": [
+                                                                                2,
+                                                                                3
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Version",
+                                                                    "description": "Version (Integer, String)"
+                                                                },
+                                                                "mrouter_interfaces": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "interface_type": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "ethernet",
+                                                                                            "port-channel"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Interface Type",
+                                                                                "description": "Interface Type (String, String)"
+                                                                            },
+                                                                            "interface_id": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Interface ID",
+                                                                                "description": "Interface ID (String, Integer)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "interface_type",
+                                                                            "interface_id"
+                                                                        ]
+                                                                    },
+                                                                    "title": "Mrouter Interfaces",
+                                                                    "description": "Mrouter Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                                },
+                                                                "static_groups": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "group": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Group",
+                                                                                "description": "Group (String, String)"
+                                                                            },
+                                                                            "source": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Source",
+                                                                                "description": "Source (String, String)"
+                                                                            },
+                                                                            "interfaces": {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                    "type": "object",
+                                                                                    "additionalProperties": false,
+                                                                                    "properties": {
+                                                                                        "interface_type": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "string",
+                                                                                                    "enum": [
+                                                                                                        "ethernet",
+                                                                                                        "port-channel"
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "type": "string",
+                                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                                }
+                                                                                            ],
+                                                                                            "title": "Interface Type",
+                                                                                            "description": "Interface Type (String, String)"
+                                                                                        },
+                                                                                        "interface_id": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                {
+                                                                                                    "type": "integer"
+                                                                                                }
+                                                                                            ],
+                                                                                            "title": "Interface ID",
+                                                                                            "description": "Interface ID (String, Integer)"
+                                                                                        }
+                                                                                    },
+                                                                                    "required": [
+                                                                                        "interface_type",
+                                                                                        "interface_id"
+                                                                                    ]
+                                                                                },
+                                                                                "title": "Interfaces",
+                                                                                "description": "Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "group",
+                                                                            "interfaces"
+                                                                        ]
+                                                                    },
+                                                                    "title": "Static Groups",
+                                                                    "description": "Static Groups (List - Object)\n\nElements:\n- group (required)\n- source\n- interfaces (required)"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "IGMP Snooping",
+                                                            "description": "IGMP Snooping (Object)\n\nElements:\n- enable\n- access_group\n- explicit_tracking\n- fast_leave\n- group_timeout\n- last_member_query_interval\n- link_local_groups_suppression\n- proxy_general_queries_mrt\n- proxy_leave_use_group_address\n- querier\n- querier_timeout\n- query_flood\n- query_interval\n- query_max_response_time\n- report_flood_all\n- report_flood_interfaces\n- report_suppression\n- robustness_variable\n- startup_query_count\n- startup_query_interval\n- v3_report_suppression\n- version\n- mrouter_interfaces\n- static_groups"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "id"
+                                                    ]
+                                                },
+                                                "title": "Configurations",
+                                                "description": "Configurations (List - Object)\n\nElements:\n- id (required)\n- mac_learn\n- layer_2_multicast_lookup_mac\n- igmp_snooping"
                                             }
                                         },
                                         "required": [],
                                         "title": "Vlan",
-                                        "description": "Vlan (Object)\n\nElements:\n- vlans"
+                                        "description": "Vlan (Object)\n\nElements:\n- vlans\n- configurations"
                                     },
                                     "vpc": {
                                         "type": "object",
