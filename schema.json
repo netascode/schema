@@ -185916,6 +185916,21 @@
                                                     "title": "Med Dampening Interval",
                                                     "description": "Med Dampening Interval (Integer, String)"
                                                 },
+                                                "mvpn_vri_id": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 1,
+                                                            "maximum": 65535
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Mvpn Vri ID",
+                                                    "description": "Mvpn Vri ID (Integer, String)"
+                                                },
                                                 "nexthop_suppress_default_resolution": {
                                                     "type": "boolean",
                                                     "title": "Nexthop Suppress Default Resolution",
@@ -190479,7 +190494,7 @@
                                             },
                                             "required": [],
                                             "title": "BGP",
-                                            "description": "BGP (Object)\n\nElements:\n- asn\n- shutdown\n- disable_policy_batching\n- disable_policy_batching_nexthop\n- disable_policy_batching_ipv4_prefix_list\n- disable_policy_batching_ipv6_prefix_list\n- fabric_soo\n- flush_routes\n- isolate\n- isolate_route_map\n- med_dampening_interval\n- nexthop_suppress_default_resolution\n- rd_dual\n- rd_dual_id\n- peer_templates\n- peer_session_templates\n- peer_policy_templates\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- bestpath\n- neighbors\n- address_families\n- vrfs"
+                                            "description": "BGP (Object)\n\nElements:\n- asn\n- shutdown\n- disable_policy_batching\n- disable_policy_batching_nexthop\n- disable_policy_batching_ipv4_prefix_list\n- disable_policy_batching_ipv6_prefix_list\n- fabric_soo\n- flush_routes\n- isolate\n- isolate_route_map\n- med_dampening_interval\n- mvpn_vri_id\n- nexthop_suppress_default_resolution\n- rd_dual\n- rd_dual_id\n- peer_templates\n- peer_session_templates\n- peer_policy_templates\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- bestpath\n- neighbors\n- address_families\n- vrfs"
                                         },
                                         "ip_routes": {
                                             "type": "array",
@@ -193067,6 +193082,11 @@
                                             "title": "Nve Infra Vlans",
                                             "description": "Nve Infra Vlans (List - Object)\n\nElements:\n- vlans (required)\n- force"
                                         },
+                                        "advertise_evpn_multicast": {
+                                            "type": "boolean",
+                                            "title": "Advertise Evpn Multicast",
+                                            "description": "Advertise Evpn Multicast (Boolean)"
+                                        },
                                         "interface_vlan_autostate": {
                                             "type": "boolean",
                                             "title": "Interface Vlan Autostate",
@@ -193473,6 +193493,16 @@
                                             "required": [],
                                             "title": "IP Load Sharing",
                                             "description": "IP Load Sharing (Object)\n\nElements:\n- address\n- udf_offset\n- udf_length\n- exclude_l3_proto\n- rotate\n- concatenation\n- universal_id\n- hardware_lb_keyshift\n- hardware_lb_2nd_hier_keyshift"
+                                        },
+                                        "ip_multicast_overlay_distributed_dr": {
+                                            "type": "boolean",
+                                            "title": "IP Multicast Overlay Distributed Dr",
+                                            "description": "IP Multicast Overlay Distributed Dr (Boolean)"
+                                        },
+                                        "ip_multicast_overlay_spt_only": {
+                                            "type": "boolean",
+                                            "title": "IP Multicast Overlay Spt Only",
+                                            "description": "IP Multicast Overlay Spt Only (Boolean)"
                                         },
                                         "hardware_access_list_tcam_region": {
                                             "type": "object",
@@ -198734,7 +198764,7 @@
                                     },
                                     "required": [],
                                     "title": "System",
-                                    "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                    "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                 },
                                 "telemetry": {
                                     "type": "object",
@@ -200264,6 +200294,16 @@
                                                 "title": "L3Vni",
                                                 "description": "L3Vni (Boolean)"
                                             },
+                                            "mdt_v4_vxlan": {
+                                                "type": "boolean",
+                                                "title": "Mdt V4 Vxlan",
+                                                "description": "Mdt V4 Vxlan (Boolean)"
+                                            },
+                                            "mdt_v6_vxlan": {
+                                                "type": "boolean",
+                                                "title": "Mdt V6 Vxlan",
+                                                "description": "Mdt V6 Vxlan (Boolean)"
+                                            },
                                             "route_distinguisher": {
                                                 "type": "string",
                                                 "title": "Route Distinguisher",
@@ -200535,7 +200575,7 @@
                                         ]
                                     },
                                     "title": "VRFs",
-                                    "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default\n- security_contracts"
+                                    "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- mdt_v4_vxlan\n- mdt_v6_vxlan\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default\n- security_contracts"
                                 },
                                 "vtp": {
                                     "type": "object",
@@ -244261,6 +244301,21 @@
                                                         "title": "Med Dampening Interval",
                                                         "description": "Med Dampening Interval (Integer, String)"
                                                     },
+                                                    "mvpn_vri_id": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 65535
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Mvpn Vri ID",
+                                                        "description": "Mvpn Vri ID (Integer, String)"
+                                                    },
                                                     "nexthop_suppress_default_resolution": {
                                                         "type": "boolean",
                                                         "title": "Nexthop Suppress Default Resolution",
@@ -248824,7 +248879,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "BGP",
-                                                "description": "BGP (Object)\n\nElements:\n- asn\n- shutdown\n- disable_policy_batching\n- disable_policy_batching_nexthop\n- disable_policy_batching_ipv4_prefix_list\n- disable_policy_batching_ipv6_prefix_list\n- fabric_soo\n- flush_routes\n- isolate\n- isolate_route_map\n- med_dampening_interval\n- nexthop_suppress_default_resolution\n- rd_dual\n- rd_dual_id\n- peer_templates\n- peer_session_templates\n- peer_policy_templates\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- bestpath\n- neighbors\n- address_families\n- vrfs"
+                                                "description": "BGP (Object)\n\nElements:\n- asn\n- shutdown\n- disable_policy_batching\n- disable_policy_batching_nexthop\n- disable_policy_batching_ipv4_prefix_list\n- disable_policy_batching_ipv6_prefix_list\n- fabric_soo\n- flush_routes\n- isolate\n- isolate_route_map\n- med_dampening_interval\n- mvpn_vri_id\n- nexthop_suppress_default_resolution\n- rd_dual\n- rd_dual_id\n- peer_templates\n- peer_session_templates\n- peer_policy_templates\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- bestpath\n- neighbors\n- address_families\n- vrfs"
                                             },
                                             "ip_routes": {
                                                 "type": "array",
@@ -251412,6 +251467,11 @@
                                                 "title": "Nve Infra Vlans",
                                                 "description": "Nve Infra Vlans (List - Object)\n\nElements:\n- vlans (required)\n- force"
                                             },
+                                            "advertise_evpn_multicast": {
+                                                "type": "boolean",
+                                                "title": "Advertise Evpn Multicast",
+                                                "description": "Advertise Evpn Multicast (Boolean)"
+                                            },
                                             "interface_vlan_autostate": {
                                                 "type": "boolean",
                                                 "title": "Interface Vlan Autostate",
@@ -251818,6 +251878,16 @@
                                                 "required": [],
                                                 "title": "IP Load Sharing",
                                                 "description": "IP Load Sharing (Object)\n\nElements:\n- address\n- udf_offset\n- udf_length\n- exclude_l3_proto\n- rotate\n- concatenation\n- universal_id\n- hardware_lb_keyshift\n- hardware_lb_2nd_hier_keyshift"
+                                            },
+                                            "ip_multicast_overlay_distributed_dr": {
+                                                "type": "boolean",
+                                                "title": "IP Multicast Overlay Distributed Dr",
+                                                "description": "IP Multicast Overlay Distributed Dr (Boolean)"
+                                            },
+                                            "ip_multicast_overlay_spt_only": {
+                                                "type": "boolean",
+                                                "title": "IP Multicast Overlay Spt Only",
+                                                "description": "IP Multicast Overlay Spt Only (Boolean)"
                                             },
                                             "hardware_access_list_tcam_region": {
                                                 "type": "object",
@@ -257079,7 +257149,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -258609,6 +258679,16 @@
                                                     "title": "L3Vni",
                                                     "description": "L3Vni (Boolean)"
                                                 },
+                                                "mdt_v4_vxlan": {
+                                                    "type": "boolean",
+                                                    "title": "Mdt V4 Vxlan",
+                                                    "description": "Mdt V4 Vxlan (Boolean)"
+                                                },
+                                                "mdt_v6_vxlan": {
+                                                    "type": "boolean",
+                                                    "title": "Mdt V6 Vxlan",
+                                                    "description": "Mdt V6 Vxlan (Boolean)"
+                                                },
                                                 "route_distinguisher": {
                                                     "type": "string",
                                                     "title": "Route Distinguisher",
@@ -258880,7 +258960,7 @@
                                             ]
                                         },
                                         "title": "VRFs",
-                                        "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default\n- security_contracts"
+                                        "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- mdt_v4_vxlan\n- mdt_v6_vxlan\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default\n- security_contracts"
                                     },
                                     "vtp": {
                                         "type": "object",
@@ -302639,6 +302719,21 @@
                                                         "title": "Med Dampening Interval",
                                                         "description": "Med Dampening Interval (Integer, String)"
                                                     },
+                                                    "mvpn_vri_id": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 65535
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Mvpn Vri ID",
+                                                        "description": "Mvpn Vri ID (Integer, String)"
+                                                    },
                                                     "nexthop_suppress_default_resolution": {
                                                         "type": "boolean",
                                                         "title": "Nexthop Suppress Default Resolution",
@@ -307202,7 +307297,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "BGP",
-                                                "description": "BGP (Object)\n\nElements:\n- asn\n- shutdown\n- disable_policy_batching\n- disable_policy_batching_nexthop\n- disable_policy_batching_ipv4_prefix_list\n- disable_policy_batching_ipv6_prefix_list\n- fabric_soo\n- flush_routes\n- isolate\n- isolate_route_map\n- med_dampening_interval\n- nexthop_suppress_default_resolution\n- rd_dual\n- rd_dual_id\n- peer_templates\n- peer_session_templates\n- peer_policy_templates\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- bestpath\n- neighbors\n- address_families\n- vrfs"
+                                                "description": "BGP (Object)\n\nElements:\n- asn\n- shutdown\n- disable_policy_batching\n- disable_policy_batching_nexthop\n- disable_policy_batching_ipv4_prefix_list\n- disable_policy_batching_ipv6_prefix_list\n- fabric_soo\n- flush_routes\n- isolate\n- isolate_route_map\n- med_dampening_interval\n- mvpn_vri_id\n- nexthop_suppress_default_resolution\n- rd_dual\n- rd_dual_id\n- peer_templates\n- peer_session_templates\n- peer_policy_templates\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- bestpath\n- neighbors\n- address_families\n- vrfs"
                                             },
                                             "ip_routes": {
                                                 "type": "array",
@@ -309790,6 +309885,11 @@
                                                 "title": "Nve Infra Vlans",
                                                 "description": "Nve Infra Vlans (List - Object)\n\nElements:\n- vlans (required)\n- force"
                                             },
+                                            "advertise_evpn_multicast": {
+                                                "type": "boolean",
+                                                "title": "Advertise Evpn Multicast",
+                                                "description": "Advertise Evpn Multicast (Boolean)"
+                                            },
                                             "interface_vlan_autostate": {
                                                 "type": "boolean",
                                                 "title": "Interface Vlan Autostate",
@@ -310196,6 +310296,16 @@
                                                 "required": [],
                                                 "title": "IP Load Sharing",
                                                 "description": "IP Load Sharing (Object)\n\nElements:\n- address\n- udf_offset\n- udf_length\n- exclude_l3_proto\n- rotate\n- concatenation\n- universal_id\n- hardware_lb_keyshift\n- hardware_lb_2nd_hier_keyshift"
+                                            },
+                                            "ip_multicast_overlay_distributed_dr": {
+                                                "type": "boolean",
+                                                "title": "IP Multicast Overlay Distributed Dr",
+                                                "description": "IP Multicast Overlay Distributed Dr (Boolean)"
+                                            },
+                                            "ip_multicast_overlay_spt_only": {
+                                                "type": "boolean",
+                                                "title": "IP Multicast Overlay Spt Only",
+                                                "description": "IP Multicast Overlay Spt Only (Boolean)"
                                             },
                                             "hardware_access_list_tcam_region": {
                                                 "type": "object",
@@ -315457,7 +315567,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -316987,6 +317097,16 @@
                                                     "title": "L3Vni",
                                                     "description": "L3Vni (Boolean)"
                                                 },
+                                                "mdt_v4_vxlan": {
+                                                    "type": "boolean",
+                                                    "title": "Mdt V4 Vxlan",
+                                                    "description": "Mdt V4 Vxlan (Boolean)"
+                                                },
+                                                "mdt_v6_vxlan": {
+                                                    "type": "boolean",
+                                                    "title": "Mdt V6 Vxlan",
+                                                    "description": "Mdt V6 Vxlan (Boolean)"
+                                                },
                                                 "route_distinguisher": {
                                                     "type": "string",
                                                     "title": "Route Distinguisher",
@@ -317258,7 +317378,7 @@
                                             ]
                                         },
                                         "title": "VRFs",
-                                        "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default\n- security_contracts"
+                                        "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- mdt_v4_vxlan\n- mdt_v6_vxlan\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default\n- security_contracts"
                                     },
                                     "vtp": {
                                         "type": "object",
@@ -369172,6 +369292,21 @@
                                                         "title": "Med Dampening Interval",
                                                         "description": "Med Dampening Interval (Integer, String)"
                                                     },
+                                                    "mvpn_vri_id": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 65535
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Mvpn Vri ID",
+                                                        "description": "Mvpn Vri ID (Integer, String)"
+                                                    },
                                                     "nexthop_suppress_default_resolution": {
                                                         "type": "boolean",
                                                         "title": "Nexthop Suppress Default Resolution",
@@ -373735,7 +373870,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "BGP",
-                                                "description": "BGP (Object)\n\nElements:\n- asn\n- shutdown\n- disable_policy_batching\n- disable_policy_batching_nexthop\n- disable_policy_batching_ipv4_prefix_list\n- disable_policy_batching_ipv6_prefix_list\n- fabric_soo\n- flush_routes\n- isolate\n- isolate_route_map\n- med_dampening_interval\n- nexthop_suppress_default_resolution\n- rd_dual\n- rd_dual_id\n- peer_templates\n- peer_session_templates\n- peer_policy_templates\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- bestpath\n- neighbors\n- address_families\n- vrfs"
+                                                "description": "BGP (Object)\n\nElements:\n- asn\n- shutdown\n- disable_policy_batching\n- disable_policy_batching_nexthop\n- disable_policy_batching_ipv4_prefix_list\n- disable_policy_batching_ipv6_prefix_list\n- fabric_soo\n- flush_routes\n- isolate\n- isolate_route_map\n- med_dampening_interval\n- mvpn_vri_id\n- nexthop_suppress_default_resolution\n- rd_dual\n- rd_dual_id\n- peer_templates\n- peer_session_templates\n- peer_policy_templates\n- router_id\n- allocate_index\n- bestpath_limit_always\n- bestpath_limit\n- reference_bandwidth\n- reference_bandwidth_unit\n- cluster_id\n- hold_time\n- keepalive_interval\n- local_as\n- maxas_limit\n- mode\n- prefix_peer_timeout\n- prefix_peer_wait\n- reconnect_interval\n- router_id_auto\n- log_neighbor_changes\n- enforce_first_as\n- neighbor_down_fib_accelerate\n- suppress_fib_pending\n- graceful_restart\n- graceful_restart_restart_time\n- graceful_restart_stalepath_time\n- bestpath\n- neighbors\n- address_families\n- vrfs"
                                             },
                                             "ip_routes": {
                                                 "type": "array",
@@ -376323,6 +376458,11 @@
                                                 "title": "Nve Infra Vlans",
                                                 "description": "Nve Infra Vlans (List - Object)\n\nElements:\n- vlans (required)\n- force"
                                             },
+                                            "advertise_evpn_multicast": {
+                                                "type": "boolean",
+                                                "title": "Advertise Evpn Multicast",
+                                                "description": "Advertise Evpn Multicast (Boolean)"
+                                            },
                                             "interface_vlan_autostate": {
                                                 "type": "boolean",
                                                 "title": "Interface Vlan Autostate",
@@ -376729,6 +376869,16 @@
                                                 "required": [],
                                                 "title": "IP Load Sharing",
                                                 "description": "IP Load Sharing (Object)\n\nElements:\n- address\n- udf_offset\n- udf_length\n- exclude_l3_proto\n- rotate\n- concatenation\n- universal_id\n- hardware_lb_keyshift\n- hardware_lb_2nd_hier_keyshift"
+                                            },
+                                            "ip_multicast_overlay_distributed_dr": {
+                                                "type": "boolean",
+                                                "title": "IP Multicast Overlay Distributed Dr",
+                                                "description": "IP Multicast Overlay Distributed Dr (Boolean)"
+                                            },
+                                            "ip_multicast_overlay_spt_only": {
+                                                "type": "boolean",
+                                                "title": "IP Multicast Overlay Spt Only",
+                                                "description": "IP Multicast Overlay Spt Only (Boolean)"
                                             },
                                             "hardware_access_list_tcam_region": {
                                                 "type": "object",
@@ -381990,7 +382140,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -383520,6 +383670,16 @@
                                                     "title": "L3Vni",
                                                     "description": "L3Vni (Boolean)"
                                                 },
+                                                "mdt_v4_vxlan": {
+                                                    "type": "boolean",
+                                                    "title": "Mdt V4 Vxlan",
+                                                    "description": "Mdt V4 Vxlan (Boolean)"
+                                                },
+                                                "mdt_v6_vxlan": {
+                                                    "type": "boolean",
+                                                    "title": "Mdt V6 Vxlan",
+                                                    "description": "Mdt V6 Vxlan (Boolean)"
+                                                },
                                                 "route_distinguisher": {
                                                     "type": "string",
                                                     "title": "Route Distinguisher",
@@ -383791,7 +383951,7 @@
                                             ]
                                         },
                                         "title": "VRFs",
-                                        "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default\n- security_contracts"
+                                        "description": "VRFs (List - Object)\n\nElements:\n- name (required)\n- description\n- vni\n- l3vni\n- mdt_v4_vxlan\n- mdt_v6_vxlan\n- route_distinguisher\n- oui\n- vpn_id\n- auto_discard\n- icmp_errors_source_interface_type\n- icmp_errors_source_interface_id\n- address_families\n- security_enforce_tag\n- security_enforce_default\n- security_contracts"
                                     },
                                     "vtp": {
                                         "type": "object",
