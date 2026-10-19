@@ -200802,6 +200802,56 @@
                                                             "type": "string",
                                                             "title": "Export Map",
                                                             "description": "Export Map (String)"
+                                                        },
+                                                        "import_vrf_default_map": {
+                                                            "type": "string",
+                                                            "title": "Import VRF Default Map",
+                                                            "description": "Import VRF Default Map (String)"
+                                                        },
+                                                        "import_vrf_default_prefix_limit": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 2147483647
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Import VRF Default Prefix Limit",
+                                                            "description": "Import VRF Default Prefix Limit (Integer, String)"
+                                                        },
+                                                        "import_vrf_default_advertise_vpn": {
+                                                            "type": "boolean",
+                                                            "title": "Import VRF Default Advertise VPN",
+                                                            "description": "Import VRF Default Advertise VPN (Boolean)"
+                                                        },
+                                                        "export_vrf_default_map": {
+                                                            "type": "string",
+                                                            "title": "Export VRF Default Map",
+                                                            "description": "Export VRF Default Map (String)"
+                                                        },
+                                                        "export_vrf_default_prefix_limit": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 2147483647
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Export VRF Default Prefix Limit",
+                                                            "description": "Export VRF Default Prefix Limit (Integer, String)"
+                                                        },
+                                                        "export_vrf_default_allow_vpn": {
+                                                            "type": "boolean",
+                                                            "title": "Export VRF Default Allow VPN",
+                                                            "description": "Export VRF Default Allow VPN (Boolean)"
                                                         }
                                                     },
                                                     "required": [
@@ -200809,7 +200859,7 @@
                                                     ]
                                                 },
                                                 "title": "Address Families",
-                                                "description": "Address Families (List - Object)\n\nElements:\n- address_family (required)\n- route_target_both_auto\n- route_target_both_auto_evpn\n- route_target_imports\n- route_target_exports\n- route_target_imports_evpn\n- route_target_exports_evpn\n- import_map\n- export_map"
+                                                "description": "Address Families (List - Object)\n\nElements:\n- address_family (required)\n- route_target_both_auto\n- route_target_both_auto_evpn\n- route_target_imports\n- route_target_exports\n- route_target_imports_evpn\n- route_target_exports_evpn\n- import_map\n- export_map\n- import_vrf_default_map\n- import_vrf_default_prefix_limit\n- import_vrf_default_advertise_vpn\n- export_vrf_default_map\n- export_vrf_default_prefix_limit\n- export_vrf_default_allow_vpn"
                                             },
                                             "security_enforce_tag": {
                                                 "anyOf": [
@@ -259607,6 +259657,56 @@
                                                                 "type": "string",
                                                                 "title": "Export Map",
                                                                 "description": "Export Map (String)"
+                                                            },
+                                                            "import_vrf_default_map": {
+                                                                "type": "string",
+                                                                "title": "Import VRF Default Map",
+                                                                "description": "Import VRF Default Map (String)"
+                                                            },
+                                                            "import_vrf_default_prefix_limit": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 2147483647
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Import VRF Default Prefix Limit",
+                                                                "description": "Import VRF Default Prefix Limit (Integer, String)"
+                                                            },
+                                                            "import_vrf_default_advertise_vpn": {
+                                                                "type": "boolean",
+                                                                "title": "Import VRF Default Advertise VPN",
+                                                                "description": "Import VRF Default Advertise VPN (Boolean)"
+                                                            },
+                                                            "export_vrf_default_map": {
+                                                                "type": "string",
+                                                                "title": "Export VRF Default Map",
+                                                                "description": "Export VRF Default Map (String)"
+                                                            },
+                                                            "export_vrf_default_prefix_limit": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 2147483647
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Export VRF Default Prefix Limit",
+                                                                "description": "Export VRF Default Prefix Limit (Integer, String)"
+                                                            },
+                                                            "export_vrf_default_allow_vpn": {
+                                                                "type": "boolean",
+                                                                "title": "Export VRF Default Allow VPN",
+                                                                "description": "Export VRF Default Allow VPN (Boolean)"
                                                             }
                                                         },
                                                         "required": [
@@ -259614,7 +259714,7 @@
                                                         ]
                                                     },
                                                     "title": "Address Families",
-                                                    "description": "Address Families (List - Object)\n\nElements:\n- address_family (required)\n- route_target_both_auto\n- route_target_both_auto_evpn\n- route_target_imports\n- route_target_exports\n- route_target_imports_evpn\n- route_target_exports_evpn\n- import_map\n- export_map"
+                                                    "description": "Address Families (List - Object)\n\nElements:\n- address_family (required)\n- route_target_both_auto\n- route_target_both_auto_evpn\n- route_target_imports\n- route_target_exports\n- route_target_imports_evpn\n- route_target_exports_evpn\n- import_map\n- export_map\n- import_vrf_default_map\n- import_vrf_default_prefix_limit\n- import_vrf_default_advertise_vpn\n- export_vrf_default_map\n- export_vrf_default_prefix_limit\n- export_vrf_default_allow_vpn"
                                                 },
                                                 "security_enforce_tag": {
                                                     "anyOf": [
@@ -318445,6 +318545,56 @@
                                                                 "type": "string",
                                                                 "title": "Export Map",
                                                                 "description": "Export Map (String)"
+                                                            },
+                                                            "import_vrf_default_map": {
+                                                                "type": "string",
+                                                                "title": "Import VRF Default Map",
+                                                                "description": "Import VRF Default Map (String)"
+                                                            },
+                                                            "import_vrf_default_prefix_limit": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 2147483647
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Import VRF Default Prefix Limit",
+                                                                "description": "Import VRF Default Prefix Limit (Integer, String)"
+                                                            },
+                                                            "import_vrf_default_advertise_vpn": {
+                                                                "type": "boolean",
+                                                                "title": "Import VRF Default Advertise VPN",
+                                                                "description": "Import VRF Default Advertise VPN (Boolean)"
+                                                            },
+                                                            "export_vrf_default_map": {
+                                                                "type": "string",
+                                                                "title": "Export VRF Default Map",
+                                                                "description": "Export VRF Default Map (String)"
+                                                            },
+                                                            "export_vrf_default_prefix_limit": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 2147483647
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Export VRF Default Prefix Limit",
+                                                                "description": "Export VRF Default Prefix Limit (Integer, String)"
+                                                            },
+                                                            "export_vrf_default_allow_vpn": {
+                                                                "type": "boolean",
+                                                                "title": "Export VRF Default Allow VPN",
+                                                                "description": "Export VRF Default Allow VPN (Boolean)"
                                                             }
                                                         },
                                                         "required": [
@@ -318452,7 +318602,7 @@
                                                         ]
                                                     },
                                                     "title": "Address Families",
-                                                    "description": "Address Families (List - Object)\n\nElements:\n- address_family (required)\n- route_target_both_auto\n- route_target_both_auto_evpn\n- route_target_imports\n- route_target_exports\n- route_target_imports_evpn\n- route_target_exports_evpn\n- import_map\n- export_map"
+                                                    "description": "Address Families (List - Object)\n\nElements:\n- address_family (required)\n- route_target_both_auto\n- route_target_both_auto_evpn\n- route_target_imports\n- route_target_exports\n- route_target_imports_evpn\n- route_target_exports_evpn\n- import_map\n- export_map\n- import_vrf_default_map\n- import_vrf_default_prefix_limit\n- import_vrf_default_advertise_vpn\n- export_vrf_default_map\n- export_vrf_default_prefix_limit\n- export_vrf_default_allow_vpn"
                                                 },
                                                 "security_enforce_tag": {
                                                     "anyOf": [
@@ -385509,6 +385659,56 @@
                                                                 "type": "string",
                                                                 "title": "Export Map",
                                                                 "description": "Export Map (String)"
+                                                            },
+                                                            "import_vrf_default_map": {
+                                                                "type": "string",
+                                                                "title": "Import VRF Default Map",
+                                                                "description": "Import VRF Default Map (String)"
+                                                            },
+                                                            "import_vrf_default_prefix_limit": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 2147483647
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Import VRF Default Prefix Limit",
+                                                                "description": "Import VRF Default Prefix Limit (Integer, String)"
+                                                            },
+                                                            "import_vrf_default_advertise_vpn": {
+                                                                "type": "boolean",
+                                                                "title": "Import VRF Default Advertise VPN",
+                                                                "description": "Import VRF Default Advertise VPN (Boolean)"
+                                                            },
+                                                            "export_vrf_default_map": {
+                                                                "type": "string",
+                                                                "title": "Export VRF Default Map",
+                                                                "description": "Export VRF Default Map (String)"
+                                                            },
+                                                            "export_vrf_default_prefix_limit": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 2147483647
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Export VRF Default Prefix Limit",
+                                                                "description": "Export VRF Default Prefix Limit (Integer, String)"
+                                                            },
+                                                            "export_vrf_default_allow_vpn": {
+                                                                "type": "boolean",
+                                                                "title": "Export VRF Default Allow VPN",
+                                                                "description": "Export VRF Default Allow VPN (Boolean)"
                                                             }
                                                         },
                                                         "required": [
@@ -385516,7 +385716,7 @@
                                                         ]
                                                     },
                                                     "title": "Address Families",
-                                                    "description": "Address Families (List - Object)\n\nElements:\n- address_family (required)\n- route_target_both_auto\n- route_target_both_auto_evpn\n- route_target_imports\n- route_target_exports\n- route_target_imports_evpn\n- route_target_exports_evpn\n- import_map\n- export_map"
+                                                    "description": "Address Families (List - Object)\n\nElements:\n- address_family (required)\n- route_target_both_auto\n- route_target_both_auto_evpn\n- route_target_imports\n- route_target_exports\n- route_target_imports_evpn\n- route_target_exports_evpn\n- import_map\n- export_map\n- import_vrf_default_map\n- import_vrf_default_prefix_limit\n- import_vrf_default_advertise_vpn\n- export_vrf_default_map\n- export_vrf_default_prefix_limit\n- export_vrf_default_allow_vpn"
                                                 },
                                                 "security_enforce_tag": {
                                                     "anyOf": [
