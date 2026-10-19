@@ -170163,6 +170163,57 @@
                                             "title": "Multihoming",
                                             "description": "Multihoming (Object)\n\nElements:\n- enabled\n- system_mac\n- df_election_mode\n- df_election_time\n- ead_evi_route\n- ethernet_segment_delay_restore_time\n- frr_anycast_source_ip"
                                         },
+                                        "storm_control": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "broadcast_level": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "number",
+                                                            "maximum": 100
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Broadcast Level",
+                                                    "description": "Broadcast Level (Number, String)"
+                                                },
+                                                "multicast_level": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "number",
+                                                            "maximum": 100
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Multicast Level",
+                                                    "description": "Multicast Level (Number, String)"
+                                                },
+                                                "unicast_level": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "number",
+                                                            "maximum": 100
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Unicast Level",
+                                                    "description": "Unicast Level (Number, String)"
+                                                }
+                                            },
+                                            "required": [],
+                                            "title": "Storm Control",
+                                            "description": "Storm Control (Object)\n\nElements:\n- broadcast_level\n- multicast_level\n- unicast_level"
+                                        },
                                         "vnis": {
                                             "type": "array",
                                             "items": {
@@ -170247,7 +170298,7 @@
                                     },
                                     "required": [],
                                     "title": "Evpn",
-                                    "description": "Evpn (Object)\n\nElements:\n- multisite_border_gateway\n- multihoming\n- vnis"
+                                    "description": "Evpn (Object)\n\nElements:\n- multisite_border_gateway\n- multihoming\n- storm_control\n- vnis"
                                 },
                                 "fabric_forwarding": {
                                     "type": "object",
@@ -185566,6 +185617,25 @@
                                                     "title": "Extranet",
                                                     "description": "Extranet (Boolean)"
                                                 },
+                                                "isolate": {
+                                                    "type": "boolean",
+                                                    "title": "Isolate",
+                                                    "description": "Isolate (Boolean)"
+                                                },
+                                                "logging_level": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "maximum": 7
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Logging Level",
+                                                    "description": "Logging Level (Integer, String)"
+                                                },
                                                 "bfd": {
                                                     "type": "boolean",
                                                     "title": "BFD",
@@ -185976,7 +186046,7 @@
                                             },
                                             "required": [],
                                             "title": "Pim",
-                                            "description": "Pim (Object)\n\nElements:\n- evpn_border_leaf\n- extranet\n- bfd\n- auto_enable\n- flush_routes\n- log_neighbor_changes\n- mtu\n- register_rate_limit\n- strict_rfc_compliant\n- spt_switch_graceful\n- ssm\n- rps\n- anycast_rps\n- vrfs"
+                                            "description": "Pim (Object)\n\nElements:\n- evpn_border_leaf\n- extranet\n- isolate\n- logging_level\n- bfd\n- auto_enable\n- flush_routes\n- log_neighbor_changes\n- mtu\n- register_rate_limit\n- strict_rfc_compliant\n- spt_switch_graceful\n- ssm\n- rps\n- anycast_rps\n- vrfs"
                                         },
                                         "bgp": {
                                             "type": "object",
@@ -228849,6 +228919,57 @@
                                                 "title": "Multihoming",
                                                 "description": "Multihoming (Object)\n\nElements:\n- enabled\n- system_mac\n- df_election_mode\n- df_election_time\n- ead_evi_route\n- ethernet_segment_delay_restore_time\n- frr_anycast_source_ip"
                                             },
+                                            "storm_control": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "broadcast_level": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "number",
+                                                                "maximum": 100
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Broadcast Level",
+                                                        "description": "Broadcast Level (Number, String)"
+                                                    },
+                                                    "multicast_level": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "number",
+                                                                "maximum": 100
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Multicast Level",
+                                                        "description": "Multicast Level (Number, String)"
+                                                    },
+                                                    "unicast_level": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "number",
+                                                                "maximum": 100
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Unicast Level",
+                                                        "description": "Unicast Level (Number, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Storm Control",
+                                                "description": "Storm Control (Object)\n\nElements:\n- broadcast_level\n- multicast_level\n- unicast_level"
+                                            },
                                             "vnis": {
                                                 "type": "array",
                                                 "items": {
@@ -228933,7 +229054,7 @@
                                         },
                                         "required": [],
                                         "title": "Evpn",
-                                        "description": "Evpn (Object)\n\nElements:\n- multisite_border_gateway\n- multihoming\n- vnis"
+                                        "description": "Evpn (Object)\n\nElements:\n- multisite_border_gateway\n- multihoming\n- storm_control\n- vnis"
                                     },
                                     "fabric_forwarding": {
                                         "type": "object",
@@ -244252,6 +244373,25 @@
                                                         "title": "Extranet",
                                                         "description": "Extranet (Boolean)"
                                                     },
+                                                    "isolate": {
+                                                        "type": "boolean",
+                                                        "title": "Isolate",
+                                                        "description": "Isolate (Boolean)"
+                                                    },
+                                                    "logging_level": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 7
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Logging Level",
+                                                        "description": "Logging Level (Integer, String)"
+                                                    },
                                                     "bfd": {
                                                         "type": "boolean",
                                                         "title": "BFD",
@@ -244662,7 +244802,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Pim",
-                                                "description": "Pim (Object)\n\nElements:\n- evpn_border_leaf\n- extranet\n- bfd\n- auto_enable\n- flush_routes\n- log_neighbor_changes\n- mtu\n- register_rate_limit\n- strict_rfc_compliant\n- spt_switch_graceful\n- ssm\n- rps\n- anycast_rps\n- vrfs"
+                                                "description": "Pim (Object)\n\nElements:\n- evpn_border_leaf\n- extranet\n- isolate\n- logging_level\n- bfd\n- auto_enable\n- flush_routes\n- log_neighbor_changes\n- mtu\n- register_rate_limit\n- strict_rfc_compliant\n- spt_switch_graceful\n- ssm\n- rps\n- anycast_rps\n- vrfs"
                                             },
                                             "bgp": {
                                                 "type": "object",
@@ -287568,6 +287708,57 @@
                                                 "title": "Multihoming",
                                                 "description": "Multihoming (Object)\n\nElements:\n- enabled\n- system_mac\n- df_election_mode\n- df_election_time\n- ead_evi_route\n- ethernet_segment_delay_restore_time\n- frr_anycast_source_ip"
                                             },
+                                            "storm_control": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "broadcast_level": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "number",
+                                                                "maximum": 100
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Broadcast Level",
+                                                        "description": "Broadcast Level (Number, String)"
+                                                    },
+                                                    "multicast_level": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "number",
+                                                                "maximum": 100
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Multicast Level",
+                                                        "description": "Multicast Level (Number, String)"
+                                                    },
+                                                    "unicast_level": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "number",
+                                                                "maximum": 100
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Unicast Level",
+                                                        "description": "Unicast Level (Number, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Storm Control",
+                                                "description": "Storm Control (Object)\n\nElements:\n- broadcast_level\n- multicast_level\n- unicast_level"
+                                            },
                                             "vnis": {
                                                 "type": "array",
                                                 "items": {
@@ -287652,7 +287843,7 @@
                                         },
                                         "required": [],
                                         "title": "Evpn",
-                                        "description": "Evpn (Object)\n\nElements:\n- multisite_border_gateway\n- multihoming\n- vnis"
+                                        "description": "Evpn (Object)\n\nElements:\n- multisite_border_gateway\n- multihoming\n- storm_control\n- vnis"
                                     },
                                     "fabric_forwarding": {
                                         "type": "object",
@@ -302971,6 +303162,25 @@
                                                         "title": "Extranet",
                                                         "description": "Extranet (Boolean)"
                                                     },
+                                                    "isolate": {
+                                                        "type": "boolean",
+                                                        "title": "Isolate",
+                                                        "description": "Isolate (Boolean)"
+                                                    },
+                                                    "logging_level": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 7
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Logging Level",
+                                                        "description": "Logging Level (Integer, String)"
+                                                    },
                                                     "bfd": {
                                                         "type": "boolean",
                                                         "title": "BFD",
@@ -303381,7 +303591,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Pim",
-                                                "description": "Pim (Object)\n\nElements:\n- evpn_border_leaf\n- extranet\n- bfd\n- auto_enable\n- flush_routes\n- log_neighbor_changes\n- mtu\n- register_rate_limit\n- strict_rfc_compliant\n- spt_switch_graceful\n- ssm\n- rps\n- anycast_rps\n- vrfs"
+                                                "description": "Pim (Object)\n\nElements:\n- evpn_border_leaf\n- extranet\n- isolate\n- logging_level\n- bfd\n- auto_enable\n- flush_routes\n- log_neighbor_changes\n- mtu\n- register_rate_limit\n- strict_rfc_compliant\n- spt_switch_graceful\n- ssm\n- rps\n- anycast_rps\n- vrfs"
                                             },
                                             "bgp": {
                                                 "type": "object",
@@ -354513,6 +354723,57 @@
                                                 "title": "Multihoming",
                                                 "description": "Multihoming (Object)\n\nElements:\n- enabled\n- system_mac\n- df_election_mode\n- df_election_time\n- ead_evi_route\n- ethernet_segment_delay_restore_time\n- frr_anycast_source_ip"
                                             },
+                                            "storm_control": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "broadcast_level": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "number",
+                                                                "maximum": 100
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Broadcast Level",
+                                                        "description": "Broadcast Level (Number, String)"
+                                                    },
+                                                    "multicast_level": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "number",
+                                                                "maximum": 100
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Multicast Level",
+                                                        "description": "Multicast Level (Number, String)"
+                                                    },
+                                                    "unicast_level": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "number",
+                                                                "maximum": 100
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Unicast Level",
+                                                        "description": "Unicast Level (Number, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Storm Control",
+                                                "description": "Storm Control (Object)\n\nElements:\n- broadcast_level\n- multicast_level\n- unicast_level"
+                                            },
                                             "vnis": {
                                                 "type": "array",
                                                 "items": {
@@ -354597,7 +354858,7 @@
                                         },
                                         "required": [],
                                         "title": "Evpn",
-                                        "description": "Evpn (Object)\n\nElements:\n- multisite_border_gateway\n- multihoming\n- vnis"
+                                        "description": "Evpn (Object)\n\nElements:\n- multisite_border_gateway\n- multihoming\n- storm_control\n- vnis"
                                     },
                                     "fabric_forwarding": {
                                         "type": "object",
@@ -369916,6 +370177,25 @@
                                                         "title": "Extranet",
                                                         "description": "Extranet (Boolean)"
                                                     },
+                                                    "isolate": {
+                                                        "type": "boolean",
+                                                        "title": "Isolate",
+                                                        "description": "Isolate (Boolean)"
+                                                    },
+                                                    "logging_level": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 7
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Logging Level",
+                                                        "description": "Logging Level (Integer, String)"
+                                                    },
                                                     "bfd": {
                                                         "type": "boolean",
                                                         "title": "BFD",
@@ -370326,7 +370606,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Pim",
-                                                "description": "Pim (Object)\n\nElements:\n- evpn_border_leaf\n- extranet\n- bfd\n- auto_enable\n- flush_routes\n- log_neighbor_changes\n- mtu\n- register_rate_limit\n- strict_rfc_compliant\n- spt_switch_graceful\n- ssm\n- rps\n- anycast_rps\n- vrfs"
+                                                "description": "Pim (Object)\n\nElements:\n- evpn_border_leaf\n- extranet\n- isolate\n- logging_level\n- bfd\n- auto_enable\n- flush_routes\n- log_neighbor_changes\n- mtu\n- register_rate_limit\n- strict_rfc_compliant\n- spt_switch_graceful\n- ssm\n- rps\n- anycast_rps\n- vrfs"
                                             },
                                             "bgp": {
                                                 "type": "object",
