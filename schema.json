@@ -170070,6 +170070,99 @@
                                             "title": "Multisite Border Gateway",
                                             "description": "Multisite Border Gateway (Object)\n\nElements:\n- site_id (required)\n- dci_advertise_pip\n- delay_restore_time\n- df_election_time\n- fabric_advertise_pip\n- split_horizon_per_site"
                                         },
+                                        "multihoming": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "enabled": {
+                                                    "type": "boolean",
+                                                    "title": "Enabled",
+                                                    "description": "Enabled (Boolean)"
+                                                },
+                                                "system_mac": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "System MAC",
+                                                    "description": "System MAC (String, String)"
+                                                },
+                                                "df_election_mode": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "per-flow",
+                                                                "modulo"
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Df Election Mode",
+                                                    "description": "Df Election Mode (String, String)"
+                                                },
+                                                "df_election_time": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "number",
+                                                            "minimum": 1,
+                                                            "maximum": 3
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Df Election Time",
+                                                    "description": "Df Election Time (Number, String)"
+                                                },
+                                                "ead_evi_route": {
+                                                    "type": "boolean",
+                                                    "title": "Ead Evi Route",
+                                                    "description": "Ead Evi Route (Boolean)"
+                                                },
+                                                "ethernet_segment_delay_restore_time": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 30,
+                                                            "maximum": 1000
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Ethernet Segment Delay Restore Time",
+                                                    "description": "Ethernet Segment Delay Restore Time (Integer, String)"
+                                                },
+                                                "frr_anycast_source_ip": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "string"
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Frr Anycast Source IP",
+                                                    "description": "Frr Anycast Source IP (String, String)"
+                                                }
+                                            },
+                                            "required": [],
+                                            "title": "Multihoming",
+                                            "description": "Multihoming (Object)\n\nElements:\n- enabled\n- system_mac\n- df_election_mode\n- df_election_time\n- ead_evi_route\n- ethernet_segment_delay_restore_time\n- frr_anycast_source_ip"
+                                        },
                                         "vnis": {
                                             "type": "array",
                                             "items": {
@@ -170154,7 +170247,7 @@
                                     },
                                     "required": [],
                                     "title": "Evpn",
-                                    "description": "Evpn (Object)\n\nElements:\n- multisite_border_gateway\n- vnis"
+                                    "description": "Evpn (Object)\n\nElements:\n- multisite_border_gateway\n- multihoming\n- vnis"
                                 },
                                 "fabric_forwarding": {
                                     "type": "object",
@@ -205706,6 +205799,11 @@
                                                         "title": "Evpn Multisite Fabric Tracking",
                                                         "description": "Evpn Multisite Fabric Tracking (Boolean)"
                                                     },
+                                                    "evpn_multihoming_core_tracking": {
+                                                        "type": "boolean",
+                                                        "title": "Evpn Multihoming Core Tracking",
+                                                        "description": "Evpn Multihoming Core Tracking (Boolean)"
+                                                    },
                                                     "private_vlan_mapping": {
                                                         "type": "object",
                                                         "additionalProperties": false,
@@ -205784,7 +205882,7 @@
                                                 ]
                                             },
                                             "title": "Vlans",
-                                            "description": "Vlans (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- autostate\n- bandwidth\n- carrier_delay\n- delay\n- description\n- management\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- medium\n- mtu\n- snmp_trap_link_status\n- vrf\n- ip\n- ipv6\n- fabric_forwarding_mode\n- fabric_forwarding_mode_anycast_gateway_proxy\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- private_vlan_mapping"
+                                            "description": "Vlans (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- autostate\n- bandwidth\n- carrier_delay\n- delay\n- description\n- management\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- medium\n- mtu\n- snmp_trap_link_status\n- vrf\n- ip\n- ipv6\n- fabric_forwarding_mode\n- fabric_forwarding_mode_anycast_gateway_proxy\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- evpn_multihoming_core_tracking\n- private_vlan_mapping"
                                         },
                                         "nve": {
                                             "type": "object",
@@ -213938,6 +214036,11 @@
                                                         "title": "Evpn Multisite Fabric Tracking",
                                                         "description": "Evpn Multisite Fabric Tracking (Boolean)"
                                                     },
+                                                    "evpn_multihoming_core_tracking": {
+                                                        "type": "boolean",
+                                                        "title": "Evpn Multihoming Core Tracking",
+                                                        "description": "Evpn Multihoming Core Tracking (Boolean)"
+                                                    },
                                                     "ttag": {
                                                         "type": "boolean",
                                                         "title": "Ttag",
@@ -214098,7 +214201,7 @@
                                                 ]
                                             },
                                             "title": "Ethernets",
-                                            "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
+                                            "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- evpn_multihoming_core_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
                                         },
                                         "port_channels": {
                                             "type": "array",
@@ -221634,6 +221737,77 @@
                                                         "title": "Evpn Multisite Fabric Tracking",
                                                         "description": "Evpn Multisite Fabric Tracking (Boolean)"
                                                     },
+                                                    "evpn_multihoming_core_tracking": {
+                                                        "type": "boolean",
+                                                        "title": "Evpn Multihoming Core Tracking",
+                                                        "description": "Evpn Multihoming Core Tracking (Boolean)"
+                                                    },
+                                                    "ethernet_segment": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "vpc": {
+                                                                "type": "boolean",
+                                                                "title": "vPC",
+                                                                "description": "vPC (Boolean)"
+                                                            },
+                                                            "esi": {
+                                                                "type": "string",
+                                                                "title": "Esi",
+                                                                "description": "Esi (String)"
+                                                            },
+                                                            "esi_system_mac": {
+                                                                "type": "boolean",
+                                                                "title": "Esi System MAC",
+                                                                "description": "Esi System MAC (Boolean)"
+                                                            },
+                                                            "esi_system_mac_address": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Esi System MAC Address",
+                                                                "description": "Esi System MAC Address (String, String)"
+                                                            },
+                                                            "esi_system_mac_local_identifier": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 16777215
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Esi System MAC Local Identifier",
+                                                                "description": "Esi System MAC Local Identifier (Integer, String)"
+                                                            },
+                                                            "esi_tag": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 65535
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Esi Tag",
+                                                                "description": "Esi Tag (Integer, String)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Ethernet Segment",
+                                                        "description": "Ethernet Segment (Object)\n\nElements:\n- vpc\n- esi\n- esi_system_mac\n- esi_system_mac_address\n- esi_system_mac_local_identifier\n- esi_tag"
+                                                    },
                                                     "ttag": {
                                                         "type": "boolean",
                                                         "title": "Ttag",
@@ -221712,7 +221886,7 @@
                                                 ]
                                             },
                                             "title": "Port Channels",
-                                            "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                            "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- evpn_multihoming_core_tracking\n- ethernet_segment\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                         },
                                         "management": {
                                             "type": "array",
@@ -228455,6 +228629,99 @@
                                                 "title": "Multisite Border Gateway",
                                                 "description": "Multisite Border Gateway (Object)\n\nElements:\n- site_id (required)\n- dci_advertise_pip\n- delay_restore_time\n- df_election_time\n- fabric_advertise_pip\n- split_horizon_per_site"
                                             },
+                                            "multihoming": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "enabled": {
+                                                        "type": "boolean",
+                                                        "title": "Enabled",
+                                                        "description": "Enabled (Boolean)"
+                                                    },
+                                                    "system_mac": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "System MAC",
+                                                        "description": "System MAC (String, String)"
+                                                    },
+                                                    "df_election_mode": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "per-flow",
+                                                                    "modulo"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Df Election Mode",
+                                                        "description": "Df Election Mode (String, String)"
+                                                    },
+                                                    "df_election_time": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "number",
+                                                                "minimum": 1,
+                                                                "maximum": 3
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Df Election Time",
+                                                        "description": "Df Election Time (Number, String)"
+                                                    },
+                                                    "ead_evi_route": {
+                                                        "type": "boolean",
+                                                        "title": "Ead Evi Route",
+                                                        "description": "Ead Evi Route (Boolean)"
+                                                    },
+                                                    "ethernet_segment_delay_restore_time": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 30,
+                                                                "maximum": 1000
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Ethernet Segment Delay Restore Time",
+                                                        "description": "Ethernet Segment Delay Restore Time (Integer, String)"
+                                                    },
+                                                    "frr_anycast_source_ip": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Frr Anycast Source IP",
+                                                        "description": "Frr Anycast Source IP (String, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Multihoming",
+                                                "description": "Multihoming (Object)\n\nElements:\n- enabled\n- system_mac\n- df_election_mode\n- df_election_time\n- ead_evi_route\n- ethernet_segment_delay_restore_time\n- frr_anycast_source_ip"
+                                            },
                                             "vnis": {
                                                 "type": "array",
                                                 "items": {
@@ -228539,7 +228806,7 @@
                                         },
                                         "required": [],
                                         "title": "Evpn",
-                                        "description": "Evpn (Object)\n\nElements:\n- multisite_border_gateway\n- vnis"
+                                        "description": "Evpn (Object)\n\nElements:\n- multisite_border_gateway\n- multihoming\n- vnis"
                                     },
                                     "fabric_forwarding": {
                                         "type": "object",
@@ -264091,6 +264358,11 @@
                                                             "title": "Evpn Multisite Fabric Tracking",
                                                             "description": "Evpn Multisite Fabric Tracking (Boolean)"
                                                         },
+                                                        "evpn_multihoming_core_tracking": {
+                                                            "type": "boolean",
+                                                            "title": "Evpn Multihoming Core Tracking",
+                                                            "description": "Evpn Multihoming Core Tracking (Boolean)"
+                                                        },
                                                         "private_vlan_mapping": {
                                                             "type": "object",
                                                             "additionalProperties": false,
@@ -264169,7 +264441,7 @@
                                                     ]
                                                 },
                                                 "title": "Vlans",
-                                                "description": "Vlans (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- autostate\n- bandwidth\n- carrier_delay\n- delay\n- description\n- management\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- medium\n- mtu\n- snmp_trap_link_status\n- vrf\n- ip\n- ipv6\n- fabric_forwarding_mode\n- fabric_forwarding_mode_anycast_gateway_proxy\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- private_vlan_mapping"
+                                                "description": "Vlans (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- autostate\n- bandwidth\n- carrier_delay\n- delay\n- description\n- management\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- medium\n- mtu\n- snmp_trap_link_status\n- vrf\n- ip\n- ipv6\n- fabric_forwarding_mode\n- fabric_forwarding_mode_anycast_gateway_proxy\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- evpn_multihoming_core_tracking\n- private_vlan_mapping"
                                             },
                                             "nve": {
                                                 "type": "object",
@@ -272323,6 +272595,11 @@
                                                             "title": "Evpn Multisite Fabric Tracking",
                                                             "description": "Evpn Multisite Fabric Tracking (Boolean)"
                                                         },
+                                                        "evpn_multihoming_core_tracking": {
+                                                            "type": "boolean",
+                                                            "title": "Evpn Multihoming Core Tracking",
+                                                            "description": "Evpn Multihoming Core Tracking (Boolean)"
+                                                        },
                                                         "ttag": {
                                                             "type": "boolean",
                                                             "title": "Ttag",
@@ -272483,7 +272760,7 @@
                                                     ]
                                                 },
                                                 "title": "Ethernets",
-                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
+                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- evpn_multihoming_core_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
                                             },
                                             "port_channels": {
                                                 "type": "array",
@@ -280019,6 +280296,77 @@
                                                             "title": "Evpn Multisite Fabric Tracking",
                                                             "description": "Evpn Multisite Fabric Tracking (Boolean)"
                                                         },
+                                                        "evpn_multihoming_core_tracking": {
+                                                            "type": "boolean",
+                                                            "title": "Evpn Multihoming Core Tracking",
+                                                            "description": "Evpn Multihoming Core Tracking (Boolean)"
+                                                        },
+                                                        "ethernet_segment": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "vpc": {
+                                                                    "type": "boolean",
+                                                                    "title": "vPC",
+                                                                    "description": "vPC (Boolean)"
+                                                                },
+                                                                "esi": {
+                                                                    "type": "string",
+                                                                    "title": "Esi",
+                                                                    "description": "Esi (String)"
+                                                                },
+                                                                "esi_system_mac": {
+                                                                    "type": "boolean",
+                                                                    "title": "Esi System MAC",
+                                                                    "description": "Esi System MAC (Boolean)"
+                                                                },
+                                                                "esi_system_mac_address": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Esi System MAC Address",
+                                                                    "description": "Esi System MAC Address (String, String)"
+                                                                },
+                                                                "esi_system_mac_local_identifier": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 16777215
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Esi System MAC Local Identifier",
+                                                                    "description": "Esi System MAC Local Identifier (Integer, String)"
+                                                                },
+                                                                "esi_tag": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 65535
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Esi Tag",
+                                                                    "description": "Esi Tag (Integer, String)"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "Ethernet Segment",
+                                                            "description": "Ethernet Segment (Object)\n\nElements:\n- vpc\n- esi\n- esi_system_mac\n- esi_system_mac_address\n- esi_system_mac_local_identifier\n- esi_tag"
+                                                        },
                                                         "ttag": {
                                                             "type": "boolean",
                                                             "title": "Ttag",
@@ -280097,7 +280445,7 @@
                                                     ]
                                                 },
                                                 "title": "Port Channels",
-                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- evpn_multihoming_core_tracking\n- ethernet_segment\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "management": {
                                                 "type": "array",
@@ -286873,6 +287221,99 @@
                                                 "title": "Multisite Border Gateway",
                                                 "description": "Multisite Border Gateway (Object)\n\nElements:\n- site_id (required)\n- dci_advertise_pip\n- delay_restore_time\n- df_election_time\n- fabric_advertise_pip\n- split_horizon_per_site"
                                             },
+                                            "multihoming": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "enabled": {
+                                                        "type": "boolean",
+                                                        "title": "Enabled",
+                                                        "description": "Enabled (Boolean)"
+                                                    },
+                                                    "system_mac": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "System MAC",
+                                                        "description": "System MAC (String, String)"
+                                                    },
+                                                    "df_election_mode": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "per-flow",
+                                                                    "modulo"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Df Election Mode",
+                                                        "description": "Df Election Mode (String, String)"
+                                                    },
+                                                    "df_election_time": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "number",
+                                                                "minimum": 1,
+                                                                "maximum": 3
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Df Election Time",
+                                                        "description": "Df Election Time (Number, String)"
+                                                    },
+                                                    "ead_evi_route": {
+                                                        "type": "boolean",
+                                                        "title": "Ead Evi Route",
+                                                        "description": "Ead Evi Route (Boolean)"
+                                                    },
+                                                    "ethernet_segment_delay_restore_time": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 30,
+                                                                "maximum": 1000
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Ethernet Segment Delay Restore Time",
+                                                        "description": "Ethernet Segment Delay Restore Time (Integer, String)"
+                                                    },
+                                                    "frr_anycast_source_ip": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Frr Anycast Source IP",
+                                                        "description": "Frr Anycast Source IP (String, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Multihoming",
+                                                "description": "Multihoming (Object)\n\nElements:\n- enabled\n- system_mac\n- df_election_mode\n- df_election_time\n- ead_evi_route\n- ethernet_segment_delay_restore_time\n- frr_anycast_source_ip"
+                                            },
                                             "vnis": {
                                                 "type": "array",
                                                 "items": {
@@ -286957,7 +287398,7 @@
                                         },
                                         "required": [],
                                         "title": "Evpn",
-                                        "description": "Evpn (Object)\n\nElements:\n- multisite_border_gateway\n- vnis"
+                                        "description": "Evpn (Object)\n\nElements:\n- multisite_border_gateway\n- multihoming\n- vnis"
                                     },
                                     "fabric_forwarding": {
                                         "type": "object",
@@ -322509,6 +322950,11 @@
                                                             "title": "Evpn Multisite Fabric Tracking",
                                                             "description": "Evpn Multisite Fabric Tracking (Boolean)"
                                                         },
+                                                        "evpn_multihoming_core_tracking": {
+                                                            "type": "boolean",
+                                                            "title": "Evpn Multihoming Core Tracking",
+                                                            "description": "Evpn Multihoming Core Tracking (Boolean)"
+                                                        },
                                                         "private_vlan_mapping": {
                                                             "type": "object",
                                                             "additionalProperties": false,
@@ -322587,7 +323033,7 @@
                                                     ]
                                                 },
                                                 "title": "Vlans",
-                                                "description": "Vlans (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- autostate\n- bandwidth\n- carrier_delay\n- delay\n- description\n- management\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- medium\n- mtu\n- snmp_trap_link_status\n- vrf\n- ip\n- ipv6\n- fabric_forwarding_mode\n- fabric_forwarding_mode_anycast_gateway_proxy\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- private_vlan_mapping"
+                                                "description": "Vlans (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- autostate\n- bandwidth\n- carrier_delay\n- delay\n- description\n- management\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- medium\n- mtu\n- snmp_trap_link_status\n- vrf\n- ip\n- ipv6\n- fabric_forwarding_mode\n- fabric_forwarding_mode_anycast_gateway_proxy\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- evpn_multihoming_core_tracking\n- private_vlan_mapping"
                                             },
                                             "nve": {
                                                 "type": "object",
@@ -330741,6 +331187,11 @@
                                                             "title": "Evpn Multisite Fabric Tracking",
                                                             "description": "Evpn Multisite Fabric Tracking (Boolean)"
                                                         },
+                                                        "evpn_multihoming_core_tracking": {
+                                                            "type": "boolean",
+                                                            "title": "Evpn Multihoming Core Tracking",
+                                                            "description": "Evpn Multihoming Core Tracking (Boolean)"
+                                                        },
                                                         "ttag": {
                                                             "type": "boolean",
                                                             "title": "Ttag",
@@ -330901,7 +331352,7 @@
                                                     ]
                                                 },
                                                 "title": "Ethernets",
-                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
+                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- evpn_multihoming_core_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
                                             },
                                             "port_channels": {
                                                 "type": "array",
@@ -338437,6 +338888,77 @@
                                                             "title": "Evpn Multisite Fabric Tracking",
                                                             "description": "Evpn Multisite Fabric Tracking (Boolean)"
                                                         },
+                                                        "evpn_multihoming_core_tracking": {
+                                                            "type": "boolean",
+                                                            "title": "Evpn Multihoming Core Tracking",
+                                                            "description": "Evpn Multihoming Core Tracking (Boolean)"
+                                                        },
+                                                        "ethernet_segment": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "vpc": {
+                                                                    "type": "boolean",
+                                                                    "title": "vPC",
+                                                                    "description": "vPC (Boolean)"
+                                                                },
+                                                                "esi": {
+                                                                    "type": "string",
+                                                                    "title": "Esi",
+                                                                    "description": "Esi (String)"
+                                                                },
+                                                                "esi_system_mac": {
+                                                                    "type": "boolean",
+                                                                    "title": "Esi System MAC",
+                                                                    "description": "Esi System MAC (Boolean)"
+                                                                },
+                                                                "esi_system_mac_address": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Esi System MAC Address",
+                                                                    "description": "Esi System MAC Address (String, String)"
+                                                                },
+                                                                "esi_system_mac_local_identifier": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 16777215
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Esi System MAC Local Identifier",
+                                                                    "description": "Esi System MAC Local Identifier (Integer, String)"
+                                                                },
+                                                                "esi_tag": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 65535
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Esi Tag",
+                                                                    "description": "Esi Tag (Integer, String)"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "Ethernet Segment",
+                                                            "description": "Ethernet Segment (Object)\n\nElements:\n- vpc\n- esi\n- esi_system_mac\n- esi_system_mac_address\n- esi_system_mac_local_identifier\n- esi_tag"
+                                                        },
                                                         "ttag": {
                                                             "type": "boolean",
                                                             "title": "Ttag",
@@ -338515,7 +339037,7 @@
                                                     ]
                                                 },
                                                 "title": "Port Channels",
-                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- evpn_multihoming_core_tracking\n- ethernet_segment\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "management": {
                                                 "type": "array",
@@ -347148,6 +347670,77 @@
                                         "title": "Evpn Multisite Fabric Tracking",
                                         "description": "Evpn Multisite Fabric Tracking (Boolean)"
                                     },
+                                    "evpn_multihoming_core_tracking": {
+                                        "type": "boolean",
+                                        "title": "Evpn Multihoming Core Tracking",
+                                        "description": "Evpn Multihoming Core Tracking (Boolean)"
+                                    },
+                                    "ethernet_segment": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "vpc": {
+                                                "type": "boolean",
+                                                "title": "vPC",
+                                                "description": "vPC (Boolean)"
+                                            },
+                                            "esi": {
+                                                "type": "string",
+                                                "title": "Esi",
+                                                "description": "Esi (String)"
+                                            },
+                                            "esi_system_mac": {
+                                                "type": "boolean",
+                                                "title": "Esi System MAC",
+                                                "description": "Esi System MAC (Boolean)"
+                                            },
+                                            "esi_system_mac_address": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Esi System MAC Address",
+                                                "description": "Esi System MAC Address (String, String)"
+                                            },
+                                            "esi_system_mac_local_identifier": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "maximum": 16777215
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Esi System MAC Local Identifier",
+                                                "description": "Esi System MAC Local Identifier (Integer, String)"
+                                            },
+                                            "esi_tag": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "maximum": 65535
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Esi Tag",
+                                                "description": "Esi Tag (Integer, String)"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Ethernet Segment",
+                                        "description": "Ethernet Segment (Object)\n\nElements:\n- vpc\n- esi\n- esi_system_mac\n- esi_system_mac_address\n- esi_system_mac_local_identifier\n- esi_tag"
+                                    },
                                     "private_vlan_mapping": {
                                         "type": "object",
                                         "additionalProperties": false,
@@ -347377,7 +347970,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- shutdown\n- shutdown_lan\n- autostate\n- description\n- vrf\n- carrier_delay\n- delay\n- bandwidth\n- management\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- medium\n- mtu\n- mtu_inherit\n- fabric_forwarding_mode\n- fabric_forwarding_mode_anycast_gateway_proxy\n- fabric_forwarding_description\n- negotiate_auto\n- beacon\n- buffer_boost\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- switchport\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mac_ipv6_extract\n- encapsulation\n- mdix\n- media_type\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- private_vlan_mapping\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
+                                "description": "Configuration (Object)\n\nElements:\n- shutdown\n- shutdown_lan\n- autostate\n- description\n- vrf\n- carrier_delay\n- delay\n- bandwidth\n- management\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- medium\n- mtu\n- mtu_inherit\n- fabric_forwarding_mode\n- fabric_forwarding_mode_anycast_gateway_proxy\n- fabric_forwarding_description\n- negotiate_auto\n- beacon\n- buffer_boost\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- switchport\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- mac_address\n- mac_ipv6_extract\n- encapsulation\n- mdix\n- media_type\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- evpn_multihoming_core_tracking\n- ethernet_segment\n- private_vlan_mapping\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
                             }
                         },
                         "required": [
@@ -353446,6 +354039,99 @@
                                                 "title": "Multisite Border Gateway",
                                                 "description": "Multisite Border Gateway (Object)\n\nElements:\n- site_id (required)\n- dci_advertise_pip\n- delay_restore_time\n- df_election_time\n- fabric_advertise_pip\n- split_horizon_per_site"
                                             },
+                                            "multihoming": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "enabled": {
+                                                        "type": "boolean",
+                                                        "title": "Enabled",
+                                                        "description": "Enabled (Boolean)"
+                                                    },
+                                                    "system_mac": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "System MAC",
+                                                        "description": "System MAC (String, String)"
+                                                    },
+                                                    "df_election_mode": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "per-flow",
+                                                                    "modulo"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Df Election Mode",
+                                                        "description": "Df Election Mode (String, String)"
+                                                    },
+                                                    "df_election_time": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "number",
+                                                                "minimum": 1,
+                                                                "maximum": 3
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Df Election Time",
+                                                        "description": "Df Election Time (Number, String)"
+                                                    },
+                                                    "ead_evi_route": {
+                                                        "type": "boolean",
+                                                        "title": "Ead Evi Route",
+                                                        "description": "Ead Evi Route (Boolean)"
+                                                    },
+                                                    "ethernet_segment_delay_restore_time": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 30,
+                                                                "maximum": 1000
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Ethernet Segment Delay Restore Time",
+                                                        "description": "Ethernet Segment Delay Restore Time (Integer, String)"
+                                                    },
+                                                    "frr_anycast_source_ip": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Frr Anycast Source IP",
+                                                        "description": "Frr Anycast Source IP (String, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Multihoming",
+                                                "description": "Multihoming (Object)\n\nElements:\n- enabled\n- system_mac\n- df_election_mode\n- df_election_time\n- ead_evi_route\n- ethernet_segment_delay_restore_time\n- frr_anycast_source_ip"
+                                            },
                                             "vnis": {
                                                 "type": "array",
                                                 "items": {
@@ -353530,7 +354216,7 @@
                                         },
                                         "required": [],
                                         "title": "Evpn",
-                                        "description": "Evpn (Object)\n\nElements:\n- multisite_border_gateway\n- vnis"
+                                        "description": "Evpn (Object)\n\nElements:\n- multisite_border_gateway\n- multihoming\n- vnis"
                                     },
                                     "fabric_forwarding": {
                                         "type": "object",
@@ -389082,6 +389768,11 @@
                                                             "title": "Evpn Multisite Fabric Tracking",
                                                             "description": "Evpn Multisite Fabric Tracking (Boolean)"
                                                         },
+                                                        "evpn_multihoming_core_tracking": {
+                                                            "type": "boolean",
+                                                            "title": "Evpn Multihoming Core Tracking",
+                                                            "description": "Evpn Multihoming Core Tracking (Boolean)"
+                                                        },
                                                         "private_vlan_mapping": {
                                                             "type": "object",
                                                             "additionalProperties": false,
@@ -389160,7 +389851,7 @@
                                                     ]
                                                 },
                                                 "title": "Vlans",
-                                                "description": "Vlans (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- autostate\n- bandwidth\n- carrier_delay\n- delay\n- description\n- management\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- medium\n- mtu\n- snmp_trap_link_status\n- vrf\n- ip\n- ipv6\n- fabric_forwarding_mode\n- fabric_forwarding_mode_anycast_gateway_proxy\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- private_vlan_mapping"
+                                                "description": "Vlans (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- autostate\n- bandwidth\n- carrier_delay\n- delay\n- description\n- management\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- medium\n- mtu\n- snmp_trap_link_status\n- vrf\n- ip\n- ipv6\n- fabric_forwarding_mode\n- fabric_forwarding_mode_anycast_gateway_proxy\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- nd\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- evpn_multihoming_core_tracking\n- private_vlan_mapping"
                                             },
                                             "nve": {
                                                 "type": "object",
@@ -397314,6 +398005,11 @@
                                                             "title": "Evpn Multisite Fabric Tracking",
                                                             "description": "Evpn Multisite Fabric Tracking (Boolean)"
                                                         },
+                                                        "evpn_multihoming_core_tracking": {
+                                                            "type": "boolean",
+                                                            "title": "Evpn Multihoming Core Tracking",
+                                                            "description": "Evpn Multihoming Core Tracking (Boolean)"
+                                                        },
                                                         "ttag": {
                                                             "type": "boolean",
                                                             "title": "Ttag",
@@ -397474,7 +398170,7 @@
                                                     ]
                                                 },
                                                 "title": "Ethernets",
-                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
+                                                "description": "Ethernets (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- beacon\n- buffer_boost\n- delay\n- description\n- dfe_adaptive_tuning\n- dfe_tuning_delay\n- dot1q_ethertype\n- duplex\n- fec\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_active_jitter_management\n- link_debounce_time\n- link_debounce_link_up\n- link_flap_error_disable\n- link_flap_error_disable_count\n- link_flap_error_disable_interval\n- logging_event_port_link_status\n- link_loopback\n- link_mac_up_timer\n- link_max_bring_up_timer\n- link_transmit_reset\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- mac_address\n- mdix\n- media_type\n- medium\n- mtu\n- packet_timestamp_egress_source_id\n- packet_timestamp_ingress_source_id\n- packet_timestamp\n- snmp_trap_link_status\n- speed\n- speed_group\n- squelch\n- logging_event_port_trunk_status\n- uni_directional_ethernet\n- vrf\n- switchport\n- ip\n- ipv6\n- channel_group\n- channel_group_mode\n- channel_group_force\n- lacp_port_priority\n- lacp_rate\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- macsec_keychain\n- macsec_policy\n- macsec_fallback_keychain\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- nd\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- udld\n- udld_aggressive\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- evpn_multihoming_core_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier\n- power_inline\n- power_inline_max\n- power_inline_default_consumption\n- power_inline_police_action\n- power_inline_port_priority"
                                             },
                                             "port_channels": {
                                                 "type": "array",
@@ -405010,6 +405706,77 @@
                                                             "title": "Evpn Multisite Fabric Tracking",
                                                             "description": "Evpn Multisite Fabric Tracking (Boolean)"
                                                         },
+                                                        "evpn_multihoming_core_tracking": {
+                                                            "type": "boolean",
+                                                            "title": "Evpn Multihoming Core Tracking",
+                                                            "description": "Evpn Multihoming Core Tracking (Boolean)"
+                                                        },
+                                                        "ethernet_segment": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "vpc": {
+                                                                    "type": "boolean",
+                                                                    "title": "vPC",
+                                                                    "description": "vPC (Boolean)"
+                                                                },
+                                                                "esi": {
+                                                                    "type": "string",
+                                                                    "title": "Esi",
+                                                                    "description": "Esi (String)"
+                                                                },
+                                                                "esi_system_mac": {
+                                                                    "type": "boolean",
+                                                                    "title": "Esi System MAC",
+                                                                    "description": "Esi System MAC (Boolean)"
+                                                                },
+                                                                "esi_system_mac_address": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Esi System MAC Address",
+                                                                    "description": "Esi System MAC Address (String, String)"
+                                                                },
+                                                                "esi_system_mac_local_identifier": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 16777215
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Esi System MAC Local Identifier",
+                                                                    "description": "Esi System MAC Local Identifier (Integer, String)"
+                                                                },
+                                                                "esi_tag": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 65535
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Esi Tag",
+                                                                    "description": "Esi Tag (Integer, String)"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "Ethernet Segment",
+                                                            "description": "Ethernet Segment (Object)\n\nElements:\n- vpc\n- esi\n- esi_system_mac\n- esi_system_mac_address\n- esi_system_mac_local_identifier\n- esi_tag"
+                                                        },
                                                         "ttag": {
                                                             "type": "boolean",
                                                             "title": "Ttag",
@@ -405088,7 +405855,7 @@
                                                     ]
                                                 },
                                                 "title": "Port Channels",
-                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
+                                                "description": "Port Channels (List - Object)\n\nElements:\n- id (required)\n- interface_groups\n- lacp_min_links\n- lacp_max_bundle\n- lacp_suspend_individual\n- lacp_graceful_convergence\n- port_channel_hash_distribution\n- lacp_mode_delay\n- lacp_vpc_convergence\n- port_channel_load_defer\n- shutdown\n- shutdown_lan\n- negotiate_auto\n- bandwidth\n- buffer_boost\n- delay\n- description\n- dot1q_ethertype\n- duplex\n- flowcontrol_receive\n- flowcontrol_send\n- itu_channel\n- link_debounce_time\n- load_interval_counter_1\n- load_interval_counter_2\n- load_interval_counter_3\n- logging_event_port_link_status\n- mdix\n- medium\n- mtu\n- mac_address\n- snmp_trap_link_status\n- speed\n- squelch\n- logging_event_port_trunk_status\n- vrf\n- switchport\n- ip\n- ipv6\n- ospf\n- ospfv3\n- pim\n- isis\n- eigrp\n- hsrp\n- epbr\n- bfd\n- ptp\n- nd\n- vpc_id\n- vpc_orphan_port_suspend\n- service_policy_type_qos_input\n- service_policy_type_qos_input_statistics\n- service_policy_type_queuing_output\n- service_policy_type_queuing_output_statistics\n- subinterfaces\n- spanning_tree\n- storm_control\n- cdp\n- lldp_receive\n- lldp_transmit\n- lldp_tlv_set_management_address\n- lldp_tlv_set_management_address_ipv6\n- lldp_tlv_set_vlan\n- lldp_dcbx_version\n- vtp\n- evpn_multisite_dci_tracking\n- evpn_multisite_fabric_tracking\n- evpn_multihoming_core_tracking\n- ethernet_segment\n- ttag\n- ttag_inner\n- ttag_marker\n- ttag_strip\n- port_type_fabric\n- priority_flow_control_mode\n- priority_flow_control_send_tlv\n- priority_flow_control_watch_dog_interval\n- priority_flow_control_watch_dog_disable_action\n- priority_flow_control_watch_dog_interface_multiplier"
                                             },
                                             "management": {
                                                 "type": "array",
