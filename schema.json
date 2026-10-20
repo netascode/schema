@@ -170599,6 +170599,11 @@
                                             "title": "Msdp",
                                             "description": "Msdp (Boolean)"
                                         },
+                                        "netconf": {
+                                            "type": "boolean",
+                                            "title": "Netconf",
+                                            "description": "Netconf (Boolean)"
+                                        },
                                         "netflow": {
                                             "type": "boolean",
                                             "title": "Netflow",
@@ -170623,6 +170628,11 @@
                                             "type": "boolean",
                                             "title": "Nxapi",
                                             "description": "Nxapi (Boolean)"
+                                        },
+                                        "openconfig": {
+                                            "type": "boolean",
+                                            "title": "Openconfig",
+                                            "description": "Openconfig (Boolean)"
                                         },
                                         "ospf": {
                                             "type": "boolean",
@@ -170668,6 +170678,11 @@
                                             "type": "boolean",
                                             "title": "Private Vlan",
                                             "description": "Private Vlan (Boolean)"
+                                        },
+                                        "restconf": {
+                                            "type": "boolean",
+                                            "title": "Restconf",
+                                            "description": "Restconf (Boolean)"
                                         },
                                         "scp_server": {
                                             "type": "boolean",
@@ -170752,7 +170767,7 @@
                                     },
                                     "required": [],
                                     "title": "Feature",
-                                    "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- eigrp\n- epbr\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- msdp\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- ospf\n- ospfv3\n- pbr\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- poe\n- ptp\n- private_vlan\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- sla_responder\n- sla_sender\n- sla_twamp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- udld\n- vn_segment_vlan_based\n- vpc\n- vtp"
+                                    "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- eigrp\n- epbr\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- msdp\n- netconf\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- openconfig\n- ospf\n- ospfv3\n- pbr\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- poe\n- ptp\n- private_vlan\n- restconf\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- sla_responder\n- sla_sender\n- sla_twamp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- udld\n- vn_segment_vlan_based\n- vpc\n- vtp"
                                 },
                                 "feature_set": {
                                     "type": "object",
@@ -200533,6 +200548,121 @@
                                             "title": "SSH",
                                             "description": "SSH (Object)\n\nElements:\n- ciphers_all\n- ciphers_weak\n- kexalgos_all\n- keytypes_all\n- login_attempts\n- login_gracetime\n- macs_all\n- port\n- keys"
                                         },
+                                        "grpc": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "certificate": {
+                                                    "type": "string",
+                                                    "title": "Certificate",
+                                                    "description": "Certificate (String)"
+                                                },
+                                                "client_root_certificate": {
+                                                    "type": "string",
+                                                    "title": "Client Root Certificate",
+                                                    "description": "Client Root Certificate (String)"
+                                                },
+                                                "port": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 1024,
+                                                            "maximum": 65535
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Port",
+                                                    "description": "Port (Integer, String)"
+                                                },
+                                                "use_vrf": {
+                                                    "type": "string",
+                                                    "title": "Use VRF",
+                                                    "description": "Use VRF (String)"
+                                                },
+                                                "gnmi_keepalive_timeout": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 600,
+                                                            "maximum": 86400
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Gnmi Keepalive Timeout",
+                                                    "description": "Gnmi Keepalive Timeout (Integer, String)"
+                                                },
+                                                "gnmi_max_concurrent_calls": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 1,
+                                                            "maximum": 16
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Gnmi Max Concurrent Calls",
+                                                    "description": "Gnmi Max Concurrent Calls (Integer, String)"
+                                                },
+                                                "gnmi_subscription_filter_file": {
+                                                    "type": "string",
+                                                    "title": "Gnmi Subscription Filter File",
+                                                    "description": "Gnmi Subscription Filter File (String)"
+                                                },
+                                                "gnmi_subscription_filter_file_md5": {
+                                                    "type": "string",
+                                                    "title": "Gnmi Subscription Filter File MD5",
+                                                    "description": "Gnmi Subscription Filter File MD5 (String)"
+                                                },
+                                                "gnmi_subscription_merge": {
+                                                    "type": "boolean",
+                                                    "title": "Gnmi Subscription Merge",
+                                                    "description": "Gnmi Subscription Merge (Boolean)"
+                                                },
+                                                "gnmi_subscription_query_condition": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "keep-data-timestamp"
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Gnmi Subscription Query Condition",
+                                                    "description": "Gnmi Subscription Query Condition (String, String)"
+                                                },
+                                                "gnmi_subscription_target_defined_min_interval": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 1,
+                                                            "maximum": 65535
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Gnmi Subscription Target Defined Min Interval",
+                                                    "description": "Gnmi Subscription Target Defined Min Interval (Integer, String)"
+                                                }
+                                            },
+                                            "required": [],
+                                            "title": "Grpc",
+                                            "description": "Grpc (Object)\n\nElements:\n- certificate\n- client_root_certificate\n- port\n- use_vrf\n- gnmi_keepalive_timeout\n- gnmi_max_concurrent_calls\n- gnmi_subscription_filter_file\n- gnmi_subscription_filter_file_md5\n- gnmi_subscription_merge\n- gnmi_subscription_query_condition\n- gnmi_subscription_target_defined_min_interval"
+                                        },
                                         "ip_ssh_source_interfaces": {
                                             "type": "array",
                                             "items": {
@@ -200862,7 +200992,7 @@
                                     },
                                     "required": [],
                                     "title": "System",
-                                    "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                    "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                 },
                                 "telemetry": {
                                     "type": "object",
@@ -233870,6 +234000,11 @@
                                                 "title": "Msdp",
                                                 "description": "Msdp (Boolean)"
                                             },
+                                            "netconf": {
+                                                "type": "boolean",
+                                                "title": "Netconf",
+                                                "description": "Netconf (Boolean)"
+                                            },
                                             "netflow": {
                                                 "type": "boolean",
                                                 "title": "Netflow",
@@ -233894,6 +234029,11 @@
                                                 "type": "boolean",
                                                 "title": "Nxapi",
                                                 "description": "Nxapi (Boolean)"
+                                            },
+                                            "openconfig": {
+                                                "type": "boolean",
+                                                "title": "Openconfig",
+                                                "description": "Openconfig (Boolean)"
                                             },
                                             "ospf": {
                                                 "type": "boolean",
@@ -233939,6 +234079,11 @@
                                                 "type": "boolean",
                                                 "title": "Private Vlan",
                                                 "description": "Private Vlan (Boolean)"
+                                            },
+                                            "restconf": {
+                                                "type": "boolean",
+                                                "title": "Restconf",
+                                                "description": "Restconf (Boolean)"
                                             },
                                             "scp_server": {
                                                 "type": "boolean",
@@ -234023,7 +234168,7 @@
                                         },
                                         "required": [],
                                         "title": "Feature",
-                                        "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- eigrp\n- epbr\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- msdp\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- ospf\n- ospfv3\n- pbr\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- poe\n- ptp\n- private_vlan\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- sla_responder\n- sla_sender\n- sla_twamp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- udld\n- vn_segment_vlan_based\n- vpc\n- vtp"
+                                        "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- eigrp\n- epbr\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- msdp\n- netconf\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- openconfig\n- ospf\n- ospfv3\n- pbr\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- poe\n- ptp\n- private_vlan\n- restconf\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- sla_responder\n- sla_sender\n- sla_twamp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- udld\n- vn_segment_vlan_based\n- vpc\n- vtp"
                                     },
                                     "feature_set": {
                                         "type": "object",
@@ -263804,6 +263949,121 @@
                                                 "title": "SSH",
                                                 "description": "SSH (Object)\n\nElements:\n- ciphers_all\n- ciphers_weak\n- kexalgos_all\n- keytypes_all\n- login_attempts\n- login_gracetime\n- macs_all\n- port\n- keys"
                                             },
+                                            "grpc": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "certificate": {
+                                                        "type": "string",
+                                                        "title": "Certificate",
+                                                        "description": "Certificate (String)"
+                                                    },
+                                                    "client_root_certificate": {
+                                                        "type": "string",
+                                                        "title": "Client Root Certificate",
+                                                        "description": "Client Root Certificate (String)"
+                                                    },
+                                                    "port": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1024,
+                                                                "maximum": 65535
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Port",
+                                                        "description": "Port (Integer, String)"
+                                                    },
+                                                    "use_vrf": {
+                                                        "type": "string",
+                                                        "title": "Use VRF",
+                                                        "description": "Use VRF (String)"
+                                                    },
+                                                    "gnmi_keepalive_timeout": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 600,
+                                                                "maximum": 86400
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Gnmi Keepalive Timeout",
+                                                        "description": "Gnmi Keepalive Timeout (Integer, String)"
+                                                    },
+                                                    "gnmi_max_concurrent_calls": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 16
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Gnmi Max Concurrent Calls",
+                                                        "description": "Gnmi Max Concurrent Calls (Integer, String)"
+                                                    },
+                                                    "gnmi_subscription_filter_file": {
+                                                        "type": "string",
+                                                        "title": "Gnmi Subscription Filter File",
+                                                        "description": "Gnmi Subscription Filter File (String)"
+                                                    },
+                                                    "gnmi_subscription_filter_file_md5": {
+                                                        "type": "string",
+                                                        "title": "Gnmi Subscription Filter File MD5",
+                                                        "description": "Gnmi Subscription Filter File MD5 (String)"
+                                                    },
+                                                    "gnmi_subscription_merge": {
+                                                        "type": "boolean",
+                                                        "title": "Gnmi Subscription Merge",
+                                                        "description": "Gnmi Subscription Merge (Boolean)"
+                                                    },
+                                                    "gnmi_subscription_query_condition": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "keep-data-timestamp"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Gnmi Subscription Query Condition",
+                                                        "description": "Gnmi Subscription Query Condition (String, String)"
+                                                    },
+                                                    "gnmi_subscription_target_defined_min_interval": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 65535
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Gnmi Subscription Target Defined Min Interval",
+                                                        "description": "Gnmi Subscription Target Defined Min Interval (Integer, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Grpc",
+                                                "description": "Grpc (Object)\n\nElements:\n- certificate\n- client_root_certificate\n- port\n- use_vrf\n- gnmi_keepalive_timeout\n- gnmi_max_concurrent_calls\n- gnmi_subscription_filter_file\n- gnmi_subscription_filter_file_md5\n- gnmi_subscription_merge\n- gnmi_subscription_query_condition\n- gnmi_subscription_target_defined_min_interval"
+                                            },
                                             "ip_ssh_source_interfaces": {
                                                 "type": "array",
                                                 "items": {
@@ -264133,7 +264393,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -297174,6 +297434,11 @@
                                                 "title": "Msdp",
                                                 "description": "Msdp (Boolean)"
                                             },
+                                            "netconf": {
+                                                "type": "boolean",
+                                                "title": "Netconf",
+                                                "description": "Netconf (Boolean)"
+                                            },
                                             "netflow": {
                                                 "type": "boolean",
                                                 "title": "Netflow",
@@ -297198,6 +297463,11 @@
                                                 "type": "boolean",
                                                 "title": "Nxapi",
                                                 "description": "Nxapi (Boolean)"
+                                            },
+                                            "openconfig": {
+                                                "type": "boolean",
+                                                "title": "Openconfig",
+                                                "description": "Openconfig (Boolean)"
                                             },
                                             "ospf": {
                                                 "type": "boolean",
@@ -297243,6 +297513,11 @@
                                                 "type": "boolean",
                                                 "title": "Private Vlan",
                                                 "description": "Private Vlan (Boolean)"
+                                            },
+                                            "restconf": {
+                                                "type": "boolean",
+                                                "title": "Restconf",
+                                                "description": "Restconf (Boolean)"
                                             },
                                             "scp_server": {
                                                 "type": "boolean",
@@ -297327,7 +297602,7 @@
                                         },
                                         "required": [],
                                         "title": "Feature",
-                                        "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- eigrp\n- epbr\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- msdp\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- ospf\n- ospfv3\n- pbr\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- poe\n- ptp\n- private_vlan\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- sla_responder\n- sla_sender\n- sla_twamp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- udld\n- vn_segment_vlan_based\n- vpc\n- vtp"
+                                        "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- eigrp\n- epbr\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- msdp\n- netconf\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- openconfig\n- ospf\n- ospfv3\n- pbr\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- poe\n- ptp\n- private_vlan\n- restconf\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- sla_responder\n- sla_sender\n- sla_twamp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- udld\n- vn_segment_vlan_based\n- vpc\n- vtp"
                                     },
                                     "feature_set": {
                                         "type": "object",
@@ -327108,6 +327383,121 @@
                                                 "title": "SSH",
                                                 "description": "SSH (Object)\n\nElements:\n- ciphers_all\n- ciphers_weak\n- kexalgos_all\n- keytypes_all\n- login_attempts\n- login_gracetime\n- macs_all\n- port\n- keys"
                                             },
+                                            "grpc": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "certificate": {
+                                                        "type": "string",
+                                                        "title": "Certificate",
+                                                        "description": "Certificate (String)"
+                                                    },
+                                                    "client_root_certificate": {
+                                                        "type": "string",
+                                                        "title": "Client Root Certificate",
+                                                        "description": "Client Root Certificate (String)"
+                                                    },
+                                                    "port": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1024,
+                                                                "maximum": 65535
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Port",
+                                                        "description": "Port (Integer, String)"
+                                                    },
+                                                    "use_vrf": {
+                                                        "type": "string",
+                                                        "title": "Use VRF",
+                                                        "description": "Use VRF (String)"
+                                                    },
+                                                    "gnmi_keepalive_timeout": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 600,
+                                                                "maximum": 86400
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Gnmi Keepalive Timeout",
+                                                        "description": "Gnmi Keepalive Timeout (Integer, String)"
+                                                    },
+                                                    "gnmi_max_concurrent_calls": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 16
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Gnmi Max Concurrent Calls",
+                                                        "description": "Gnmi Max Concurrent Calls (Integer, String)"
+                                                    },
+                                                    "gnmi_subscription_filter_file": {
+                                                        "type": "string",
+                                                        "title": "Gnmi Subscription Filter File",
+                                                        "description": "Gnmi Subscription Filter File (String)"
+                                                    },
+                                                    "gnmi_subscription_filter_file_md5": {
+                                                        "type": "string",
+                                                        "title": "Gnmi Subscription Filter File MD5",
+                                                        "description": "Gnmi Subscription Filter File MD5 (String)"
+                                                    },
+                                                    "gnmi_subscription_merge": {
+                                                        "type": "boolean",
+                                                        "title": "Gnmi Subscription Merge",
+                                                        "description": "Gnmi Subscription Merge (Boolean)"
+                                                    },
+                                                    "gnmi_subscription_query_condition": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "keep-data-timestamp"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Gnmi Subscription Query Condition",
+                                                        "description": "Gnmi Subscription Query Condition (String, String)"
+                                                    },
+                                                    "gnmi_subscription_target_defined_min_interval": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 65535
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Gnmi Subscription Target Defined Min Interval",
+                                                        "description": "Gnmi Subscription Target Defined Min Interval (Integer, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Grpc",
+                                                "description": "Grpc (Object)\n\nElements:\n- certificate\n- client_root_certificate\n- port\n- use_vrf\n- gnmi_keepalive_timeout\n- gnmi_max_concurrent_calls\n- gnmi_subscription_filter_file\n- gnmi_subscription_filter_file_md5\n- gnmi_subscription_merge\n- gnmi_subscription_query_condition\n- gnmi_subscription_target_defined_min_interval"
+                                            },
                                             "ip_ssh_source_interfaces": {
                                                 "type": "array",
                                                 "items": {
@@ -327437,7 +327827,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -369478,6 +369868,11 @@
                                                 "title": "Msdp",
                                                 "description": "Msdp (Boolean)"
                                             },
+                                            "netconf": {
+                                                "type": "boolean",
+                                                "title": "Netconf",
+                                                "description": "Netconf (Boolean)"
+                                            },
                                             "netflow": {
                                                 "type": "boolean",
                                                 "title": "Netflow",
@@ -369502,6 +369897,11 @@
                                                 "type": "boolean",
                                                 "title": "Nxapi",
                                                 "description": "Nxapi (Boolean)"
+                                            },
+                                            "openconfig": {
+                                                "type": "boolean",
+                                                "title": "Openconfig",
+                                                "description": "Openconfig (Boolean)"
                                             },
                                             "ospf": {
                                                 "type": "boolean",
@@ -369547,6 +369947,11 @@
                                                 "type": "boolean",
                                                 "title": "Private Vlan",
                                                 "description": "Private Vlan (Boolean)"
+                                            },
+                                            "restconf": {
+                                                "type": "boolean",
+                                                "title": "Restconf",
+                                                "description": "Restconf (Boolean)"
                                             },
                                             "scp_server": {
                                                 "type": "boolean",
@@ -369631,7 +370036,7 @@
                                         },
                                         "required": [],
                                         "title": "Feature",
-                                        "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- eigrp\n- epbr\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- msdp\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- ospf\n- ospfv3\n- pbr\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- poe\n- ptp\n- private_vlan\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- sla_responder\n- sla_sender\n- sla_twamp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- udld\n- vn_segment_vlan_based\n- vpc\n- vtp"
+                                        "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- eigrp\n- epbr\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- msdp\n- netconf\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- openconfig\n- ospf\n- ospfv3\n- pbr\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- poe\n- ptp\n- private_vlan\n- restconf\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- sla_responder\n- sla_sender\n- sla_twamp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- udld\n- vn_segment_vlan_based\n- vpc\n- vtp"
                                     },
                                     "feature_set": {
                                         "type": "object",
@@ -399412,6 +399817,121 @@
                                                 "title": "SSH",
                                                 "description": "SSH (Object)\n\nElements:\n- ciphers_all\n- ciphers_weak\n- kexalgos_all\n- keytypes_all\n- login_attempts\n- login_gracetime\n- macs_all\n- port\n- keys"
                                             },
+                                            "grpc": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "certificate": {
+                                                        "type": "string",
+                                                        "title": "Certificate",
+                                                        "description": "Certificate (String)"
+                                                    },
+                                                    "client_root_certificate": {
+                                                        "type": "string",
+                                                        "title": "Client Root Certificate",
+                                                        "description": "Client Root Certificate (String)"
+                                                    },
+                                                    "port": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1024,
+                                                                "maximum": 65535
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Port",
+                                                        "description": "Port (Integer, String)"
+                                                    },
+                                                    "use_vrf": {
+                                                        "type": "string",
+                                                        "title": "Use VRF",
+                                                        "description": "Use VRF (String)"
+                                                    },
+                                                    "gnmi_keepalive_timeout": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 600,
+                                                                "maximum": 86400
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Gnmi Keepalive Timeout",
+                                                        "description": "Gnmi Keepalive Timeout (Integer, String)"
+                                                    },
+                                                    "gnmi_max_concurrent_calls": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 16
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Gnmi Max Concurrent Calls",
+                                                        "description": "Gnmi Max Concurrent Calls (Integer, String)"
+                                                    },
+                                                    "gnmi_subscription_filter_file": {
+                                                        "type": "string",
+                                                        "title": "Gnmi Subscription Filter File",
+                                                        "description": "Gnmi Subscription Filter File (String)"
+                                                    },
+                                                    "gnmi_subscription_filter_file_md5": {
+                                                        "type": "string",
+                                                        "title": "Gnmi Subscription Filter File MD5",
+                                                        "description": "Gnmi Subscription Filter File MD5 (String)"
+                                                    },
+                                                    "gnmi_subscription_merge": {
+                                                        "type": "boolean",
+                                                        "title": "Gnmi Subscription Merge",
+                                                        "description": "Gnmi Subscription Merge (Boolean)"
+                                                    },
+                                                    "gnmi_subscription_query_condition": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "keep-data-timestamp"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Gnmi Subscription Query Condition",
+                                                        "description": "Gnmi Subscription Query Condition (String, String)"
+                                                    },
+                                                    "gnmi_subscription_target_defined_min_interval": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 65535
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Gnmi Subscription Target Defined Min Interval",
+                                                        "description": "Gnmi Subscription Target Defined Min Interval (Integer, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Grpc",
+                                                "description": "Grpc (Object)\n\nElements:\n- certificate\n- client_root_certificate\n- port\n- use_vrf\n- gnmi_keepalive_timeout\n- gnmi_max_concurrent_calls\n- gnmi_subscription_filter_file\n- gnmi_subscription_filter_file_md5\n- gnmi_subscription_merge\n- gnmi_subscription_query_condition\n- gnmi_subscription_target_defined_min_interval"
+                                            },
                                             "ip_ssh_source_interfaces": {
                                                 "type": "array",
                                                 "items": {
@@ -399741,7 +400261,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
