@@ -12522,6 +12522,98 @@
                             "title": "Nodes",
                             "description": "Nodes (List - Object)\n\nElements:\n- id (required)\n- pod\n- role (required)\n- set_role\n- type\n- serial_number\n- name\n- oob_address\n- oob_gateway\n- oob_v6_address\n- oob_v6_gateway\n- inb_address\n- inb_gateway\n- inb_v6_address\n- inb_v6_gateway\n- update_group\n- fabric_policy_group\n- access_policy_group\n- remote_pool_id\n- security_domains\n- expected_state"
                         },
+                        "managed_node_connectivity_groups": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                        "title": "Name",
+                                        "description": "Name (String)"
+                                    },
+                                    "oob_addresses": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "oob_mgmt_epg": {
+                                                "type": "string",
+                                                "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                "title": "OOB MGMT EPG",
+                                                "description": "OOB MGMT EPG (String)"
+                                            },
+                                            "oob_ip_address_pool": {
+                                                "type": "string",
+                                                "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                "title": "OOB IP Address Pool",
+                                                "description": "OOB IP Address Pool (String)"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "OOB Addresses",
+                                        "description": "OOB Addresses (Object)\n\nElements:\n- oob_mgmt_epg\n- oob_ip_address_pool"
+                                    },
+                                    "inb_addresses": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "inb_mgmt_epg": {
+                                                "type": "string",
+                                                "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                "title": "INB MGMT EPG",
+                                                "description": "INB MGMT EPG (String)"
+                                            },
+                                            "inb_ip_address_pool": {
+                                                "type": "string",
+                                                "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                "title": "INB IP Address Pool",
+                                                "description": "INB IP Address Pool (String)"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "INB Addresses",
+                                        "description": "INB Addresses (Object)\n\nElements:\n- inb_mgmt_epg\n- inb_ip_address_pool"
+                                    },
+                                    "expected_state": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "minimum_health": {
+                                                "type": "integer",
+                                                "maximum": 100,
+                                                "title": "Minimum Health",
+                                                "description": "Minimum Health (Integer)\n- Maximum value: 100"
+                                            },
+                                            "maximum_critical_faults": {
+                                                "type": "integer",
+                                                "title": "Maximum Critical Faults",
+                                                "description": "Maximum Critical Faults (Integer)"
+                                            },
+                                            "maximum_major_faults": {
+                                                "type": "integer",
+                                                "title": "Maximum Major Faults",
+                                                "description": "Maximum Major Faults (Integer)"
+                                            },
+                                            "maximum_minor_faults": {
+                                                "type": "integer",
+                                                "title": "Maximum Minor Faults",
+                                                "description": "Maximum Minor Faults (Integer)"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Expected State",
+                                        "description": "Expected State (Object)\n\nElements:\n- minimum_health\n- maximum_critical_faults\n- maximum_major_faults\n- maximum_minor_faults"
+                                    }
+                                },
+                                "required": [
+                                    "name"
+                                ]
+                            },
+                            "title": "Managed Node Connectivity Groups",
+                            "description": "Managed Node Connectivity Groups (List - Object)\n\nElements:\n- name (required)\n- oob_addresses\n- inb_addresses\n- expected_state"
+                        },
                         "expected_state": {
                             "type": "object",
                             "additionalProperties": false,
@@ -12546,7 +12638,7 @@
                     },
                     "required": [],
                     "title": "Node Policies",
-                    "description": "Node Policies (Object)\n\nElements:\n- inb_endpoint_group\n- oob_endpoint_group\n- update_groups\n- vpc_groups\n- nodes\n- expected_state"
+                    "description": "Node Policies (Object)\n\nElements:\n- inb_endpoint_group\n- oob_endpoint_group\n- update_groups\n- vpc_groups\n- nodes\n- managed_node_connectivity_groups\n- expected_state"
                 },
                 "interface_policies": {
                     "type": "object",
