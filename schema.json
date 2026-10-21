@@ -166762,6 +166762,146 @@
                                     "title": "Community Lists",
                                     "description": "Community Lists (List - Object)\n\nElements:\n- name (required)\n- mode\n- entries"
                                 },
+                                "crypto": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "keys": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "label": {
+                                                        "type": "string",
+                                                        "title": "Label",
+                                                        "description": "Label (String)"
+                                                    },
+                                                    "type": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "rsa",
+                                                                    "ecc"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Type",
+                                                        "description": "Type (String, String)"
+                                                    },
+                                                    "exportable": {
+                                                        "type": "boolean",
+                                                        "title": "Exportable",
+                                                        "description": "Exportable (Boolean)"
+                                                    },
+                                                    "modulus": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "enum": [
+                                                                    224,
+                                                                    384,
+                                                                    512,
+                                                                    521,
+                                                                    768,
+                                                                    1024,
+                                                                    1536,
+                                                                    2048,
+                                                                    3072,
+                                                                    4096
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Modulus",
+                                                        "description": "Modulus (Integer, String)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "label"
+                                                ]
+                                            },
+                                            "title": "Keys",
+                                            "description": "Keys (List - Object)\n\nElements:\n- label (required)\n- type\n- exportable\n- modulus"
+                                        },
+                                        "ca_trustpoints": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "title": "Name",
+                                                        "description": "Name (String)"
+                                                    },
+                                                    "enrollment_terminal": {
+                                                        "type": "boolean",
+                                                        "title": "Enrollment Terminal",
+                                                        "description": "Enrollment Terminal (Boolean)"
+                                                    },
+                                                    "rsakeypair": {
+                                                        "type": "string",
+                                                        "title": "Rsakeypair",
+                                                        "description": "Rsakeypair (String)"
+                                                    },
+                                                    "ecckeypair": {
+                                                        "type": "string",
+                                                        "title": "Ecckeypair",
+                                                        "description": "Ecckeypair (String)"
+                                                    },
+                                                    "cabundle": {
+                                                        "type": "string",
+                                                        "title": "Cabundle",
+                                                        "description": "Cabundle (String)"
+                                                    },
+                                                    "revocation_check": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "crl",
+                                                                        "ocsp",
+                                                                        "none"
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Revocation Check",
+                                                        "description": "Revocation Check (Array, String)"
+                                                    },
+                                                    "ocsp_url": {
+                                                        "type": "string",
+                                                        "title": "Ocsp Url",
+                                                        "description": "Ocsp Url (String)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name"
+                                                ]
+                                            },
+                                            "title": "CA Trustpoints",
+                                            "description": "CA Trustpoints (List - Object)\n\nElements:\n- name (required)\n- enrollment_terminal\n- rsakeypair\n- ecckeypair\n- cabundle\n- revocation_check\n- ocsp_url"
+                                        }
+                                    },
+                                    "required": [],
+                                    "title": "Crypto",
+                                    "description": "Crypto (Object)\n\nElements:\n- keys\n- ca_trustpoints"
+                                },
                                 "dhcp": {
                                     "type": "object",
                                     "additionalProperties": false,
@@ -227501,7 +227641,7 @@
                             },
                             "required": [],
                             "title": "Configuration",
-                            "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- epbr\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- ip_sla\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- vtp\n- interfaces"
+                            "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- crypto\n- dhcp\n- dns\n- epbr\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- ip_sla\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- vtp\n- interfaces"
                         },
                         "templates": {
                             "type": "array",
@@ -230162,6 +230302,146 @@
                                         },
                                         "title": "Community Lists",
                                         "description": "Community Lists (List - Object)\n\nElements:\n- name (required)\n- mode\n- entries"
+                                    },
+                                    "crypto": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "keys": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "label": {
+                                                            "type": "string",
+                                                            "title": "Label",
+                                                            "description": "Label (String)"
+                                                        },
+                                                        "type": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "rsa",
+                                                                        "ecc"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Type",
+                                                            "description": "Type (String, String)"
+                                                        },
+                                                        "exportable": {
+                                                            "type": "boolean",
+                                                            "title": "Exportable",
+                                                            "description": "Exportable (Boolean)"
+                                                        },
+                                                        "modulus": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "enum": [
+                                                                        224,
+                                                                        384,
+                                                                        512,
+                                                                        521,
+                                                                        768,
+                                                                        1024,
+                                                                        1536,
+                                                                        2048,
+                                                                        3072,
+                                                                        4096
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Modulus",
+                                                            "description": "Modulus (Integer, String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "label"
+                                                    ]
+                                                },
+                                                "title": "Keys",
+                                                "description": "Keys (List - Object)\n\nElements:\n- label (required)\n- type\n- exportable\n- modulus"
+                                            },
+                                            "ca_trustpoints": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "enrollment_terminal": {
+                                                            "type": "boolean",
+                                                            "title": "Enrollment Terminal",
+                                                            "description": "Enrollment Terminal (Boolean)"
+                                                        },
+                                                        "rsakeypair": {
+                                                            "type": "string",
+                                                            "title": "Rsakeypair",
+                                                            "description": "Rsakeypair (String)"
+                                                        },
+                                                        "ecckeypair": {
+                                                            "type": "string",
+                                                            "title": "Ecckeypair",
+                                                            "description": "Ecckeypair (String)"
+                                                        },
+                                                        "cabundle": {
+                                                            "type": "string",
+                                                            "title": "Cabundle",
+                                                            "description": "Cabundle (String)"
+                                                        },
+                                                        "revocation_check": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "crl",
+                                                                            "ocsp",
+                                                                            "none"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Revocation Check",
+                                                            "description": "Revocation Check (Array, String)"
+                                                        },
+                                                        "ocsp_url": {
+                                                            "type": "string",
+                                                            "title": "Ocsp Url",
+                                                            "description": "Ocsp Url (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "CA Trustpoints",
+                                                "description": "CA Trustpoints (List - Object)\n\nElements:\n- name (required)\n- enrollment_terminal\n- rsakeypair\n- ecckeypair\n- cabundle\n- revocation_check\n- ocsp_url"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Crypto",
+                                        "description": "Crypto (Object)\n\nElements:\n- keys\n- ca_trustpoints"
                                     },
                                     "dhcp": {
                                         "type": "object",
@@ -290902,7 +291182,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- epbr\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- ip_sla\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- vtp\n- interfaces"
+                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- crypto\n- dhcp\n- dns\n- epbr\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- ip_sla\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- vtp\n- interfaces"
                             },
                             "templates": {
                                 "type": "array",
@@ -293597,6 +293877,146 @@
                                         "title": "Community Lists",
                                         "description": "Community Lists (List - Object)\n\nElements:\n- name (required)\n- mode\n- entries"
                                     },
+                                    "crypto": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "keys": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "label": {
+                                                            "type": "string",
+                                                            "title": "Label",
+                                                            "description": "Label (String)"
+                                                        },
+                                                        "type": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "rsa",
+                                                                        "ecc"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Type",
+                                                            "description": "Type (String, String)"
+                                                        },
+                                                        "exportable": {
+                                                            "type": "boolean",
+                                                            "title": "Exportable",
+                                                            "description": "Exportable (Boolean)"
+                                                        },
+                                                        "modulus": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "enum": [
+                                                                        224,
+                                                                        384,
+                                                                        512,
+                                                                        521,
+                                                                        768,
+                                                                        1024,
+                                                                        1536,
+                                                                        2048,
+                                                                        3072,
+                                                                        4096
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Modulus",
+                                                            "description": "Modulus (Integer, String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "label"
+                                                    ]
+                                                },
+                                                "title": "Keys",
+                                                "description": "Keys (List - Object)\n\nElements:\n- label (required)\n- type\n- exportable\n- modulus"
+                                            },
+                                            "ca_trustpoints": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "enrollment_terminal": {
+                                                            "type": "boolean",
+                                                            "title": "Enrollment Terminal",
+                                                            "description": "Enrollment Terminal (Boolean)"
+                                                        },
+                                                        "rsakeypair": {
+                                                            "type": "string",
+                                                            "title": "Rsakeypair",
+                                                            "description": "Rsakeypair (String)"
+                                                        },
+                                                        "ecckeypair": {
+                                                            "type": "string",
+                                                            "title": "Ecckeypair",
+                                                            "description": "Ecckeypair (String)"
+                                                        },
+                                                        "cabundle": {
+                                                            "type": "string",
+                                                            "title": "Cabundle",
+                                                            "description": "Cabundle (String)"
+                                                        },
+                                                        "revocation_check": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "crl",
+                                                                            "ocsp",
+                                                                            "none"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Revocation Check",
+                                                            "description": "Revocation Check (Array, String)"
+                                                        },
+                                                        "ocsp_url": {
+                                                            "type": "string",
+                                                            "title": "Ocsp Url",
+                                                            "description": "Ocsp Url (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "CA Trustpoints",
+                                                "description": "CA Trustpoints (List - Object)\n\nElements:\n- name (required)\n- enrollment_terminal\n- rsakeypair\n- ecckeypair\n- cabundle\n- revocation_check\n- ocsp_url"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Crypto",
+                                        "description": "Crypto (Object)\n\nElements:\n- keys\n- ca_trustpoints"
+                                    },
                                     "dhcp": {
                                         "type": "object",
                                         "additionalProperties": false,
@@ -354336,7 +354756,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- epbr\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- ip_sla\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- vtp\n- interfaces"
+                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- crypto\n- dhcp\n- dns\n- epbr\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- ip_sla\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- vtp\n- interfaces"
                             },
                             "templates": {
                                 "type": "array",
@@ -366031,6 +366451,146 @@
                                         "title": "Community Lists",
                                         "description": "Community Lists (List - Object)\n\nElements:\n- name (required)\n- mode\n- entries"
                                     },
+                                    "crypto": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "keys": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "label": {
+                                                            "type": "string",
+                                                            "title": "Label",
+                                                            "description": "Label (String)"
+                                                        },
+                                                        "type": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "rsa",
+                                                                        "ecc"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Type",
+                                                            "description": "Type (String, String)"
+                                                        },
+                                                        "exportable": {
+                                                            "type": "boolean",
+                                                            "title": "Exportable",
+                                                            "description": "Exportable (Boolean)"
+                                                        },
+                                                        "modulus": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "enum": [
+                                                                        224,
+                                                                        384,
+                                                                        512,
+                                                                        521,
+                                                                        768,
+                                                                        1024,
+                                                                        1536,
+                                                                        2048,
+                                                                        3072,
+                                                                        4096
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Modulus",
+                                                            "description": "Modulus (Integer, String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "label"
+                                                    ]
+                                                },
+                                                "title": "Keys",
+                                                "description": "Keys (List - Object)\n\nElements:\n- label (required)\n- type\n- exportable\n- modulus"
+                                            },
+                                            "ca_trustpoints": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "enrollment_terminal": {
+                                                            "type": "boolean",
+                                                            "title": "Enrollment Terminal",
+                                                            "description": "Enrollment Terminal (Boolean)"
+                                                        },
+                                                        "rsakeypair": {
+                                                            "type": "string",
+                                                            "title": "Rsakeypair",
+                                                            "description": "Rsakeypair (String)"
+                                                        },
+                                                        "ecckeypair": {
+                                                            "type": "string",
+                                                            "title": "Ecckeypair",
+                                                            "description": "Ecckeypair (String)"
+                                                        },
+                                                        "cabundle": {
+                                                            "type": "string",
+                                                            "title": "Cabundle",
+                                                            "description": "Cabundle (String)"
+                                                        },
+                                                        "revocation_check": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "crl",
+                                                                            "ocsp",
+                                                                            "none"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Revocation Check",
+                                                            "description": "Revocation Check (Array, String)"
+                                                        },
+                                                        "ocsp_url": {
+                                                            "type": "string",
+                                                            "title": "Ocsp Url",
+                                                            "description": "Ocsp Url (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "CA Trustpoints",
+                                                "description": "CA Trustpoints (List - Object)\n\nElements:\n- name (required)\n- enrollment_terminal\n- rsakeypair\n- ecckeypair\n- cabundle\n- revocation_check\n- ocsp_url"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Crypto",
+                                        "description": "Crypto (Object)\n\nElements:\n- keys\n- ca_trustpoints"
+                                    },
                                     "dhcp": {
                                         "type": "object",
                                         "additionalProperties": false,
@@ -426770,7 +427330,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- dhcp\n- dns\n- epbr\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- ip_sla\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- vtp\n- interfaces"
+                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- analytics\n- arp\n- banner\n- bfd\n- cdp\n- community_lists\n- crypto\n- dhcp\n- dns\n- epbr\n- security_group\n- evpn\n- fabric_forwarding\n- feature\n- feature_set\n- igmp\n- igmp_snooping\n- ip_access_lists\n- ipv6_access_lists\n- ip_as_path_access_lists\n- object_group\n- ip_prefix_lists\n- ipv6_prefix_lists\n- ip_sla\n- key_chains\n- lacp\n- lldp\n- logging\n- macsec\n- nd\n- netflow\n- ntp\n- ptp\n- qos\n- route_maps\n- routing\n- sflow\n- snmp\n- monitor_sessions\n- spanning_tree\n- system\n- telemetry\n- tracks\n- udld\n- vlan\n- vpc\n- vrfs\n- vtp\n- interfaces"
                             }
                         },
                         "required": [
