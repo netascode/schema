@@ -176159,8 +176159,7 @@
                                                                 ]
                                                             },
                                                             {
-                                                                "type": "string",
-                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                "type": "string"
                                                             }
                                                         ],
                                                         "title": "Name",
@@ -176384,6 +176383,11 @@
                                             "title": "Origin ID Value",
                                             "description": "Origin ID Value (String)"
                                         },
+                                        "rate_limit": {
+                                            "type": "boolean",
+                                            "title": "Rate Limit",
+                                            "description": "Rate Limit (Boolean)"
+                                        },
                                         "servers": {
                                             "type": "array",
                                             "items": {
@@ -176507,7 +176511,7 @@
                                     },
                                     "required": [],
                                     "title": "Logging",
-                                    "description": "Logging (Object)\n\nElements:\n- level\n- facilities\n- logfile_name\n- logfile_severity\n- logfile_size\n- logfile_persistent_threshold\n- source_interface_type\n- source_interface_id\n- timestamp\n- monitor\n- monitor_severity\n- console\n- console_severity\n- origin_id_type\n- origin_id_value\n- servers"
+                                    "description": "Logging (Object)\n\nElements:\n- level\n- facilities\n- logfile_name\n- logfile_severity\n- logfile_size\n- logfile_persistent_threshold\n- source_interface_type\n- source_interface_id\n- timestamp\n- monitor\n- monitor_severity\n- console\n- console_severity\n- origin_id_type\n- origin_id_value\n- rate_limit\n- servers"
                                 },
                                 "macsec": {
                                     "type": "object",
@@ -239893,8 +239897,7 @@
                                                                     ]
                                                                 },
                                                                 {
-                                                                    "type": "string",
-                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    "type": "string"
                                                                 }
                                                             ],
                                                             "title": "Name",
@@ -240118,6 +240121,11 @@
                                                 "title": "Origin ID Value",
                                                 "description": "Origin ID Value (String)"
                                             },
+                                            "rate_limit": {
+                                                "type": "boolean",
+                                                "title": "Rate Limit",
+                                                "description": "Rate Limit (Boolean)"
+                                            },
                                             "servers": {
                                                 "type": "array",
                                                 "items": {
@@ -240241,7 +240249,7 @@
                                         },
                                         "required": [],
                                         "title": "Logging",
-                                        "description": "Logging (Object)\n\nElements:\n- level\n- facilities\n- logfile_name\n- logfile_severity\n- logfile_size\n- logfile_persistent_threshold\n- source_interface_type\n- source_interface_id\n- timestamp\n- monitor\n- monitor_severity\n- console\n- console_severity\n- origin_id_type\n- origin_id_value\n- servers"
+                                        "description": "Logging (Object)\n\nElements:\n- level\n- facilities\n- logfile_name\n- logfile_severity\n- logfile_size\n- logfile_persistent_threshold\n- source_interface_type\n- source_interface_id\n- timestamp\n- monitor\n- monitor_severity\n- console\n- console_severity\n- origin_id_type\n- origin_id_value\n- rate_limit\n- servers"
                                     },
                                     "macsec": {
                                         "type": "object",
@@ -303660,8 +303668,7 @@
                                                                     ]
                                                                 },
                                                                 {
-                                                                    "type": "string",
-                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    "type": "string"
                                                                 }
                                                             ],
                                                             "title": "Name",
@@ -303885,6 +303892,11 @@
                                                 "title": "Origin ID Value",
                                                 "description": "Origin ID Value (String)"
                                             },
+                                            "rate_limit": {
+                                                "type": "boolean",
+                                                "title": "Rate Limit",
+                                                "description": "Rate Limit (Boolean)"
+                                            },
                                             "servers": {
                                                 "type": "array",
                                                 "items": {
@@ -304008,7 +304020,7 @@
                                         },
                                         "required": [],
                                         "title": "Logging",
-                                        "description": "Logging (Object)\n\nElements:\n- level\n- facilities\n- logfile_name\n- logfile_severity\n- logfile_size\n- logfile_persistent_threshold\n- source_interface_type\n- source_interface_id\n- timestamp\n- monitor\n- monitor_severity\n- console\n- console_severity\n- origin_id_type\n- origin_id_value\n- servers"
+                                        "description": "Logging (Object)\n\nElements:\n- level\n- facilities\n- logfile_name\n- logfile_severity\n- logfile_size\n- logfile_persistent_threshold\n- source_interface_type\n- source_interface_id\n- timestamp\n- monitor\n- monitor_severity\n- console\n- console_severity\n- origin_id_type\n- origin_id_value\n- rate_limit\n- servers"
                                     },
                                     "macsec": {
                                         "type": "object",
@@ -376427,8 +376439,7 @@
                                                                     ]
                                                                 },
                                                                 {
-                                                                    "type": "string",
-                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    "type": "string"
                                                                 }
                                                             ],
                                                             "title": "Name",
@@ -376652,6 +376663,11 @@
                                                 "title": "Origin ID Value",
                                                 "description": "Origin ID Value (String)"
                                             },
+                                            "rate_limit": {
+                                                "type": "boolean",
+                                                "title": "Rate Limit",
+                                                "description": "Rate Limit (Boolean)"
+                                            },
                                             "servers": {
                                                 "type": "array",
                                                 "items": {
@@ -376775,7 +376791,7 @@
                                         },
                                         "required": [],
                                         "title": "Logging",
-                                        "description": "Logging (Object)\n\nElements:\n- level\n- facilities\n- logfile_name\n- logfile_severity\n- logfile_size\n- logfile_persistent_threshold\n- source_interface_type\n- source_interface_id\n- timestamp\n- monitor\n- monitor_severity\n- console\n- console_severity\n- origin_id_type\n- origin_id_value\n- servers"
+                                        "description": "Logging (Object)\n\nElements:\n- level\n- facilities\n- logfile_name\n- logfile_severity\n- logfile_size\n- logfile_persistent_threshold\n- source_interface_type\n- source_interface_id\n- timestamp\n- monitor\n- monitor_severity\n- console\n- console_severity\n- origin_id_type\n- origin_id_value\n- rate_limit\n- servers"
                                     },
                                     "macsec": {
                                         "type": "object",
