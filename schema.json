@@ -201148,10 +201148,109 @@
                                             "title": "Merge Subscriptions",
                                             "description": "Merge Subscriptions (Boolean)"
                                         },
+                                        "certificate_filename": {
+                                            "type": "string",
+                                            "title": "Certificate Filename",
+                                            "description": "Certificate Filename (String)"
+                                        },
+                                        "certificate_hostname": {
+                                            "type": "string",
+                                            "title": "Certificate Hostname",
+                                            "description": "Certificate Hostname (String)"
+                                        },
+                                        "certificate_trustpoint": {
+                                            "type": "string",
+                                            "title": "Certificate Trustpoint",
+                                            "description": "Certificate Trustpoint (String)"
+                                        },
                                         "destination_profile_use_vrf": {
                                             "type": "string",
                                             "title": "Destination Profile Use VRF",
                                             "description": "Destination Profile Use VRF (String)"
+                                        },
+                                        "destination_profile_use_compression": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "gzip"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "Destination Profile Use Compression",
+                                            "description": "Destination Profile Use Compression (String, String)"
+                                        },
+                                        "destination_profile_source_interface_type": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "ethernet",
+                                                        "loopback",
+                                                        "mgmt",
+                                                        "port-channel",
+                                                        "vlan",
+                                                        "vni"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "Destination Profile Source Interface Type",
+                                            "description": "Destination Profile Source Interface Type (String, String)"
+                                        },
+                                        "destination_profile_source_interface_id": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "string"
+                                                },
+                                                {
+                                                    "type": "integer"
+                                                }
+                                            ],
+                                            "title": "Destination Profile Source Interface ID",
+                                            "description": "Destination Profile Source Interface ID (String, Integer)"
+                                        },
+                                        "destination_profile_use_retry_size": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "integer",
+                                                    "minimum": 10,
+                                                    "maximum": 1500
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "Destination Profile Use Retry Size",
+                                            "description": "Destination Profile Use Retry Size (Integer, String)"
+                                        },
+                                        "destination_profile_use_nodeid": {
+                                            "type": "string",
+                                            "title": "Destination Profile Use Nodeid",
+                                            "description": "Destination Profile Use Nodeid (String)"
+                                        },
+                                        "destination_profile_grpc_deadline": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "integer",
+                                                    "minimum": 30,
+                                                    "maximum": 120
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "Destination Profile Grpc Deadline",
+                                            "description": "Destination Profile Grpc Deadline (Integer, String)"
                                         },
                                         "destination_groups": {
                                             "type": "array",
@@ -201174,6 +201273,100 @@
                                                         ],
                                                         "title": "ID",
                                                         "description": "ID (Integer, String, String)"
+                                                    },
+                                                    "certificate_filename": {
+                                                        "type": "string",
+                                                        "title": "Certificate Filename",
+                                                        "description": "Certificate Filename (String)"
+                                                    },
+                                                    "certificate_hostname": {
+                                                        "type": "string",
+                                                        "title": "Certificate Hostname",
+                                                        "description": "Certificate Hostname (String)"
+                                                    },
+                                                    "use_vrf": {
+                                                        "type": "string",
+                                                        "title": "Use VRF",
+                                                        "description": "Use VRF (String)"
+                                                    },
+                                                    "use_compression": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "gzip"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Use Compression",
+                                                        "description": "Use Compression (String, String)"
+                                                    },
+                                                    "source_interface_type": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "ethernet",
+                                                                    "loopback",
+                                                                    "mgmt",
+                                                                    "port-channel",
+                                                                    "vlan",
+                                                                    "vni"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Source Interface Type",
+                                                        "description": "Source Interface Type (String, String)"
+                                                    },
+                                                    "source_interface_id": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "integer"
+                                                            }
+                                                        ],
+                                                        "title": "Source Interface ID",
+                                                        "description": "Source Interface ID (String, Integer)"
+                                                    },
+                                                    "use_chunking_size": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 64,
+                                                                "maximum": 4096
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Use Chunking Size",
+                                                        "description": "Use Chunking Size (Integer, String)"
+                                                    },
+                                                    "message_max_size": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 12288,
+                                                                "maximum": 32768
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Message Max Size",
+                                                        "description": "Message Max Size (Integer, String)"
                                                     },
                                                     "destinations": {
                                                         "type": "array",
@@ -201265,7 +201458,7 @@
                                                 ]
                                             },
                                             "title": "Destination Groups",
-                                            "description": "Destination Groups (List - Object)\n\nElements:\n- id (required)\n- destinations"
+                                            "description": "Destination Groups (List - Object)\n\nElements:\n- id (required)\n- certificate_filename\n- certificate_hostname\n- use_vrf\n- use_compression\n- source_interface_type\n- source_interface_id\n- use_chunking_size\n- message_max_size\n- destinations"
                                         },
                                         "sensor_groups": {
                                             "type": "array",
@@ -201464,7 +201657,7 @@
                                     },
                                     "required": [],
                                     "title": "Telemetry",
-                                    "description": "Telemetry (Object)\n\nElements:\n- batch_dme_events\n- merge_subscriptions\n- destination_profile_use_vrf\n- destination_groups\n- sensor_groups\n- subscriptions"
+                                    "description": "Telemetry (Object)\n\nElements:\n- batch_dme_events\n- merge_subscriptions\n- certificate_filename\n- certificate_hostname\n- certificate_trustpoint\n- destination_profile_use_vrf\n- destination_profile_use_compression\n- destination_profile_source_interface_type\n- destination_profile_source_interface_id\n- destination_profile_use_retry_size\n- destination_profile_use_nodeid\n- destination_profile_grpc_deadline\n- destination_groups\n- sensor_groups\n- subscriptions"
                                 },
                                 "tracks": {
                                     "type": "array",
@@ -264689,10 +264882,109 @@
                                                 "title": "Merge Subscriptions",
                                                 "description": "Merge Subscriptions (Boolean)"
                                             },
+                                            "certificate_filename": {
+                                                "type": "string",
+                                                "title": "Certificate Filename",
+                                                "description": "Certificate Filename (String)"
+                                            },
+                                            "certificate_hostname": {
+                                                "type": "string",
+                                                "title": "Certificate Hostname",
+                                                "description": "Certificate Hostname (String)"
+                                            },
+                                            "certificate_trustpoint": {
+                                                "type": "string",
+                                                "title": "Certificate Trustpoint",
+                                                "description": "Certificate Trustpoint (String)"
+                                            },
                                             "destination_profile_use_vrf": {
                                                 "type": "string",
                                                 "title": "Destination Profile Use VRF",
                                                 "description": "Destination Profile Use VRF (String)"
+                                            },
+                                            "destination_profile_use_compression": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "gzip"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Destination Profile Use Compression",
+                                                "description": "Destination Profile Use Compression (String, String)"
+                                            },
+                                            "destination_profile_source_interface_type": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "ethernet",
+                                                            "loopback",
+                                                            "mgmt",
+                                                            "port-channel",
+                                                            "vlan",
+                                                            "vni"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Destination Profile Source Interface Type",
+                                                "description": "Destination Profile Source Interface Type (String, String)"
+                                            },
+                                            "destination_profile_source_interface_id": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "type": "integer"
+                                                    }
+                                                ],
+                                                "title": "Destination Profile Source Interface ID",
+                                                "description": "Destination Profile Source Interface ID (String, Integer)"
+                                            },
+                                            "destination_profile_use_retry_size": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 10,
+                                                        "maximum": 1500
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Destination Profile Use Retry Size",
+                                                "description": "Destination Profile Use Retry Size (Integer, String)"
+                                            },
+                                            "destination_profile_use_nodeid": {
+                                                "type": "string",
+                                                "title": "Destination Profile Use Nodeid",
+                                                "description": "Destination Profile Use Nodeid (String)"
+                                            },
+                                            "destination_profile_grpc_deadline": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 30,
+                                                        "maximum": 120
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Destination Profile Grpc Deadline",
+                                                "description": "Destination Profile Grpc Deadline (Integer, String)"
                                             },
                                             "destination_groups": {
                                                 "type": "array",
@@ -264715,6 +265007,100 @@
                                                             ],
                                                             "title": "ID",
                                                             "description": "ID (Integer, String, String)"
+                                                        },
+                                                        "certificate_filename": {
+                                                            "type": "string",
+                                                            "title": "Certificate Filename",
+                                                            "description": "Certificate Filename (String)"
+                                                        },
+                                                        "certificate_hostname": {
+                                                            "type": "string",
+                                                            "title": "Certificate Hostname",
+                                                            "description": "Certificate Hostname (String)"
+                                                        },
+                                                        "use_vrf": {
+                                                            "type": "string",
+                                                            "title": "Use VRF",
+                                                            "description": "Use VRF (String)"
+                                                        },
+                                                        "use_compression": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "gzip"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Use Compression",
+                                                            "description": "Use Compression (String, String)"
+                                                        },
+                                                        "source_interface_type": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "ethernet",
+                                                                        "loopback",
+                                                                        "mgmt",
+                                                                        "port-channel",
+                                                                        "vlan",
+                                                                        "vni"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Source Interface Type",
+                                                            "description": "Source Interface Type (String, String)"
+                                                        },
+                                                        "source_interface_id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "integer"
+                                                                }
+                                                            ],
+                                                            "title": "Source Interface ID",
+                                                            "description": "Source Interface ID (String, Integer)"
+                                                        },
+                                                        "use_chunking_size": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 64,
+                                                                    "maximum": 4096
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Use Chunking Size",
+                                                            "description": "Use Chunking Size (Integer, String)"
+                                                        },
+                                                        "message_max_size": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 12288,
+                                                                    "maximum": 32768
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Message Max Size",
+                                                            "description": "Message Max Size (Integer, String)"
                                                         },
                                                         "destinations": {
                                                             "type": "array",
@@ -264806,7 +265192,7 @@
                                                     ]
                                                 },
                                                 "title": "Destination Groups",
-                                                "description": "Destination Groups (List - Object)\n\nElements:\n- id (required)\n- destinations"
+                                                "description": "Destination Groups (List - Object)\n\nElements:\n- id (required)\n- certificate_filename\n- certificate_hostname\n- use_vrf\n- use_compression\n- source_interface_type\n- source_interface_id\n- use_chunking_size\n- message_max_size\n- destinations"
                                             },
                                             "sensor_groups": {
                                                 "type": "array",
@@ -265005,7 +265391,7 @@
                                         },
                                         "required": [],
                                         "title": "Telemetry",
-                                        "description": "Telemetry (Object)\n\nElements:\n- batch_dme_events\n- merge_subscriptions\n- destination_profile_use_vrf\n- destination_groups\n- sensor_groups\n- subscriptions"
+                                        "description": "Telemetry (Object)\n\nElements:\n- batch_dme_events\n- merge_subscriptions\n- certificate_filename\n- certificate_hostname\n- certificate_trustpoint\n- destination_profile_use_vrf\n- destination_profile_use_compression\n- destination_profile_source_interface_type\n- destination_profile_source_interface_id\n- destination_profile_use_retry_size\n- destination_profile_use_nodeid\n- destination_profile_grpc_deadline\n- destination_groups\n- sensor_groups\n- subscriptions"
                                     },
                                     "tracks": {
                                         "type": "array",
@@ -328263,10 +328649,109 @@
                                                 "title": "Merge Subscriptions",
                                                 "description": "Merge Subscriptions (Boolean)"
                                             },
+                                            "certificate_filename": {
+                                                "type": "string",
+                                                "title": "Certificate Filename",
+                                                "description": "Certificate Filename (String)"
+                                            },
+                                            "certificate_hostname": {
+                                                "type": "string",
+                                                "title": "Certificate Hostname",
+                                                "description": "Certificate Hostname (String)"
+                                            },
+                                            "certificate_trustpoint": {
+                                                "type": "string",
+                                                "title": "Certificate Trustpoint",
+                                                "description": "Certificate Trustpoint (String)"
+                                            },
                                             "destination_profile_use_vrf": {
                                                 "type": "string",
                                                 "title": "Destination Profile Use VRF",
                                                 "description": "Destination Profile Use VRF (String)"
+                                            },
+                                            "destination_profile_use_compression": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "gzip"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Destination Profile Use Compression",
+                                                "description": "Destination Profile Use Compression (String, String)"
+                                            },
+                                            "destination_profile_source_interface_type": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "ethernet",
+                                                            "loopback",
+                                                            "mgmt",
+                                                            "port-channel",
+                                                            "vlan",
+                                                            "vni"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Destination Profile Source Interface Type",
+                                                "description": "Destination Profile Source Interface Type (String, String)"
+                                            },
+                                            "destination_profile_source_interface_id": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "type": "integer"
+                                                    }
+                                                ],
+                                                "title": "Destination Profile Source Interface ID",
+                                                "description": "Destination Profile Source Interface ID (String, Integer)"
+                                            },
+                                            "destination_profile_use_retry_size": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 10,
+                                                        "maximum": 1500
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Destination Profile Use Retry Size",
+                                                "description": "Destination Profile Use Retry Size (Integer, String)"
+                                            },
+                                            "destination_profile_use_nodeid": {
+                                                "type": "string",
+                                                "title": "Destination Profile Use Nodeid",
+                                                "description": "Destination Profile Use Nodeid (String)"
+                                            },
+                                            "destination_profile_grpc_deadline": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 30,
+                                                        "maximum": 120
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Destination Profile Grpc Deadline",
+                                                "description": "Destination Profile Grpc Deadline (Integer, String)"
                                             },
                                             "destination_groups": {
                                                 "type": "array",
@@ -328289,6 +328774,100 @@
                                                             ],
                                                             "title": "ID",
                                                             "description": "ID (Integer, String, String)"
+                                                        },
+                                                        "certificate_filename": {
+                                                            "type": "string",
+                                                            "title": "Certificate Filename",
+                                                            "description": "Certificate Filename (String)"
+                                                        },
+                                                        "certificate_hostname": {
+                                                            "type": "string",
+                                                            "title": "Certificate Hostname",
+                                                            "description": "Certificate Hostname (String)"
+                                                        },
+                                                        "use_vrf": {
+                                                            "type": "string",
+                                                            "title": "Use VRF",
+                                                            "description": "Use VRF (String)"
+                                                        },
+                                                        "use_compression": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "gzip"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Use Compression",
+                                                            "description": "Use Compression (String, String)"
+                                                        },
+                                                        "source_interface_type": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "ethernet",
+                                                                        "loopback",
+                                                                        "mgmt",
+                                                                        "port-channel",
+                                                                        "vlan",
+                                                                        "vni"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Source Interface Type",
+                                                            "description": "Source Interface Type (String, String)"
+                                                        },
+                                                        "source_interface_id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "integer"
+                                                                }
+                                                            ],
+                                                            "title": "Source Interface ID",
+                                                            "description": "Source Interface ID (String, Integer)"
+                                                        },
+                                                        "use_chunking_size": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 64,
+                                                                    "maximum": 4096
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Use Chunking Size",
+                                                            "description": "Use Chunking Size (Integer, String)"
+                                                        },
+                                                        "message_max_size": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 12288,
+                                                                    "maximum": 32768
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Message Max Size",
+                                                            "description": "Message Max Size (Integer, String)"
                                                         },
                                                         "destinations": {
                                                             "type": "array",
@@ -328380,7 +328959,7 @@
                                                     ]
                                                 },
                                                 "title": "Destination Groups",
-                                                "description": "Destination Groups (List - Object)\n\nElements:\n- id (required)\n- destinations"
+                                                "description": "Destination Groups (List - Object)\n\nElements:\n- id (required)\n- certificate_filename\n- certificate_hostname\n- use_vrf\n- use_compression\n- source_interface_type\n- source_interface_id\n- use_chunking_size\n- message_max_size\n- destinations"
                                             },
                                             "sensor_groups": {
                                                 "type": "array",
@@ -328579,7 +329158,7 @@
                                         },
                                         "required": [],
                                         "title": "Telemetry",
-                                        "description": "Telemetry (Object)\n\nElements:\n- batch_dme_events\n- merge_subscriptions\n- destination_profile_use_vrf\n- destination_groups\n- sensor_groups\n- subscriptions"
+                                        "description": "Telemetry (Object)\n\nElements:\n- batch_dme_events\n- merge_subscriptions\n- certificate_filename\n- certificate_hostname\n- certificate_trustpoint\n- destination_profile_use_vrf\n- destination_profile_use_compression\n- destination_profile_source_interface_type\n- destination_profile_source_interface_id\n- destination_profile_use_retry_size\n- destination_profile_use_nodeid\n- destination_profile_grpc_deadline\n- destination_groups\n- sensor_groups\n- subscriptions"
                                     },
                                     "tracks": {
                                         "type": "array",
@@ -400837,10 +401416,109 @@
                                                 "title": "Merge Subscriptions",
                                                 "description": "Merge Subscriptions (Boolean)"
                                             },
+                                            "certificate_filename": {
+                                                "type": "string",
+                                                "title": "Certificate Filename",
+                                                "description": "Certificate Filename (String)"
+                                            },
+                                            "certificate_hostname": {
+                                                "type": "string",
+                                                "title": "Certificate Hostname",
+                                                "description": "Certificate Hostname (String)"
+                                            },
+                                            "certificate_trustpoint": {
+                                                "type": "string",
+                                                "title": "Certificate Trustpoint",
+                                                "description": "Certificate Trustpoint (String)"
+                                            },
                                             "destination_profile_use_vrf": {
                                                 "type": "string",
                                                 "title": "Destination Profile Use VRF",
                                                 "description": "Destination Profile Use VRF (String)"
+                                            },
+                                            "destination_profile_use_compression": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "gzip"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Destination Profile Use Compression",
+                                                "description": "Destination Profile Use Compression (String, String)"
+                                            },
+                                            "destination_profile_source_interface_type": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "ethernet",
+                                                            "loopback",
+                                                            "mgmt",
+                                                            "port-channel",
+                                                            "vlan",
+                                                            "vni"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Destination Profile Source Interface Type",
+                                                "description": "Destination Profile Source Interface Type (String, String)"
+                                            },
+                                            "destination_profile_source_interface_id": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "type": "integer"
+                                                    }
+                                                ],
+                                                "title": "Destination Profile Source Interface ID",
+                                                "description": "Destination Profile Source Interface ID (String, Integer)"
+                                            },
+                                            "destination_profile_use_retry_size": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 10,
+                                                        "maximum": 1500
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Destination Profile Use Retry Size",
+                                                "description": "Destination Profile Use Retry Size (Integer, String)"
+                                            },
+                                            "destination_profile_use_nodeid": {
+                                                "type": "string",
+                                                "title": "Destination Profile Use Nodeid",
+                                                "description": "Destination Profile Use Nodeid (String)"
+                                            },
+                                            "destination_profile_grpc_deadline": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 30,
+                                                        "maximum": 120
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Destination Profile Grpc Deadline",
+                                                "description": "Destination Profile Grpc Deadline (Integer, String)"
                                             },
                                             "destination_groups": {
                                                 "type": "array",
@@ -400863,6 +401541,100 @@
                                                             ],
                                                             "title": "ID",
                                                             "description": "ID (Integer, String, String)"
+                                                        },
+                                                        "certificate_filename": {
+                                                            "type": "string",
+                                                            "title": "Certificate Filename",
+                                                            "description": "Certificate Filename (String)"
+                                                        },
+                                                        "certificate_hostname": {
+                                                            "type": "string",
+                                                            "title": "Certificate Hostname",
+                                                            "description": "Certificate Hostname (String)"
+                                                        },
+                                                        "use_vrf": {
+                                                            "type": "string",
+                                                            "title": "Use VRF",
+                                                            "description": "Use VRF (String)"
+                                                        },
+                                                        "use_compression": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "gzip"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Use Compression",
+                                                            "description": "Use Compression (String, String)"
+                                                        },
+                                                        "source_interface_type": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "ethernet",
+                                                                        "loopback",
+                                                                        "mgmt",
+                                                                        "port-channel",
+                                                                        "vlan",
+                                                                        "vni"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Source Interface Type",
+                                                            "description": "Source Interface Type (String, String)"
+                                                        },
+                                                        "source_interface_id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "integer"
+                                                                }
+                                                            ],
+                                                            "title": "Source Interface ID",
+                                                            "description": "Source Interface ID (String, Integer)"
+                                                        },
+                                                        "use_chunking_size": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 64,
+                                                                    "maximum": 4096
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Use Chunking Size",
+                                                            "description": "Use Chunking Size (Integer, String)"
+                                                        },
+                                                        "message_max_size": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 12288,
+                                                                    "maximum": 32768
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Message Max Size",
+                                                            "description": "Message Max Size (Integer, String)"
                                                         },
                                                         "destinations": {
                                                             "type": "array",
@@ -400954,7 +401726,7 @@
                                                     ]
                                                 },
                                                 "title": "Destination Groups",
-                                                "description": "Destination Groups (List - Object)\n\nElements:\n- id (required)\n- destinations"
+                                                "description": "Destination Groups (List - Object)\n\nElements:\n- id (required)\n- certificate_filename\n- certificate_hostname\n- use_vrf\n- use_compression\n- source_interface_type\n- source_interface_id\n- use_chunking_size\n- message_max_size\n- destinations"
                                             },
                                             "sensor_groups": {
                                                 "type": "array",
@@ -401153,7 +401925,7 @@
                                         },
                                         "required": [],
                                         "title": "Telemetry",
-                                        "description": "Telemetry (Object)\n\nElements:\n- batch_dme_events\n- merge_subscriptions\n- destination_profile_use_vrf\n- destination_groups\n- sensor_groups\n- subscriptions"
+                                        "description": "Telemetry (Object)\n\nElements:\n- batch_dme_events\n- merge_subscriptions\n- certificate_filename\n- certificate_hostname\n- certificate_trustpoint\n- destination_profile_use_vrf\n- destination_profile_use_compression\n- destination_profile_source_interface_type\n- destination_profile_source_interface_id\n- destination_profile_use_retry_size\n- destination_profile_use_nodeid\n- destination_profile_grpc_deadline\n- destination_groups\n- sensor_groups\n- subscriptions"
                                     },
                                     "tracks": {
                                         "type": "array",
