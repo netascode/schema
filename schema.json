@@ -165177,6 +165177,11 @@
                                                                 "title": "Shelltype",
                                                                 "description": "Shelltype (String, String)"
                                                             },
+                                                            "sshkey": {
+                                                                "type": "string",
+                                                                "title": "Sshkey",
+                                                                "description": "Sshkey (String)"
+                                                            },
                                                             "roles": {
                                                                 "type": "array",
                                                                 "items": {
@@ -165202,7 +165207,7 @@
                                                         ]
                                                     },
                                                     "title": "Accounts",
-                                                    "description": "Accounts (List - Object)\n\nElements:\n- username (required)\n- expiration\n- expires\n- password\n- password_encryption_type\n- shelltype\n- roles"
+                                                    "description": "Accounts (List - Object)\n\nElements:\n- username (required)\n- expiration\n- expires\n- password\n- password_encryption_type\n- shelltype\n- sshkey\n- roles"
                                                 }
                                             },
                                             "required": [],
@@ -229218,6 +229223,11 @@
                                                                     "title": "Shelltype",
                                                                     "description": "Shelltype (String, String)"
                                                                 },
+                                                                "sshkey": {
+                                                                    "type": "string",
+                                                                    "title": "Sshkey",
+                                                                    "description": "Sshkey (String)"
+                                                                },
                                                                 "roles": {
                                                                     "type": "array",
                                                                     "items": {
@@ -229243,7 +229253,7 @@
                                                             ]
                                                         },
                                                         "title": "Accounts",
-                                                        "description": "Accounts (List - Object)\n\nElements:\n- username (required)\n- expiration\n- expires\n- password\n- password_encryption_type\n- shelltype\n- roles"
+                                                        "description": "Accounts (List - Object)\n\nElements:\n- username (required)\n- expiration\n- expires\n- password\n- password_encryption_type\n- shelltype\n- sshkey\n- roles"
                                                     }
                                                 },
                                                 "required": [],
@@ -293292,6 +293302,11 @@
                                                                     "title": "Shelltype",
                                                                     "description": "Shelltype (String, String)"
                                                                 },
+                                                                "sshkey": {
+                                                                    "type": "string",
+                                                                    "title": "Sshkey",
+                                                                    "description": "Sshkey (String)"
+                                                                },
                                                                 "roles": {
                                                                     "type": "array",
                                                                     "items": {
@@ -293317,7 +293332,7 @@
                                                             ]
                                                         },
                                                         "title": "Accounts",
-                                                        "description": "Accounts (List - Object)\n\nElements:\n- username (required)\n- expiration\n- expires\n- password\n- password_encryption_type\n- shelltype\n- roles"
+                                                        "description": "Accounts (List - Object)\n\nElements:\n- username (required)\n- expiration\n- expires\n- password\n- password_encryption_type\n- shelltype\n- sshkey\n- roles"
                                                     }
                                                 },
                                                 "required": [],
@@ -366366,6 +366381,11 @@
                                                                     "title": "Shelltype",
                                                                     "description": "Shelltype (String, String)"
                                                                 },
+                                                                "sshkey": {
+                                                                    "type": "string",
+                                                                    "title": "Sshkey",
+                                                                    "description": "Sshkey (String)"
+                                                                },
                                                                 "roles": {
                                                                     "type": "array",
                                                                     "items": {
@@ -366391,7 +366411,7 @@
                                                             ]
                                                         },
                                                         "title": "Accounts",
-                                                        "description": "Accounts (List - Object)\n\nElements:\n- username (required)\n- expiration\n- expires\n- password\n- password_encryption_type\n- shelltype\n- roles"
+                                                        "description": "Accounts (List - Object)\n\nElements:\n- username (required)\n- expiration\n- expires\n- password\n- password_encryption_type\n- shelltype\n- sshkey\n- roles"
                                                     }
                                                 },
                                                 "required": [],
