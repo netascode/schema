@@ -165209,6 +165209,309 @@
                                             "title": "Users",
                                             "description": "Users (Object)\n\nElements:\n- password_strength_check\n- service_password_recovery\n- max_logins\n- userpassphrase\n- accounts"
                                         },
+                                        "role_feature_groups": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "title": "Name",
+                                                        "description": "Name (String)"
+                                                    },
+                                                    "features": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": "Features",
+                                                        "description": "Features (List - String)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name"
+                                                ]
+                                            },
+                                            "title": "Role Feature Groups",
+                                            "description": "Role Feature Groups (List - Object)\n\nElements:\n- name (required)\n- features"
+                                        },
+                                        "roles": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "title": "Name",
+                                                        "description": "Name (String)"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "title": "Description",
+                                                        "description": "Description (String)"
+                                                    },
+                                                    "rules": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "number": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 256
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Number",
+                                                                    "description": "Number (Integer, String)"
+                                                                },
+                                                                "action": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "permit",
+                                                                                "deny"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Action",
+                                                                    "description": "Action (String, String)"
+                                                                },
+                                                                "permission": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "read",
+                                                                                "read-write"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Permission",
+                                                                    "description": "Permission (String, String)"
+                                                                },
+                                                                "command": {
+                                                                    "type": "string",
+                                                                    "title": "Command",
+                                                                    "description": "Command (String)"
+                                                                },
+                                                                "feature": {
+                                                                    "type": "string",
+                                                                    "title": "Feature",
+                                                                    "description": "Feature (String)"
+                                                                },
+                                                                "feature_group": {
+                                                                    "type": "string",
+                                                                    "title": "Feature Group",
+                                                                    "description": "Feature Group (String)"
+                                                                },
+                                                                "oid": {
+                                                                    "type": "string",
+                                                                    "title": "Oid",
+                                                                    "description": "Oid (String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "number",
+                                                                "action"
+                                                            ]
+                                                        },
+                                                        "title": "Rules",
+                                                        "description": "Rules (List - Object)\n\nElements:\n- number (required)\n- action (required)\n- permission\n- command\n- feature\n- feature_group\n- oid"
+                                                    },
+                                                    "vlan_policy": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "deny": {
+                                                                "type": "boolean",
+                                                                "title": "Deny",
+                                                                "description": "Deny (Boolean)"
+                                                            },
+                                                            "permit_vlans": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "ids": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                    "type": "integer",
+                                                                                    "minimum": 1,
+                                                                                    "maximum": 4094
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Ids",
+                                                                        "description": "Ids (Array, String)"
+                                                                    },
+                                                                    "ranges": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "object",
+                                                                            "additionalProperties": false,
+                                                                            "properties": {
+                                                                                "from": {
+                                                                                    "anyOf": [
+                                                                                        {
+                                                                                            "type": "integer",
+                                                                                            "minimum": 1,
+                                                                                            "maximum": 4094
+                                                                                        },
+                                                                                        {
+                                                                                            "type": "string",
+                                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                        }
+                                                                                    ],
+                                                                                    "title": "From",
+                                                                                    "description": "From (Integer, String)"
+                                                                                },
+                                                                                "to": {
+                                                                                    "anyOf": [
+                                                                                        {
+                                                                                            "type": "integer",
+                                                                                            "minimum": 1,
+                                                                                            "maximum": 4094
+                                                                                        },
+                                                                                        {
+                                                                                            "type": "string",
+                                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                        }
+                                                                                    ],
+                                                                                    "title": "To",
+                                                                                    "description": "To (Integer, String)"
+                                                                                }
+                                                                            },
+                                                                            "required": [
+                                                                                "from",
+                                                                                "to"
+                                                                            ]
+                                                                        },
+                                                                        "title": "Ranges",
+                                                                        "description": "Ranges (List - Object)\n\nElements:\n- from (required)\n- to (required)"
+                                                                    }
+                                                                },
+                                                                "required": [],
+                                                                "title": "Permit Vlans",
+                                                                "description": "Permit Vlans (Object)\n\nElements:\n- ids\n- ranges"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Vlan Policy",
+                                                        "description": "Vlan Policy (Object)\n\nElements:\n- deny\n- permit_vlans"
+                                                    },
+                                                    "interface_policy": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "deny": {
+                                                                "type": "boolean",
+                                                                "title": "Deny",
+                                                                "description": "Deny (Boolean)"
+                                                            },
+                                                            "permit_interfaces": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "interface_type": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "ethernet",
+                                                                                        "loopback",
+                                                                                        "mgmt",
+                                                                                        "port-channel"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Interface Type",
+                                                                            "description": "Interface Type (String, String)"
+                                                                        },
+                                                                        "interface_id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "integer"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Interface ID",
+                                                                            "description": "Interface ID (String, Integer)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "interface_type",
+                                                                        "interface_id"
+                                                                    ]
+                                                                },
+                                                                "title": "Permit Interfaces",
+                                                                "description": "Permit Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Interface Policy",
+                                                        "description": "Interface Policy (Object)\n\nElements:\n- deny\n- permit_interfaces"
+                                                    },
+                                                    "vrf_policy": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "deny": {
+                                                                "type": "boolean",
+                                                                "title": "Deny",
+                                                                "description": "Deny (Boolean)"
+                                                            },
+                                                            "permit_vrfs": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string"
+                                                                },
+                                                                "title": "Permit VRFs",
+                                                                "description": "Permit VRFs (List - String)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "VRF Policy",
+                                                        "description": "VRF Policy (Object)\n\nElements:\n- deny\n- permit_vrfs"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name"
+                                                ]
+                                            },
+                                            "title": "Roles",
+                                            "description": "Roles (List - Object)\n\nElements:\n- name (required)\n- description\n- rules\n- vlan_policy\n- interface_policy\n- vrf_policy"
+                                        },
                                         "authentication": {
                                             "type": "object",
                                             "additionalProperties": false,
@@ -165422,7 +165725,7 @@
                                     },
                                     "required": [],
                                     "title": "AAA",
-                                    "description": "AAA (Object)\n\nElements:\n- radius\n- tacacs\n- users\n- authentication\n- authorization\n- accounting"
+                                    "description": "AAA (Object)\n\nElements:\n- radius\n- tacacs\n- users\n- role_feature_groups\n- roles\n- authentication\n- authorization\n- accounting"
                                 },
                                 "analytics": {
                                     "type": "object",
@@ -228947,6 +229250,309 @@
                                                 "title": "Users",
                                                 "description": "Users (Object)\n\nElements:\n- password_strength_check\n- service_password_recovery\n- max_logins\n- userpassphrase\n- accounts"
                                             },
+                                            "role_feature_groups": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "features": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            },
+                                                            "title": "Features",
+                                                            "description": "Features (List - String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Role Feature Groups",
+                                                "description": "Role Feature Groups (List - Object)\n\nElements:\n- name (required)\n- features"
+                                            },
+                                            "roles": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "title": "Description",
+                                                            "description": "Description (String)"
+                                                        },
+                                                        "rules": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "number": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 256
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Number",
+                                                                        "description": "Number (Integer, String)"
+                                                                    },
+                                                                    "action": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "permit",
+                                                                                    "deny"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Action",
+                                                                        "description": "Action (String, String)"
+                                                                    },
+                                                                    "permission": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "read",
+                                                                                    "read-write"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Permission",
+                                                                        "description": "Permission (String, String)"
+                                                                    },
+                                                                    "command": {
+                                                                        "type": "string",
+                                                                        "title": "Command",
+                                                                        "description": "Command (String)"
+                                                                    },
+                                                                    "feature": {
+                                                                        "type": "string",
+                                                                        "title": "Feature",
+                                                                        "description": "Feature (String)"
+                                                                    },
+                                                                    "feature_group": {
+                                                                        "type": "string",
+                                                                        "title": "Feature Group",
+                                                                        "description": "Feature Group (String)"
+                                                                    },
+                                                                    "oid": {
+                                                                        "type": "string",
+                                                                        "title": "Oid",
+                                                                        "description": "Oid (String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "number",
+                                                                    "action"
+                                                                ]
+                                                            },
+                                                            "title": "Rules",
+                                                            "description": "Rules (List - Object)\n\nElements:\n- number (required)\n- action (required)\n- permission\n- command\n- feature\n- feature_group\n- oid"
+                                                        },
+                                                        "vlan_policy": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "deny": {
+                                                                    "type": "boolean",
+                                                                    "title": "Deny",
+                                                                    "description": "Deny (Boolean)"
+                                                                },
+                                                                "permit_vlans": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "ids": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "integer",
+                                                                                        "minimum": 1,
+                                                                                        "maximum": 4094
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Ids",
+                                                                            "description": "Ids (Array, String)"
+                                                                        },
+                                                                        "ranges": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "object",
+                                                                                "additionalProperties": false,
+                                                                                "properties": {
+                                                                                    "from": {
+                                                                                        "anyOf": [
+                                                                                            {
+                                                                                                "type": "integer",
+                                                                                                "minimum": 1,
+                                                                                                "maximum": 4094
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "string",
+                                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                            }
+                                                                                        ],
+                                                                                        "title": "From",
+                                                                                        "description": "From (Integer, String)"
+                                                                                    },
+                                                                                    "to": {
+                                                                                        "anyOf": [
+                                                                                            {
+                                                                                                "type": "integer",
+                                                                                                "minimum": 1,
+                                                                                                "maximum": 4094
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "string",
+                                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                            }
+                                                                                        ],
+                                                                                        "title": "To",
+                                                                                        "description": "To (Integer, String)"
+                                                                                    }
+                                                                                },
+                                                                                "required": [
+                                                                                    "from",
+                                                                                    "to"
+                                                                                ]
+                                                                            },
+                                                                            "title": "Ranges",
+                                                                            "description": "Ranges (List - Object)\n\nElements:\n- from (required)\n- to (required)"
+                                                                        }
+                                                                    },
+                                                                    "required": [],
+                                                                    "title": "Permit Vlans",
+                                                                    "description": "Permit Vlans (Object)\n\nElements:\n- ids\n- ranges"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "Vlan Policy",
+                                                            "description": "Vlan Policy (Object)\n\nElements:\n- deny\n- permit_vlans"
+                                                        },
+                                                        "interface_policy": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "deny": {
+                                                                    "type": "boolean",
+                                                                    "title": "Deny",
+                                                                    "description": "Deny (Boolean)"
+                                                                },
+                                                                "permit_interfaces": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "interface_type": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "ethernet",
+                                                                                            "loopback",
+                                                                                            "mgmt",
+                                                                                            "port-channel"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Interface Type",
+                                                                                "description": "Interface Type (String, String)"
+                                                                            },
+                                                                            "interface_id": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Interface ID",
+                                                                                "description": "Interface ID (String, Integer)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "interface_type",
+                                                                            "interface_id"
+                                                                        ]
+                                                                    },
+                                                                    "title": "Permit Interfaces",
+                                                                    "description": "Permit Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "Interface Policy",
+                                                            "description": "Interface Policy (Object)\n\nElements:\n- deny\n- permit_interfaces"
+                                                        },
+                                                        "vrf_policy": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "deny": {
+                                                                    "type": "boolean",
+                                                                    "title": "Deny",
+                                                                    "description": "Deny (Boolean)"
+                                                                },
+                                                                "permit_vrfs": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "title": "Permit VRFs",
+                                                                    "description": "Permit VRFs (List - String)"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "VRF Policy",
+                                                            "description": "VRF Policy (Object)\n\nElements:\n- deny\n- permit_vrfs"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Roles",
+                                                "description": "Roles (List - Object)\n\nElements:\n- name (required)\n- description\n- rules\n- vlan_policy\n- interface_policy\n- vrf_policy"
+                                            },
                                             "authentication": {
                                                 "type": "object",
                                                 "additionalProperties": false,
@@ -229160,7 +229766,7 @@
                                         },
                                         "required": [],
                                         "title": "AAA",
-                                        "description": "AAA (Object)\n\nElements:\n- radius\n- tacacs\n- users\n- authentication\n- authorization\n- accounting"
+                                        "description": "AAA (Object)\n\nElements:\n- radius\n- tacacs\n- users\n- role_feature_groups\n- roles\n- authentication\n- authorization\n- accounting"
                                     },
                                     "analytics": {
                                         "type": "object",
@@ -292718,6 +293324,309 @@
                                                 "title": "Users",
                                                 "description": "Users (Object)\n\nElements:\n- password_strength_check\n- service_password_recovery\n- max_logins\n- userpassphrase\n- accounts"
                                             },
+                                            "role_feature_groups": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "features": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            },
+                                                            "title": "Features",
+                                                            "description": "Features (List - String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Role Feature Groups",
+                                                "description": "Role Feature Groups (List - Object)\n\nElements:\n- name (required)\n- features"
+                                            },
+                                            "roles": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "title": "Description",
+                                                            "description": "Description (String)"
+                                                        },
+                                                        "rules": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "number": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 256
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Number",
+                                                                        "description": "Number (Integer, String)"
+                                                                    },
+                                                                    "action": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "permit",
+                                                                                    "deny"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Action",
+                                                                        "description": "Action (String, String)"
+                                                                    },
+                                                                    "permission": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "read",
+                                                                                    "read-write"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Permission",
+                                                                        "description": "Permission (String, String)"
+                                                                    },
+                                                                    "command": {
+                                                                        "type": "string",
+                                                                        "title": "Command",
+                                                                        "description": "Command (String)"
+                                                                    },
+                                                                    "feature": {
+                                                                        "type": "string",
+                                                                        "title": "Feature",
+                                                                        "description": "Feature (String)"
+                                                                    },
+                                                                    "feature_group": {
+                                                                        "type": "string",
+                                                                        "title": "Feature Group",
+                                                                        "description": "Feature Group (String)"
+                                                                    },
+                                                                    "oid": {
+                                                                        "type": "string",
+                                                                        "title": "Oid",
+                                                                        "description": "Oid (String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "number",
+                                                                    "action"
+                                                                ]
+                                                            },
+                                                            "title": "Rules",
+                                                            "description": "Rules (List - Object)\n\nElements:\n- number (required)\n- action (required)\n- permission\n- command\n- feature\n- feature_group\n- oid"
+                                                        },
+                                                        "vlan_policy": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "deny": {
+                                                                    "type": "boolean",
+                                                                    "title": "Deny",
+                                                                    "description": "Deny (Boolean)"
+                                                                },
+                                                                "permit_vlans": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "ids": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "integer",
+                                                                                        "minimum": 1,
+                                                                                        "maximum": 4094
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Ids",
+                                                                            "description": "Ids (Array, String)"
+                                                                        },
+                                                                        "ranges": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "object",
+                                                                                "additionalProperties": false,
+                                                                                "properties": {
+                                                                                    "from": {
+                                                                                        "anyOf": [
+                                                                                            {
+                                                                                                "type": "integer",
+                                                                                                "minimum": 1,
+                                                                                                "maximum": 4094
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "string",
+                                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                            }
+                                                                                        ],
+                                                                                        "title": "From",
+                                                                                        "description": "From (Integer, String)"
+                                                                                    },
+                                                                                    "to": {
+                                                                                        "anyOf": [
+                                                                                            {
+                                                                                                "type": "integer",
+                                                                                                "minimum": 1,
+                                                                                                "maximum": 4094
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "string",
+                                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                            }
+                                                                                        ],
+                                                                                        "title": "To",
+                                                                                        "description": "To (Integer, String)"
+                                                                                    }
+                                                                                },
+                                                                                "required": [
+                                                                                    "from",
+                                                                                    "to"
+                                                                                ]
+                                                                            },
+                                                                            "title": "Ranges",
+                                                                            "description": "Ranges (List - Object)\n\nElements:\n- from (required)\n- to (required)"
+                                                                        }
+                                                                    },
+                                                                    "required": [],
+                                                                    "title": "Permit Vlans",
+                                                                    "description": "Permit Vlans (Object)\n\nElements:\n- ids\n- ranges"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "Vlan Policy",
+                                                            "description": "Vlan Policy (Object)\n\nElements:\n- deny\n- permit_vlans"
+                                                        },
+                                                        "interface_policy": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "deny": {
+                                                                    "type": "boolean",
+                                                                    "title": "Deny",
+                                                                    "description": "Deny (Boolean)"
+                                                                },
+                                                                "permit_interfaces": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "interface_type": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "ethernet",
+                                                                                            "loopback",
+                                                                                            "mgmt",
+                                                                                            "port-channel"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Interface Type",
+                                                                                "description": "Interface Type (String, String)"
+                                                                            },
+                                                                            "interface_id": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Interface ID",
+                                                                                "description": "Interface ID (String, Integer)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "interface_type",
+                                                                            "interface_id"
+                                                                        ]
+                                                                    },
+                                                                    "title": "Permit Interfaces",
+                                                                    "description": "Permit Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "Interface Policy",
+                                                            "description": "Interface Policy (Object)\n\nElements:\n- deny\n- permit_interfaces"
+                                                        },
+                                                        "vrf_policy": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "deny": {
+                                                                    "type": "boolean",
+                                                                    "title": "Deny",
+                                                                    "description": "Deny (Boolean)"
+                                                                },
+                                                                "permit_vrfs": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "title": "Permit VRFs",
+                                                                    "description": "Permit VRFs (List - String)"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "VRF Policy",
+                                                            "description": "VRF Policy (Object)\n\nElements:\n- deny\n- permit_vrfs"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Roles",
+                                                "description": "Roles (List - Object)\n\nElements:\n- name (required)\n- description\n- rules\n- vlan_policy\n- interface_policy\n- vrf_policy"
+                                            },
                                             "authentication": {
                                                 "type": "object",
                                                 "additionalProperties": false,
@@ -292931,7 +293840,7 @@
                                         },
                                         "required": [],
                                         "title": "AAA",
-                                        "description": "AAA (Object)\n\nElements:\n- radius\n- tacacs\n- users\n- authentication\n- authorization\n- accounting"
+                                        "description": "AAA (Object)\n\nElements:\n- radius\n- tacacs\n- users\n- role_feature_groups\n- roles\n- authentication\n- authorization\n- accounting"
                                     },
                                     "analytics": {
                                         "type": "object",
@@ -365489,6 +366398,309 @@
                                                 "title": "Users",
                                                 "description": "Users (Object)\n\nElements:\n- password_strength_check\n- service_password_recovery\n- max_logins\n- userpassphrase\n- accounts"
                                             },
+                                            "role_feature_groups": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "features": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            },
+                                                            "title": "Features",
+                                                            "description": "Features (List - String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Role Feature Groups",
+                                                "description": "Role Feature Groups (List - Object)\n\nElements:\n- name (required)\n- features"
+                                            },
+                                            "roles": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "title": "Description",
+                                                            "description": "Description (String)"
+                                                        },
+                                                        "rules": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "number": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 256
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Number",
+                                                                        "description": "Number (Integer, String)"
+                                                                    },
+                                                                    "action": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "permit",
+                                                                                    "deny"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Action",
+                                                                        "description": "Action (String, String)"
+                                                                    },
+                                                                    "permission": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "read",
+                                                                                    "read-write"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Permission",
+                                                                        "description": "Permission (String, String)"
+                                                                    },
+                                                                    "command": {
+                                                                        "type": "string",
+                                                                        "title": "Command",
+                                                                        "description": "Command (String)"
+                                                                    },
+                                                                    "feature": {
+                                                                        "type": "string",
+                                                                        "title": "Feature",
+                                                                        "description": "Feature (String)"
+                                                                    },
+                                                                    "feature_group": {
+                                                                        "type": "string",
+                                                                        "title": "Feature Group",
+                                                                        "description": "Feature Group (String)"
+                                                                    },
+                                                                    "oid": {
+                                                                        "type": "string",
+                                                                        "title": "Oid",
+                                                                        "description": "Oid (String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "number",
+                                                                    "action"
+                                                                ]
+                                                            },
+                                                            "title": "Rules",
+                                                            "description": "Rules (List - Object)\n\nElements:\n- number (required)\n- action (required)\n- permission\n- command\n- feature\n- feature_group\n- oid"
+                                                        },
+                                                        "vlan_policy": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "deny": {
+                                                                    "type": "boolean",
+                                                                    "title": "Deny",
+                                                                    "description": "Deny (Boolean)"
+                                                                },
+                                                                "permit_vlans": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "ids": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "integer",
+                                                                                        "minimum": 1,
+                                                                                        "maximum": 4094
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Ids",
+                                                                            "description": "Ids (Array, String)"
+                                                                        },
+                                                                        "ranges": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "object",
+                                                                                "additionalProperties": false,
+                                                                                "properties": {
+                                                                                    "from": {
+                                                                                        "anyOf": [
+                                                                                            {
+                                                                                                "type": "integer",
+                                                                                                "minimum": 1,
+                                                                                                "maximum": 4094
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "string",
+                                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                            }
+                                                                                        ],
+                                                                                        "title": "From",
+                                                                                        "description": "From (Integer, String)"
+                                                                                    },
+                                                                                    "to": {
+                                                                                        "anyOf": [
+                                                                                            {
+                                                                                                "type": "integer",
+                                                                                                "minimum": 1,
+                                                                                                "maximum": 4094
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "string",
+                                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                            }
+                                                                                        ],
+                                                                                        "title": "To",
+                                                                                        "description": "To (Integer, String)"
+                                                                                    }
+                                                                                },
+                                                                                "required": [
+                                                                                    "from",
+                                                                                    "to"
+                                                                                ]
+                                                                            },
+                                                                            "title": "Ranges",
+                                                                            "description": "Ranges (List - Object)\n\nElements:\n- from (required)\n- to (required)"
+                                                                        }
+                                                                    },
+                                                                    "required": [],
+                                                                    "title": "Permit Vlans",
+                                                                    "description": "Permit Vlans (Object)\n\nElements:\n- ids\n- ranges"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "Vlan Policy",
+                                                            "description": "Vlan Policy (Object)\n\nElements:\n- deny\n- permit_vlans"
+                                                        },
+                                                        "interface_policy": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "deny": {
+                                                                    "type": "boolean",
+                                                                    "title": "Deny",
+                                                                    "description": "Deny (Boolean)"
+                                                                },
+                                                                "permit_interfaces": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "interface_type": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "ethernet",
+                                                                                            "loopback",
+                                                                                            "mgmt",
+                                                                                            "port-channel"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Interface Type",
+                                                                                "description": "Interface Type (String, String)"
+                                                                            },
+                                                                            "interface_id": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Interface ID",
+                                                                                "description": "Interface ID (String, Integer)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "interface_type",
+                                                                            "interface_id"
+                                                                        ]
+                                                                    },
+                                                                    "title": "Permit Interfaces",
+                                                                    "description": "Permit Interfaces (List - Object)\n\nElements:\n- interface_type (required)\n- interface_id (required)"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "Interface Policy",
+                                                            "description": "Interface Policy (Object)\n\nElements:\n- deny\n- permit_interfaces"
+                                                        },
+                                                        "vrf_policy": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "deny": {
+                                                                    "type": "boolean",
+                                                                    "title": "Deny",
+                                                                    "description": "Deny (Boolean)"
+                                                                },
+                                                                "permit_vrfs": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "title": "Permit VRFs",
+                                                                    "description": "Permit VRFs (List - String)"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "VRF Policy",
+                                                            "description": "VRF Policy (Object)\n\nElements:\n- deny\n- permit_vrfs"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Roles",
+                                                "description": "Roles (List - Object)\n\nElements:\n- name (required)\n- description\n- rules\n- vlan_policy\n- interface_policy\n- vrf_policy"
+                                            },
                                             "authentication": {
                                                 "type": "object",
                                                 "additionalProperties": false,
@@ -365702,7 +366914,7 @@
                                         },
                                         "required": [],
                                         "title": "AAA",
-                                        "description": "AAA (Object)\n\nElements:\n- radius\n- tacacs\n- users\n- authentication\n- authorization\n- accounting"
+                                        "description": "AAA (Object)\n\nElements:\n- radius\n- tacacs\n- users\n- role_feature_groups\n- roles\n- authentication\n- authorization\n- accounting"
                                     },
                                     "analytics": {
                                         "type": "object",
