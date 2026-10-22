@@ -181542,6 +181542,11 @@
                                                             "type": "boolean",
                                                             "title": "Set Interface Null0",
                                                             "description": "Set Interface Null0 (Boolean)"
+                                                        },
+                                                        "set_vrf": {
+                                                            "type": "string",
+                                                            "title": "Set VRF",
+                                                            "description": "Set VRF (String)"
                                                         }
                                                     },
                                                     "required": [
@@ -181549,7 +181554,7 @@
                                                     ]
                                                 },
                                                 "title": "Entries",
-                                                "description": "Entries (List - Object)\n\nElements:\n- order (required)\n- action\n- description\n- drop_on_fail_v4\n- drop_on_fail_v6\n- force_order_v4\n- force_order_v6\n- load_share_v4\n- load_share_v6\n- set_default_next_hop_v4\n- set_default_next_hop_v6\n- set_vrf_v4\n- set_vrf_v6\n- verify_availability_v4\n- verify_availability_v6\n- match_ip_address_prefix_list\n- match_ipv6_address_prefix_list\n- match_ip_address\n- match_ipv6_address\n- match_ip_next_hop_prefix_list\n- match_as_path\n- match_as_number_as_path_list\n- match_community\n- match_community_exact_match\n- match_tags\n- match_interfaces\n- match_route_types\n- match_evpn_route_types\n- set_community\n- set_community_additive\n- set_community_none\n- set_comm_list\n- set_extcommunity_rt\n- set_extcommunity_rt_additive\n- set_as_path_prepend\n- set_as_path_prepend_last_as\n- set_origin\n- set_origin_egp_asn\n- set_tag\n- set_weight\n- set_pctag\n- set_local_preference\n- set_metric\n- set_metric_delay\n- set_metric_load\n- set_metric_mtu\n- set_metric_reliability\n- set_metric_type\n- set_path_selection_advertise\n- set_evpn_gateway_ip\n- set_evpn_gateway_ip_type\n- set_ip_next_hop_peer_address\n- set_ip_next_hop_unchanged\n- set_ip_next_hop_redist_unchanged\n- set_ipv6_next_hop_peer_address\n- set_ipv6_next_hop_unchanged\n- set_ipv6_next_hop_redist_unchanged\n- set_ip_next_hops\n- set_ipv6_next_hops\n- set_interface_null0"
+                                                "description": "Entries (List - Object)\n\nElements:\n- order (required)\n- action\n- description\n- drop_on_fail_v4\n- drop_on_fail_v6\n- force_order_v4\n- force_order_v6\n- load_share_v4\n- load_share_v6\n- set_default_next_hop_v4\n- set_default_next_hop_v6\n- set_vrf_v4\n- set_vrf_v6\n- verify_availability_v4\n- verify_availability_v6\n- match_ip_address_prefix_list\n- match_ipv6_address_prefix_list\n- match_ip_address\n- match_ipv6_address\n- match_ip_next_hop_prefix_list\n- match_as_path\n- match_as_number_as_path_list\n- match_community\n- match_community_exact_match\n- match_tags\n- match_interfaces\n- match_route_types\n- match_evpn_route_types\n- set_community\n- set_community_additive\n- set_community_none\n- set_comm_list\n- set_extcommunity_rt\n- set_extcommunity_rt_additive\n- set_as_path_prepend\n- set_as_path_prepend_last_as\n- set_origin\n- set_origin_egp_asn\n- set_tag\n- set_weight\n- set_pctag\n- set_local_preference\n- set_metric\n- set_metric_delay\n- set_metric_load\n- set_metric_mtu\n- set_metric_reliability\n- set_metric_type\n- set_path_selection_advertise\n- set_evpn_gateway_ip\n- set_evpn_gateway_ip_type\n- set_ip_next_hop_peer_address\n- set_ip_next_hop_unchanged\n- set_ip_next_hop_redist_unchanged\n- set_ipv6_next_hop_peer_address\n- set_ipv6_next_hop_unchanged\n- set_ipv6_next_hop_redist_unchanged\n- set_ip_next_hops\n- set_ipv6_next_hops\n- set_interface_null0\n- set_vrf"
                                             }
                                         },
                                         "required": [
@@ -202681,6 +202686,56 @@
                                             "title": "Line Vty Session Limit",
                                             "description": "Line Vty Session Limit (Integer, String)"
                                         },
+                                        "login_block_for": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "integer",
+                                                    "minimum": 1,
+                                                    "maximum": 65535
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "Login Block For",
+                                            "description": "Login Block For (Integer, String)"
+                                        },
+                                        "login_block_for_attempts": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "integer",
+                                                    "minimum": 1,
+                                                    "maximum": 65535
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "Login Block For Attempts",
+                                            "description": "Login Block For Attempts (Integer, String)"
+                                        },
+                                        "login_block_for_within": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "integer",
+                                                    "minimum": 1,
+                                                    "maximum": 65535
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "Login Block For Within",
+                                            "description": "Login Block For Within (Integer, String)"
+                                        },
+                                        "login_quiet_mode_access_class": {
+                                            "type": "string",
+                                            "title": "Login Quiet Mode Access Class",
+                                            "description": "Login Quiet Mode Access Class (String)"
+                                        },
                                         "vdcs": {
                                             "type": "array",
                                             "items": {
@@ -202829,7 +202884,7 @@
                                     },
                                     "required": [],
                                     "title": "System",
-                                    "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- control_plane_service_policy_input\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                    "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- control_plane_service_policy_input\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- login_block_for\n- login_block_for_attempts\n- login_block_for_within\n- login_quiet_mode_access_class\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                 },
                                 "telemetry": {
                                     "type": "object",
@@ -247078,6 +247133,11 @@
                                                                 "type": "boolean",
                                                                 "title": "Set Interface Null0",
                                                                 "description": "Set Interface Null0 (Boolean)"
+                                                            },
+                                                            "set_vrf": {
+                                                                "type": "string",
+                                                                "title": "Set VRF",
+                                                                "description": "Set VRF (String)"
                                                             }
                                                         },
                                                         "required": [
@@ -247085,7 +247145,7 @@
                                                         ]
                                                     },
                                                     "title": "Entries",
-                                                    "description": "Entries (List - Object)\n\nElements:\n- order (required)\n- action\n- description\n- drop_on_fail_v4\n- drop_on_fail_v6\n- force_order_v4\n- force_order_v6\n- load_share_v4\n- load_share_v6\n- set_default_next_hop_v4\n- set_default_next_hop_v6\n- set_vrf_v4\n- set_vrf_v6\n- verify_availability_v4\n- verify_availability_v6\n- match_ip_address_prefix_list\n- match_ipv6_address_prefix_list\n- match_ip_address\n- match_ipv6_address\n- match_ip_next_hop_prefix_list\n- match_as_path\n- match_as_number_as_path_list\n- match_community\n- match_community_exact_match\n- match_tags\n- match_interfaces\n- match_route_types\n- match_evpn_route_types\n- set_community\n- set_community_additive\n- set_community_none\n- set_comm_list\n- set_extcommunity_rt\n- set_extcommunity_rt_additive\n- set_as_path_prepend\n- set_as_path_prepend_last_as\n- set_origin\n- set_origin_egp_asn\n- set_tag\n- set_weight\n- set_pctag\n- set_local_preference\n- set_metric\n- set_metric_delay\n- set_metric_load\n- set_metric_mtu\n- set_metric_reliability\n- set_metric_type\n- set_path_selection_advertise\n- set_evpn_gateway_ip\n- set_evpn_gateway_ip_type\n- set_ip_next_hop_peer_address\n- set_ip_next_hop_unchanged\n- set_ip_next_hop_redist_unchanged\n- set_ipv6_next_hop_peer_address\n- set_ipv6_next_hop_unchanged\n- set_ipv6_next_hop_redist_unchanged\n- set_ip_next_hops\n- set_ipv6_next_hops\n- set_interface_null0"
+                                                    "description": "Entries (List - Object)\n\nElements:\n- order (required)\n- action\n- description\n- drop_on_fail_v4\n- drop_on_fail_v6\n- force_order_v4\n- force_order_v6\n- load_share_v4\n- load_share_v6\n- set_default_next_hop_v4\n- set_default_next_hop_v6\n- set_vrf_v4\n- set_vrf_v6\n- verify_availability_v4\n- verify_availability_v6\n- match_ip_address_prefix_list\n- match_ipv6_address_prefix_list\n- match_ip_address\n- match_ipv6_address\n- match_ip_next_hop_prefix_list\n- match_as_path\n- match_as_number_as_path_list\n- match_community\n- match_community_exact_match\n- match_tags\n- match_interfaces\n- match_route_types\n- match_evpn_route_types\n- set_community\n- set_community_additive\n- set_community_none\n- set_comm_list\n- set_extcommunity_rt\n- set_extcommunity_rt_additive\n- set_as_path_prepend\n- set_as_path_prepend_last_as\n- set_origin\n- set_origin_egp_asn\n- set_tag\n- set_weight\n- set_pctag\n- set_local_preference\n- set_metric\n- set_metric_delay\n- set_metric_load\n- set_metric_mtu\n- set_metric_reliability\n- set_metric_type\n- set_path_selection_advertise\n- set_evpn_gateway_ip\n- set_evpn_gateway_ip_type\n- set_ip_next_hop_peer_address\n- set_ip_next_hop_unchanged\n- set_ip_next_hop_redist_unchanged\n- set_ipv6_next_hop_peer_address\n- set_ipv6_next_hop_unchanged\n- set_ipv6_next_hop_redist_unchanged\n- set_ip_next_hops\n- set_ipv6_next_hops\n- set_interface_null0\n- set_vrf"
                                                 }
                                             },
                                             "required": [
@@ -268217,6 +268277,56 @@
                                                 "title": "Line Vty Session Limit",
                                                 "description": "Line Vty Session Limit (Integer, String)"
                                             },
+                                            "login_block_for": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 65535
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Login Block For",
+                                                "description": "Login Block For (Integer, String)"
+                                            },
+                                            "login_block_for_attempts": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 65535
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Login Block For Attempts",
+                                                "description": "Login Block For Attempts (Integer, String)"
+                                            },
+                                            "login_block_for_within": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 65535
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Login Block For Within",
+                                                "description": "Login Block For Within (Integer, String)"
+                                            },
+                                            "login_quiet_mode_access_class": {
+                                                "type": "string",
+                                                "title": "Login Quiet Mode Access Class",
+                                                "description": "Login Quiet Mode Access Class (String)"
+                                            },
                                             "vdcs": {
                                                 "type": "array",
                                                 "items": {
@@ -268365,7 +268475,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- control_plane_service_policy_input\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- control_plane_service_policy_input\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- login_block_for\n- login_block_for_attempts\n- login_block_for_within\n- login_quiet_mode_access_class\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -312647,6 +312757,11 @@
                                                                 "type": "boolean",
                                                                 "title": "Set Interface Null0",
                                                                 "description": "Set Interface Null0 (Boolean)"
+                                                            },
+                                                            "set_vrf": {
+                                                                "type": "string",
+                                                                "title": "Set VRF",
+                                                                "description": "Set VRF (String)"
                                                             }
                                                         },
                                                         "required": [
@@ -312654,7 +312769,7 @@
                                                         ]
                                                     },
                                                     "title": "Entries",
-                                                    "description": "Entries (List - Object)\n\nElements:\n- order (required)\n- action\n- description\n- drop_on_fail_v4\n- drop_on_fail_v6\n- force_order_v4\n- force_order_v6\n- load_share_v4\n- load_share_v6\n- set_default_next_hop_v4\n- set_default_next_hop_v6\n- set_vrf_v4\n- set_vrf_v6\n- verify_availability_v4\n- verify_availability_v6\n- match_ip_address_prefix_list\n- match_ipv6_address_prefix_list\n- match_ip_address\n- match_ipv6_address\n- match_ip_next_hop_prefix_list\n- match_as_path\n- match_as_number_as_path_list\n- match_community\n- match_community_exact_match\n- match_tags\n- match_interfaces\n- match_route_types\n- match_evpn_route_types\n- set_community\n- set_community_additive\n- set_community_none\n- set_comm_list\n- set_extcommunity_rt\n- set_extcommunity_rt_additive\n- set_as_path_prepend\n- set_as_path_prepend_last_as\n- set_origin\n- set_origin_egp_asn\n- set_tag\n- set_weight\n- set_pctag\n- set_local_preference\n- set_metric\n- set_metric_delay\n- set_metric_load\n- set_metric_mtu\n- set_metric_reliability\n- set_metric_type\n- set_path_selection_advertise\n- set_evpn_gateway_ip\n- set_evpn_gateway_ip_type\n- set_ip_next_hop_peer_address\n- set_ip_next_hop_unchanged\n- set_ip_next_hop_redist_unchanged\n- set_ipv6_next_hop_peer_address\n- set_ipv6_next_hop_unchanged\n- set_ipv6_next_hop_redist_unchanged\n- set_ip_next_hops\n- set_ipv6_next_hops\n- set_interface_null0"
+                                                    "description": "Entries (List - Object)\n\nElements:\n- order (required)\n- action\n- description\n- drop_on_fail_v4\n- drop_on_fail_v6\n- force_order_v4\n- force_order_v6\n- load_share_v4\n- load_share_v6\n- set_default_next_hop_v4\n- set_default_next_hop_v6\n- set_vrf_v4\n- set_vrf_v6\n- verify_availability_v4\n- verify_availability_v6\n- match_ip_address_prefix_list\n- match_ipv6_address_prefix_list\n- match_ip_address\n- match_ipv6_address\n- match_ip_next_hop_prefix_list\n- match_as_path\n- match_as_number_as_path_list\n- match_community\n- match_community_exact_match\n- match_tags\n- match_interfaces\n- match_route_types\n- match_evpn_route_types\n- set_community\n- set_community_additive\n- set_community_none\n- set_comm_list\n- set_extcommunity_rt\n- set_extcommunity_rt_additive\n- set_as_path_prepend\n- set_as_path_prepend_last_as\n- set_origin\n- set_origin_egp_asn\n- set_tag\n- set_weight\n- set_pctag\n- set_local_preference\n- set_metric\n- set_metric_delay\n- set_metric_load\n- set_metric_mtu\n- set_metric_reliability\n- set_metric_type\n- set_path_selection_advertise\n- set_evpn_gateway_ip\n- set_evpn_gateway_ip_type\n- set_ip_next_hop_peer_address\n- set_ip_next_hop_unchanged\n- set_ip_next_hop_redist_unchanged\n- set_ipv6_next_hop_peer_address\n- set_ipv6_next_hop_unchanged\n- set_ipv6_next_hop_redist_unchanged\n- set_ip_next_hops\n- set_ipv6_next_hops\n- set_interface_null0\n- set_vrf"
                                                 }
                                             },
                                             "required": [
@@ -333786,6 +333901,56 @@
                                                 "title": "Line Vty Session Limit",
                                                 "description": "Line Vty Session Limit (Integer, String)"
                                             },
+                                            "login_block_for": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 65535
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Login Block For",
+                                                "description": "Login Block For (Integer, String)"
+                                            },
+                                            "login_block_for_attempts": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 65535
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Login Block For Attempts",
+                                                "description": "Login Block For Attempts (Integer, String)"
+                                            },
+                                            "login_block_for_within": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 65535
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Login Block For Within",
+                                                "description": "Login Block For Within (Integer, String)"
+                                            },
+                                            "login_quiet_mode_access_class": {
+                                                "type": "string",
+                                                "title": "Login Quiet Mode Access Class",
+                                                "description": "Login Quiet Mode Access Class (String)"
+                                            },
                                             "vdcs": {
                                                 "type": "array",
                                                 "items": {
@@ -333934,7 +334099,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- control_plane_service_policy_input\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- control_plane_service_policy_input\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- login_block_for\n- login_block_for_attempts\n- login_block_for_within\n- login_quiet_mode_access_class\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -387246,6 +387411,11 @@
                                                                 "type": "boolean",
                                                                 "title": "Set Interface Null0",
                                                                 "description": "Set Interface Null0 (Boolean)"
+                                                            },
+                                                            "set_vrf": {
+                                                                "type": "string",
+                                                                "title": "Set VRF",
+                                                                "description": "Set VRF (String)"
                                                             }
                                                         },
                                                         "required": [
@@ -387253,7 +387423,7 @@
                                                         ]
                                                     },
                                                     "title": "Entries",
-                                                    "description": "Entries (List - Object)\n\nElements:\n- order (required)\n- action\n- description\n- drop_on_fail_v4\n- drop_on_fail_v6\n- force_order_v4\n- force_order_v6\n- load_share_v4\n- load_share_v6\n- set_default_next_hop_v4\n- set_default_next_hop_v6\n- set_vrf_v4\n- set_vrf_v6\n- verify_availability_v4\n- verify_availability_v6\n- match_ip_address_prefix_list\n- match_ipv6_address_prefix_list\n- match_ip_address\n- match_ipv6_address\n- match_ip_next_hop_prefix_list\n- match_as_path\n- match_as_number_as_path_list\n- match_community\n- match_community_exact_match\n- match_tags\n- match_interfaces\n- match_route_types\n- match_evpn_route_types\n- set_community\n- set_community_additive\n- set_community_none\n- set_comm_list\n- set_extcommunity_rt\n- set_extcommunity_rt_additive\n- set_as_path_prepend\n- set_as_path_prepend_last_as\n- set_origin\n- set_origin_egp_asn\n- set_tag\n- set_weight\n- set_pctag\n- set_local_preference\n- set_metric\n- set_metric_delay\n- set_metric_load\n- set_metric_mtu\n- set_metric_reliability\n- set_metric_type\n- set_path_selection_advertise\n- set_evpn_gateway_ip\n- set_evpn_gateway_ip_type\n- set_ip_next_hop_peer_address\n- set_ip_next_hop_unchanged\n- set_ip_next_hop_redist_unchanged\n- set_ipv6_next_hop_peer_address\n- set_ipv6_next_hop_unchanged\n- set_ipv6_next_hop_redist_unchanged\n- set_ip_next_hops\n- set_ipv6_next_hops\n- set_interface_null0"
+                                                    "description": "Entries (List - Object)\n\nElements:\n- order (required)\n- action\n- description\n- drop_on_fail_v4\n- drop_on_fail_v6\n- force_order_v4\n- force_order_v6\n- load_share_v4\n- load_share_v6\n- set_default_next_hop_v4\n- set_default_next_hop_v6\n- set_vrf_v4\n- set_vrf_v6\n- verify_availability_v4\n- verify_availability_v6\n- match_ip_address_prefix_list\n- match_ipv6_address_prefix_list\n- match_ip_address\n- match_ipv6_address\n- match_ip_next_hop_prefix_list\n- match_as_path\n- match_as_number_as_path_list\n- match_community\n- match_community_exact_match\n- match_tags\n- match_interfaces\n- match_route_types\n- match_evpn_route_types\n- set_community\n- set_community_additive\n- set_community_none\n- set_comm_list\n- set_extcommunity_rt\n- set_extcommunity_rt_additive\n- set_as_path_prepend\n- set_as_path_prepend_last_as\n- set_origin\n- set_origin_egp_asn\n- set_tag\n- set_weight\n- set_pctag\n- set_local_preference\n- set_metric\n- set_metric_delay\n- set_metric_load\n- set_metric_mtu\n- set_metric_reliability\n- set_metric_type\n- set_path_selection_advertise\n- set_evpn_gateway_ip\n- set_evpn_gateway_ip_type\n- set_ip_next_hop_peer_address\n- set_ip_next_hop_unchanged\n- set_ip_next_hop_redist_unchanged\n- set_ipv6_next_hop_peer_address\n- set_ipv6_next_hop_unchanged\n- set_ipv6_next_hop_redist_unchanged\n- set_ip_next_hops\n- set_ipv6_next_hops\n- set_interface_null0\n- set_vrf"
                                                 }
                                             },
                                             "required": [
@@ -408385,6 +408555,56 @@
                                                 "title": "Line Vty Session Limit",
                                                 "description": "Line Vty Session Limit (Integer, String)"
                                             },
+                                            "login_block_for": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 65535
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Login Block For",
+                                                "description": "Login Block For (Integer, String)"
+                                            },
+                                            "login_block_for_attempts": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 65535
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Login Block For Attempts",
+                                                "description": "Login Block For Attempts (Integer, String)"
+                                            },
+                                            "login_block_for_within": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 65535
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Login Block For Within",
+                                                "description": "Login Block For Within (Integer, String)"
+                                            },
+                                            "login_quiet_mode_access_class": {
+                                                "type": "string",
+                                                "title": "Login Quiet Mode Access Class",
+                                                "description": "Login Quiet Mode Access Class (String)"
+                                            },
                                             "vdcs": {
                                                 "type": "array",
                                                 "items": {
@@ -408533,7 +408753,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- control_plane_service_policy_input\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- control_plane_service_policy_input\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- login_block_for\n- login_block_for_attempts\n- login_block_for_within\n- login_quiet_mode_access_class\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
