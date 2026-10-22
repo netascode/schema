@@ -196684,6 +196684,283 @@
                                             "title": "Port Type Edge Bpduguard Default",
                                             "description": "Port Type Edge Bpduguard Default (Boolean)"
                                         },
+                                        "mst": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "configuration": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "revision": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 65535
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Revision",
+                                                            "description": "Revision (Integer, String)"
+                                                        },
+                                                        "instances": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 4094
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "ID",
+                                                                        "description": "ID (Integer, String)"
+                                                                    },
+                                                                    "vlans": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "ids": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "type": "integer",
+                                                                                            "minimum": 1,
+                                                                                            "maximum": 4094
+                                                                                        }
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Ids",
+                                                                                "description": "Ids (Array, String)"
+                                                                            },
+                                                                            "ranges": {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                    "type": "object",
+                                                                                    "additionalProperties": false,
+                                                                                    "properties": {
+                                                                                        "from": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "integer",
+                                                                                                    "minimum": 1,
+                                                                                                    "maximum": 4094
+                                                                                                },
+                                                                                                {
+                                                                                                    "type": "string",
+                                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                                }
+                                                                                            ],
+                                                                                            "title": "From",
+                                                                                            "description": "From (Integer, String)"
+                                                                                        },
+                                                                                        "to": {
+                                                                                            "anyOf": [
+                                                                                                {
+                                                                                                    "type": "integer",
+                                                                                                    "minimum": 1,
+                                                                                                    "maximum": 4094
+                                                                                                },
+                                                                                                {
+                                                                                                    "type": "string",
+                                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                                }
+                                                                                            ],
+                                                                                            "title": "To",
+                                                                                            "description": "To (Integer, String)"
+                                                                                        }
+                                                                                    },
+                                                                                    "required": [
+                                                                                        "from",
+                                                                                        "to"
+                                                                                    ]
+                                                                                },
+                                                                                "title": "Ranges",
+                                                                                "description": "Ranges (List - Object)\n\nElements:\n- from (required)\n- to (required)"
+                                                                            }
+                                                                        },
+                                                                        "required": [],
+                                                                        "title": "Vlans",
+                                                                        "description": "Vlans (Object)\n\nElements:\n- ids\n- ranges"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "id"
+                                                                ]
+                                                            },
+                                                            "title": "Instances",
+                                                            "description": "Instances (List - Object)\n\nElements:\n- id (required)\n- vlans"
+                                                        }
+                                                    },
+                                                    "required": [],
+                                                    "title": "Configuration",
+                                                    "description": "Configuration (Object)\n\nElements:\n- name\n- revision\n- instances"
+                                                },
+                                                "forward_time": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 4,
+                                                            "maximum": 30
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Forward Time",
+                                                    "description": "Forward Time (Integer, String)"
+                                                },
+                                                "hello_time": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 1,
+                                                            "maximum": 10
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Hello Time",
+                                                    "description": "Hello Time (Integer, String)"
+                                                },
+                                                "max_age": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 6,
+                                                            "maximum": 40
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Max Age",
+                                                    "description": "Max Age (Integer, String)"
+                                                },
+                                                "max_hops": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 1,
+                                                            "maximum": 255
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Max Hops",
+                                                    "description": "Max Hops (Integer, String)"
+                                                },
+                                                "simulate_pvst_global": {
+                                                    "type": "boolean",
+                                                    "title": "Simulate Pvst Global",
+                                                    "description": "Simulate Pvst Global (Boolean)"
+                                                },
+                                                "instances": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "id": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 4094
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "ID",
+                                                                "description": "ID (Integer, String)"
+                                                            },
+                                                            "priority": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 61440
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Priority",
+                                                                "description": "Priority (Integer, String)"
+                                                            },
+                                                            "root": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "primary",
+                                                                            "secondary"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Root",
+                                                                "description": "Root (String, String)"
+                                                            },
+                                                            "diameter": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 2,
+                                                                        "maximum": 7
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Diameter",
+                                                                "description": "Diameter (Integer, String)"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "id"
+                                                        ]
+                                                    },
+                                                    "title": "Instances",
+                                                    "description": "Instances (List - Object)\n\nElements:\n- id (required)\n- priority\n- root\n- diameter"
+                                                }
+                                            },
+                                            "required": [],
+                                            "title": "MST",
+                                            "description": "MST (Object)\n\nElements:\n- configuration\n- forward_time\n- hello_time\n- max_age\n- max_hops\n- simulate_pvst_global\n- instances"
+                                        },
                                         "vlans": {
                                             "type": "array",
                                             "items": {
@@ -196864,7 +197141,7 @@
                                     },
                                     "required": [],
                                     "title": "Spanning Tree",
-                                    "description": "Spanning Tree (Object)\n\nElements:\n- bridge_assurance\n- fcoe\n- l2gateway_stp_domain_id\n- lc_issu\n- loopguard\n- mode\n- pathcost_method\n- port_type_edge_default\n- port_type_edge_bpdufilter_default\n- port_type_edge_bpduguard_default\n- vlans"
+                                    "description": "Spanning Tree (Object)\n\nElements:\n- bridge_assurance\n- fcoe\n- l2gateway_stp_domain_id\n- lc_issu\n- loopguard\n- mode\n- pathcost_method\n- port_type_edge_default\n- port_type_edge_bpdufilter_default\n- port_type_edge_bpduguard_default\n- mst\n- vlans"
                                 },
                                 "system": {
                                     "type": "object",
@@ -222595,11 +222872,67 @@
                                                                 "type": "boolean",
                                                                 "title": "MST Simulate Pvst",
                                                                 "description": "MST Simulate Pvst (Boolean)"
+                                                            },
+                                                            "mst_instances": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "integer",
+                                                                                    "maximum": 4094
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "ID",
+                                                                            "description": "ID (Integer, String)"
+                                                                        },
+                                                                        "cost": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "integer",
+                                                                                    "maximum": 200000000
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Cost",
+                                                                            "description": "Cost (Integer, String)"
+                                                                        },
+                                                                        "port_priority": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "integer",
+                                                                                    "maximum": 224
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Port Priority",
+                                                                            "description": "Port Priority (Integer, String)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "id"
+                                                                    ]
+                                                                },
+                                                                "title": "MST Instances",
+                                                                "description": "MST Instances (List - Object)\n\nElements:\n- id (required)\n- cost\n- port_priority"
                                                             }
                                                         },
                                                         "required": [],
                                                         "title": "Spanning Tree",
-                                                        "description": "Spanning Tree (Object)\n\nElements:\n- bpdufilter\n- bpduguard\n- cost\n- guard\n- link_type\n- port_type\n- port_priority\n- mst_pre_standard\n- mst_simulate_pvst"
+                                                        "description": "Spanning Tree (Object)\n\nElements:\n- bpdufilter\n- bpduguard\n- cost\n- guard\n- link_type\n- port_type\n- port_priority\n- mst_pre_standard\n- mst_simulate_pvst\n- mst_instances"
                                                     },
                                                     "storm_control": {
                                                         "type": "object",
@@ -232198,11 +232531,67 @@
                                                                 "type": "boolean",
                                                                 "title": "MST Simulate Pvst",
                                                                 "description": "MST Simulate Pvst (Boolean)"
+                                                            },
+                                                            "mst_instances": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "integer",
+                                                                                    "maximum": 4094
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "ID",
+                                                                            "description": "ID (Integer, String)"
+                                                                        },
+                                                                        "cost": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "integer",
+                                                                                    "maximum": 200000000
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Cost",
+                                                                            "description": "Cost (Integer, String)"
+                                                                        },
+                                                                        "port_priority": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "integer",
+                                                                                    "maximum": 224
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Port Priority",
+                                                                            "description": "Port Priority (Integer, String)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "id"
+                                                                    ]
+                                                                },
+                                                                "title": "MST Instances",
+                                                                "description": "MST Instances (List - Object)\n\nElements:\n- id (required)\n- cost\n- port_priority"
                                                             }
                                                         },
                                                         "required": [],
                                                         "title": "Spanning Tree",
-                                                        "description": "Spanning Tree (Object)\n\nElements:\n- bpdufilter\n- bpduguard\n- cost\n- guard\n- link_type\n- port_type\n- port_priority\n- mst_pre_standard\n- mst_simulate_pvst"
+                                                        "description": "Spanning Tree (Object)\n\nElements:\n- bpdufilter\n- bpduguard\n- cost\n- guard\n- link_type\n- port_type\n- port_priority\n- mst_pre_standard\n- mst_simulate_pvst\n- mst_instances"
                                                     },
                                                     "storm_control": {
                                                         "type": "object",
@@ -265841,6 +266230,283 @@
                                                 "title": "Port Type Edge Bpduguard Default",
                                                 "description": "Port Type Edge Bpduguard Default (Boolean)"
                                             },
+                                            "mst": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "configuration": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "name": {
+                                                                "type": "string",
+                                                                "title": "Name",
+                                                                "description": "Name (String)"
+                                                            },
+                                                            "revision": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 65535
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Revision",
+                                                                "description": "Revision (Integer, String)"
+                                                            },
+                                                            "instances": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "integer",
+                                                                                    "minimum": 1,
+                                                                                    "maximum": 4094
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "ID",
+                                                                            "description": "ID (Integer, String)"
+                                                                        },
+                                                                        "vlans": {
+                                                                            "type": "object",
+                                                                            "additionalProperties": false,
+                                                                            "properties": {
+                                                                                "ids": {
+                                                                                    "anyOf": [
+                                                                                        {
+                                                                                            "type": "array",
+                                                                                            "items": {
+                                                                                                "type": "integer",
+                                                                                                "minimum": 1,
+                                                                                                "maximum": 4094
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "type": "string",
+                                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                        }
+                                                                                    ],
+                                                                                    "title": "Ids",
+                                                                                    "description": "Ids (Array, String)"
+                                                                                },
+                                                                                "ranges": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "object",
+                                                                                        "additionalProperties": false,
+                                                                                        "properties": {
+                                                                                            "from": {
+                                                                                                "anyOf": [
+                                                                                                    {
+                                                                                                        "type": "integer",
+                                                                                                        "minimum": 1,
+                                                                                                        "maximum": 4094
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "type": "string",
+                                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                                    }
+                                                                                                ],
+                                                                                                "title": "From",
+                                                                                                "description": "From (Integer, String)"
+                                                                                            },
+                                                                                            "to": {
+                                                                                                "anyOf": [
+                                                                                                    {
+                                                                                                        "type": "integer",
+                                                                                                        "minimum": 1,
+                                                                                                        "maximum": 4094
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "type": "string",
+                                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                                    }
+                                                                                                ],
+                                                                                                "title": "To",
+                                                                                                "description": "To (Integer, String)"
+                                                                                            }
+                                                                                        },
+                                                                                        "required": [
+                                                                                            "from",
+                                                                                            "to"
+                                                                                        ]
+                                                                                    },
+                                                                                    "title": "Ranges",
+                                                                                    "description": "Ranges (List - Object)\n\nElements:\n- from (required)\n- to (required)"
+                                                                                }
+                                                                            },
+                                                                            "required": [],
+                                                                            "title": "Vlans",
+                                                                            "description": "Vlans (Object)\n\nElements:\n- ids\n- ranges"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "id"
+                                                                    ]
+                                                                },
+                                                                "title": "Instances",
+                                                                "description": "Instances (List - Object)\n\nElements:\n- id (required)\n- vlans"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Configuration",
+                                                        "description": "Configuration (Object)\n\nElements:\n- name\n- revision\n- instances"
+                                                    },
+                                                    "forward_time": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 4,
+                                                                "maximum": 30
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Forward Time",
+                                                        "description": "Forward Time (Integer, String)"
+                                                    },
+                                                    "hello_time": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 10
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Hello Time",
+                                                        "description": "Hello Time (Integer, String)"
+                                                    },
+                                                    "max_age": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 6,
+                                                                "maximum": 40
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Max Age",
+                                                        "description": "Max Age (Integer, String)"
+                                                    },
+                                                    "max_hops": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 255
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Max Hops",
+                                                        "description": "Max Hops (Integer, String)"
+                                                    },
+                                                    "simulate_pvst_global": {
+                                                        "type": "boolean",
+                                                        "title": "Simulate Pvst Global",
+                                                        "description": "Simulate Pvst Global (Boolean)"
+                                                    },
+                                                    "instances": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "id": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 4094
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "ID",
+                                                                    "description": "ID (Integer, String)"
+                                                                },
+                                                                "priority": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 61440
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Priority",
+                                                                    "description": "Priority (Integer, String)"
+                                                                },
+                                                                "root": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "primary",
+                                                                                "secondary"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Root",
+                                                                    "description": "Root (String, String)"
+                                                                },
+                                                                "diameter": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 2,
+                                                                            "maximum": 7
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Diameter",
+                                                                    "description": "Diameter (Integer, String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "id"
+                                                            ]
+                                                        },
+                                                        "title": "Instances",
+                                                        "description": "Instances (List - Object)\n\nElements:\n- id (required)\n- priority\n- root\n- diameter"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "MST",
+                                                "description": "MST (Object)\n\nElements:\n- configuration\n- forward_time\n- hello_time\n- max_age\n- max_hops\n- simulate_pvst_global\n- instances"
+                                            },
                                             "vlans": {
                                                 "type": "array",
                                                 "items": {
@@ -266021,7 +266687,7 @@
                                         },
                                         "required": [],
                                         "title": "Spanning Tree",
-                                        "description": "Spanning Tree (Object)\n\nElements:\n- bridge_assurance\n- fcoe\n- l2gateway_stp_domain_id\n- lc_issu\n- loopguard\n- mode\n- pathcost_method\n- port_type_edge_default\n- port_type_edge_bpdufilter_default\n- port_type_edge_bpduguard_default\n- vlans"
+                                        "description": "Spanning Tree (Object)\n\nElements:\n- bridge_assurance\n- fcoe\n- l2gateway_stp_domain_id\n- lc_issu\n- loopguard\n- mode\n- pathcost_method\n- port_type_edge_default\n- port_type_edge_bpdufilter_default\n- port_type_edge_bpduguard_default\n- mst\n- vlans"
                                     },
                                     "system": {
                                         "type": "object",
@@ -291752,11 +292418,67 @@
                                                                     "type": "boolean",
                                                                     "title": "MST Simulate Pvst",
                                                                     "description": "MST Simulate Pvst (Boolean)"
+                                                                },
+                                                                "mst_instances": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "id": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 4094
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "ID",
+                                                                                "description": "ID (Integer, String)"
+                                                                            },
+                                                                            "cost": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 200000000
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Cost",
+                                                                                "description": "Cost (Integer, String)"
+                                                                            },
+                                                                            "port_priority": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 224
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Port Priority",
+                                                                                "description": "Port Priority (Integer, String)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "id"
+                                                                        ]
+                                                                    },
+                                                                    "title": "MST Instances",
+                                                                    "description": "MST Instances (List - Object)\n\nElements:\n- id (required)\n- cost\n- port_priority"
                                                                 }
                                                             },
                                                             "required": [],
                                                             "title": "Spanning Tree",
-                                                            "description": "Spanning Tree (Object)\n\nElements:\n- bpdufilter\n- bpduguard\n- cost\n- guard\n- link_type\n- port_type\n- port_priority\n- mst_pre_standard\n- mst_simulate_pvst"
+                                                            "description": "Spanning Tree (Object)\n\nElements:\n- bpdufilter\n- bpduguard\n- cost\n- guard\n- link_type\n- port_type\n- port_priority\n- mst_pre_standard\n- mst_simulate_pvst\n- mst_instances"
                                                         },
                                                         "storm_control": {
                                                             "type": "object",
@@ -301355,11 +302077,67 @@
                                                                     "type": "boolean",
                                                                     "title": "MST Simulate Pvst",
                                                                     "description": "MST Simulate Pvst (Boolean)"
+                                                                },
+                                                                "mst_instances": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "id": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 4094
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "ID",
+                                                                                "description": "ID (Integer, String)"
+                                                                            },
+                                                                            "cost": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 200000000
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Cost",
+                                                                                "description": "Cost (Integer, String)"
+                                                                            },
+                                                                            "port_priority": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 224
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Port Priority",
+                                                                                "description": "Port Priority (Integer, String)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "id"
+                                                                        ]
+                                                                    },
+                                                                    "title": "MST Instances",
+                                                                    "description": "MST Instances (List - Object)\n\nElements:\n- id (required)\n- cost\n- port_priority"
                                                                 }
                                                             },
                                                             "required": [],
                                                             "title": "Spanning Tree",
-                                                            "description": "Spanning Tree (Object)\n\nElements:\n- bpdufilter\n- bpduguard\n- cost\n- guard\n- link_type\n- port_type\n- port_priority\n- mst_pre_standard\n- mst_simulate_pvst"
+                                                            "description": "Spanning Tree (Object)\n\nElements:\n- bpdufilter\n- bpduguard\n- cost\n- guard\n- link_type\n- port_type\n- port_priority\n- mst_pre_standard\n- mst_simulate_pvst\n- mst_instances"
                                                         },
                                                         "storm_control": {
                                                             "type": "object",
@@ -335031,6 +335809,283 @@
                                                 "title": "Port Type Edge Bpduguard Default",
                                                 "description": "Port Type Edge Bpduguard Default (Boolean)"
                                             },
+                                            "mst": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "configuration": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "name": {
+                                                                "type": "string",
+                                                                "title": "Name",
+                                                                "description": "Name (String)"
+                                                            },
+                                                            "revision": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 65535
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Revision",
+                                                                "description": "Revision (Integer, String)"
+                                                            },
+                                                            "instances": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "integer",
+                                                                                    "minimum": 1,
+                                                                                    "maximum": 4094
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "ID",
+                                                                            "description": "ID (Integer, String)"
+                                                                        },
+                                                                        "vlans": {
+                                                                            "type": "object",
+                                                                            "additionalProperties": false,
+                                                                            "properties": {
+                                                                                "ids": {
+                                                                                    "anyOf": [
+                                                                                        {
+                                                                                            "type": "array",
+                                                                                            "items": {
+                                                                                                "type": "integer",
+                                                                                                "minimum": 1,
+                                                                                                "maximum": 4094
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "type": "string",
+                                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                        }
+                                                                                    ],
+                                                                                    "title": "Ids",
+                                                                                    "description": "Ids (Array, String)"
+                                                                                },
+                                                                                "ranges": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "object",
+                                                                                        "additionalProperties": false,
+                                                                                        "properties": {
+                                                                                            "from": {
+                                                                                                "anyOf": [
+                                                                                                    {
+                                                                                                        "type": "integer",
+                                                                                                        "minimum": 1,
+                                                                                                        "maximum": 4094
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "type": "string",
+                                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                                    }
+                                                                                                ],
+                                                                                                "title": "From",
+                                                                                                "description": "From (Integer, String)"
+                                                                                            },
+                                                                                            "to": {
+                                                                                                "anyOf": [
+                                                                                                    {
+                                                                                                        "type": "integer",
+                                                                                                        "minimum": 1,
+                                                                                                        "maximum": 4094
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "type": "string",
+                                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                                    }
+                                                                                                ],
+                                                                                                "title": "To",
+                                                                                                "description": "To (Integer, String)"
+                                                                                            }
+                                                                                        },
+                                                                                        "required": [
+                                                                                            "from",
+                                                                                            "to"
+                                                                                        ]
+                                                                                    },
+                                                                                    "title": "Ranges",
+                                                                                    "description": "Ranges (List - Object)\n\nElements:\n- from (required)\n- to (required)"
+                                                                                }
+                                                                            },
+                                                                            "required": [],
+                                                                            "title": "Vlans",
+                                                                            "description": "Vlans (Object)\n\nElements:\n- ids\n- ranges"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "id"
+                                                                    ]
+                                                                },
+                                                                "title": "Instances",
+                                                                "description": "Instances (List - Object)\n\nElements:\n- id (required)\n- vlans"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Configuration",
+                                                        "description": "Configuration (Object)\n\nElements:\n- name\n- revision\n- instances"
+                                                    },
+                                                    "forward_time": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 4,
+                                                                "maximum": 30
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Forward Time",
+                                                        "description": "Forward Time (Integer, String)"
+                                                    },
+                                                    "hello_time": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 10
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Hello Time",
+                                                        "description": "Hello Time (Integer, String)"
+                                                    },
+                                                    "max_age": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 6,
+                                                                "maximum": 40
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Max Age",
+                                                        "description": "Max Age (Integer, String)"
+                                                    },
+                                                    "max_hops": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 255
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Max Hops",
+                                                        "description": "Max Hops (Integer, String)"
+                                                    },
+                                                    "simulate_pvst_global": {
+                                                        "type": "boolean",
+                                                        "title": "Simulate Pvst Global",
+                                                        "description": "Simulate Pvst Global (Boolean)"
+                                                    },
+                                                    "instances": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "id": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 4094
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "ID",
+                                                                    "description": "ID (Integer, String)"
+                                                                },
+                                                                "priority": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 61440
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Priority",
+                                                                    "description": "Priority (Integer, String)"
+                                                                },
+                                                                "root": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "primary",
+                                                                                "secondary"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Root",
+                                                                    "description": "Root (String, String)"
+                                                                },
+                                                                "diameter": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 2,
+                                                                            "maximum": 7
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Diameter",
+                                                                    "description": "Diameter (Integer, String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "id"
+                                                            ]
+                                                        },
+                                                        "title": "Instances",
+                                                        "description": "Instances (List - Object)\n\nElements:\n- id (required)\n- priority\n- root\n- diameter"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "MST",
+                                                "description": "MST (Object)\n\nElements:\n- configuration\n- forward_time\n- hello_time\n- max_age\n- max_hops\n- simulate_pvst_global\n- instances"
+                                            },
                                             "vlans": {
                                                 "type": "array",
                                                 "items": {
@@ -335211,7 +336266,7 @@
                                         },
                                         "required": [],
                                         "title": "Spanning Tree",
-                                        "description": "Spanning Tree (Object)\n\nElements:\n- bridge_assurance\n- fcoe\n- l2gateway_stp_domain_id\n- lc_issu\n- loopguard\n- mode\n- pathcost_method\n- port_type_edge_default\n- port_type_edge_bpdufilter_default\n- port_type_edge_bpduguard_default\n- vlans"
+                                        "description": "Spanning Tree (Object)\n\nElements:\n- bridge_assurance\n- fcoe\n- l2gateway_stp_domain_id\n- lc_issu\n- loopguard\n- mode\n- pathcost_method\n- port_type_edge_default\n- port_type_edge_bpdufilter_default\n- port_type_edge_bpduguard_default\n- mst\n- vlans"
                                     },
                                     "system": {
                                         "type": "object",
@@ -360942,11 +361997,67 @@
                                                                     "type": "boolean",
                                                                     "title": "MST Simulate Pvst",
                                                                     "description": "MST Simulate Pvst (Boolean)"
+                                                                },
+                                                                "mst_instances": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "id": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 4094
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "ID",
+                                                                                "description": "ID (Integer, String)"
+                                                                            },
+                                                                            "cost": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 200000000
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Cost",
+                                                                                "description": "Cost (Integer, String)"
+                                                                            },
+                                                                            "port_priority": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 224
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Port Priority",
+                                                                                "description": "Port Priority (Integer, String)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "id"
+                                                                        ]
+                                                                    },
+                                                                    "title": "MST Instances",
+                                                                    "description": "MST Instances (List - Object)\n\nElements:\n- id (required)\n- cost\n- port_priority"
                                                                 }
                                                             },
                                                             "required": [],
                                                             "title": "Spanning Tree",
-                                                            "description": "Spanning Tree (Object)\n\nElements:\n- bpdufilter\n- bpduguard\n- cost\n- guard\n- link_type\n- port_type\n- port_priority\n- mst_pre_standard\n- mst_simulate_pvst"
+                                                            "description": "Spanning Tree (Object)\n\nElements:\n- bpdufilter\n- bpduguard\n- cost\n- guard\n- link_type\n- port_type\n- port_priority\n- mst_pre_standard\n- mst_simulate_pvst\n- mst_instances"
                                                         },
                                                         "storm_control": {
                                                             "type": "object",
@@ -370545,11 +371656,67 @@
                                                                     "type": "boolean",
                                                                     "title": "MST Simulate Pvst",
                                                                     "description": "MST Simulate Pvst (Boolean)"
+                                                                },
+                                                                "mst_instances": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "id": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 4094
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "ID",
+                                                                                "description": "ID (Integer, String)"
+                                                                            },
+                                                                            "cost": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 200000000
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Cost",
+                                                                                "description": "Cost (Integer, String)"
+                                                                            },
+                                                                            "port_priority": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 224
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Port Priority",
+                                                                                "description": "Port Priority (Integer, String)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "id"
+                                                                        ]
+                                                                    },
+                                                                    "title": "MST Instances",
+                                                                    "description": "MST Instances (List - Object)\n\nElements:\n- id (required)\n- cost\n- port_priority"
                                                                 }
                                                             },
                                                             "required": [],
                                                             "title": "Spanning Tree",
-                                                            "description": "Spanning Tree (Object)\n\nElements:\n- bpdufilter\n- bpduguard\n- cost\n- guard\n- link_type\n- port_type\n- port_priority\n- mst_pre_standard\n- mst_simulate_pvst"
+                                                            "description": "Spanning Tree (Object)\n\nElements:\n- bpdufilter\n- bpduguard\n- cost\n- guard\n- link_type\n- port_type\n- port_priority\n- mst_pre_standard\n- mst_simulate_pvst\n- mst_instances"
                                                         },
                                                         "storm_control": {
                                                             "type": "object",
@@ -381224,11 +382391,67 @@
                                                 "type": "boolean",
                                                 "title": "MST Simulate Pvst",
                                                 "description": "MST Simulate Pvst (Boolean)"
+                                            },
+                                            "mst_instances": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 4094
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "ID",
+                                                            "description": "ID (Integer, String)"
+                                                        },
+                                                        "cost": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 200000000
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Cost",
+                                                            "description": "Cost (Integer, String)"
+                                                        },
+                                                        "port_priority": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 224
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Port Priority",
+                                                            "description": "Port Priority (Integer, String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "id"
+                                                    ]
+                                                },
+                                                "title": "MST Instances",
+                                                "description": "MST Instances (List - Object)\n\nElements:\n- id (required)\n- cost\n- port_priority"
                                             }
                                         },
                                         "required": [],
                                         "title": "Spanning Tree",
-                                        "description": "Spanning Tree (Object)\n\nElements:\n- bpdufilter\n- bpduguard\n- cost\n- guard\n- link_type\n- port_type\n- port_priority\n- mst_pre_standard\n- mst_simulate_pvst"
+                                        "description": "Spanning Tree (Object)\n\nElements:\n- bpdufilter\n- bpduguard\n- cost\n- guard\n- link_type\n- port_type\n- port_priority\n- mst_pre_standard\n- mst_simulate_pvst\n- mst_instances"
                                     },
                                     "storm_control": {
                                         "type": "object",
@@ -414339,6 +415562,283 @@
                                                 "title": "Port Type Edge Bpduguard Default",
                                                 "description": "Port Type Edge Bpduguard Default (Boolean)"
                                             },
+                                            "mst": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "configuration": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "name": {
+                                                                "type": "string",
+                                                                "title": "Name",
+                                                                "description": "Name (String)"
+                                                            },
+                                                            "revision": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 65535
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Revision",
+                                                                "description": "Revision (Integer, String)"
+                                                            },
+                                                            "instances": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "integer",
+                                                                                    "minimum": 1,
+                                                                                    "maximum": 4094
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "ID",
+                                                                            "description": "ID (Integer, String)"
+                                                                        },
+                                                                        "vlans": {
+                                                                            "type": "object",
+                                                                            "additionalProperties": false,
+                                                                            "properties": {
+                                                                                "ids": {
+                                                                                    "anyOf": [
+                                                                                        {
+                                                                                            "type": "array",
+                                                                                            "items": {
+                                                                                                "type": "integer",
+                                                                                                "minimum": 1,
+                                                                                                "maximum": 4094
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "type": "string",
+                                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                        }
+                                                                                    ],
+                                                                                    "title": "Ids",
+                                                                                    "description": "Ids (Array, String)"
+                                                                                },
+                                                                                "ranges": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "object",
+                                                                                        "additionalProperties": false,
+                                                                                        "properties": {
+                                                                                            "from": {
+                                                                                                "anyOf": [
+                                                                                                    {
+                                                                                                        "type": "integer",
+                                                                                                        "minimum": 1,
+                                                                                                        "maximum": 4094
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "type": "string",
+                                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                                    }
+                                                                                                ],
+                                                                                                "title": "From",
+                                                                                                "description": "From (Integer, String)"
+                                                                                            },
+                                                                                            "to": {
+                                                                                                "anyOf": [
+                                                                                                    {
+                                                                                                        "type": "integer",
+                                                                                                        "minimum": 1,
+                                                                                                        "maximum": 4094
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "type": "string",
+                                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                                    }
+                                                                                                ],
+                                                                                                "title": "To",
+                                                                                                "description": "To (Integer, String)"
+                                                                                            }
+                                                                                        },
+                                                                                        "required": [
+                                                                                            "from",
+                                                                                            "to"
+                                                                                        ]
+                                                                                    },
+                                                                                    "title": "Ranges",
+                                                                                    "description": "Ranges (List - Object)\n\nElements:\n- from (required)\n- to (required)"
+                                                                                }
+                                                                            },
+                                                                            "required": [],
+                                                                            "title": "Vlans",
+                                                                            "description": "Vlans (Object)\n\nElements:\n- ids\n- ranges"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "id"
+                                                                    ]
+                                                                },
+                                                                "title": "Instances",
+                                                                "description": "Instances (List - Object)\n\nElements:\n- id (required)\n- vlans"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Configuration",
+                                                        "description": "Configuration (Object)\n\nElements:\n- name\n- revision\n- instances"
+                                                    },
+                                                    "forward_time": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 4,
+                                                                "maximum": 30
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Forward Time",
+                                                        "description": "Forward Time (Integer, String)"
+                                                    },
+                                                    "hello_time": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 10
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Hello Time",
+                                                        "description": "Hello Time (Integer, String)"
+                                                    },
+                                                    "max_age": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 6,
+                                                                "maximum": 40
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Max Age",
+                                                        "description": "Max Age (Integer, String)"
+                                                    },
+                                                    "max_hops": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 255
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Max Hops",
+                                                        "description": "Max Hops (Integer, String)"
+                                                    },
+                                                    "simulate_pvst_global": {
+                                                        "type": "boolean",
+                                                        "title": "Simulate Pvst Global",
+                                                        "description": "Simulate Pvst Global (Boolean)"
+                                                    },
+                                                    "instances": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "id": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 4094
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "ID",
+                                                                    "description": "ID (Integer, String)"
+                                                                },
+                                                                "priority": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 61440
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Priority",
+                                                                    "description": "Priority (Integer, String)"
+                                                                },
+                                                                "root": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "primary",
+                                                                                "secondary"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Root",
+                                                                    "description": "Root (String, String)"
+                                                                },
+                                                                "diameter": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 2,
+                                                                            "maximum": 7
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Diameter",
+                                                                    "description": "Diameter (Integer, String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "id"
+                                                            ]
+                                                        },
+                                                        "title": "Instances",
+                                                        "description": "Instances (List - Object)\n\nElements:\n- id (required)\n- priority\n- root\n- diameter"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "MST",
+                                                "description": "MST (Object)\n\nElements:\n- configuration\n- forward_time\n- hello_time\n- max_age\n- max_hops\n- simulate_pvst_global\n- instances"
+                                            },
                                             "vlans": {
                                                 "type": "array",
                                                 "items": {
@@ -414519,7 +416019,7 @@
                                         },
                                         "required": [],
                                         "title": "Spanning Tree",
-                                        "description": "Spanning Tree (Object)\n\nElements:\n- bridge_assurance\n- fcoe\n- l2gateway_stp_domain_id\n- lc_issu\n- loopguard\n- mode\n- pathcost_method\n- port_type_edge_default\n- port_type_edge_bpdufilter_default\n- port_type_edge_bpduguard_default\n- vlans"
+                                        "description": "Spanning Tree (Object)\n\nElements:\n- bridge_assurance\n- fcoe\n- l2gateway_stp_domain_id\n- lc_issu\n- loopguard\n- mode\n- pathcost_method\n- port_type_edge_default\n- port_type_edge_bpdufilter_default\n- port_type_edge_bpduguard_default\n- mst\n- vlans"
                                     },
                                     "system": {
                                         "type": "object",
@@ -440250,11 +441750,67 @@
                                                                     "type": "boolean",
                                                                     "title": "MST Simulate Pvst",
                                                                     "description": "MST Simulate Pvst (Boolean)"
+                                                                },
+                                                                "mst_instances": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "id": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 4094
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "ID",
+                                                                                "description": "ID (Integer, String)"
+                                                                            },
+                                                                            "cost": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 200000000
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Cost",
+                                                                                "description": "Cost (Integer, String)"
+                                                                            },
+                                                                            "port_priority": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 224
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Port Priority",
+                                                                                "description": "Port Priority (Integer, String)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "id"
+                                                                        ]
+                                                                    },
+                                                                    "title": "MST Instances",
+                                                                    "description": "MST Instances (List - Object)\n\nElements:\n- id (required)\n- cost\n- port_priority"
                                                                 }
                                                             },
                                                             "required": [],
                                                             "title": "Spanning Tree",
-                                                            "description": "Spanning Tree (Object)\n\nElements:\n- bpdufilter\n- bpduguard\n- cost\n- guard\n- link_type\n- port_type\n- port_priority\n- mst_pre_standard\n- mst_simulate_pvst"
+                                                            "description": "Spanning Tree (Object)\n\nElements:\n- bpdufilter\n- bpduguard\n- cost\n- guard\n- link_type\n- port_type\n- port_priority\n- mst_pre_standard\n- mst_simulate_pvst\n- mst_instances"
                                                         },
                                                         "storm_control": {
                                                             "type": "object",
@@ -449853,11 +451409,67 @@
                                                                     "type": "boolean",
                                                                     "title": "MST Simulate Pvst",
                                                                     "description": "MST Simulate Pvst (Boolean)"
+                                                                },
+                                                                "mst_instances": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "id": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 4094
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "ID",
+                                                                                "description": "ID (Integer, String)"
+                                                                            },
+                                                                            "cost": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 200000000
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Cost",
+                                                                                "description": "Cost (Integer, String)"
+                                                                            },
+                                                                            "port_priority": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "integer",
+                                                                                        "maximum": 224
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Port Priority",
+                                                                                "description": "Port Priority (Integer, String)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "id"
+                                                                        ]
+                                                                    },
+                                                                    "title": "MST Instances",
+                                                                    "description": "MST Instances (List - Object)\n\nElements:\n- id (required)\n- cost\n- port_priority"
                                                                 }
                                                             },
                                                             "required": [],
                                                             "title": "Spanning Tree",
-                                                            "description": "Spanning Tree (Object)\n\nElements:\n- bpdufilter\n- bpduguard\n- cost\n- guard\n- link_type\n- port_type\n- port_priority\n- mst_pre_standard\n- mst_simulate_pvst"
+                                                            "description": "Spanning Tree (Object)\n\nElements:\n- bpdufilter\n- bpduguard\n- cost\n- guard\n- link_type\n- port_type\n- port_priority\n- mst_pre_standard\n- mst_simulate_pvst\n- mst_instances"
                                                         },
                                                         "storm_control": {
                                                             "type": "object",
