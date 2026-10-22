@@ -176769,6 +176769,164 @@
                                                             "title": "Key Octet String",
                                                             "description": "Key Octet String (String)"
                                                         },
+                                                        "accept_lifetime": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "local": {
+                                                                    "type": "boolean",
+                                                                    "title": "Local",
+                                                                    "description": "Local (Boolean)"
+                                                                },
+                                                                "start_time": {
+                                                                    "type": "string",
+                                                                    "title": "Start Time",
+                                                                    "description": "Start Time (String)"
+                                                                },
+                                                                "start_month": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "Jan",
+                                                                                "Feb",
+                                                                                "Mar",
+                                                                                "Apr",
+                                                                                "May",
+                                                                                "Jun",
+                                                                                "Jul",
+                                                                                "Aug",
+                                                                                "Sep",
+                                                                                "Oct",
+                                                                                "Nov",
+                                                                                "Dec"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Start Month",
+                                                                    "description": "Start Month (String, String)"
+                                                                },
+                                                                "start_day": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 31
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Start Day",
+                                                                    "description": "Start Day (Integer, String)"
+                                                                },
+                                                                "start_year": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1993,
+                                                                            "maximum": 2035
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Start Year",
+                                                                    "description": "Start Year (Integer, String)"
+                                                                },
+                                                                "end_time": {
+                                                                    "type": "string",
+                                                                    "title": "End Time",
+                                                                    "description": "End Time (String)"
+                                                                },
+                                                                "end_month": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "Jan",
+                                                                                "Feb",
+                                                                                "Mar",
+                                                                                "Apr",
+                                                                                "May",
+                                                                                "Jun",
+                                                                                "Jul",
+                                                                                "Aug",
+                                                                                "Sep",
+                                                                                "Oct",
+                                                                                "Nov",
+                                                                                "Dec"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "End Month",
+                                                                    "description": "End Month (String, String)"
+                                                                },
+                                                                "end_day": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 31
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "End Day",
+                                                                    "description": "End Day (Integer, String)"
+                                                                },
+                                                                "end_year": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1993,
+                                                                            "maximum": 2035
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "End Year",
+                                                                    "description": "End Year (Integer, String)"
+                                                                },
+                                                                "duration": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 2147483646
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Duration",
+                                                                    "description": "Duration (Integer, String)"
+                                                                },
+                                                                "infinite": {
+                                                                    "type": "boolean",
+                                                                    "title": "Infinite",
+                                                                    "description": "Infinite (Boolean)"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "Accept Lifetime",
+                                                            "description": "Accept Lifetime (Object)\n\nElements:\n- local\n- start_time\n- start_month\n- start_day\n- start_year\n- end_time\n- end_month\n- end_day\n- end_year\n- duration\n- infinite"
+                                                        },
                                                         "send_lifetime": {
                                                             "type": "object",
                                                             "additionalProperties": false,
@@ -176933,7 +177091,7 @@
                                                     ]
                                                 },
                                                 "title": "Keys",
-                                                "description": "Keys (List - Object)\n\nElements:\n- id (required)\n- cryptographic_algorithm\n- encryption_type\n- key_string\n- key_octet_string\n- send_lifetime"
+                                                "description": "Keys (List - Object)\n\nElements:\n- id (required)\n- cryptographic_algorithm\n- encryption_type\n- key_string\n- key_octet_string\n- accept_lifetime\n- send_lifetime"
                                             }
                                         },
                                         "required": [
@@ -245768,6 +245926,164 @@
                                                                 "title": "Key Octet String",
                                                                 "description": "Key Octet String (String)"
                                                             },
+                                                            "accept_lifetime": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "local": {
+                                                                        "type": "boolean",
+                                                                        "title": "Local",
+                                                                        "description": "Local (Boolean)"
+                                                                    },
+                                                                    "start_time": {
+                                                                        "type": "string",
+                                                                        "title": "Start Time",
+                                                                        "description": "Start Time (String)"
+                                                                    },
+                                                                    "start_month": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "Jan",
+                                                                                    "Feb",
+                                                                                    "Mar",
+                                                                                    "Apr",
+                                                                                    "May",
+                                                                                    "Jun",
+                                                                                    "Jul",
+                                                                                    "Aug",
+                                                                                    "Sep",
+                                                                                    "Oct",
+                                                                                    "Nov",
+                                                                                    "Dec"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Start Month",
+                                                                        "description": "Start Month (String, String)"
+                                                                    },
+                                                                    "start_day": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 31
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Start Day",
+                                                                        "description": "Start Day (Integer, String)"
+                                                                    },
+                                                                    "start_year": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1993,
+                                                                                "maximum": 2035
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Start Year",
+                                                                        "description": "Start Year (Integer, String)"
+                                                                    },
+                                                                    "end_time": {
+                                                                        "type": "string",
+                                                                        "title": "End Time",
+                                                                        "description": "End Time (String)"
+                                                                    },
+                                                                    "end_month": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "Jan",
+                                                                                    "Feb",
+                                                                                    "Mar",
+                                                                                    "Apr",
+                                                                                    "May",
+                                                                                    "Jun",
+                                                                                    "Jul",
+                                                                                    "Aug",
+                                                                                    "Sep",
+                                                                                    "Oct",
+                                                                                    "Nov",
+                                                                                    "Dec"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "End Month",
+                                                                        "description": "End Month (String, String)"
+                                                                    },
+                                                                    "end_day": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 31
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "End Day",
+                                                                        "description": "End Day (Integer, String)"
+                                                                    },
+                                                                    "end_year": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1993,
+                                                                                "maximum": 2035
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "End Year",
+                                                                        "description": "End Year (Integer, String)"
+                                                                    },
+                                                                    "duration": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 2147483646
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Duration",
+                                                                        "description": "Duration (Integer, String)"
+                                                                    },
+                                                                    "infinite": {
+                                                                        "type": "boolean",
+                                                                        "title": "Infinite",
+                                                                        "description": "Infinite (Boolean)"
+                                                                    }
+                                                                },
+                                                                "required": [],
+                                                                "title": "Accept Lifetime",
+                                                                "description": "Accept Lifetime (Object)\n\nElements:\n- local\n- start_time\n- start_month\n- start_day\n- start_year\n- end_time\n- end_month\n- end_day\n- end_year\n- duration\n- infinite"
+                                                            },
                                                             "send_lifetime": {
                                                                 "type": "object",
                                                                 "additionalProperties": false,
@@ -245932,7 +246248,7 @@
                                                         ]
                                                     },
                                                     "title": "Keys",
-                                                    "description": "Keys (List - Object)\n\nElements:\n- id (required)\n- cryptographic_algorithm\n- encryption_type\n- key_string\n- key_octet_string\n- send_lifetime"
+                                                    "description": "Keys (List - Object)\n\nElements:\n- id (required)\n- cryptographic_algorithm\n- encryption_type\n- key_string\n- key_octet_string\n- accept_lifetime\n- send_lifetime"
                                                 }
                                             },
                                             "required": [
@@ -314800,6 +315116,164 @@
                                                                 "title": "Key Octet String",
                                                                 "description": "Key Octet String (String)"
                                                             },
+                                                            "accept_lifetime": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "local": {
+                                                                        "type": "boolean",
+                                                                        "title": "Local",
+                                                                        "description": "Local (Boolean)"
+                                                                    },
+                                                                    "start_time": {
+                                                                        "type": "string",
+                                                                        "title": "Start Time",
+                                                                        "description": "Start Time (String)"
+                                                                    },
+                                                                    "start_month": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "Jan",
+                                                                                    "Feb",
+                                                                                    "Mar",
+                                                                                    "Apr",
+                                                                                    "May",
+                                                                                    "Jun",
+                                                                                    "Jul",
+                                                                                    "Aug",
+                                                                                    "Sep",
+                                                                                    "Oct",
+                                                                                    "Nov",
+                                                                                    "Dec"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Start Month",
+                                                                        "description": "Start Month (String, String)"
+                                                                    },
+                                                                    "start_day": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 31
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Start Day",
+                                                                        "description": "Start Day (Integer, String)"
+                                                                    },
+                                                                    "start_year": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1993,
+                                                                                "maximum": 2035
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Start Year",
+                                                                        "description": "Start Year (Integer, String)"
+                                                                    },
+                                                                    "end_time": {
+                                                                        "type": "string",
+                                                                        "title": "End Time",
+                                                                        "description": "End Time (String)"
+                                                                    },
+                                                                    "end_month": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "Jan",
+                                                                                    "Feb",
+                                                                                    "Mar",
+                                                                                    "Apr",
+                                                                                    "May",
+                                                                                    "Jun",
+                                                                                    "Jul",
+                                                                                    "Aug",
+                                                                                    "Sep",
+                                                                                    "Oct",
+                                                                                    "Nov",
+                                                                                    "Dec"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "End Month",
+                                                                        "description": "End Month (String, String)"
+                                                                    },
+                                                                    "end_day": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 31
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "End Day",
+                                                                        "description": "End Day (Integer, String)"
+                                                                    },
+                                                                    "end_year": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1993,
+                                                                                "maximum": 2035
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "End Year",
+                                                                        "description": "End Year (Integer, String)"
+                                                                    },
+                                                                    "duration": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 2147483646
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Duration",
+                                                                        "description": "Duration (Integer, String)"
+                                                                    },
+                                                                    "infinite": {
+                                                                        "type": "boolean",
+                                                                        "title": "Infinite",
+                                                                        "description": "Infinite (Boolean)"
+                                                                    }
+                                                                },
+                                                                "required": [],
+                                                                "title": "Accept Lifetime",
+                                                                "description": "Accept Lifetime (Object)\n\nElements:\n- local\n- start_time\n- start_month\n- start_day\n- start_year\n- end_time\n- end_month\n- end_day\n- end_year\n- duration\n- infinite"
+                                                            },
                                                             "send_lifetime": {
                                                                 "type": "object",
                                                                 "additionalProperties": false,
@@ -314964,7 +315438,7 @@
                                                         ]
                                                     },
                                                     "title": "Keys",
-                                                    "description": "Keys (List - Object)\n\nElements:\n- id (required)\n- cryptographic_algorithm\n- encryption_type\n- key_string\n- key_octet_string\n- send_lifetime"
+                                                    "description": "Keys (List - Object)\n\nElements:\n- id (required)\n- cryptographic_algorithm\n- encryption_type\n- key_string\n- key_octet_string\n- accept_lifetime\n- send_lifetime"
                                                 }
                                             },
                                             "required": [
@@ -393950,6 +394424,164 @@
                                                                 "title": "Key Octet String",
                                                                 "description": "Key Octet String (String)"
                                                             },
+                                                            "accept_lifetime": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "local": {
+                                                                        "type": "boolean",
+                                                                        "title": "Local",
+                                                                        "description": "Local (Boolean)"
+                                                                    },
+                                                                    "start_time": {
+                                                                        "type": "string",
+                                                                        "title": "Start Time",
+                                                                        "description": "Start Time (String)"
+                                                                    },
+                                                                    "start_month": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "Jan",
+                                                                                    "Feb",
+                                                                                    "Mar",
+                                                                                    "Apr",
+                                                                                    "May",
+                                                                                    "Jun",
+                                                                                    "Jul",
+                                                                                    "Aug",
+                                                                                    "Sep",
+                                                                                    "Oct",
+                                                                                    "Nov",
+                                                                                    "Dec"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Start Month",
+                                                                        "description": "Start Month (String, String)"
+                                                                    },
+                                                                    "start_day": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 31
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Start Day",
+                                                                        "description": "Start Day (Integer, String)"
+                                                                    },
+                                                                    "start_year": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1993,
+                                                                                "maximum": 2035
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Start Year",
+                                                                        "description": "Start Year (Integer, String)"
+                                                                    },
+                                                                    "end_time": {
+                                                                        "type": "string",
+                                                                        "title": "End Time",
+                                                                        "description": "End Time (String)"
+                                                                    },
+                                                                    "end_month": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "Jan",
+                                                                                    "Feb",
+                                                                                    "Mar",
+                                                                                    "Apr",
+                                                                                    "May",
+                                                                                    "Jun",
+                                                                                    "Jul",
+                                                                                    "Aug",
+                                                                                    "Sep",
+                                                                                    "Oct",
+                                                                                    "Nov",
+                                                                                    "Dec"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "End Month",
+                                                                        "description": "End Month (String, String)"
+                                                                    },
+                                                                    "end_day": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 31
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "End Day",
+                                                                        "description": "End Day (Integer, String)"
+                                                                    },
+                                                                    "end_year": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1993,
+                                                                                "maximum": 2035
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "End Year",
+                                                                        "description": "End Year (Integer, String)"
+                                                                    },
+                                                                    "duration": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 2147483646
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Duration",
+                                                                        "description": "Duration (Integer, String)"
+                                                                    },
+                                                                    "infinite": {
+                                                                        "type": "boolean",
+                                                                        "title": "Infinite",
+                                                                        "description": "Infinite (Boolean)"
+                                                                    }
+                                                                },
+                                                                "required": [],
+                                                                "title": "Accept Lifetime",
+                                                                "description": "Accept Lifetime (Object)\n\nElements:\n- local\n- start_time\n- start_month\n- start_day\n- start_year\n- end_time\n- end_month\n- end_day\n- end_year\n- duration\n- infinite"
+                                                            },
                                                             "send_lifetime": {
                                                                 "type": "object",
                                                                 "additionalProperties": false,
@@ -394114,7 +394746,7 @@
                                                         ]
                                                     },
                                                     "title": "Keys",
-                                                    "description": "Keys (List - Object)\n\nElements:\n- id (required)\n- cryptographic_algorithm\n- encryption_type\n- key_string\n- key_octet_string\n- send_lifetime"
+                                                    "description": "Keys (List - Object)\n\nElements:\n- id (required)\n- cryptographic_algorithm\n- encryption_type\n- key_string\n- key_octet_string\n- accept_lifetime\n- send_lifetime"
                                                 }
                                             },
                                             "required": [
