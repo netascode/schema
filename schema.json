@@ -111778,6 +111778,21 @@
                                                     "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,128}$",
                                                     "title": "Sim Failover Timeout Variable",
                                                     "description": "Sim Failover Timeout Variable (String)"
+                                                },
+                                                "cellular_profile_names": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "pattern": "^[^&<>! \"]{1,128}$"
+                                                    },
+                                                    "title": "Cellular Profile Names",
+                                                    "description": "Cellular Profile Names (List - String)"
+                                                },
+                                                "gps_name": {
+                                                    "type": "string",
+                                                    "pattern": "^[^&<>! \"]{1,128}$",
+                                                    "title": "Gps Name",
+                                                    "description": "Gps Name (String)"
                                                 }
                                             },
                                             "required": [
@@ -111785,7 +111800,7 @@
                                             ]
                                         },
                                         "title": "Cellular Controllers",
-                                        "description": "Cellular Controllers (List - Object)\n\nElements:\n- name (required)\n- description\n- cellular_id\n- cellular_id_variable\n- firmware_auto_sim\n- firmware_auto_sim_variable\n- primary_sim_slot\n- primary_sim_slot_variable\n- sim_failover_retries\n- sim_failover_retries_variable\n- sim_failover_timeout\n- sim_failover_timeout_variable"
+                                        "description": "Cellular Controllers (List - Object)\n\nElements:\n- name (required)\n- description\n- cellular_id\n- cellular_id_variable\n- firmware_auto_sim\n- firmware_auto_sim_variable\n- primary_sim_slot\n- primary_sim_slot_variable\n- sim_failover_retries\n- sim_failover_retries_variable\n- sim_failover_timeout\n- sim_failover_timeout_variable\n- cellular_profile_names\n- gps_name"
                                     },
                                     "cellular_profiles": {
                                         "type": "array",
