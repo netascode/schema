@@ -89052,6 +89052,11 @@
                                                                 "title": "Disable Sequence",
                                                                 "description": "Disable Sequence (Boolean)\n- Default value: false"
                                                             },
+                                                            "is_rule_set": {
+                                                                "type": "boolean",
+                                                                "title": "Is Rule Set",
+                                                                "description": "Is Rule Set (Boolean)"
+                                                            },
                                                             "match_entries": {
                                                                 "type": "object",
                                                                 "additionalProperties": false,
@@ -89084,6 +89089,29 @@
                                                                         "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,128}$",
                                                                         "title": "Destination Data Ipv4 Prefixes Variable",
                                                                         "description": "Destination Data Ipv4 Prefixes Variable (String)"
+                                                                    },
+                                                                    "destination_data_ipv6_prefix_lists": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string",
+                                                                            "pattern": "^[^&<>! \"]{1,128}$"
+                                                                        },
+                                                                        "title": "Destination Data IPv6 Prefix Lists",
+                                                                        "description": "Destination Data IPv6 Prefix Lists (List - String)"
+                                                                    },
+                                                                    "destination_data_ipv6_prefixes": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "title": "Destination Data IPv6 Prefixes",
+                                                                        "description": "Destination Data IPv6 Prefixes (List - String)"
+                                                                    },
+                                                                    "destination_data_ipv6_prefixes_variable": {
+                                                                        "type": "string",
+                                                                        "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,128}$",
+                                                                        "title": "Destination Data IPv6 Prefixes Variable",
+                                                                        "description": "Destination Data IPv6 Prefixes Variable (String)"
                                                                     },
                                                                     "destination_fqdn_lists": {
                                                                         "type": "array",
@@ -89385,6 +89413,15 @@
                                                                         "title": "Destination Geo Locations",
                                                                         "description": "Destination Geo Locations (List - String)"
                                                                     },
+                                                                    "destination_object_group_lists": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string",
+                                                                            "pattern": "^[^&<>! \"]{1,128}$"
+                                                                        },
+                                                                        "title": "Destination Object Group Lists",
+                                                                        "description": "Destination Object Group Lists (List - String)"
+                                                                    },
                                                                     "destination_port_lists": {
                                                                         "type": "array",
                                                                         "items": {
@@ -89452,6 +89489,15 @@
                                                                         "title": "Protocols",
                                                                         "description": "Protocols (List - Integer)"
                                                                     },
+                                                                    "rule_set_lists": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string",
+                                                                            "pattern": "^[^&<>! \"]{1,128}$"
+                                                                        },
+                                                                        "title": "Rule Set Lists",
+                                                                        "description": "Rule Set Lists (List - String)"
+                                                                    },
                                                                     "source_data_ipv4_prefix_lists": {
                                                                         "type": "array",
                                                                         "items": {
@@ -89474,6 +89520,29 @@
                                                                         "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,128}$",
                                                                         "title": "Source Data Ipv4 Prefixes Variable",
                                                                         "description": "Source Data Ipv4 Prefixes Variable (String)"
+                                                                    },
+                                                                    "source_data_ipv6_prefix_lists": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string",
+                                                                            "pattern": "^[^&<>! \"]{1,128}$"
+                                                                        },
+                                                                        "title": "Source Data IPv6 Prefix Lists",
+                                                                        "description": "Source Data IPv6 Prefix Lists (List - String)"
+                                                                    },
+                                                                    "source_data_ipv6_prefixes": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "title": "Source Data IPv6 Prefixes",
+                                                                        "description": "Source Data IPv6 Prefixes (List - String)"
+                                                                    },
+                                                                    "source_data_ipv6_prefixes_variable": {
+                                                                        "type": "string",
+                                                                        "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,128}$",
+                                                                        "title": "Source Data IPv6 Prefixes Variable",
+                                                                        "description": "Source Data IPv6 Prefixes Variable (String)"
                                                                     },
                                                                     "source_geo_location_lists": {
                                                                         "type": "array",
@@ -89778,6 +89847,15 @@
                                                                         "title": "Source Identity Users",
                                                                         "description": "Source Identity Users (List - String)"
                                                                     },
+                                                                    "source_object_group_lists": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string",
+                                                                            "pattern": "^[^&<>! \"]{1,128}$"
+                                                                        },
+                                                                        "title": "Source Object Group Lists",
+                                                                        "description": "Source Object Group Lists (List - String)"
+                                                                    },
                                                                     "source_port_lists": {
                                                                         "type": "array",
                                                                         "items": {
@@ -89822,7 +89900,12 @@
                                                                 },
                                                                 "required": [],
                                                                 "title": "Match Entries",
-                                                                "description": "Match Entries (Object)\n\nElements:\n- application_list\n- destination_data_ipv4_prefix_lists\n- destination_data_ipv4_prefixes\n- destination_data_ipv4_prefixes_variable\n- destination_fqdn_lists\n- destination_fqdns\n- destination_fqdns_variable\n- destination_geo_location_lists\n- destination_geo_locations\n- destination_port_lists\n- destination_ports\n- destination_ports_variable\n- destination_scalable_group_tag_lists\n- protocol_name_lists\n- protocol_names\n- protocols\n- source_data_ipv4_prefix_lists\n- source_data_ipv4_prefixes\n- source_data_ipv4_prefixes_variable\n- source_geo_location_lists\n- source_geo_locations\n- source_identity_lists\n- source_identity_usergroups\n- source_identity_users\n- source_port_lists\n- source_ports\n- source_ports_variable\n- source_scalable_group_tag_lists"
+                                                                "description": "Match Entries (Object)\n\nElements:\n- application_list\n- destination_data_ipv4_prefix_lists\n- destination_data_ipv4_prefixes\n- destination_data_ipv4_prefixes_variable\n- destination_data_ipv6_prefix_lists\n- destination_data_ipv6_prefixes\n- destination_data_ipv6_prefixes_variable\n- destination_fqdn_lists\n- destination_fqdns\n- destination_fqdns_variable\n- destination_geo_location_lists\n- destination_geo_locations\n- destination_object_group_lists\n- destination_port_lists\n- destination_ports\n- destination_ports_variable\n- destination_scalable_group_tag_lists\n- protocol_name_lists\n- protocol_names\n- protocols\n- rule_set_lists\n- source_data_ipv4_prefix_lists\n- source_data_ipv4_prefixes\n- source_data_ipv4_prefixes_variable\n- source_data_ipv6_prefix_lists\n- source_data_ipv6_prefixes\n- source_data_ipv6_prefixes_variable\n- source_geo_location_lists\n- source_geo_locations\n- source_identity_lists\n- source_identity_usergroups\n- source_identity_users\n- source_object_group_lists\n- source_port_lists\n- source_ports\n- source_ports_variable\n- source_scalable_group_tag_lists"
+                                                            },
+                                                            "sequence_comment": {
+                                                                "type": "string",
+                                                                "title": "Sequence Comment",
+                                                                "description": "Sequence Comment (String)"
                                                             },
                                                             "sequence_id": {
                                                                 "type": "integer",
@@ -89830,6 +89913,15 @@
                                                                 "maximum": 65534,
                                                                 "title": "Sequence ID",
                                                                 "description": "Sequence ID (Integer)\n- Minimum value: 1\n- Maximum value: 65534"
+                                                            },
+                                                            "sequence_ip_type": {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "ipv4",
+                                                                    "ipv6"
+                                                                ],
+                                                                "title": "Sequence IP Type",
+                                                                "description": "Sequence IP Type (String)\n- Allowed values: ipv4, ipv6"
                                                             },
                                                             "sequence_name": {
                                                                 "type": "string",
@@ -89854,7 +89946,7 @@
                                                         ]
                                                     },
                                                     "title": "Sequences",
-                                                    "description": "Sequences (List - Object)\n\nElements:\n- actions\n- base_action (required)\n- disable_sequence\n- match_entries\n- sequence_id (required)\n- sequence_name (required)\n- sequence_type"
+                                                    "description": "Sequences (List - Object)\n\nElements:\n- actions\n- base_action (required)\n- disable_sequence\n- is_rule_set\n- match_entries\n- sequence_comment\n- sequence_id (required)\n- sequence_ip_type\n- sequence_name (required)\n- sequence_type"
                                                 },
                                                 "source_zone": {
                                                     "anyOf": [
@@ -89980,6 +90072,43 @@
                                                 "title": "Failure Mode",
                                                 "description": "Failure Mode (String)\n- Allowed values: open, close"
                                             },
+                                            "high_speed_logging_servers": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "server1",
+                                                                "server2",
+                                                                "server3",
+                                                                "server4"
+                                                            ],
+                                                            "title": "Name",
+                                                            "description": "Name (String)\n- Allowed values: server1, server2, server3, server4"
+                                                        },
+                                                        "source_interface": {
+                                                            "type": "string",
+                                                            "pattern": "(ATM|ATM-ACR|AppGigabitEthernet|AppNav-Compress|AppNav-UnCompress|Async|BD-VIF|BDI|CEM|CEM-ACR|Cellular|Dialer|Embedded-Service-Engine|Ethernet|Ethernet-Internal|FastEthernet|FiftyGigabitEthernet|FiveGigabitEthernet|FortyGigabitEthernet|FourHundredGigE|GMPLS|GigabitEthernet|Group-Async|HundredGigE|L2LISP|LISP|Loopback|MFR|Multilink|Port-channel|SM|Serial|Service-Engine|TenGigabitEthernet|Tunnel|TwentyFiveGigE|TwentyFiveGigabitEthernet|TwoGigabitEthernet|TwoHundredGigE|Vif|Virtual-PPP|Virtual-Template|VirtualPortGroup|Vlan|Wlan-GigabitEthernet|nat64|nat66|ntp|nve|ospfv3|overlay|pseudowire|ucse|vasileft|vasiright|vmi)(\\w+)((\\/\\d+)*(\\.\\d+)?)?",
+                                                            "title": "Source Interface",
+                                                            "description": "Source Interface (String)"
+                                                        },
+                                                        "source_interface_variable": {
+                                                            "type": "string",
+                                                            "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,128}$",
+                                                            "title": "Source Interface Variable",
+                                                            "description": "Source Interface Variable (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "High Speed Logging Servers",
+                                                "description": "High Speed Logging Servers (List - Object)\n\nElements:\n- name (required)\n- source_interface\n- source_interface_variable"
+                                            },
                                             "icmp_unreachable_allow": {
                                                 "type": "string",
                                                 "enum": [
@@ -90009,6 +90138,11 @@
                                                 "title": "Max Incomplete Udp Limit",
                                                 "description": "Max Incomplete Udp Limit (Integer)\n- Minimum value: 1\n- Maximum value: 4294967295"
                                             },
+                                            "optimized": {
+                                                "type": "boolean",
+                                                "title": "Optimized",
+                                                "description": "Optimized (Boolean)"
+                                            },
                                             "session_reclassify_allow": {
                                                 "type": "string",
                                                 "enum": [
@@ -90016,6 +90150,18 @@
                                                 ],
                                                 "title": "Session Reclassify Allow",
                                                 "description": "Session Reclassify Allow (String)\n- Allowed values: on"
+                                            },
+                                            "syslog_server_source_interface": {
+                                                "type": "string",
+                                                "pattern": "(ATM|ATM-ACR|AppGigabitEthernet|AppNav-Compress|AppNav-UnCompress|Async|BD-VIF|BDI|CEM|CEM-ACR|Cellular|Dialer|Embedded-Service-Engine|Ethernet|Ethernet-Internal|FastEthernet|FiftyGigabitEthernet|FiveGigabitEthernet|FortyGigabitEthernet|FourHundredGigE|GMPLS|GigabitEthernet|Group-Async|HundredGigE|L2LISP|LISP|Loopback|MFR|Multilink|Port-channel|SM|Serial|Service-Engine|TenGigabitEthernet|Tunnel|TwentyFiveGigE|TwentyFiveGigabitEthernet|TwoGigabitEthernet|TwoHundredGigE|Vif|Virtual-PPP|Virtual-Template|VirtualPortGroup|Vlan|Wlan-GigabitEthernet|nat64|nat66|ntp|nve|ospfv3|overlay|pseudowire|ucse|vasileft|vasiright|vmi)(\\w+)((\\/\\d+)*(\\.\\d+)?)?",
+                                                "title": "Syslog Server Source Interface",
+                                                "description": "Syslog Server Source Interface (String)"
+                                            },
+                                            "syslog_server_source_interface_variable": {
+                                                "type": "string",
+                                                "pattern": "^[./\\[\\]a-zA-Z0-9_-]{1,128}$",
+                                                "title": "Syslog Server Source Interface Variable",
+                                                "description": "Syslog Server Source Interface Variable (String)"
                                             },
                                             "tcp_syn_flood_limit": {
                                                 "type": "integer",
@@ -90035,7 +90181,7 @@
                                         },
                                         "required": [],
                                         "title": "Settings",
-                                        "description": "Settings (Object)\n\nElements:\n- advanced_inspection_profile\n- app_hosting\n- audit_trail\n- failure_mode\n- icmp_unreachable_allow\n- max_incomplete_icmp_limit\n- max_incomplete_tcp_limit\n- max_incomplete_udp_limit\n- session_reclassify_allow\n- tcp_syn_flood_limit\n- unified_logging"
+                                        "description": "Settings (Object)\n\nElements:\n- advanced_inspection_profile\n- app_hosting\n- audit_trail\n- failure_mode\n- high_speed_logging_servers\n- icmp_unreachable_allow\n- max_incomplete_icmp_limit\n- max_incomplete_tcp_limit\n- max_incomplete_udp_limit\n- optimized\n- session_reclassify_allow\n- syslog_server_source_interface\n- syslog_server_source_interface_variable\n- tcp_syn_flood_limit\n- unified_logging"
                                     }
                                 },
                                 "required": [
@@ -91650,6 +91796,40 @@
                                     "title": "Security Data Ipv4 Prefix Lists",
                                     "description": "Security Data Ipv4 Prefix Lists (List - Object)\n\nElements:\n- name (required)\n- prefixes (required)"
                                 },
+                                "security_data_ipv6_prefix_lists": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "pattern": "^[^&<>! \"]{1,32}$",
+                                                "title": "Name",
+                                                "description": "Name (String)"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "title": "Description",
+                                                "description": "Description (String)"
+                                            },
+                                            "prefixes": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                },
+                                                "title": "Prefixes",
+                                                "description": "Prefixes (List - String)"
+                                            }
+                                        },
+                                        "required": [
+                                            "name",
+                                            "prefixes"
+                                        ]
+                                    },
+                                    "title": "Security Data IPv6 Prefix Lists",
+                                    "description": "Security Data IPv6 Prefix Lists (List - Object)\n\nElements:\n- name (required)\n- description\n- prefixes (required)"
+                                },
                                 "security_fqdn_lists": {
                                     "type": "array",
                                     "items": {
@@ -92950,7 +93130,7 @@
                             },
                             "required": [],
                             "title": "Policy Object Profile",
-                            "description": "Policy Object Profile (Object)\n\nElements:\n- name\n- description\n- app_probe_classes\n- application_lists\n- as_path_lists\n- color_lists\n- expanded_community_lists\n- extended_community_lists\n- forwarding_classes\n- ipv4_data_prefix_lists\n- ipv4_prefix_lists\n- ipv6_data_prefix_lists\n- ipv6_prefix_lists\n- mirrors\n- policers\n- preferred_color_groups\n- security_advanced_inspection_profiles\n- security_advanced_malware_protection_profiles\n- security_data_ipv4_prefix_lists\n- security_fqdn_lists\n- security_geo_location_lists\n- security_intrusion_prevention_profiles\n- security_ips_signature_lists\n- security_local_application_lists\n- security_local_domain_lists\n- security_port_lists\n- security_protocol_lists\n- security_url_allow_lists\n- security_url_block_lists\n- security_url_filtering_profiles\n- security_zones\n- sla_classes\n- standard_community_lists\n- tloc_lists"
+                            "description": "Policy Object Profile (Object)\n\nElements:\n- name\n- description\n- app_probe_classes\n- application_lists\n- as_path_lists\n- color_lists\n- expanded_community_lists\n- extended_community_lists\n- forwarding_classes\n- ipv4_data_prefix_lists\n- ipv4_prefix_lists\n- ipv6_data_prefix_lists\n- ipv6_prefix_lists\n- mirrors\n- policers\n- preferred_color_groups\n- security_advanced_inspection_profiles\n- security_advanced_malware_protection_profiles\n- security_data_ipv4_prefix_lists\n- security_data_ipv6_prefix_lists\n- security_fqdn_lists\n- security_geo_location_lists\n- security_intrusion_prevention_profiles\n- security_ips_signature_lists\n- security_local_application_lists\n- security_local_domain_lists\n- security_port_lists\n- security_protocol_lists\n- security_url_allow_lists\n- security_url_block_lists\n- security_url_filtering_profiles\n- security_zones\n- sla_classes\n- standard_community_lists\n- tloc_lists"
                         },
                         "service_profiles": {
                             "type": "array",
