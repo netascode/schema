@@ -456372,6 +456372,102 @@
                                         "title": "Stack",
                                         "description": "Stack (Object)\n\nElements:\n- top_of_stack_serial_number (required)\n- cabling_scheme (required)"
                                     },
+                                    "svl": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "domain": {
+                                                "type": "integer",
+                                                "minimum": 1,
+                                                "maximum": 255,
+                                                "title": "Domain",
+                                                "description": "Domain (Integer)\n- Minimum value: 1\n- Maximum value: 255"
+                                            },
+                                            "members": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "serial_number": {
+                                                            "type": "string",
+                                                            "title": "Serial Number",
+                                                            "description": "Serial Number (String)"
+                                                        },
+                                                        "role": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "ACTIVE",
+                                                                "STANDBY"
+                                                            ],
+                                                            "title": "Role",
+                                                            "description": "Role (String)\n- Allowed values: ACTIVE, STANDBY"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "serial_number",
+                                                        "role"
+                                                    ]
+                                                },
+                                                "title": "Members",
+                                                "description": "Members (List - Object)\n\nElements:\n- serial_number (required)\n- role (required)"
+                                            },
+                                            "svl_links": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "active_interface": {
+                                                            "type": "string",
+                                                            "title": "Active Interface",
+                                                            "description": "Active Interface (String)"
+                                                        },
+                                                        "standby_interface": {
+                                                            "type": "string",
+                                                            "title": "Standby Interface",
+                                                            "description": "Standby Interface (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "active_interface",
+                                                        "standby_interface"
+                                                    ]
+                                                },
+                                                "title": "Svl Links",
+                                                "description": "Svl Links (List - Object)\n\nElements:\n- active_interface (required)\n- standby_interface (required)"
+                                            },
+                                            "dad_link": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "active_interface": {
+                                                        "type": "string",
+                                                        "title": "Active Interface",
+                                                        "description": "Active Interface (String)"
+                                                    },
+                                                    "standby_interface": {
+                                                        "type": "string",
+                                                        "title": "Standby Interface",
+                                                        "description": "Standby Interface (String)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "active_interface",
+                                                    "standby_interface"
+                                                ],
+                                                "title": "Dad Link",
+                                                "description": "Dad Link (Object)\n\nElements:\n- active_interface (required)\n- standby_interface (required)"
+                                            }
+                                        },
+                                        "required": [
+                                            "domain",
+                                            "members",
+                                            "svl_links"
+                                        ],
+                                        "title": "Svl",
+                                        "description": "Svl (Object)\n\nElements:\n- domain (required)\n- members (required)\n- svl_links (required)\n- dad_link"
+                                    },
                                     "ap_reboot_percentage": {
                                         "type": "integer",
                                         "enum": [
@@ -456875,7 +456971,7 @@
                                 ]
                             },
                             "title": "Devices",
-                            "description": "Devices (List - Object)\n\nElements:\n- name (required)\n- fqdn_name\n- type\n- rf_profile\n- device_ip\n- pid\n- serial_number\n- state (required)\n- device_role (required)\n- site (required)\n- fabric_site\n- fabric_zone\n- fabric_roles\n- enable_wireless\n- clean_up_config\n- enable_rolling_ap_upgrade\n- image_name\n- image_id\n- image_skip\n- stack\n- ap_reboot_percentage\n- onboarding_template\n- dayn_templates\n- primary_managed_ap_locations\n- secondary_managed_ap_locations\n- anchor_managed_ap_locations\n- port_assignments\n- port_channels\n- tags\n- access_point\n- wireless_management\n- rma"
+                            "description": "Devices (List - Object)\n\nElements:\n- name (required)\n- fqdn_name\n- type\n- rf_profile\n- device_ip\n- pid\n- serial_number\n- state (required)\n- device_role (required)\n- site (required)\n- fabric_site\n- fabric_zone\n- fabric_roles\n- enable_wireless\n- clean_up_config\n- enable_rolling_ap_upgrade\n- image_name\n- image_id\n- image_skip\n- stack\n- svl\n- ap_reboot_percentage\n- onboarding_template\n- dayn_templates\n- primary_managed_ap_locations\n- secondary_managed_ap_locations\n- anchor_managed_ap_locations\n- port_assignments\n- port_channels\n- tags\n- access_point\n- wireless_management\n- rma"
                         },
                         "discovery": {
                             "type": "array",
