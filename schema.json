@@ -120865,11 +120865,108 @@
                     },
                     "title": "Topology Groups",
                     "description": "Topology Groups (List - Object)\n\nElements:\n- name (required)\n- description\n- activate\n- topology_profile (required)"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "pattern": "^[^&<>! \"]{1,128}$",
+                                "title": "Name",
+                                "description": "Name (String)"
+                            },
+                            "description": {
+                                "type": "string",
+                                "title": "Description",
+                                "description": "Description (String)"
+                            },
+                            "configuration_groups": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "pattern": "^[^&<>! \"]{1,128}$"
+                                },
+                                "title": "Configuration Groups",
+                                "description": "Configuration Groups (List - String)"
+                            },
+                            "edge_device_templates": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "pattern": "^[^&<>! \"]{1,128}$"
+                                },
+                                "title": "Edge Device Templates",
+                                "description": "Edge Device Templates (List - String)"
+                            },
+                            "edge_feature_templates": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "pattern": "^[^&<>! \"]{1,128}$"
+                                },
+                                "title": "Edge Feature Templates",
+                                "description": "Edge Feature Templates (List - String)"
+                            },
+                            "feature_profiles": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "pattern": "^[^&<>! \"]{1,128}$"
+                                },
+                                "title": "Feature Profiles",
+                                "description": "Feature Profiles (List - String)"
+                            },
+                            "localized_policies": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "pattern": "^[^&<>! \"]{1,128}$"
+                                },
+                                "title": "Localized Policies",
+                                "description": "Localized Policies (List - String)"
+                            },
+                            "network_hierarchy_nodes": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "pattern": "^[^&<>! \"]{1,128}$"
+                                },
+                                "title": "Network Hierarchy Nodes",
+                                "description": "Network Hierarchy Nodes (List - String)"
+                            },
+                            "security_policies": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "pattern": "^[^&<>! \"]{1,128}$"
+                                },
+                                "title": "Security Policies",
+                                "description": "Security Policies (List - String)"
+                            },
+                            "users": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "pattern": "^[^&<>! \"]{1,128}$"
+                                },
+                                "title": "Users",
+                                "description": "Users (List - String)"
+                            }
+                        },
+                        "required": [
+                            "name"
+                        ]
+                    },
+                    "title": "Scopes",
+                    "description": "Scopes (List - Object)\n\nElements:\n- name (required)\n- description\n- configuration_groups\n- edge_device_templates\n- edge_feature_templates\n- feature_profiles\n- localized_policies\n- network_hierarchy_nodes\n- security_policies\n- users"
                 }
             },
             "required": [],
             "title": "Sdwan",
-            "description": "Sdwan (Object)\n\nElements:\n- application_catalog\n- manager_version\n- management_ip_variable\n- edge_feature_templates\n- policy_objects\n- localized_policies\n- edge_device_templates\n- sites\n- multi_region_fabric\n- centralized_policies\n- security_policies\n- configuration_groups\n- feature_profiles\n- policy_groups\n- network_hierarchy\n- settings\n- topology_groups"
+            "description": "Sdwan (Object)\n\nElements:\n- application_catalog\n- manager_version\n- management_ip_variable\n- edge_feature_templates\n- policy_objects\n- localized_policies\n- edge_device_templates\n- sites\n- multi_region_fabric\n- centralized_policies\n- security_policies\n- configuration_groups\n- feature_profiles\n- policy_groups\n- network_hierarchy\n- settings\n- topology_groups\n- scopes"
         },
         "meraki": {
             "type": "object",
