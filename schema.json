@@ -171637,6 +171637,16 @@
                                             "title": "Macsec",
                                             "description": "Macsec (Boolean)"
                                         },
+                                        "mpls_l3vpn": {
+                                            "type": "boolean",
+                                            "title": "Mpls L3Vpn",
+                                            "description": "Mpls L3Vpn (Boolean)"
+                                        },
+                                        "mpls_segment_routing": {
+                                            "type": "boolean",
+                                            "title": "Mpls Segment Routing",
+                                            "description": "Mpls Segment Routing (Boolean)"
+                                        },
                                         "msdp": {
                                             "type": "boolean",
                                             "title": "Msdp",
@@ -171840,7 +171850,7 @@
                                     },
                                     "required": [],
                                     "title": "Feature",
-                                    "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- dot1x\n- eigrp\n- epbr\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- msdp\n- nat\n- netconf\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- openconfig\n- ospf\n- ospfv3\n- pbr\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- poe\n- port_security\n- ptp\n- private_vlan\n- restconf\n- scheduler\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- sla_responder\n- sla_sender\n- sla_twamp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- tunnel\n- udld\n- vn_segment_vlan_based\n- vpc\n- vrrp\n- vrrpv3\n- vtp"
+                                    "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- dot1x\n- eigrp\n- epbr\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- mpls_l3vpn\n- mpls_segment_routing\n- msdp\n- nat\n- netconf\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- openconfig\n- ospf\n- ospfv3\n- pbr\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- poe\n- port_security\n- ptp\n- private_vlan\n- restconf\n- scheduler\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- sla_responder\n- sla_sender\n- sla_twamp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- tunnel\n- udld\n- vn_segment_vlan_based\n- vpc\n- vrrp\n- vrrpv3\n- vtp"
                                 },
                                 "feature_set": {
                                     "type": "object",
@@ -241208,6 +241218,16 @@
                                                 "title": "Macsec",
                                                 "description": "Macsec (Boolean)"
                                             },
+                                            "mpls_l3vpn": {
+                                                "type": "boolean",
+                                                "title": "Mpls L3Vpn",
+                                                "description": "Mpls L3Vpn (Boolean)"
+                                            },
+                                            "mpls_segment_routing": {
+                                                "type": "boolean",
+                                                "title": "Mpls Segment Routing",
+                                                "description": "Mpls Segment Routing (Boolean)"
+                                            },
                                             "msdp": {
                                                 "type": "boolean",
                                                 "title": "Msdp",
@@ -241411,7 +241431,7 @@
                                         },
                                         "required": [],
                                         "title": "Feature",
-                                        "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- dot1x\n- eigrp\n- epbr\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- msdp\n- nat\n- netconf\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- openconfig\n- ospf\n- ospfv3\n- pbr\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- poe\n- port_security\n- ptp\n- private_vlan\n- restconf\n- scheduler\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- sla_responder\n- sla_sender\n- sla_twamp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- tunnel\n- udld\n- vn_segment_vlan_based\n- vpc\n- vrrp\n- vrrpv3\n- vtp"
+                                        "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- dot1x\n- eigrp\n- epbr\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- mpls_l3vpn\n- mpls_segment_routing\n- msdp\n- nat\n- netconf\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- openconfig\n- ospf\n- ospfv3\n- pbr\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- poe\n- port_security\n- ptp\n- private_vlan\n- restconf\n- scheduler\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- sla_responder\n- sla_sender\n- sla_twamp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- tunnel\n- udld\n- vn_segment_vlan_based\n- vpc\n- vrrp\n- vrrpv3\n- vtp"
                                     },
                                     "feature_set": {
                                         "type": "object",
@@ -310812,6 +310832,16 @@
                                                 "title": "Macsec",
                                                 "description": "Macsec (Boolean)"
                                             },
+                                            "mpls_l3vpn": {
+                                                "type": "boolean",
+                                                "title": "Mpls L3Vpn",
+                                                "description": "Mpls L3Vpn (Boolean)"
+                                            },
+                                            "mpls_segment_routing": {
+                                                "type": "boolean",
+                                                "title": "Mpls Segment Routing",
+                                                "description": "Mpls Segment Routing (Boolean)"
+                                            },
                                             "msdp": {
                                                 "type": "boolean",
                                                 "title": "Msdp",
@@ -311015,7 +311045,7 @@
                                         },
                                         "required": [],
                                         "title": "Feature",
-                                        "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- dot1x\n- eigrp\n- epbr\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- msdp\n- nat\n- netconf\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- openconfig\n- ospf\n- ospfv3\n- pbr\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- poe\n- port_security\n- ptp\n- private_vlan\n- restconf\n- scheduler\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- sla_responder\n- sla_sender\n- sla_twamp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- tunnel\n- udld\n- vn_segment_vlan_based\n- vpc\n- vrrp\n- vrrpv3\n- vtp"
+                                        "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- dot1x\n- eigrp\n- epbr\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- mpls_l3vpn\n- mpls_segment_routing\n- msdp\n- nat\n- netconf\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- openconfig\n- ospf\n- ospfv3\n- pbr\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- poe\n- port_security\n- ptp\n- private_vlan\n- restconf\n- scheduler\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- sla_responder\n- sla_sender\n- sla_twamp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- tunnel\n- udld\n- vn_segment_vlan_based\n- vpc\n- vrrp\n- vrrpv3\n- vtp"
                                     },
                                     "feature_set": {
                                         "type": "object",
@@ -390590,6 +390620,16 @@
                                                 "title": "Macsec",
                                                 "description": "Macsec (Boolean)"
                                             },
+                                            "mpls_l3vpn": {
+                                                "type": "boolean",
+                                                "title": "Mpls L3Vpn",
+                                                "description": "Mpls L3Vpn (Boolean)"
+                                            },
+                                            "mpls_segment_routing": {
+                                                "type": "boolean",
+                                                "title": "Mpls Segment Routing",
+                                                "description": "Mpls Segment Routing (Boolean)"
+                                            },
                                             "msdp": {
                                                 "type": "boolean",
                                                 "title": "Msdp",
@@ -390793,7 +390833,7 @@
                                         },
                                         "required": [],
                                         "title": "Feature",
-                                        "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- dot1x\n- eigrp\n- epbr\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- msdp\n- nat\n- netconf\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- openconfig\n- ospf\n- ospfv3\n- pbr\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- poe\n- port_security\n- ptp\n- private_vlan\n- restconf\n- scheduler\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- sla_responder\n- sla_sender\n- sla_twamp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- tunnel\n- udld\n- vn_segment_vlan_based\n- vpc\n- vrrp\n- vrrpv3\n- vtp"
+                                        "description": "Feature (Object)\n\nElements:\n- analytics\n- bash_shell\n- bfd\n- bgp\n- dhcp\n- dot1x\n- eigrp\n- epbr\n- evpn\n- fabric_forwarding\n- grpc\n- hsrp\n- interface_vlan\n- isis\n- lacp\n- lldp\n- macsec\n- mpls_l3vpn\n- mpls_segment_routing\n- msdp\n- nat\n- netconf\n- netflow\n- ngmvpn\n- ngoam\n- nv_overlay\n- nxapi\n- openconfig\n- ospf\n- ospfv3\n- pbr\n- password_encryption_aes\n- password_encryption_aes_tam\n- pim\n- poe\n- port_security\n- ptp\n- private_vlan\n- restconf\n- scheduler\n- scp_server\n- sflow\n- security_group\n- service_acceleration\n- sftp_server\n- sla_responder\n- sla_sender\n- sla_twamp_server\n- ssh\n- tacacs\n- telemetry\n- telnet\n- tunnel\n- udld\n- vn_segment_vlan_based\n- vpc\n- vrrp\n- vrrpv3\n- vtp"
                                     },
                                     "feature_set": {
                                         "type": "object",
