@@ -88112,6 +88112,22 @@
                                                                         "title": "Source Ports",
                                                                         "description": "Source Ports (List - String)"
                                                                     },
+                                                                    "site_groups": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "title": "Site Groups",
+                                                                        "description": "Site Groups (List - String)"
+                                                                    },
+                                                                    "sites": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "title": "Sites",
+                                                                        "description": "Sites (List - String)"
+                                                                    },
                                                                     "tcp": {
                                                                         "type": "string",
                                                                         "enum": [
@@ -88162,7 +88178,7 @@
                                                                 },
                                                                 "required": [],
                                                                 "title": "Match Entries",
-                                                                "description": "Match Entries (Object)\n\nElements:\n- application_list\n- destination_data_ipv4_prefix_list\n- destination_data_ipv6_prefix_list\n- destination_ipv4_prefix\n- destination_ipv6_prefix\n- destination_ports\n- destination_region\n- dns\n- dns_application_list\n- dscps\n- icmp_messages\n- icmp6_messages\n- packet_length\n- protocols\n- saas_application_list\n- service_areas\n- source_data_ipv4_prefix_list\n- source_data_ipv6_prefix_list\n- source_ipv4_prefix\n- source_ipv6_prefix\n- source_ports\n- tcp\n- traffic_category\n- traffic_class\n- traffic_to"
+                                                                "description": "Match Entries (Object)\n\nElements:\n- application_list\n- destination_data_ipv4_prefix_list\n- destination_data_ipv6_prefix_list\n- destination_ipv4_prefix\n- destination_ipv6_prefix\n- destination_ports\n- destination_region\n- dns\n- dns_application_list\n- dscps\n- icmp_messages\n- icmp6_messages\n- packet_length\n- protocols\n- saas_application_list\n- service_areas\n- source_data_ipv4_prefix_list\n- source_data_ipv6_prefix_list\n- source_ipv4_prefix\n- source_ipv6_prefix\n- source_ports\n- site_groups\n- sites\n- tcp\n- traffic_category\n- traffic_class\n- traffic_to"
                                                             },
                                                             "actions": {
                                                                 "type": "object",
@@ -88411,6 +88427,11 @@
                                                                         "pattern": "^[^&<>! \"]{1,128}$",
                                                                         "title": "Preferred Color Group",
                                                                         "description": "Preferred Color Group (String)"
+                                                                    },
+                                                                    "preferred_color_group_restrict": {
+                                                                        "type": "boolean",
+                                                                        "title": "Preferred Color Group Restrict",
+                                                                        "description": "Preferred Color Group Restrict (Boolean)"
                                                                     },
                                                                     "preferred_remote_color_restrict": {
                                                                         "type": "boolean",
@@ -88756,6 +88777,11 @@
                                                                                 "title": "Preferred Color Group",
                                                                                 "description": "Preferred Color Group (String)"
                                                                             },
+                                                                            "preferred_color_group_restrict": {
+                                                                                "type": "boolean",
+                                                                                "title": "Preferred Color Group Restrict",
+                                                                                "description": "Preferred Color Group Restrict (Boolean)"
+                                                                            },
                                                                             "preferred_remote_colors": {
                                                                                 "type": "array",
                                                                                 "items": {
@@ -88807,7 +88833,7 @@
                                                                         },
                                                                         "required": [],
                                                                         "title": "Sla Class",
-                                                                        "description": "Sla Class (Object)\n\nElements:\n- fallback_to_best_path\n- preferred_colors\n- preferred_color_group\n- preferred_remote_colors\n- remote_color_restrict\n- sla_class_list\n- strict"
+                                                                        "description": "Sla Class (Object)\n\nElements:\n- fallback_to_best_path\n- preferred_colors\n- preferred_color_group\n- preferred_color_group_restrict\n- preferred_remote_colors\n- remote_color_restrict\n- sla_class_list\n- strict"
                                                                     },
                                                                     "tloc": {
                                                                         "type": "object",
@@ -88879,7 +88905,7 @@
                                                                 },
                                                                 "required": [],
                                                                 "title": "Actions",
-                                                                "description": "Actions (Object)\n\nElements:\n- appqoe_optimization\n- backup_sla_preferred_colors\n- cflowd\n- cloud_probe\n- cloud_saas\n- counter_name\n- dscp\n- forwarding_class\n- local_tloc\n- log\n- loss_correct_fec_threshold\n- loss_correct_type\n- nat_pool\n- nat_vpn\n- next_hop_ipv4\n- next_hop_ipv6\n- next_hop_loose\n- policer_list\n- preferred_color_group\n- preferred_remote_color_restrict\n- preferred_remote_colors\n- redirect_dns_type\n- redirect_dns_target\n- sig_sse\n- service\n- service_chain\n- sla_class\n- tloc\n- vpn"
+                                                                "description": "Actions (Object)\n\nElements:\n- appqoe_optimization\n- backup_sla_preferred_colors\n- cflowd\n- cloud_probe\n- cloud_saas\n- counter_name\n- dscp\n- forwarding_class\n- local_tloc\n- log\n- loss_correct_fec_threshold\n- loss_correct_type\n- nat_pool\n- nat_vpn\n- next_hop_ipv4\n- next_hop_ipv6\n- next_hop_loose\n- policer_list\n- preferred_color_group\n- preferred_color_group_restrict\n- preferred_remote_color_restrict\n- preferred_remote_colors\n- redirect_dns_type\n- redirect_dns_target\n- sig_sse\n- service\n- service_chain\n- sla_class\n- tloc\n- vpn"
                                                             }
                                                         },
                                                         "required": [
