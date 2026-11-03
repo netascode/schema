@@ -92231,10 +92231,12 @@
                                                 "enum": [
                                                     "balanced",
                                                     "connectivity",
-                                                    "security"
+                                                    "security",
+                                                    "max-detect",
+                                                    "no-rules-active"
                                                 ],
                                                 "title": "Signature Set",
-                                                "description": "Signature Set (String)\n- Allowed values: balanced, connectivity, security"
+                                                "description": "Signature Set (String)\n- Allowed values: balanced, connectivity, security, max-detect, no-rules-active"
                                             }
                                         },
                                         "required": [
