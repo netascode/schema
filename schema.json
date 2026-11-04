@@ -490025,6 +490025,74 @@
                                             "title": "Rate Limit All",
                                             "description": "Rate Limit All (Integer, String)"
                                         },
+                                        "rate_limit": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "type": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "all",
+                                                                "console",
+                                                                "console-all"
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Type",
+                                                    "description": "Type (String, String)"
+                                                },
+                                                "rate": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 1,
+                                                            "maximum": 10000
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Rate",
+                                                    "description": "Rate (Integer, String)"
+                                                },
+                                                "except_severity": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "emergencies",
+                                                                "alerts",
+                                                                "critical",
+                                                                "errors",
+                                                                "warnings",
+                                                                "notifications",
+                                                                "informational",
+                                                                "debugging"
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Except Severity",
+                                                    "description": "Except Severity (String, String)"
+                                                }
+                                            },
+                                            "required": [
+                                                "type",
+                                                "rate"
+                                            ],
+                                            "title": "Rate Limit",
+                                            "description": "Rate Limit (Object)\n\nElements:\n- type (required)\n- rate (required)\n- except_severity"
+                                        },
                                         "source_interfaces_vrf": {
                                             "type": "array",
                                             "items": {
@@ -490170,7 +490238,7 @@
                                     },
                                     "required": [],
                                     "title": "Logging",
-                                    "description": "Logging (Object)\n\nElements:\n- monitor_severity\n- buffered_size\n- buffered_severity\n- buffered_size_legacy\n- buffered_severity_legacy\n- console\n- console_severity\n- facility\n- history_size\n- history_severity\n- trap\n- trap_severity\n- origin_id_type\n- origin_id_name\n- file_name\n- file_max_size\n- file_min_size\n- file_severity\n- source_interface_type\n- source_interface_id\n- count\n- persistent_url\n- persistent_size\n- persistent_filesize\n- rate_limit_all\n- source_interfaces_vrf\n- hosts"
+                                    "description": "Logging (Object)\n\nElements:\n- monitor_severity\n- buffered_size\n- buffered_severity\n- buffered_size_legacy\n- buffered_severity_legacy\n- console\n- console_severity\n- facility\n- history_size\n- history_severity\n- trap\n- trap_severity\n- origin_id_type\n- origin_id_name\n- file_name\n- file_max_size\n- file_min_size\n- file_severity\n- source_interface_type\n- source_interface_id\n- count\n- persistent_url\n- persistent_size\n- persistent_filesize\n- rate_limit_all\n- rate_limit\n- source_interfaces_vrf\n- hosts"
                                 },
                                 "mdt_subscriptions": {
                                     "type": "array",
@@ -529008,6 +529076,74 @@
                                                 "title": "Rate Limit All",
                                                 "description": "Rate Limit All (Integer, String)"
                                             },
+                                            "rate_limit": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "type": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "all",
+                                                                    "console",
+                                                                    "console-all"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Type",
+                                                        "description": "Type (String, String)"
+                                                    },
+                                                    "rate": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 10000
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Rate",
+                                                        "description": "Rate (Integer, String)"
+                                                    },
+                                                    "except_severity": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "emergencies",
+                                                                    "alerts",
+                                                                    "critical",
+                                                                    "errors",
+                                                                    "warnings",
+                                                                    "notifications",
+                                                                    "informational",
+                                                                    "debugging"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Except Severity",
+                                                        "description": "Except Severity (String, String)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "type",
+                                                    "rate"
+                                                ],
+                                                "title": "Rate Limit",
+                                                "description": "Rate Limit (Object)\n\nElements:\n- type (required)\n- rate (required)\n- except_severity"
+                                            },
                                             "source_interfaces_vrf": {
                                                 "type": "array",
                                                 "items": {
@@ -529153,7 +529289,7 @@
                                         },
                                         "required": [],
                                         "title": "Logging",
-                                        "description": "Logging (Object)\n\nElements:\n- monitor_severity\n- buffered_size\n- buffered_severity\n- buffered_size_legacy\n- buffered_severity_legacy\n- console\n- console_severity\n- facility\n- history_size\n- history_severity\n- trap\n- trap_severity\n- origin_id_type\n- origin_id_name\n- file_name\n- file_max_size\n- file_min_size\n- file_severity\n- source_interface_type\n- source_interface_id\n- count\n- persistent_url\n- persistent_size\n- persistent_filesize\n- rate_limit_all\n- source_interfaces_vrf\n- hosts"
+                                        "description": "Logging (Object)\n\nElements:\n- monitor_severity\n- buffered_size\n- buffered_severity\n- buffered_size_legacy\n- buffered_severity_legacy\n- console\n- console_severity\n- facility\n- history_size\n- history_severity\n- trap\n- trap_severity\n- origin_id_type\n- origin_id_name\n- file_name\n- file_max_size\n- file_min_size\n- file_severity\n- source_interface_type\n- source_interface_id\n- count\n- persistent_url\n- persistent_size\n- persistent_filesize\n- rate_limit_all\n- rate_limit\n- source_interfaces_vrf\n- hosts"
                                     },
                                     "mdt_subscriptions": {
                                         "type": "array",
@@ -568017,6 +568153,74 @@
                                                 "title": "Rate Limit All",
                                                 "description": "Rate Limit All (Integer, String)"
                                             },
+                                            "rate_limit": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "type": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "all",
+                                                                    "console",
+                                                                    "console-all"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Type",
+                                                        "description": "Type (String, String)"
+                                                    },
+                                                    "rate": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 10000
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Rate",
+                                                        "description": "Rate (Integer, String)"
+                                                    },
+                                                    "except_severity": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "emergencies",
+                                                                    "alerts",
+                                                                    "critical",
+                                                                    "errors",
+                                                                    "warnings",
+                                                                    "notifications",
+                                                                    "informational",
+                                                                    "debugging"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Except Severity",
+                                                        "description": "Except Severity (String, String)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "type",
+                                                    "rate"
+                                                ],
+                                                "title": "Rate Limit",
+                                                "description": "Rate Limit (Object)\n\nElements:\n- type (required)\n- rate (required)\n- except_severity"
+                                            },
                                             "source_interfaces_vrf": {
                                                 "type": "array",
                                                 "items": {
@@ -568162,7 +568366,7 @@
                                         },
                                         "required": [],
                                         "title": "Logging",
-                                        "description": "Logging (Object)\n\nElements:\n- monitor_severity\n- buffered_size\n- buffered_severity\n- buffered_size_legacy\n- buffered_severity_legacy\n- console\n- console_severity\n- facility\n- history_size\n- history_severity\n- trap\n- trap_severity\n- origin_id_type\n- origin_id_name\n- file_name\n- file_max_size\n- file_min_size\n- file_severity\n- source_interface_type\n- source_interface_id\n- count\n- persistent_url\n- persistent_size\n- persistent_filesize\n- rate_limit_all\n- source_interfaces_vrf\n- hosts"
+                                        "description": "Logging (Object)\n\nElements:\n- monitor_severity\n- buffered_size\n- buffered_severity\n- buffered_size_legacy\n- buffered_severity_legacy\n- console\n- console_severity\n- facility\n- history_size\n- history_severity\n- trap\n- trap_severity\n- origin_id_type\n- origin_id_name\n- file_name\n- file_max_size\n- file_min_size\n- file_severity\n- source_interface_type\n- source_interface_id\n- count\n- persistent_url\n- persistent_size\n- persistent_filesize\n- rate_limit_all\n- rate_limit\n- source_interfaces_vrf\n- hosts"
                                     },
                                     "mdt_subscriptions": {
                                         "type": "array",
@@ -609232,6 +609436,74 @@
                                                 "title": "Rate Limit All",
                                                 "description": "Rate Limit All (Integer, String)"
                                             },
+                                            "rate_limit": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "type": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "all",
+                                                                    "console",
+                                                                    "console-all"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Type",
+                                                        "description": "Type (String, String)"
+                                                    },
+                                                    "rate": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 10000
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Rate",
+                                                        "description": "Rate (Integer, String)"
+                                                    },
+                                                    "except_severity": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "emergencies",
+                                                                    "alerts",
+                                                                    "critical",
+                                                                    "errors",
+                                                                    "warnings",
+                                                                    "notifications",
+                                                                    "informational",
+                                                                    "debugging"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Except Severity",
+                                                        "description": "Except Severity (String, String)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "type",
+                                                    "rate"
+                                                ],
+                                                "title": "Rate Limit",
+                                                "description": "Rate Limit (Object)\n\nElements:\n- type (required)\n- rate (required)\n- except_severity"
+                                            },
                                             "source_interfaces_vrf": {
                                                 "type": "array",
                                                 "items": {
@@ -609377,7 +609649,7 @@
                                         },
                                         "required": [],
                                         "title": "Logging",
-                                        "description": "Logging (Object)\n\nElements:\n- monitor_severity\n- buffered_size\n- buffered_severity\n- buffered_size_legacy\n- buffered_severity_legacy\n- console\n- console_severity\n- facility\n- history_size\n- history_severity\n- trap\n- trap_severity\n- origin_id_type\n- origin_id_name\n- file_name\n- file_max_size\n- file_min_size\n- file_severity\n- source_interface_type\n- source_interface_id\n- count\n- persistent_url\n- persistent_size\n- persistent_filesize\n- rate_limit_all\n- source_interfaces_vrf\n- hosts"
+                                        "description": "Logging (Object)\n\nElements:\n- monitor_severity\n- buffered_size\n- buffered_severity\n- buffered_size_legacy\n- buffered_severity_legacy\n- console\n- console_severity\n- facility\n- history_size\n- history_severity\n- trap\n- trap_severity\n- origin_id_type\n- origin_id_name\n- file_name\n- file_max_size\n- file_min_size\n- file_severity\n- source_interface_type\n- source_interface_id\n- count\n- persistent_url\n- persistent_size\n- persistent_filesize\n- rate_limit_all\n- rate_limit\n- source_interfaces_vrf\n- hosts"
                                     },
                                     "mdt_subscriptions": {
                                         "type": "array",
