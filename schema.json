@@ -467494,8 +467494,9 @@
                                                 },
                                                 "description": {
                                                     "type": "string",
+                                                    "maxLength": 255,
                                                     "title": "Description",
-                                                    "description": "Description (String)"
+                                                    "description": "Description (String)\n- Maximum length: 255"
                                                 },
                                                 "language": {
                                                     "type": "string",
@@ -467690,8 +467691,9 @@
                                                 },
                                                 "description": {
                                                     "type": "string",
+                                                    "maxLength": 255,
                                                     "title": "Description",
-                                                    "description": "Description (String)"
+                                                    "description": "Description (String)\n- Maximum length: 255"
                                                 },
                                                 "language": {
                                                     "type": "string",
