@@ -499275,6 +499275,16 @@
                                                         "type": "boolean",
                                                         "title": "Shutdown",
                                                         "description": "Shutdown (Boolean)"
+                                                    },
+                                                    "stub_connected": {
+                                                        "type": "boolean",
+                                                        "title": "Stub Connected",
+                                                        "description": "Stub Connected (Boolean)"
+                                                    },
+                                                    "stub_summary": {
+                                                        "type": "boolean",
+                                                        "title": "Stub Summary",
+                                                        "description": "Stub Summary (Boolean)"
                                                     }
                                                 },
                                                 "required": [
@@ -499283,7 +499293,7 @@
                                                 ]
                                             },
                                             "title": "Eigrp Processes",
-                                            "description": "Eigrp Processes (List - Object)\n\nElements:\n- name (required)\n- autonomous_system (required)\n- vrf\n- router_id\n- networks\n- auto_summary\n- shutdown"
+                                            "description": "Eigrp Processes (List - Object)\n\nElements:\n- name (required)\n- autonomous_system (required)\n- vrf\n- router_id\n- networks\n- auto_summary\n- shutdown\n- stub_connected\n- stub_summary"
                                         },
                                         "ospf_processes": {
                                             "type": "array",
@@ -538331,6 +538341,16 @@
                                                             "type": "boolean",
                                                             "title": "Shutdown",
                                                             "description": "Shutdown (Boolean)"
+                                                        },
+                                                        "stub_connected": {
+                                                            "type": "boolean",
+                                                            "title": "Stub Connected",
+                                                            "description": "Stub Connected (Boolean)"
+                                                        },
+                                                        "stub_summary": {
+                                                            "type": "boolean",
+                                                            "title": "Stub Summary",
+                                                            "description": "Stub Summary (Boolean)"
                                                         }
                                                     },
                                                     "required": [
@@ -538339,7 +538359,7 @@
                                                     ]
                                                 },
                                                 "title": "Eigrp Processes",
-                                                "description": "Eigrp Processes (List - Object)\n\nElements:\n- name (required)\n- autonomous_system (required)\n- vrf\n- router_id\n- networks\n- auto_summary\n- shutdown"
+                                                "description": "Eigrp Processes (List - Object)\n\nElements:\n- name (required)\n- autonomous_system (required)\n- vrf\n- router_id\n- networks\n- auto_summary\n- shutdown\n- stub_connected\n- stub_summary"
                                             },
                                             "ospf_processes": {
                                                 "type": "array",
@@ -577413,6 +577433,16 @@
                                                             "type": "boolean",
                                                             "title": "Shutdown",
                                                             "description": "Shutdown (Boolean)"
+                                                        },
+                                                        "stub_connected": {
+                                                            "type": "boolean",
+                                                            "title": "Stub Connected",
+                                                            "description": "Stub Connected (Boolean)"
+                                                        },
+                                                        "stub_summary": {
+                                                            "type": "boolean",
+                                                            "title": "Stub Summary",
+                                                            "description": "Stub Summary (Boolean)"
                                                         }
                                                     },
                                                     "required": [
@@ -577421,7 +577451,7 @@
                                                     ]
                                                 },
                                                 "title": "Eigrp Processes",
-                                                "description": "Eigrp Processes (List - Object)\n\nElements:\n- name (required)\n- autonomous_system (required)\n- vrf\n- router_id\n- networks\n- auto_summary\n- shutdown"
+                                                "description": "Eigrp Processes (List - Object)\n\nElements:\n- name (required)\n- autonomous_system (required)\n- vrf\n- router_id\n- networks\n- auto_summary\n- shutdown\n- stub_connected\n- stub_summary"
                                             },
                                             "ospf_processes": {
                                                 "type": "array",
@@ -618701,6 +618731,16 @@
                                                             "type": "boolean",
                                                             "title": "Shutdown",
                                                             "description": "Shutdown (Boolean)"
+                                                        },
+                                                        "stub_connected": {
+                                                            "type": "boolean",
+                                                            "title": "Stub Connected",
+                                                            "description": "Stub Connected (Boolean)"
+                                                        },
+                                                        "stub_summary": {
+                                                            "type": "boolean",
+                                                            "title": "Stub Summary",
+                                                            "description": "Stub Summary (Boolean)"
                                                         }
                                                     },
                                                     "required": [
@@ -618709,7 +618749,7 @@
                                                     ]
                                                 },
                                                 "title": "Eigrp Processes",
-                                                "description": "Eigrp Processes (List - Object)\n\nElements:\n- name (required)\n- autonomous_system (required)\n- vrf\n- router_id\n- networks\n- auto_summary\n- shutdown"
+                                                "description": "Eigrp Processes (List - Object)\n\nElements:\n- name (required)\n- autonomous_system (required)\n- vrf\n- router_id\n- networks\n- auto_summary\n- shutdown\n- stub_connected\n- stub_summary"
                                             },
                                             "ospf_processes": {
                                                 "type": "array",
