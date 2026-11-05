@@ -489610,6 +489610,11 @@
                                                         ],
                                                         "title": "L2Vni Base",
                                                         "description": "L2Vni Base (Integer, String)"
+                                                    },
+                                                    "re_originate_route_type5": {
+                                                        "type": "boolean",
+                                                        "title": "Re Originate Route Type5",
+                                                        "description": "Re Originate Route Type5 (Boolean)"
                                                     }
                                                 },
                                                 "required": [
@@ -489617,7 +489622,7 @@
                                                 ]
                                             },
                                             "title": "Profiles",
-                                            "description": "Profiles (List - Object)\n\nElements:\n- name (required)\n- evi_base\n- l2vni_base"
+                                            "description": "Profiles (List - Object)\n\nElements:\n- name (required)\n- evi_base\n- l2vni_base\n- re_originate_route_type5"
                                         }
                                     },
                                     "required": [],
@@ -528661,6 +528666,11 @@
                                                             ],
                                                             "title": "L2Vni Base",
                                                             "description": "L2Vni Base (Integer, String)"
+                                                        },
+                                                        "re_originate_route_type5": {
+                                                            "type": "boolean",
+                                                            "title": "Re Originate Route Type5",
+                                                            "description": "Re Originate Route Type5 (Boolean)"
                                                         }
                                                     },
                                                     "required": [
@@ -528668,7 +528678,7 @@
                                                     ]
                                                 },
                                                 "title": "Profiles",
-                                                "description": "Profiles (List - Object)\n\nElements:\n- name (required)\n- evi_base\n- l2vni_base"
+                                                "description": "Profiles (List - Object)\n\nElements:\n- name (required)\n- evi_base\n- l2vni_base\n- re_originate_route_type5"
                                             }
                                         },
                                         "required": [],
@@ -567738,6 +567748,11 @@
                                                             ],
                                                             "title": "L2Vni Base",
                                                             "description": "L2Vni Base (Integer, String)"
+                                                        },
+                                                        "re_originate_route_type5": {
+                                                            "type": "boolean",
+                                                            "title": "Re Originate Route Type5",
+                                                            "description": "Re Originate Route Type5 (Boolean)"
                                                         }
                                                     },
                                                     "required": [
@@ -567745,7 +567760,7 @@
                                                     ]
                                                 },
                                                 "title": "Profiles",
-                                                "description": "Profiles (List - Object)\n\nElements:\n- name (required)\n- evi_base\n- l2vni_base"
+                                                "description": "Profiles (List - Object)\n\nElements:\n- name (required)\n- evi_base\n- l2vni_base\n- re_originate_route_type5"
                                             }
                                         },
                                         "required": [],
@@ -609021,6 +609036,11 @@
                                                             ],
                                                             "title": "L2Vni Base",
                                                             "description": "L2Vni Base (Integer, String)"
+                                                        },
+                                                        "re_originate_route_type5": {
+                                                            "type": "boolean",
+                                                            "title": "Re Originate Route Type5",
+                                                            "description": "Re Originate Route Type5 (Boolean)"
                                                         }
                                                     },
                                                     "required": [
@@ -609028,7 +609048,7 @@
                                                     ]
                                                 },
                                                 "title": "Profiles",
-                                                "description": "Profiles (List - Object)\n\nElements:\n- name (required)\n- evi_base\n- l2vni_base"
+                                                "description": "Profiles (List - Object)\n\nElements:\n- name (required)\n- evi_base\n- l2vni_base\n- re_originate_route_type5"
                                             }
                                         },
                                         "required": [],
