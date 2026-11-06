@@ -488848,6 +488848,71 @@
                                     "title": "L2 Vfi",
                                     "description": "L2 Vfi (Object)\n\nElements:\n- name (required)\n- mode\n- vpn_id\n- neighbors"
                                 },
+                                "large_community_lists": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "expanded": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "title": "Name",
+                                                        "description": "Name (String)"
+                                                    },
+                                                    "entries": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "action": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "permit",
+                                                                                "deny"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Action",
+                                                                    "description": "Action (String, String)"
+                                                                },
+                                                                "regex": {
+                                                                    "type": "string",
+                                                                    "title": "Regex",
+                                                                    "description": "Regex (String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "action",
+                                                                "regex"
+                                                            ]
+                                                        },
+                                                        "title": "Entries",
+                                                        "description": "Entries (List - Object)\n\nElements:\n- action (required)\n- regex (required)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name"
+                                                ]
+                                            },
+                                            "title": "Expanded",
+                                            "description": "Expanded (List - Object)\n\nElements:\n- name (required)\n- entries"
+                                        }
+                                    },
+                                    "required": [],
+                                    "title": "Large Community Lists",
+                                    "description": "Large Community Lists (Object)\n\nElements:\n- expanded"
+                                },
                                 "license": {
                                     "type": "object",
                                     "additionalProperties": false,
@@ -506992,7 +507057,7 @@
                             },
                             "required": [],
                             "title": "Configuration",
-                            "description": "Configuration (Object)\n\nElements:\n- aaa\n- access_lists\n- arp\n- banner\n- bfd\n- cdp\n- clock\n- community_lists\n- crypto\n- cts\n- device_sensor\n- device_tracking\n- dhcp\n- dhcp_pools\n- policy\n- dot1x\n- eem\n- errdisable\n- evpn\n- flow\n- interfaces\n- bridge_domains\n- key_chains\n- l2_vfi\n- license\n- line\n- evpn_profile\n- lldp\n- logging\n- mdt_subscriptions\n- msdp\n- mpls\n- multicast\n- nat\n- ntp\n- object_groups_fqdn\n- object_groups_network\n- object_groups_service\n- pim\n- ipv6_dhcp_pools\n- ipv6_local_pools\n- ipv6_pim\n- prefix_lists\n- ipv6_prefix_lists\n- qos\n- route_maps\n- routing\n- service_templates\n- service\n- snmp_server\n- spanning_tree\n- stackwise_virtual\n- system\n- templates\n- udld\n- vlan\n- vrfs\n- vtp\n- zone_pair_security\n- zone_security"
+                            "description": "Configuration (Object)\n\nElements:\n- aaa\n- access_lists\n- arp\n- banner\n- bfd\n- cdp\n- clock\n- community_lists\n- crypto\n- cts\n- device_sensor\n- device_tracking\n- dhcp\n- dhcp_pools\n- policy\n- dot1x\n- eem\n- errdisable\n- evpn\n- flow\n- interfaces\n- bridge_domains\n- key_chains\n- l2_vfi\n- large_community_lists\n- license\n- line\n- evpn_profile\n- lldp\n- logging\n- mdt_subscriptions\n- msdp\n- mpls\n- multicast\n- nat\n- ntp\n- object_groups_fqdn\n- object_groups_network\n- object_groups_service\n- pim\n- ipv6_dhcp_pools\n- ipv6_local_pools\n- ipv6_pim\n- prefix_lists\n- ipv6_prefix_lists\n- qos\n- route_maps\n- routing\n- service_templates\n- service\n- snmp_server\n- spanning_tree\n- stackwise_virtual\n- system\n- templates\n- udld\n- vlan\n- vrfs\n- vtp\n- zone_pair_security\n- zone_security"
                         },
                         "templates": {
                             "type": "array",
@@ -527969,6 +528034,71 @@
                                         "title": "L2 Vfi",
                                         "description": "L2 Vfi (Object)\n\nElements:\n- name (required)\n- mode\n- vpn_id\n- neighbors"
                                     },
+                                    "large_community_lists": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "expanded": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "entries": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "action": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "permit",
+                                                                                    "deny"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Action",
+                                                                        "description": "Action (String, String)"
+                                                                    },
+                                                                    "regex": {
+                                                                        "type": "string",
+                                                                        "title": "Regex",
+                                                                        "description": "Regex (String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "action",
+                                                                    "regex"
+                                                                ]
+                                                            },
+                                                            "title": "Entries",
+                                                            "description": "Entries (List - Object)\n\nElements:\n- action (required)\n- regex (required)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Expanded",
+                                                "description": "Expanded (List - Object)\n\nElements:\n- name (required)\n- entries"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Large Community Lists",
+                                        "description": "Large Community Lists (Object)\n\nElements:\n- expanded"
+                                    },
                                     "license": {
                                         "type": "object",
                                         "additionalProperties": false,
@@ -546113,7 +546243,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- access_lists\n- arp\n- banner\n- bfd\n- cdp\n- clock\n- community_lists\n- crypto\n- cts\n- device_sensor\n- device_tracking\n- dhcp\n- dhcp_pools\n- policy\n- dot1x\n- eem\n- errdisable\n- evpn\n- flow\n- interfaces\n- bridge_domains\n- key_chains\n- l2_vfi\n- license\n- line\n- evpn_profile\n- lldp\n- logging\n- mdt_subscriptions\n- msdp\n- mpls\n- multicast\n- nat\n- ntp\n- object_groups_fqdn\n- object_groups_network\n- object_groups_service\n- pim\n- ipv6_dhcp_pools\n- ipv6_local_pools\n- ipv6_pim\n- prefix_lists\n- ipv6_prefix_lists\n- qos\n- route_maps\n- routing\n- service_templates\n- service\n- snmp_server\n- spanning_tree\n- stackwise_virtual\n- system\n- templates\n- udld\n- vlan\n- vrfs\n- vtp\n- zone_pair_security\n- zone_security"
+                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- access_lists\n- arp\n- banner\n- bfd\n- cdp\n- clock\n- community_lists\n- crypto\n- cts\n- device_sensor\n- device_tracking\n- dhcp\n- dhcp_pools\n- policy\n- dot1x\n- eem\n- errdisable\n- evpn\n- flow\n- interfaces\n- bridge_domains\n- key_chains\n- l2_vfi\n- large_community_lists\n- license\n- line\n- evpn_profile\n- lldp\n- logging\n- mdt_subscriptions\n- msdp\n- mpls\n- multicast\n- nat\n- ntp\n- object_groups_fqdn\n- object_groups_network\n- object_groups_service\n- pim\n- ipv6_dhcp_pools\n- ipv6_local_pools\n- ipv6_pim\n- prefix_lists\n- ipv6_prefix_lists\n- qos\n- route_maps\n- routing\n- service_templates\n- service\n- snmp_server\n- spanning_tree\n- stackwise_virtual\n- system\n- templates\n- udld\n- vlan\n- vrfs\n- vtp\n- zone_pair_security\n- zone_security"
                             },
                             "templates": {
                                 "type": "array",
@@ -567116,6 +567246,71 @@
                                         "title": "L2 Vfi",
                                         "description": "L2 Vfi (Object)\n\nElements:\n- name (required)\n- mode\n- vpn_id\n- neighbors"
                                     },
+                                    "large_community_lists": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "expanded": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "entries": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "action": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "permit",
+                                                                                    "deny"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Action",
+                                                                        "description": "Action (String, String)"
+                                                                    },
+                                                                    "regex": {
+                                                                        "type": "string",
+                                                                        "title": "Regex",
+                                                                        "description": "Regex (String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "action",
+                                                                    "regex"
+                                                                ]
+                                                            },
+                                                            "title": "Entries",
+                                                            "description": "Entries (List - Object)\n\nElements:\n- action (required)\n- regex (required)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Expanded",
+                                                "description": "Expanded (List - Object)\n\nElements:\n- name (required)\n- entries"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Large Community Lists",
+                                        "description": "Large Community Lists (Object)\n\nElements:\n- expanded"
+                                    },
                                     "license": {
                                         "type": "object",
                                         "additionalProperties": false,
@@ -585260,7 +585455,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- access_lists\n- arp\n- banner\n- bfd\n- cdp\n- clock\n- community_lists\n- crypto\n- cts\n- device_sensor\n- device_tracking\n- dhcp\n- dhcp_pools\n- policy\n- dot1x\n- eem\n- errdisable\n- evpn\n- flow\n- interfaces\n- bridge_domains\n- key_chains\n- l2_vfi\n- license\n- line\n- evpn_profile\n- lldp\n- logging\n- mdt_subscriptions\n- msdp\n- mpls\n- multicast\n- nat\n- ntp\n- object_groups_fqdn\n- object_groups_network\n- object_groups_service\n- pim\n- ipv6_dhcp_pools\n- ipv6_local_pools\n- ipv6_pim\n- prefix_lists\n- ipv6_prefix_lists\n- qos\n- route_maps\n- routing\n- service_templates\n- service\n- snmp_server\n- spanning_tree\n- stackwise_virtual\n- system\n- templates\n- udld\n- vlan\n- vrfs\n- vtp\n- zone_pair_security\n- zone_security"
+                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- access_lists\n- arp\n- banner\n- bfd\n- cdp\n- clock\n- community_lists\n- crypto\n- cts\n- device_sensor\n- device_tracking\n- dhcp\n- dhcp_pools\n- policy\n- dot1x\n- eem\n- errdisable\n- evpn\n- flow\n- interfaces\n- bridge_domains\n- key_chains\n- l2_vfi\n- large_community_lists\n- license\n- line\n- evpn_profile\n- lldp\n- logging\n- mdt_subscriptions\n- msdp\n- mpls\n- multicast\n- nat\n- ntp\n- object_groups_fqdn\n- object_groups_network\n- object_groups_service\n- pim\n- ipv6_dhcp_pools\n- ipv6_local_pools\n- ipv6_pim\n- prefix_lists\n- ipv6_prefix_lists\n- qos\n- route_maps\n- routing\n- service_templates\n- service\n- snmp_server\n- spanning_tree\n- stackwise_virtual\n- system\n- templates\n- udld\n- vlan\n- vrfs\n- vtp\n- zone_pair_security\n- zone_security"
                             },
                             "templates": {
                                 "type": "array",
@@ -608469,6 +608664,71 @@
                                         "title": "L2 Vfi",
                                         "description": "L2 Vfi (Object)\n\nElements:\n- name (required)\n- mode\n- vpn_id\n- neighbors"
                                     },
+                                    "large_community_lists": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "expanded": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "title": "Name",
+                                                            "description": "Name (String)"
+                                                        },
+                                                        "entries": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "action": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "permit",
+                                                                                    "deny"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Action",
+                                                                        "description": "Action (String, String)"
+                                                                    },
+                                                                    "regex": {
+                                                                        "type": "string",
+                                                                        "title": "Regex",
+                                                                        "description": "Regex (String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "action",
+                                                                    "regex"
+                                                                ]
+                                                            },
+                                                            "title": "Entries",
+                                                            "description": "Entries (List - Object)\n\nElements:\n- action (required)\n- regex (required)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Expanded",
+                                                "description": "Expanded (List - Object)\n\nElements:\n- name (required)\n- entries"
+                                            }
+                                        },
+                                        "required": [],
+                                        "title": "Large Community Lists",
+                                        "description": "Large Community Lists (Object)\n\nElements:\n- expanded"
+                                    },
                                     "license": {
                                         "type": "object",
                                         "additionalProperties": false,
@@ -626613,7 +626873,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- access_lists\n- arp\n- banner\n- bfd\n- cdp\n- clock\n- community_lists\n- crypto\n- cts\n- device_sensor\n- device_tracking\n- dhcp\n- dhcp_pools\n- policy\n- dot1x\n- eem\n- errdisable\n- evpn\n- flow\n- interfaces\n- bridge_domains\n- key_chains\n- l2_vfi\n- license\n- line\n- evpn_profile\n- lldp\n- logging\n- mdt_subscriptions\n- msdp\n- mpls\n- multicast\n- nat\n- ntp\n- object_groups_fqdn\n- object_groups_network\n- object_groups_service\n- pim\n- ipv6_dhcp_pools\n- ipv6_local_pools\n- ipv6_pim\n- prefix_lists\n- ipv6_prefix_lists\n- qos\n- route_maps\n- routing\n- service_templates\n- service\n- snmp_server\n- spanning_tree\n- stackwise_virtual\n- system\n- templates\n- udld\n- vlan\n- vrfs\n- vtp\n- zone_pair_security\n- zone_security"
+                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- access_lists\n- arp\n- banner\n- bfd\n- cdp\n- clock\n- community_lists\n- crypto\n- cts\n- device_sensor\n- device_tracking\n- dhcp\n- dhcp_pools\n- policy\n- dot1x\n- eem\n- errdisable\n- evpn\n- flow\n- interfaces\n- bridge_domains\n- key_chains\n- l2_vfi\n- large_community_lists\n- license\n- line\n- evpn_profile\n- lldp\n- logging\n- mdt_subscriptions\n- msdp\n- mpls\n- multicast\n- nat\n- ntp\n- object_groups_fqdn\n- object_groups_network\n- object_groups_service\n- pim\n- ipv6_dhcp_pools\n- ipv6_local_pools\n- ipv6_pim\n- prefix_lists\n- ipv6_prefix_lists\n- qos\n- route_maps\n- routing\n- service_templates\n- service\n- snmp_server\n- spanning_tree\n- stackwise_virtual\n- system\n- templates\n- udld\n- vlan\n- vrfs\n- vtp\n- zone_pair_security\n- zone_security"
                             }
                         },
                         "required": [
