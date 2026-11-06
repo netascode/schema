@@ -501407,6 +501407,34 @@
                                             "title": "Source Interface Traps ID",
                                             "description": "Source Interface Traps ID (String)"
                                         },
+                                        "trap_source_type": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "Loopback",
+                                                        "Vlan",
+                                                        "GigabitEthernet",
+                                                        "TenGigabitEthernet",
+                                                        "FortyGigabitEthernet",
+                                                        "HundredGigabitEthernet",
+                                                        "PortChannel",
+                                                        "PortChannelSubinterface"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "Trap Source Type",
+                                            "description": "Trap Source Type (String, String)"
+                                        },
+                                        "trap_source_id": {
+                                            "type": "string",
+                                            "title": "Trap Source ID",
+                                            "description": "Trap Source ID (String)"
+                                        },
                                         "traps": {
                                             "type": "object",
                                             "additionalProperties": false,
@@ -501851,6 +501879,33 @@
                                                     "title": "BGP Cbgp2",
                                                     "description": "BGP Cbgp2 (Boolean)"
                                                 },
+                                                "bgp_cbgp2_state_changes": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "all",
+                                                                    "backward-trans",
+                                                                    "limited",
+                                                                    "updown-limited"
+                                                                ]
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "BGP Cbgp2 State Changes",
+                                                    "description": "BGP Cbgp2 State Changes (Array, String)"
+                                                },
+                                                "bgp_cbgp2_threshold_prefix": {
+                                                    "type": "boolean",
+                                                    "title": "BGP Cbgp2 Threshold Prefix",
+                                                    "description": "BGP Cbgp2 Threshold Prefix (Boolean)"
+                                                },
                                                 "nhrp_nhs": {
                                                     "type": "boolean",
                                                     "title": "Nhrp Nhs",
@@ -502294,7 +502349,7 @@
                                             },
                                             "required": [],
                                             "title": "Traps",
-                                            "description": "Traps (Object)\n\nElements:\n- snmp_authentication\n- snmp_coldstart\n- snmp_linkdown\n- snmp_linkup\n- snmp_warmstart\n- flowmon\n- entity_perf_throughput_notif\n- call_home_message_send_fail\n- call_home_server_fail\n- tty\n- ospfv3_config_state_change\n- ospfv3_config_errors\n- ospf_config_retransmit\n- ospf_config_lsa\n- ospf_nssa_trans_change\n- ospf_shamlink_interface\n- ospf_shamlink_neighbor\n- ospf_errors_enable\n- ospf_retransmit_enable\n- ospf_lsa_enable\n- eigrp\n- auth_framework_sec_violation\n- rep\n- vtp\n- vlancreate\n- vlandelete\n- port_security\n- license\n- smart_license\n- cpu_threshold\n- memory_bufferpeak\n- stackwise\n- udld_link_fail_rpt\n- udld_status_change\n- fru_ctrl\n- flash_insertion\n- flash_removal\n- flash_lowspace\n- energywise\n- power_ethernet_group\n- power_ethernet_police\n- entity\n- pw_vc\n- envmon\n- cef_resource_failure\n- cef_peer_state_change\n- cef_peer_fib_state_change\n- cef_inconsistency\n- isis\n- ipsla\n- bgp\n- cbgp2\n- entity_diag_boot_up_fail\n- entity_diag_hm_test_recover\n- entity_diag_hm_thresh_reached\n- entity_diag_scheduled_test_fail\n- bfd\n- ike_policy_add\n- ike_policy_delete\n- ike_tunnel_start\n- ike_tunnel_stop\n- ipsec_cryptomap_add\n- ipsec_cryptomap_attach\n- ipsec_cryptomap_delete\n- ipsec_cryptomap_detach\n- ipsec_tunnel_start\n- ipsec_tunnel_stop\n- ipsec_too_many_sas\n- config_copy\n- config\n- config_ctid\n- dhcp\n- event_manager\n- hsrp\n- ip_multicast\n- msdp\n- ospf_config_state_change\n- ospf_config_errors\n- pim_invalid_pim_message\n- pim_neighbor_change\n- pim_rp_mapping_change\n- bridge_newroot\n- bridge_topologychange\n- stpx_inconsistency\n- stpx_root_inconsistency\n- stpx_loop_inconsistency\n- syslog\n- bgp_cbgp2\n- nhrp_nhs\n- nhrp_nhc\n- nhrp_nhp\n- nhrp_quota_exceeded\n- mpls_traffic_eng\n- mpls_vpn\n- mpls_rfc_ldp\n- mpls_ldp\n- fast_reroute_protected\n- local_auth\n- vlan_membership\n- errdisable\n- rf\n- transceiver_all\n- bulkstat_collection\n- bulkstat_transfer\n- mac_notification_change\n- mac_notification_move\n- mac_notification_threshold\n- vrfmib_vrf_up\n- vrfmib_vrf_down\n- vrfmib_vnet_trunk_up\n- vrfmib_vnet_trunk_down\n- aaa_server\n- adslline\n- alarm_type\n- casa\n- cnpd\n- dial\n- dlsw\n- ds1\n- dsp_card_status\n- dsp_oper_state\n- ether_oam\n- ethernet_cfm_alarm\n- ethernet_cfm_cc_config\n- ethernet_cfm_cc_cross_connect\n- ethernet_cfm_cc_loop\n- ethernet_cfm_cc_mep_down\n- ethernet_cfm_cc_mep_up\n- ethernet_cfm_crosscheck_mep_missing\n- ethernet_cfm_crosscheck_mep_unknown\n- ethernet_cfm_crosscheck_service_up\n- ethernet_evc_create\n- ethernet_evc_delete\n- ethernet_evc_status\n- firewall_serverstatus\n- frame_relay_config_bundle_mismatch\n- frame_relay_config_only\n- frame_relay_config_subif_configs\n- frame_relay_multilink_bundle_mismatch\n- frame_relay_subif_count\n- frame_relay_subif_interval\n- ip_local_pool\n- isdn_call_information\n- isdn_chan_not_avail\n- isdn_ietf\n- isdn_layer2\n- l2tun_pseudowire_status\n- l2tun_session\n- l2tun_tunnel\n- lisp\n- mpls\n- mpls_rfc\n- mvpn\n- pfr\n- pimstdmib_interface_election\n- pimstdmib_invalid_join_prune\n- pimstdmib_invalid_register\n- pimstdmib_neighbor_loss\n- pimstdmib_rp_mapping_change\n- pki\n- pppoe\n- resource_policy\n- rsvp\n- sonet\n- srp\n- vdsl2line\n- voice\n- vrrp\n- entity_qfp_mem_res_thresh\n- entity_qfp_throughput_notif\n- entity_sensor\n- entity_state"
+                                            "description": "Traps (Object)\n\nElements:\n- snmp_authentication\n- snmp_coldstart\n- snmp_linkdown\n- snmp_linkup\n- snmp_warmstart\n- flowmon\n- entity_perf_throughput_notif\n- call_home_message_send_fail\n- call_home_server_fail\n- tty\n- ospfv3_config_state_change\n- ospfv3_config_errors\n- ospf_config_retransmit\n- ospf_config_lsa\n- ospf_nssa_trans_change\n- ospf_shamlink_interface\n- ospf_shamlink_neighbor\n- ospf_errors_enable\n- ospf_retransmit_enable\n- ospf_lsa_enable\n- eigrp\n- auth_framework_sec_violation\n- rep\n- vtp\n- vlancreate\n- vlandelete\n- port_security\n- license\n- smart_license\n- cpu_threshold\n- memory_bufferpeak\n- stackwise\n- udld_link_fail_rpt\n- udld_status_change\n- fru_ctrl\n- flash_insertion\n- flash_removal\n- flash_lowspace\n- energywise\n- power_ethernet_group\n- power_ethernet_police\n- entity\n- pw_vc\n- envmon\n- cef_resource_failure\n- cef_peer_state_change\n- cef_peer_fib_state_change\n- cef_inconsistency\n- isis\n- ipsla\n- bgp\n- cbgp2\n- entity_diag_boot_up_fail\n- entity_diag_hm_test_recover\n- entity_diag_hm_thresh_reached\n- entity_diag_scheduled_test_fail\n- bfd\n- ike_policy_add\n- ike_policy_delete\n- ike_tunnel_start\n- ike_tunnel_stop\n- ipsec_cryptomap_add\n- ipsec_cryptomap_attach\n- ipsec_cryptomap_delete\n- ipsec_cryptomap_detach\n- ipsec_tunnel_start\n- ipsec_tunnel_stop\n- ipsec_too_many_sas\n- config_copy\n- config\n- config_ctid\n- dhcp\n- event_manager\n- hsrp\n- ip_multicast\n- msdp\n- ospf_config_state_change\n- ospf_config_errors\n- pim_invalid_pim_message\n- pim_neighbor_change\n- pim_rp_mapping_change\n- bridge_newroot\n- bridge_topologychange\n- stpx_inconsistency\n- stpx_root_inconsistency\n- stpx_loop_inconsistency\n- syslog\n- bgp_cbgp2\n- bgp_cbgp2_state_changes\n- bgp_cbgp2_threshold_prefix\n- nhrp_nhs\n- nhrp_nhc\n- nhrp_nhp\n- nhrp_quota_exceeded\n- mpls_traffic_eng\n- mpls_vpn\n- mpls_rfc_ldp\n- mpls_ldp\n- fast_reroute_protected\n- local_auth\n- vlan_membership\n- errdisable\n- rf\n- transceiver_all\n- bulkstat_collection\n- bulkstat_transfer\n- mac_notification_change\n- mac_notification_move\n- mac_notification_threshold\n- vrfmib_vrf_up\n- vrfmib_vrf_down\n- vrfmib_vnet_trunk_up\n- vrfmib_vnet_trunk_down\n- aaa_server\n- adslline\n- alarm_type\n- casa\n- cnpd\n- dial\n- dlsw\n- ds1\n- dsp_card_status\n- dsp_oper_state\n- ether_oam\n- ethernet_cfm_alarm\n- ethernet_cfm_cc_config\n- ethernet_cfm_cc_cross_connect\n- ethernet_cfm_cc_loop\n- ethernet_cfm_cc_mep_down\n- ethernet_cfm_cc_mep_up\n- ethernet_cfm_crosscheck_mep_missing\n- ethernet_cfm_crosscheck_mep_unknown\n- ethernet_cfm_crosscheck_service_up\n- ethernet_evc_create\n- ethernet_evc_delete\n- ethernet_evc_status\n- firewall_serverstatus\n- frame_relay_config_bundle_mismatch\n- frame_relay_config_only\n- frame_relay_config_subif_configs\n- frame_relay_multilink_bundle_mismatch\n- frame_relay_subif_count\n- frame_relay_subif_interval\n- ip_local_pool\n- isdn_call_information\n- isdn_chan_not_avail\n- isdn_ietf\n- isdn_layer2\n- l2tun_pseudowire_status\n- l2tun_session\n- l2tun_tunnel\n- lisp\n- mpls\n- mpls_rfc\n- mvpn\n- pfr\n- pimstdmib_interface_election\n- pimstdmib_invalid_join_prune\n- pimstdmib_invalid_register\n- pimstdmib_neighbor_loss\n- pimstdmib_rp_mapping_change\n- pki\n- pppoe\n- resource_policy\n- rsvp\n- sonet\n- srp\n- vdsl2line\n- voice\n- vrrp\n- entity_qfp_mem_res_thresh\n- entity_qfp_throughput_notif\n- entity_sensor\n- entity_state"
                                         },
                                         "snmp_communities": {
                                             "type": "array",
@@ -502408,7 +502463,7 @@
                                     },
                                     "required": [],
                                     "title": "SNMP Server",
-                                    "description": "SNMP Server (Object)\n\nElements:\n- groups\n- users\n- chassis_id\n- contact\n- ifindex_persist\n- location\n- packet_size\n- queue_length\n- enable_logging_getop\n- enable_logging_setop\n- enable_informs\n- enable_traps\n- hosts\n- system_shutdown\n- source_interface_informs_type\n- source_interface_informs_id\n- source_interface_traps_type\n- source_interface_traps_id\n- traps\n- snmp_communities\n- contexts\n- views"
+                                    "description": "SNMP Server (Object)\n\nElements:\n- groups\n- users\n- chassis_id\n- contact\n- ifindex_persist\n- location\n- packet_size\n- queue_length\n- enable_logging_getop\n- enable_logging_setop\n- enable_informs\n- enable_traps\n- hosts\n- system_shutdown\n- source_interface_informs_type\n- source_interface_informs_id\n- source_interface_traps_type\n- source_interface_traps_id\n- trap_source_type\n- trap_source_id\n- traps\n- snmp_communities\n- contexts\n- views"
                                 },
                                 "spanning_tree": {
                                     "type": "object",
@@ -540473,6 +540528,34 @@
                                                 "title": "Source Interface Traps ID",
                                                 "description": "Source Interface Traps ID (String)"
                                             },
+                                            "trap_source_type": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "Loopback",
+                                                            "Vlan",
+                                                            "GigabitEthernet",
+                                                            "TenGigabitEthernet",
+                                                            "FortyGigabitEthernet",
+                                                            "HundredGigabitEthernet",
+                                                            "PortChannel",
+                                                            "PortChannelSubinterface"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Trap Source Type",
+                                                "description": "Trap Source Type (String, String)"
+                                            },
+                                            "trap_source_id": {
+                                                "type": "string",
+                                                "title": "Trap Source ID",
+                                                "description": "Trap Source ID (String)"
+                                            },
                                             "traps": {
                                                 "type": "object",
                                                 "additionalProperties": false,
@@ -540917,6 +541000,33 @@
                                                         "title": "BGP Cbgp2",
                                                         "description": "BGP Cbgp2 (Boolean)"
                                                     },
+                                                    "bgp_cbgp2_state_changes": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "all",
+                                                                        "backward-trans",
+                                                                        "limited",
+                                                                        "updown-limited"
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "BGP Cbgp2 State Changes",
+                                                        "description": "BGP Cbgp2 State Changes (Array, String)"
+                                                    },
+                                                    "bgp_cbgp2_threshold_prefix": {
+                                                        "type": "boolean",
+                                                        "title": "BGP Cbgp2 Threshold Prefix",
+                                                        "description": "BGP Cbgp2 Threshold Prefix (Boolean)"
+                                                    },
                                                     "nhrp_nhs": {
                                                         "type": "boolean",
                                                         "title": "Nhrp Nhs",
@@ -541360,7 +541470,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Traps",
-                                                "description": "Traps (Object)\n\nElements:\n- snmp_authentication\n- snmp_coldstart\n- snmp_linkdown\n- snmp_linkup\n- snmp_warmstart\n- flowmon\n- entity_perf_throughput_notif\n- call_home_message_send_fail\n- call_home_server_fail\n- tty\n- ospfv3_config_state_change\n- ospfv3_config_errors\n- ospf_config_retransmit\n- ospf_config_lsa\n- ospf_nssa_trans_change\n- ospf_shamlink_interface\n- ospf_shamlink_neighbor\n- ospf_errors_enable\n- ospf_retransmit_enable\n- ospf_lsa_enable\n- eigrp\n- auth_framework_sec_violation\n- rep\n- vtp\n- vlancreate\n- vlandelete\n- port_security\n- license\n- smart_license\n- cpu_threshold\n- memory_bufferpeak\n- stackwise\n- udld_link_fail_rpt\n- udld_status_change\n- fru_ctrl\n- flash_insertion\n- flash_removal\n- flash_lowspace\n- energywise\n- power_ethernet_group\n- power_ethernet_police\n- entity\n- pw_vc\n- envmon\n- cef_resource_failure\n- cef_peer_state_change\n- cef_peer_fib_state_change\n- cef_inconsistency\n- isis\n- ipsla\n- bgp\n- cbgp2\n- entity_diag_boot_up_fail\n- entity_diag_hm_test_recover\n- entity_diag_hm_thresh_reached\n- entity_diag_scheduled_test_fail\n- bfd\n- ike_policy_add\n- ike_policy_delete\n- ike_tunnel_start\n- ike_tunnel_stop\n- ipsec_cryptomap_add\n- ipsec_cryptomap_attach\n- ipsec_cryptomap_delete\n- ipsec_cryptomap_detach\n- ipsec_tunnel_start\n- ipsec_tunnel_stop\n- ipsec_too_many_sas\n- config_copy\n- config\n- config_ctid\n- dhcp\n- event_manager\n- hsrp\n- ip_multicast\n- msdp\n- ospf_config_state_change\n- ospf_config_errors\n- pim_invalid_pim_message\n- pim_neighbor_change\n- pim_rp_mapping_change\n- bridge_newroot\n- bridge_topologychange\n- stpx_inconsistency\n- stpx_root_inconsistency\n- stpx_loop_inconsistency\n- syslog\n- bgp_cbgp2\n- nhrp_nhs\n- nhrp_nhc\n- nhrp_nhp\n- nhrp_quota_exceeded\n- mpls_traffic_eng\n- mpls_vpn\n- mpls_rfc_ldp\n- mpls_ldp\n- fast_reroute_protected\n- local_auth\n- vlan_membership\n- errdisable\n- rf\n- transceiver_all\n- bulkstat_collection\n- bulkstat_transfer\n- mac_notification_change\n- mac_notification_move\n- mac_notification_threshold\n- vrfmib_vrf_up\n- vrfmib_vrf_down\n- vrfmib_vnet_trunk_up\n- vrfmib_vnet_trunk_down\n- aaa_server\n- adslline\n- alarm_type\n- casa\n- cnpd\n- dial\n- dlsw\n- ds1\n- dsp_card_status\n- dsp_oper_state\n- ether_oam\n- ethernet_cfm_alarm\n- ethernet_cfm_cc_config\n- ethernet_cfm_cc_cross_connect\n- ethernet_cfm_cc_loop\n- ethernet_cfm_cc_mep_down\n- ethernet_cfm_cc_mep_up\n- ethernet_cfm_crosscheck_mep_missing\n- ethernet_cfm_crosscheck_mep_unknown\n- ethernet_cfm_crosscheck_service_up\n- ethernet_evc_create\n- ethernet_evc_delete\n- ethernet_evc_status\n- firewall_serverstatus\n- frame_relay_config_bundle_mismatch\n- frame_relay_config_only\n- frame_relay_config_subif_configs\n- frame_relay_multilink_bundle_mismatch\n- frame_relay_subif_count\n- frame_relay_subif_interval\n- ip_local_pool\n- isdn_call_information\n- isdn_chan_not_avail\n- isdn_ietf\n- isdn_layer2\n- l2tun_pseudowire_status\n- l2tun_session\n- l2tun_tunnel\n- lisp\n- mpls\n- mpls_rfc\n- mvpn\n- pfr\n- pimstdmib_interface_election\n- pimstdmib_invalid_join_prune\n- pimstdmib_invalid_register\n- pimstdmib_neighbor_loss\n- pimstdmib_rp_mapping_change\n- pki\n- pppoe\n- resource_policy\n- rsvp\n- sonet\n- srp\n- vdsl2line\n- voice\n- vrrp\n- entity_qfp_mem_res_thresh\n- entity_qfp_throughput_notif\n- entity_sensor\n- entity_state"
+                                                "description": "Traps (Object)\n\nElements:\n- snmp_authentication\n- snmp_coldstart\n- snmp_linkdown\n- snmp_linkup\n- snmp_warmstart\n- flowmon\n- entity_perf_throughput_notif\n- call_home_message_send_fail\n- call_home_server_fail\n- tty\n- ospfv3_config_state_change\n- ospfv3_config_errors\n- ospf_config_retransmit\n- ospf_config_lsa\n- ospf_nssa_trans_change\n- ospf_shamlink_interface\n- ospf_shamlink_neighbor\n- ospf_errors_enable\n- ospf_retransmit_enable\n- ospf_lsa_enable\n- eigrp\n- auth_framework_sec_violation\n- rep\n- vtp\n- vlancreate\n- vlandelete\n- port_security\n- license\n- smart_license\n- cpu_threshold\n- memory_bufferpeak\n- stackwise\n- udld_link_fail_rpt\n- udld_status_change\n- fru_ctrl\n- flash_insertion\n- flash_removal\n- flash_lowspace\n- energywise\n- power_ethernet_group\n- power_ethernet_police\n- entity\n- pw_vc\n- envmon\n- cef_resource_failure\n- cef_peer_state_change\n- cef_peer_fib_state_change\n- cef_inconsistency\n- isis\n- ipsla\n- bgp\n- cbgp2\n- entity_diag_boot_up_fail\n- entity_diag_hm_test_recover\n- entity_diag_hm_thresh_reached\n- entity_diag_scheduled_test_fail\n- bfd\n- ike_policy_add\n- ike_policy_delete\n- ike_tunnel_start\n- ike_tunnel_stop\n- ipsec_cryptomap_add\n- ipsec_cryptomap_attach\n- ipsec_cryptomap_delete\n- ipsec_cryptomap_detach\n- ipsec_tunnel_start\n- ipsec_tunnel_stop\n- ipsec_too_many_sas\n- config_copy\n- config\n- config_ctid\n- dhcp\n- event_manager\n- hsrp\n- ip_multicast\n- msdp\n- ospf_config_state_change\n- ospf_config_errors\n- pim_invalid_pim_message\n- pim_neighbor_change\n- pim_rp_mapping_change\n- bridge_newroot\n- bridge_topologychange\n- stpx_inconsistency\n- stpx_root_inconsistency\n- stpx_loop_inconsistency\n- syslog\n- bgp_cbgp2\n- bgp_cbgp2_state_changes\n- bgp_cbgp2_threshold_prefix\n- nhrp_nhs\n- nhrp_nhc\n- nhrp_nhp\n- nhrp_quota_exceeded\n- mpls_traffic_eng\n- mpls_vpn\n- mpls_rfc_ldp\n- mpls_ldp\n- fast_reroute_protected\n- local_auth\n- vlan_membership\n- errdisable\n- rf\n- transceiver_all\n- bulkstat_collection\n- bulkstat_transfer\n- mac_notification_change\n- mac_notification_move\n- mac_notification_threshold\n- vrfmib_vrf_up\n- vrfmib_vrf_down\n- vrfmib_vnet_trunk_up\n- vrfmib_vnet_trunk_down\n- aaa_server\n- adslline\n- alarm_type\n- casa\n- cnpd\n- dial\n- dlsw\n- ds1\n- dsp_card_status\n- dsp_oper_state\n- ether_oam\n- ethernet_cfm_alarm\n- ethernet_cfm_cc_config\n- ethernet_cfm_cc_cross_connect\n- ethernet_cfm_cc_loop\n- ethernet_cfm_cc_mep_down\n- ethernet_cfm_cc_mep_up\n- ethernet_cfm_crosscheck_mep_missing\n- ethernet_cfm_crosscheck_mep_unknown\n- ethernet_cfm_crosscheck_service_up\n- ethernet_evc_create\n- ethernet_evc_delete\n- ethernet_evc_status\n- firewall_serverstatus\n- frame_relay_config_bundle_mismatch\n- frame_relay_config_only\n- frame_relay_config_subif_configs\n- frame_relay_multilink_bundle_mismatch\n- frame_relay_subif_count\n- frame_relay_subif_interval\n- ip_local_pool\n- isdn_call_information\n- isdn_chan_not_avail\n- isdn_ietf\n- isdn_layer2\n- l2tun_pseudowire_status\n- l2tun_session\n- l2tun_tunnel\n- lisp\n- mpls\n- mpls_rfc\n- mvpn\n- pfr\n- pimstdmib_interface_election\n- pimstdmib_invalid_join_prune\n- pimstdmib_invalid_register\n- pimstdmib_neighbor_loss\n- pimstdmib_rp_mapping_change\n- pki\n- pppoe\n- resource_policy\n- rsvp\n- sonet\n- srp\n- vdsl2line\n- voice\n- vrrp\n- entity_qfp_mem_res_thresh\n- entity_qfp_throughput_notif\n- entity_sensor\n- entity_state"
                                             },
                                             "snmp_communities": {
                                                 "type": "array",
@@ -541474,7 +541584,7 @@
                                         },
                                         "required": [],
                                         "title": "SNMP Server",
-                                        "description": "SNMP Server (Object)\n\nElements:\n- groups\n- users\n- chassis_id\n- contact\n- ifindex_persist\n- location\n- packet_size\n- queue_length\n- enable_logging_getop\n- enable_logging_setop\n- enable_informs\n- enable_traps\n- hosts\n- system_shutdown\n- source_interface_informs_type\n- source_interface_informs_id\n- source_interface_traps_type\n- source_interface_traps_id\n- traps\n- snmp_communities\n- contexts\n- views"
+                                        "description": "SNMP Server (Object)\n\nElements:\n- groups\n- users\n- chassis_id\n- contact\n- ifindex_persist\n- location\n- packet_size\n- queue_length\n- enable_logging_getop\n- enable_logging_setop\n- enable_informs\n- enable_traps\n- hosts\n- system_shutdown\n- source_interface_informs_type\n- source_interface_informs_id\n- source_interface_traps_type\n- source_interface_traps_id\n- trap_source_type\n- trap_source_id\n- traps\n- snmp_communities\n- contexts\n- views"
                                     },
                                     "spanning_tree": {
                                         "type": "object",
@@ -579565,6 +579675,34 @@
                                                 "title": "Source Interface Traps ID",
                                                 "description": "Source Interface Traps ID (String)"
                                             },
+                                            "trap_source_type": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "Loopback",
+                                                            "Vlan",
+                                                            "GigabitEthernet",
+                                                            "TenGigabitEthernet",
+                                                            "FortyGigabitEthernet",
+                                                            "HundredGigabitEthernet",
+                                                            "PortChannel",
+                                                            "PortChannelSubinterface"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Trap Source Type",
+                                                "description": "Trap Source Type (String, String)"
+                                            },
+                                            "trap_source_id": {
+                                                "type": "string",
+                                                "title": "Trap Source ID",
+                                                "description": "Trap Source ID (String)"
+                                            },
                                             "traps": {
                                                 "type": "object",
                                                 "additionalProperties": false,
@@ -580009,6 +580147,33 @@
                                                         "title": "BGP Cbgp2",
                                                         "description": "BGP Cbgp2 (Boolean)"
                                                     },
+                                                    "bgp_cbgp2_state_changes": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "all",
+                                                                        "backward-trans",
+                                                                        "limited",
+                                                                        "updown-limited"
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "BGP Cbgp2 State Changes",
+                                                        "description": "BGP Cbgp2 State Changes (Array, String)"
+                                                    },
+                                                    "bgp_cbgp2_threshold_prefix": {
+                                                        "type": "boolean",
+                                                        "title": "BGP Cbgp2 Threshold Prefix",
+                                                        "description": "BGP Cbgp2 Threshold Prefix (Boolean)"
+                                                    },
                                                     "nhrp_nhs": {
                                                         "type": "boolean",
                                                         "title": "Nhrp Nhs",
@@ -580452,7 +580617,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Traps",
-                                                "description": "Traps (Object)\n\nElements:\n- snmp_authentication\n- snmp_coldstart\n- snmp_linkdown\n- snmp_linkup\n- snmp_warmstart\n- flowmon\n- entity_perf_throughput_notif\n- call_home_message_send_fail\n- call_home_server_fail\n- tty\n- ospfv3_config_state_change\n- ospfv3_config_errors\n- ospf_config_retransmit\n- ospf_config_lsa\n- ospf_nssa_trans_change\n- ospf_shamlink_interface\n- ospf_shamlink_neighbor\n- ospf_errors_enable\n- ospf_retransmit_enable\n- ospf_lsa_enable\n- eigrp\n- auth_framework_sec_violation\n- rep\n- vtp\n- vlancreate\n- vlandelete\n- port_security\n- license\n- smart_license\n- cpu_threshold\n- memory_bufferpeak\n- stackwise\n- udld_link_fail_rpt\n- udld_status_change\n- fru_ctrl\n- flash_insertion\n- flash_removal\n- flash_lowspace\n- energywise\n- power_ethernet_group\n- power_ethernet_police\n- entity\n- pw_vc\n- envmon\n- cef_resource_failure\n- cef_peer_state_change\n- cef_peer_fib_state_change\n- cef_inconsistency\n- isis\n- ipsla\n- bgp\n- cbgp2\n- entity_diag_boot_up_fail\n- entity_diag_hm_test_recover\n- entity_diag_hm_thresh_reached\n- entity_diag_scheduled_test_fail\n- bfd\n- ike_policy_add\n- ike_policy_delete\n- ike_tunnel_start\n- ike_tunnel_stop\n- ipsec_cryptomap_add\n- ipsec_cryptomap_attach\n- ipsec_cryptomap_delete\n- ipsec_cryptomap_detach\n- ipsec_tunnel_start\n- ipsec_tunnel_stop\n- ipsec_too_many_sas\n- config_copy\n- config\n- config_ctid\n- dhcp\n- event_manager\n- hsrp\n- ip_multicast\n- msdp\n- ospf_config_state_change\n- ospf_config_errors\n- pim_invalid_pim_message\n- pim_neighbor_change\n- pim_rp_mapping_change\n- bridge_newroot\n- bridge_topologychange\n- stpx_inconsistency\n- stpx_root_inconsistency\n- stpx_loop_inconsistency\n- syslog\n- bgp_cbgp2\n- nhrp_nhs\n- nhrp_nhc\n- nhrp_nhp\n- nhrp_quota_exceeded\n- mpls_traffic_eng\n- mpls_vpn\n- mpls_rfc_ldp\n- mpls_ldp\n- fast_reroute_protected\n- local_auth\n- vlan_membership\n- errdisable\n- rf\n- transceiver_all\n- bulkstat_collection\n- bulkstat_transfer\n- mac_notification_change\n- mac_notification_move\n- mac_notification_threshold\n- vrfmib_vrf_up\n- vrfmib_vrf_down\n- vrfmib_vnet_trunk_up\n- vrfmib_vnet_trunk_down\n- aaa_server\n- adslline\n- alarm_type\n- casa\n- cnpd\n- dial\n- dlsw\n- ds1\n- dsp_card_status\n- dsp_oper_state\n- ether_oam\n- ethernet_cfm_alarm\n- ethernet_cfm_cc_config\n- ethernet_cfm_cc_cross_connect\n- ethernet_cfm_cc_loop\n- ethernet_cfm_cc_mep_down\n- ethernet_cfm_cc_mep_up\n- ethernet_cfm_crosscheck_mep_missing\n- ethernet_cfm_crosscheck_mep_unknown\n- ethernet_cfm_crosscheck_service_up\n- ethernet_evc_create\n- ethernet_evc_delete\n- ethernet_evc_status\n- firewall_serverstatus\n- frame_relay_config_bundle_mismatch\n- frame_relay_config_only\n- frame_relay_config_subif_configs\n- frame_relay_multilink_bundle_mismatch\n- frame_relay_subif_count\n- frame_relay_subif_interval\n- ip_local_pool\n- isdn_call_information\n- isdn_chan_not_avail\n- isdn_ietf\n- isdn_layer2\n- l2tun_pseudowire_status\n- l2tun_session\n- l2tun_tunnel\n- lisp\n- mpls\n- mpls_rfc\n- mvpn\n- pfr\n- pimstdmib_interface_election\n- pimstdmib_invalid_join_prune\n- pimstdmib_invalid_register\n- pimstdmib_neighbor_loss\n- pimstdmib_rp_mapping_change\n- pki\n- pppoe\n- resource_policy\n- rsvp\n- sonet\n- srp\n- vdsl2line\n- voice\n- vrrp\n- entity_qfp_mem_res_thresh\n- entity_qfp_throughput_notif\n- entity_sensor\n- entity_state"
+                                                "description": "Traps (Object)\n\nElements:\n- snmp_authentication\n- snmp_coldstart\n- snmp_linkdown\n- snmp_linkup\n- snmp_warmstart\n- flowmon\n- entity_perf_throughput_notif\n- call_home_message_send_fail\n- call_home_server_fail\n- tty\n- ospfv3_config_state_change\n- ospfv3_config_errors\n- ospf_config_retransmit\n- ospf_config_lsa\n- ospf_nssa_trans_change\n- ospf_shamlink_interface\n- ospf_shamlink_neighbor\n- ospf_errors_enable\n- ospf_retransmit_enable\n- ospf_lsa_enable\n- eigrp\n- auth_framework_sec_violation\n- rep\n- vtp\n- vlancreate\n- vlandelete\n- port_security\n- license\n- smart_license\n- cpu_threshold\n- memory_bufferpeak\n- stackwise\n- udld_link_fail_rpt\n- udld_status_change\n- fru_ctrl\n- flash_insertion\n- flash_removal\n- flash_lowspace\n- energywise\n- power_ethernet_group\n- power_ethernet_police\n- entity\n- pw_vc\n- envmon\n- cef_resource_failure\n- cef_peer_state_change\n- cef_peer_fib_state_change\n- cef_inconsistency\n- isis\n- ipsla\n- bgp\n- cbgp2\n- entity_diag_boot_up_fail\n- entity_diag_hm_test_recover\n- entity_diag_hm_thresh_reached\n- entity_diag_scheduled_test_fail\n- bfd\n- ike_policy_add\n- ike_policy_delete\n- ike_tunnel_start\n- ike_tunnel_stop\n- ipsec_cryptomap_add\n- ipsec_cryptomap_attach\n- ipsec_cryptomap_delete\n- ipsec_cryptomap_detach\n- ipsec_tunnel_start\n- ipsec_tunnel_stop\n- ipsec_too_many_sas\n- config_copy\n- config\n- config_ctid\n- dhcp\n- event_manager\n- hsrp\n- ip_multicast\n- msdp\n- ospf_config_state_change\n- ospf_config_errors\n- pim_invalid_pim_message\n- pim_neighbor_change\n- pim_rp_mapping_change\n- bridge_newroot\n- bridge_topologychange\n- stpx_inconsistency\n- stpx_root_inconsistency\n- stpx_loop_inconsistency\n- syslog\n- bgp_cbgp2\n- bgp_cbgp2_state_changes\n- bgp_cbgp2_threshold_prefix\n- nhrp_nhs\n- nhrp_nhc\n- nhrp_nhp\n- nhrp_quota_exceeded\n- mpls_traffic_eng\n- mpls_vpn\n- mpls_rfc_ldp\n- mpls_ldp\n- fast_reroute_protected\n- local_auth\n- vlan_membership\n- errdisable\n- rf\n- transceiver_all\n- bulkstat_collection\n- bulkstat_transfer\n- mac_notification_change\n- mac_notification_move\n- mac_notification_threshold\n- vrfmib_vrf_up\n- vrfmib_vrf_down\n- vrfmib_vnet_trunk_up\n- vrfmib_vnet_trunk_down\n- aaa_server\n- adslline\n- alarm_type\n- casa\n- cnpd\n- dial\n- dlsw\n- ds1\n- dsp_card_status\n- dsp_oper_state\n- ether_oam\n- ethernet_cfm_alarm\n- ethernet_cfm_cc_config\n- ethernet_cfm_cc_cross_connect\n- ethernet_cfm_cc_loop\n- ethernet_cfm_cc_mep_down\n- ethernet_cfm_cc_mep_up\n- ethernet_cfm_crosscheck_mep_missing\n- ethernet_cfm_crosscheck_mep_unknown\n- ethernet_cfm_crosscheck_service_up\n- ethernet_evc_create\n- ethernet_evc_delete\n- ethernet_evc_status\n- firewall_serverstatus\n- frame_relay_config_bundle_mismatch\n- frame_relay_config_only\n- frame_relay_config_subif_configs\n- frame_relay_multilink_bundle_mismatch\n- frame_relay_subif_count\n- frame_relay_subif_interval\n- ip_local_pool\n- isdn_call_information\n- isdn_chan_not_avail\n- isdn_ietf\n- isdn_layer2\n- l2tun_pseudowire_status\n- l2tun_session\n- l2tun_tunnel\n- lisp\n- mpls\n- mpls_rfc\n- mvpn\n- pfr\n- pimstdmib_interface_election\n- pimstdmib_invalid_join_prune\n- pimstdmib_invalid_register\n- pimstdmib_neighbor_loss\n- pimstdmib_rp_mapping_change\n- pki\n- pppoe\n- resource_policy\n- rsvp\n- sonet\n- srp\n- vdsl2line\n- voice\n- vrrp\n- entity_qfp_mem_res_thresh\n- entity_qfp_throughput_notif\n- entity_sensor\n- entity_state"
                                             },
                                             "snmp_communities": {
                                                 "type": "array",
@@ -580566,7 +580731,7 @@
                                         },
                                         "required": [],
                                         "title": "SNMP Server",
-                                        "description": "SNMP Server (Object)\n\nElements:\n- groups\n- users\n- chassis_id\n- contact\n- ifindex_persist\n- location\n- packet_size\n- queue_length\n- enable_logging_getop\n- enable_logging_setop\n- enable_informs\n- enable_traps\n- hosts\n- system_shutdown\n- source_interface_informs_type\n- source_interface_informs_id\n- source_interface_traps_type\n- source_interface_traps_id\n- traps\n- snmp_communities\n- contexts\n- views"
+                                        "description": "SNMP Server (Object)\n\nElements:\n- groups\n- users\n- chassis_id\n- contact\n- ifindex_persist\n- location\n- packet_size\n- queue_length\n- enable_logging_getop\n- enable_logging_setop\n- enable_informs\n- enable_traps\n- hosts\n- system_shutdown\n- source_interface_informs_type\n- source_interface_informs_id\n- source_interface_traps_type\n- source_interface_traps_id\n- trap_source_type\n- trap_source_id\n- traps\n- snmp_communities\n- contexts\n- views"
                                     },
                                     "spanning_tree": {
                                         "type": "object",
@@ -620863,6 +621028,34 @@
                                                 "title": "Source Interface Traps ID",
                                                 "description": "Source Interface Traps ID (String)"
                                             },
+                                            "trap_source_type": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "Loopback",
+                                                            "Vlan",
+                                                            "GigabitEthernet",
+                                                            "TenGigabitEthernet",
+                                                            "FortyGigabitEthernet",
+                                                            "HundredGigabitEthernet",
+                                                            "PortChannel",
+                                                            "PortChannelSubinterface"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Trap Source Type",
+                                                "description": "Trap Source Type (String, String)"
+                                            },
+                                            "trap_source_id": {
+                                                "type": "string",
+                                                "title": "Trap Source ID",
+                                                "description": "Trap Source ID (String)"
+                                            },
                                             "traps": {
                                                 "type": "object",
                                                 "additionalProperties": false,
@@ -621307,6 +621500,33 @@
                                                         "title": "BGP Cbgp2",
                                                         "description": "BGP Cbgp2 (Boolean)"
                                                     },
+                                                    "bgp_cbgp2_state_changes": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "all",
+                                                                        "backward-trans",
+                                                                        "limited",
+                                                                        "updown-limited"
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "BGP Cbgp2 State Changes",
+                                                        "description": "BGP Cbgp2 State Changes (Array, String)"
+                                                    },
+                                                    "bgp_cbgp2_threshold_prefix": {
+                                                        "type": "boolean",
+                                                        "title": "BGP Cbgp2 Threshold Prefix",
+                                                        "description": "BGP Cbgp2 Threshold Prefix (Boolean)"
+                                                    },
                                                     "nhrp_nhs": {
                                                         "type": "boolean",
                                                         "title": "Nhrp Nhs",
@@ -621750,7 +621970,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Traps",
-                                                "description": "Traps (Object)\n\nElements:\n- snmp_authentication\n- snmp_coldstart\n- snmp_linkdown\n- snmp_linkup\n- snmp_warmstart\n- flowmon\n- entity_perf_throughput_notif\n- call_home_message_send_fail\n- call_home_server_fail\n- tty\n- ospfv3_config_state_change\n- ospfv3_config_errors\n- ospf_config_retransmit\n- ospf_config_lsa\n- ospf_nssa_trans_change\n- ospf_shamlink_interface\n- ospf_shamlink_neighbor\n- ospf_errors_enable\n- ospf_retransmit_enable\n- ospf_lsa_enable\n- eigrp\n- auth_framework_sec_violation\n- rep\n- vtp\n- vlancreate\n- vlandelete\n- port_security\n- license\n- smart_license\n- cpu_threshold\n- memory_bufferpeak\n- stackwise\n- udld_link_fail_rpt\n- udld_status_change\n- fru_ctrl\n- flash_insertion\n- flash_removal\n- flash_lowspace\n- energywise\n- power_ethernet_group\n- power_ethernet_police\n- entity\n- pw_vc\n- envmon\n- cef_resource_failure\n- cef_peer_state_change\n- cef_peer_fib_state_change\n- cef_inconsistency\n- isis\n- ipsla\n- bgp\n- cbgp2\n- entity_diag_boot_up_fail\n- entity_diag_hm_test_recover\n- entity_diag_hm_thresh_reached\n- entity_diag_scheduled_test_fail\n- bfd\n- ike_policy_add\n- ike_policy_delete\n- ike_tunnel_start\n- ike_tunnel_stop\n- ipsec_cryptomap_add\n- ipsec_cryptomap_attach\n- ipsec_cryptomap_delete\n- ipsec_cryptomap_detach\n- ipsec_tunnel_start\n- ipsec_tunnel_stop\n- ipsec_too_many_sas\n- config_copy\n- config\n- config_ctid\n- dhcp\n- event_manager\n- hsrp\n- ip_multicast\n- msdp\n- ospf_config_state_change\n- ospf_config_errors\n- pim_invalid_pim_message\n- pim_neighbor_change\n- pim_rp_mapping_change\n- bridge_newroot\n- bridge_topologychange\n- stpx_inconsistency\n- stpx_root_inconsistency\n- stpx_loop_inconsistency\n- syslog\n- bgp_cbgp2\n- nhrp_nhs\n- nhrp_nhc\n- nhrp_nhp\n- nhrp_quota_exceeded\n- mpls_traffic_eng\n- mpls_vpn\n- mpls_rfc_ldp\n- mpls_ldp\n- fast_reroute_protected\n- local_auth\n- vlan_membership\n- errdisable\n- rf\n- transceiver_all\n- bulkstat_collection\n- bulkstat_transfer\n- mac_notification_change\n- mac_notification_move\n- mac_notification_threshold\n- vrfmib_vrf_up\n- vrfmib_vrf_down\n- vrfmib_vnet_trunk_up\n- vrfmib_vnet_trunk_down\n- aaa_server\n- adslline\n- alarm_type\n- casa\n- cnpd\n- dial\n- dlsw\n- ds1\n- dsp_card_status\n- dsp_oper_state\n- ether_oam\n- ethernet_cfm_alarm\n- ethernet_cfm_cc_config\n- ethernet_cfm_cc_cross_connect\n- ethernet_cfm_cc_loop\n- ethernet_cfm_cc_mep_down\n- ethernet_cfm_cc_mep_up\n- ethernet_cfm_crosscheck_mep_missing\n- ethernet_cfm_crosscheck_mep_unknown\n- ethernet_cfm_crosscheck_service_up\n- ethernet_evc_create\n- ethernet_evc_delete\n- ethernet_evc_status\n- firewall_serverstatus\n- frame_relay_config_bundle_mismatch\n- frame_relay_config_only\n- frame_relay_config_subif_configs\n- frame_relay_multilink_bundle_mismatch\n- frame_relay_subif_count\n- frame_relay_subif_interval\n- ip_local_pool\n- isdn_call_information\n- isdn_chan_not_avail\n- isdn_ietf\n- isdn_layer2\n- l2tun_pseudowire_status\n- l2tun_session\n- l2tun_tunnel\n- lisp\n- mpls\n- mpls_rfc\n- mvpn\n- pfr\n- pimstdmib_interface_election\n- pimstdmib_invalid_join_prune\n- pimstdmib_invalid_register\n- pimstdmib_neighbor_loss\n- pimstdmib_rp_mapping_change\n- pki\n- pppoe\n- resource_policy\n- rsvp\n- sonet\n- srp\n- vdsl2line\n- voice\n- vrrp\n- entity_qfp_mem_res_thresh\n- entity_qfp_throughput_notif\n- entity_sensor\n- entity_state"
+                                                "description": "Traps (Object)\n\nElements:\n- snmp_authentication\n- snmp_coldstart\n- snmp_linkdown\n- snmp_linkup\n- snmp_warmstart\n- flowmon\n- entity_perf_throughput_notif\n- call_home_message_send_fail\n- call_home_server_fail\n- tty\n- ospfv3_config_state_change\n- ospfv3_config_errors\n- ospf_config_retransmit\n- ospf_config_lsa\n- ospf_nssa_trans_change\n- ospf_shamlink_interface\n- ospf_shamlink_neighbor\n- ospf_errors_enable\n- ospf_retransmit_enable\n- ospf_lsa_enable\n- eigrp\n- auth_framework_sec_violation\n- rep\n- vtp\n- vlancreate\n- vlandelete\n- port_security\n- license\n- smart_license\n- cpu_threshold\n- memory_bufferpeak\n- stackwise\n- udld_link_fail_rpt\n- udld_status_change\n- fru_ctrl\n- flash_insertion\n- flash_removal\n- flash_lowspace\n- energywise\n- power_ethernet_group\n- power_ethernet_police\n- entity\n- pw_vc\n- envmon\n- cef_resource_failure\n- cef_peer_state_change\n- cef_peer_fib_state_change\n- cef_inconsistency\n- isis\n- ipsla\n- bgp\n- cbgp2\n- entity_diag_boot_up_fail\n- entity_diag_hm_test_recover\n- entity_diag_hm_thresh_reached\n- entity_diag_scheduled_test_fail\n- bfd\n- ike_policy_add\n- ike_policy_delete\n- ike_tunnel_start\n- ike_tunnel_stop\n- ipsec_cryptomap_add\n- ipsec_cryptomap_attach\n- ipsec_cryptomap_delete\n- ipsec_cryptomap_detach\n- ipsec_tunnel_start\n- ipsec_tunnel_stop\n- ipsec_too_many_sas\n- config_copy\n- config\n- config_ctid\n- dhcp\n- event_manager\n- hsrp\n- ip_multicast\n- msdp\n- ospf_config_state_change\n- ospf_config_errors\n- pim_invalid_pim_message\n- pim_neighbor_change\n- pim_rp_mapping_change\n- bridge_newroot\n- bridge_topologychange\n- stpx_inconsistency\n- stpx_root_inconsistency\n- stpx_loop_inconsistency\n- syslog\n- bgp_cbgp2\n- bgp_cbgp2_state_changes\n- bgp_cbgp2_threshold_prefix\n- nhrp_nhs\n- nhrp_nhc\n- nhrp_nhp\n- nhrp_quota_exceeded\n- mpls_traffic_eng\n- mpls_vpn\n- mpls_rfc_ldp\n- mpls_ldp\n- fast_reroute_protected\n- local_auth\n- vlan_membership\n- errdisable\n- rf\n- transceiver_all\n- bulkstat_collection\n- bulkstat_transfer\n- mac_notification_change\n- mac_notification_move\n- mac_notification_threshold\n- vrfmib_vrf_up\n- vrfmib_vrf_down\n- vrfmib_vnet_trunk_up\n- vrfmib_vnet_trunk_down\n- aaa_server\n- adslline\n- alarm_type\n- casa\n- cnpd\n- dial\n- dlsw\n- ds1\n- dsp_card_status\n- dsp_oper_state\n- ether_oam\n- ethernet_cfm_alarm\n- ethernet_cfm_cc_config\n- ethernet_cfm_cc_cross_connect\n- ethernet_cfm_cc_loop\n- ethernet_cfm_cc_mep_down\n- ethernet_cfm_cc_mep_up\n- ethernet_cfm_crosscheck_mep_missing\n- ethernet_cfm_crosscheck_mep_unknown\n- ethernet_cfm_crosscheck_service_up\n- ethernet_evc_create\n- ethernet_evc_delete\n- ethernet_evc_status\n- firewall_serverstatus\n- frame_relay_config_bundle_mismatch\n- frame_relay_config_only\n- frame_relay_config_subif_configs\n- frame_relay_multilink_bundle_mismatch\n- frame_relay_subif_count\n- frame_relay_subif_interval\n- ip_local_pool\n- isdn_call_information\n- isdn_chan_not_avail\n- isdn_ietf\n- isdn_layer2\n- l2tun_pseudowire_status\n- l2tun_session\n- l2tun_tunnel\n- lisp\n- mpls\n- mpls_rfc\n- mvpn\n- pfr\n- pimstdmib_interface_election\n- pimstdmib_invalid_join_prune\n- pimstdmib_invalid_register\n- pimstdmib_neighbor_loss\n- pimstdmib_rp_mapping_change\n- pki\n- pppoe\n- resource_policy\n- rsvp\n- sonet\n- srp\n- vdsl2line\n- voice\n- vrrp\n- entity_qfp_mem_res_thresh\n- entity_qfp_throughput_notif\n- entity_sensor\n- entity_state"
                                             },
                                             "snmp_communities": {
                                                 "type": "array",
@@ -621864,7 +622084,7 @@
                                         },
                                         "required": [],
                                         "title": "SNMP Server",
-                                        "description": "SNMP Server (Object)\n\nElements:\n- groups\n- users\n- chassis_id\n- contact\n- ifindex_persist\n- location\n- packet_size\n- queue_length\n- enable_logging_getop\n- enable_logging_setop\n- enable_informs\n- enable_traps\n- hosts\n- system_shutdown\n- source_interface_informs_type\n- source_interface_informs_id\n- source_interface_traps_type\n- source_interface_traps_id\n- traps\n- snmp_communities\n- contexts\n- views"
+                                        "description": "SNMP Server (Object)\n\nElements:\n- groups\n- users\n- chassis_id\n- contact\n- ifindex_persist\n- location\n- packet_size\n- queue_length\n- enable_logging_getop\n- enable_logging_setop\n- enable_informs\n- enable_traps\n- hosts\n- system_shutdown\n- source_interface_informs_type\n- source_interface_informs_id\n- source_interface_traps_type\n- source_interface_traps_id\n- trap_source_type\n- trap_source_id\n- traps\n- snmp_communities\n- contexts\n- views"
                                     },
                                     "spanning_tree": {
                                         "type": "object",
