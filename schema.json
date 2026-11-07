@@ -499450,6 +499450,43 @@
                                                         "title": "Networks",
                                                         "description": "Networks (List - Object)\n\nElements:\n- ip (required)\n- wildcard (required)"
                                                     },
+                                                    "af_interfaces": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "interface": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Interface",
+                                                                    "description": "Interface (String, String)"
+                                                                },
+                                                                "passive_interface": {
+                                                                    "type": "boolean",
+                                                                    "title": "Passive Interface",
+                                                                    "description": "Passive Interface (Boolean)"
+                                                                },
+                                                                "split_horizon": {
+                                                                    "type": "boolean",
+                                                                    "title": "Split Horizon",
+                                                                    "description": "Split Horizon (Boolean)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "interface"
+                                                            ]
+                                                        },
+                                                        "title": "Af Interfaces",
+                                                        "description": "Af Interfaces (List - Object)\n\nElements:\n- interface (required)\n- passive_interface\n- split_horizon"
+                                                    },
                                                     "auto_summary": {
                                                         "type": "boolean",
                                                         "title": "Auto Summary",
@@ -499477,7 +499514,7 @@
                                                 ]
                                             },
                                             "title": "Eigrp Processes",
-                                            "description": "Eigrp Processes (List - Object)\n\nElements:\n- name (required)\n- autonomous_system (required)\n- vrf\n- router_id\n- networks\n- auto_summary\n- shutdown\n- stub_connected\n- stub_summary"
+                                            "description": "Eigrp Processes (List - Object)\n\nElements:\n- name (required)\n- autonomous_system (required)\n- vrf\n- router_id\n- networks\n- af_interfaces\n- auto_summary\n- shutdown\n- stub_connected\n- stub_summary"
                                         },
                                         "ospf_processes": {
                                             "type": "array",
@@ -538755,6 +538792,43 @@
                                                             "title": "Networks",
                                                             "description": "Networks (List - Object)\n\nElements:\n- ip (required)\n- wildcard (required)"
                                                         },
+                                                        "af_interfaces": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "interface": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface",
+                                                                        "description": "Interface (String, String)"
+                                                                    },
+                                                                    "passive_interface": {
+                                                                        "type": "boolean",
+                                                                        "title": "Passive Interface",
+                                                                        "description": "Passive Interface (Boolean)"
+                                                                    },
+                                                                    "split_horizon": {
+                                                                        "type": "boolean",
+                                                                        "title": "Split Horizon",
+                                                                        "description": "Split Horizon (Boolean)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "interface"
+                                                                ]
+                                                            },
+                                                            "title": "Af Interfaces",
+                                                            "description": "Af Interfaces (List - Object)\n\nElements:\n- interface (required)\n- passive_interface\n- split_horizon"
+                                                        },
                                                         "auto_summary": {
                                                             "type": "boolean",
                                                             "title": "Auto Summary",
@@ -538782,7 +538856,7 @@
                                                     ]
                                                 },
                                                 "title": "Eigrp Processes",
-                                                "description": "Eigrp Processes (List - Object)\n\nElements:\n- name (required)\n- autonomous_system (required)\n- vrf\n- router_id\n- networks\n- auto_summary\n- shutdown\n- stub_connected\n- stub_summary"
+                                                "description": "Eigrp Processes (List - Object)\n\nElements:\n- name (required)\n- autonomous_system (required)\n- vrf\n- router_id\n- networks\n- af_interfaces\n- auto_summary\n- shutdown\n- stub_connected\n- stub_summary"
                                             },
                                             "ospf_processes": {
                                                 "type": "array",
@@ -578095,6 +578169,43 @@
                                                             "title": "Networks",
                                                             "description": "Networks (List - Object)\n\nElements:\n- ip (required)\n- wildcard (required)"
                                                         },
+                                                        "af_interfaces": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "interface": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface",
+                                                                        "description": "Interface (String, String)"
+                                                                    },
+                                                                    "passive_interface": {
+                                                                        "type": "boolean",
+                                                                        "title": "Passive Interface",
+                                                                        "description": "Passive Interface (Boolean)"
+                                                                    },
+                                                                    "split_horizon": {
+                                                                        "type": "boolean",
+                                                                        "title": "Split Horizon",
+                                                                        "description": "Split Horizon (Boolean)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "interface"
+                                                                ]
+                                                            },
+                                                            "title": "Af Interfaces",
+                                                            "description": "Af Interfaces (List - Object)\n\nElements:\n- interface (required)\n- passive_interface\n- split_horizon"
+                                                        },
                                                         "auto_summary": {
                                                             "type": "boolean",
                                                             "title": "Auto Summary",
@@ -578122,7 +578233,7 @@
                                                     ]
                                                 },
                                                 "title": "Eigrp Processes",
-                                                "description": "Eigrp Processes (List - Object)\n\nElements:\n- name (required)\n- autonomous_system (required)\n- vrf\n- router_id\n- networks\n- auto_summary\n- shutdown\n- stub_connected\n- stub_summary"
+                                                "description": "Eigrp Processes (List - Object)\n\nElements:\n- name (required)\n- autonomous_system (required)\n- vrf\n- router_id\n- networks\n- af_interfaces\n- auto_summary\n- shutdown\n- stub_connected\n- stub_summary"
                                             },
                                             "ospf_processes": {
                                                 "type": "array",
@@ -619642,6 +619753,43 @@
                                                             "title": "Networks",
                                                             "description": "Networks (List - Object)\n\nElements:\n- ip (required)\n- wildcard (required)"
                                                         },
+                                                        "af_interfaces": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "interface": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Interface",
+                                                                        "description": "Interface (String, String)"
+                                                                    },
+                                                                    "passive_interface": {
+                                                                        "type": "boolean",
+                                                                        "title": "Passive Interface",
+                                                                        "description": "Passive Interface (Boolean)"
+                                                                    },
+                                                                    "split_horizon": {
+                                                                        "type": "boolean",
+                                                                        "title": "Split Horizon",
+                                                                        "description": "Split Horizon (Boolean)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "interface"
+                                                                ]
+                                                            },
+                                                            "title": "Af Interfaces",
+                                                            "description": "Af Interfaces (List - Object)\n\nElements:\n- interface (required)\n- passive_interface\n- split_horizon"
+                                                        },
                                                         "auto_summary": {
                                                             "type": "boolean",
                                                             "title": "Auto Summary",
@@ -619669,7 +619817,7 @@
                                                     ]
                                                 },
                                                 "title": "Eigrp Processes",
-                                                "description": "Eigrp Processes (List - Object)\n\nElements:\n- name (required)\n- autonomous_system (required)\n- vrf\n- router_id\n- networks\n- auto_summary\n- shutdown\n- stub_connected\n- stub_summary"
+                                                "description": "Eigrp Processes (List - Object)\n\nElements:\n- name (required)\n- autonomous_system (required)\n- vrf\n- router_id\n- networks\n- af_interfaces\n- auto_summary\n- shutdown\n- stub_connected\n- stub_summary"
                                             },
                                             "ospf_processes": {
                                                 "type": "array",
