@@ -490438,6 +490438,125 @@
                                     "title": "Mdt Subscriptions",
                                     "description": "Mdt Subscriptions (List - Object)\n\nElements:\n- id\n- stream\n- encoding\n- source_vrf\n- source_ip\n- update_policy_periodic\n- update_policy_on_change\n- filter_xpath\n- receivers"
                                 },
+                                "monitor_sessions": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "session_id": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 66
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Session ID",
+                                                "description": "Session ID (Integer, String)"
+                                            },
+                                            "source_interfaces": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Name",
+                                                            "description": "Name (String, String)"
+                                                        },
+                                                        "direction": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "both",
+                                                                        "rx",
+                                                                        "tx"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Direction",
+                                                            "description": "Direction (String, String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Source Interfaces",
+                                                "description": "Source Interfaces (List - Object)\n\nElements:\n- name (required)\n- direction"
+                                            },
+                                            "destination_interfaces": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Name",
+                                                            "description": "Name (String, String)"
+                                                        },
+                                                        "encapsulation": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "dot1q",
+                                                                        "isl",
+                                                                        "replicate"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Encapsulation",
+                                                            "description": "Encapsulation (String, String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Destination Interfaces",
+                                                "description": "Destination Interfaces (List - Object)\n\nElements:\n- name (required)\n- encapsulation"
+                                            }
+                                        },
+                                        "required": [
+                                            "session_id"
+                                        ]
+                                    },
+                                    "title": "Monitor Sessions",
+                                    "description": "Monitor Sessions (List - Object)\n\nElements:\n- session_id (required)\n- source_interfaces\n- destination_interfaces"
+                                },
                                 "msdp": {
                                     "type": "object",
                                     "additionalProperties": false,
@@ -507057,7 +507176,7 @@
                             },
                             "required": [],
                             "title": "Configuration",
-                            "description": "Configuration (Object)\n\nElements:\n- aaa\n- access_lists\n- arp\n- banner\n- bfd\n- cdp\n- clock\n- community_lists\n- crypto\n- cts\n- device_sensor\n- device_tracking\n- dhcp\n- dhcp_pools\n- policy\n- dot1x\n- eem\n- errdisable\n- evpn\n- flow\n- interfaces\n- bridge_domains\n- key_chains\n- l2_vfi\n- large_community_lists\n- license\n- line\n- evpn_profile\n- lldp\n- logging\n- mdt_subscriptions\n- msdp\n- mpls\n- multicast\n- nat\n- ntp\n- object_groups_fqdn\n- object_groups_network\n- object_groups_service\n- pim\n- ipv6_dhcp_pools\n- ipv6_local_pools\n- ipv6_pim\n- prefix_lists\n- ipv6_prefix_lists\n- qos\n- route_maps\n- routing\n- service_templates\n- service\n- snmp_server\n- spanning_tree\n- stackwise_virtual\n- system\n- templates\n- udld\n- vlan\n- vrfs\n- vtp\n- zone_pair_security\n- zone_security"
+                            "description": "Configuration (Object)\n\nElements:\n- aaa\n- access_lists\n- arp\n- banner\n- bfd\n- cdp\n- clock\n- community_lists\n- crypto\n- cts\n- device_sensor\n- device_tracking\n- dhcp\n- dhcp_pools\n- policy\n- dot1x\n- eem\n- errdisable\n- evpn\n- flow\n- interfaces\n- bridge_domains\n- key_chains\n- l2_vfi\n- large_community_lists\n- license\n- line\n- evpn_profile\n- lldp\n- logging\n- mdt_subscriptions\n- monitor_sessions\n- msdp\n- mpls\n- multicast\n- nat\n- ntp\n- object_groups_fqdn\n- object_groups_network\n- object_groups_service\n- pim\n- ipv6_dhcp_pools\n- ipv6_local_pools\n- ipv6_pim\n- prefix_lists\n- ipv6_prefix_lists\n- qos\n- route_maps\n- routing\n- service_templates\n- service\n- snmp_server\n- spanning_tree\n- stackwise_virtual\n- system\n- templates\n- udld\n- vlan\n- vrfs\n- vtp\n- zone_pair_security\n- zone_security"
                         },
                         "templates": {
                             "type": "array",
@@ -529624,6 +529743,125 @@
                                         "title": "Mdt Subscriptions",
                                         "description": "Mdt Subscriptions (List - Object)\n\nElements:\n- id\n- stream\n- encoding\n- source_vrf\n- source_ip\n- update_policy_periodic\n- update_policy_on_change\n- filter_xpath\n- receivers"
                                     },
+                                    "monitor_sessions": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "session_id": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 1,
+                                                            "maximum": 66
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Session ID",
+                                                    "description": "Session ID (Integer, String)"
+                                                },
+                                                "source_interfaces": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "name": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Name",
+                                                                "description": "Name (String, String)"
+                                                            },
+                                                            "direction": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "both",
+                                                                            "rx",
+                                                                            "tx"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Direction",
+                                                                "description": "Direction (String, String)"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "name"
+                                                        ]
+                                                    },
+                                                    "title": "Source Interfaces",
+                                                    "description": "Source Interfaces (List - Object)\n\nElements:\n- name (required)\n- direction"
+                                                },
+                                                "destination_interfaces": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "name": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Name",
+                                                                "description": "Name (String, String)"
+                                                            },
+                                                            "encapsulation": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "dot1q",
+                                                                            "isl",
+                                                                            "replicate"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Encapsulation",
+                                                                "description": "Encapsulation (String, String)"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "name"
+                                                        ]
+                                                    },
+                                                    "title": "Destination Interfaces",
+                                                    "description": "Destination Interfaces (List - Object)\n\nElements:\n- name (required)\n- encapsulation"
+                                                }
+                                            },
+                                            "required": [
+                                                "session_id"
+                                            ]
+                                        },
+                                        "title": "Monitor Sessions",
+                                        "description": "Monitor Sessions (List - Object)\n\nElements:\n- session_id (required)\n- source_interfaces\n- destination_interfaces"
+                                    },
                                     "msdp": {
                                         "type": "object",
                                         "additionalProperties": false,
@@ -546243,7 +546481,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- access_lists\n- arp\n- banner\n- bfd\n- cdp\n- clock\n- community_lists\n- crypto\n- cts\n- device_sensor\n- device_tracking\n- dhcp\n- dhcp_pools\n- policy\n- dot1x\n- eem\n- errdisable\n- evpn\n- flow\n- interfaces\n- bridge_domains\n- key_chains\n- l2_vfi\n- large_community_lists\n- license\n- line\n- evpn_profile\n- lldp\n- logging\n- mdt_subscriptions\n- msdp\n- mpls\n- multicast\n- nat\n- ntp\n- object_groups_fqdn\n- object_groups_network\n- object_groups_service\n- pim\n- ipv6_dhcp_pools\n- ipv6_local_pools\n- ipv6_pim\n- prefix_lists\n- ipv6_prefix_lists\n- qos\n- route_maps\n- routing\n- service_templates\n- service\n- snmp_server\n- spanning_tree\n- stackwise_virtual\n- system\n- templates\n- udld\n- vlan\n- vrfs\n- vtp\n- zone_pair_security\n- zone_security"
+                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- access_lists\n- arp\n- banner\n- bfd\n- cdp\n- clock\n- community_lists\n- crypto\n- cts\n- device_sensor\n- device_tracking\n- dhcp\n- dhcp_pools\n- policy\n- dot1x\n- eem\n- errdisable\n- evpn\n- flow\n- interfaces\n- bridge_domains\n- key_chains\n- l2_vfi\n- large_community_lists\n- license\n- line\n- evpn_profile\n- lldp\n- logging\n- mdt_subscriptions\n- monitor_sessions\n- msdp\n- mpls\n- multicast\n- nat\n- ntp\n- object_groups_fqdn\n- object_groups_network\n- object_groups_service\n- pim\n- ipv6_dhcp_pools\n- ipv6_local_pools\n- ipv6_pim\n- prefix_lists\n- ipv6_prefix_lists\n- qos\n- route_maps\n- routing\n- service_templates\n- service\n- snmp_server\n- spanning_tree\n- stackwise_virtual\n- system\n- templates\n- udld\n- vlan\n- vrfs\n- vtp\n- zone_pair_security\n- zone_security"
                             },
                             "templates": {
                                 "type": "array",
@@ -568836,6 +569074,125 @@
                                         "title": "Mdt Subscriptions",
                                         "description": "Mdt Subscriptions (List - Object)\n\nElements:\n- id\n- stream\n- encoding\n- source_vrf\n- source_ip\n- update_policy_periodic\n- update_policy_on_change\n- filter_xpath\n- receivers"
                                     },
+                                    "monitor_sessions": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "session_id": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 1,
+                                                            "maximum": 66
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Session ID",
+                                                    "description": "Session ID (Integer, String)"
+                                                },
+                                                "source_interfaces": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "name": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Name",
+                                                                "description": "Name (String, String)"
+                                                            },
+                                                            "direction": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "both",
+                                                                            "rx",
+                                                                            "tx"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Direction",
+                                                                "description": "Direction (String, String)"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "name"
+                                                        ]
+                                                    },
+                                                    "title": "Source Interfaces",
+                                                    "description": "Source Interfaces (List - Object)\n\nElements:\n- name (required)\n- direction"
+                                                },
+                                                "destination_interfaces": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "name": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Name",
+                                                                "description": "Name (String, String)"
+                                                            },
+                                                            "encapsulation": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "dot1q",
+                                                                            "isl",
+                                                                            "replicate"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Encapsulation",
+                                                                "description": "Encapsulation (String, String)"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "name"
+                                                        ]
+                                                    },
+                                                    "title": "Destination Interfaces",
+                                                    "description": "Destination Interfaces (List - Object)\n\nElements:\n- name (required)\n- encapsulation"
+                                                }
+                                            },
+                                            "required": [
+                                                "session_id"
+                                            ]
+                                        },
+                                        "title": "Monitor Sessions",
+                                        "description": "Monitor Sessions (List - Object)\n\nElements:\n- session_id (required)\n- source_interfaces\n- destination_interfaces"
+                                    },
                                     "msdp": {
                                         "type": "object",
                                         "additionalProperties": false,
@@ -585455,7 +585812,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- access_lists\n- arp\n- banner\n- bfd\n- cdp\n- clock\n- community_lists\n- crypto\n- cts\n- device_sensor\n- device_tracking\n- dhcp\n- dhcp_pools\n- policy\n- dot1x\n- eem\n- errdisable\n- evpn\n- flow\n- interfaces\n- bridge_domains\n- key_chains\n- l2_vfi\n- large_community_lists\n- license\n- line\n- evpn_profile\n- lldp\n- logging\n- mdt_subscriptions\n- msdp\n- mpls\n- multicast\n- nat\n- ntp\n- object_groups_fqdn\n- object_groups_network\n- object_groups_service\n- pim\n- ipv6_dhcp_pools\n- ipv6_local_pools\n- ipv6_pim\n- prefix_lists\n- ipv6_prefix_lists\n- qos\n- route_maps\n- routing\n- service_templates\n- service\n- snmp_server\n- spanning_tree\n- stackwise_virtual\n- system\n- templates\n- udld\n- vlan\n- vrfs\n- vtp\n- zone_pair_security\n- zone_security"
+                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- access_lists\n- arp\n- banner\n- bfd\n- cdp\n- clock\n- community_lists\n- crypto\n- cts\n- device_sensor\n- device_tracking\n- dhcp\n- dhcp_pools\n- policy\n- dot1x\n- eem\n- errdisable\n- evpn\n- flow\n- interfaces\n- bridge_domains\n- key_chains\n- l2_vfi\n- large_community_lists\n- license\n- line\n- evpn_profile\n- lldp\n- logging\n- mdt_subscriptions\n- monitor_sessions\n- msdp\n- mpls\n- multicast\n- nat\n- ntp\n- object_groups_fqdn\n- object_groups_network\n- object_groups_service\n- pim\n- ipv6_dhcp_pools\n- ipv6_local_pools\n- ipv6_pim\n- prefix_lists\n- ipv6_prefix_lists\n- qos\n- route_maps\n- routing\n- service_templates\n- service\n- snmp_server\n- spanning_tree\n- stackwise_virtual\n- system\n- templates\n- udld\n- vlan\n- vrfs\n- vtp\n- zone_pair_security\n- zone_security"
                             },
                             "templates": {
                                 "type": "array",
@@ -610254,6 +610611,125 @@
                                         "title": "Mdt Subscriptions",
                                         "description": "Mdt Subscriptions (List - Object)\n\nElements:\n- id\n- stream\n- encoding\n- source_vrf\n- source_ip\n- update_policy_periodic\n- update_policy_on_change\n- filter_xpath\n- receivers"
                                     },
+                                    "monitor_sessions": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "session_id": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "integer",
+                                                            "minimum": 1,
+                                                            "maximum": 66
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Session ID",
+                                                    "description": "Session ID (Integer, String)"
+                                                },
+                                                "source_interfaces": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "name": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Name",
+                                                                "description": "Name (String, String)"
+                                                            },
+                                                            "direction": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "both",
+                                                                            "rx",
+                                                                            "tx"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Direction",
+                                                                "description": "Direction (String, String)"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "name"
+                                                        ]
+                                                    },
+                                                    "title": "Source Interfaces",
+                                                    "description": "Source Interfaces (List - Object)\n\nElements:\n- name (required)\n- direction"
+                                                },
+                                                "destination_interfaces": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "name": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Name",
+                                                                "description": "Name (String, String)"
+                                                            },
+                                                            "encapsulation": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "dot1q",
+                                                                            "isl",
+                                                                            "replicate"
+                                                                        ]
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Encapsulation",
+                                                                "description": "Encapsulation (String, String)"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "name"
+                                                        ]
+                                                    },
+                                                    "title": "Destination Interfaces",
+                                                    "description": "Destination Interfaces (List - Object)\n\nElements:\n- name (required)\n- encapsulation"
+                                                }
+                                            },
+                                            "required": [
+                                                "session_id"
+                                            ]
+                                        },
+                                        "title": "Monitor Sessions",
+                                        "description": "Monitor Sessions (List - Object)\n\nElements:\n- session_id (required)\n- source_interfaces\n- destination_interfaces"
+                                    },
                                     "msdp": {
                                         "type": "object",
                                         "additionalProperties": false,
@@ -626873,7 +627349,7 @@
                                 },
                                 "required": [],
                                 "title": "Configuration",
-                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- access_lists\n- arp\n- banner\n- bfd\n- cdp\n- clock\n- community_lists\n- crypto\n- cts\n- device_sensor\n- device_tracking\n- dhcp\n- dhcp_pools\n- policy\n- dot1x\n- eem\n- errdisable\n- evpn\n- flow\n- interfaces\n- bridge_domains\n- key_chains\n- l2_vfi\n- large_community_lists\n- license\n- line\n- evpn_profile\n- lldp\n- logging\n- mdt_subscriptions\n- msdp\n- mpls\n- multicast\n- nat\n- ntp\n- object_groups_fqdn\n- object_groups_network\n- object_groups_service\n- pim\n- ipv6_dhcp_pools\n- ipv6_local_pools\n- ipv6_pim\n- prefix_lists\n- ipv6_prefix_lists\n- qos\n- route_maps\n- routing\n- service_templates\n- service\n- snmp_server\n- spanning_tree\n- stackwise_virtual\n- system\n- templates\n- udld\n- vlan\n- vrfs\n- vtp\n- zone_pair_security\n- zone_security"
+                                "description": "Configuration (Object)\n\nElements:\n- aaa\n- access_lists\n- arp\n- banner\n- bfd\n- cdp\n- clock\n- community_lists\n- crypto\n- cts\n- device_sensor\n- device_tracking\n- dhcp\n- dhcp_pools\n- policy\n- dot1x\n- eem\n- errdisable\n- evpn\n- flow\n- interfaces\n- bridge_domains\n- key_chains\n- l2_vfi\n- large_community_lists\n- license\n- line\n- evpn_profile\n- lldp\n- logging\n- mdt_subscriptions\n- monitor_sessions\n- msdp\n- mpls\n- multicast\n- nat\n- ntp\n- object_groups_fqdn\n- object_groups_network\n- object_groups_service\n- pim\n- ipv6_dhcp_pools\n- ipv6_local_pools\n- ipv6_pim\n- prefix_lists\n- ipv6_prefix_lists\n- qos\n- route_maps\n- routing\n- service_templates\n- service\n- snmp_server\n- spanning_tree\n- stackwise_virtual\n- system\n- templates\n- udld\n- vlan\n- vrfs\n- vtp\n- zone_pair_security\n- zone_security"
                             }
                         },
                         "required": [
