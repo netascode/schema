@@ -53486,6 +53486,90 @@
                                                     },
                                                     "title": "Access Rules",
                                                     "description": "Access Rules (List - Object)\n\nElements:\n- name (required)\n- action (required)\n- applications\n- application_filter_objects\n- category\n- destination_dynamic_objects\n- destination_geolocations\n- destination_network_literals\n- destination_network_objects\n- destination_port_literals\n- destination_port_objects\n- destination_sgts\n- destination_zones\n- enabled\n- endpoint_device_types\n- file_policy\n- intrusion_policy\n- log_connection_begin\n- log_connection_end\n- log_files\n- section\n- send_events_to_fmc\n- send_syslog\n- snmp_alert\n- source_dynamic_objects\n- source_geolocations\n- source_network_literals\n- source_network_objects\n- source_port_literals\n- source_port_objects\n- source_sgts\n- source_zones\n- syslog_alert\n- syslog_severity\n- url_objects\n- url_literals\n- variable_set\n- time_range\n- vlan_tag_objects\n- vlan_tag_literals"
+                                                },
+                                                "logging": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "syslog_alert": {
+                                                            "type": "string",
+                                                            "title": "Syslog Alert",
+                                                            "description": "Syslog Alert (String)"
+                                                        },
+                                                        "syslog_use_platform_settings": {
+                                                            "type": "boolean",
+                                                            "title": "Syslog Use Platform Settings",
+                                                            "description": "Syslog Use Platform Settings (Boolean)"
+                                                        },
+                                                        "syslog_platform_settings_severity": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "ALERT",
+                                                                "CRIT",
+                                                                "DEBUG",
+                                                                "EMERG",
+                                                                "ERR",
+                                                                "INFO",
+                                                                "NOTICE",
+                                                                "WARNING"
+                                                            ],
+                                                            "title": "Syslog Platform Settings Severity",
+                                                            "description": "Syslog Platform Settings Severity (String)\n- Allowed values: ALERT, CRIT, DEBUG, EMERG, ERR, INFO, NOTICE, WARNING"
+                                                        },
+                                                        "ips_events_send_syslog": {
+                                                            "type": "boolean",
+                                                            "title": "IPs Events Send Syslog",
+                                                            "description": "IPs Events Send Syslog (Boolean)"
+                                                        },
+                                                        "ips_events_syslog_severity": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "ALERT",
+                                                                "CRIT",
+                                                                "DEBUG",
+                                                                "EMERG",
+                                                                "ERR",
+                                                                "INFO",
+                                                                "NOTICE",
+                                                                "WARNING"
+                                                            ],
+                                                            "title": "IPs Events Syslog Severity",
+                                                            "description": "IPs Events Syslog Severity (String)\n- Allowed values: ALERT, CRIT, DEBUG, EMERG, ERR, INFO, NOTICE, WARNING"
+                                                        },
+                                                        "ips_events_syslog_alert": {
+                                                            "type": "string",
+                                                            "title": "IPs Events Syslog Alert",
+                                                            "description": "IPs Events Syslog Alert (String)"
+                                                        },
+                                                        "file_and_malware_events_send_syslog": {
+                                                            "type": "boolean",
+                                                            "title": "File And Malware Events Send Syslog",
+                                                            "description": "File And Malware Events Send Syslog (Boolean)"
+                                                        },
+                                                        "file_and_malware_events_syslog_severity": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "ALERT",
+                                                                "CRIT",
+                                                                "DEBUG",
+                                                                "EMERG",
+                                                                "ERR",
+                                                                "INFO",
+                                                                "NOTICE",
+                                                                "WARNING"
+                                                            ],
+                                                            "title": "File And Malware Events Syslog Severity",
+                                                            "description": "File And Malware Events Syslog Severity (String)\n- Allowed values: ALERT, CRIT, DEBUG, EMERG, ERR, INFO, NOTICE, WARNING"
+                                                        },
+                                                        "file_and_malware_events_syslog_alert": {
+                                                            "type": "string",
+                                                            "title": "File And Malware Events Syslog Alert",
+                                                            "description": "File And Malware Events Syslog Alert (String)"
+                                                        }
+                                                    },
+                                                    "required": [],
+                                                    "title": "Logging",
+                                                    "description": "Logging (Object)\n\nElements:\n- syslog_alert\n- syslog_use_platform_settings\n- syslog_platform_settings_severity\n- ips_events_send_syslog\n- ips_events_syslog_severity\n- ips_events_syslog_alert\n- file_and_malware_events_send_syslog\n- file_and_malware_events_syslog_severity\n- file_and_malware_events_syslog_alert"
                                                 }
                                             },
                                             "required": [
@@ -53493,7 +53577,7 @@
                                             ]
                                         },
                                         "title": "Access Control Policies",
-                                        "description": "Access Control Policies (List - Object)\n\nElements:\n- name (required)\n- description\n- default_action\n- base_intrusion_policy\n- base_variable_set\n- log_connection_begin\n- log_connection_end\n- send_events_to_fmc\n- send_syslog\n- syslog_severity\n- snmp_alert\n- syslog_alert\n- prefilter_policy\n- categories\n- access_rules"
+                                        "description": "Access Control Policies (List - Object)\n\nElements:\n- name (required)\n- description\n- default_action\n- base_intrusion_policy\n- base_variable_set\n- log_connection_begin\n- log_connection_end\n- send_events_to_fmc\n- send_syslog\n- syslog_severity\n- snmp_alert\n- syslog_alert\n- prefilter_policy\n- categories\n- access_rules\n- logging"
                                     },
                                     "ftd_nat_policies": {
                                         "type": "array",
