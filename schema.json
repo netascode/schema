@@ -511846,6 +511846,39 @@
                                     "type": "object",
                                     "additionalProperties": false,
                                     "properties": {
+                                        "management_interface_type": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "Vlan",
+                                                        "GigabitEthernet"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "Management Interface Type",
+                                            "description": "Management Interface Type (String, String)"
+                                        },
+                                        "management_interface_id": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "string"
+                                                },
+                                                {
+                                                    "type": "integer"
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "Management Interface ID",
+                                            "description": "Management Interface ID (String, Integer, String)"
+                                        },
                                         "ap_join_profiles": {
                                             "type": "array",
                                             "items": {
@@ -513336,7 +513369,7 @@
                                     },
                                     "required": [],
                                     "title": "Wireless",
-                                    "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles"
+                                    "description": "Wireless (Object)\n\nElements:\n- management_interface_type\n- management_interface_id\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles"
                                 },
                                 "zone_pair_security": {
                                     "type": "array",
@@ -554485,6 +554518,39 @@
                                         "type": "object",
                                         "additionalProperties": false,
                                         "properties": {
+                                            "management_interface_type": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "Vlan",
+                                                            "GigabitEthernet"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Management Interface Type",
+                                                "description": "Management Interface Type (String, String)"
+                                            },
+                                            "management_interface_id": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "type": "integer"
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Management Interface ID",
+                                                "description": "Management Interface ID (String, Integer, String)"
+                                            },
                                             "ap_join_profiles": {
                                                 "type": "array",
                                                 "items": {
@@ -555975,7 +556041,7 @@
                                         },
                                         "required": [],
                                         "title": "Wireless",
-                                        "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles"
+                                        "description": "Wireless (Object)\n\nElements:\n- management_interface_type\n- management_interface_id\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles"
                                     },
                                     "zone_pair_security": {
                                         "type": "array",
@@ -597159,6 +597225,39 @@
                                         "type": "object",
                                         "additionalProperties": false,
                                         "properties": {
+                                            "management_interface_type": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "Vlan",
+                                                            "GigabitEthernet"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Management Interface Type",
+                                                "description": "Management Interface Type (String, String)"
+                                            },
+                                            "management_interface_id": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "type": "integer"
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Management Interface ID",
+                                                "description": "Management Interface ID (String, Integer, String)"
+                                            },
                                             "ap_join_profiles": {
                                                 "type": "array",
                                                 "items": {
@@ -598649,7 +598748,7 @@
                                         },
                                         "required": [],
                                         "title": "Wireless",
-                                        "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles"
+                                        "description": "Wireless (Object)\n\nElements:\n- management_interface_type\n- management_interface_id\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles"
                                     },
                                     "zone_pair_security": {
                                         "type": "array",
@@ -642162,6 +642261,39 @@
                                         "type": "object",
                                         "additionalProperties": false,
                                         "properties": {
+                                            "management_interface_type": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "Vlan",
+                                                            "GigabitEthernet"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Management Interface Type",
+                                                "description": "Management Interface Type (String, String)"
+                                            },
+                                            "management_interface_id": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "type": "integer"
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Management Interface ID",
+                                                "description": "Management Interface ID (String, Integer, String)"
+                                            },
                                             "ap_join_profiles": {
                                                 "type": "array",
                                                 "items": {
@@ -643652,7 +643784,7 @@
                                         },
                                         "required": [],
                                         "title": "Wireless",
-                                        "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles"
+                                        "description": "Wireless (Object)\n\nElements:\n- management_interface_type\n- management_interface_id\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles"
                                     },
                                     "zone_pair_security": {
                                         "type": "array",
