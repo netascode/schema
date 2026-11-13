@@ -512563,11 +512563,237 @@
                                             },
                                             "title": "Ap Join Profiles",
                                             "description": "Ap Join Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- capwap_window_size\n- country\n- ssh\n- mgmtuser_username\n- mgmtuser_password\n- mgmtuser_password_type\n- mgmtuser_secret\n- mgmtuser_secret_type\n- ntp_ip\n- syslog_host\n- syslog_facility\n- syslog_level\n- apphost\n- association_limit\n- awips\n- awips_forensic\n- capwap_retransmit_count\n- capwap_retransmit_interval\n- capwap_timers_discovery_timeout\n- capwap_timers_fast_heartbeat_timeout\n- capwap_timers_heartbeat_timeout\n- capwap_timers_primary_discovery_timeout\n- capwap_timers_primed_join_timeout\n- capwap_backup_primary_name\n- capwap_backup_primary_ip\n- capwap_backup_secondary_name\n- capwap_backup_secondary_ip\n- capwap_fallback\n- capwap_discovery\n- cdp\n- dot1x_eap_type\n- dot1x_username\n- dot1x_password\n- dot1x_password_type\n- hyperlocation\n- ip_dhcp_fallback\n- lag\n- led\n- mesh_profile\n- rogue_detection_enable\n- rogue_detection_min_rssi\n- rogue_detection_min_transient_time\n- rogue_detection_report_interval\n- statistics_ap_system_monitoring_enable\n- statistics_ap_system_monitoring_alarm_enable\n- statistics_ap_system_monitoring_alarm_hold_time\n- statistics_ap_system_monitoring_alarm_retransmit_time\n- statistics_ap_system_monitoring_cpu_threshold\n- statistics_ap_system_monitoring_mem_threshold\n- statistics_ap_system_monitoring_sampling_interval\n- statistics_ap_system_monitoring_stats_interval\n- statistics_traffic_distribution\n- statistics_traffic_distribution_interval\n- statistics_ap_radio_monitoring_enable\n- statistics_ap_radio_monitoring_sampling_interval\n- stats_timer\n- tcp_adjust_mss_enable\n- tcp_adjust_mss_size\n- ble_scan"
+                                        },
+                                        "wlan_profiles": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^[!-~]([ -~]{0,30}[!-~])?$"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Name",
+                                                        "description": "Name (String, String)"
+                                                    },
+                                                    "wlan_id": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 4096
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Wlan ID",
+                                                        "description": "Wlan ID (Integer, String)"
+                                                    },
+                                                    "ssid": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "maxLength": 32
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Ssid",
+                                                        "description": "Ssid (String, String)"
+                                                    },
+                                                    "shutdown": {
+                                                        "type": "boolean",
+                                                        "title": "Shutdown",
+                                                        "description": "Shutdown (Boolean)"
+                                                    },
+                                                    "broadcast_ssid": {
+                                                        "type": "boolean",
+                                                        "title": "Broadcast Ssid",
+                                                        "description": "Broadcast Ssid (Boolean)"
+                                                    },
+                                                    "security_wpa_akm": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "dot1x",
+                                                                        "ft-dot1x",
+                                                                        "psk",
+                                                                        "ft-psk",
+                                                                        "sae",
+                                                                        "ft-sae"
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ],
+                                                        "title": "Security Wpa Akm",
+                                                        "description": "Security Wpa Akm (Array)"
+                                                    },
+                                                    "security_wpa_wpa2_ciphers": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "aes",
+                                                                        "gcmp128",
+                                                                        "gcmp256"
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ],
+                                                        "title": "Security Wpa Wpa2 Ciphers",
+                                                        "description": "Security Wpa Wpa2 Ciphers (Array)"
+                                                    },
+                                                    "security_wpa_wpa3": {
+                                                        "type": "boolean",
+                                                        "title": "Security Wpa Wpa3",
+                                                        "description": "Security Wpa Wpa3 (Boolean)"
+                                                    },
+                                                    "security_wpa_psk_key_format": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "ascii",
+                                                                    "hex"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Security Wpa Psk Key Format",
+                                                        "description": "Security Wpa Psk Key Format (String, String)"
+                                                    },
+                                                    "security_wpa_psk_key": {
+                                                        "type": "string",
+                                                        "title": "Security Wpa Psk Key",
+                                                        "description": "Security Wpa Psk Key (String)"
+                                                    },
+                                                    "security_dot1x_authentication_list": {
+                                                        "type": "string",
+                                                        "title": "Security Dot1X Authentication List",
+                                                        "description": "Security Dot1X Authentication List (String)"
+                                                    },
+                                                    "security_web_auth": {
+                                                        "type": "boolean",
+                                                        "title": "Security Web Auth",
+                                                        "description": "Security Web Auth (Boolean)"
+                                                    },
+                                                    "security_web_auth_authentication_list": {
+                                                        "type": "string",
+                                                        "title": "Security Web Auth Authentication List",
+                                                        "description": "Security Web Auth Authentication List (String)"
+                                                    },
+                                                    "security_web_auth_parameter_map": {
+                                                        "type": "string",
+                                                        "title": "Security Web Auth Parameter Map",
+                                                        "description": "Security Web Auth Parameter Map (String)"
+                                                    },
+                                                    "security_ft": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "enabled",
+                                                                    "adaptive",
+                                                                    "disabled"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Security Ft",
+                                                        "description": "Security Ft (String, String)"
+                                                    },
+                                                    "security_ft_over_the_ds": {
+                                                        "type": "boolean",
+                                                        "title": "Security Ft Over The Ds",
+                                                        "description": "Security Ft Over The Ds (Boolean)"
+                                                    },
+                                                    "mac_filtering": {
+                                                        "type": "string",
+                                                        "title": "MAC Filtering",
+                                                        "description": "MAC Filtering (String)"
+                                                    },
+                                                    "load_balance": {
+                                                        "type": "boolean",
+                                                        "title": "Load Balance",
+                                                        "description": "Load Balance (Boolean)"
+                                                    },
+                                                    "peer_blocking": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "drop",
+                                                                    "forward-upstream"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Peer Blocking",
+                                                        "description": "Peer Blocking (String, String)"
+                                                    },
+                                                    "ccx_aironet_iesupport": {
+                                                        "type": "boolean",
+                                                        "title": "Ccx Aironet Iesupport",
+                                                        "description": "Ccx Aironet Iesupport (Boolean)"
+                                                    },
+                                                    "wmm": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "allowed",
+                                                                    "require",
+                                                                    "disabled"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Wmm",
+                                                        "description": "Wmm (String, String)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name",
+                                                    "wlan_id",
+                                                    "ssid"
+                                                ]
+                                            },
+                                            "title": "Wlan Profiles",
+                                            "description": "Wlan Profiles (List - Object)\n\nElements:\n- name (required)\n- wlan_id (required)\n- ssid (required)\n- shutdown\n- broadcast_ssid\n- security_wpa_akm\n- security_wpa_wpa2_ciphers\n- security_wpa_wpa3\n- security_wpa_psk_key_format\n- security_wpa_psk_key\n- security_dot1x_authentication_list\n- security_web_auth\n- security_web_auth_authentication_list\n- security_web_auth_parameter_map\n- security_ft\n- security_ft_over_the_ds\n- mac_filtering\n- load_balance\n- peer_blocking\n- ccx_aironet_iesupport\n- wmm"
                                         }
                                     },
                                     "required": [],
                                     "title": "Wireless",
-                                    "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles"
+                                    "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles\n- wlan_profiles"
                                 },
                                 "zone_pair_security": {
                                     "type": "array",
@@ -554433,11 +554659,237 @@
                                                 },
                                                 "title": "Ap Join Profiles",
                                                 "description": "Ap Join Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- capwap_window_size\n- country\n- ssh\n- mgmtuser_username\n- mgmtuser_password\n- mgmtuser_password_type\n- mgmtuser_secret\n- mgmtuser_secret_type\n- ntp_ip\n- syslog_host\n- syslog_facility\n- syslog_level\n- apphost\n- association_limit\n- awips\n- awips_forensic\n- capwap_retransmit_count\n- capwap_retransmit_interval\n- capwap_timers_discovery_timeout\n- capwap_timers_fast_heartbeat_timeout\n- capwap_timers_heartbeat_timeout\n- capwap_timers_primary_discovery_timeout\n- capwap_timers_primed_join_timeout\n- capwap_backup_primary_name\n- capwap_backup_primary_ip\n- capwap_backup_secondary_name\n- capwap_backup_secondary_ip\n- capwap_fallback\n- capwap_discovery\n- cdp\n- dot1x_eap_type\n- dot1x_username\n- dot1x_password\n- dot1x_password_type\n- hyperlocation\n- ip_dhcp_fallback\n- lag\n- led\n- mesh_profile\n- rogue_detection_enable\n- rogue_detection_min_rssi\n- rogue_detection_min_transient_time\n- rogue_detection_report_interval\n- statistics_ap_system_monitoring_enable\n- statistics_ap_system_monitoring_alarm_enable\n- statistics_ap_system_monitoring_alarm_hold_time\n- statistics_ap_system_monitoring_alarm_retransmit_time\n- statistics_ap_system_monitoring_cpu_threshold\n- statistics_ap_system_monitoring_mem_threshold\n- statistics_ap_system_monitoring_sampling_interval\n- statistics_ap_system_monitoring_stats_interval\n- statistics_traffic_distribution\n- statistics_traffic_distribution_interval\n- statistics_ap_radio_monitoring_enable\n- statistics_ap_radio_monitoring_sampling_interval\n- stats_timer\n- tcp_adjust_mss_enable\n- tcp_adjust_mss_size\n- ble_scan"
+                                            },
+                                            "wlan_profiles": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^[!-~]([ -~]{0,30}[!-~])?$"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Name",
+                                                            "description": "Name (String, String)"
+                                                        },
+                                                        "wlan_id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 4096
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Wlan ID",
+                                                            "description": "Wlan ID (Integer, String)"
+                                                        },
+                                                        "ssid": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "maxLength": 32
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Ssid",
+                                                            "description": "Ssid (String, String)"
+                                                        },
+                                                        "shutdown": {
+                                                            "type": "boolean",
+                                                            "title": "Shutdown",
+                                                            "description": "Shutdown (Boolean)"
+                                                        },
+                                                        "broadcast_ssid": {
+                                                            "type": "boolean",
+                                                            "title": "Broadcast Ssid",
+                                                            "description": "Broadcast Ssid (Boolean)"
+                                                        },
+                                                        "security_wpa_akm": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "dot1x",
+                                                                            "ft-dot1x",
+                                                                            "psk",
+                                                                            "ft-psk",
+                                                                            "sae",
+                                                                            "ft-sae"
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "title": "Security Wpa Akm",
+                                                            "description": "Security Wpa Akm (Array)"
+                                                        },
+                                                        "security_wpa_wpa2_ciphers": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "aes",
+                                                                            "gcmp128",
+                                                                            "gcmp256"
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "title": "Security Wpa Wpa2 Ciphers",
+                                                            "description": "Security Wpa Wpa2 Ciphers (Array)"
+                                                        },
+                                                        "security_wpa_wpa3": {
+                                                            "type": "boolean",
+                                                            "title": "Security Wpa Wpa3",
+                                                            "description": "Security Wpa Wpa3 (Boolean)"
+                                                        },
+                                                        "security_wpa_psk_key_format": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "ascii",
+                                                                        "hex"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Security Wpa Psk Key Format",
+                                                            "description": "Security Wpa Psk Key Format (String, String)"
+                                                        },
+                                                        "security_wpa_psk_key": {
+                                                            "type": "string",
+                                                            "title": "Security Wpa Psk Key",
+                                                            "description": "Security Wpa Psk Key (String)"
+                                                        },
+                                                        "security_dot1x_authentication_list": {
+                                                            "type": "string",
+                                                            "title": "Security Dot1X Authentication List",
+                                                            "description": "Security Dot1X Authentication List (String)"
+                                                        },
+                                                        "security_web_auth": {
+                                                            "type": "boolean",
+                                                            "title": "Security Web Auth",
+                                                            "description": "Security Web Auth (Boolean)"
+                                                        },
+                                                        "security_web_auth_authentication_list": {
+                                                            "type": "string",
+                                                            "title": "Security Web Auth Authentication List",
+                                                            "description": "Security Web Auth Authentication List (String)"
+                                                        },
+                                                        "security_web_auth_parameter_map": {
+                                                            "type": "string",
+                                                            "title": "Security Web Auth Parameter Map",
+                                                            "description": "Security Web Auth Parameter Map (String)"
+                                                        },
+                                                        "security_ft": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "enabled",
+                                                                        "adaptive",
+                                                                        "disabled"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Security Ft",
+                                                            "description": "Security Ft (String, String)"
+                                                        },
+                                                        "security_ft_over_the_ds": {
+                                                            "type": "boolean",
+                                                            "title": "Security Ft Over The Ds",
+                                                            "description": "Security Ft Over The Ds (Boolean)"
+                                                        },
+                                                        "mac_filtering": {
+                                                            "type": "string",
+                                                            "title": "MAC Filtering",
+                                                            "description": "MAC Filtering (String)"
+                                                        },
+                                                        "load_balance": {
+                                                            "type": "boolean",
+                                                            "title": "Load Balance",
+                                                            "description": "Load Balance (Boolean)"
+                                                        },
+                                                        "peer_blocking": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "drop",
+                                                                        "forward-upstream"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Peer Blocking",
+                                                            "description": "Peer Blocking (String, String)"
+                                                        },
+                                                        "ccx_aironet_iesupport": {
+                                                            "type": "boolean",
+                                                            "title": "Ccx Aironet Iesupport",
+                                                            "description": "Ccx Aironet Iesupport (Boolean)"
+                                                        },
+                                                        "wmm": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "allowed",
+                                                                        "require",
+                                                                        "disabled"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Wmm",
+                                                            "description": "Wmm (String, String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name",
+                                                        "wlan_id",
+                                                        "ssid"
+                                                    ]
+                                                },
+                                                "title": "Wlan Profiles",
+                                                "description": "Wlan Profiles (List - Object)\n\nElements:\n- name (required)\n- wlan_id (required)\n- ssid (required)\n- shutdown\n- broadcast_ssid\n- security_wpa_akm\n- security_wpa_wpa2_ciphers\n- security_wpa_wpa3\n- security_wpa_psk_key_format\n- security_wpa_psk_key\n- security_dot1x_authentication_list\n- security_web_auth\n- security_web_auth_authentication_list\n- security_web_auth_parameter_map\n- security_ft\n- security_ft_over_the_ds\n- mac_filtering\n- load_balance\n- peer_blocking\n- ccx_aironet_iesupport\n- wmm"
                                             }
                                         },
                                         "required": [],
                                         "title": "Wireless",
-                                        "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles"
+                                        "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles\n- wlan_profiles"
                                     },
                                     "zone_pair_security": {
                                         "type": "array",
@@ -596338,11 +596790,237 @@
                                                 },
                                                 "title": "Ap Join Profiles",
                                                 "description": "Ap Join Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- capwap_window_size\n- country\n- ssh\n- mgmtuser_username\n- mgmtuser_password\n- mgmtuser_password_type\n- mgmtuser_secret\n- mgmtuser_secret_type\n- ntp_ip\n- syslog_host\n- syslog_facility\n- syslog_level\n- apphost\n- association_limit\n- awips\n- awips_forensic\n- capwap_retransmit_count\n- capwap_retransmit_interval\n- capwap_timers_discovery_timeout\n- capwap_timers_fast_heartbeat_timeout\n- capwap_timers_heartbeat_timeout\n- capwap_timers_primary_discovery_timeout\n- capwap_timers_primed_join_timeout\n- capwap_backup_primary_name\n- capwap_backup_primary_ip\n- capwap_backup_secondary_name\n- capwap_backup_secondary_ip\n- capwap_fallback\n- capwap_discovery\n- cdp\n- dot1x_eap_type\n- dot1x_username\n- dot1x_password\n- dot1x_password_type\n- hyperlocation\n- ip_dhcp_fallback\n- lag\n- led\n- mesh_profile\n- rogue_detection_enable\n- rogue_detection_min_rssi\n- rogue_detection_min_transient_time\n- rogue_detection_report_interval\n- statistics_ap_system_monitoring_enable\n- statistics_ap_system_monitoring_alarm_enable\n- statistics_ap_system_monitoring_alarm_hold_time\n- statistics_ap_system_monitoring_alarm_retransmit_time\n- statistics_ap_system_monitoring_cpu_threshold\n- statistics_ap_system_monitoring_mem_threshold\n- statistics_ap_system_monitoring_sampling_interval\n- statistics_ap_system_monitoring_stats_interval\n- statistics_traffic_distribution\n- statistics_traffic_distribution_interval\n- statistics_ap_radio_monitoring_enable\n- statistics_ap_radio_monitoring_sampling_interval\n- stats_timer\n- tcp_adjust_mss_enable\n- tcp_adjust_mss_size\n- ble_scan"
+                                            },
+                                            "wlan_profiles": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^[!-~]([ -~]{0,30}[!-~])?$"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Name",
+                                                            "description": "Name (String, String)"
+                                                        },
+                                                        "wlan_id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 4096
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Wlan ID",
+                                                            "description": "Wlan ID (Integer, String)"
+                                                        },
+                                                        "ssid": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "maxLength": 32
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Ssid",
+                                                            "description": "Ssid (String, String)"
+                                                        },
+                                                        "shutdown": {
+                                                            "type": "boolean",
+                                                            "title": "Shutdown",
+                                                            "description": "Shutdown (Boolean)"
+                                                        },
+                                                        "broadcast_ssid": {
+                                                            "type": "boolean",
+                                                            "title": "Broadcast Ssid",
+                                                            "description": "Broadcast Ssid (Boolean)"
+                                                        },
+                                                        "security_wpa_akm": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "dot1x",
+                                                                            "ft-dot1x",
+                                                                            "psk",
+                                                                            "ft-psk",
+                                                                            "sae",
+                                                                            "ft-sae"
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "title": "Security Wpa Akm",
+                                                            "description": "Security Wpa Akm (Array)"
+                                                        },
+                                                        "security_wpa_wpa2_ciphers": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "aes",
+                                                                            "gcmp128",
+                                                                            "gcmp256"
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "title": "Security Wpa Wpa2 Ciphers",
+                                                            "description": "Security Wpa Wpa2 Ciphers (Array)"
+                                                        },
+                                                        "security_wpa_wpa3": {
+                                                            "type": "boolean",
+                                                            "title": "Security Wpa Wpa3",
+                                                            "description": "Security Wpa Wpa3 (Boolean)"
+                                                        },
+                                                        "security_wpa_psk_key_format": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "ascii",
+                                                                        "hex"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Security Wpa Psk Key Format",
+                                                            "description": "Security Wpa Psk Key Format (String, String)"
+                                                        },
+                                                        "security_wpa_psk_key": {
+                                                            "type": "string",
+                                                            "title": "Security Wpa Psk Key",
+                                                            "description": "Security Wpa Psk Key (String)"
+                                                        },
+                                                        "security_dot1x_authentication_list": {
+                                                            "type": "string",
+                                                            "title": "Security Dot1X Authentication List",
+                                                            "description": "Security Dot1X Authentication List (String)"
+                                                        },
+                                                        "security_web_auth": {
+                                                            "type": "boolean",
+                                                            "title": "Security Web Auth",
+                                                            "description": "Security Web Auth (Boolean)"
+                                                        },
+                                                        "security_web_auth_authentication_list": {
+                                                            "type": "string",
+                                                            "title": "Security Web Auth Authentication List",
+                                                            "description": "Security Web Auth Authentication List (String)"
+                                                        },
+                                                        "security_web_auth_parameter_map": {
+                                                            "type": "string",
+                                                            "title": "Security Web Auth Parameter Map",
+                                                            "description": "Security Web Auth Parameter Map (String)"
+                                                        },
+                                                        "security_ft": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "enabled",
+                                                                        "adaptive",
+                                                                        "disabled"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Security Ft",
+                                                            "description": "Security Ft (String, String)"
+                                                        },
+                                                        "security_ft_over_the_ds": {
+                                                            "type": "boolean",
+                                                            "title": "Security Ft Over The Ds",
+                                                            "description": "Security Ft Over The Ds (Boolean)"
+                                                        },
+                                                        "mac_filtering": {
+                                                            "type": "string",
+                                                            "title": "MAC Filtering",
+                                                            "description": "MAC Filtering (String)"
+                                                        },
+                                                        "load_balance": {
+                                                            "type": "boolean",
+                                                            "title": "Load Balance",
+                                                            "description": "Load Balance (Boolean)"
+                                                        },
+                                                        "peer_blocking": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "drop",
+                                                                        "forward-upstream"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Peer Blocking",
+                                                            "description": "Peer Blocking (String, String)"
+                                                        },
+                                                        "ccx_aironet_iesupport": {
+                                                            "type": "boolean",
+                                                            "title": "Ccx Aironet Iesupport",
+                                                            "description": "Ccx Aironet Iesupport (Boolean)"
+                                                        },
+                                                        "wmm": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "allowed",
+                                                                        "require",
+                                                                        "disabled"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Wmm",
+                                                            "description": "Wmm (String, String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name",
+                                                        "wlan_id",
+                                                        "ssid"
+                                                    ]
+                                                },
+                                                "title": "Wlan Profiles",
+                                                "description": "Wlan Profiles (List - Object)\n\nElements:\n- name (required)\n- wlan_id (required)\n- ssid (required)\n- shutdown\n- broadcast_ssid\n- security_wpa_akm\n- security_wpa_wpa2_ciphers\n- security_wpa_wpa3\n- security_wpa_psk_key_format\n- security_wpa_psk_key\n- security_dot1x_authentication_list\n- security_web_auth\n- security_web_auth_authentication_list\n- security_web_auth_parameter_map\n- security_ft\n- security_ft_over_the_ds\n- mac_filtering\n- load_balance\n- peer_blocking\n- ccx_aironet_iesupport\n- wmm"
                                             }
                                         },
                                         "required": [],
                                         "title": "Wireless",
-                                        "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles"
+                                        "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles\n- wlan_profiles"
                                     },
                                     "zone_pair_security": {
                                         "type": "array",
@@ -640572,11 +641250,237 @@
                                                 },
                                                 "title": "Ap Join Profiles",
                                                 "description": "Ap Join Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- capwap_window_size\n- country\n- ssh\n- mgmtuser_username\n- mgmtuser_password\n- mgmtuser_password_type\n- mgmtuser_secret\n- mgmtuser_secret_type\n- ntp_ip\n- syslog_host\n- syslog_facility\n- syslog_level\n- apphost\n- association_limit\n- awips\n- awips_forensic\n- capwap_retransmit_count\n- capwap_retransmit_interval\n- capwap_timers_discovery_timeout\n- capwap_timers_fast_heartbeat_timeout\n- capwap_timers_heartbeat_timeout\n- capwap_timers_primary_discovery_timeout\n- capwap_timers_primed_join_timeout\n- capwap_backup_primary_name\n- capwap_backup_primary_ip\n- capwap_backup_secondary_name\n- capwap_backup_secondary_ip\n- capwap_fallback\n- capwap_discovery\n- cdp\n- dot1x_eap_type\n- dot1x_username\n- dot1x_password\n- dot1x_password_type\n- hyperlocation\n- ip_dhcp_fallback\n- lag\n- led\n- mesh_profile\n- rogue_detection_enable\n- rogue_detection_min_rssi\n- rogue_detection_min_transient_time\n- rogue_detection_report_interval\n- statistics_ap_system_monitoring_enable\n- statistics_ap_system_monitoring_alarm_enable\n- statistics_ap_system_monitoring_alarm_hold_time\n- statistics_ap_system_monitoring_alarm_retransmit_time\n- statistics_ap_system_monitoring_cpu_threshold\n- statistics_ap_system_monitoring_mem_threshold\n- statistics_ap_system_monitoring_sampling_interval\n- statistics_ap_system_monitoring_stats_interval\n- statistics_traffic_distribution\n- statistics_traffic_distribution_interval\n- statistics_ap_radio_monitoring_enable\n- statistics_ap_radio_monitoring_sampling_interval\n- stats_timer\n- tcp_adjust_mss_enable\n- tcp_adjust_mss_size\n- ble_scan"
+                                            },
+                                            "wlan_profiles": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^[!-~]([ -~]{0,30}[!-~])?$"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Name",
+                                                            "description": "Name (String, String)"
+                                                        },
+                                                        "wlan_id": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 4096
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Wlan ID",
+                                                            "description": "Wlan ID (Integer, String)"
+                                                        },
+                                                        "ssid": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "maxLength": 32
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Ssid",
+                                                            "description": "Ssid (String, String)"
+                                                        },
+                                                        "shutdown": {
+                                                            "type": "boolean",
+                                                            "title": "Shutdown",
+                                                            "description": "Shutdown (Boolean)"
+                                                        },
+                                                        "broadcast_ssid": {
+                                                            "type": "boolean",
+                                                            "title": "Broadcast Ssid",
+                                                            "description": "Broadcast Ssid (Boolean)"
+                                                        },
+                                                        "security_wpa_akm": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "dot1x",
+                                                                            "ft-dot1x",
+                                                                            "psk",
+                                                                            "ft-psk",
+                                                                            "sae",
+                                                                            "ft-sae"
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "title": "Security Wpa Akm",
+                                                            "description": "Security Wpa Akm (Array)"
+                                                        },
+                                                        "security_wpa_wpa2_ciphers": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "aes",
+                                                                            "gcmp128",
+                                                                            "gcmp256"
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "title": "Security Wpa Wpa2 Ciphers",
+                                                            "description": "Security Wpa Wpa2 Ciphers (Array)"
+                                                        },
+                                                        "security_wpa_wpa3": {
+                                                            "type": "boolean",
+                                                            "title": "Security Wpa Wpa3",
+                                                            "description": "Security Wpa Wpa3 (Boolean)"
+                                                        },
+                                                        "security_wpa_psk_key_format": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "ascii",
+                                                                        "hex"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Security Wpa Psk Key Format",
+                                                            "description": "Security Wpa Psk Key Format (String, String)"
+                                                        },
+                                                        "security_wpa_psk_key": {
+                                                            "type": "string",
+                                                            "title": "Security Wpa Psk Key",
+                                                            "description": "Security Wpa Psk Key (String)"
+                                                        },
+                                                        "security_dot1x_authentication_list": {
+                                                            "type": "string",
+                                                            "title": "Security Dot1X Authentication List",
+                                                            "description": "Security Dot1X Authentication List (String)"
+                                                        },
+                                                        "security_web_auth": {
+                                                            "type": "boolean",
+                                                            "title": "Security Web Auth",
+                                                            "description": "Security Web Auth (Boolean)"
+                                                        },
+                                                        "security_web_auth_authentication_list": {
+                                                            "type": "string",
+                                                            "title": "Security Web Auth Authentication List",
+                                                            "description": "Security Web Auth Authentication List (String)"
+                                                        },
+                                                        "security_web_auth_parameter_map": {
+                                                            "type": "string",
+                                                            "title": "Security Web Auth Parameter Map",
+                                                            "description": "Security Web Auth Parameter Map (String)"
+                                                        },
+                                                        "security_ft": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "enabled",
+                                                                        "adaptive",
+                                                                        "disabled"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Security Ft",
+                                                            "description": "Security Ft (String, String)"
+                                                        },
+                                                        "security_ft_over_the_ds": {
+                                                            "type": "boolean",
+                                                            "title": "Security Ft Over The Ds",
+                                                            "description": "Security Ft Over The Ds (Boolean)"
+                                                        },
+                                                        "mac_filtering": {
+                                                            "type": "string",
+                                                            "title": "MAC Filtering",
+                                                            "description": "MAC Filtering (String)"
+                                                        },
+                                                        "load_balance": {
+                                                            "type": "boolean",
+                                                            "title": "Load Balance",
+                                                            "description": "Load Balance (Boolean)"
+                                                        },
+                                                        "peer_blocking": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "drop",
+                                                                        "forward-upstream"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Peer Blocking",
+                                                            "description": "Peer Blocking (String, String)"
+                                                        },
+                                                        "ccx_aironet_iesupport": {
+                                                            "type": "boolean",
+                                                            "title": "Ccx Aironet Iesupport",
+                                                            "description": "Ccx Aironet Iesupport (Boolean)"
+                                                        },
+                                                        "wmm": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "allowed",
+                                                                        "require",
+                                                                        "disabled"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Wmm",
+                                                            "description": "Wmm (String, String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name",
+                                                        "wlan_id",
+                                                        "ssid"
+                                                    ]
+                                                },
+                                                "title": "Wlan Profiles",
+                                                "description": "Wlan Profiles (List - Object)\n\nElements:\n- name (required)\n- wlan_id (required)\n- ssid (required)\n- shutdown\n- broadcast_ssid\n- security_wpa_akm\n- security_wpa_wpa2_ciphers\n- security_wpa_wpa3\n- security_wpa_psk_key_format\n- security_wpa_psk_key\n- security_dot1x_authentication_list\n- security_web_auth\n- security_web_auth_authentication_list\n- security_web_auth_parameter_map\n- security_ft\n- security_ft_over_the_ds\n- mac_filtering\n- load_balance\n- peer_blocking\n- ccx_aironet_iesupport\n- wmm"
                                             }
                                         },
                                         "required": [],
                                         "title": "Wireless",
-                                        "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles"
+                                        "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles\n- wlan_profiles"
                                     },
                                     "zone_pair_security": {
                                         "type": "array",
