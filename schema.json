@@ -30014,6 +30014,54 @@
                                                                     ],
                                                                     "title": "OSPF",
                                                                     "description": "OSPF (Object)\n\nElements:\n- policy (required)\n- authentication_type\n- authentication_key\n- authentication_key_id"
+                                                                },
+                                                                "bgp": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "ip": {
+                                                                            "type": "string",
+                                                                            "title": "IP",
+                                                                            "description": "IP (String)\n- IPv4 or IPv6 address"
+                                                                        },
+                                                                        "remote_as": {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 4294967295,
+                                                                            "title": "Remote AS",
+                                                                            "description": "Remote AS (Integer)\n- Minimum value: 1\n- Maximum value: 4294967295"
+                                                                        },
+                                                                        "password": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                {
+                                                                                    "type": "null"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Password",
+                                                                            "description": "Password (String, Null)"
+                                                                        },
+                                                                        "bfd": {
+                                                                            "type": "boolean",
+                                                                            "default": "false",
+                                                                            "title": "BFD",
+                                                                            "description": "BFD (Boolean)\n- Default value: false"
+                                                                        },
+                                                                        "admin_state": {
+                                                                            "type": "boolean",
+                                                                            "default": "true",
+                                                                            "title": "Admin State",
+                                                                            "description": "Admin State (Boolean)\n- Default value: true"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "ip",
+                                                                        "remote_as"
+                                                                    ],
+                                                                    "title": "BGP",
+                                                                    "description": "BGP (Object)\n\nElements:\n- ip (required)\n- remote_as (required)\n- password\n- bfd\n- admin_state"
                                                                 }
                                                             },
                                                             "required": [
@@ -30022,7 +30070,7 @@
                                                             ]
                                                         },
                                                         "title": "Interfaces",
-                                                        "description": "Interfaces (List - Object)\n\nElements:\n- port (required)\n- module\n- ip (required)\n- mtu\n- ospf"
+                                                        "description": "Interfaces (List - Object)\n\nElements:\n- port (required)\n- module\n- ip (required)\n- mtu\n- ospf\n- bgp"
                                                     }
                                                 },
                                                 "required": [
