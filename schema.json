@@ -512564,6 +512564,549 @@
                                             "title": "Ap Join Profiles",
                                             "description": "Ap Join Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- capwap_window_size\n- country\n- ssh\n- mgmtuser_username\n- mgmtuser_password\n- mgmtuser_password_type\n- mgmtuser_secret\n- mgmtuser_secret_type\n- ntp_ip\n- syslog_host\n- syslog_facility\n- syslog_level\n- apphost\n- association_limit\n- awips\n- awips_forensic\n- capwap_retransmit_count\n- capwap_retransmit_interval\n- capwap_timers_discovery_timeout\n- capwap_timers_fast_heartbeat_timeout\n- capwap_timers_heartbeat_timeout\n- capwap_timers_primary_discovery_timeout\n- capwap_timers_primed_join_timeout\n- capwap_backup_primary_name\n- capwap_backup_primary_ip\n- capwap_backup_secondary_name\n- capwap_backup_secondary_ip\n- capwap_fallback\n- capwap_discovery\n- cdp\n- dot1x_eap_type\n- dot1x_username\n- dot1x_password\n- dot1x_password_type\n- hyperlocation\n- ip_dhcp_fallback\n- lag\n- led\n- mesh_profile\n- rogue_detection_enable\n- rogue_detection_min_rssi\n- rogue_detection_min_transient_time\n- rogue_detection_report_interval\n- statistics_ap_system_monitoring_enable\n- statistics_ap_system_monitoring_alarm_enable\n- statistics_ap_system_monitoring_alarm_hold_time\n- statistics_ap_system_monitoring_alarm_retransmit_time\n- statistics_ap_system_monitoring_cpu_threshold\n- statistics_ap_system_monitoring_mem_threshold\n- statistics_ap_system_monitoring_sampling_interval\n- statistics_ap_system_monitoring_stats_interval\n- statistics_traffic_distribution\n- statistics_traffic_distribution_interval\n- statistics_ap_radio_monitoring_enable\n- statistics_ap_radio_monitoring_sampling_interval\n- stats_timer\n- tcp_adjust_mss_enable\n- tcp_adjust_mss_size\n- ble_scan"
                                         },
+                                        "rf_profiles": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^[!-~]([ -~]{0,30}[!-~])?$"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Name",
+                                                        "description": "Name (String, String)"
+                                                    },
+                                                    "band": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "24ghz",
+                                                                    "5ghz",
+                                                                    "6ghz"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Band",
+                                                        "description": "Band (String, String)"
+                                                    },
+                                                    "shutdown": {
+                                                        "type": "boolean",
+                                                        "title": "Shutdown",
+                                                        "description": "Shutdown (Boolean)"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "maxLength": 64,
+                                                        "title": "Description",
+                                                        "description": "Description (String)\n- Maximum length: 64"
+                                                    },
+                                                    "rate_1m": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "mandatory",
+                                                                    "supported",
+                                                                    "disable"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Rate 1M",
+                                                        "description": "Rate 1M (String, String)"
+                                                    },
+                                                    "rate_2m": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "mandatory",
+                                                                    "supported",
+                                                                    "disable"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Rate 2M",
+                                                        "description": "Rate 2M (String, String)"
+                                                    },
+                                                    "rate_5_5m": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "mandatory",
+                                                                    "supported",
+                                                                    "disable"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Rate 5 5M",
+                                                        "description": "Rate 5 5M (String, String)"
+                                                    },
+                                                    "rate_11m": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "mandatory",
+                                                                    "supported",
+                                                                    "disable"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Rate 11M",
+                                                        "description": "Rate 11M (String, String)"
+                                                    },
+                                                    "rate_6m": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "mandatory",
+                                                                    "supported",
+                                                                    "disable"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Rate 6M",
+                                                        "description": "Rate 6M (String, String)"
+                                                    },
+                                                    "rate_9m": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "mandatory",
+                                                                    "supported",
+                                                                    "disable"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Rate 9M",
+                                                        "description": "Rate 9M (String, String)"
+                                                    },
+                                                    "rate_12m": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "mandatory",
+                                                                    "supported",
+                                                                    "disable"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Rate 12M",
+                                                        "description": "Rate 12M (String, String)"
+                                                    },
+                                                    "rate_18m": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "mandatory",
+                                                                    "supported",
+                                                                    "disable"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Rate 18M",
+                                                        "description": "Rate 18M (String, String)"
+                                                    },
+                                                    "rate_24m": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "mandatory",
+                                                                    "supported",
+                                                                    "disable"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Rate 24M",
+                                                        "description": "Rate 24M (String, String)"
+                                                    },
+                                                    "rate_36m": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "mandatory",
+                                                                    "supported",
+                                                                    "disable"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Rate 36M",
+                                                        "description": "Rate 36M (String, String)"
+                                                    },
+                                                    "rate_48m": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "mandatory",
+                                                                    "supported",
+                                                                    "disable"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Rate 48M",
+                                                        "description": "Rate 48M (String, String)"
+                                                    },
+                                                    "rate_54m": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "mandatory",
+                                                                    "supported",
+                                                                    "disable"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Rate 54M",
+                                                        "description": "Rate 54M (String, String)"
+                                                    },
+                                                    "band_select_client_rssi": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": -90,
+                                                                "maximum": -20
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Band Select Client Rssi",
+                                                        "description": "Band Select Client Rssi (Integer, String)"
+                                                    },
+                                                    "band_select_cycle_count": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 10
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Band Select Cycle Count",
+                                                        "description": "Band Select Cycle Count (Integer, String)"
+                                                    },
+                                                    "band_select_cycle_threshold": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 1000
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Band Select Cycle Threshold",
+                                                        "description": "Band Select Cycle Threshold (Integer, String)"
+                                                    },
+                                                    "band_select_expire_dual_band": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 10,
+                                                                "maximum": 300
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Band Select Expire Dual Band",
+                                                        "description": "Band Select Expire Dual Band (Integer, String)"
+                                                    },
+                                                    "band_select_expire_suppression": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 10,
+                                                                "maximum": 200
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Band Select Expire Suppression",
+                                                        "description": "Band Select Expire Suppression (Integer, String)"
+                                                    },
+                                                    "dca_channels_allowed": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 233
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "title": "Dca Channels Allowed",
+                                                        "description": "Dca Channels Allowed (List - String)"
+                                                    },
+                                                    "coverage_data_rssi_threshold": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": -90,
+                                                                "maximum": -60
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Coverage Data Rssi Threshold",
+                                                        "description": "Coverage Data Rssi Threshold (Integer, String)"
+                                                    },
+                                                    "coverage_voice_rssi_threshold": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": -90,
+                                                                "maximum": -60
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Coverage Voice Rssi Threshold",
+                                                        "description": "Coverage Voice Rssi Threshold (Integer, String)"
+                                                    },
+                                                    "coverage_level_global": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 200
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Coverage Level Global",
+                                                        "description": "Coverage Level Global (Integer, String)"
+                                                    },
+                                                    "load_balancing_window": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 20
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Balancing Window",
+                                                        "description": "Load Balancing Window (Integer, String)"
+                                                    },
+                                                    "load_balancing_denial": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 10
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Load Balancing Denial",
+                                                        "description": "Load Balancing Denial (Integer, String)"
+                                                    },
+                                                    "max_clients": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 500
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Max Clients",
+                                                        "description": "Max Clients (Integer, String)"
+                                                    },
+                                                    "tx_power_v1_threshold": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": -80,
+                                                                "maximum": -50
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "TX Power V1 Threshold",
+                                                        "description": "TX Power V1 Threshold (Integer, String)"
+                                                    },
+                                                    "tx_power_max": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": -10,
+                                                                "maximum": 30
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "TX Power Max",
+                                                        "description": "TX Power Max (Integer, String)"
+                                                    },
+                                                    "tx_power_min": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": -10,
+                                                                "maximum": 30
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "TX Power Min",
+                                                        "description": "TX Power Min (Integer, String)"
+                                                    },
+                                                    "trap_threshold_clients": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 1,
+                                                                "maximum": 200
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Trap Threshold Clients",
+                                                        "description": "Trap Threshold Clients (Integer, String)"
+                                                    },
+                                                    "trap_threshold_interference": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 100
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Trap Threshold Interference",
+                                                        "description": "Trap Threshold Interference (Integer, String)"
+                                                    },
+                                                    "trap_threshold_noise": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": -127
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Trap Threshold Noise",
+                                                        "description": "Trap Threshold Noise (Integer, String)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name",
+                                                    "band"
+                                                ]
+                                            },
+                                            "title": "Rf Profiles",
+                                            "description": "Rf Profiles (List - Object)\n\nElements:\n- name (required)\n- band (required)\n- shutdown\n- description\n- rate_1m\n- rate_2m\n- rate_5_5m\n- rate_11m\n- rate_6m\n- rate_9m\n- rate_12m\n- rate_18m\n- rate_24m\n- rate_36m\n- rate_48m\n- rate_54m\n- band_select_client_rssi\n- band_select_cycle_count\n- band_select_cycle_threshold\n- band_select_expire_dual_band\n- band_select_expire_suppression\n- dca_channels_allowed\n- coverage_data_rssi_threshold\n- coverage_voice_rssi_threshold\n- coverage_level_global\n- load_balancing_window\n- load_balancing_denial\n- max_clients\n- tx_power_v1_threshold\n- tx_power_max\n- tx_power_min\n- trap_threshold_clients\n- trap_threshold_interference\n- trap_threshold_noise"
+                                        },
                                         "wlan_profiles": {
                                             "type": "array",
                                             "items": {
@@ -512793,7 +513336,7 @@
                                     },
                                     "required": [],
                                     "title": "Wireless",
-                                    "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles\n- wlan_profiles"
+                                    "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles"
                                 },
                                 "zone_pair_security": {
                                     "type": "array",
@@ -554660,6 +555203,549 @@
                                                 "title": "Ap Join Profiles",
                                                 "description": "Ap Join Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- capwap_window_size\n- country\n- ssh\n- mgmtuser_username\n- mgmtuser_password\n- mgmtuser_password_type\n- mgmtuser_secret\n- mgmtuser_secret_type\n- ntp_ip\n- syslog_host\n- syslog_facility\n- syslog_level\n- apphost\n- association_limit\n- awips\n- awips_forensic\n- capwap_retransmit_count\n- capwap_retransmit_interval\n- capwap_timers_discovery_timeout\n- capwap_timers_fast_heartbeat_timeout\n- capwap_timers_heartbeat_timeout\n- capwap_timers_primary_discovery_timeout\n- capwap_timers_primed_join_timeout\n- capwap_backup_primary_name\n- capwap_backup_primary_ip\n- capwap_backup_secondary_name\n- capwap_backup_secondary_ip\n- capwap_fallback\n- capwap_discovery\n- cdp\n- dot1x_eap_type\n- dot1x_username\n- dot1x_password\n- dot1x_password_type\n- hyperlocation\n- ip_dhcp_fallback\n- lag\n- led\n- mesh_profile\n- rogue_detection_enable\n- rogue_detection_min_rssi\n- rogue_detection_min_transient_time\n- rogue_detection_report_interval\n- statistics_ap_system_monitoring_enable\n- statistics_ap_system_monitoring_alarm_enable\n- statistics_ap_system_monitoring_alarm_hold_time\n- statistics_ap_system_monitoring_alarm_retransmit_time\n- statistics_ap_system_monitoring_cpu_threshold\n- statistics_ap_system_monitoring_mem_threshold\n- statistics_ap_system_monitoring_sampling_interval\n- statistics_ap_system_monitoring_stats_interval\n- statistics_traffic_distribution\n- statistics_traffic_distribution_interval\n- statistics_ap_radio_monitoring_enable\n- statistics_ap_radio_monitoring_sampling_interval\n- stats_timer\n- tcp_adjust_mss_enable\n- tcp_adjust_mss_size\n- ble_scan"
                                             },
+                                            "rf_profiles": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^[!-~]([ -~]{0,30}[!-~])?$"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Name",
+                                                            "description": "Name (String, String)"
+                                                        },
+                                                        "band": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "24ghz",
+                                                                        "5ghz",
+                                                                        "6ghz"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Band",
+                                                            "description": "Band (String, String)"
+                                                        },
+                                                        "shutdown": {
+                                                            "type": "boolean",
+                                                            "title": "Shutdown",
+                                                            "description": "Shutdown (Boolean)"
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "maxLength": 64,
+                                                            "title": "Description",
+                                                            "description": "Description (String)\n- Maximum length: 64"
+                                                        },
+                                                        "rate_1m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 1M",
+                                                            "description": "Rate 1M (String, String)"
+                                                        },
+                                                        "rate_2m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 2M",
+                                                            "description": "Rate 2M (String, String)"
+                                                        },
+                                                        "rate_5_5m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 5 5M",
+                                                            "description": "Rate 5 5M (String, String)"
+                                                        },
+                                                        "rate_11m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 11M",
+                                                            "description": "Rate 11M (String, String)"
+                                                        },
+                                                        "rate_6m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 6M",
+                                                            "description": "Rate 6M (String, String)"
+                                                        },
+                                                        "rate_9m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 9M",
+                                                            "description": "Rate 9M (String, String)"
+                                                        },
+                                                        "rate_12m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 12M",
+                                                            "description": "Rate 12M (String, String)"
+                                                        },
+                                                        "rate_18m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 18M",
+                                                            "description": "Rate 18M (String, String)"
+                                                        },
+                                                        "rate_24m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 24M",
+                                                            "description": "Rate 24M (String, String)"
+                                                        },
+                                                        "rate_36m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 36M",
+                                                            "description": "Rate 36M (String, String)"
+                                                        },
+                                                        "rate_48m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 48M",
+                                                            "description": "Rate 48M (String, String)"
+                                                        },
+                                                        "rate_54m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 54M",
+                                                            "description": "Rate 54M (String, String)"
+                                                        },
+                                                        "band_select_client_rssi": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -90,
+                                                                    "maximum": -20
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Band Select Client Rssi",
+                                                            "description": "Band Select Client Rssi (Integer, String)"
+                                                        },
+                                                        "band_select_cycle_count": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 10
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Band Select Cycle Count",
+                                                            "description": "Band Select Cycle Count (Integer, String)"
+                                                        },
+                                                        "band_select_cycle_threshold": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 1000
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Band Select Cycle Threshold",
+                                                            "description": "Band Select Cycle Threshold (Integer, String)"
+                                                        },
+                                                        "band_select_expire_dual_band": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 10,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Band Select Expire Dual Band",
+                                                            "description": "Band Select Expire Dual Band (Integer, String)"
+                                                        },
+                                                        "band_select_expire_suppression": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 10,
+                                                                    "maximum": 200
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Band Select Expire Suppression",
+                                                            "description": "Band Select Expire Suppression (Integer, String)"
+                                                        },
+                                                        "dca_channels_allowed": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 233
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "title": "Dca Channels Allowed",
+                                                            "description": "Dca Channels Allowed (List - String)"
+                                                        },
+                                                        "coverage_data_rssi_threshold": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -90,
+                                                                    "maximum": -60
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Coverage Data Rssi Threshold",
+                                                            "description": "Coverage Data Rssi Threshold (Integer, String)"
+                                                        },
+                                                        "coverage_voice_rssi_threshold": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -90,
+                                                                    "maximum": -60
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Coverage Voice Rssi Threshold",
+                                                            "description": "Coverage Voice Rssi Threshold (Integer, String)"
+                                                        },
+                                                        "coverage_level_global": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 200
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Coverage Level Global",
+                                                            "description": "Coverage Level Global (Integer, String)"
+                                                        },
+                                                        "load_balancing_window": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 20
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Balancing Window",
+                                                            "description": "Load Balancing Window (Integer, String)"
+                                                        },
+                                                        "load_balancing_denial": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 10
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Balancing Denial",
+                                                            "description": "Load Balancing Denial (Integer, String)"
+                                                        },
+                                                        "max_clients": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 500
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Max Clients",
+                                                            "description": "Max Clients (Integer, String)"
+                                                        },
+                                                        "tx_power_v1_threshold": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -80,
+                                                                    "maximum": -50
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "TX Power V1 Threshold",
+                                                            "description": "TX Power V1 Threshold (Integer, String)"
+                                                        },
+                                                        "tx_power_max": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -10,
+                                                                    "maximum": 30
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "TX Power Max",
+                                                            "description": "TX Power Max (Integer, String)"
+                                                        },
+                                                        "tx_power_min": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -10,
+                                                                    "maximum": 30
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "TX Power Min",
+                                                            "description": "TX Power Min (Integer, String)"
+                                                        },
+                                                        "trap_threshold_clients": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 200
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Trap Threshold Clients",
+                                                            "description": "Trap Threshold Clients (Integer, String)"
+                                                        },
+                                                        "trap_threshold_interference": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 100
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Trap Threshold Interference",
+                                                            "description": "Trap Threshold Interference (Integer, String)"
+                                                        },
+                                                        "trap_threshold_noise": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -127
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Trap Threshold Noise",
+                                                            "description": "Trap Threshold Noise (Integer, String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name",
+                                                        "band"
+                                                    ]
+                                                },
+                                                "title": "Rf Profiles",
+                                                "description": "Rf Profiles (List - Object)\n\nElements:\n- name (required)\n- band (required)\n- shutdown\n- description\n- rate_1m\n- rate_2m\n- rate_5_5m\n- rate_11m\n- rate_6m\n- rate_9m\n- rate_12m\n- rate_18m\n- rate_24m\n- rate_36m\n- rate_48m\n- rate_54m\n- band_select_client_rssi\n- band_select_cycle_count\n- band_select_cycle_threshold\n- band_select_expire_dual_band\n- band_select_expire_suppression\n- dca_channels_allowed\n- coverage_data_rssi_threshold\n- coverage_voice_rssi_threshold\n- coverage_level_global\n- load_balancing_window\n- load_balancing_denial\n- max_clients\n- tx_power_v1_threshold\n- tx_power_max\n- tx_power_min\n- trap_threshold_clients\n- trap_threshold_interference\n- trap_threshold_noise"
+                                            },
                                             "wlan_profiles": {
                                                 "type": "array",
                                                 "items": {
@@ -554889,7 +555975,7 @@
                                         },
                                         "required": [],
                                         "title": "Wireless",
-                                        "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles\n- wlan_profiles"
+                                        "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles"
                                     },
                                     "zone_pair_security": {
                                         "type": "array",
@@ -596791,6 +597877,549 @@
                                                 "title": "Ap Join Profiles",
                                                 "description": "Ap Join Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- capwap_window_size\n- country\n- ssh\n- mgmtuser_username\n- mgmtuser_password\n- mgmtuser_password_type\n- mgmtuser_secret\n- mgmtuser_secret_type\n- ntp_ip\n- syslog_host\n- syslog_facility\n- syslog_level\n- apphost\n- association_limit\n- awips\n- awips_forensic\n- capwap_retransmit_count\n- capwap_retransmit_interval\n- capwap_timers_discovery_timeout\n- capwap_timers_fast_heartbeat_timeout\n- capwap_timers_heartbeat_timeout\n- capwap_timers_primary_discovery_timeout\n- capwap_timers_primed_join_timeout\n- capwap_backup_primary_name\n- capwap_backup_primary_ip\n- capwap_backup_secondary_name\n- capwap_backup_secondary_ip\n- capwap_fallback\n- capwap_discovery\n- cdp\n- dot1x_eap_type\n- dot1x_username\n- dot1x_password\n- dot1x_password_type\n- hyperlocation\n- ip_dhcp_fallback\n- lag\n- led\n- mesh_profile\n- rogue_detection_enable\n- rogue_detection_min_rssi\n- rogue_detection_min_transient_time\n- rogue_detection_report_interval\n- statistics_ap_system_monitoring_enable\n- statistics_ap_system_monitoring_alarm_enable\n- statistics_ap_system_monitoring_alarm_hold_time\n- statistics_ap_system_monitoring_alarm_retransmit_time\n- statistics_ap_system_monitoring_cpu_threshold\n- statistics_ap_system_monitoring_mem_threshold\n- statistics_ap_system_monitoring_sampling_interval\n- statistics_ap_system_monitoring_stats_interval\n- statistics_traffic_distribution\n- statistics_traffic_distribution_interval\n- statistics_ap_radio_monitoring_enable\n- statistics_ap_radio_monitoring_sampling_interval\n- stats_timer\n- tcp_adjust_mss_enable\n- tcp_adjust_mss_size\n- ble_scan"
                                             },
+                                            "rf_profiles": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^[!-~]([ -~]{0,30}[!-~])?$"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Name",
+                                                            "description": "Name (String, String)"
+                                                        },
+                                                        "band": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "24ghz",
+                                                                        "5ghz",
+                                                                        "6ghz"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Band",
+                                                            "description": "Band (String, String)"
+                                                        },
+                                                        "shutdown": {
+                                                            "type": "boolean",
+                                                            "title": "Shutdown",
+                                                            "description": "Shutdown (Boolean)"
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "maxLength": 64,
+                                                            "title": "Description",
+                                                            "description": "Description (String)\n- Maximum length: 64"
+                                                        },
+                                                        "rate_1m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 1M",
+                                                            "description": "Rate 1M (String, String)"
+                                                        },
+                                                        "rate_2m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 2M",
+                                                            "description": "Rate 2M (String, String)"
+                                                        },
+                                                        "rate_5_5m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 5 5M",
+                                                            "description": "Rate 5 5M (String, String)"
+                                                        },
+                                                        "rate_11m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 11M",
+                                                            "description": "Rate 11M (String, String)"
+                                                        },
+                                                        "rate_6m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 6M",
+                                                            "description": "Rate 6M (String, String)"
+                                                        },
+                                                        "rate_9m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 9M",
+                                                            "description": "Rate 9M (String, String)"
+                                                        },
+                                                        "rate_12m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 12M",
+                                                            "description": "Rate 12M (String, String)"
+                                                        },
+                                                        "rate_18m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 18M",
+                                                            "description": "Rate 18M (String, String)"
+                                                        },
+                                                        "rate_24m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 24M",
+                                                            "description": "Rate 24M (String, String)"
+                                                        },
+                                                        "rate_36m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 36M",
+                                                            "description": "Rate 36M (String, String)"
+                                                        },
+                                                        "rate_48m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 48M",
+                                                            "description": "Rate 48M (String, String)"
+                                                        },
+                                                        "rate_54m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 54M",
+                                                            "description": "Rate 54M (String, String)"
+                                                        },
+                                                        "band_select_client_rssi": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -90,
+                                                                    "maximum": -20
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Band Select Client Rssi",
+                                                            "description": "Band Select Client Rssi (Integer, String)"
+                                                        },
+                                                        "band_select_cycle_count": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 10
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Band Select Cycle Count",
+                                                            "description": "Band Select Cycle Count (Integer, String)"
+                                                        },
+                                                        "band_select_cycle_threshold": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 1000
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Band Select Cycle Threshold",
+                                                            "description": "Band Select Cycle Threshold (Integer, String)"
+                                                        },
+                                                        "band_select_expire_dual_band": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 10,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Band Select Expire Dual Band",
+                                                            "description": "Band Select Expire Dual Band (Integer, String)"
+                                                        },
+                                                        "band_select_expire_suppression": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 10,
+                                                                    "maximum": 200
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Band Select Expire Suppression",
+                                                            "description": "Band Select Expire Suppression (Integer, String)"
+                                                        },
+                                                        "dca_channels_allowed": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 233
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "title": "Dca Channels Allowed",
+                                                            "description": "Dca Channels Allowed (List - String)"
+                                                        },
+                                                        "coverage_data_rssi_threshold": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -90,
+                                                                    "maximum": -60
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Coverage Data Rssi Threshold",
+                                                            "description": "Coverage Data Rssi Threshold (Integer, String)"
+                                                        },
+                                                        "coverage_voice_rssi_threshold": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -90,
+                                                                    "maximum": -60
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Coverage Voice Rssi Threshold",
+                                                            "description": "Coverage Voice Rssi Threshold (Integer, String)"
+                                                        },
+                                                        "coverage_level_global": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 200
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Coverage Level Global",
+                                                            "description": "Coverage Level Global (Integer, String)"
+                                                        },
+                                                        "load_balancing_window": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 20
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Balancing Window",
+                                                            "description": "Load Balancing Window (Integer, String)"
+                                                        },
+                                                        "load_balancing_denial": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 10
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Balancing Denial",
+                                                            "description": "Load Balancing Denial (Integer, String)"
+                                                        },
+                                                        "max_clients": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 500
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Max Clients",
+                                                            "description": "Max Clients (Integer, String)"
+                                                        },
+                                                        "tx_power_v1_threshold": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -80,
+                                                                    "maximum": -50
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "TX Power V1 Threshold",
+                                                            "description": "TX Power V1 Threshold (Integer, String)"
+                                                        },
+                                                        "tx_power_max": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -10,
+                                                                    "maximum": 30
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "TX Power Max",
+                                                            "description": "TX Power Max (Integer, String)"
+                                                        },
+                                                        "tx_power_min": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -10,
+                                                                    "maximum": 30
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "TX Power Min",
+                                                            "description": "TX Power Min (Integer, String)"
+                                                        },
+                                                        "trap_threshold_clients": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 200
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Trap Threshold Clients",
+                                                            "description": "Trap Threshold Clients (Integer, String)"
+                                                        },
+                                                        "trap_threshold_interference": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 100
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Trap Threshold Interference",
+                                                            "description": "Trap Threshold Interference (Integer, String)"
+                                                        },
+                                                        "trap_threshold_noise": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -127
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Trap Threshold Noise",
+                                                            "description": "Trap Threshold Noise (Integer, String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name",
+                                                        "band"
+                                                    ]
+                                                },
+                                                "title": "Rf Profiles",
+                                                "description": "Rf Profiles (List - Object)\n\nElements:\n- name (required)\n- band (required)\n- shutdown\n- description\n- rate_1m\n- rate_2m\n- rate_5_5m\n- rate_11m\n- rate_6m\n- rate_9m\n- rate_12m\n- rate_18m\n- rate_24m\n- rate_36m\n- rate_48m\n- rate_54m\n- band_select_client_rssi\n- band_select_cycle_count\n- band_select_cycle_threshold\n- band_select_expire_dual_band\n- band_select_expire_suppression\n- dca_channels_allowed\n- coverage_data_rssi_threshold\n- coverage_voice_rssi_threshold\n- coverage_level_global\n- load_balancing_window\n- load_balancing_denial\n- max_clients\n- tx_power_v1_threshold\n- tx_power_max\n- tx_power_min\n- trap_threshold_clients\n- trap_threshold_interference\n- trap_threshold_noise"
+                                            },
                                             "wlan_profiles": {
                                                 "type": "array",
                                                 "items": {
@@ -597020,7 +598649,7 @@
                                         },
                                         "required": [],
                                         "title": "Wireless",
-                                        "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles\n- wlan_profiles"
+                                        "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles"
                                     },
                                     "zone_pair_security": {
                                         "type": "array",
@@ -641251,6 +642880,549 @@
                                                 "title": "Ap Join Profiles",
                                                 "description": "Ap Join Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- capwap_window_size\n- country\n- ssh\n- mgmtuser_username\n- mgmtuser_password\n- mgmtuser_password_type\n- mgmtuser_secret\n- mgmtuser_secret_type\n- ntp_ip\n- syslog_host\n- syslog_facility\n- syslog_level\n- apphost\n- association_limit\n- awips\n- awips_forensic\n- capwap_retransmit_count\n- capwap_retransmit_interval\n- capwap_timers_discovery_timeout\n- capwap_timers_fast_heartbeat_timeout\n- capwap_timers_heartbeat_timeout\n- capwap_timers_primary_discovery_timeout\n- capwap_timers_primed_join_timeout\n- capwap_backup_primary_name\n- capwap_backup_primary_ip\n- capwap_backup_secondary_name\n- capwap_backup_secondary_ip\n- capwap_fallback\n- capwap_discovery\n- cdp\n- dot1x_eap_type\n- dot1x_username\n- dot1x_password\n- dot1x_password_type\n- hyperlocation\n- ip_dhcp_fallback\n- lag\n- led\n- mesh_profile\n- rogue_detection_enable\n- rogue_detection_min_rssi\n- rogue_detection_min_transient_time\n- rogue_detection_report_interval\n- statistics_ap_system_monitoring_enable\n- statistics_ap_system_monitoring_alarm_enable\n- statistics_ap_system_monitoring_alarm_hold_time\n- statistics_ap_system_monitoring_alarm_retransmit_time\n- statistics_ap_system_monitoring_cpu_threshold\n- statistics_ap_system_monitoring_mem_threshold\n- statistics_ap_system_monitoring_sampling_interval\n- statistics_ap_system_monitoring_stats_interval\n- statistics_traffic_distribution\n- statistics_traffic_distribution_interval\n- statistics_ap_radio_monitoring_enable\n- statistics_ap_radio_monitoring_sampling_interval\n- stats_timer\n- tcp_adjust_mss_enable\n- tcp_adjust_mss_size\n- ble_scan"
                                             },
+                                            "rf_profiles": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^[!-~]([ -~]{0,30}[!-~])?$"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Name",
+                                                            "description": "Name (String, String)"
+                                                        },
+                                                        "band": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "24ghz",
+                                                                        "5ghz",
+                                                                        "6ghz"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Band",
+                                                            "description": "Band (String, String)"
+                                                        },
+                                                        "shutdown": {
+                                                            "type": "boolean",
+                                                            "title": "Shutdown",
+                                                            "description": "Shutdown (Boolean)"
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "maxLength": 64,
+                                                            "title": "Description",
+                                                            "description": "Description (String)\n- Maximum length: 64"
+                                                        },
+                                                        "rate_1m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 1M",
+                                                            "description": "Rate 1M (String, String)"
+                                                        },
+                                                        "rate_2m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 2M",
+                                                            "description": "Rate 2M (String, String)"
+                                                        },
+                                                        "rate_5_5m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 5 5M",
+                                                            "description": "Rate 5 5M (String, String)"
+                                                        },
+                                                        "rate_11m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 11M",
+                                                            "description": "Rate 11M (String, String)"
+                                                        },
+                                                        "rate_6m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 6M",
+                                                            "description": "Rate 6M (String, String)"
+                                                        },
+                                                        "rate_9m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 9M",
+                                                            "description": "Rate 9M (String, String)"
+                                                        },
+                                                        "rate_12m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 12M",
+                                                            "description": "Rate 12M (String, String)"
+                                                        },
+                                                        "rate_18m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 18M",
+                                                            "description": "Rate 18M (String, String)"
+                                                        },
+                                                        "rate_24m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 24M",
+                                                            "description": "Rate 24M (String, String)"
+                                                        },
+                                                        "rate_36m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 36M",
+                                                            "description": "Rate 36M (String, String)"
+                                                        },
+                                                        "rate_48m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 48M",
+                                                            "description": "Rate 48M (String, String)"
+                                                        },
+                                                        "rate_54m": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "mandatory",
+                                                                        "supported",
+                                                                        "disable"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Rate 54M",
+                                                            "description": "Rate 54M (String, String)"
+                                                        },
+                                                        "band_select_client_rssi": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -90,
+                                                                    "maximum": -20
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Band Select Client Rssi",
+                                                            "description": "Band Select Client Rssi (Integer, String)"
+                                                        },
+                                                        "band_select_cycle_count": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 10
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Band Select Cycle Count",
+                                                            "description": "Band Select Cycle Count (Integer, String)"
+                                                        },
+                                                        "band_select_cycle_threshold": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 1000
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Band Select Cycle Threshold",
+                                                            "description": "Band Select Cycle Threshold (Integer, String)"
+                                                        },
+                                                        "band_select_expire_dual_band": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 10,
+                                                                    "maximum": 300
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Band Select Expire Dual Band",
+                                                            "description": "Band Select Expire Dual Band (Integer, String)"
+                                                        },
+                                                        "band_select_expire_suppression": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 10,
+                                                                    "maximum": 200
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Band Select Expire Suppression",
+                                                            "description": "Band Select Expire Suppression (Integer, String)"
+                                                        },
+                                                        "dca_channels_allowed": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 233
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "title": "Dca Channels Allowed",
+                                                            "description": "Dca Channels Allowed (List - String)"
+                                                        },
+                                                        "coverage_data_rssi_threshold": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -90,
+                                                                    "maximum": -60
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Coverage Data Rssi Threshold",
+                                                            "description": "Coverage Data Rssi Threshold (Integer, String)"
+                                                        },
+                                                        "coverage_voice_rssi_threshold": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -90,
+                                                                    "maximum": -60
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Coverage Voice Rssi Threshold",
+                                                            "description": "Coverage Voice Rssi Threshold (Integer, String)"
+                                                        },
+                                                        "coverage_level_global": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 200
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Coverage Level Global",
+                                                            "description": "Coverage Level Global (Integer, String)"
+                                                        },
+                                                        "load_balancing_window": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 20
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Balancing Window",
+                                                            "description": "Load Balancing Window (Integer, String)"
+                                                        },
+                                                        "load_balancing_denial": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 10
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Load Balancing Denial",
+                                                            "description": "Load Balancing Denial (Integer, String)"
+                                                        },
+                                                        "max_clients": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 500
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Max Clients",
+                                                            "description": "Max Clients (Integer, String)"
+                                                        },
+                                                        "tx_power_v1_threshold": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -80,
+                                                                    "maximum": -50
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "TX Power V1 Threshold",
+                                                            "description": "TX Power V1 Threshold (Integer, String)"
+                                                        },
+                                                        "tx_power_max": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -10,
+                                                                    "maximum": 30
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "TX Power Max",
+                                                            "description": "TX Power Max (Integer, String)"
+                                                        },
+                                                        "tx_power_min": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -10,
+                                                                    "maximum": 30
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "TX Power Min",
+                                                            "description": "TX Power Min (Integer, String)"
+                                                        },
+                                                        "trap_threshold_clients": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 1,
+                                                                    "maximum": 200
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Trap Threshold Clients",
+                                                            "description": "Trap Threshold Clients (Integer, String)"
+                                                        },
+                                                        "trap_threshold_interference": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 100
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Trap Threshold Interference",
+                                                            "description": "Trap Threshold Interference (Integer, String)"
+                                                        },
+                                                        "trap_threshold_noise": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": -127
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Trap Threshold Noise",
+                                                            "description": "Trap Threshold Noise (Integer, String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name",
+                                                        "band"
+                                                    ]
+                                                },
+                                                "title": "Rf Profiles",
+                                                "description": "Rf Profiles (List - Object)\n\nElements:\n- name (required)\n- band (required)\n- shutdown\n- description\n- rate_1m\n- rate_2m\n- rate_5_5m\n- rate_11m\n- rate_6m\n- rate_9m\n- rate_12m\n- rate_18m\n- rate_24m\n- rate_36m\n- rate_48m\n- rate_54m\n- band_select_client_rssi\n- band_select_cycle_count\n- band_select_cycle_threshold\n- band_select_expire_dual_band\n- band_select_expire_suppression\n- dca_channels_allowed\n- coverage_data_rssi_threshold\n- coverage_voice_rssi_threshold\n- coverage_level_global\n- load_balancing_window\n- load_balancing_denial\n- max_clients\n- tx_power_v1_threshold\n- tx_power_max\n- tx_power_min\n- trap_threshold_clients\n- trap_threshold_interference\n- trap_threshold_noise"
+                                            },
                                             "wlan_profiles": {
                                                 "type": "array",
                                                 "items": {
@@ -641480,7 +643652,7 @@
                                         },
                                         "required": [],
                                         "title": "Wireless",
-                                        "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles\n- wlan_profiles"
+                                        "description": "Wireless (Object)\n\nElements:\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles"
                                     },
                                     "zone_pair_security": {
                                         "type": "array",
