@@ -91758,7 +91758,7 @@
                                         "properties": {
                                             "name": {
                                                 "type": "string",
-                                                "pattern": "^[^&<>! \"]{1,128}$",
+                                                "pattern": "^[^&<>! \"]{1,32}$",
                                                 "title": "Name",
                                                 "description": "Name (String)"
                                             },
@@ -91791,7 +91791,7 @@
                                         "properties": {
                                             "name": {
                                                 "type": "string",
-                                                "pattern": "^[^&<>! \"]{1,128}$",
+                                                "pattern": "^[^&<>! \"]{1,32}$",
                                                 "title": "Name",
                                                 "description": "Name (String)"
                                             },
