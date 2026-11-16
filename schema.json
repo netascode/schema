@@ -16495,6 +16495,56 @@
                                                         "title": "IP External Subnet Selectors",
                                                         "description": "IP External Subnet Selectors (List - Object)\n\nElements:\n- ip (required)\n- description\n- shared"
                                                     },
+                                                    "service_epg_selectors": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "contract": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                    "title": "Contract",
+                                                                    "description": "Contract (String)"
+                                                                },
+                                                                "service_graph_template": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                    "title": "Service Graph Template",
+                                                                    "description": "Service Graph Template (String)"
+                                                                },
+                                                                "node_name": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                    "title": "Node Name",
+                                                                    "description": "Node Name (String)"
+                                                                },
+                                                                "connector": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "consumer",
+                                                                        "provider",
+                                                                        "copy"
+                                                                    ],
+                                                                    "title": "Connector",
+                                                                    "description": "Connector (String)\n- Allowed values: consumer, provider, copy"
+                                                                },
+                                                                "description": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9\\\\!#$%()*,-./:;@ _{|}~?&+]{1,128}$",
+                                                                    "title": "Description",
+                                                                    "description": "Description (String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "contract",
+                                                                "service_graph_template",
+                                                                "connector"
+                                                            ]
+                                                        },
+                                                        "title": "Service EPG Selectors",
+                                                        "description": "Service EPG Selectors (List - Object)\n\nElements:\n- contract (required)\n- service_graph_template (required)\n- node_name\n- connector (required)\n- description"
+                                                    },
                                                     "normalized_pctag": {
                                                         "type": "integer",
                                                         "minimum": 16,
@@ -16539,7 +16589,7 @@
                                                 ]
                                             },
                                             "title": "Endpoint Security Groups",
-                                            "description": "Endpoint Security Groups (List - Object)\n\nElements:\n- name (required)\n- description\n- vrf (required)\n- shutdown\n- intra_esg_isolation\n- preferred_group\n- deployment_immediacy\n- contracts\n- tag_selectors\n- epg_selectors\n- ip_subnet_selectors\n- ip_external_subnet_selectors\n- normalized_pctag\n- expected_state"
+                                            "description": "Endpoint Security Groups (List - Object)\n\nElements:\n- name (required)\n- description\n- vrf (required)\n- shutdown\n- intra_esg_isolation\n- preferred_group\n- deployment_immediacy\n- contracts\n- tag_selectors\n- epg_selectors\n- ip_subnet_selectors\n- ip_external_subnet_selectors\n- service_epg_selectors\n- normalized_pctag\n- expected_state"
                                         },
                                         "expected_state": {
                                             "type": "object",
@@ -476513,15 +476563,35 @@
                                                                 "title": "Name",
                                                                 "description": "Name (String)"
                                                             },
+                                                            "authentication_local_ecdsa_sig": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Local Ecdsa Sig",
+                                                                "description": "Authentication Local Ecdsa Sig (Boolean)"
+                                                            },
                                                             "authentication_local_pre_share": {
                                                                 "type": "boolean",
                                                                 "title": "Authentication Local Pre Share",
                                                                 "description": "Authentication Local Pre Share (Boolean)"
                                                             },
+                                                            "authentication_local_rsa_sig": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Local Rsa Sig",
+                                                                "description": "Authentication Local Rsa Sig (Boolean)"
+                                                            },
+                                                            "authentication_remote_ecdsa_sig": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Remote Ecdsa Sig",
+                                                                "description": "Authentication Remote Ecdsa Sig (Boolean)"
+                                                            },
                                                             "authentication_remote_pre_share": {
                                                                 "type": "boolean",
                                                                 "title": "Authentication Remote Pre Share",
                                                                 "description": "Authentication Remote Pre Share (Boolean)"
+                                                            },
+                                                            "authentication_remote_rsa_sig": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Remote Rsa Sig",
+                                                                "description": "Authentication Remote Rsa Sig (Boolean)"
                                                             },
                                                             "config_exchange_request": {
                                                                 "type": "boolean",
@@ -476678,6 +476748,14 @@
                                                                 "title": "Match Address Local IP",
                                                                 "description": "Match Address Local IP (String, String)"
                                                             },
+                                                            "match_certificate_maps": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string"
+                                                                },
+                                                                "title": "Match Certificate Maps",
+                                                                "description": "Match Certificate Maps (List - String)"
+                                                            },
                                                             "match_fvrf": {
                                                                 "type": "string",
                                                                 "title": "Match Fvrf",
@@ -476748,6 +476826,42 @@
                                                                 "type": "boolean",
                                                                 "title": "Match Inbound Only",
                                                                 "description": "Match Inbound Only (Boolean)"
+                                                            },
+                                                            "pki_trustpoints": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": false,
+                                                                    "properties": {
+                                                                        "name": {
+                                                                            "type": "string",
+                                                                            "title": "Name",
+                                                                            "description": "Name (String)"
+                                                                        },
+                                                                        "uses": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "sign",
+                                                                                        "verify"
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                }
+                                                                            ],
+                                                                            "title": "Uses",
+                                                                            "description": "Uses (String, String)"
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "name"
+                                                                    ]
+                                                                },
+                                                                "title": "PKI Trustpoints",
+                                                                "description": "PKI Trustpoints (List - Object)\n\nElements:\n- name (required)\n- uses"
                                                             }
                                                         },
                                                         "required": [
@@ -476755,7 +476869,7 @@
                                                         ]
                                                     },
                                                     "title": "Profiles",
-                                                    "description": "Profiles (List - Object)\n\nElements:\n- name (required)\n- authentication_local_pre_share\n- authentication_remote_pre_share\n- config_exchange_request\n- description\n- dpd_interval\n- dpd_query\n- dpd_retry\n- identity_local_address\n- identity_local_key_id\n- ivrf\n- keyring_local\n- lifetime\n- match_address_local_interface_loopback\n- match_address_local_interface_loopback_legacy\n- match_address_local_ip\n- match_fvrf\n- match_fvrf_any\n- match_identity_remote_ipv4_addresses\n- match_identity_remote_ipv6_prefixes\n- match_identity_remote_keys\n- match_inbound_only"
+                                                    "description": "Profiles (List - Object)\n\nElements:\n- name (required)\n- authentication_local_ecdsa_sig\n- authentication_local_pre_share\n- authentication_local_rsa_sig\n- authentication_remote_ecdsa_sig\n- authentication_remote_pre_share\n- authentication_remote_rsa_sig\n- config_exchange_request\n- description\n- dpd_interval\n- dpd_query\n- dpd_retry\n- identity_local_address\n- identity_local_key_id\n- ivrf\n- keyring_local\n- lifetime\n- match_address_local_interface_loopback\n- match_address_local_interface_loopback_legacy\n- match_address_local_ip\n- match_certificate_maps\n- match_fvrf\n- match_fvrf_any\n- match_identity_remote_ipv4_addresses\n- match_identity_remote_ipv6_prefixes\n- match_identity_remote_keys\n- match_inbound_only\n- pki_trustpoints"
                                                 },
                                                 "keyrings": {
                                                     "type": "array",
@@ -520336,15 +520450,35 @@
                                                                     "title": "Name",
                                                                     "description": "Name (String)"
                                                                 },
+                                                                "authentication_local_ecdsa_sig": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Local Ecdsa Sig",
+                                                                    "description": "Authentication Local Ecdsa Sig (Boolean)"
+                                                                },
                                                                 "authentication_local_pre_share": {
                                                                     "type": "boolean",
                                                                     "title": "Authentication Local Pre Share",
                                                                     "description": "Authentication Local Pre Share (Boolean)"
                                                                 },
+                                                                "authentication_local_rsa_sig": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Local Rsa Sig",
+                                                                    "description": "Authentication Local Rsa Sig (Boolean)"
+                                                                },
+                                                                "authentication_remote_ecdsa_sig": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Remote Ecdsa Sig",
+                                                                    "description": "Authentication Remote Ecdsa Sig (Boolean)"
+                                                                },
                                                                 "authentication_remote_pre_share": {
                                                                     "type": "boolean",
                                                                     "title": "Authentication Remote Pre Share",
                                                                     "description": "Authentication Remote Pre Share (Boolean)"
+                                                                },
+                                                                "authentication_remote_rsa_sig": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Remote Rsa Sig",
+                                                                    "description": "Authentication Remote Rsa Sig (Boolean)"
                                                                 },
                                                                 "config_exchange_request": {
                                                                     "type": "boolean",
@@ -520501,6 +520635,14 @@
                                                                     "title": "Match Address Local IP",
                                                                     "description": "Match Address Local IP (String, String)"
                                                                 },
+                                                                "match_certificate_maps": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "title": "Match Certificate Maps",
+                                                                    "description": "Match Certificate Maps (List - String)"
+                                                                },
                                                                 "match_fvrf": {
                                                                     "type": "string",
                                                                     "title": "Match Fvrf",
@@ -520571,6 +520713,42 @@
                                                                     "type": "boolean",
                                                                     "title": "Match Inbound Only",
                                                                     "description": "Match Inbound Only (Boolean)"
+                                                                },
+                                                                "pki_trustpoints": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "name": {
+                                                                                "type": "string",
+                                                                                "title": "Name",
+                                                                                "description": "Name (String)"
+                                                                            },
+                                                                            "uses": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "sign",
+                                                                                            "verify"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Uses",
+                                                                                "description": "Uses (String, String)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "name"
+                                                                        ]
+                                                                    },
+                                                                    "title": "PKI Trustpoints",
+                                                                    "description": "PKI Trustpoints (List - Object)\n\nElements:\n- name (required)\n- uses"
                                                                 }
                                                             },
                                                             "required": [
@@ -520578,7 +520756,7 @@
                                                             ]
                                                         },
                                                         "title": "Profiles",
-                                                        "description": "Profiles (List - Object)\n\nElements:\n- name (required)\n- authentication_local_pre_share\n- authentication_remote_pre_share\n- config_exchange_request\n- description\n- dpd_interval\n- dpd_query\n- dpd_retry\n- identity_local_address\n- identity_local_key_id\n- ivrf\n- keyring_local\n- lifetime\n- match_address_local_interface_loopback\n- match_address_local_interface_loopback_legacy\n- match_address_local_ip\n- match_fvrf\n- match_fvrf_any\n- match_identity_remote_ipv4_addresses\n- match_identity_remote_ipv6_prefixes\n- match_identity_remote_keys\n- match_inbound_only"
+                                                        "description": "Profiles (List - Object)\n\nElements:\n- name (required)\n- authentication_local_ecdsa_sig\n- authentication_local_pre_share\n- authentication_local_rsa_sig\n- authentication_remote_ecdsa_sig\n- authentication_remote_pre_share\n- authentication_remote_rsa_sig\n- config_exchange_request\n- description\n- dpd_interval\n- dpd_query\n- dpd_retry\n- identity_local_address\n- identity_local_key_id\n- ivrf\n- keyring_local\n- lifetime\n- match_address_local_interface_loopback\n- match_address_local_interface_loopback_legacy\n- match_address_local_ip\n- match_certificate_maps\n- match_fvrf\n- match_fvrf_any\n- match_identity_remote_ipv4_addresses\n- match_identity_remote_ipv6_prefixes\n- match_identity_remote_keys\n- match_inbound_only\n- pki_trustpoints"
                                                     },
                                                     "keyrings": {
                                                         "type": "array",
@@ -564194,15 +564372,35 @@
                                                                     "title": "Name",
                                                                     "description": "Name (String)"
                                                                 },
+                                                                "authentication_local_ecdsa_sig": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Local Ecdsa Sig",
+                                                                    "description": "Authentication Local Ecdsa Sig (Boolean)"
+                                                                },
                                                                 "authentication_local_pre_share": {
                                                                     "type": "boolean",
                                                                     "title": "Authentication Local Pre Share",
                                                                     "description": "Authentication Local Pre Share (Boolean)"
                                                                 },
+                                                                "authentication_local_rsa_sig": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Local Rsa Sig",
+                                                                    "description": "Authentication Local Rsa Sig (Boolean)"
+                                                                },
+                                                                "authentication_remote_ecdsa_sig": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Remote Ecdsa Sig",
+                                                                    "description": "Authentication Remote Ecdsa Sig (Boolean)"
+                                                                },
                                                                 "authentication_remote_pre_share": {
                                                                     "type": "boolean",
                                                                     "title": "Authentication Remote Pre Share",
                                                                     "description": "Authentication Remote Pre Share (Boolean)"
+                                                                },
+                                                                "authentication_remote_rsa_sig": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Remote Rsa Sig",
+                                                                    "description": "Authentication Remote Rsa Sig (Boolean)"
                                                                 },
                                                                 "config_exchange_request": {
                                                                     "type": "boolean",
@@ -564359,6 +564557,14 @@
                                                                     "title": "Match Address Local IP",
                                                                     "description": "Match Address Local IP (String, String)"
                                                                 },
+                                                                "match_certificate_maps": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "title": "Match Certificate Maps",
+                                                                    "description": "Match Certificate Maps (List - String)"
+                                                                },
                                                                 "match_fvrf": {
                                                                     "type": "string",
                                                                     "title": "Match Fvrf",
@@ -564429,6 +564635,42 @@
                                                                     "type": "boolean",
                                                                     "title": "Match Inbound Only",
                                                                     "description": "Match Inbound Only (Boolean)"
+                                                                },
+                                                                "pki_trustpoints": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "name": {
+                                                                                "type": "string",
+                                                                                "title": "Name",
+                                                                                "description": "Name (String)"
+                                                                            },
+                                                                            "uses": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "sign",
+                                                                                            "verify"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Uses",
+                                                                                "description": "Uses (String, String)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "name"
+                                                                        ]
+                                                                    },
+                                                                    "title": "PKI Trustpoints",
+                                                                    "description": "PKI Trustpoints (List - Object)\n\nElements:\n- name (required)\n- uses"
                                                                 }
                                                             },
                                                             "required": [
@@ -564436,7 +564678,7 @@
                                                             ]
                                                         },
                                                         "title": "Profiles",
-                                                        "description": "Profiles (List - Object)\n\nElements:\n- name (required)\n- authentication_local_pre_share\n- authentication_remote_pre_share\n- config_exchange_request\n- description\n- dpd_interval\n- dpd_query\n- dpd_retry\n- identity_local_address\n- identity_local_key_id\n- ivrf\n- keyring_local\n- lifetime\n- match_address_local_interface_loopback\n- match_address_local_interface_loopback_legacy\n- match_address_local_ip\n- match_fvrf\n- match_fvrf_any\n- match_identity_remote_ipv4_addresses\n- match_identity_remote_ipv6_prefixes\n- match_identity_remote_keys\n- match_inbound_only"
+                                                        "description": "Profiles (List - Object)\n\nElements:\n- name (required)\n- authentication_local_ecdsa_sig\n- authentication_local_pre_share\n- authentication_local_rsa_sig\n- authentication_remote_ecdsa_sig\n- authentication_remote_pre_share\n- authentication_remote_rsa_sig\n- config_exchange_request\n- description\n- dpd_interval\n- dpd_query\n- dpd_retry\n- identity_local_address\n- identity_local_key_id\n- ivrf\n- keyring_local\n- lifetime\n- match_address_local_interface_loopback\n- match_address_local_interface_loopback_legacy\n- match_address_local_ip\n- match_certificate_maps\n- match_fvrf\n- match_fvrf_any\n- match_identity_remote_ipv4_addresses\n- match_identity_remote_ipv6_prefixes\n- match_identity_remote_keys\n- match_inbound_only\n- pki_trustpoints"
                                                     },
                                                     "keyrings": {
                                                         "type": "array",
@@ -610381,15 +610623,35 @@
                                                                     "title": "Name",
                                                                     "description": "Name (String)"
                                                                 },
+                                                                "authentication_local_ecdsa_sig": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Local Ecdsa Sig",
+                                                                    "description": "Authentication Local Ecdsa Sig (Boolean)"
+                                                                },
                                                                 "authentication_local_pre_share": {
                                                                     "type": "boolean",
                                                                     "title": "Authentication Local Pre Share",
                                                                     "description": "Authentication Local Pre Share (Boolean)"
                                                                 },
+                                                                "authentication_local_rsa_sig": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Local Rsa Sig",
+                                                                    "description": "Authentication Local Rsa Sig (Boolean)"
+                                                                },
+                                                                "authentication_remote_ecdsa_sig": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Remote Ecdsa Sig",
+                                                                    "description": "Authentication Remote Ecdsa Sig (Boolean)"
+                                                                },
                                                                 "authentication_remote_pre_share": {
                                                                     "type": "boolean",
                                                                     "title": "Authentication Remote Pre Share",
                                                                     "description": "Authentication Remote Pre Share (Boolean)"
+                                                                },
+                                                                "authentication_remote_rsa_sig": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Remote Rsa Sig",
+                                                                    "description": "Authentication Remote Rsa Sig (Boolean)"
                                                                 },
                                                                 "config_exchange_request": {
                                                                     "type": "boolean",
@@ -610546,6 +610808,14 @@
                                                                     "title": "Match Address Local IP",
                                                                     "description": "Match Address Local IP (String, String)"
                                                                 },
+                                                                "match_certificate_maps": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "title": "Match Certificate Maps",
+                                                                    "description": "Match Certificate Maps (List - String)"
+                                                                },
                                                                 "match_fvrf": {
                                                                     "type": "string",
                                                                     "title": "Match Fvrf",
@@ -610616,6 +610886,42 @@
                                                                     "type": "boolean",
                                                                     "title": "Match Inbound Only",
                                                                     "description": "Match Inbound Only (Boolean)"
+                                                                },
+                                                                "pki_trustpoints": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "object",
+                                                                        "additionalProperties": false,
+                                                                        "properties": {
+                                                                            "name": {
+                                                                                "type": "string",
+                                                                                "title": "Name",
+                                                                                "description": "Name (String)"
+                                                                            },
+                                                                            "uses": {
+                                                                                "anyOf": [
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "enum": [
+                                                                                            "sign",
+                                                                                            "verify"
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "string",
+                                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                                    }
+                                                                                ],
+                                                                                "title": "Uses",
+                                                                                "description": "Uses (String, String)"
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "name"
+                                                                        ]
+                                                                    },
+                                                                    "title": "PKI Trustpoints",
+                                                                    "description": "PKI Trustpoints (List - Object)\n\nElements:\n- name (required)\n- uses"
                                                                 }
                                                             },
                                                             "required": [
@@ -610623,7 +610929,7 @@
                                                             ]
                                                         },
                                                         "title": "Profiles",
-                                                        "description": "Profiles (List - Object)\n\nElements:\n- name (required)\n- authentication_local_pre_share\n- authentication_remote_pre_share\n- config_exchange_request\n- description\n- dpd_interval\n- dpd_query\n- dpd_retry\n- identity_local_address\n- identity_local_key_id\n- ivrf\n- keyring_local\n- lifetime\n- match_address_local_interface_loopback\n- match_address_local_interface_loopback_legacy\n- match_address_local_ip\n- match_fvrf\n- match_fvrf_any\n- match_identity_remote_ipv4_addresses\n- match_identity_remote_ipv6_prefixes\n- match_identity_remote_keys\n- match_inbound_only"
+                                                        "description": "Profiles (List - Object)\n\nElements:\n- name (required)\n- authentication_local_ecdsa_sig\n- authentication_local_pre_share\n- authentication_local_rsa_sig\n- authentication_remote_ecdsa_sig\n- authentication_remote_pre_share\n- authentication_remote_rsa_sig\n- config_exchange_request\n- description\n- dpd_interval\n- dpd_query\n- dpd_retry\n- identity_local_address\n- identity_local_key_id\n- ivrf\n- keyring_local\n- lifetime\n- match_address_local_interface_loopback\n- match_address_local_interface_loopback_legacy\n- match_address_local_ip\n- match_certificate_maps\n- match_fvrf\n- match_fvrf_any\n- match_identity_remote_ipv4_addresses\n- match_identity_remote_ipv6_prefixes\n- match_identity_remote_keys\n- match_inbound_only\n- pki_trustpoints"
                                                     },
                                                     "keyrings": {
                                                         "type": "array",
