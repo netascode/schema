@@ -518577,6 +518577,268 @@
                                             "title": "Wlan Profiles",
                                             "description": "Wlan Profiles (List - Object)\n\nElements:\n- name (required)\n- wlan_id (required)\n- ssid (required)\n- shutdown\n- broadcast_ssid\n- security_wpa_akm\n- security_wpa_wpa2_ciphers\n- security_wpa_wpa3\n- security_wpa_psk_key_format\n- security_wpa_psk_key\n- security_dot1x_authentication_list\n- security_web_auth\n- security_web_auth_authentication_list\n- security_web_auth_parameter_map\n- security_ft\n- security_ft_over_the_ds\n- mac_filtering\n- load_balance\n- peer_blocking\n- ccx_aironet_iesupport\n- wmm"
                                         },
+                                        "policy_profiles": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^[!-~]([ -~]{0,30}[!-~])?$"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Name",
+                                                        "description": "Name (String, String)"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "title": "Description",
+                                                        "description": "Description (String)"
+                                                    },
+                                                    "shutdown": {
+                                                        "type": "boolean",
+                                                        "title": "Shutdown",
+                                                        "description": "Shutdown (Boolean)"
+                                                    },
+                                                    "vlan": {
+                                                        "type": "string",
+                                                        "title": "Vlan",
+                                                        "description": "Vlan (String)"
+                                                    },
+                                                    "aaa_override": {
+                                                        "type": "boolean",
+                                                        "title": "AAA Override",
+                                                        "description": "AAA Override (Boolean)"
+                                                    },
+                                                    "accounting_list": {
+                                                        "type": "string",
+                                                        "title": "Accounting List",
+                                                        "description": "Accounting List (String)"
+                                                    },
+                                                    "session_timeout": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 86400
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Session Timeout",
+                                                        "description": "Session Timeout (Integer, String)"
+                                                    },
+                                                    "idle_timeout": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "minimum": 15,
+                                                                "maximum": 100000
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Idle Timeout",
+                                                        "description": "Idle Timeout (Integer, String)"
+                                                    },
+                                                    "exclusionlist_timeout": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "integer",
+                                                                "maximum": 2147483647
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Exclusionlist Timeout",
+                                                        "description": "Exclusionlist Timeout (Integer, String)"
+                                                    },
+                                                    "ipv4_acl": {
+                                                        "type": "string",
+                                                        "title": "Ipv4 ACL",
+                                                        "description": "Ipv4 ACL (String)"
+                                                    },
+                                                    "ipv6_acl": {
+                                                        "type": "string",
+                                                        "title": "IPv6 ACL",
+                                                        "description": "IPv6 ACL (String)"
+                                                    },
+                                                    "ipv4_flow_monitors_input": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": "Ipv4 Flow Monitors Input",
+                                                        "description": "Ipv4 Flow Monitors Input (List - String)"
+                                                    },
+                                                    "ipv4_flow_monitors_output": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": "Ipv4 Flow Monitors Output",
+                                                        "description": "Ipv4 Flow Monitors Output (List - String)"
+                                                    },
+                                                    "mobility_anchors": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "ip": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "IP",
+                                                                    "description": "IP (String, String)"
+                                                                },
+                                                                "priority": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 3
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Priority",
+                                                                    "description": "Priority (Integer, String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "ip"
+                                                            ]
+                                                        },
+                                                        "title": "Mobility Anchors",
+                                                        "description": "Mobility Anchors (List - Object)\n\nElements:\n- ip (required)\n- priority"
+                                                    },
+                                                    "nac": {
+                                                        "type": "boolean",
+                                                        "title": "Nac",
+                                                        "description": "Nac (Boolean)"
+                                                    },
+                                                    "service_policy_input": {
+                                                        "type": "string",
+                                                        "title": "Service Policy Input",
+                                                        "description": "Service Policy Input (String)"
+                                                    },
+                                                    "service_policy_output": {
+                                                        "type": "string",
+                                                        "title": "Service Policy Output",
+                                                        "description": "Service Policy Output (String)"
+                                                    },
+                                                    "static_ip_mobility": {
+                                                        "type": "boolean",
+                                                        "title": "Static IP Mobility",
+                                                        "description": "Static IP Mobility (Boolean)"
+                                                    },
+                                                    "dhcp_tlv_caching": {
+                                                        "type": "boolean",
+                                                        "title": "DHCP Tlv Caching",
+                                                        "description": "DHCP Tlv Caching (Boolean)"
+                                                    },
+                                                    "http_tlv_caching": {
+                                                        "type": "boolean",
+                                                        "title": "Http Tlv Caching",
+                                                        "description": "Http Tlv Caching (Boolean)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name"
+                                                ]
+                                            },
+                                            "title": "Policy Profiles",
+                                            "description": "Policy Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- shutdown\n- vlan\n- aaa_override\n- accounting_list\n- session_timeout\n- idle_timeout\n- exclusionlist_timeout\n- ipv4_acl\n- ipv6_acl\n- ipv4_flow_monitors_input\n- ipv4_flow_monitors_output\n- mobility_anchors\n- nac\n- service_policy_input\n- service_policy_output\n- static_ip_mobility\n- dhcp_tlv_caching\n- http_tlv_caching"
+                                        },
+                                        "policy_tags": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^[!-~]([ -~]*[!-~])?$"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Name",
+                                                        "description": "Name (String, String)"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "title": "Description",
+                                                        "description": "Description (String)"
+                                                    },
+                                                    "wlan_policies": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "wlan_profile": {
+                                                                    "type": "string",
+                                                                    "title": "Wlan Profile",
+                                                                    "description": "Wlan Profile (String)"
+                                                                },
+                                                                "policy_profile": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "minLength": 1,
+                                                                            "maxLength": 32
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Policy Profile",
+                                                                    "description": "Policy Profile (String, String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "wlan_profile",
+                                                                "policy_profile"
+                                                            ]
+                                                        },
+                                                        "title": "Wlan Policies",
+                                                        "description": "Wlan Policies (List - Object)\n\nElements:\n- wlan_profile (required)\n- policy_profile (required)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name"
+                                                ]
+                                            },
+                                            "title": "Policy Tags",
+                                            "description": "Policy Tags (List - Object)\n\nElements:\n- name (required)\n- description\n- wlan_policies"
+                                        },
                                         "rf_tags": {
                                             "type": "array",
                                             "items": {
@@ -518918,7 +519180,7 @@
                                     },
                                     "required": [],
                                     "title": "Wireless",
-                                    "description": "Wireless (Object)\n\nElements:\n- management_interface_type\n- management_interface_id\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles\n- rf_tags\n- flex_profiles\n- mesh_profiles\n- site_tags"
+                                    "description": "Wireless (Object)\n\nElements:\n- management_interface_type\n- management_interface_id\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles\n- policy_profiles\n- policy_tags\n- rf_tags\n- flex_profiles\n- mesh_profiles\n- site_tags"
                                 },
                                 "zone_pair_security": {
                                     "type": "array",
@@ -566693,6 +566955,268 @@
                                                 "title": "Wlan Profiles",
                                                 "description": "Wlan Profiles (List - Object)\n\nElements:\n- name (required)\n- wlan_id (required)\n- ssid (required)\n- shutdown\n- broadcast_ssid\n- security_wpa_akm\n- security_wpa_wpa2_ciphers\n- security_wpa_wpa3\n- security_wpa_psk_key_format\n- security_wpa_psk_key\n- security_dot1x_authentication_list\n- security_web_auth\n- security_web_auth_authentication_list\n- security_web_auth_parameter_map\n- security_ft\n- security_ft_over_the_ds\n- mac_filtering\n- load_balance\n- peer_blocking\n- ccx_aironet_iesupport\n- wmm"
                                             },
+                                            "policy_profiles": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^[!-~]([ -~]{0,30}[!-~])?$"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Name",
+                                                            "description": "Name (String, String)"
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "title": "Description",
+                                                            "description": "Description (String)"
+                                                        },
+                                                        "shutdown": {
+                                                            "type": "boolean",
+                                                            "title": "Shutdown",
+                                                            "description": "Shutdown (Boolean)"
+                                                        },
+                                                        "vlan": {
+                                                            "type": "string",
+                                                            "title": "Vlan",
+                                                            "description": "Vlan (String)"
+                                                        },
+                                                        "aaa_override": {
+                                                            "type": "boolean",
+                                                            "title": "AAA Override",
+                                                            "description": "AAA Override (Boolean)"
+                                                        },
+                                                        "accounting_list": {
+                                                            "type": "string",
+                                                            "title": "Accounting List",
+                                                            "description": "Accounting List (String)"
+                                                        },
+                                                        "session_timeout": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 86400
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Session Timeout",
+                                                            "description": "Session Timeout (Integer, String)"
+                                                        },
+                                                        "idle_timeout": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 15,
+                                                                    "maximum": 100000
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Idle Timeout",
+                                                            "description": "Idle Timeout (Integer, String)"
+                                                        },
+                                                        "exclusionlist_timeout": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 2147483647
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Exclusionlist Timeout",
+                                                            "description": "Exclusionlist Timeout (Integer, String)"
+                                                        },
+                                                        "ipv4_acl": {
+                                                            "type": "string",
+                                                            "title": "Ipv4 ACL",
+                                                            "description": "Ipv4 ACL (String)"
+                                                        },
+                                                        "ipv6_acl": {
+                                                            "type": "string",
+                                                            "title": "IPv6 ACL",
+                                                            "description": "IPv6 ACL (String)"
+                                                        },
+                                                        "ipv4_flow_monitors_input": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            },
+                                                            "title": "Ipv4 Flow Monitors Input",
+                                                            "description": "Ipv4 Flow Monitors Input (List - String)"
+                                                        },
+                                                        "ipv4_flow_monitors_output": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            },
+                                                            "title": "Ipv4 Flow Monitors Output",
+                                                            "description": "Ipv4 Flow Monitors Output (List - String)"
+                                                        },
+                                                        "mobility_anchors": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "ip": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "IP",
+                                                                        "description": "IP (String, String)"
+                                                                    },
+                                                                    "priority": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 3
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Priority",
+                                                                        "description": "Priority (Integer, String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "ip"
+                                                                ]
+                                                            },
+                                                            "title": "Mobility Anchors",
+                                                            "description": "Mobility Anchors (List - Object)\n\nElements:\n- ip (required)\n- priority"
+                                                        },
+                                                        "nac": {
+                                                            "type": "boolean",
+                                                            "title": "Nac",
+                                                            "description": "Nac (Boolean)"
+                                                        },
+                                                        "service_policy_input": {
+                                                            "type": "string",
+                                                            "title": "Service Policy Input",
+                                                            "description": "Service Policy Input (String)"
+                                                        },
+                                                        "service_policy_output": {
+                                                            "type": "string",
+                                                            "title": "Service Policy Output",
+                                                            "description": "Service Policy Output (String)"
+                                                        },
+                                                        "static_ip_mobility": {
+                                                            "type": "boolean",
+                                                            "title": "Static IP Mobility",
+                                                            "description": "Static IP Mobility (Boolean)"
+                                                        },
+                                                        "dhcp_tlv_caching": {
+                                                            "type": "boolean",
+                                                            "title": "DHCP Tlv Caching",
+                                                            "description": "DHCP Tlv Caching (Boolean)"
+                                                        },
+                                                        "http_tlv_caching": {
+                                                            "type": "boolean",
+                                                            "title": "Http Tlv Caching",
+                                                            "description": "Http Tlv Caching (Boolean)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Policy Profiles",
+                                                "description": "Policy Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- shutdown\n- vlan\n- aaa_override\n- accounting_list\n- session_timeout\n- idle_timeout\n- exclusionlist_timeout\n- ipv4_acl\n- ipv6_acl\n- ipv4_flow_monitors_input\n- ipv4_flow_monitors_output\n- mobility_anchors\n- nac\n- service_policy_input\n- service_policy_output\n- static_ip_mobility\n- dhcp_tlv_caching\n- http_tlv_caching"
+                                            },
+                                            "policy_tags": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^[!-~]([ -~]*[!-~])?$"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Name",
+                                                            "description": "Name (String, String)"
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "title": "Description",
+                                                            "description": "Description (String)"
+                                                        },
+                                                        "wlan_policies": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "wlan_profile": {
+                                                                        "type": "string",
+                                                                        "title": "Wlan Profile",
+                                                                        "description": "Wlan Profile (String)"
+                                                                    },
+                                                                    "policy_profile": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "minLength": 1,
+                                                                                "maxLength": 32
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Policy Profile",
+                                                                        "description": "Policy Profile (String, String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "wlan_profile",
+                                                                    "policy_profile"
+                                                                ]
+                                                            },
+                                                            "title": "Wlan Policies",
+                                                            "description": "Wlan Policies (List - Object)\n\nElements:\n- wlan_profile (required)\n- policy_profile (required)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Policy Tags",
+                                                "description": "Policy Tags (List - Object)\n\nElements:\n- name (required)\n- description\n- wlan_policies"
+                                            },
                                             "rf_tags": {
                                                 "type": "array",
                                                 "items": {
@@ -567034,7 +567558,7 @@
                                         },
                                         "required": [],
                                         "title": "Wireless",
-                                        "description": "Wireless (Object)\n\nElements:\n- management_interface_type\n- management_interface_id\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles\n- rf_tags\n- flex_profiles\n- mesh_profiles\n- site_tags"
+                                        "description": "Wireless (Object)\n\nElements:\n- management_interface_type\n- management_interface_id\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles\n- policy_profiles\n- policy_tags\n- rf_tags\n- flex_profiles\n- mesh_profiles\n- site_tags"
                                     },
                                     "zone_pair_security": {
                                         "type": "array",
@@ -614844,6 +615368,268 @@
                                                 "title": "Wlan Profiles",
                                                 "description": "Wlan Profiles (List - Object)\n\nElements:\n- name (required)\n- wlan_id (required)\n- ssid (required)\n- shutdown\n- broadcast_ssid\n- security_wpa_akm\n- security_wpa_wpa2_ciphers\n- security_wpa_wpa3\n- security_wpa_psk_key_format\n- security_wpa_psk_key\n- security_dot1x_authentication_list\n- security_web_auth\n- security_web_auth_authentication_list\n- security_web_auth_parameter_map\n- security_ft\n- security_ft_over_the_ds\n- mac_filtering\n- load_balance\n- peer_blocking\n- ccx_aironet_iesupport\n- wmm"
                                             },
+                                            "policy_profiles": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^[!-~]([ -~]{0,30}[!-~])?$"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Name",
+                                                            "description": "Name (String, String)"
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "title": "Description",
+                                                            "description": "Description (String)"
+                                                        },
+                                                        "shutdown": {
+                                                            "type": "boolean",
+                                                            "title": "Shutdown",
+                                                            "description": "Shutdown (Boolean)"
+                                                        },
+                                                        "vlan": {
+                                                            "type": "string",
+                                                            "title": "Vlan",
+                                                            "description": "Vlan (String)"
+                                                        },
+                                                        "aaa_override": {
+                                                            "type": "boolean",
+                                                            "title": "AAA Override",
+                                                            "description": "AAA Override (Boolean)"
+                                                        },
+                                                        "accounting_list": {
+                                                            "type": "string",
+                                                            "title": "Accounting List",
+                                                            "description": "Accounting List (String)"
+                                                        },
+                                                        "session_timeout": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 86400
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Session Timeout",
+                                                            "description": "Session Timeout (Integer, String)"
+                                                        },
+                                                        "idle_timeout": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 15,
+                                                                    "maximum": 100000
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Idle Timeout",
+                                                            "description": "Idle Timeout (Integer, String)"
+                                                        },
+                                                        "exclusionlist_timeout": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 2147483647
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Exclusionlist Timeout",
+                                                            "description": "Exclusionlist Timeout (Integer, String)"
+                                                        },
+                                                        "ipv4_acl": {
+                                                            "type": "string",
+                                                            "title": "Ipv4 ACL",
+                                                            "description": "Ipv4 ACL (String)"
+                                                        },
+                                                        "ipv6_acl": {
+                                                            "type": "string",
+                                                            "title": "IPv6 ACL",
+                                                            "description": "IPv6 ACL (String)"
+                                                        },
+                                                        "ipv4_flow_monitors_input": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            },
+                                                            "title": "Ipv4 Flow Monitors Input",
+                                                            "description": "Ipv4 Flow Monitors Input (List - String)"
+                                                        },
+                                                        "ipv4_flow_monitors_output": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            },
+                                                            "title": "Ipv4 Flow Monitors Output",
+                                                            "description": "Ipv4 Flow Monitors Output (List - String)"
+                                                        },
+                                                        "mobility_anchors": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "ip": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "IP",
+                                                                        "description": "IP (String, String)"
+                                                                    },
+                                                                    "priority": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 3
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Priority",
+                                                                        "description": "Priority (Integer, String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "ip"
+                                                                ]
+                                                            },
+                                                            "title": "Mobility Anchors",
+                                                            "description": "Mobility Anchors (List - Object)\n\nElements:\n- ip (required)\n- priority"
+                                                        },
+                                                        "nac": {
+                                                            "type": "boolean",
+                                                            "title": "Nac",
+                                                            "description": "Nac (Boolean)"
+                                                        },
+                                                        "service_policy_input": {
+                                                            "type": "string",
+                                                            "title": "Service Policy Input",
+                                                            "description": "Service Policy Input (String)"
+                                                        },
+                                                        "service_policy_output": {
+                                                            "type": "string",
+                                                            "title": "Service Policy Output",
+                                                            "description": "Service Policy Output (String)"
+                                                        },
+                                                        "static_ip_mobility": {
+                                                            "type": "boolean",
+                                                            "title": "Static IP Mobility",
+                                                            "description": "Static IP Mobility (Boolean)"
+                                                        },
+                                                        "dhcp_tlv_caching": {
+                                                            "type": "boolean",
+                                                            "title": "DHCP Tlv Caching",
+                                                            "description": "DHCP Tlv Caching (Boolean)"
+                                                        },
+                                                        "http_tlv_caching": {
+                                                            "type": "boolean",
+                                                            "title": "Http Tlv Caching",
+                                                            "description": "Http Tlv Caching (Boolean)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Policy Profiles",
+                                                "description": "Policy Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- shutdown\n- vlan\n- aaa_override\n- accounting_list\n- session_timeout\n- idle_timeout\n- exclusionlist_timeout\n- ipv4_acl\n- ipv6_acl\n- ipv4_flow_monitors_input\n- ipv4_flow_monitors_output\n- mobility_anchors\n- nac\n- service_policy_input\n- service_policy_output\n- static_ip_mobility\n- dhcp_tlv_caching\n- http_tlv_caching"
+                                            },
+                                            "policy_tags": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^[!-~]([ -~]*[!-~])?$"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Name",
+                                                            "description": "Name (String, String)"
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "title": "Description",
+                                                            "description": "Description (String)"
+                                                        },
+                                                        "wlan_policies": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "wlan_profile": {
+                                                                        "type": "string",
+                                                                        "title": "Wlan Profile",
+                                                                        "description": "Wlan Profile (String)"
+                                                                    },
+                                                                    "policy_profile": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "minLength": 1,
+                                                                                "maxLength": 32
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Policy Profile",
+                                                                        "description": "Policy Profile (String, String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "wlan_profile",
+                                                                    "policy_profile"
+                                                                ]
+                                                            },
+                                                            "title": "Wlan Policies",
+                                                            "description": "Wlan Policies (List - Object)\n\nElements:\n- wlan_profile (required)\n- policy_profile (required)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Policy Tags",
+                                                "description": "Policy Tags (List - Object)\n\nElements:\n- name (required)\n- description\n- wlan_policies"
+                                            },
                                             "rf_tags": {
                                                 "type": "array",
                                                 "items": {
@@ -615185,7 +615971,7 @@
                                         },
                                         "required": [],
                                         "title": "Wireless",
-                                        "description": "Wireless (Object)\n\nElements:\n- management_interface_type\n- management_interface_id\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles\n- rf_tags\n- flex_profiles\n- mesh_profiles\n- site_tags"
+                                        "description": "Wireless (Object)\n\nElements:\n- management_interface_type\n- management_interface_id\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles\n- policy_profiles\n- policy_tags\n- rf_tags\n- flex_profiles\n- mesh_profiles\n- site_tags"
                                     },
                                     "zone_pair_security": {
                                         "type": "array",
@@ -665324,6 +666110,268 @@
                                                 "title": "Wlan Profiles",
                                                 "description": "Wlan Profiles (List - Object)\n\nElements:\n- name (required)\n- wlan_id (required)\n- ssid (required)\n- shutdown\n- broadcast_ssid\n- security_wpa_akm\n- security_wpa_wpa2_ciphers\n- security_wpa_wpa3\n- security_wpa_psk_key_format\n- security_wpa_psk_key\n- security_dot1x_authentication_list\n- security_web_auth\n- security_web_auth_authentication_list\n- security_web_auth_parameter_map\n- security_ft\n- security_ft_over_the_ds\n- mac_filtering\n- load_balance\n- peer_blocking\n- ccx_aironet_iesupport\n- wmm"
                                             },
+                                            "policy_profiles": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^[!-~]([ -~]{0,30}[!-~])?$"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Name",
+                                                            "description": "Name (String, String)"
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "title": "Description",
+                                                            "description": "Description (String)"
+                                                        },
+                                                        "shutdown": {
+                                                            "type": "boolean",
+                                                            "title": "Shutdown",
+                                                            "description": "Shutdown (Boolean)"
+                                                        },
+                                                        "vlan": {
+                                                            "type": "string",
+                                                            "title": "Vlan",
+                                                            "description": "Vlan (String)"
+                                                        },
+                                                        "aaa_override": {
+                                                            "type": "boolean",
+                                                            "title": "AAA Override",
+                                                            "description": "AAA Override (Boolean)"
+                                                        },
+                                                        "accounting_list": {
+                                                            "type": "string",
+                                                            "title": "Accounting List",
+                                                            "description": "Accounting List (String)"
+                                                        },
+                                                        "session_timeout": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 86400
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Session Timeout",
+                                                            "description": "Session Timeout (Integer, String)"
+                                                        },
+                                                        "idle_timeout": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "minimum": 15,
+                                                                    "maximum": 100000
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Idle Timeout",
+                                                            "description": "Idle Timeout (Integer, String)"
+                                                        },
+                                                        "exclusionlist_timeout": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "integer",
+                                                                    "maximum": 2147483647
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Exclusionlist Timeout",
+                                                            "description": "Exclusionlist Timeout (Integer, String)"
+                                                        },
+                                                        "ipv4_acl": {
+                                                            "type": "string",
+                                                            "title": "Ipv4 ACL",
+                                                            "description": "Ipv4 ACL (String)"
+                                                        },
+                                                        "ipv6_acl": {
+                                                            "type": "string",
+                                                            "title": "IPv6 ACL",
+                                                            "description": "IPv6 ACL (String)"
+                                                        },
+                                                        "ipv4_flow_monitors_input": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            },
+                                                            "title": "Ipv4 Flow Monitors Input",
+                                                            "description": "Ipv4 Flow Monitors Input (List - String)"
+                                                        },
+                                                        "ipv4_flow_monitors_output": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            },
+                                                            "title": "Ipv4 Flow Monitors Output",
+                                                            "description": "Ipv4 Flow Monitors Output (List - String)"
+                                                        },
+                                                        "mobility_anchors": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "ip": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "IP",
+                                                                        "description": "IP (String, String)"
+                                                                    },
+                                                                    "priority": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 3
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Priority",
+                                                                        "description": "Priority (Integer, String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "ip"
+                                                                ]
+                                                            },
+                                                            "title": "Mobility Anchors",
+                                                            "description": "Mobility Anchors (List - Object)\n\nElements:\n- ip (required)\n- priority"
+                                                        },
+                                                        "nac": {
+                                                            "type": "boolean",
+                                                            "title": "Nac",
+                                                            "description": "Nac (Boolean)"
+                                                        },
+                                                        "service_policy_input": {
+                                                            "type": "string",
+                                                            "title": "Service Policy Input",
+                                                            "description": "Service Policy Input (String)"
+                                                        },
+                                                        "service_policy_output": {
+                                                            "type": "string",
+                                                            "title": "Service Policy Output",
+                                                            "description": "Service Policy Output (String)"
+                                                        },
+                                                        "static_ip_mobility": {
+                                                            "type": "boolean",
+                                                            "title": "Static IP Mobility",
+                                                            "description": "Static IP Mobility (Boolean)"
+                                                        },
+                                                        "dhcp_tlv_caching": {
+                                                            "type": "boolean",
+                                                            "title": "DHCP Tlv Caching",
+                                                            "description": "DHCP Tlv Caching (Boolean)"
+                                                        },
+                                                        "http_tlv_caching": {
+                                                            "type": "boolean",
+                                                            "title": "Http Tlv Caching",
+                                                            "description": "Http Tlv Caching (Boolean)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Policy Profiles",
+                                                "description": "Policy Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- shutdown\n- vlan\n- aaa_override\n- accounting_list\n- session_timeout\n- idle_timeout\n- exclusionlist_timeout\n- ipv4_acl\n- ipv6_acl\n- ipv4_flow_monitors_input\n- ipv4_flow_monitors_output\n- mobility_anchors\n- nac\n- service_policy_input\n- service_policy_output\n- static_ip_mobility\n- dhcp_tlv_caching\n- http_tlv_caching"
+                                            },
+                                            "policy_tags": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^[!-~]([ -~]*[!-~])?$"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Name",
+                                                            "description": "Name (String, String)"
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "title": "Description",
+                                                            "description": "Description (String)"
+                                                        },
+                                                        "wlan_policies": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "wlan_profile": {
+                                                                        "type": "string",
+                                                                        "title": "Wlan Profile",
+                                                                        "description": "Wlan Profile (String)"
+                                                                    },
+                                                                    "policy_profile": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "minLength": 1,
+                                                                                "maxLength": 32
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Policy Profile",
+                                                                        "description": "Policy Profile (String, String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "wlan_profile",
+                                                                    "policy_profile"
+                                                                ]
+                                                            },
+                                                            "title": "Wlan Policies",
+                                                            "description": "Wlan Policies (List - Object)\n\nElements:\n- wlan_profile (required)\n- policy_profile (required)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "Policy Tags",
+                                                "description": "Policy Tags (List - Object)\n\nElements:\n- name (required)\n- description\n- wlan_policies"
+                                            },
                                             "rf_tags": {
                                                 "type": "array",
                                                 "items": {
@@ -665665,7 +666713,7 @@
                                         },
                                         "required": [],
                                         "title": "Wireless",
-                                        "description": "Wireless (Object)\n\nElements:\n- management_interface_type\n- management_interface_id\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles\n- rf_tags\n- flex_profiles\n- mesh_profiles\n- site_tags"
+                                        "description": "Wireless (Object)\n\nElements:\n- management_interface_type\n- management_interface_id\n- ap_join_profiles\n- rf_profiles\n- wlan_profiles\n- policy_profiles\n- policy_tags\n- rf_tags\n- flex_profiles\n- mesh_profiles\n- site_tags"
                                     },
                                     "zone_pair_security": {
                                         "type": "array",
