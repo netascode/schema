@@ -465483,6 +465483,55 @@
                                         "title": "Image Skip",
                                         "description": "Image Skip (Boolean)"
                                     },
+                                    "interfaces": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "title": "Name",
+                                                    "description": "Name (String)"
+                                                },
+                                                "vlan_id": {
+                                                    "type": "integer",
+                                                    "minimum": 1,
+                                                    "maximum": 4094,
+                                                    "title": "Vlan ID",
+                                                    "description": "Vlan ID (Integer)\n- Minimum value: 1\n- Maximum value: 4094"
+                                                },
+                                                "ip_address": {
+                                                    "type": "string",
+                                                    "title": "IP Address",
+                                                    "description": "IP Address (String)\n- IPv4 or IPv6 address"
+                                                },
+                                                "netmask": {
+                                                    "type": "integer",
+                                                    "minimum": 1,
+                                                    "maximum": 30,
+                                                    "title": "Netmask",
+                                                    "description": "Netmask (Integer)\n- Minimum value: 1\n- Maximum value: 30"
+                                                },
+                                                "gateway": {
+                                                    "type": "string",
+                                                    "title": "Gateway",
+                                                    "description": "Gateway (String)\n- IPv4 or IPv6 address"
+                                                },
+                                                "lag_or_port_number": {
+                                                    "type": "integer",
+                                                    "title": "Lag Or Port Number",
+                                                    "description": "Lag Or Port Number (Integer)"
+                                                }
+                                            },
+                                            "required": [
+                                                "name",
+                                                "vlan_id"
+                                            ]
+                                        },
+                                        "title": "Interfaces",
+                                        "description": "Interfaces (List - Object)\n\nElements:\n- name (required)\n- vlan_id (required)\n- ip_address\n- netmask\n- gateway\n- lag_or_port_number"
+                                    },
                                     "enable_wireless": {
                                         "type": "boolean",
                                         "title": "Enable Wireless",
@@ -465767,7 +465816,7 @@
                                 ]
                             },
                             "title": "Devices",
-                            "description": "Devices (List - Object)\n\nElements:\n- name (required)\n- fqdn_name\n- device_ip\n- pid\n- serial_number\n- state\n- device_role\n- role_source\n- clean_up_config\n- site (required)\n- type\n- rf_profile\n- access_point\n- wireless_management\n- image_name\n- image_id\n- image_skip\n- enable_wireless\n- enable_rolling_ap_upgrade\n- ap_reboot_percentage\n- primary_managed_ap_locations\n- secondary_managed_ap_locations\n- managed_ap_locations\n- anchor_managed_ap_locations\n- stack\n- svl\n- port_channels\n- tags\n- rma"
+                            "description": "Devices (List - Object)\n\nElements:\n- name (required)\n- fqdn_name\n- device_ip\n- pid\n- serial_number\n- state\n- device_role\n- role_source\n- clean_up_config\n- site (required)\n- type\n- rf_profile\n- access_point\n- wireless_management\n- image_name\n- image_id\n- image_skip\n- interfaces\n- enable_wireless\n- enable_rolling_ap_upgrade\n- ap_reboot_percentage\n- primary_managed_ap_locations\n- secondary_managed_ap_locations\n- managed_ap_locations\n- anchor_managed_ap_locations\n- stack\n- svl\n- port_channels\n- tags\n- rma"
                         },
                         "discovery": {
                             "type": "array",
