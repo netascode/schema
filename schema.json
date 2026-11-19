@@ -467478,6 +467478,11 @@
                                                     "title": "Deployment Timeout",
                                                     "description": "Deployment Timeout (Integer)\n- Minimum value: 10\n- Maximum value: 86400"
                                                 },
+                                                "skip_unreachable_targets": {
+                                                    "type": "boolean",
+                                                    "title": "Skip Unreachable Targets",
+                                                    "description": "Skip Unreachable Targets (Boolean)"
+                                                },
                                                 "copying_config": {
                                                     "type": "boolean",
                                                     "title": "Copying Config",
@@ -467496,7 +467501,7 @@
                                             ]
                                         },
                                         "title": "Onboarding Templates",
-                                        "description": "Onboarding Templates (List - Object)\n\nElements:\n- name (required)\n- description\n- language\n- device_types (required)\n- software_type (required)\n- software_version\n- variables\n- tags\n- containing_templates\n- composite\n- redeploy_template\n- deployment_timeout\n- copying_config\n- force_push_template"
+                                        "description": "Onboarding Templates (List - Object)\n\nElements:\n- name (required)\n- description\n- language\n- device_types (required)\n- software_type (required)\n- software_version\n- variables\n- tags\n- containing_templates\n- composite\n- redeploy_template\n- deployment_timeout\n- skip_unreachable_targets\n- copying_config\n- force_push_template"
                                     },
                                     "dayn_templates": {
                                         "type": "array",
@@ -467687,6 +467692,11 @@
                                                     "title": "Deployment Timeout",
                                                     "description": "Deployment Timeout (Integer)\n- Minimum value: 10\n- Maximum value: 86400"
                                                 },
+                                                "skip_unreachable_targets": {
+                                                    "type": "boolean",
+                                                    "title": "Skip Unreachable Targets",
+                                                    "description": "Skip Unreachable Targets (Boolean)"
+                                                },
                                                 "copying_config": {
                                                     "type": "boolean",
                                                     "title": "Copying Config",
@@ -467705,7 +467715,7 @@
                                             ]
                                         },
                                         "title": "Dayn Templates",
-                                        "description": "Dayn Templates (List - Object)\n\nElements:\n- name (required)\n- description\n- language\n- device_types (required)\n- software_type (required)\n- software_version\n- variables\n- tags\n- containing_templates\n- composite\n- redeploy_template\n- deployment_timeout\n- copying_config\n- force_push_template"
+                                        "description": "Dayn Templates (List - Object)\n\nElements:\n- name (required)\n- description\n- language\n- device_types (required)\n- software_type (required)\n- software_version\n- variables\n- tags\n- containing_templates\n- composite\n- redeploy_template\n- deployment_timeout\n- skip_unreachable_targets\n- copying_config\n- force_push_template"
                                     },
                                     "composite_templates": {
                                         "type": "array",
@@ -467896,6 +467906,11 @@
                                                     "title": "Deployment Timeout",
                                                     "description": "Deployment Timeout (Integer)\n- Minimum value: 10\n- Maximum value: 86400"
                                                 },
+                                                "skip_unreachable_targets": {
+                                                    "type": "boolean",
+                                                    "title": "Skip Unreachable Targets",
+                                                    "description": "Skip Unreachable Targets (Boolean)"
+                                                },
                                                 "copying_config": {
                                                     "type": "boolean",
                                                     "title": "Copying Config",
@@ -467914,7 +467929,7 @@
                                             ]
                                         },
                                         "title": "Composite Templates",
-                                        "description": "Composite Templates (List - Object)\n\nElements:\n- name (required)\n- description\n- language\n- device_types (required)\n- software_type (required)\n- software_version\n- variables\n- tags\n- containing_templates\n- composite\n- redeploy_template\n- deployment_timeout\n- copying_config\n- force_push_template"
+                                        "description": "Composite Templates (List - Object)\n\nElements:\n- name (required)\n- description\n- language\n- device_types (required)\n- software_type (required)\n- software_version\n- variables\n- tags\n- containing_templates\n- composite\n- redeploy_template\n- deployment_timeout\n- skip_unreachable_targets\n- copying_config\n- force_push_template"
                                     }
                                 },
                                 "required": [
@@ -468256,6 +468271,11 @@
                                         "title": "Deploy Order",
                                         "description": "Deploy Order (String)\n- Allowed values: BEFORE_FABRIC, AFTER_FABRIC"
                                     },
+                                    "skip_unreachable_targets": {
+                                        "type": "boolean",
+                                        "title": "Skip Unreachable Targets",
+                                        "description": "Skip Unreachable Targets (Boolean)"
+                                    },
                                     "variables": {
                                         "type": "object",
                                         "additionalProperties": false,
@@ -468441,7 +468461,7 @@
                                 ]
                             },
                             "title": "Templates",
-                            "description": "Templates (List - Object)\n\nElements:\n- name (required)\n- project_name (required)\n- unmanaged\n- type\n- state\n- deploy_order\n- variables\n- devices"
+                            "description": "Templates (List - Object)\n\nElements:\n- name (required)\n- project_name (required)\n- unmanaged\n- type\n- state\n- deploy_order\n- skip_unreachable_targets\n- variables\n- devices"
                         }
                     },
                     "required": [],
