@@ -485246,6 +485246,96 @@
                                                         "type": "object",
                                                         "additionalProperties": false,
                                                         "properties": {
+                                                            "authentication_order_dot1x": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Order Dot1X",
+                                                                "description": "Authentication Order Dot1X (Boolean)"
+                                                            },
+                                                            "authentication_order_dot1x_mab": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Order Dot1X Mab",
+                                                                "description": "Authentication Order Dot1X Mab (Boolean)"
+                                                            },
+                                                            "authentication_order_dot1x_webauth": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Order Dot1X Webauth",
+                                                                "description": "Authentication Order Dot1X Webauth (Boolean)"
+                                                            },
+                                                            "authentication_order_mab": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Order Mab",
+                                                                "description": "Authentication Order Mab (Boolean)"
+                                                            },
+                                                            "authentication_order_mab_dot1x": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Order Mab Dot1X",
+                                                                "description": "Authentication Order Mab Dot1X (Boolean)"
+                                                            },
+                                                            "authentication_order_mab_webauth": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Order Mab Webauth",
+                                                                "description": "Authentication Order Mab Webauth (Boolean)"
+                                                            },
+                                                            "authentication_order_webauth": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Order Webauth",
+                                                                "description": "Authentication Order Webauth (Boolean)"
+                                                            },
+                                                            "authentication_priority_dot1x": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Priority Dot1X",
+                                                                "description": "Authentication Priority Dot1X (Boolean)"
+                                                            },
+                                                            "authentication_priority_dot1x_mab": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Priority Dot1X Mab",
+                                                                "description": "Authentication Priority Dot1X Mab (Boolean)"
+                                                            },
+                                                            "authentication_priority_dot1x_webauth": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Priority Dot1X Webauth",
+                                                                "description": "Authentication Priority Dot1X Webauth (Boolean)"
+                                                            },
+                                                            "authentication_priority_mab": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Priority Mab",
+                                                                "description": "Authentication Priority Mab (Boolean)"
+                                                            },
+                                                            "authentication_priority_mab_dot1x": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Priority Mab Dot1X",
+                                                                "description": "Authentication Priority Mab Dot1X (Boolean)"
+                                                            },
+                                                            "authentication_priority_mab_webauth": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Priority Mab Webauth",
+                                                                "description": "Authentication Priority Mab Webauth (Boolean)"
+                                                            },
+                                                            "authentication_priority_webauth": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Priority Webauth",
+                                                                "description": "Authentication Priority Webauth (Boolean)"
+                                                            },
+                                                            "authentication_event_fail_action_authorize_vlan": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 4094
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Authentication Event Fail Action Authorize Vlan",
+                                                                "description": "Authentication Event Fail Action Authorize Vlan (Integer, String)"
+                                                            },
+                                                            "authentication_event_fail_action_next_method": {
+                                                                "type": "boolean",
+                                                                "title": "Authentication Event Fail Action Next Method",
+                                                                "description": "Authentication Event Fail Action Next Method (Boolean)"
+                                                            },
                                                             "authentication_periodic": {
                                                                 "type": "boolean",
                                                                 "title": "Authentication Periodic",
@@ -485452,7 +485542,7 @@
                                                         },
                                                         "required": [],
                                                         "title": "Network Access Control",
-                                                        "description": "Network Access Control (Object)\n\nElements:\n- authentication_periodic\n- authentication_timer_reauthenticate\n- authentication_timer_reauthenticate_server\n- mab\n- mab_eap\n- dot1x_pae\n- dot1x_timeout_auth_period\n- dot1x_timeout_held_period\n- dot1x_timeout_quiet_period\n- dot1x_timeout_ratelimit_period\n- dot1x_timeout_server_timeout\n- dot1x_timeout_start_period\n- dot1x_timeout_supp_timeout\n- dot1x_timeout_tx_period\n- dot1x_max_req\n- dot1x_max_reauth_req"
+                                                        "description": "Network Access Control (Object)\n\nElements:\n- authentication_order_dot1x\n- authentication_order_dot1x_mab\n- authentication_order_dot1x_webauth\n- authentication_order_mab\n- authentication_order_mab_dot1x\n- authentication_order_mab_webauth\n- authentication_order_webauth\n- authentication_priority_dot1x\n- authentication_priority_dot1x_mab\n- authentication_priority_dot1x_webauth\n- authentication_priority_mab\n- authentication_priority_mab_dot1x\n- authentication_priority_mab_webauth\n- authentication_priority_webauth\n- authentication_event_fail_action_authorize_vlan\n- authentication_event_fail_action_next_method\n- authentication_periodic\n- authentication_timer_reauthenticate\n- authentication_timer_reauthenticate_server\n- mab\n- mab_eap\n- dot1x_pae\n- dot1x_timeout_auth_period\n- dot1x_timeout_held_period\n- dot1x_timeout_quiet_period\n- dot1x_timeout_ratelimit_period\n- dot1x_timeout_server_timeout\n- dot1x_timeout_start_period\n- dot1x_timeout_supp_timeout\n- dot1x_timeout_tx_period\n- dot1x_max_req\n- dot1x_max_reauth_req"
                                                     },
                                                     "auto_qos": {
                                                         "type": "object",
@@ -533774,6 +533864,96 @@
                                                             "type": "object",
                                                             "additionalProperties": false,
                                                             "properties": {
+                                                                "authentication_order_dot1x": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Dot1X",
+                                                                    "description": "Authentication Order Dot1X (Boolean)"
+                                                                },
+                                                                "authentication_order_dot1x_mab": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Dot1X Mab",
+                                                                    "description": "Authentication Order Dot1X Mab (Boolean)"
+                                                                },
+                                                                "authentication_order_dot1x_webauth": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Dot1X Webauth",
+                                                                    "description": "Authentication Order Dot1X Webauth (Boolean)"
+                                                                },
+                                                                "authentication_order_mab": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Mab",
+                                                                    "description": "Authentication Order Mab (Boolean)"
+                                                                },
+                                                                "authentication_order_mab_dot1x": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Mab Dot1X",
+                                                                    "description": "Authentication Order Mab Dot1X (Boolean)"
+                                                                },
+                                                                "authentication_order_mab_webauth": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Mab Webauth",
+                                                                    "description": "Authentication Order Mab Webauth (Boolean)"
+                                                                },
+                                                                "authentication_order_webauth": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Webauth",
+                                                                    "description": "Authentication Order Webauth (Boolean)"
+                                                                },
+                                                                "authentication_priority_dot1x": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Dot1X",
+                                                                    "description": "Authentication Priority Dot1X (Boolean)"
+                                                                },
+                                                                "authentication_priority_dot1x_mab": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Dot1X Mab",
+                                                                    "description": "Authentication Priority Dot1X Mab (Boolean)"
+                                                                },
+                                                                "authentication_priority_dot1x_webauth": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Dot1X Webauth",
+                                                                    "description": "Authentication Priority Dot1X Webauth (Boolean)"
+                                                                },
+                                                                "authentication_priority_mab": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Mab",
+                                                                    "description": "Authentication Priority Mab (Boolean)"
+                                                                },
+                                                                "authentication_priority_mab_dot1x": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Mab Dot1X",
+                                                                    "description": "Authentication Priority Mab Dot1X (Boolean)"
+                                                                },
+                                                                "authentication_priority_mab_webauth": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Mab Webauth",
+                                                                    "description": "Authentication Priority Mab Webauth (Boolean)"
+                                                                },
+                                                                "authentication_priority_webauth": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Webauth",
+                                                                    "description": "Authentication Priority Webauth (Boolean)"
+                                                                },
+                                                                "authentication_event_fail_action_authorize_vlan": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 4094
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Authentication Event Fail Action Authorize Vlan",
+                                                                    "description": "Authentication Event Fail Action Authorize Vlan (Integer, String)"
+                                                                },
+                                                                "authentication_event_fail_action_next_method": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Event Fail Action Next Method",
+                                                                    "description": "Authentication Event Fail Action Next Method (Boolean)"
+                                                                },
                                                                 "authentication_periodic": {
                                                                     "type": "boolean",
                                                                     "title": "Authentication Periodic",
@@ -533980,7 +534160,7 @@
                                                             },
                                                             "required": [],
                                                             "title": "Network Access Control",
-                                                            "description": "Network Access Control (Object)\n\nElements:\n- authentication_periodic\n- authentication_timer_reauthenticate\n- authentication_timer_reauthenticate_server\n- mab\n- mab_eap\n- dot1x_pae\n- dot1x_timeout_auth_period\n- dot1x_timeout_held_period\n- dot1x_timeout_quiet_period\n- dot1x_timeout_ratelimit_period\n- dot1x_timeout_server_timeout\n- dot1x_timeout_start_period\n- dot1x_timeout_supp_timeout\n- dot1x_timeout_tx_period\n- dot1x_max_req\n- dot1x_max_reauth_req"
+                                                            "description": "Network Access Control (Object)\n\nElements:\n- authentication_order_dot1x\n- authentication_order_dot1x_mab\n- authentication_order_dot1x_webauth\n- authentication_order_mab\n- authentication_order_mab_dot1x\n- authentication_order_mab_webauth\n- authentication_order_webauth\n- authentication_priority_dot1x\n- authentication_priority_dot1x_mab\n- authentication_priority_dot1x_webauth\n- authentication_priority_mab\n- authentication_priority_mab_dot1x\n- authentication_priority_mab_webauth\n- authentication_priority_webauth\n- authentication_event_fail_action_authorize_vlan\n- authentication_event_fail_action_next_method\n- authentication_periodic\n- authentication_timer_reauthenticate\n- authentication_timer_reauthenticate_server\n- mab\n- mab_eap\n- dot1x_pae\n- dot1x_timeout_auth_period\n- dot1x_timeout_held_period\n- dot1x_timeout_quiet_period\n- dot1x_timeout_ratelimit_period\n- dot1x_timeout_server_timeout\n- dot1x_timeout_start_period\n- dot1x_timeout_supp_timeout\n- dot1x_timeout_tx_period\n- dot1x_max_req\n- dot1x_max_reauth_req"
                                                         },
                                                         "auto_qos": {
                                                             "type": "object",
@@ -582337,6 +582517,96 @@
                                                             "type": "object",
                                                             "additionalProperties": false,
                                                             "properties": {
+                                                                "authentication_order_dot1x": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Dot1X",
+                                                                    "description": "Authentication Order Dot1X (Boolean)"
+                                                                },
+                                                                "authentication_order_dot1x_mab": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Dot1X Mab",
+                                                                    "description": "Authentication Order Dot1X Mab (Boolean)"
+                                                                },
+                                                                "authentication_order_dot1x_webauth": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Dot1X Webauth",
+                                                                    "description": "Authentication Order Dot1X Webauth (Boolean)"
+                                                                },
+                                                                "authentication_order_mab": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Mab",
+                                                                    "description": "Authentication Order Mab (Boolean)"
+                                                                },
+                                                                "authentication_order_mab_dot1x": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Mab Dot1X",
+                                                                    "description": "Authentication Order Mab Dot1X (Boolean)"
+                                                                },
+                                                                "authentication_order_mab_webauth": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Mab Webauth",
+                                                                    "description": "Authentication Order Mab Webauth (Boolean)"
+                                                                },
+                                                                "authentication_order_webauth": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Webauth",
+                                                                    "description": "Authentication Order Webauth (Boolean)"
+                                                                },
+                                                                "authentication_priority_dot1x": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Dot1X",
+                                                                    "description": "Authentication Priority Dot1X (Boolean)"
+                                                                },
+                                                                "authentication_priority_dot1x_mab": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Dot1X Mab",
+                                                                    "description": "Authentication Priority Dot1X Mab (Boolean)"
+                                                                },
+                                                                "authentication_priority_dot1x_webauth": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Dot1X Webauth",
+                                                                    "description": "Authentication Priority Dot1X Webauth (Boolean)"
+                                                                },
+                                                                "authentication_priority_mab": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Mab",
+                                                                    "description": "Authentication Priority Mab (Boolean)"
+                                                                },
+                                                                "authentication_priority_mab_dot1x": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Mab Dot1X",
+                                                                    "description": "Authentication Priority Mab Dot1X (Boolean)"
+                                                                },
+                                                                "authentication_priority_mab_webauth": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Mab Webauth",
+                                                                    "description": "Authentication Priority Mab Webauth (Boolean)"
+                                                                },
+                                                                "authentication_priority_webauth": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Webauth",
+                                                                    "description": "Authentication Priority Webauth (Boolean)"
+                                                                },
+                                                                "authentication_event_fail_action_authorize_vlan": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 4094
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Authentication Event Fail Action Authorize Vlan",
+                                                                    "description": "Authentication Event Fail Action Authorize Vlan (Integer, String)"
+                                                                },
+                                                                "authentication_event_fail_action_next_method": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Event Fail Action Next Method",
+                                                                    "description": "Authentication Event Fail Action Next Method (Boolean)"
+                                                                },
                                                                 "authentication_periodic": {
                                                                     "type": "boolean",
                                                                     "title": "Authentication Periodic",
@@ -582543,7 +582813,7 @@
                                                             },
                                                             "required": [],
                                                             "title": "Network Access Control",
-                                                            "description": "Network Access Control (Object)\n\nElements:\n- authentication_periodic\n- authentication_timer_reauthenticate\n- authentication_timer_reauthenticate_server\n- mab\n- mab_eap\n- dot1x_pae\n- dot1x_timeout_auth_period\n- dot1x_timeout_held_period\n- dot1x_timeout_quiet_period\n- dot1x_timeout_ratelimit_period\n- dot1x_timeout_server_timeout\n- dot1x_timeout_start_period\n- dot1x_timeout_supp_timeout\n- dot1x_timeout_tx_period\n- dot1x_max_req\n- dot1x_max_reauth_req"
+                                                            "description": "Network Access Control (Object)\n\nElements:\n- authentication_order_dot1x\n- authentication_order_dot1x_mab\n- authentication_order_dot1x_webauth\n- authentication_order_mab\n- authentication_order_mab_dot1x\n- authentication_order_mab_webauth\n- authentication_order_webauth\n- authentication_priority_dot1x\n- authentication_priority_dot1x_mab\n- authentication_priority_dot1x_webauth\n- authentication_priority_mab\n- authentication_priority_mab_dot1x\n- authentication_priority_mab_webauth\n- authentication_priority_webauth\n- authentication_event_fail_action_authorize_vlan\n- authentication_event_fail_action_next_method\n- authentication_periodic\n- authentication_timer_reauthenticate\n- authentication_timer_reauthenticate_server\n- mab\n- mab_eap\n- dot1x_pae\n- dot1x_timeout_auth_period\n- dot1x_timeout_held_period\n- dot1x_timeout_quiet_period\n- dot1x_timeout_ratelimit_period\n- dot1x_timeout_server_timeout\n- dot1x_timeout_start_period\n- dot1x_timeout_supp_timeout\n- dot1x_timeout_tx_period\n- dot1x_max_req\n- dot1x_max_reauth_req"
                                                         },
                                                         "auto_qos": {
                                                             "type": "object",
@@ -618632,6 +618902,96 @@
                                         "type": "object",
                                         "additionalProperties": false,
                                         "properties": {
+                                            "authentication_order_dot1x": {
+                                                "type": "boolean",
+                                                "title": "Authentication Order Dot1X",
+                                                "description": "Authentication Order Dot1X (Boolean)"
+                                            },
+                                            "authentication_order_dot1x_mab": {
+                                                "type": "boolean",
+                                                "title": "Authentication Order Dot1X Mab",
+                                                "description": "Authentication Order Dot1X Mab (Boolean)"
+                                            },
+                                            "authentication_order_dot1x_webauth": {
+                                                "type": "boolean",
+                                                "title": "Authentication Order Dot1X Webauth",
+                                                "description": "Authentication Order Dot1X Webauth (Boolean)"
+                                            },
+                                            "authentication_order_mab": {
+                                                "type": "boolean",
+                                                "title": "Authentication Order Mab",
+                                                "description": "Authentication Order Mab (Boolean)"
+                                            },
+                                            "authentication_order_mab_dot1x": {
+                                                "type": "boolean",
+                                                "title": "Authentication Order Mab Dot1X",
+                                                "description": "Authentication Order Mab Dot1X (Boolean)"
+                                            },
+                                            "authentication_order_mab_webauth": {
+                                                "type": "boolean",
+                                                "title": "Authentication Order Mab Webauth",
+                                                "description": "Authentication Order Mab Webauth (Boolean)"
+                                            },
+                                            "authentication_order_webauth": {
+                                                "type": "boolean",
+                                                "title": "Authentication Order Webauth",
+                                                "description": "Authentication Order Webauth (Boolean)"
+                                            },
+                                            "authentication_priority_dot1x": {
+                                                "type": "boolean",
+                                                "title": "Authentication Priority Dot1X",
+                                                "description": "Authentication Priority Dot1X (Boolean)"
+                                            },
+                                            "authentication_priority_dot1x_mab": {
+                                                "type": "boolean",
+                                                "title": "Authentication Priority Dot1X Mab",
+                                                "description": "Authentication Priority Dot1X Mab (Boolean)"
+                                            },
+                                            "authentication_priority_dot1x_webauth": {
+                                                "type": "boolean",
+                                                "title": "Authentication Priority Dot1X Webauth",
+                                                "description": "Authentication Priority Dot1X Webauth (Boolean)"
+                                            },
+                                            "authentication_priority_mab": {
+                                                "type": "boolean",
+                                                "title": "Authentication Priority Mab",
+                                                "description": "Authentication Priority Mab (Boolean)"
+                                            },
+                                            "authentication_priority_mab_dot1x": {
+                                                "type": "boolean",
+                                                "title": "Authentication Priority Mab Dot1X",
+                                                "description": "Authentication Priority Mab Dot1X (Boolean)"
+                                            },
+                                            "authentication_priority_mab_webauth": {
+                                                "type": "boolean",
+                                                "title": "Authentication Priority Mab Webauth",
+                                                "description": "Authentication Priority Mab Webauth (Boolean)"
+                                            },
+                                            "authentication_priority_webauth": {
+                                                "type": "boolean",
+                                                "title": "Authentication Priority Webauth",
+                                                "description": "Authentication Priority Webauth (Boolean)"
+                                            },
+                                            "authentication_event_fail_action_authorize_vlan": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 4094
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Authentication Event Fail Action Authorize Vlan",
+                                                "description": "Authentication Event Fail Action Authorize Vlan (Integer, String)"
+                                            },
+                                            "authentication_event_fail_action_next_method": {
+                                                "type": "boolean",
+                                                "title": "Authentication Event Fail Action Next Method",
+                                                "description": "Authentication Event Fail Action Next Method (Boolean)"
+                                            },
                                             "authentication_periodic": {
                                                 "type": "boolean",
                                                 "title": "Authentication Periodic",
@@ -618838,7 +619198,7 @@
                                         },
                                         "required": [],
                                         "title": "Network Access Control",
-                                        "description": "Network Access Control (Object)\n\nElements:\n- authentication_periodic\n- authentication_timer_reauthenticate\n- authentication_timer_reauthenticate_server\n- mab\n- mab_eap\n- dot1x_pae\n- dot1x_timeout_auth_period\n- dot1x_timeout_held_period\n- dot1x_timeout_quiet_period\n- dot1x_timeout_ratelimit_period\n- dot1x_timeout_server_timeout\n- dot1x_timeout_start_period\n- dot1x_timeout_supp_timeout\n- dot1x_timeout_tx_period\n- dot1x_max_req\n- dot1x_max_reauth_req"
+                                        "description": "Network Access Control (Object)\n\nElements:\n- authentication_order_dot1x\n- authentication_order_dot1x_mab\n- authentication_order_dot1x_webauth\n- authentication_order_mab\n- authentication_order_mab_dot1x\n- authentication_order_mab_webauth\n- authentication_order_webauth\n- authentication_priority_dot1x\n- authentication_priority_dot1x_mab\n- authentication_priority_dot1x_webauth\n- authentication_priority_mab\n- authentication_priority_mab_dot1x\n- authentication_priority_mab_webauth\n- authentication_priority_webauth\n- authentication_event_fail_action_authorize_vlan\n- authentication_event_fail_action_next_method\n- authentication_periodic\n- authentication_timer_reauthenticate\n- authentication_timer_reauthenticate_server\n- mab\n- mab_eap\n- dot1x_pae\n- dot1x_timeout_auth_period\n- dot1x_timeout_held_period\n- dot1x_timeout_quiet_period\n- dot1x_timeout_ratelimit_period\n- dot1x_timeout_server_timeout\n- dot1x_timeout_start_period\n- dot1x_timeout_supp_timeout\n- dot1x_timeout_tx_period\n- dot1x_max_req\n- dot1x_max_reauth_req"
                                     },
                                     "auto_qos": {
                                         "type": "object",
@@ -633229,6 +633589,96 @@
                                                             "type": "object",
                                                             "additionalProperties": false,
                                                             "properties": {
+                                                                "authentication_order_dot1x": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Dot1X",
+                                                                    "description": "Authentication Order Dot1X (Boolean)"
+                                                                },
+                                                                "authentication_order_dot1x_mab": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Dot1X Mab",
+                                                                    "description": "Authentication Order Dot1X Mab (Boolean)"
+                                                                },
+                                                                "authentication_order_dot1x_webauth": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Dot1X Webauth",
+                                                                    "description": "Authentication Order Dot1X Webauth (Boolean)"
+                                                                },
+                                                                "authentication_order_mab": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Mab",
+                                                                    "description": "Authentication Order Mab (Boolean)"
+                                                                },
+                                                                "authentication_order_mab_dot1x": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Mab Dot1X",
+                                                                    "description": "Authentication Order Mab Dot1X (Boolean)"
+                                                                },
+                                                                "authentication_order_mab_webauth": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Mab Webauth",
+                                                                    "description": "Authentication Order Mab Webauth (Boolean)"
+                                                                },
+                                                                "authentication_order_webauth": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Order Webauth",
+                                                                    "description": "Authentication Order Webauth (Boolean)"
+                                                                },
+                                                                "authentication_priority_dot1x": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Dot1X",
+                                                                    "description": "Authentication Priority Dot1X (Boolean)"
+                                                                },
+                                                                "authentication_priority_dot1x_mab": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Dot1X Mab",
+                                                                    "description": "Authentication Priority Dot1X Mab (Boolean)"
+                                                                },
+                                                                "authentication_priority_dot1x_webauth": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Dot1X Webauth",
+                                                                    "description": "Authentication Priority Dot1X Webauth (Boolean)"
+                                                                },
+                                                                "authentication_priority_mab": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Mab",
+                                                                    "description": "Authentication Priority Mab (Boolean)"
+                                                                },
+                                                                "authentication_priority_mab_dot1x": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Mab Dot1X",
+                                                                    "description": "Authentication Priority Mab Dot1X (Boolean)"
+                                                                },
+                                                                "authentication_priority_mab_webauth": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Mab Webauth",
+                                                                    "description": "Authentication Priority Mab Webauth (Boolean)"
+                                                                },
+                                                                "authentication_priority_webauth": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Priority Webauth",
+                                                                    "description": "Authentication Priority Webauth (Boolean)"
+                                                                },
+                                                                "authentication_event_fail_action_authorize_vlan": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 4094
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Authentication Event Fail Action Authorize Vlan",
+                                                                    "description": "Authentication Event Fail Action Authorize Vlan (Integer, String)"
+                                                                },
+                                                                "authentication_event_fail_action_next_method": {
+                                                                    "type": "boolean",
+                                                                    "title": "Authentication Event Fail Action Next Method",
+                                                                    "description": "Authentication Event Fail Action Next Method (Boolean)"
+                                                                },
                                                                 "authentication_periodic": {
                                                                     "type": "boolean",
                                                                     "title": "Authentication Periodic",
@@ -633435,7 +633885,7 @@
                                                             },
                                                             "required": [],
                                                             "title": "Network Access Control",
-                                                            "description": "Network Access Control (Object)\n\nElements:\n- authentication_periodic\n- authentication_timer_reauthenticate\n- authentication_timer_reauthenticate_server\n- mab\n- mab_eap\n- dot1x_pae\n- dot1x_timeout_auth_period\n- dot1x_timeout_held_period\n- dot1x_timeout_quiet_period\n- dot1x_timeout_ratelimit_period\n- dot1x_timeout_server_timeout\n- dot1x_timeout_start_period\n- dot1x_timeout_supp_timeout\n- dot1x_timeout_tx_period\n- dot1x_max_req\n- dot1x_max_reauth_req"
+                                                            "description": "Network Access Control (Object)\n\nElements:\n- authentication_order_dot1x\n- authentication_order_dot1x_mab\n- authentication_order_dot1x_webauth\n- authentication_order_mab\n- authentication_order_mab_dot1x\n- authentication_order_mab_webauth\n- authentication_order_webauth\n- authentication_priority_dot1x\n- authentication_priority_dot1x_mab\n- authentication_priority_dot1x_webauth\n- authentication_priority_mab\n- authentication_priority_mab_dot1x\n- authentication_priority_mab_webauth\n- authentication_priority_webauth\n- authentication_event_fail_action_authorize_vlan\n- authentication_event_fail_action_next_method\n- authentication_periodic\n- authentication_timer_reauthenticate\n- authentication_timer_reauthenticate_server\n- mab\n- mab_eap\n- dot1x_pae\n- dot1x_timeout_auth_period\n- dot1x_timeout_held_period\n- dot1x_timeout_quiet_period\n- dot1x_timeout_ratelimit_period\n- dot1x_timeout_server_timeout\n- dot1x_timeout_start_period\n- dot1x_timeout_supp_timeout\n- dot1x_timeout_tx_period\n- dot1x_max_req\n- dot1x_max_reauth_req"
                                                         },
                                                         "auto_qos": {
                                                             "type": "object",
