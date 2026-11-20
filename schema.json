@@ -482120,6 +482120,11 @@
                                                                 "title": "Auto Route Target",
                                                                 "description": "Auto Route Target (Boolean)"
                                                             },
+                                                            "auto_route_target_legacy": {
+                                                                "type": "boolean",
+                                                                "title": "Auto Route Target Legacy",
+                                                                "description": "Auto Route Target Legacy (Boolean)"
+                                                            },
                                                             "rd": {
                                                                 "type": "string",
                                                                 "title": "Rd",
@@ -482140,6 +482145,26 @@
                                                                 },
                                                                 "title": "Route Target Exports",
                                                                 "description": "Route Target Exports (List - String)"
+                                                            },
+                                                            "route_target_legacy": {
+                                                                "type": "string",
+                                                                "title": "Route Target Legacy",
+                                                                "description": "Route Target Legacy (String)"
+                                                            },
+                                                            "route_target_both_legacy": {
+                                                                "type": "string",
+                                                                "title": "Route Target Both Legacy",
+                                                                "description": "Route Target Both Legacy (String)"
+                                                            },
+                                                            "route_target_import_legacy": {
+                                                                "type": "string",
+                                                                "title": "Route Target Import Legacy",
+                                                                "description": "Route Target Import Legacy (String)"
+                                                            },
+                                                            "route_target_export_legacy": {
+                                                                "type": "string",
+                                                                "title": "Route Target Export Legacy",
+                                                                "description": "Route Target Export Legacy (String)"
                                                             },
                                                             "ip_local_learning_disable": {
                                                                 "type": "boolean",
@@ -482182,7 +482207,7 @@
                                                         },
                                                         "required": [],
                                                         "title": "Vlan Based",
-                                                        "description": "Vlan Based (Object)\n\nElements:\n- replication_type\n- encapsulation\n- auto_route_target\n- rd\n- route_target_imports\n- route_target_exports\n- ip_local_learning_disable\n- ip_local_learning_enable\n- default_gateway_advertise\n- re_originate_route_type5\n- multicast_advertise"
+                                                        "description": "Vlan Based (Object)\n\nElements:\n- replication_type\n- encapsulation\n- auto_route_target\n- auto_route_target_legacy\n- rd\n- route_target_imports\n- route_target_exports\n- route_target_legacy\n- route_target_both_legacy\n- route_target_import_legacy\n- route_target_export_legacy\n- ip_local_learning_disable\n- ip_local_learning_enable\n- default_gateway_advertise\n- re_originate_route_type5\n- multicast_advertise"
                                                     }
                                                 },
                                                 "required": []
@@ -530525,6 +530550,11 @@
                                                                     "title": "Auto Route Target",
                                                                     "description": "Auto Route Target (Boolean)"
                                                                 },
+                                                                "auto_route_target_legacy": {
+                                                                    "type": "boolean",
+                                                                    "title": "Auto Route Target Legacy",
+                                                                    "description": "Auto Route Target Legacy (Boolean)"
+                                                                },
                                                                 "rd": {
                                                                     "type": "string",
                                                                     "title": "Rd",
@@ -530545,6 +530575,26 @@
                                                                     },
                                                                     "title": "Route Target Exports",
                                                                     "description": "Route Target Exports (List - String)"
+                                                                },
+                                                                "route_target_legacy": {
+                                                                    "type": "string",
+                                                                    "title": "Route Target Legacy",
+                                                                    "description": "Route Target Legacy (String)"
+                                                                },
+                                                                "route_target_both_legacy": {
+                                                                    "type": "string",
+                                                                    "title": "Route Target Both Legacy",
+                                                                    "description": "Route Target Both Legacy (String)"
+                                                                },
+                                                                "route_target_import_legacy": {
+                                                                    "type": "string",
+                                                                    "title": "Route Target Import Legacy",
+                                                                    "description": "Route Target Import Legacy (String)"
+                                                                },
+                                                                "route_target_export_legacy": {
+                                                                    "type": "string",
+                                                                    "title": "Route Target Export Legacy",
+                                                                    "description": "Route Target Export Legacy (String)"
                                                                 },
                                                                 "ip_local_learning_disable": {
                                                                     "type": "boolean",
@@ -530587,7 +530637,7 @@
                                                             },
                                                             "required": [],
                                                             "title": "Vlan Based",
-                                                            "description": "Vlan Based (Object)\n\nElements:\n- replication_type\n- encapsulation\n- auto_route_target\n- rd\n- route_target_imports\n- route_target_exports\n- ip_local_learning_disable\n- ip_local_learning_enable\n- default_gateway_advertise\n- re_originate_route_type5\n- multicast_advertise"
+                                                            "description": "Vlan Based (Object)\n\nElements:\n- replication_type\n- encapsulation\n- auto_route_target\n- auto_route_target_legacy\n- rd\n- route_target_imports\n- route_target_exports\n- route_target_legacy\n- route_target_both_legacy\n- route_target_import_legacy\n- route_target_export_legacy\n- ip_local_learning_disable\n- ip_local_learning_enable\n- default_gateway_advertise\n- re_originate_route_type5\n- multicast_advertise"
                                                         }
                                                     },
                                                     "required": []
@@ -578965,6 +579015,11 @@
                                                                     "title": "Auto Route Target",
                                                                     "description": "Auto Route Target (Boolean)"
                                                                 },
+                                                                "auto_route_target_legacy": {
+                                                                    "type": "boolean",
+                                                                    "title": "Auto Route Target Legacy",
+                                                                    "description": "Auto Route Target Legacy (Boolean)"
+                                                                },
                                                                 "rd": {
                                                                     "type": "string",
                                                                     "title": "Rd",
@@ -578985,6 +579040,26 @@
                                                                     },
                                                                     "title": "Route Target Exports",
                                                                     "description": "Route Target Exports (List - String)"
+                                                                },
+                                                                "route_target_legacy": {
+                                                                    "type": "string",
+                                                                    "title": "Route Target Legacy",
+                                                                    "description": "Route Target Legacy (String)"
+                                                                },
+                                                                "route_target_both_legacy": {
+                                                                    "type": "string",
+                                                                    "title": "Route Target Both Legacy",
+                                                                    "description": "Route Target Both Legacy (String)"
+                                                                },
+                                                                "route_target_import_legacy": {
+                                                                    "type": "string",
+                                                                    "title": "Route Target Import Legacy",
+                                                                    "description": "Route Target Import Legacy (String)"
+                                                                },
+                                                                "route_target_export_legacy": {
+                                                                    "type": "string",
+                                                                    "title": "Route Target Export Legacy",
+                                                                    "description": "Route Target Export Legacy (String)"
                                                                 },
                                                                 "ip_local_learning_disable": {
                                                                     "type": "boolean",
@@ -579027,7 +579102,7 @@
                                                             },
                                                             "required": [],
                                                             "title": "Vlan Based",
-                                                            "description": "Vlan Based (Object)\n\nElements:\n- replication_type\n- encapsulation\n- auto_route_target\n- rd\n- route_target_imports\n- route_target_exports\n- ip_local_learning_disable\n- ip_local_learning_enable\n- default_gateway_advertise\n- re_originate_route_type5\n- multicast_advertise"
+                                                            "description": "Vlan Based (Object)\n\nElements:\n- replication_type\n- encapsulation\n- auto_route_target\n- auto_route_target_legacy\n- rd\n- route_target_imports\n- route_target_exports\n- route_target_legacy\n- route_target_both_legacy\n- route_target_import_legacy\n- route_target_export_legacy\n- ip_local_learning_disable\n- ip_local_learning_enable\n- default_gateway_advertise\n- re_originate_route_type5\n- multicast_advertise"
                                                         }
                                                     },
                                                     "required": []
@@ -629734,6 +629809,11 @@
                                                                     "title": "Auto Route Target",
                                                                     "description": "Auto Route Target (Boolean)"
                                                                 },
+                                                                "auto_route_target_legacy": {
+                                                                    "type": "boolean",
+                                                                    "title": "Auto Route Target Legacy",
+                                                                    "description": "Auto Route Target Legacy (Boolean)"
+                                                                },
                                                                 "rd": {
                                                                     "type": "string",
                                                                     "title": "Rd",
@@ -629754,6 +629834,26 @@
                                                                     },
                                                                     "title": "Route Target Exports",
                                                                     "description": "Route Target Exports (List - String)"
+                                                                },
+                                                                "route_target_legacy": {
+                                                                    "type": "string",
+                                                                    "title": "Route Target Legacy",
+                                                                    "description": "Route Target Legacy (String)"
+                                                                },
+                                                                "route_target_both_legacy": {
+                                                                    "type": "string",
+                                                                    "title": "Route Target Both Legacy",
+                                                                    "description": "Route Target Both Legacy (String)"
+                                                                },
+                                                                "route_target_import_legacy": {
+                                                                    "type": "string",
+                                                                    "title": "Route Target Import Legacy",
+                                                                    "description": "Route Target Import Legacy (String)"
+                                                                },
+                                                                "route_target_export_legacy": {
+                                                                    "type": "string",
+                                                                    "title": "Route Target Export Legacy",
+                                                                    "description": "Route Target Export Legacy (String)"
                                                                 },
                                                                 "ip_local_learning_disable": {
                                                                     "type": "boolean",
@@ -629796,7 +629896,7 @@
                                                             },
                                                             "required": [],
                                                             "title": "Vlan Based",
-                                                            "description": "Vlan Based (Object)\n\nElements:\n- replication_type\n- encapsulation\n- auto_route_target\n- rd\n- route_target_imports\n- route_target_exports\n- ip_local_learning_disable\n- ip_local_learning_enable\n- default_gateway_advertise\n- re_originate_route_type5\n- multicast_advertise"
+                                                            "description": "Vlan Based (Object)\n\nElements:\n- replication_type\n- encapsulation\n- auto_route_target\n- auto_route_target_legacy\n- rd\n- route_target_imports\n- route_target_exports\n- route_target_legacy\n- route_target_both_legacy\n- route_target_import_legacy\n- route_target_export_legacy\n- ip_local_learning_disable\n- ip_local_learning_enable\n- default_gateway_advertise\n- re_originate_route_type5\n- multicast_advertise"
                                                         }
                                                     },
                                                     "required": []
