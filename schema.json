@@ -496004,6 +496004,11 @@
                                                         "title": "Tunnel Protection Ipsec Profile",
                                                         "description": "Tunnel Protection Ipsec Profile (String)"
                                                     },
+                                                    "tunnel_protection_ipsec_profile_legacy": {
+                                                        "type": "string",
+                                                        "title": "Tunnel Protection Ipsec Profile Legacy",
+                                                        "description": "Tunnel Protection Ipsec Profile Legacy (String)"
+                                                    },
                                                     "tunnel_source": {
                                                         "type": "string",
                                                         "title": "Tunnel Source",
@@ -496200,6 +496205,28 @@
                                                         "title": "Service Policy Output",
                                                         "description": "Service Policy Output (String)"
                                                     },
+                                                    "isis": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "area_tag": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "string"
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Area Tag",
+                                                                "description": "Area Tag (String, String)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "ISIS",
+                                                        "description": "ISIS (Object)\n\nElements:\n- area_tag"
+                                                    },
                                                     "zone_member_security": {
                                                         "type": "string",
                                                         "title": "Zone Member Security",
@@ -496211,7 +496238,7 @@
                                                 ]
                                             },
                                             "title": "Tunnels",
-                                            "description": "Tunnels (List - Object)\n\nElements:\n- name (required)\n- interface_groups\n- interface_group_policy\n- description\n- shutdown\n- vrf_forwarding\n- ipv4\n- ipv6\n- bfd\n- tunnel_destination_ipv4\n- ospf\n- ospfv3\n- pim\n- igmp\n- arp_timeout\n- bandwidth\n- ip_mtu\n- load_interval\n- snmp_trap_link_status\n- logging_event_link_status_enable\n- tunnel_vrf\n- tunnel_mode_ipsec_ipv4\n- tunnel_mode_gre_multipoint\n- tunnel_protection_ipsec_profile\n- tunnel_source\n- tunnel_key\n- tunnel_bandwidth_transmit\n- tunnel_bandwidth_receive\n- ip_nhrp_authentication\n- ip_nhrp_network_id\n- ip_nhrp_nhs\n- ip_nhrp_maps\n- ip_nhrp_map_multicast_dynamic\n- ip_nhrp_map_multicast_nbma_ipv4\n- ip_nhrp_redirect\n- ip_nhrp_shortcut\n- mpls_nhrp\n- service_policy_input\n- service_policy_output\n- zone_member_security"
+                                            "description": "Tunnels (List - Object)\n\nElements:\n- name (required)\n- interface_groups\n- interface_group_policy\n- description\n- shutdown\n- vrf_forwarding\n- ipv4\n- ipv6\n- bfd\n- tunnel_destination_ipv4\n- ospf\n- ospfv3\n- pim\n- igmp\n- arp_timeout\n- bandwidth\n- ip_mtu\n- load_interval\n- snmp_trap_link_status\n- logging_event_link_status_enable\n- tunnel_vrf\n- tunnel_mode_ipsec_ipv4\n- tunnel_mode_gre_multipoint\n- tunnel_protection_ipsec_profile\n- tunnel_protection_ipsec_profile_legacy\n- tunnel_source\n- tunnel_key\n- tunnel_bandwidth_transmit\n- tunnel_bandwidth_receive\n- ip_nhrp_authentication\n- ip_nhrp_network_id\n- ip_nhrp_nhs\n- ip_nhrp_maps\n- ip_nhrp_map_multicast_dynamic\n- ip_nhrp_map_multicast_nbma_ipv4\n- ip_nhrp_redirect\n- ip_nhrp_shortcut\n- mpls_nhrp\n- service_policy_input\n- service_policy_output\n- isis\n- zone_member_security"
                                         },
                                         "bdis": {
                                             "type": "array",
@@ -544382,6 +544409,11 @@
                                                             "title": "Tunnel Protection Ipsec Profile",
                                                             "description": "Tunnel Protection Ipsec Profile (String)"
                                                         },
+                                                        "tunnel_protection_ipsec_profile_legacy": {
+                                                            "type": "string",
+                                                            "title": "Tunnel Protection Ipsec Profile Legacy",
+                                                            "description": "Tunnel Protection Ipsec Profile Legacy (String)"
+                                                        },
                                                         "tunnel_source": {
                                                             "type": "string",
                                                             "title": "Tunnel Source",
@@ -544578,6 +544610,28 @@
                                                             "title": "Service Policy Output",
                                                             "description": "Service Policy Output (String)"
                                                         },
+                                                        "isis": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "area_tag": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Area Tag",
+                                                                    "description": "Area Tag (String, String)"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "ISIS",
+                                                            "description": "ISIS (Object)\n\nElements:\n- area_tag"
+                                                        },
                                                         "zone_member_security": {
                                                             "type": "string",
                                                             "title": "Zone Member Security",
@@ -544589,7 +544643,7 @@
                                                     ]
                                                 },
                                                 "title": "Tunnels",
-                                                "description": "Tunnels (List - Object)\n\nElements:\n- name (required)\n- interface_groups\n- interface_group_policy\n- description\n- shutdown\n- vrf_forwarding\n- ipv4\n- ipv6\n- bfd\n- tunnel_destination_ipv4\n- ospf\n- ospfv3\n- pim\n- igmp\n- arp_timeout\n- bandwidth\n- ip_mtu\n- load_interval\n- snmp_trap_link_status\n- logging_event_link_status_enable\n- tunnel_vrf\n- tunnel_mode_ipsec_ipv4\n- tunnel_mode_gre_multipoint\n- tunnel_protection_ipsec_profile\n- tunnel_source\n- tunnel_key\n- tunnel_bandwidth_transmit\n- tunnel_bandwidth_receive\n- ip_nhrp_authentication\n- ip_nhrp_network_id\n- ip_nhrp_nhs\n- ip_nhrp_maps\n- ip_nhrp_map_multicast_dynamic\n- ip_nhrp_map_multicast_nbma_ipv4\n- ip_nhrp_redirect\n- ip_nhrp_shortcut\n- mpls_nhrp\n- service_policy_input\n- service_policy_output\n- zone_member_security"
+                                                "description": "Tunnels (List - Object)\n\nElements:\n- name (required)\n- interface_groups\n- interface_group_policy\n- description\n- shutdown\n- vrf_forwarding\n- ipv4\n- ipv6\n- bfd\n- tunnel_destination_ipv4\n- ospf\n- ospfv3\n- pim\n- igmp\n- arp_timeout\n- bandwidth\n- ip_mtu\n- load_interval\n- snmp_trap_link_status\n- logging_event_link_status_enable\n- tunnel_vrf\n- tunnel_mode_ipsec_ipv4\n- tunnel_mode_gre_multipoint\n- tunnel_protection_ipsec_profile\n- tunnel_protection_ipsec_profile_legacy\n- tunnel_source\n- tunnel_key\n- tunnel_bandwidth_transmit\n- tunnel_bandwidth_receive\n- ip_nhrp_authentication\n- ip_nhrp_network_id\n- ip_nhrp_nhs\n- ip_nhrp_maps\n- ip_nhrp_map_multicast_dynamic\n- ip_nhrp_map_multicast_nbma_ipv4\n- ip_nhrp_redirect\n- ip_nhrp_shortcut\n- mpls_nhrp\n- service_policy_input\n- service_policy_output\n- isis\n- zone_member_security"
                                             },
                                             "bdis": {
                                                 "type": "array",
@@ -592795,6 +592849,11 @@
                                                             "title": "Tunnel Protection Ipsec Profile",
                                                             "description": "Tunnel Protection Ipsec Profile (String)"
                                                         },
+                                                        "tunnel_protection_ipsec_profile_legacy": {
+                                                            "type": "string",
+                                                            "title": "Tunnel Protection Ipsec Profile Legacy",
+                                                            "description": "Tunnel Protection Ipsec Profile Legacy (String)"
+                                                        },
                                                         "tunnel_source": {
                                                             "type": "string",
                                                             "title": "Tunnel Source",
@@ -592991,6 +593050,28 @@
                                                             "title": "Service Policy Output",
                                                             "description": "Service Policy Output (String)"
                                                         },
+                                                        "isis": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "area_tag": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Area Tag",
+                                                                    "description": "Area Tag (String, String)"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "ISIS",
+                                                            "description": "ISIS (Object)\n\nElements:\n- area_tag"
+                                                        },
                                                         "zone_member_security": {
                                                             "type": "string",
                                                             "title": "Zone Member Security",
@@ -593002,7 +593083,7 @@
                                                     ]
                                                 },
                                                 "title": "Tunnels",
-                                                "description": "Tunnels (List - Object)\n\nElements:\n- name (required)\n- interface_groups\n- interface_group_policy\n- description\n- shutdown\n- vrf_forwarding\n- ipv4\n- ipv6\n- bfd\n- tunnel_destination_ipv4\n- ospf\n- ospfv3\n- pim\n- igmp\n- arp_timeout\n- bandwidth\n- ip_mtu\n- load_interval\n- snmp_trap_link_status\n- logging_event_link_status_enable\n- tunnel_vrf\n- tunnel_mode_ipsec_ipv4\n- tunnel_mode_gre_multipoint\n- tunnel_protection_ipsec_profile\n- tunnel_source\n- tunnel_key\n- tunnel_bandwidth_transmit\n- tunnel_bandwidth_receive\n- ip_nhrp_authentication\n- ip_nhrp_network_id\n- ip_nhrp_nhs\n- ip_nhrp_maps\n- ip_nhrp_map_multicast_dynamic\n- ip_nhrp_map_multicast_nbma_ipv4\n- ip_nhrp_redirect\n- ip_nhrp_shortcut\n- mpls_nhrp\n- service_policy_input\n- service_policy_output\n- zone_member_security"
+                                                "description": "Tunnels (List - Object)\n\nElements:\n- name (required)\n- interface_groups\n- interface_group_policy\n- description\n- shutdown\n- vrf_forwarding\n- ipv4\n- ipv6\n- bfd\n- tunnel_destination_ipv4\n- ospf\n- ospfv3\n- pim\n- igmp\n- arp_timeout\n- bandwidth\n- ip_mtu\n- load_interval\n- snmp_trap_link_status\n- logging_event_link_status_enable\n- tunnel_vrf\n- tunnel_mode_ipsec_ipv4\n- tunnel_mode_gre_multipoint\n- tunnel_protection_ipsec_profile\n- tunnel_protection_ipsec_profile_legacy\n- tunnel_source\n- tunnel_key\n- tunnel_bandwidth_transmit\n- tunnel_bandwidth_receive\n- ip_nhrp_authentication\n- ip_nhrp_network_id\n- ip_nhrp_nhs\n- ip_nhrp_maps\n- ip_nhrp_map_multicast_dynamic\n- ip_nhrp_map_multicast_nbma_ipv4\n- ip_nhrp_redirect\n- ip_nhrp_shortcut\n- mpls_nhrp\n- service_policy_input\n- service_policy_output\n- isis\n- zone_member_security"
                                             },
                                             "bdis": {
                                                 "type": "array",
@@ -643537,6 +643618,11 @@
                                                             "title": "Tunnel Protection Ipsec Profile",
                                                             "description": "Tunnel Protection Ipsec Profile (String)"
                                                         },
+                                                        "tunnel_protection_ipsec_profile_legacy": {
+                                                            "type": "string",
+                                                            "title": "Tunnel Protection Ipsec Profile Legacy",
+                                                            "description": "Tunnel Protection Ipsec Profile Legacy (String)"
+                                                        },
                                                         "tunnel_source": {
                                                             "type": "string",
                                                             "title": "Tunnel Source",
@@ -643733,6 +643819,28 @@
                                                             "title": "Service Policy Output",
                                                             "description": "Service Policy Output (String)"
                                                         },
+                                                        "isis": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "area_tag": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string"
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Area Tag",
+                                                                    "description": "Area Tag (String, String)"
+                                                                }
+                                                            },
+                                                            "required": [],
+                                                            "title": "ISIS",
+                                                            "description": "ISIS (Object)\n\nElements:\n- area_tag"
+                                                        },
                                                         "zone_member_security": {
                                                             "type": "string",
                                                             "title": "Zone Member Security",
@@ -643744,7 +643852,7 @@
                                                     ]
                                                 },
                                                 "title": "Tunnels",
-                                                "description": "Tunnels (List - Object)\n\nElements:\n- name (required)\n- interface_groups\n- interface_group_policy\n- description\n- shutdown\n- vrf_forwarding\n- ipv4\n- ipv6\n- bfd\n- tunnel_destination_ipv4\n- ospf\n- ospfv3\n- pim\n- igmp\n- arp_timeout\n- bandwidth\n- ip_mtu\n- load_interval\n- snmp_trap_link_status\n- logging_event_link_status_enable\n- tunnel_vrf\n- tunnel_mode_ipsec_ipv4\n- tunnel_mode_gre_multipoint\n- tunnel_protection_ipsec_profile\n- tunnel_source\n- tunnel_key\n- tunnel_bandwidth_transmit\n- tunnel_bandwidth_receive\n- ip_nhrp_authentication\n- ip_nhrp_network_id\n- ip_nhrp_nhs\n- ip_nhrp_maps\n- ip_nhrp_map_multicast_dynamic\n- ip_nhrp_map_multicast_nbma_ipv4\n- ip_nhrp_redirect\n- ip_nhrp_shortcut\n- mpls_nhrp\n- service_policy_input\n- service_policy_output\n- zone_member_security"
+                                                "description": "Tunnels (List - Object)\n\nElements:\n- name (required)\n- interface_groups\n- interface_group_policy\n- description\n- shutdown\n- vrf_forwarding\n- ipv4\n- ipv6\n- bfd\n- tunnel_destination_ipv4\n- ospf\n- ospfv3\n- pim\n- igmp\n- arp_timeout\n- bandwidth\n- ip_mtu\n- load_interval\n- snmp_trap_link_status\n- logging_event_link_status_enable\n- tunnel_vrf\n- tunnel_mode_ipsec_ipv4\n- tunnel_mode_gre_multipoint\n- tunnel_protection_ipsec_profile\n- tunnel_protection_ipsec_profile_legacy\n- tunnel_source\n- tunnel_key\n- tunnel_bandwidth_transmit\n- tunnel_bandwidth_receive\n- ip_nhrp_authentication\n- ip_nhrp_network_id\n- ip_nhrp_nhs\n- ip_nhrp_maps\n- ip_nhrp_map_multicast_dynamic\n- ip_nhrp_map_multicast_nbma_ipv4\n- ip_nhrp_redirect\n- ip_nhrp_shortcut\n- mpls_nhrp\n- service_policy_input\n- service_policy_output\n- isis\n- zone_member_security"
                                             },
                                             "bdis": {
                                                 "type": "array",
