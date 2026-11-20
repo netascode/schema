@@ -472741,11 +472741,74 @@
                                             },
                                             "title": "Usernames",
                                             "description": "Usernames (List - Object)\n\nElements:\n- name (required)\n- privilege\n- description\n- password_encryption\n- password\n- secret_encryption\n- secret"
+                                        },
+                                        "eap_profiles": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "name": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^[^;=]{1,63}$"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Name",
+                                                        "description": "Name (String, String)"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "title": "Description",
+                                                        "description": "Description (String)"
+                                                    },
+                                                    "methods": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "fast",
+                                                                        "gtc",
+                                                                        "leap",
+                                                                        "md5",
+                                                                        "mschapv2",
+                                                                        "peap",
+                                                                        "tls"
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Methods",
+                                                        "description": "Methods (Array, String)"
+                                                    },
+                                                    "pki_trustpoint": {
+                                                        "type": "string",
+                                                        "title": "PKI Trustpoint",
+                                                        "description": "PKI Trustpoint (String)"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name"
+                                                ]
+                                            },
+                                            "title": "EAP Profiles",
+                                            "description": "EAP Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- methods\n- pki_trustpoint"
                                         }
                                     },
                                     "required": [],
                                     "title": "AAA",
-                                    "description": "AAA (Object)\n\nElements:\n- new_model\n- session_id\n- local_authentication_type\n- local_authorization\n- local_authentication_max_fail_attempts\n- radius_dynamic_author\n- radius_dynamic_author_clients\n- radius_groups\n- tacacs_groups\n- accounting\n- authentication\n- authorization\n- radius\n- tacacs\n- usernames"
+                                    "description": "AAA (Object)\n\nElements:\n- new_model\n- session_id\n- local_authentication_type\n- local_authorization\n- local_authentication_max_fail_attempts\n- radius_dynamic_author\n- radius_dynamic_author_clients\n- radius_groups\n- tacacs_groups\n- accounting\n- authentication\n- authorization\n- radius\n- tacacs\n- usernames\n- eap_profiles"
                                 },
                                 "access_lists": {
                                     "type": "object",
@@ -480874,11 +480937,46 @@
                                             },
                                             "title": "Policy Maps",
                                             "description": "Policy Maps (List - Object)\n\nElements:\n- name (required)\n- type\n- subscriber\n- description\n- classes\n- events"
+                                        },
+                                        "parameter_map_webauth_global": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "virtual_ip_ipv4": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "string"
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Virtual IP IPv4",
+                                                    "description": "Virtual IP IPv4 (String, String)"
+                                                },
+                                                "virtual_ip_ipv6": {
+                                                    "anyOf": [
+                                                        {
+                                                            "type": "string"
+                                                        },
+                                                        {
+                                                            "type": "string",
+                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                        }
+                                                    ],
+                                                    "title": "Virtual IP IPv6",
+                                                    "description": "Virtual IP IPv6 (String, String)"
+                                                }
+                                            },
+                                            "required": [],
+                                            "title": "Parameter Map Webauth Global",
+                                            "description": "Parameter Map Webauth Global (Object)\n\nElements:\n- virtual_ip_ipv4\n- virtual_ip_ipv6"
                                         }
                                     },
                                     "required": [],
                                     "title": "Policy",
-                                    "description": "Policy (Object)\n\nElements:\n- class_maps\n- parameter_maps_inspect\n- policy_maps"
+                                    "description": "Policy (Object)\n\nElements:\n- class_maps\n- parameter_maps_inspect\n- policy_maps\n- parameter_map_webauth_global"
                                 },
                                 "dot1x": {
                                     "type": "object",
@@ -521171,11 +521269,74 @@
                                                 },
                                                 "title": "Usernames",
                                                 "description": "Usernames (List - Object)\n\nElements:\n- name (required)\n- privilege\n- description\n- password_encryption\n- password\n- secret_encryption\n- secret"
+                                            },
+                                            "eap_profiles": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^[^;=]{1,63}$"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Name",
+                                                            "description": "Name (String, String)"
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "title": "Description",
+                                                            "description": "Description (String)"
+                                                        },
+                                                        "methods": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "fast",
+                                                                            "gtc",
+                                                                            "leap",
+                                                                            "md5",
+                                                                            "mschapv2",
+                                                                            "peap",
+                                                                            "tls"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Methods",
+                                                            "description": "Methods (Array, String)"
+                                                        },
+                                                        "pki_trustpoint": {
+                                                            "type": "string",
+                                                            "title": "PKI Trustpoint",
+                                                            "description": "PKI Trustpoint (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "EAP Profiles",
+                                                "description": "EAP Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- methods\n- pki_trustpoint"
                                             }
                                         },
                                         "required": [],
                                         "title": "AAA",
-                                        "description": "AAA (Object)\n\nElements:\n- new_model\n- session_id\n- local_authentication_type\n- local_authorization\n- local_authentication_max_fail_attempts\n- radius_dynamic_author\n- radius_dynamic_author_clients\n- radius_groups\n- tacacs_groups\n- accounting\n- authentication\n- authorization\n- radius\n- tacacs\n- usernames"
+                                        "description": "AAA (Object)\n\nElements:\n- new_model\n- session_id\n- local_authentication_type\n- local_authorization\n- local_authentication_max_fail_attempts\n- radius_dynamic_author\n- radius_dynamic_author_clients\n- radius_groups\n- tacacs_groups\n- accounting\n- authentication\n- authorization\n- radius\n- tacacs\n- usernames\n- eap_profiles"
                                     },
                                     "access_lists": {
                                         "type": "object",
@@ -529304,11 +529465,46 @@
                                                 },
                                                 "title": "Policy Maps",
                                                 "description": "Policy Maps (List - Object)\n\nElements:\n- name (required)\n- type\n- subscriber\n- description\n- classes\n- events"
+                                            },
+                                            "parameter_map_webauth_global": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "virtual_ip_ipv4": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Virtual IP IPv4",
+                                                        "description": "Virtual IP IPv4 (String, String)"
+                                                    },
+                                                    "virtual_ip_ipv6": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Virtual IP IPv6",
+                                                        "description": "Virtual IP IPv6 (String, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Parameter Map Webauth Global",
+                                                "description": "Parameter Map Webauth Global (Object)\n\nElements:\n- virtual_ip_ipv4\n- virtual_ip_ipv6"
                                             }
                                         },
                                         "required": [],
                                         "title": "Policy",
-                                        "description": "Policy (Object)\n\nElements:\n- class_maps\n- parameter_maps_inspect\n- policy_maps"
+                                        "description": "Policy (Object)\n\nElements:\n- class_maps\n- parameter_maps_inspect\n- policy_maps\n- parameter_map_webauth_global"
                                     },
                                     "dot1x": {
                                         "type": "object",
@@ -569636,11 +569832,74 @@
                                                 },
                                                 "title": "Usernames",
                                                 "description": "Usernames (List - Object)\n\nElements:\n- name (required)\n- privilege\n- description\n- password_encryption\n- password\n- secret_encryption\n- secret"
+                                            },
+                                            "eap_profiles": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^[^;=]{1,63}$"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Name",
+                                                            "description": "Name (String, String)"
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "title": "Description",
+                                                            "description": "Description (String)"
+                                                        },
+                                                        "methods": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "fast",
+                                                                            "gtc",
+                                                                            "leap",
+                                                                            "md5",
+                                                                            "mschapv2",
+                                                                            "peap",
+                                                                            "tls"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Methods",
+                                                            "description": "Methods (Array, String)"
+                                                        },
+                                                        "pki_trustpoint": {
+                                                            "type": "string",
+                                                            "title": "PKI Trustpoint",
+                                                            "description": "PKI Trustpoint (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "EAP Profiles",
+                                                "description": "EAP Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- methods\n- pki_trustpoint"
                                             }
                                         },
                                         "required": [],
                                         "title": "AAA",
-                                        "description": "AAA (Object)\n\nElements:\n- new_model\n- session_id\n- local_authentication_type\n- local_authorization\n- local_authentication_max_fail_attempts\n- radius_dynamic_author\n- radius_dynamic_author_clients\n- radius_groups\n- tacacs_groups\n- accounting\n- authentication\n- authorization\n- radius\n- tacacs\n- usernames"
+                                        "description": "AAA (Object)\n\nElements:\n- new_model\n- session_id\n- local_authentication_type\n- local_authorization\n- local_authentication_max_fail_attempts\n- radius_dynamic_author\n- radius_dynamic_author_clients\n- radius_groups\n- tacacs_groups\n- accounting\n- authentication\n- authorization\n- radius\n- tacacs\n- usernames\n- eap_profiles"
                                     },
                                     "access_lists": {
                                         "type": "object",
@@ -577769,11 +578028,46 @@
                                                 },
                                                 "title": "Policy Maps",
                                                 "description": "Policy Maps (List - Object)\n\nElements:\n- name (required)\n- type\n- subscriber\n- description\n- classes\n- events"
+                                            },
+                                            "parameter_map_webauth_global": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "virtual_ip_ipv4": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Virtual IP IPv4",
+                                                        "description": "Virtual IP IPv4 (String, String)"
+                                                    },
+                                                    "virtual_ip_ipv6": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Virtual IP IPv6",
+                                                        "description": "Virtual IP IPv6 (String, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Parameter Map Webauth Global",
+                                                "description": "Parameter Map Webauth Global (Object)\n\nElements:\n- virtual_ip_ipv4\n- virtual_ip_ipv6"
                                             }
                                         },
                                         "required": [],
                                         "title": "Policy",
-                                        "description": "Policy (Object)\n\nElements:\n- class_maps\n- parameter_maps_inspect\n- policy_maps"
+                                        "description": "Policy (Object)\n\nElements:\n- class_maps\n- parameter_maps_inspect\n- policy_maps\n- parameter_map_webauth_global"
                                     },
                                     "dot1x": {
                                         "type": "object",
@@ -620430,11 +620724,74 @@
                                                 },
                                                 "title": "Usernames",
                                                 "description": "Usernames (List - Object)\n\nElements:\n- name (required)\n- privilege\n- description\n- password_encryption\n- password\n- secret_encryption\n- secret"
+                                            },
+                                            "eap_profiles": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "additionalProperties": false,
+                                                    "properties": {
+                                                        "name": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^[^;=]{1,63}$"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Name",
+                                                            "description": "Name (String, String)"
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "title": "Description",
+                                                            "description": "Description (String)"
+                                                        },
+                                                        "methods": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "fast",
+                                                                            "gtc",
+                                                                            "leap",
+                                                                            "md5",
+                                                                            "mschapv2",
+                                                                            "peap",
+                                                                            "tls"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                }
+                                                            ],
+                                                            "title": "Methods",
+                                                            "description": "Methods (Array, String)"
+                                                        },
+                                                        "pki_trustpoint": {
+                                                            "type": "string",
+                                                            "title": "PKI Trustpoint",
+                                                            "description": "PKI Trustpoint (String)"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "name"
+                                                    ]
+                                                },
+                                                "title": "EAP Profiles",
+                                                "description": "EAP Profiles (List - Object)\n\nElements:\n- name (required)\n- description\n- methods\n- pki_trustpoint"
                                             }
                                         },
                                         "required": [],
                                         "title": "AAA",
-                                        "description": "AAA (Object)\n\nElements:\n- new_model\n- session_id\n- local_authentication_type\n- local_authorization\n- local_authentication_max_fail_attempts\n- radius_dynamic_author\n- radius_dynamic_author_clients\n- radius_groups\n- tacacs_groups\n- accounting\n- authentication\n- authorization\n- radius\n- tacacs\n- usernames"
+                                        "description": "AAA (Object)\n\nElements:\n- new_model\n- session_id\n- local_authentication_type\n- local_authorization\n- local_authentication_max_fail_attempts\n- radius_dynamic_author\n- radius_dynamic_author_clients\n- radius_groups\n- tacacs_groups\n- accounting\n- authentication\n- authorization\n- radius\n- tacacs\n- usernames\n- eap_profiles"
                                     },
                                     "access_lists": {
                                         "type": "object",
@@ -628563,11 +628920,46 @@
                                                 },
                                                 "title": "Policy Maps",
                                                 "description": "Policy Maps (List - Object)\n\nElements:\n- name (required)\n- type\n- subscriber\n- description\n- classes\n- events"
+                                            },
+                                            "parameter_map_webauth_global": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "virtual_ip_ipv4": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Virtual IP IPv4",
+                                                        "description": "Virtual IP IPv4 (String, String)"
+                                                    },
+                                                    "virtual_ip_ipv6": {
+                                                        "anyOf": [
+                                                            {
+                                                                "type": "string"
+                                                            },
+                                                            {
+                                                                "type": "string",
+                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                            }
+                                                        ],
+                                                        "title": "Virtual IP IPv6",
+                                                        "description": "Virtual IP IPv6 (String, String)"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "Parameter Map Webauth Global",
+                                                "description": "Parameter Map Webauth Global (Object)\n\nElements:\n- virtual_ip_ipv4\n- virtual_ip_ipv6"
                                             }
                                         },
                                         "required": [],
                                         "title": "Policy",
-                                        "description": "Policy (Object)\n\nElements:\n- class_maps\n- parameter_maps_inspect\n- policy_maps"
+                                        "description": "Policy (Object)\n\nElements:\n- class_maps\n- parameter_maps_inspect\n- policy_maps\n- parameter_map_webauth_global"
                                     },
                                     "dot1x": {
                                         "type": "object",
