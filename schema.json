@@ -460748,11 +460748,100 @@
                     },
                     "title": "Templates",
                     "description": "Templates (List - Object)\n\nElements:\n- name (required)\n- type (required)\n- file\n- stage\n- order\n- content\n- configuration"
+                },
+                "template_instances": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "title": "Name",
+                                "description": "Name (String)"
+                            },
+                            "template": {
+                                "type": "string",
+                                "title": "Template",
+                                "description": "Template (String)"
+                            },
+                            "devices": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "title": "Devices",
+                                "description": "Devices (List - String)"
+                            },
+                            "device_groups": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "title": "Device Groups",
+                                "description": "Device Groups (List - String)"
+                            },
+                            "variables": {
+                                "type": "object",
+                                "title": "Variables",
+                                "description": "Variables (Object)\n- Map (key-value pairs)"
+                            },
+                            "items": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "name": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "string"
+                                                },
+                                                {
+                                                    "type": "integer"
+                                                }
+                                            ],
+                                            "title": "Name",
+                                            "description": "Name (String, Integer)"
+                                        },
+                                        "devices": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "title": "Devices",
+                                            "description": "Devices (List - String)"
+                                        },
+                                        "device_groups": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "title": "Device Groups",
+                                            "description": "Device Groups (List - String)"
+                                        },
+                                        "variables": {
+                                            "type": "object",
+                                            "title": "Variables",
+                                            "description": "Variables (Object)\n- Map (key-value pairs)"
+                                        }
+                                    },
+                                    "required": []
+                                }
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "template"
+                        ]
+                    },
+                    "title": "Template Instances",
+                    "description": "Template Instances (List - Object)\n\nElements:\n- name (required)\n- template (required)\n- devices\n- device_groups\n- variables\n- items"
                 }
             },
             "required": [],
             "title": "Nxos",
-            "description": "Nxos (Object)\n\nElements:\n- global\n- devices\n- device_groups\n- interface_groups\n- templates"
+            "description": "Nxos (Object)\n\nElements:\n- global\n- devices\n- device_groups\n- interface_groups\n- templates\n- template_instances"
         },
         "hyperfabric": {
             "type": "object",
