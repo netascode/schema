@@ -463568,6 +463568,11 @@
                                         "title": "Network Settings",
                                         "description": "Network Settings (Object)\n\nElements:\n- device_credentials\n- aaa_servers\n- network\n- telemetry\n- wireless\n- ip_pools_reservations"
                                     },
+                                    "map_archive_path": {
+                                        "type": "string",
+                                        "title": "Map Archive Path",
+                                        "description": "Map Archive Path (String)"
+                                    },
                                     "areas": {
                                         "type": "array",
                                         "items": {
@@ -465390,7 +465395,7 @@
                                 ]
                             },
                             "title": "Areas",
-                            "description": "Areas (List - Object)\n\nElements:\n- name (required)\n- cli_credentials\n- snmpv3_credentials\n- snmpv2_read_credentials\n- snmpv2_write_credentials\n- https_read_credentials\n- https_write_credentials\n- network_settings\n- areas\n- buildings"
+                            "description": "Areas (List - Object)\n\nElements:\n- name (required)\n- cli_credentials\n- snmpv3_credentials\n- snmpv2_read_credentials\n- snmpv2_write_credentials\n- https_read_credentials\n- https_write_credentials\n- network_settings\n- map_archive_path\n- areas\n- buildings"
                         }
                     },
                     "required": [],
