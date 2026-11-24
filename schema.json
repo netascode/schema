@@ -16439,6 +16439,39 @@
                                                         "title": "EPG Selectors",
                                                         "description": "EPG Selectors (List - Object)\n\nElements:\n- application_profile\n- endpoint_group (required)\n- description"
                                                     },
+                                                    "external_epg_selectors": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "l3out": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                    "title": "L3Out",
+                                                                    "description": "L3Out (String)"
+                                                                },
+                                                                "external_endpoint_group": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9_.:-]{1,64}$",
+                                                                    "title": "External Endpoint Group",
+                                                                    "description": "External Endpoint Group (String)"
+                                                                },
+                                                                "description": {
+                                                                    "type": "string",
+                                                                    "pattern": "^[a-zA-Z0-9\\\\!#$%()*,-./:;@ _{|}~?&+]{1,128}$",
+                                                                    "title": "Description",
+                                                                    "description": "Description (String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "l3out",
+                                                                "external_endpoint_group"
+                                                            ]
+                                                        },
+                                                        "title": "External EPG Selectors",
+                                                        "description": "External EPG Selectors (List - Object)\n\nElements:\n- l3out (required)\n- external_endpoint_group (required)\n- description"
+                                                    },
                                                     "ip_subnet_selectors": {
                                                         "type": "array",
                                                         "items": {
@@ -16589,7 +16622,7 @@
                                                 ]
                                             },
                                             "title": "Endpoint Security Groups",
-                                            "description": "Endpoint Security Groups (List - Object)\n\nElements:\n- name (required)\n- description\n- vrf (required)\n- shutdown\n- intra_esg_isolation\n- preferred_group\n- deployment_immediacy\n- contracts\n- tag_selectors\n- epg_selectors\n- ip_subnet_selectors\n- ip_external_subnet_selectors\n- service_epg_selectors\n- normalized_pctag\n- expected_state"
+                                            "description": "Endpoint Security Groups (List - Object)\n\nElements:\n- name (required)\n- description\n- vrf (required)\n- shutdown\n- intra_esg_isolation\n- preferred_group\n- deployment_immediacy\n- contracts\n- tag_selectors\n- epg_selectors\n- external_epg_selectors\n- ip_subnet_selectors\n- ip_external_subnet_selectors\n- service_epg_selectors\n- normalized_pctag\n- expected_state"
                                         },
                                         "expected_state": {
                                             "type": "object",
