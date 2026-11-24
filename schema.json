@@ -1358,11 +1358,130 @@
                                                         "pattern": "^[a-zA-Z0-9-_:/.,]{1,256}$",
                                                         "title": "Allow Origins",
                                                         "description": "Allow Origins (String)"
+                                                    },
+                                                    "ssl_ciphers": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "ecdhe_ecdsa_aes128_ccm": {
+                                                                "type": "boolean",
+                                                                "title": "Ecdhe Ecdsa Aes128 Ccm",
+                                                                "description": "Ecdhe Ecdsa Aes128 Ccm (Boolean)"
+                                                            },
+                                                            "ecdhe_ecdsa_aes128_gcm_sha256": {
+                                                                "type": "boolean",
+                                                                "title": "Ecdhe Ecdsa Aes128 Gcm Sha256",
+                                                                "description": "Ecdhe Ecdsa Aes128 Gcm Sha256 (Boolean)"
+                                                            },
+                                                            "ecdhe_ecdsa_aes256_ccm": {
+                                                                "type": "boolean",
+                                                                "title": "Ecdhe Ecdsa Aes256 Ccm",
+                                                                "description": "Ecdhe Ecdsa Aes256 Ccm (Boolean)"
+                                                            },
+                                                            "ecdhe_ecdsa_aes256_gcm_sha384": {
+                                                                "type": "boolean",
+                                                                "title": "Ecdhe Ecdsa Aes256 Gcm Sha384",
+                                                                "description": "Ecdhe Ecdsa Aes256 Gcm Sha384 (Boolean)"
+                                                            },
+                                                            "ecdhe_ecdsa_chacha20_poly1305": {
+                                                                "type": "boolean",
+                                                                "title": "Ecdhe Ecdsa Chacha20 Poly1305",
+                                                                "description": "Ecdhe Ecdsa Chacha20 Poly1305 (Boolean)"
+                                                            },
+                                                            "ecdhe_rsa_aes128_gcm_sha256": {
+                                                                "type": "boolean",
+                                                                "title": "Ecdhe Rsa Aes128 Gcm Sha256",
+                                                                "description": "Ecdhe Rsa Aes128 Gcm Sha256 (Boolean)"
+                                                            },
+                                                            "ecdhe_rsa_aes256_gcm_sha384": {
+                                                                "type": "boolean",
+                                                                "title": "Ecdhe Rsa Aes256 Gcm Sha384",
+                                                                "description": "Ecdhe Rsa Aes256 Gcm Sha384 (Boolean)"
+                                                            },
+                                                            "ecdhe_rsa_chacha20_poly1305": {
+                                                                "type": "boolean",
+                                                                "title": "Ecdhe Rsa Chacha20 Poly1305",
+                                                                "description": "Ecdhe Rsa Chacha20 Poly1305 (Boolean)"
+                                                            },
+                                                            "tls_aes_128_gcm_sha256": {
+                                                                "type": "boolean",
+                                                                "title": "TLS Aes 128 Gcm Sha256",
+                                                                "description": "TLS Aes 128 Gcm Sha256 (Boolean)"
+                                                            },
+                                                            "tls_aes_256_gcm_sha384": {
+                                                                "type": "boolean",
+                                                                "title": "TLS Aes 256 Gcm Sha384",
+                                                                "description": "TLS Aes 256 Gcm Sha384 (Boolean)"
+                                                            },
+                                                            "tls_chacha20_poly1305_sha256": {
+                                                                "type": "boolean",
+                                                                "title": "TLS Chacha20 Poly1305 Sha256",
+                                                                "description": "TLS Chacha20 Poly1305 Sha256 (Boolean)"
+                                                            },
+                                                            "chacha20": {
+                                                                "type": "boolean",
+                                                                "title": "Chacha20",
+                                                                "description": "Chacha20 (Boolean)"
+                                                            },
+                                                            "dhe_rsa_aes128_sha": {
+                                                                "type": "boolean",
+                                                                "title": "Dhe Rsa Aes128 Sha",
+                                                                "description": "Dhe Rsa Aes128 Sha (Boolean)"
+                                                            },
+                                                            "dhe_rsa_aes256_sha": {
+                                                                "type": "boolean",
+                                                                "title": "Dhe Rsa Aes256 Sha",
+                                                                "description": "Dhe Rsa Aes256 Sha (Boolean)"
+                                                            },
+                                                            "ecdhe_rsa_aes128_sha": {
+                                                                "type": "boolean",
+                                                                "title": "Ecdhe Rsa Aes128 Sha",
+                                                                "description": "Ecdhe Rsa Aes128 Sha (Boolean)"
+                                                            },
+                                                            "ecdhe_rsa_aes256_sha": {
+                                                                "type": "boolean",
+                                                                "title": "Ecdhe Rsa Aes256 Sha",
+                                                                "description": "Ecdhe Rsa Aes256 Sha (Boolean)"
+                                                            },
+                                                            "ecdsa": {
+                                                                "type": "boolean",
+                                                                "title": "Ecdsa",
+                                                                "description": "Ecdsa (Boolean)"
+                                                            },
+                                                            "edh_arsa": {
+                                                                "type": "boolean",
+                                                                "title": "Edh Arsa",
+                                                                "description": "Edh Arsa (Boolean)"
+                                                            },
+                                                            "eecdh": {
+                                                                "type": "boolean",
+                                                                "title": "Eecdh",
+                                                                "description": "Eecdh (Boolean)"
+                                                            },
+                                                            "eecdh_arsa_aesgcm": {
+                                                                "type": "boolean",
+                                                                "title": "Eecdh Arsa Aesgcm",
+                                                                "description": "Eecdh Arsa Aesgcm (Boolean)"
+                                                            },
+                                                            "eecdh_arsa_sha256": {
+                                                                "type": "boolean",
+                                                                "title": "Eecdh Arsa Sha256",
+                                                                "description": "Eecdh Arsa Sha256 (Boolean)"
+                                                            },
+                                                            "eecdh_arsa_sha384": {
+                                                                "type": "boolean",
+                                                                "title": "Eecdh Arsa Sha384",
+                                                                "description": "Eecdh Arsa Sha384 (Boolean)"
+                                                            }
+                                                        },
+                                                        "required": [],
+                                                        "title": "Ssl Ciphers",
+                                                        "description": "Ssl Ciphers (Object)\n\nElements:\n- ecdhe_ecdsa_aes128_ccm\n- ecdhe_ecdsa_aes128_gcm_sha256\n- ecdhe_ecdsa_aes256_ccm\n- ecdhe_ecdsa_aes256_gcm_sha384\n- ecdhe_ecdsa_chacha20_poly1305\n- ecdhe_rsa_aes128_gcm_sha256\n- ecdhe_rsa_aes256_gcm_sha384\n- ecdhe_rsa_chacha20_poly1305\n- tls_aes_128_gcm_sha256\n- tls_aes_256_gcm_sha384\n- tls_chacha20_poly1305_sha256\n- chacha20\n- dhe_rsa_aes128_sha\n- dhe_rsa_aes256_sha\n- ecdhe_rsa_aes128_sha\n- ecdhe_rsa_aes256_sha\n- ecdsa\n- edh_arsa\n- eecdh\n- eecdh_arsa_aesgcm\n- eecdh_arsa_sha256\n- eecdh_arsa_sha384"
                                                     }
                                                 },
                                                 "required": [],
                                                 "title": "Https",
-                                                "description": "Https (Object)\n\nElements:\n- admin_state\n- client_cert_auth_state\n- dh\n- port\n- tlsv1\n- tlsv1_1\n- tlsv1_2\n- tlsv1_3\n- key_ring\n- allow_origins"
+                                                "description": "Https (Object)\n\nElements:\n- admin_state\n- client_cert_auth_state\n- dh\n- port\n- tlsv1\n- tlsv1_1\n- tlsv1_2\n- tlsv1_3\n- key_ring\n- allow_origins\n- ssl_ciphers"
                                             },
                                             "http": {
                                                 "type": "object",
