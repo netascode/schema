@@ -78078,12 +78078,10 @@
                                                     "description": "Optional (Boolean)"
                                                 }
                                             },
-                                            "required": [
-                                                "hostname"
-                                            ]
+                                            "required": []
                                         },
                                         "title": "Ipv4 DNS Hosts",
-                                        "description": "Ipv4 DNS Hosts (List - Object)\n\nElements:\n- hostname (required)\n- hostname_variable\n- ips\n- ips_variable\n- optional"
+                                        "description": "Ipv4 DNS Hosts (List - Object)\n\nElements:\n- hostname\n- hostname_variable\n- ips\n- ips_variable\n- optional"
                                     },
                                     "ipv4_primary_dns_server": {
                                         "type": "string",
@@ -78412,12 +78410,10 @@
                                                     "description": "Optional (Boolean)"
                                                 }
                                             },
-                                            "required": [
-                                                "hostname"
-                                            ]
+                                            "required": []
                                         },
                                         "title": "IPv6 DNS Hosts",
-                                        "description": "IPv6 DNS Hosts (List - Object)\n\nElements:\n- hostname (required)\n- hostname_variable\n- ips\n- ips_variable\n- optional"
+                                        "description": "IPv6 DNS Hosts (List - Object)\n\nElements:\n- hostname\n- hostname_variable\n- ips\n- ips_variable\n- optional"
                                     },
                                     "ipv6_primary_dns_server": {
                                         "type": "string",
