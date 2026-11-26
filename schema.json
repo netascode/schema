@@ -14927,6 +14927,16 @@
                                                                     "title": "Node ID",
                                                                     "description": "Node ID (Integer)\n- Minimum value: 1\n- Maximum value: 4000"
                                                                 },
+                                                                "node_range": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 4000
+                                                                    },
+                                                                    "title": "Node Range",
+                                                                    "description": "Node Range (List - Integer)"
+                                                                },
                                                                 "node2_id": {
                                                                     "type": "integer",
                                                                     "minimum": 1,
@@ -14969,6 +14979,16 @@
                                                                     "maximum": 127,
                                                                     "title": "Port",
                                                                     "description": "Port (Integer)\n- Minimum value: 1\n- Maximum value: 127"
+                                                                },
+                                                                "port_range": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 127
+                                                                    },
+                                                                    "title": "Port Range",
+                                                                    "description": "Port Range (List - Integer)"
                                                                 },
                                                                 "sub_port": {
                                                                     "type": "integer",
@@ -15064,7 +15084,7 @@
                                                             ]
                                                         },
                                                         "title": "Static Ports",
-                                                        "description": "Static Ports (List - Object)\n\nElements:\n- node_id\n- node2_id\n- fex_id\n- fex2_id\n- pod_id\n- module\n- port\n- sub_port\n- channel\n- vlan (required)\n- primary_vlan\n- deployment_immediacy\n- mode\n- ptp\n- description"
+                                                        "description": "Static Ports (List - Object)\n\nElements:\n- node_id\n- node_range\n- node2_id\n- fex_id\n- fex2_id\n- pod_id\n- module\n- port\n- port_range\n- sub_port\n- channel\n- vlan (required)\n- primary_vlan\n- deployment_immediacy\n- mode\n- ptp\n- description"
                                                     },
                                                     "static_leafs": {
                                                         "type": "array",
