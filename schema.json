@@ -208180,6 +208180,182 @@
                                                         },
                                                         "title": "Destinations",
                                                         "description": "Destinations (List - Object)\n\nElements:\n- ip_address (required)\n- port (required)\n- protocol\n- encoding\n- node_id"
+                                                    },
+                                                    "hosts": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "host": {
+                                                                    "type": "string",
+                                                                    "title": "Host",
+                                                                    "description": "Host (String)"
+                                                                },
+                                                                "port": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 65535
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Port",
+                                                                    "description": "Port (Integer, String)"
+                                                                },
+                                                                "protocol": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "UDP",
+                                                                                "gRPC",
+                                                                                "HTTP",
+                                                                                "HEC"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Protocol",
+                                                                    "description": "Protocol (String, String)"
+                                                                },
+                                                                "encoding": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "GPB",
+                                                                                "JSON",
+                                                                                "GPB-compact",
+                                                                                "Form-data"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Encoding",
+                                                                    "description": "Encoding (String, String)"
+                                                                },
+                                                                "node_id": {
+                                                                    "type": "string",
+                                                                    "title": "Node ID",
+                                                                    "description": "Node ID (String)"
+                                                                },
+                                                                "grpc_async": {
+                                                                    "type": "boolean",
+                                                                    "title": "Grpc Async",
+                                                                    "description": "Grpc Async (Boolean)"
+                                                                },
+                                                                "dialin_stream": {
+                                                                    "type": "boolean",
+                                                                    "title": "Dialin Stream",
+                                                                    "description": "Dialin Stream (Boolean)"
+                                                                },
+                                                                "proxy": {
+                                                                    "type": "string",
+                                                                    "title": "Proxy",
+                                                                    "description": "Proxy (String)"
+                                                                },
+                                                                "proxy_port": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 65535
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Proxy Port",
+                                                                    "description": "Proxy Port (Integer, String)"
+                                                                },
+                                                                "proxy_username": {
+                                                                    "type": "string",
+                                                                    "title": "Proxy Username",
+                                                                    "description": "Proxy Username (String)"
+                                                                },
+                                                                "proxy_password": {
+                                                                    "type": "string",
+                                                                    "title": "Proxy Password",
+                                                                    "description": "Proxy Password (String)"
+                                                                },
+                                                                "proxy_password_encryption": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "0",
+                                                                                "7"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Proxy Password Encryption",
+                                                                    "description": "Proxy Password Encryption (String, String)"
+                                                                },
+                                                                "certificate_trustpoint": {
+                                                                    "type": "string",
+                                                                    "title": "Certificate Trustpoint",
+                                                                    "description": "Certificate Trustpoint (String)"
+                                                                },
+                                                                "certificate_hostname": {
+                                                                    "type": "string",
+                                                                    "title": "Certificate Hostname",
+                                                                    "description": "Certificate Hostname (String)"
+                                                                },
+                                                                "token": {
+                                                                    "type": "string",
+                                                                    "title": "Token",
+                                                                    "description": "Token (String)"
+                                                                },
+                                                                "token_encryption": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "0",
+                                                                                "7"
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Token Encryption",
+                                                                    "description": "Token Encryption (String, String)"
+                                                                },
+                                                                "index": {
+                                                                    "type": "string",
+                                                                    "title": "Index",
+                                                                    "description": "Index (String)"
+                                                                },
+                                                                "endpoint": {
+                                                                    "type": "string",
+                                                                    "title": "Endpoint",
+                                                                    "description": "Endpoint (String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "host",
+                                                                "port"
+                                                            ]
+                                                        },
+                                                        "title": "Hosts",
+                                                        "description": "Hosts (List - Object)\n\nElements:\n- host (required)\n- port (required)\n- protocol\n- encoding\n- node_id\n- grpc_async\n- dialin_stream\n- proxy\n- proxy_port\n- proxy_username\n- proxy_password\n- proxy_password_encryption\n- certificate_trustpoint\n- certificate_hostname\n- token\n- token_encryption\n- index\n- endpoint"
                                                     }
                                                 },
                                                 "required": [
@@ -208187,7 +208363,7 @@
                                                 ]
                                             },
                                             "title": "Destination Groups",
-                                            "description": "Destination Groups (List - Object)\n\nElements:\n- id (required)\n- certificate_filename\n- certificate_hostname\n- use_vrf\n- use_compression\n- source_interface_type\n- source_interface_id\n- use_chunking_size\n- message_max_size\n- destinations"
+                                            "description": "Destination Groups (List - Object)\n\nElements:\n- id (required)\n- certificate_filename\n- certificate_hostname\n- use_vrf\n- use_compression\n- source_interface_type\n- source_interface_id\n- use_chunking_size\n- message_max_size\n- destinations\n- hosts"
                                         },
                                         "sensor_groups": {
                                             "type": "array",
@@ -279178,6 +279354,182 @@
                                                             },
                                                             "title": "Destinations",
                                                             "description": "Destinations (List - Object)\n\nElements:\n- ip_address (required)\n- port (required)\n- protocol\n- encoding\n- node_id"
+                                                        },
+                                                        "hosts": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "host": {
+                                                                        "type": "string",
+                                                                        "title": "Host",
+                                                                        "description": "Host (String)"
+                                                                    },
+                                                                    "port": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 65535
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Port",
+                                                                        "description": "Port (Integer, String)"
+                                                                    },
+                                                                    "protocol": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "UDP",
+                                                                                    "gRPC",
+                                                                                    "HTTP",
+                                                                                    "HEC"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Protocol",
+                                                                        "description": "Protocol (String, String)"
+                                                                    },
+                                                                    "encoding": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "GPB",
+                                                                                    "JSON",
+                                                                                    "GPB-compact",
+                                                                                    "Form-data"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Encoding",
+                                                                        "description": "Encoding (String, String)"
+                                                                    },
+                                                                    "node_id": {
+                                                                        "type": "string",
+                                                                        "title": "Node ID",
+                                                                        "description": "Node ID (String)"
+                                                                    },
+                                                                    "grpc_async": {
+                                                                        "type": "boolean",
+                                                                        "title": "Grpc Async",
+                                                                        "description": "Grpc Async (Boolean)"
+                                                                    },
+                                                                    "dialin_stream": {
+                                                                        "type": "boolean",
+                                                                        "title": "Dialin Stream",
+                                                                        "description": "Dialin Stream (Boolean)"
+                                                                    },
+                                                                    "proxy": {
+                                                                        "type": "string",
+                                                                        "title": "Proxy",
+                                                                        "description": "Proxy (String)"
+                                                                    },
+                                                                    "proxy_port": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 65535
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Proxy Port",
+                                                                        "description": "Proxy Port (Integer, String)"
+                                                                    },
+                                                                    "proxy_username": {
+                                                                        "type": "string",
+                                                                        "title": "Proxy Username",
+                                                                        "description": "Proxy Username (String)"
+                                                                    },
+                                                                    "proxy_password": {
+                                                                        "type": "string",
+                                                                        "title": "Proxy Password",
+                                                                        "description": "Proxy Password (String)"
+                                                                    },
+                                                                    "proxy_password_encryption": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "0",
+                                                                                    "7"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Proxy Password Encryption",
+                                                                        "description": "Proxy Password Encryption (String, String)"
+                                                                    },
+                                                                    "certificate_trustpoint": {
+                                                                        "type": "string",
+                                                                        "title": "Certificate Trustpoint",
+                                                                        "description": "Certificate Trustpoint (String)"
+                                                                    },
+                                                                    "certificate_hostname": {
+                                                                        "type": "string",
+                                                                        "title": "Certificate Hostname",
+                                                                        "description": "Certificate Hostname (String)"
+                                                                    },
+                                                                    "token": {
+                                                                        "type": "string",
+                                                                        "title": "Token",
+                                                                        "description": "Token (String)"
+                                                                    },
+                                                                    "token_encryption": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "0",
+                                                                                    "7"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Token Encryption",
+                                                                        "description": "Token Encryption (String, String)"
+                                                                    },
+                                                                    "index": {
+                                                                        "type": "string",
+                                                                        "title": "Index",
+                                                                        "description": "Index (String)"
+                                                                    },
+                                                                    "endpoint": {
+                                                                        "type": "string",
+                                                                        "title": "Endpoint",
+                                                                        "description": "Endpoint (String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "host",
+                                                                    "port"
+                                                                ]
+                                                            },
+                                                            "title": "Hosts",
+                                                            "description": "Hosts (List - Object)\n\nElements:\n- host (required)\n- port (required)\n- protocol\n- encoding\n- node_id\n- grpc_async\n- dialin_stream\n- proxy\n- proxy_port\n- proxy_username\n- proxy_password\n- proxy_password_encryption\n- certificate_trustpoint\n- certificate_hostname\n- token\n- token_encryption\n- index\n- endpoint"
                                                         }
                                                     },
                                                     "required": [
@@ -279185,7 +279537,7 @@
                                                     ]
                                                 },
                                                 "title": "Destination Groups",
-                                                "description": "Destination Groups (List - Object)\n\nElements:\n- id (required)\n- certificate_filename\n- certificate_hostname\n- use_vrf\n- use_compression\n- source_interface_type\n- source_interface_id\n- use_chunking_size\n- message_max_size\n- destinations"
+                                                "description": "Destination Groups (List - Object)\n\nElements:\n- id (required)\n- certificate_filename\n- certificate_hostname\n- use_vrf\n- use_compression\n- source_interface_type\n- source_interface_id\n- use_chunking_size\n- message_max_size\n- destinations\n- hosts"
                                             },
                                             "sensor_groups": {
                                                 "type": "array",
@@ -350209,6 +350561,182 @@
                                                             },
                                                             "title": "Destinations",
                                                             "description": "Destinations (List - Object)\n\nElements:\n- ip_address (required)\n- port (required)\n- protocol\n- encoding\n- node_id"
+                                                        },
+                                                        "hosts": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "host": {
+                                                                        "type": "string",
+                                                                        "title": "Host",
+                                                                        "description": "Host (String)"
+                                                                    },
+                                                                    "port": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 65535
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Port",
+                                                                        "description": "Port (Integer, String)"
+                                                                    },
+                                                                    "protocol": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "UDP",
+                                                                                    "gRPC",
+                                                                                    "HTTP",
+                                                                                    "HEC"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Protocol",
+                                                                        "description": "Protocol (String, String)"
+                                                                    },
+                                                                    "encoding": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "GPB",
+                                                                                    "JSON",
+                                                                                    "GPB-compact",
+                                                                                    "Form-data"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Encoding",
+                                                                        "description": "Encoding (String, String)"
+                                                                    },
+                                                                    "node_id": {
+                                                                        "type": "string",
+                                                                        "title": "Node ID",
+                                                                        "description": "Node ID (String)"
+                                                                    },
+                                                                    "grpc_async": {
+                                                                        "type": "boolean",
+                                                                        "title": "Grpc Async",
+                                                                        "description": "Grpc Async (Boolean)"
+                                                                    },
+                                                                    "dialin_stream": {
+                                                                        "type": "boolean",
+                                                                        "title": "Dialin Stream",
+                                                                        "description": "Dialin Stream (Boolean)"
+                                                                    },
+                                                                    "proxy": {
+                                                                        "type": "string",
+                                                                        "title": "Proxy",
+                                                                        "description": "Proxy (String)"
+                                                                    },
+                                                                    "proxy_port": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 65535
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Proxy Port",
+                                                                        "description": "Proxy Port (Integer, String)"
+                                                                    },
+                                                                    "proxy_username": {
+                                                                        "type": "string",
+                                                                        "title": "Proxy Username",
+                                                                        "description": "Proxy Username (String)"
+                                                                    },
+                                                                    "proxy_password": {
+                                                                        "type": "string",
+                                                                        "title": "Proxy Password",
+                                                                        "description": "Proxy Password (String)"
+                                                                    },
+                                                                    "proxy_password_encryption": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "0",
+                                                                                    "7"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Proxy Password Encryption",
+                                                                        "description": "Proxy Password Encryption (String, String)"
+                                                                    },
+                                                                    "certificate_trustpoint": {
+                                                                        "type": "string",
+                                                                        "title": "Certificate Trustpoint",
+                                                                        "description": "Certificate Trustpoint (String)"
+                                                                    },
+                                                                    "certificate_hostname": {
+                                                                        "type": "string",
+                                                                        "title": "Certificate Hostname",
+                                                                        "description": "Certificate Hostname (String)"
+                                                                    },
+                                                                    "token": {
+                                                                        "type": "string",
+                                                                        "title": "Token",
+                                                                        "description": "Token (String)"
+                                                                    },
+                                                                    "token_encryption": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "0",
+                                                                                    "7"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Token Encryption",
+                                                                        "description": "Token Encryption (String, String)"
+                                                                    },
+                                                                    "index": {
+                                                                        "type": "string",
+                                                                        "title": "Index",
+                                                                        "description": "Index (String)"
+                                                                    },
+                                                                    "endpoint": {
+                                                                        "type": "string",
+                                                                        "title": "Endpoint",
+                                                                        "description": "Endpoint (String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "host",
+                                                                    "port"
+                                                                ]
+                                                            },
+                                                            "title": "Hosts",
+                                                            "description": "Hosts (List - Object)\n\nElements:\n- host (required)\n- port (required)\n- protocol\n- encoding\n- node_id\n- grpc_async\n- dialin_stream\n- proxy\n- proxy_port\n- proxy_username\n- proxy_password\n- proxy_password_encryption\n- certificate_trustpoint\n- certificate_hostname\n- token\n- token_encryption\n- index\n- endpoint"
                                                         }
                                                     },
                                                     "required": [
@@ -350216,7 +350744,7 @@
                                                     ]
                                                 },
                                                 "title": "Destination Groups",
-                                                "description": "Destination Groups (List - Object)\n\nElements:\n- id (required)\n- certificate_filename\n- certificate_hostname\n- use_vrf\n- use_compression\n- source_interface_type\n- source_interface_id\n- use_chunking_size\n- message_max_size\n- destinations"
+                                                "description": "Destination Groups (List - Object)\n\nElements:\n- id (required)\n- certificate_filename\n- certificate_hostname\n- use_vrf\n- use_compression\n- source_interface_type\n- source_interface_id\n- use_chunking_size\n- message_max_size\n- destinations\n- hosts"
                                             },
                                             "sensor_groups": {
                                                 "type": "array",
@@ -431451,6 +431979,182 @@
                                                             },
                                                             "title": "Destinations",
                                                             "description": "Destinations (List - Object)\n\nElements:\n- ip_address (required)\n- port (required)\n- protocol\n- encoding\n- node_id"
+                                                        },
+                                                        "hosts": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "additionalProperties": false,
+                                                                "properties": {
+                                                                    "host": {
+                                                                        "type": "string",
+                                                                        "title": "Host",
+                                                                        "description": "Host (String)"
+                                                                    },
+                                                                    "port": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "maximum": 65535
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Port",
+                                                                        "description": "Port (Integer, String)"
+                                                                    },
+                                                                    "protocol": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "UDP",
+                                                                                    "gRPC",
+                                                                                    "HTTP",
+                                                                                    "HEC"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Protocol",
+                                                                        "description": "Protocol (String, String)"
+                                                                    },
+                                                                    "encoding": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "GPB",
+                                                                                    "JSON",
+                                                                                    "GPB-compact",
+                                                                                    "Form-data"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Encoding",
+                                                                        "description": "Encoding (String, String)"
+                                                                    },
+                                                                    "node_id": {
+                                                                        "type": "string",
+                                                                        "title": "Node ID",
+                                                                        "description": "Node ID (String)"
+                                                                    },
+                                                                    "grpc_async": {
+                                                                        "type": "boolean",
+                                                                        "title": "Grpc Async",
+                                                                        "description": "Grpc Async (Boolean)"
+                                                                    },
+                                                                    "dialin_stream": {
+                                                                        "type": "boolean",
+                                                                        "title": "Dialin Stream",
+                                                                        "description": "Dialin Stream (Boolean)"
+                                                                    },
+                                                                    "proxy": {
+                                                                        "type": "string",
+                                                                        "title": "Proxy",
+                                                                        "description": "Proxy (String)"
+                                                                    },
+                                                                    "proxy_port": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "integer",
+                                                                                "minimum": 1,
+                                                                                "maximum": 65535
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Proxy Port",
+                                                                        "description": "Proxy Port (Integer, String)"
+                                                                    },
+                                                                    "proxy_username": {
+                                                                        "type": "string",
+                                                                        "title": "Proxy Username",
+                                                                        "description": "Proxy Username (String)"
+                                                                    },
+                                                                    "proxy_password": {
+                                                                        "type": "string",
+                                                                        "title": "Proxy Password",
+                                                                        "description": "Proxy Password (String)"
+                                                                    },
+                                                                    "proxy_password_encryption": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "0",
+                                                                                    "7"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Proxy Password Encryption",
+                                                                        "description": "Proxy Password Encryption (String, String)"
+                                                                    },
+                                                                    "certificate_trustpoint": {
+                                                                        "type": "string",
+                                                                        "title": "Certificate Trustpoint",
+                                                                        "description": "Certificate Trustpoint (String)"
+                                                                    },
+                                                                    "certificate_hostname": {
+                                                                        "type": "string",
+                                                                        "title": "Certificate Hostname",
+                                                                        "description": "Certificate Hostname (String)"
+                                                                    },
+                                                                    "token": {
+                                                                        "type": "string",
+                                                                        "title": "Token",
+                                                                        "description": "Token (String)"
+                                                                    },
+                                                                    "token_encryption": {
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "0",
+                                                                                    "7"
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                "type": "string",
+                                                                                "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                            }
+                                                                        ],
+                                                                        "title": "Token Encryption",
+                                                                        "description": "Token Encryption (String, String)"
+                                                                    },
+                                                                    "index": {
+                                                                        "type": "string",
+                                                                        "title": "Index",
+                                                                        "description": "Index (String)"
+                                                                    },
+                                                                    "endpoint": {
+                                                                        "type": "string",
+                                                                        "title": "Endpoint",
+                                                                        "description": "Endpoint (String)"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "host",
+                                                                    "port"
+                                                                ]
+                                                            },
+                                                            "title": "Hosts",
+                                                            "description": "Hosts (List - Object)\n\nElements:\n- host (required)\n- port (required)\n- protocol\n- encoding\n- node_id\n- grpc_async\n- dialin_stream\n- proxy\n- proxy_port\n- proxy_username\n- proxy_password\n- proxy_password_encryption\n- certificate_trustpoint\n- certificate_hostname\n- token\n- token_encryption\n- index\n- endpoint"
                                                         }
                                                     },
                                                     "required": [
@@ -431458,7 +432162,7 @@
                                                     ]
                                                 },
                                                 "title": "Destination Groups",
-                                                "description": "Destination Groups (List - Object)\n\nElements:\n- id (required)\n- certificate_filename\n- certificate_hostname\n- use_vrf\n- use_compression\n- source_interface_type\n- source_interface_id\n- use_chunking_size\n- message_max_size\n- destinations"
+                                                "description": "Destination Groups (List - Object)\n\nElements:\n- id (required)\n- certificate_filename\n- certificate_hostname\n- use_vrf\n- use_compression\n- source_interface_type\n- source_interface_id\n- use_chunking_size\n- message_max_size\n- destinations\n- hosts"
                                             },
                                             "sensor_groups": {
                                                 "type": "array",
