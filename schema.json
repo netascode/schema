@@ -199223,6 +199223,36 @@
                                                     "title": "BFD Session Up",
                                                     "description": "BFD Session Up (Boolean)"
                                                 },
+                                                "bgp": {
+                                                    "type": "boolean",
+                                                    "title": "BGP",
+                                                    "description": "BGP (Boolean)"
+                                                },
+                                                "bgp_state_changes": {
+                                                    "type": "boolean",
+                                                    "title": "BGP State Changes",
+                                                    "description": "BGP State Changes (Boolean)"
+                                                },
+                                                "bgp_state_changes_all": {
+                                                    "type": "boolean",
+                                                    "title": "BGP State Changes All",
+                                                    "description": "BGP State Changes All (Boolean)"
+                                                },
+                                                "bgp_state_changes_backward_trans": {
+                                                    "type": "boolean",
+                                                    "title": "BGP State Changes Backward Trans",
+                                                    "description": "BGP State Changes Backward Trans (Boolean)"
+                                                },
+                                                "bgp_state_changes_limited": {
+                                                    "type": "boolean",
+                                                    "title": "BGP State Changes Limited",
+                                                    "description": "BGP State Changes Limited (Boolean)"
+                                                },
+                                                "bgp_threshold_prefix": {
+                                                    "type": "boolean",
+                                                    "title": "BGP Threshold Prefix",
+                                                    "description": "BGP Threshold Prefix (Boolean)"
+                                                },
                                                 "bridge_newroot": {
                                                     "type": "boolean",
                                                     "title": "Bridge Newroot",
@@ -199483,6 +199513,122 @@
                                                     "title": "Msdp Backward Transition",
                                                     "description": "Msdp Backward Transition (Boolean)"
                                                 },
+                                                "ospf_tags": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "tag": {
+                                                                "type": "string",
+                                                                "title": "Tag",
+                                                                "description": "Tag (String)"
+                                                            },
+                                                            "enable": {
+                                                                "type": "boolean",
+                                                                "title": "Enable",
+                                                                "description": "Enable (Boolean)"
+                                                            },
+                                                            "lsa": {
+                                                                "type": "boolean",
+                                                                "title": "LSA",
+                                                                "description": "LSA (Boolean)"
+                                                            },
+                                                            "rate_limit_window": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 60
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Rate Limit Window",
+                                                                "description": "Rate Limit Window (Integer, String)"
+                                                            },
+                                                            "rate_limit_rate": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 256
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Rate Limit Rate",
+                                                                "description": "Rate Limit Rate (Integer, String)"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "tag"
+                                                        ]
+                                                    },
+                                                    "title": "OSPF Tags",
+                                                    "description": "OSPF Tags (List - Object)\n\nElements:\n- tag (required)\n- enable\n- lsa\n- rate_limit_window\n- rate_limit_rate"
+                                                },
+                                                "ospfv3_tags": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "additionalProperties": false,
+                                                        "properties": {
+                                                            "tag": {
+                                                                "type": "string",
+                                                                "title": "Tag",
+                                                                "description": "Tag (String)"
+                                                            },
+                                                            "enable": {
+                                                                "type": "boolean",
+                                                                "title": "Enable",
+                                                                "description": "Enable (Boolean)"
+                                                            },
+                                                            "lsa": {
+                                                                "type": "boolean",
+                                                                "title": "LSA",
+                                                                "description": "LSA (Boolean)"
+                                                            },
+                                                            "rate_limit_window": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "minimum": 1,
+                                                                        "maximum": 60
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Rate Limit Window",
+                                                                "description": "Rate Limit Window (Integer, String)"
+                                                            },
+                                                            "rate_limit_rate": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "integer",
+                                                                        "maximum": 256
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                    }
+                                                                ],
+                                                                "title": "Rate Limit Rate",
+                                                                "description": "Rate Limit Rate (Integer, String)"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "tag"
+                                                        ]
+                                                    },
+                                                    "title": "Ospfv3 Tags",
+                                                    "description": "Ospfv3 Tags (List - Object)\n\nElements:\n- tag (required)\n- enable\n- lsa\n- rate_limit_window\n- rate_limit_rate"
+                                                },
                                                 "pim_neighbor_loss": {
                                                     "type": "boolean",
                                                     "title": "Pim Neighbor Loss",
@@ -199591,7 +199737,7 @@
                                             },
                                             "required": [],
                                             "title": "Traps",
-                                            "description": "Traps (Object)\n\nElements:\n- aaa_server_state_change\n- bfd_session_down\n- bfd_session_up\n- bridge_newroot\n- bridge_topology_change\n- callhome_event_notify\n- callhome_smtp_send_fail\n- cfs_state_change_notif\n- cfs_merge_failure\n- config_ccm_cli_running_config_changed\n- entity_mib_change\n- entity_cefc_mib_enable_status_notification\n- entity_fan_status_change\n- entity_module_inserted\n- entity_module_removed\n- entity_module_status_change\n- entity_power_out_change\n- entity_power_status_change\n- entity_sensor\n- entity_unrecognised_module\n- fcdomain_domain_id_not_assigned\n- fcdomain_fabric_change\n- fcdomain_new_principal_switch\n- feature_control_feature_op_status_change\n- feature_control_cisco_feat_op_status_change\n- generic_cold_start\n- generic_warm_start\n- hsrp_state_change\n- license_notify_license_expiry\n- license_notify_license_expiry_warning\n- license_notify_licensefile_missing\n- license_notify_no_license_for_feature\n- link_cie_link_down\n- link_cie_link_up\n- link_cisco_xcvr_mon_status_chg\n- link_cmn_mac_move_notification\n- link_delayed_link_state_change\n- link_extended_link_down\n- link_extended_link_up\n- link_link_down\n- link_link_up\n- link_cerr_disable_interface_event_rev1\n- lldp_rem_tables_change\n- mmode_cse_maint_mode_change_notify\n- mmode_cse_normal_mode_change_notify\n- mpls_ldp\n- mpls_ldp_session_down\n- mpls_ldp_session_up\n- mpls_vpn\n- mpls_vpn_vrf_max_thresh_cleared\n- mpls_vpn_vrf_max_thresh_exceeded\n- mpls_vpn_vrf_mid_thresh_exceeded\n- mpls_vpn_vrf_down\n- mpls_vpn_vrf_up\n- msdp_backward_transition\n- pim_neighbor_loss\n- port_security_access_secure_mac_violation\n- port_security_trunk_secure_mac_violation\n- rf_redundancy_framework\n- rmon_rising_alarm\n- rmon_falling_alarm\n- rmon_hc_rising_alarm\n- rmon_hc_falling_alarm\n- snmp_authentication\n- storm_control_cpsc_event_rev1\n- stpx_inconsistency\n- stpx_loop_inconsistency\n- stpx_root_inconsistency\n- syslog_message_generated\n- sysmgr_cse_fail_sw_core_notify_extended\n- system_clock_change_notification\n- upgrade_job_status_notify\n- upgrade_op_notify_on_completion\n- vtp_notifs\n- vtp_vlan_create\n- vtp_vlan_delete"
+                                            "description": "Traps (Object)\n\nElements:\n- aaa_server_state_change\n- bfd_session_down\n- bfd_session_up\n- bgp\n- bgp_state_changes\n- bgp_state_changes_all\n- bgp_state_changes_backward_trans\n- bgp_state_changes_limited\n- bgp_threshold_prefix\n- bridge_newroot\n- bridge_topology_change\n- callhome_event_notify\n- callhome_smtp_send_fail\n- cfs_state_change_notif\n- cfs_merge_failure\n- config_ccm_cli_running_config_changed\n- entity_mib_change\n- entity_cefc_mib_enable_status_notification\n- entity_fan_status_change\n- entity_module_inserted\n- entity_module_removed\n- entity_module_status_change\n- entity_power_out_change\n- entity_power_status_change\n- entity_sensor\n- entity_unrecognised_module\n- fcdomain_domain_id_not_assigned\n- fcdomain_fabric_change\n- fcdomain_new_principal_switch\n- feature_control_feature_op_status_change\n- feature_control_cisco_feat_op_status_change\n- generic_cold_start\n- generic_warm_start\n- hsrp_state_change\n- license_notify_license_expiry\n- license_notify_license_expiry_warning\n- license_notify_licensefile_missing\n- license_notify_no_license_for_feature\n- link_cie_link_down\n- link_cie_link_up\n- link_cisco_xcvr_mon_status_chg\n- link_cmn_mac_move_notification\n- link_delayed_link_state_change\n- link_extended_link_down\n- link_extended_link_up\n- link_link_down\n- link_link_up\n- link_cerr_disable_interface_event_rev1\n- lldp_rem_tables_change\n- mmode_cse_maint_mode_change_notify\n- mmode_cse_normal_mode_change_notify\n- mpls_ldp\n- mpls_ldp_session_down\n- mpls_ldp_session_up\n- mpls_vpn\n- mpls_vpn_vrf_max_thresh_cleared\n- mpls_vpn_vrf_max_thresh_exceeded\n- mpls_vpn_vrf_mid_thresh_exceeded\n- mpls_vpn_vrf_down\n- mpls_vpn_vrf_up\n- msdp_backward_transition\n- ospf_tags\n- ospfv3_tags\n- pim_neighbor_loss\n- port_security_access_secure_mac_violation\n- port_security_trunk_secure_mac_violation\n- rf_redundancy_framework\n- rmon_rising_alarm\n- rmon_falling_alarm\n- rmon_hc_rising_alarm\n- rmon_hc_falling_alarm\n- snmp_authentication\n- storm_control_cpsc_event_rev1\n- stpx_inconsistency\n- stpx_loop_inconsistency\n- stpx_root_inconsistency\n- syslog_message_generated\n- sysmgr_cse_fail_sw_core_notify_extended\n- system_clock_change_notification\n- upgrade_job_status_notify\n- upgrade_op_notify_on_completion\n- vtp_notifs\n- vtp_vlan_create\n- vtp_vlan_delete"
                                         },
                                         "contexts": {
                                             "type": "array",
@@ -201686,6 +201832,85 @@
                                             "type": "boolean",
                                             "title": "IP Source Route",
                                             "description": "IP Source Route (Boolean)"
+                                        },
+                                        "ip_dscp_lop": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "integer",
+                                                    "maximum": 63
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "IP DSCP Lop",
+                                            "description": "IP DSCP Lop (Integer, String)"
+                                        },
+                                        "ip_tcp_mss": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "integer",
+                                                    "minimum": 88,
+                                                    "maximum": 10000
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "IP Tcp Mss",
+                                            "description": "IP Tcp Mss (Integer, String)"
+                                        },
+                                        "ip_tcp_path_mtu_discovery": {
+                                            "type": "boolean",
+                                            "title": "IP Tcp Path MTU Discovery",
+                                            "description": "IP Tcp Path MTU Discovery (Boolean)"
+                                        },
+                                        "ip_tcp_synwait_time": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "integer",
+                                                    "minimum": 5,
+                                                    "maximum": 300
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "IP Tcp Synwait Time",
+                                            "description": "IP Tcp Synwait Time (Integer, String)"
+                                        },
+                                        "sockets_local_port_range_start_port": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "integer",
+                                                    "minimum": 15001,
+                                                    "maximum": 58000
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "Sockets Local Port Range Start Port",
+                                            "description": "Sockets Local Port Range Start Port (Integer, String)"
+                                        },
+                                        "sockets_local_port_range_end_port": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "integer",
+                                                    "minimum": 22001,
+                                                    "maximum": 65535
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "pattern": "^.*[\\$\\%]\\{.*$"
+                                                }
+                                            ],
+                                            "title": "Sockets Local Port Range End Port",
+                                            "description": "Sockets Local Port Range End Port (Integer, String)"
                                         },
                                         "ip_load_sharing": {
                                             "type": "object",
@@ -207930,7 +208155,7 @@
                                     },
                                     "required": [],
                                     "title": "System",
-                                    "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- control_plane_service_policy_input\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- login_block_for\n- login_block_for_attempts\n- login_block_for_within\n- login_quiet_mode_access_class\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                    "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_dscp_lop\n- ip_tcp_mss\n- ip_tcp_path_mtu_discovery\n- ip_tcp_synwait_time\n- sockets_local_port_range_start_port\n- sockets_local_port_range_end_port\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- control_plane_service_policy_input\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- login_block_for\n- login_block_for_attempts\n- login_block_for_within\n- login_quiet_mode_access_class\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                 },
                                 "telemetry": {
                                     "type": "object",
@@ -271131,6 +271356,36 @@
                                                         "title": "BFD Session Up",
                                                         "description": "BFD Session Up (Boolean)"
                                                     },
+                                                    "bgp": {
+                                                        "type": "boolean",
+                                                        "title": "BGP",
+                                                        "description": "BGP (Boolean)"
+                                                    },
+                                                    "bgp_state_changes": {
+                                                        "type": "boolean",
+                                                        "title": "BGP State Changes",
+                                                        "description": "BGP State Changes (Boolean)"
+                                                    },
+                                                    "bgp_state_changes_all": {
+                                                        "type": "boolean",
+                                                        "title": "BGP State Changes All",
+                                                        "description": "BGP State Changes All (Boolean)"
+                                                    },
+                                                    "bgp_state_changes_backward_trans": {
+                                                        "type": "boolean",
+                                                        "title": "BGP State Changes Backward Trans",
+                                                        "description": "BGP State Changes Backward Trans (Boolean)"
+                                                    },
+                                                    "bgp_state_changes_limited": {
+                                                        "type": "boolean",
+                                                        "title": "BGP State Changes Limited",
+                                                        "description": "BGP State Changes Limited (Boolean)"
+                                                    },
+                                                    "bgp_threshold_prefix": {
+                                                        "type": "boolean",
+                                                        "title": "BGP Threshold Prefix",
+                                                        "description": "BGP Threshold Prefix (Boolean)"
+                                                    },
                                                     "bridge_newroot": {
                                                         "type": "boolean",
                                                         "title": "Bridge Newroot",
@@ -271391,6 +271646,122 @@
                                                         "title": "Msdp Backward Transition",
                                                         "description": "Msdp Backward Transition (Boolean)"
                                                     },
+                                                    "ospf_tags": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "tag": {
+                                                                    "type": "string",
+                                                                    "title": "Tag",
+                                                                    "description": "Tag (String)"
+                                                                },
+                                                                "enable": {
+                                                                    "type": "boolean",
+                                                                    "title": "Enable",
+                                                                    "description": "Enable (Boolean)"
+                                                                },
+                                                                "lsa": {
+                                                                    "type": "boolean",
+                                                                    "title": "LSA",
+                                                                    "description": "LSA (Boolean)"
+                                                                },
+                                                                "rate_limit_window": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 60
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Rate Limit Window",
+                                                                    "description": "Rate Limit Window (Integer, String)"
+                                                                },
+                                                                "rate_limit_rate": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 256
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Rate Limit Rate",
+                                                                    "description": "Rate Limit Rate (Integer, String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "tag"
+                                                            ]
+                                                        },
+                                                        "title": "OSPF Tags",
+                                                        "description": "OSPF Tags (List - Object)\n\nElements:\n- tag (required)\n- enable\n- lsa\n- rate_limit_window\n- rate_limit_rate"
+                                                    },
+                                                    "ospfv3_tags": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "tag": {
+                                                                    "type": "string",
+                                                                    "title": "Tag",
+                                                                    "description": "Tag (String)"
+                                                                },
+                                                                "enable": {
+                                                                    "type": "boolean",
+                                                                    "title": "Enable",
+                                                                    "description": "Enable (Boolean)"
+                                                                },
+                                                                "lsa": {
+                                                                    "type": "boolean",
+                                                                    "title": "LSA",
+                                                                    "description": "LSA (Boolean)"
+                                                                },
+                                                                "rate_limit_window": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 60
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Rate Limit Window",
+                                                                    "description": "Rate Limit Window (Integer, String)"
+                                                                },
+                                                                "rate_limit_rate": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 256
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Rate Limit Rate",
+                                                                    "description": "Rate Limit Rate (Integer, String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "tag"
+                                                            ]
+                                                        },
+                                                        "title": "Ospfv3 Tags",
+                                                        "description": "Ospfv3 Tags (List - Object)\n\nElements:\n- tag (required)\n- enable\n- lsa\n- rate_limit_window\n- rate_limit_rate"
+                                                    },
                                                     "pim_neighbor_loss": {
                                                         "type": "boolean",
                                                         "title": "Pim Neighbor Loss",
@@ -271499,7 +271870,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Traps",
-                                                "description": "Traps (Object)\n\nElements:\n- aaa_server_state_change\n- bfd_session_down\n- bfd_session_up\n- bridge_newroot\n- bridge_topology_change\n- callhome_event_notify\n- callhome_smtp_send_fail\n- cfs_state_change_notif\n- cfs_merge_failure\n- config_ccm_cli_running_config_changed\n- entity_mib_change\n- entity_cefc_mib_enable_status_notification\n- entity_fan_status_change\n- entity_module_inserted\n- entity_module_removed\n- entity_module_status_change\n- entity_power_out_change\n- entity_power_status_change\n- entity_sensor\n- entity_unrecognised_module\n- fcdomain_domain_id_not_assigned\n- fcdomain_fabric_change\n- fcdomain_new_principal_switch\n- feature_control_feature_op_status_change\n- feature_control_cisco_feat_op_status_change\n- generic_cold_start\n- generic_warm_start\n- hsrp_state_change\n- license_notify_license_expiry\n- license_notify_license_expiry_warning\n- license_notify_licensefile_missing\n- license_notify_no_license_for_feature\n- link_cie_link_down\n- link_cie_link_up\n- link_cisco_xcvr_mon_status_chg\n- link_cmn_mac_move_notification\n- link_delayed_link_state_change\n- link_extended_link_down\n- link_extended_link_up\n- link_link_down\n- link_link_up\n- link_cerr_disable_interface_event_rev1\n- lldp_rem_tables_change\n- mmode_cse_maint_mode_change_notify\n- mmode_cse_normal_mode_change_notify\n- mpls_ldp\n- mpls_ldp_session_down\n- mpls_ldp_session_up\n- mpls_vpn\n- mpls_vpn_vrf_max_thresh_cleared\n- mpls_vpn_vrf_max_thresh_exceeded\n- mpls_vpn_vrf_mid_thresh_exceeded\n- mpls_vpn_vrf_down\n- mpls_vpn_vrf_up\n- msdp_backward_transition\n- pim_neighbor_loss\n- port_security_access_secure_mac_violation\n- port_security_trunk_secure_mac_violation\n- rf_redundancy_framework\n- rmon_rising_alarm\n- rmon_falling_alarm\n- rmon_hc_rising_alarm\n- rmon_hc_falling_alarm\n- snmp_authentication\n- storm_control_cpsc_event_rev1\n- stpx_inconsistency\n- stpx_loop_inconsistency\n- stpx_root_inconsistency\n- syslog_message_generated\n- sysmgr_cse_fail_sw_core_notify_extended\n- system_clock_change_notification\n- upgrade_job_status_notify\n- upgrade_op_notify_on_completion\n- vtp_notifs\n- vtp_vlan_create\n- vtp_vlan_delete"
+                                                "description": "Traps (Object)\n\nElements:\n- aaa_server_state_change\n- bfd_session_down\n- bfd_session_up\n- bgp\n- bgp_state_changes\n- bgp_state_changes_all\n- bgp_state_changes_backward_trans\n- bgp_state_changes_limited\n- bgp_threshold_prefix\n- bridge_newroot\n- bridge_topology_change\n- callhome_event_notify\n- callhome_smtp_send_fail\n- cfs_state_change_notif\n- cfs_merge_failure\n- config_ccm_cli_running_config_changed\n- entity_mib_change\n- entity_cefc_mib_enable_status_notification\n- entity_fan_status_change\n- entity_module_inserted\n- entity_module_removed\n- entity_module_status_change\n- entity_power_out_change\n- entity_power_status_change\n- entity_sensor\n- entity_unrecognised_module\n- fcdomain_domain_id_not_assigned\n- fcdomain_fabric_change\n- fcdomain_new_principal_switch\n- feature_control_feature_op_status_change\n- feature_control_cisco_feat_op_status_change\n- generic_cold_start\n- generic_warm_start\n- hsrp_state_change\n- license_notify_license_expiry\n- license_notify_license_expiry_warning\n- license_notify_licensefile_missing\n- license_notify_no_license_for_feature\n- link_cie_link_down\n- link_cie_link_up\n- link_cisco_xcvr_mon_status_chg\n- link_cmn_mac_move_notification\n- link_delayed_link_state_change\n- link_extended_link_down\n- link_extended_link_up\n- link_link_down\n- link_link_up\n- link_cerr_disable_interface_event_rev1\n- lldp_rem_tables_change\n- mmode_cse_maint_mode_change_notify\n- mmode_cse_normal_mode_change_notify\n- mpls_ldp\n- mpls_ldp_session_down\n- mpls_ldp_session_up\n- mpls_vpn\n- mpls_vpn_vrf_max_thresh_cleared\n- mpls_vpn_vrf_max_thresh_exceeded\n- mpls_vpn_vrf_mid_thresh_exceeded\n- mpls_vpn_vrf_down\n- mpls_vpn_vrf_up\n- msdp_backward_transition\n- ospf_tags\n- ospfv3_tags\n- pim_neighbor_loss\n- port_security_access_secure_mac_violation\n- port_security_trunk_secure_mac_violation\n- rf_redundancy_framework\n- rmon_rising_alarm\n- rmon_falling_alarm\n- rmon_hc_rising_alarm\n- rmon_hc_falling_alarm\n- snmp_authentication\n- storm_control_cpsc_event_rev1\n- stpx_inconsistency\n- stpx_loop_inconsistency\n- stpx_root_inconsistency\n- syslog_message_generated\n- sysmgr_cse_fail_sw_core_notify_extended\n- system_clock_change_notification\n- upgrade_job_status_notify\n- upgrade_op_notify_on_completion\n- vtp_notifs\n- vtp_vlan_create\n- vtp_vlan_delete"
                                             },
                                             "contexts": {
                                                 "type": "array",
@@ -273594,6 +273965,85 @@
                                                 "type": "boolean",
                                                 "title": "IP Source Route",
                                                 "description": "IP Source Route (Boolean)"
+                                            },
+                                            "ip_dscp_lop": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "maximum": 63
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "IP DSCP Lop",
+                                                "description": "IP DSCP Lop (Integer, String)"
+                                            },
+                                            "ip_tcp_mss": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 88,
+                                                        "maximum": 10000
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "IP Tcp Mss",
+                                                "description": "IP Tcp Mss (Integer, String)"
+                                            },
+                                            "ip_tcp_path_mtu_discovery": {
+                                                "type": "boolean",
+                                                "title": "IP Tcp Path MTU Discovery",
+                                                "description": "IP Tcp Path MTU Discovery (Boolean)"
+                                            },
+                                            "ip_tcp_synwait_time": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 5,
+                                                        "maximum": 300
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "IP Tcp Synwait Time",
+                                                "description": "IP Tcp Synwait Time (Integer, String)"
+                                            },
+                                            "sockets_local_port_range_start_port": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 15001,
+                                                        "maximum": 58000
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Sockets Local Port Range Start Port",
+                                                "description": "Sockets Local Port Range Start Port (Integer, String)"
+                                            },
+                                            "sockets_local_port_range_end_port": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 22001,
+                                                        "maximum": 65535
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Sockets Local Port Range End Port",
+                                                "description": "Sockets Local Port Range End Port (Integer, String)"
                                             },
                                             "ip_load_sharing": {
                                                 "type": "object",
@@ -279838,7 +280288,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- control_plane_service_policy_input\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- login_block_for\n- login_block_for_attempts\n- login_block_for_within\n- login_quiet_mode_access_class\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_dscp_lop\n- ip_tcp_mss\n- ip_tcp_path_mtu_discovery\n- ip_tcp_synwait_time\n- sockets_local_port_range_start_port\n- sockets_local_port_range_end_port\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- control_plane_service_policy_input\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- login_block_for\n- login_block_for_attempts\n- login_block_for_within\n- login_quiet_mode_access_class\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -343072,6 +343522,36 @@
                                                         "title": "BFD Session Up",
                                                         "description": "BFD Session Up (Boolean)"
                                                     },
+                                                    "bgp": {
+                                                        "type": "boolean",
+                                                        "title": "BGP",
+                                                        "description": "BGP (Boolean)"
+                                                    },
+                                                    "bgp_state_changes": {
+                                                        "type": "boolean",
+                                                        "title": "BGP State Changes",
+                                                        "description": "BGP State Changes (Boolean)"
+                                                    },
+                                                    "bgp_state_changes_all": {
+                                                        "type": "boolean",
+                                                        "title": "BGP State Changes All",
+                                                        "description": "BGP State Changes All (Boolean)"
+                                                    },
+                                                    "bgp_state_changes_backward_trans": {
+                                                        "type": "boolean",
+                                                        "title": "BGP State Changes Backward Trans",
+                                                        "description": "BGP State Changes Backward Trans (Boolean)"
+                                                    },
+                                                    "bgp_state_changes_limited": {
+                                                        "type": "boolean",
+                                                        "title": "BGP State Changes Limited",
+                                                        "description": "BGP State Changes Limited (Boolean)"
+                                                    },
+                                                    "bgp_threshold_prefix": {
+                                                        "type": "boolean",
+                                                        "title": "BGP Threshold Prefix",
+                                                        "description": "BGP Threshold Prefix (Boolean)"
+                                                    },
                                                     "bridge_newroot": {
                                                         "type": "boolean",
                                                         "title": "Bridge Newroot",
@@ -343332,6 +343812,122 @@
                                                         "title": "Msdp Backward Transition",
                                                         "description": "Msdp Backward Transition (Boolean)"
                                                     },
+                                                    "ospf_tags": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "tag": {
+                                                                    "type": "string",
+                                                                    "title": "Tag",
+                                                                    "description": "Tag (String)"
+                                                                },
+                                                                "enable": {
+                                                                    "type": "boolean",
+                                                                    "title": "Enable",
+                                                                    "description": "Enable (Boolean)"
+                                                                },
+                                                                "lsa": {
+                                                                    "type": "boolean",
+                                                                    "title": "LSA",
+                                                                    "description": "LSA (Boolean)"
+                                                                },
+                                                                "rate_limit_window": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 60
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Rate Limit Window",
+                                                                    "description": "Rate Limit Window (Integer, String)"
+                                                                },
+                                                                "rate_limit_rate": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 256
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Rate Limit Rate",
+                                                                    "description": "Rate Limit Rate (Integer, String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "tag"
+                                                            ]
+                                                        },
+                                                        "title": "OSPF Tags",
+                                                        "description": "OSPF Tags (List - Object)\n\nElements:\n- tag (required)\n- enable\n- lsa\n- rate_limit_window\n- rate_limit_rate"
+                                                    },
+                                                    "ospfv3_tags": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "tag": {
+                                                                    "type": "string",
+                                                                    "title": "Tag",
+                                                                    "description": "Tag (String)"
+                                                                },
+                                                                "enable": {
+                                                                    "type": "boolean",
+                                                                    "title": "Enable",
+                                                                    "description": "Enable (Boolean)"
+                                                                },
+                                                                "lsa": {
+                                                                    "type": "boolean",
+                                                                    "title": "LSA",
+                                                                    "description": "LSA (Boolean)"
+                                                                },
+                                                                "rate_limit_window": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 60
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Rate Limit Window",
+                                                                    "description": "Rate Limit Window (Integer, String)"
+                                                                },
+                                                                "rate_limit_rate": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 256
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Rate Limit Rate",
+                                                                    "description": "Rate Limit Rate (Integer, String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "tag"
+                                                            ]
+                                                        },
+                                                        "title": "Ospfv3 Tags",
+                                                        "description": "Ospfv3 Tags (List - Object)\n\nElements:\n- tag (required)\n- enable\n- lsa\n- rate_limit_window\n- rate_limit_rate"
+                                                    },
                                                     "pim_neighbor_loss": {
                                                         "type": "boolean",
                                                         "title": "Pim Neighbor Loss",
@@ -343440,7 +344036,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Traps",
-                                                "description": "Traps (Object)\n\nElements:\n- aaa_server_state_change\n- bfd_session_down\n- bfd_session_up\n- bridge_newroot\n- bridge_topology_change\n- callhome_event_notify\n- callhome_smtp_send_fail\n- cfs_state_change_notif\n- cfs_merge_failure\n- config_ccm_cli_running_config_changed\n- entity_mib_change\n- entity_cefc_mib_enable_status_notification\n- entity_fan_status_change\n- entity_module_inserted\n- entity_module_removed\n- entity_module_status_change\n- entity_power_out_change\n- entity_power_status_change\n- entity_sensor\n- entity_unrecognised_module\n- fcdomain_domain_id_not_assigned\n- fcdomain_fabric_change\n- fcdomain_new_principal_switch\n- feature_control_feature_op_status_change\n- feature_control_cisco_feat_op_status_change\n- generic_cold_start\n- generic_warm_start\n- hsrp_state_change\n- license_notify_license_expiry\n- license_notify_license_expiry_warning\n- license_notify_licensefile_missing\n- license_notify_no_license_for_feature\n- link_cie_link_down\n- link_cie_link_up\n- link_cisco_xcvr_mon_status_chg\n- link_cmn_mac_move_notification\n- link_delayed_link_state_change\n- link_extended_link_down\n- link_extended_link_up\n- link_link_down\n- link_link_up\n- link_cerr_disable_interface_event_rev1\n- lldp_rem_tables_change\n- mmode_cse_maint_mode_change_notify\n- mmode_cse_normal_mode_change_notify\n- mpls_ldp\n- mpls_ldp_session_down\n- mpls_ldp_session_up\n- mpls_vpn\n- mpls_vpn_vrf_max_thresh_cleared\n- mpls_vpn_vrf_max_thresh_exceeded\n- mpls_vpn_vrf_mid_thresh_exceeded\n- mpls_vpn_vrf_down\n- mpls_vpn_vrf_up\n- msdp_backward_transition\n- pim_neighbor_loss\n- port_security_access_secure_mac_violation\n- port_security_trunk_secure_mac_violation\n- rf_redundancy_framework\n- rmon_rising_alarm\n- rmon_falling_alarm\n- rmon_hc_rising_alarm\n- rmon_hc_falling_alarm\n- snmp_authentication\n- storm_control_cpsc_event_rev1\n- stpx_inconsistency\n- stpx_loop_inconsistency\n- stpx_root_inconsistency\n- syslog_message_generated\n- sysmgr_cse_fail_sw_core_notify_extended\n- system_clock_change_notification\n- upgrade_job_status_notify\n- upgrade_op_notify_on_completion\n- vtp_notifs\n- vtp_vlan_create\n- vtp_vlan_delete"
+                                                "description": "Traps (Object)\n\nElements:\n- aaa_server_state_change\n- bfd_session_down\n- bfd_session_up\n- bgp\n- bgp_state_changes\n- bgp_state_changes_all\n- bgp_state_changes_backward_trans\n- bgp_state_changes_limited\n- bgp_threshold_prefix\n- bridge_newroot\n- bridge_topology_change\n- callhome_event_notify\n- callhome_smtp_send_fail\n- cfs_state_change_notif\n- cfs_merge_failure\n- config_ccm_cli_running_config_changed\n- entity_mib_change\n- entity_cefc_mib_enable_status_notification\n- entity_fan_status_change\n- entity_module_inserted\n- entity_module_removed\n- entity_module_status_change\n- entity_power_out_change\n- entity_power_status_change\n- entity_sensor\n- entity_unrecognised_module\n- fcdomain_domain_id_not_assigned\n- fcdomain_fabric_change\n- fcdomain_new_principal_switch\n- feature_control_feature_op_status_change\n- feature_control_cisco_feat_op_status_change\n- generic_cold_start\n- generic_warm_start\n- hsrp_state_change\n- license_notify_license_expiry\n- license_notify_license_expiry_warning\n- license_notify_licensefile_missing\n- license_notify_no_license_for_feature\n- link_cie_link_down\n- link_cie_link_up\n- link_cisco_xcvr_mon_status_chg\n- link_cmn_mac_move_notification\n- link_delayed_link_state_change\n- link_extended_link_down\n- link_extended_link_up\n- link_link_down\n- link_link_up\n- link_cerr_disable_interface_event_rev1\n- lldp_rem_tables_change\n- mmode_cse_maint_mode_change_notify\n- mmode_cse_normal_mode_change_notify\n- mpls_ldp\n- mpls_ldp_session_down\n- mpls_ldp_session_up\n- mpls_vpn\n- mpls_vpn_vrf_max_thresh_cleared\n- mpls_vpn_vrf_max_thresh_exceeded\n- mpls_vpn_vrf_mid_thresh_exceeded\n- mpls_vpn_vrf_down\n- mpls_vpn_vrf_up\n- msdp_backward_transition\n- ospf_tags\n- ospfv3_tags\n- pim_neighbor_loss\n- port_security_access_secure_mac_violation\n- port_security_trunk_secure_mac_violation\n- rf_redundancy_framework\n- rmon_rising_alarm\n- rmon_falling_alarm\n- rmon_hc_rising_alarm\n- rmon_hc_falling_alarm\n- snmp_authentication\n- storm_control_cpsc_event_rev1\n- stpx_inconsistency\n- stpx_loop_inconsistency\n- stpx_root_inconsistency\n- syslog_message_generated\n- sysmgr_cse_fail_sw_core_notify_extended\n- system_clock_change_notification\n- upgrade_job_status_notify\n- upgrade_op_notify_on_completion\n- vtp_notifs\n- vtp_vlan_create\n- vtp_vlan_delete"
                                             },
                                             "contexts": {
                                                 "type": "array",
@@ -345535,6 +346131,85 @@
                                                 "type": "boolean",
                                                 "title": "IP Source Route",
                                                 "description": "IP Source Route (Boolean)"
+                                            },
+                                            "ip_dscp_lop": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "maximum": 63
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "IP DSCP Lop",
+                                                "description": "IP DSCP Lop (Integer, String)"
+                                            },
+                                            "ip_tcp_mss": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 88,
+                                                        "maximum": 10000
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "IP Tcp Mss",
+                                                "description": "IP Tcp Mss (Integer, String)"
+                                            },
+                                            "ip_tcp_path_mtu_discovery": {
+                                                "type": "boolean",
+                                                "title": "IP Tcp Path MTU Discovery",
+                                                "description": "IP Tcp Path MTU Discovery (Boolean)"
+                                            },
+                                            "ip_tcp_synwait_time": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 5,
+                                                        "maximum": 300
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "IP Tcp Synwait Time",
+                                                "description": "IP Tcp Synwait Time (Integer, String)"
+                                            },
+                                            "sockets_local_port_range_start_port": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 15001,
+                                                        "maximum": 58000
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Sockets Local Port Range Start Port",
+                                                "description": "Sockets Local Port Range Start Port (Integer, String)"
+                                            },
+                                            "sockets_local_port_range_end_port": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 22001,
+                                                        "maximum": 65535
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Sockets Local Port Range End Port",
+                                                "description": "Sockets Local Port Range End Port (Integer, String)"
                                             },
                                             "ip_load_sharing": {
                                                 "type": "object",
@@ -351779,7 +352454,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- control_plane_service_policy_input\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- login_block_for\n- login_block_for_attempts\n- login_block_for_within\n- login_quiet_mode_access_class\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_dscp_lop\n- ip_tcp_mss\n- ip_tcp_path_mtu_discovery\n- ip_tcp_synwait_time\n- sockets_local_port_range_start_port\n- sockets_local_port_range_end_port\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- control_plane_service_policy_input\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- login_block_for\n- login_block_for_attempts\n- login_block_for_within\n- login_quiet_mode_access_class\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
@@ -425414,6 +426089,36 @@
                                                         "title": "BFD Session Up",
                                                         "description": "BFD Session Up (Boolean)"
                                                     },
+                                                    "bgp": {
+                                                        "type": "boolean",
+                                                        "title": "BGP",
+                                                        "description": "BGP (Boolean)"
+                                                    },
+                                                    "bgp_state_changes": {
+                                                        "type": "boolean",
+                                                        "title": "BGP State Changes",
+                                                        "description": "BGP State Changes (Boolean)"
+                                                    },
+                                                    "bgp_state_changes_all": {
+                                                        "type": "boolean",
+                                                        "title": "BGP State Changes All",
+                                                        "description": "BGP State Changes All (Boolean)"
+                                                    },
+                                                    "bgp_state_changes_backward_trans": {
+                                                        "type": "boolean",
+                                                        "title": "BGP State Changes Backward Trans",
+                                                        "description": "BGP State Changes Backward Trans (Boolean)"
+                                                    },
+                                                    "bgp_state_changes_limited": {
+                                                        "type": "boolean",
+                                                        "title": "BGP State Changes Limited",
+                                                        "description": "BGP State Changes Limited (Boolean)"
+                                                    },
+                                                    "bgp_threshold_prefix": {
+                                                        "type": "boolean",
+                                                        "title": "BGP Threshold Prefix",
+                                                        "description": "BGP Threshold Prefix (Boolean)"
+                                                    },
                                                     "bridge_newroot": {
                                                         "type": "boolean",
                                                         "title": "Bridge Newroot",
@@ -425674,6 +426379,122 @@
                                                         "title": "Msdp Backward Transition",
                                                         "description": "Msdp Backward Transition (Boolean)"
                                                     },
+                                                    "ospf_tags": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "tag": {
+                                                                    "type": "string",
+                                                                    "title": "Tag",
+                                                                    "description": "Tag (String)"
+                                                                },
+                                                                "enable": {
+                                                                    "type": "boolean",
+                                                                    "title": "Enable",
+                                                                    "description": "Enable (Boolean)"
+                                                                },
+                                                                "lsa": {
+                                                                    "type": "boolean",
+                                                                    "title": "LSA",
+                                                                    "description": "LSA (Boolean)"
+                                                                },
+                                                                "rate_limit_window": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 60
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Rate Limit Window",
+                                                                    "description": "Rate Limit Window (Integer, String)"
+                                                                },
+                                                                "rate_limit_rate": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 256
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Rate Limit Rate",
+                                                                    "description": "Rate Limit Rate (Integer, String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "tag"
+                                                            ]
+                                                        },
+                                                        "title": "OSPF Tags",
+                                                        "description": "OSPF Tags (List - Object)\n\nElements:\n- tag (required)\n- enable\n- lsa\n- rate_limit_window\n- rate_limit_rate"
+                                                    },
+                                                    "ospfv3_tags": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "additionalProperties": false,
+                                                            "properties": {
+                                                                "tag": {
+                                                                    "type": "string",
+                                                                    "title": "Tag",
+                                                                    "description": "Tag (String)"
+                                                                },
+                                                                "enable": {
+                                                                    "type": "boolean",
+                                                                    "title": "Enable",
+                                                                    "description": "Enable (Boolean)"
+                                                                },
+                                                                "lsa": {
+                                                                    "type": "boolean",
+                                                                    "title": "LSA",
+                                                                    "description": "LSA (Boolean)"
+                                                                },
+                                                                "rate_limit_window": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "minimum": 1,
+                                                                            "maximum": 60
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Rate Limit Window",
+                                                                    "description": "Rate Limit Window (Integer, String)"
+                                                                },
+                                                                "rate_limit_rate": {
+                                                                    "anyOf": [
+                                                                        {
+                                                                            "type": "integer",
+                                                                            "maximum": 256
+                                                                        },
+                                                                        {
+                                                                            "type": "string",
+                                                                            "pattern": "^.*[\\$\\%]\\{.*$"
+                                                                        }
+                                                                    ],
+                                                                    "title": "Rate Limit Rate",
+                                                                    "description": "Rate Limit Rate (Integer, String)"
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "tag"
+                                                            ]
+                                                        },
+                                                        "title": "Ospfv3 Tags",
+                                                        "description": "Ospfv3 Tags (List - Object)\n\nElements:\n- tag (required)\n- enable\n- lsa\n- rate_limit_window\n- rate_limit_rate"
+                                                    },
                                                     "pim_neighbor_loss": {
                                                         "type": "boolean",
                                                         "title": "Pim Neighbor Loss",
@@ -425782,7 +426603,7 @@
                                                 },
                                                 "required": [],
                                                 "title": "Traps",
-                                                "description": "Traps (Object)\n\nElements:\n- aaa_server_state_change\n- bfd_session_down\n- bfd_session_up\n- bridge_newroot\n- bridge_topology_change\n- callhome_event_notify\n- callhome_smtp_send_fail\n- cfs_state_change_notif\n- cfs_merge_failure\n- config_ccm_cli_running_config_changed\n- entity_mib_change\n- entity_cefc_mib_enable_status_notification\n- entity_fan_status_change\n- entity_module_inserted\n- entity_module_removed\n- entity_module_status_change\n- entity_power_out_change\n- entity_power_status_change\n- entity_sensor\n- entity_unrecognised_module\n- fcdomain_domain_id_not_assigned\n- fcdomain_fabric_change\n- fcdomain_new_principal_switch\n- feature_control_feature_op_status_change\n- feature_control_cisco_feat_op_status_change\n- generic_cold_start\n- generic_warm_start\n- hsrp_state_change\n- license_notify_license_expiry\n- license_notify_license_expiry_warning\n- license_notify_licensefile_missing\n- license_notify_no_license_for_feature\n- link_cie_link_down\n- link_cie_link_up\n- link_cisco_xcvr_mon_status_chg\n- link_cmn_mac_move_notification\n- link_delayed_link_state_change\n- link_extended_link_down\n- link_extended_link_up\n- link_link_down\n- link_link_up\n- link_cerr_disable_interface_event_rev1\n- lldp_rem_tables_change\n- mmode_cse_maint_mode_change_notify\n- mmode_cse_normal_mode_change_notify\n- mpls_ldp\n- mpls_ldp_session_down\n- mpls_ldp_session_up\n- mpls_vpn\n- mpls_vpn_vrf_max_thresh_cleared\n- mpls_vpn_vrf_max_thresh_exceeded\n- mpls_vpn_vrf_mid_thresh_exceeded\n- mpls_vpn_vrf_down\n- mpls_vpn_vrf_up\n- msdp_backward_transition\n- pim_neighbor_loss\n- port_security_access_secure_mac_violation\n- port_security_trunk_secure_mac_violation\n- rf_redundancy_framework\n- rmon_rising_alarm\n- rmon_falling_alarm\n- rmon_hc_rising_alarm\n- rmon_hc_falling_alarm\n- snmp_authentication\n- storm_control_cpsc_event_rev1\n- stpx_inconsistency\n- stpx_loop_inconsistency\n- stpx_root_inconsistency\n- syslog_message_generated\n- sysmgr_cse_fail_sw_core_notify_extended\n- system_clock_change_notification\n- upgrade_job_status_notify\n- upgrade_op_notify_on_completion\n- vtp_notifs\n- vtp_vlan_create\n- vtp_vlan_delete"
+                                                "description": "Traps (Object)\n\nElements:\n- aaa_server_state_change\n- bfd_session_down\n- bfd_session_up\n- bgp\n- bgp_state_changes\n- bgp_state_changes_all\n- bgp_state_changes_backward_trans\n- bgp_state_changes_limited\n- bgp_threshold_prefix\n- bridge_newroot\n- bridge_topology_change\n- callhome_event_notify\n- callhome_smtp_send_fail\n- cfs_state_change_notif\n- cfs_merge_failure\n- config_ccm_cli_running_config_changed\n- entity_mib_change\n- entity_cefc_mib_enable_status_notification\n- entity_fan_status_change\n- entity_module_inserted\n- entity_module_removed\n- entity_module_status_change\n- entity_power_out_change\n- entity_power_status_change\n- entity_sensor\n- entity_unrecognised_module\n- fcdomain_domain_id_not_assigned\n- fcdomain_fabric_change\n- fcdomain_new_principal_switch\n- feature_control_feature_op_status_change\n- feature_control_cisco_feat_op_status_change\n- generic_cold_start\n- generic_warm_start\n- hsrp_state_change\n- license_notify_license_expiry\n- license_notify_license_expiry_warning\n- license_notify_licensefile_missing\n- license_notify_no_license_for_feature\n- link_cie_link_down\n- link_cie_link_up\n- link_cisco_xcvr_mon_status_chg\n- link_cmn_mac_move_notification\n- link_delayed_link_state_change\n- link_extended_link_down\n- link_extended_link_up\n- link_link_down\n- link_link_up\n- link_cerr_disable_interface_event_rev1\n- lldp_rem_tables_change\n- mmode_cse_maint_mode_change_notify\n- mmode_cse_normal_mode_change_notify\n- mpls_ldp\n- mpls_ldp_session_down\n- mpls_ldp_session_up\n- mpls_vpn\n- mpls_vpn_vrf_max_thresh_cleared\n- mpls_vpn_vrf_max_thresh_exceeded\n- mpls_vpn_vrf_mid_thresh_exceeded\n- mpls_vpn_vrf_down\n- mpls_vpn_vrf_up\n- msdp_backward_transition\n- ospf_tags\n- ospfv3_tags\n- pim_neighbor_loss\n- port_security_access_secure_mac_violation\n- port_security_trunk_secure_mac_violation\n- rf_redundancy_framework\n- rmon_rising_alarm\n- rmon_falling_alarm\n- rmon_hc_rising_alarm\n- rmon_hc_falling_alarm\n- snmp_authentication\n- storm_control_cpsc_event_rev1\n- stpx_inconsistency\n- stpx_loop_inconsistency\n- stpx_root_inconsistency\n- syslog_message_generated\n- sysmgr_cse_fail_sw_core_notify_extended\n- system_clock_change_notification\n- upgrade_job_status_notify\n- upgrade_op_notify_on_completion\n- vtp_notifs\n- vtp_vlan_create\n- vtp_vlan_delete"
                                             },
                                             "contexts": {
                                                 "type": "array",
@@ -427877,6 +428698,85 @@
                                                 "type": "boolean",
                                                 "title": "IP Source Route",
                                                 "description": "IP Source Route (Boolean)"
+                                            },
+                                            "ip_dscp_lop": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "maximum": 63
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "IP DSCP Lop",
+                                                "description": "IP DSCP Lop (Integer, String)"
+                                            },
+                                            "ip_tcp_mss": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 88,
+                                                        "maximum": 10000
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "IP Tcp Mss",
+                                                "description": "IP Tcp Mss (Integer, String)"
+                                            },
+                                            "ip_tcp_path_mtu_discovery": {
+                                                "type": "boolean",
+                                                "title": "IP Tcp Path MTU Discovery",
+                                                "description": "IP Tcp Path MTU Discovery (Boolean)"
+                                            },
+                                            "ip_tcp_synwait_time": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 5,
+                                                        "maximum": 300
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "IP Tcp Synwait Time",
+                                                "description": "IP Tcp Synwait Time (Integer, String)"
+                                            },
+                                            "sockets_local_port_range_start_port": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 15001,
+                                                        "maximum": 58000
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Sockets Local Port Range Start Port",
+                                                "description": "Sockets Local Port Range Start Port (Integer, String)"
+                                            },
+                                            "sockets_local_port_range_end_port": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minimum": 22001,
+                                                        "maximum": 65535
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "pattern": "^.*[\\$\\%]\\{.*$"
+                                                    }
+                                                ],
+                                                "title": "Sockets Local Port Range End Port",
+                                                "description": "Sockets Local Port Range End Port (Integer, String)"
                                             },
                                             "ip_load_sharing": {
                                                 "type": "object",
@@ -434121,7 +435021,7 @@
                                         },
                                         "required": [],
                                         "title": "System",
-                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- control_plane_service_policy_input\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- login_block_for\n- login_block_for_attempts\n- login_block_for_within\n- login_quiet_mode_access_class\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
+                                        "description": "System (Object)\n\nElements:\n- hostname\n- mtu\n- nxapi\n- nv_overlay_vxlan_udp_port\n- nv_overlay_vxlan_udp_source_port_mode\n- nve_ipmc_index_size\n- nve_overlay_vlans\n- nve_infra_vlans\n- advertise_evpn_multicast\n- interface_vlan_autostate\n- hsrp_bfd\n- hsrp_timers_extended_hold\n- hypershield\n- ip_routing\n- ip_access_list_match_local_traffic\n- acllog_match_log_level\n- logging_ip_access_list\n- logging_level_ip\n- logging_level_poed\n- ip_redirect_syslog\n- ip_redirect_syslog_interval\n- ip_source_route\n- ip_dscp_lop\n- ip_tcp_mss\n- ip_tcp_path_mtu_discovery\n- ip_tcp_synwait_time\n- sockets_local_port_range_start_port\n- sockets_local_port_range_end_port\n- ip_load_sharing\n- ip_multicast_overlay_distributed_dr\n- ip_multicast_overlay_spt_only\n- hardware_access_list_tcam_region\n- hardware_ecmp_hash_offset_concatenation\n- hardware_ecmp_hash_offset_value\n- hardware_ecmp_hash_polynomial\n- ipv6_routing\n- ipv6_access_list_match_local_traffic\n- ipv6_adjacency_stale_timer\n- ipv6_adjacency_stale_timer_icmp\n- ipv6_redirect_syslog\n- ipv6_redirect_syslog_interval\n- boot\n- interface_breakout_modules\n- cfs_distribute\n- cfs_eth_distribute\n- cfs_ipv4_distribute\n- cfs_ipv4_mcast_address\n- cfs_ipv6_distribute\n- cfs_ipv6_mcast_address\n- cli_aliases\n- copp_profile\n- copp_rate_limit\n- control_plane_service_policy_input\n- ethernet\n- errdisable\n- mac_address_table\n- l2rib\n- ngoam\n- erspan_origin_ip_address\n- erspan_origin_ipv6_address\n- clock\n- icam_monitor_interval\n- icam_monitor_history\n- icam_monitor_scale\n- icam_monitor_scale_threshold_critical\n- icam_monitor_scale_threshold_info\n- icam_monitor_scale_threshold_warning\n- hardware\n- hardware_profile\n- hardware_qos\n- udfs\n- port_channel\n- switch_mode\n- dot1q_tunnel_transit_vlans\n- fabric_mode\n- default_reset_dei\n- routing\n- ssh\n- grpc\n- ip_ssh_source_interfaces\n- ip_ftp_source_interfaces\n- smart_licensing_transport\n- smart_licensing_url_cslu\n- line_console_exec_timeout\n- line_vty_access_class_in\n- line_vty_access_class_out\n- line_vty_exec_timeout\n- line_vty_session_limit\n- login_block_for\n- login_block_for_attempts\n- login_block_for_within\n- login_quiet_mode_access_class\n- vdcs\n- ttag_marker_interval\n- private_vlan_fex_trunk"
                                     },
                                     "telemetry": {
                                         "type": "object",
